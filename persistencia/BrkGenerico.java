@@ -1,0 +1,79 @@
+package persistencia;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import dominio.Generico;
+
+public class BrkGenerico extends Broker {
+
+	public BrkGenerico(Generico p) {
+		super(p);
+	}
+
+	@Override
+	public String getContar() {
+		Generico g = (Generico) this.getObj();
+		return g.getSql();
+	}
+
+	@Override
+	public String getDeleteSQL() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getInsertSQL() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IPersistente getNuevo() {
+		return new Generico();
+	}
+
+	@Override
+	public String getSelectSQL() {
+		Generico g = (Generico) this.getObj();
+		return g.getSql();
+	}
+
+	@Override
+	public String getUpdateSQL() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void leerDesdeResultSet(ResultSet rs, IPersistente aux) {
+		try {
+			Generico p = (Generico) aux;
+			for(int x=0;x<p.getListaDada().size();x++){
+				String es = (String) p.getListaDada().get(x);
+				if(es.equalsIgnoreCase(Generico.letras) || es.equalsIgnoreCase(Generico.fechas)){
+					p.getListaObtenida().add(rs.getString(x+1));
+				}
+				if(es.equalsIgnoreCase(Generico.letra)){
+					p.getListaObtenida().add(rs.getCharacterStream(x+1));
+				}
+				if(es.equalsIgnoreCase(Generico.integer)){
+					p.getListaObtenida().add(rs.getInt(x+1));
+				}
+				if(es.equalsIgnoreCase(Generico.VF)){
+					p.getListaObtenida().add(rs.getBoolean(x+1));
+				}
+				if(es.equalsIgnoreCase(Generico.Float)){
+					p.getListaObtenida().add(rs.getFloat(x+1));
+				}
+			}
+		} catch (SQLException e) {
+			System.out
+					.println("Hubo un problema en el leerDesdeResultSet de BrkGenerico");
+			System.out.println(e);
+		} 
+
+	}
+
+}

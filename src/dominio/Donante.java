@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkDonante;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class Donante implements IPersistente{
 	
@@ -390,6 +390,7 @@ public class Donante implements IPersistente{
 	
 	
 	public boolean equals(Object o){
+		if(o == null)return false;
 		Donante d = (Donante) o;
 		return (this.getId().equalsIgnoreCase(d.getId()));
 	}

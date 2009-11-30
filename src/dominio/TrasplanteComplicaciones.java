@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import persistencia.BrkTrasplanteComplicaciones;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public abstract class TrasplanteComplicaciones implements IPersistente{
 

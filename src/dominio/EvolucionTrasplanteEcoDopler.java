@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import persistencia.BrkEvolucionTrasplanteEcoDopler;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class EvolucionTrasplanteEcoDopler implements IPersistente{
 	private int idTrasplante;
@@ -20,6 +20,7 @@ public class EvolucionTrasplanteEcoDopler implements IPersistente{
 	private String anastVenosa;
 	private String anastRenosa;
 	private double indiceResistencia;
+	private String otros = "";
 	public static String BIEN = "Bien";
 	public static String MAL = "Mal";
 	private BrkEvolucionTrasplanteEcoDopler broker = new BrkEvolucionTrasplanteEcoDopler(this);
@@ -101,7 +102,18 @@ public class EvolucionTrasplanteEcoDopler implements IPersistente{
 		this.setFecha(new GregorianCalendar());
 	}
 	
-	
+	/**
+	 * @return the otros
+	 */
+	public String getOtros() {
+		return otros;
+	}
+	/**
+	 * @param otros the otros to set
+	 */
+	public void setOtros(String otros) {
+		this.otros = otros;
+	}
 	public void eliminar() {
 		broker.eliminar();
 	}

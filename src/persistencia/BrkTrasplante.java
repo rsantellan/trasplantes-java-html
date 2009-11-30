@@ -1,9 +1,16 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.GregorianCalendar;
+
+import logica.Fachada;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
+import persistencia.broker.basico.ManejadorBD;
 
 import auxiliares.ManejoFechas;
 import dominio.Trasplante;
@@ -14,6 +21,21 @@ public class BrkTrasplante extends Broker{
 		super(t);
 	}
 
+	@Override
+	public PreparedStatement getDeletePreperad() {
+		Trasplante t = (Trasplante) this.getObj();
+		String sql = "";
+		sql = "DELETE FROM trasplante WHERE ID = ?";
+		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setInt(1, t.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+		}
+		return prep;
+	}
+	
 	@Override
 	public String getDeleteSQL() {
 		Trasplante t = (Trasplante) this.getObj();
@@ -175,6 +197,7 @@ public class BrkTrasplante extends Broker{
 		String sql = "";
 		sql +=	"UPDATE trasplante SET ";
 		sql += "FECHA ='" + fecha+"',";
+		//sql += "FECHA_ALTA =" + fechaAlta +",";
 		if(fechaAlta == null){
 			sql += "FECHA_ALTA =" + fechaAlta +",";
 		}else{

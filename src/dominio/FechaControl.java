@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkFechaControl;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class FechaControl implements IPersistente {
 
@@ -88,7 +88,7 @@ public class FechaControl implements IPersistente {
 	public String toString(){
 		String salida = this.getFecha() + ": ";
 		if(this.getAnos() != 0){
-			salida += this.getAnos() + " AÑOS";
+			salida += this.getAnos() + " Aï¿½OS";
 		}
 		if(this.getMeses() != 0){
 			salida += ", "+ this.getMeses() + " MESES";
@@ -101,6 +101,7 @@ public class FechaControl implements IPersistente {
 
 	
 	public boolean equals(Object o){
+		if(o == null)return false;
 		FechaControl aux = (FechaControl) o;
 		if(this.getFecha().equalsIgnoreCase(aux.getFecha())){
 			return true;

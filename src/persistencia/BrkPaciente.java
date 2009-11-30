@@ -1,8 +1,15 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+
+import logica.Fachada;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
+import persistencia.broker.basico.ManejadorBD;
 
 import auxiliares.ManejoFechas;
 import dominio.Paciente;
@@ -13,6 +20,21 @@ public class BrkPaciente extends Broker {
 		super(p);
 	}
 
+	@Override
+	public PreparedStatement getDeletePreperad() {
+		Paciente p = (Paciente) this.getObj();
+		String sql = "";
+		sql = "DELETE FROM pacientes WHERE THE = ?";
+		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setInt(1, p.getThe());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+		}
+		return prep;
+	}
+	
 	@Override
 	public String getDeleteSQL() {
 		Paciente p = (Paciente) this.getObj();
@@ -29,7 +51,7 @@ public class BrkPaciente extends Broker {
 				.getFecha_nacimiento().getTime());
 		String fechaDialisis = ManejoFechas.formatoIngles.format(p
 				.getFecha_dialisis().getTime());
-		sql = "INSERT INTO PACIENTES(CI,NOMBRE,APELLIDO,NUM_FNR,RAZA,SEXO,";
+		sql = "INSERT INTO pacientes(CI,NOMBRE,APELLIDO,NUM_FNR,RAZA,SEXO,";
 		sql += "FECHA_NACIMIENTO,FECHA_DIALISIS,NEFROPATIA,GRUPO_SANG) VALUES ('";
 		sql += p.getCi() + "','"+ p.getNombre() + "',";
 		sql += "'" + p.getApellido() + "'," + p.getNum_fnr() + ",'"

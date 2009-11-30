@@ -1,8 +1,15 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+
+import logica.Fachada;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
+import persistencia.broker.basico.ManejadorBD;
 
 import auxiliares.ManejoFechas;
 import dominio.PacienteMuerte;
@@ -11,12 +18,25 @@ public class BrkPacienteMuerte extends Broker{
 
 	public BrkPacienteMuerte(PacienteMuerte p) {
 		super(p);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
+	public PreparedStatement getDeletePreperad() {
+		PacienteMuerte m = (PacienteMuerte) this.getObj();
+		String sql = "";
+		sql = "DELETE FROM paciente_muerte WHERE THE = ?";
+		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setInt(1, m.getThe());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+		}
+		return prep;
+	}
+	
+	@Override
 	public String getDeleteSQL() {
-		// TODO Auto-generated method stub
 		PacienteMuerte m = (PacienteMuerte) this.getObj();
 		String sql = "";
 		sql += "DELETE FROM paciente_muerte WHERE THE =" + m.getThe();

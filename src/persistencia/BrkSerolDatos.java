@@ -1,23 +1,60 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import logica.Fachada;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
+import persistencia.broker.basico.ManejadorBD;
+
 import dominio.SerolDatos;
 
-public class BrkSerolDatos extends Broker{
+public class BrkSerolDatos extends Broker {
 
 	public BrkSerolDatos(SerolDatos p) {
 		super(p);
 	}
 
 	@Override
+	public PreparedStatement getDeletePreperad() {
+		SerolDatos s = (SerolDatos) this.getObj();
+		String sql = "";
+		if (s.getTipo() != null) {
+			sql = "DELETE FROM serol_valor WHERE ID =?  AND valor = ?";
+			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, s.getId());
+				prep.setString(2, s.getTipo());
+				return prep;
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+				Fachada.getInstancia().guardarLog(e1.getStackTrace().toString());
+				return null;
+			}
+		}else{
+			sql = "DELETE FROM serol_valor WHERE ID =?";
+			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, s.getId());
+				return prep;
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+				Fachada.getInstancia().guardarLog(e1.getStackTrace().toString());
+				return null;
+			}
+		}
+	}
+
+	@Override
 	public String getDeleteSQL() {
 		SerolDatos s = (SerolDatos) this.getObj();
-		String sql ="";
+		String sql = "";
 		sql += "DELETE FROM serol_valor WHERE ID =" + s.getId();
-		if(s.getTipo() != null){
-			sql += " AND valor='"+s.getTipo() +"'";
+		if (s.getTipo() != null) {
+			sql += " AND valor='" + s.getTipo() + "'";
 		}
 		return sql;
 	}
@@ -25,9 +62,9 @@ public class BrkSerolDatos extends Broker{
 	@Override
 	public String getInsertSQL() {
 		SerolDatos s = (SerolDatos) this.getObj();
-		String sql ="";
+		String sql = "";
 		sql += "INSERT INTO serol_valor (id,valor) VALUES (";
-		sql += s.getId()+",'" + s.getTipo()+"')";
+		sql += s.getId() + ",'" + s.getTipo() + "')";
 		return sql;
 	}
 
@@ -39,10 +76,10 @@ public class BrkSerolDatos extends Broker{
 	@Override
 	public String getSelectSQL() {
 		SerolDatos s = (SerolDatos) this.getObj();
-		String sql ="";
+		String sql = "";
 		sql += "SELECT * FROM serol_valor";
-		if(s.getId() != 0){
-			sql += " WHERE id ="+s.getId();
+		if (s.getId() != 0) {
+			sql += " WHERE id =" + s.getId();
 		}
 		sql += " ORDER BY valor";
 		return sql;
@@ -51,22 +88,23 @@ public class BrkSerolDatos extends Broker{
 	@Override
 	public String getUpdateSQL() {
 		SerolDatos s = (SerolDatos) this.getObj();
-		String sql ="";
+		String sql = "";
 		sql += "UPDATE serol_valor SET ";
-		sql += "valor ='"+ s.getTipo()+"' ";
-		sql += "WHERE id="+s.getId();
-		sql += " AND valor='"+s.getViejo() +"'";
+		sql += "valor ='" + s.getTipo() + "' ";
+		sql += "WHERE id=" + s.getId();
+		sql += " AND valor='" + s.getViejo() + "'";
 		return sql;
 	}
 
 	@Override
 	public void leerDesdeResultSet(ResultSet rs, IPersistente aux) {
-		try{
+		try {
 			SerolDatos s = (SerolDatos) aux;
 			s.setId(rs.getInt("id"));
 			s.setTipo(rs.getString("valor"));
-		}catch(SQLException e){
-			System.out.println("Hubo un problema en el leerDesdeResultSet de BrkSerolDatos");
+		} catch (SQLException e) {
+			System.out
+					.println("Hubo un problema en el leerDesdeResultSet de BrkSerolDatos");
 			System.out.println(e);
 		}
 	}

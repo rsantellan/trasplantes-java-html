@@ -1,8 +1,15 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+
+import logica.Fachada;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
+import persistencia.broker.basico.ManejadorBD;
 
 import auxiliares.ManejoFechas;
 import dominio.Tratamiento;
@@ -13,6 +20,42 @@ public class BrkTratamiento extends Broker {
 		super(p);
 	}
 
+	@Override
+	public PreparedStatement getDeletePreperad() {
+		Tratamiento p = (Tratamiento) this.getObj();
+		String sql = "";
+		if (p.getFecha_inicio() != null) {
+			String fecha = ManejoFechas.formatoIngles.format(p.getFecha_inicio()
+					.getTime());
+				sql = "DELETE FROM tratamiento WHERE THE =?  AND MEDICACION = ?  AND FECHA_INICIO = ?";
+				PreparedStatement prep = ManejadorBD.getInstancia()
+						.crearPreparedStatement(sql);
+				try {
+					prep.setInt(1, p.getThe());
+					prep.setInt(2, p.getMedicamento());
+					prep.setString(3, fecha);
+					return prep;
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+					Fachada.getInstancia().guardarLog(
+							e1.getStackTrace().toString());
+					return null;
+				}
+		}
+		sql = "DELETE FROM tratamiento WHERE THE =?";
+		PreparedStatement prep = ManejadorBD.getInstancia()
+				.crearPreparedStatement(sql);
+		try {
+			prep.setInt(1, p.getThe());
+			return prep;
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+			Fachada.getInstancia().guardarLog(e1.getStackTrace().toString());
+			return null;
+		}
+
+	}
+	
 	@Override
 	public String getDeleteSQL() {
 		Tratamiento p = (Tratamiento) this.getObj();

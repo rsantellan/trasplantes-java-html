@@ -873,7 +873,7 @@ public class ControlConsultas {
 		g.getListaDada().add(Generico.integer);
 		g.getListaDada().add(Generico.letras);
 		g.getListaDada().add(Generico.letras);
-		g.getListaDada().add(Generico.Float);
+		g.getListaDada().add(Generico.FLOAT);
 		g.getListaDada().add(Generico.VF);
 		g.getListaDada().add(Generico.integer);
 		g.getListaDada().add(Generico.integer);
@@ -948,10 +948,10 @@ public class ControlConsultas {
 	}
 
 	public Generico consultaPacientesReoperaciones() {
-		String sql = "SELECT P.THE, T.pretrasplante, P.NOMBRE, P.APELLIDO, (SELECT COUNT(id_trasplante) FROM trasplante_reoperacion WHERE TR.id_trasplante = T.ID) AS REOPERACIONES";
-		sql += " FROM pacientes P, pacientepretrasplante PP, trasplante T, trasplante_reoperacion TR";
-		sql += " WHERE P.the = PP.the AND PP.id = T.pretrasplante";
-		sql += " ORDER BY REOPERACIONES DESC";
+		String sql = "SELECT P.THE, T.pretrasplante, P.NOMBRE, P.APELLIDO,COUNT(*) AS CANTIDAD ";
+		sql += " FROM trasplante_reoperacion TR,pacientes P, pacientepretrasplante PP, trasplante T";
+		sql += " WHERE P.the = PP.the AND PP.id = T.pretrasplante AND TR.id_trasplante = T.ID";
+		sql += " group by id_trasplante order by cantidad desc";
 		Generico g = new Generico();
 		g.setSql(sql);
 		g.getListaDada().add(Generico.integer);

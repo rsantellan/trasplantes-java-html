@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkDonanteSerol;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class DonanteSerolUsado implements IPersistente{
 

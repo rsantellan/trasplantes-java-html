@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import persistencia.BrkEvolucionTrasplanteEcografia;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class EvolucionTrasplanteEcografia implements IPersistente{
 
@@ -16,6 +16,7 @@ public class EvolucionTrasplanteEcografia implements IPersistente{
 	private boolean litiasin;
 	private String vejiga;
 	private int espesor;
+	private String otros;
 	private BrkEvolucionTrasplanteEcografia broker = new BrkEvolucionTrasplanteEcografia(this);
 	
 	public int getIdTrasplante() {
@@ -74,7 +75,20 @@ public class EvolucionTrasplanteEcografia implements IPersistente{
 		this.espesor = espesor;
 	}
 
-	
+	/**
+	 * @return the otros
+	 */
+	public String getOtros() {
+		return otros;
+	}
+
+	/**
+	 * @param otros the otros to set
+	 */
+	public void setOtros(String otros) {
+		this.otros = otros;
+	}
+
 	public int contar() {
 		return broker.contar();
 	}

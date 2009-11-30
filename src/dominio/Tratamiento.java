@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import persistencia.BrkTratamiento;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class Tratamiento implements IPersistente{
 	

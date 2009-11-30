@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkInfeccion;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class Infeccion implements IPersistente {
 
@@ -64,6 +64,7 @@ public class Infeccion implements IPersistente {
 	
 	
 	public boolean equals(Object o){
+		if(o == null)return false;
 		Infeccion aux = (Infeccion)o;
 		if(aux.getId()==this.getId() && aux.getNombre().equalsIgnoreCase(this.getNombre())){
 			return true;

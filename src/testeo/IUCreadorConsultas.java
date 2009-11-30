@@ -725,6 +725,7 @@ public class IUCreadorConsultas extends JFrame {
 	private JCheckBox jCheckBoxMuertePacienteCausa = null;
 	private JCheckBox jCheckBoxMuertePacienteFecha = null;
 	private JCheckBox jCheckBoxMuertePacienteTRFuncionando = null;
+	
 	private void generarPreTrasplante(ArrayList<String> atFinales){
 		if(this.jCheckBoxPreTrasplanteDiabetes.isSelected()) this.cosasPreTrasplante.add("E.diabetes");
 		if(this.jCheckBoxPreTrasplanteDislipemia.isSelected()) this.cosasPreTrasplante.add("E.dislipemia");

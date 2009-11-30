@@ -1,9 +1,16 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.GregorianCalendar;
+
+import logica.Fachada;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
+import persistencia.broker.basico.ManejadorBD;
 
 import auxiliares.ManejoFechas;
 
@@ -14,9 +21,41 @@ public class BrkEvolucionInjerto extends Broker {
 
 	public BrkEvolucionInjerto(EvolucionInjerto p) {
 		super(p);
-		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public PreparedStatement getDeletePreperad() {
+		EvolucionInjerto e = (EvolucionInjerto) this.getObj();
+		String sql = "";
+		if (e.getFecha() != null) {
+			sql = "DELETE FROM injerto_evolucion WHERE PreTrasplante =?  AND FECHA =?  AND trasplante = ?";
+			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, e.getIdPretrasplante());
+				String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+						.getTime());
+				prep.setString(2, fecha);
+				prep.setBoolean(3, e.isEnTrasplante());
+				return prep;
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+				Fachada.getInstancia().guardarLog(e1.getStackTrace().toString());
+				return null;
+			}
+		}else{
+			sql = "DELETE FROM injerto_evolucion WHERE PreTrasplante =?";
+			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, e.getIdPretrasplante());
+				return prep;
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+				Fachada.getInstancia().guardarLog(e1.getStackTrace().toString());
+				return null;
+			}
+		}
+	}
+	
 	@Override
 	public String getDeleteSQL() {
 		EvolucionInjerto e = (EvolucionInjerto) this.getObj();

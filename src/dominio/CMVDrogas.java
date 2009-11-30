@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkCMVDrogas;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class CMVDrogas implements IPersistente{
 
@@ -63,6 +63,7 @@ public class CMVDrogas implements IPersistente{
 
 	@Override
 	public boolean equals(Object arg0) {
+		if(arg0 == null)return false;
 		CMVDrogas aux = (CMVDrogas) arg0;
 		return this.getNombre().equalsIgnoreCase(aux.getNombre());
 	}

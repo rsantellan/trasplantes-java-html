@@ -1,7 +1,14 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import logica.Fachada;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
+import persistencia.broker.basico.ManejadorBD;
 
 import dominio.Infeccion;
 
@@ -11,6 +18,22 @@ public class BrkInfeccion extends Broker{
 		super(i);
 	}
 
+	@Override
+	public PreparedStatement getDeletePreperad() {
+		Infeccion m = (Infeccion) this.getObj();
+		String sql = "";
+		sql = "DELETE FROM infeccion WHERE ID = ?";
+		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setInt(1, m.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+		}
+		return prep;
+		
+	}
+	
 	@Override
 	public String getDeleteSQL() {
 		Infeccion m = (Infeccion) this.getObj();

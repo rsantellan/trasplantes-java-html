@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkDonanterefAntecedente;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class DonanterefAntecedentes implements IPersistente{
 

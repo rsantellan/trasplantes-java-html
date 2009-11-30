@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkSerolDatos;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class SerolDatos implements IPersistente{
 
@@ -98,8 +98,7 @@ public class SerolDatos implements IPersistente{
 	}
 	
 	public int contar() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.broker.contar();
 	}
 
 }

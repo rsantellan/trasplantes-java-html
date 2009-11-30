@@ -1,7 +1,12 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
+import persistencia.broker.basico.ManejadorBD;
 
 import logica.Fachada;
 
@@ -11,9 +16,23 @@ public class BrkDonanterefAntecedente extends Broker{
 
 	public BrkDonanterefAntecedente(DonanterefAntecedentes p) {
 		super(p);
-		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public PreparedStatement getDeletePreperad() {
+		DonanterefAntecedentes d = (DonanterefAntecedentes) this.getObj();
+		String sql= "DELETE FROM donanterefantecedentes WHERE ID_DONANTE =?";
+		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setString(1, d.getIdDonante());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+		}
+		return prep;
+		
+	}
+	
 	@Override
 	public String getDeleteSQL() {
 		DonanterefAntecedentes d = (DonanterefAntecedentes) this.getObj();

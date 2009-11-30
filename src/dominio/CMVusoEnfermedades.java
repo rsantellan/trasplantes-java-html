@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import persistencia.BrkCmvUsoEnfermedad;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class CMVusoEnfermedades implements IPersistente {
 

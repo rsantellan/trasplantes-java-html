@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkCMVDiagnostico;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class CMVDiagnostico implements IPersistente{
 
@@ -63,6 +63,7 @@ public class CMVDiagnostico implements IPersistente{
 
 	
 	public boolean equals(Object obj) {
+		if(obj == null)return false;
 		CMVDiagnostico aux = (CMVDiagnostico) obj;
 		return this.getNombre().equalsIgnoreCase(aux.getNombre());
 	}

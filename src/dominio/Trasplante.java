@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import auxiliares.ManejoFechas;
+
 import persistencia.BrkTrasplante;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class Trasplante implements IPersistente{
 	private int id;
@@ -1258,7 +1260,7 @@ public class Trasplante implements IPersistente{
 	}
 	
 	public String toString(){
-		return "N°:" + this.getNumTr() + " Donante:"+ this.getDonante().toString();
+		return "Num:" + this.getNumTr() + " Fecha Trasplante : " + ManejoFechas.formatoEspanol.format(this.getFecha().getTime()); //" Donante:"+ this.getDonante().toString();
 	}
 
 	
@@ -1271,6 +1273,8 @@ public class Trasplante implements IPersistente{
 		Calendar gc2,gc1,g1,g2;
 		g1 = fechaDialisis;
 		g2 = this.getFecha();
+		//System.out.println(ManejoFechas.formatoEspanol.format(g1.getTime()));
+		//System.out.println(ManejoFechas.formatoEspanol.format(g2.getTime()));
 		if (g2.after(g1)) {
 			gc2 = (Calendar) g2.clone();
 			gc1 = (Calendar) g1.clone();

@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkInduccion;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class Induccion implements IPersistente{
 

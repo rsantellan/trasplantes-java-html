@@ -1,7 +1,14 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import logica.Fachada;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
+import persistencia.broker.basico.ManejadorBD;
 
 import dominio.ResultadoPBR;
 
@@ -11,6 +18,21 @@ public class BrkResultadoPBR extends Broker{
 		super(r);
 	}
 
+	@Override
+	public PreparedStatement getDeletePreperad() {
+		ResultadoPBR r =  (ResultadoPBR) this.getObj();
+		String sql = "";
+		sql = "DELETE FROM resultado_pbr WHERE ID = ?";
+		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setInt(1, r.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+		}
+		return prep;
+	}
+	
 	@Override
 	public String getDeleteSQL() {
 		ResultadoPBR r =  (ResultadoPBR) this.getObj();

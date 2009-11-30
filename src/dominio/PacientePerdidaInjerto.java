@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import persistencia.BrkPerdidaInjerto;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 import auxiliares.ManejoFechas;
 
 public class PacientePerdidaInjerto implements IPersistente{

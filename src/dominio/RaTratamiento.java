@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkRaTratamiento;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class RaTratamiento implements IPersistente{
 
@@ -59,6 +59,7 @@ public class RaTratamiento implements IPersistente{
 
 	
 	public boolean equals(Object obj) {
+		if(obj == null)return false;
 		RaTratamiento aux = (RaTratamiento) obj;
 		return this.getNombre().equalsIgnoreCase(aux.getNombre());
 	}

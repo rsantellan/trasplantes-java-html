@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkGenericoAuxiliar;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class GenericoAuxiliar implements IPersistente {
 
@@ -15,6 +15,7 @@ public class GenericoAuxiliar implements IPersistente {
 	private String nombres = "";
 	
 	private BrkGenericoAuxiliar broker = new BrkGenericoAuxiliar(this);
+	
 	public int getId() {
 		return id;
 	}

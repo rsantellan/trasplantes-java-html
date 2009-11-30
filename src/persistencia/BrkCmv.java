@@ -1,8 +1,15 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+
+import logica.Fachada;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
+import persistencia.broker.basico.ManejadorBD;
 
 import auxiliares.ManejoFechas;
 
@@ -16,6 +23,38 @@ public class BrkCmv extends Broker {
 		super(p);
 	}
 
+	@Override
+	public PreparedStatement getDeletePreperad() {
+		CMV e = (CMV) this.getObj();
+		String sql = "";
+		if (e.getFecha() != null) {
+			sql = "DELETE FROM cmv WHERE Trasplante =?  AND FECHA = ?";
+			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, e.getIdTrasplante());
+				String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+						.getTime());
+				prep.setString(2, fecha);
+				return prep;
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+				Fachada.getInstancia().guardarLog(e1.getStackTrace().toString());
+				return null;
+			}
+		}else{
+			sql = "DELETE FROM cmv WHERE Trasplante =?";
+			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, e.getIdTrasplante());
+				return prep;
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+				Fachada.getInstancia().guardarLog(e1.getStackTrace().toString());
+				return null;
+			}
+		}
+	}
+	
 	@Override
 	public String getDeleteSQL() {
 		CMV e = (CMV) this.getObj();

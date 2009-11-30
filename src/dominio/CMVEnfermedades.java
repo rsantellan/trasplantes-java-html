@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkCMVEmfermedades;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class CMVEnfermedades implements IPersistente{
 

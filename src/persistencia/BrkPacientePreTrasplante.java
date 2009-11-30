@@ -1,8 +1,15 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+
+import logica.Fachada;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
+import persistencia.broker.basico.ManejadorBD;
 
 import auxiliares.ManejoFechas;
 import dominio.PacientePreTrasplante;
@@ -13,6 +20,21 @@ public class BrkPacientePreTrasplante extends Broker {
 		super(p);
 	}
 
+	@Override
+	public PreparedStatement getDeletePreperad() {
+		PacientePreTrasplante p = (PacientePreTrasplante) this.getObj();
+		String sql = "";
+		sql = "DELETE FROM pacientepretrasplante WHERE ID = ?";
+		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setInt(1, p.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+		}
+		return prep;
+	}
+	
 	@Override
 	public String getDeleteSQL() {
 		PacientePreTrasplante p = (PacientePreTrasplante) this.getObj();
@@ -29,11 +51,11 @@ public class BrkPacientePreTrasplante extends Broker {
 				.getFecha_ingreso_lista().getTime());
 		String fechaEgreso = ManejoFechas.formatoIngles.format(p
 				.getFecha_egreso().getTime());
-		sql = "INSERT INTO `pacientepretrasplante` (`THE`,`FECHA_INGRESO_LISTA`,`FECHA_EGRESO`,`MODALIDAD_D`,`PBR`,`DIABETES`,`HTA`,`OBESIDAD`,`IMC`,`DISLIPEMIA`,`TABAQUISMO`,`ORIGEN`) VALUES (";
+		sql = "INSERT INTO `pacientepretrasplante` (`THE`,`FECHA_INGRESO_LISTA`,`FECHA_EGRESO`,`MODALIDAD_D`,`PBR`,`DIABETES`,`HTA`,`OBESIDAD`,`IMC`,`DISLIPEMIA`,`TABAQUISMO`,`ORIGEN`, `IAM`, `AVE`, `REVASC_CARDIO`) VALUES (";
 		sql += "" + p.getThe() + ",'" + fechaIngresoLista + "','" + fechaEgreso + "',";
 		sql += "'" + p.getModalidad_d() + "'," + p.isPbr() + ",";
 		sql += "'" + p.getDiabetes() + "'," + p.isHta() + "," + p.isObesidad()+ ",'" + p.getImc() + "',";
-		sql += p.isDislipemia() + "," + p.isTabaquismo() + ",'" + p.getOrigen()+ "');";
+		sql += p.isDislipemia() + "," + p.isTabaquismo() + ",'" + p.getOrigen()+ "',"+ p.isIam() +","+p.isAve() + ","+ p.isRevascCardio() +");";
 		return sql;
 	}
 
@@ -116,6 +138,9 @@ public class BrkPacientePreTrasplante extends Broker {
 		sql += "DISLIPEMIA =" + p.isDislipemia() + ", ";
 		sql += "TABAQUISMO =" + p.isTabaquismo() + ", ";
 		sql += "ORIGEN = '" + p.getOrigen() + "' ,";
+		sql += "IAM =" + p.isIam() + ", ";
+		sql += "AVE =" + p.isAve() + ", ";
+		sql += "REVASC_CARDIO =" + p.isRevascCardio() + ", ";
 		sql += "THE =" + p.getThe() + " ";
 		sql += "WHERE ID =" + p.getId();
 		return sql;
@@ -145,6 +170,9 @@ public class BrkPacientePreTrasplante extends Broker {
 			p.setDislipemia(rs.getBoolean("DISLIPEMIA"));
 			p.setTabaquismo(rs.getBoolean("TABAQUISMO"));
 			p.setOrigen(rs.getString("ORIGEN"));
+			p.setAve(rs.getBoolean("AVE"));
+			p.setIam(rs.getBoolean("IAM"));
+			p.setRevascCardio(rs.getBoolean("REVASC_CARDIO"));
 		} catch (SQLException e) {
 			System.out
 					.println("Hubo un problema en el leerDesdeResultSet de BrkPacientePreTrasplante");

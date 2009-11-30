@@ -6,7 +6,7 @@ import java.util.GregorianCalendar;
 import auxiliares.ManejoFechas;
 
 import persistencia.BrkTrasplanteComplicacionesNoInf;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class TrasplanteComplicacionesNoInf extends TrasplanteComplicaciones implements IPersistente{
 

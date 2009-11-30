@@ -1,7 +1,14 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import logica.Fachada;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
+import persistencia.broker.basico.ManejadorBD;
 
 import dominio.CMVDrogas;
 
@@ -11,6 +18,21 @@ public class BrkCMVDrogas extends Broker{
 		super(m);
 	}
 
+	@Override
+	public PreparedStatement getDeletePreperad() {
+		CMVDrogas m = (CMVDrogas) this.getObj();
+		String sql ="";
+		sql += "DELETE FROM cmvdrogas WHERE ID =?";
+		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setInt(1, m.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+		}
+		return prep;
+	}
+	
 	@Override
 	public String getDeleteSQL() {
 		CMVDrogas m = (CMVDrogas) this.getObj();

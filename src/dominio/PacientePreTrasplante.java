@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import persistencia.BrkPacientePreTrasplante;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 import auxiliares.ManejoFechas;
 
 public class PacientePreTrasplante implements IPersistente {
@@ -23,6 +23,9 @@ public class PacientePreTrasplante implements IPersistente {
 	private String imc;
 	private boolean dislipemia;
 	private boolean tabaquismo;
+	private boolean iam;
+	private boolean ave;
+	private boolean revascCardio;
 	private String origen;
 	private PacientePerdidaInjerto perdidaInjerto;
 	private Trasplante trasplante = null;
@@ -129,6 +132,48 @@ public class PacientePreTrasplante implements IPersistente {
 
 	public void setTabaquismo(boolean tabaquismo) {
 		this.tabaquismo = tabaquismo;
+	}
+
+	/**
+	 * @return the iam
+	 */
+	public boolean isIam() {
+		return iam;
+	}
+
+	/**
+	 * @param iam the iam to set
+	 */
+	public void setIam(boolean iam) {
+		this.iam = iam;
+	}
+
+	/**
+	 * @return the ave
+	 */
+	public boolean isAve() {
+		return ave;
+	}
+
+	/**
+	 * @param ave the ave to set
+	 */
+	public void setAve(boolean ave) {
+		this.ave = ave;
+	}
+
+	/**
+	 * @return the revascCardio
+	 */
+	public boolean isRevascCardio() {
+		return revascCardio;
+	}
+
+	/**
+	 * @param revascCardio the revascCardio to set
+	 */
+	public void setRevascCardio(boolean revascCardio) {
+		this.revascCardio = revascCardio;
 	}
 
 	public String getOrigen() {
@@ -385,6 +430,7 @@ public class PacientePreTrasplante implements IPersistente {
 
 	@Override
 	public boolean equals(Object arg0) {
+		if(arg0 == null)return false;
 		PacientePreTrasplante aux = (PacientePreTrasplante) arg0;
 		return this.getId() == aux.getId();
 	}

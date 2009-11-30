@@ -133,7 +133,7 @@ public class ControlBackUp {
 	}
 
 	private String crearDirectorio() {
-		String directorio = "c:\\Trasplante";
+		String directorio = System.getProperty("user.dir") + "/Trasplante";
 		java.io.File file = new java.io.File(directorio);
 		if (!file.exists()) {
 			if (!file.mkdir()) {
@@ -307,7 +307,13 @@ public class ControlBackUp {
 			buf.write(crearBAT);
 			buf.close();
 			TimeUnit.SECONDS.sleep(2);
-		} catch (Exception e) {
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Error con java.io.File");
+			Fachada.getInstancia().guardarLog(
+					"[ERROR] En el paso 2 de Restore. Crear el BAT");
+		}catch(InterruptedException e1){
+			e1.printStackTrace();
 			System.out.println("Error con java.io.File");
 			Fachada.getInstancia().guardarLog(
 					"[ERROR] En el paso 2 de Restore. Crear el BAT");

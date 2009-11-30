@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkGenerico;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class Generico implements IPersistente {
 
@@ -14,11 +14,11 @@ public class Generico implements IPersistente {
 	private BrkGenerico broker = new BrkGenerico(this);
 	
 	public static String letras = "getString";
-	public static String letra = "getChar";
+	public static String character = "getChar";
 	public static String integer = "getInt";
 	public static String VF = "getBoolean";
 	public static String fechas = "getDATE";
-	public static String Float = "getFloat";
+	public static String FLOAT = "getFloat";
 	
 	public String getSql() {
 		return sql;

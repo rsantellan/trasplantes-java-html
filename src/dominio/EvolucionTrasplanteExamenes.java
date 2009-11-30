@@ -5,13 +5,17 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import persistencia.BrkEvolucionTrasplanteExamenes;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class EvolucionTrasplanteExamenes implements IPersistente{
 	public static String GINECOLOGO = "GINECOLOGO";
 	public static String UROLOGO = "UROLOGO";
 	public static String OFTALMOLOGO = "OFTALMOLOGO";
 	public static String RXOSEAS = "RX OSEAS";
+	public static String TAC = "TAC";
+	public static String RNM = "RNM";
+	public static String CENTELLO_GRAMA = "CENTELLO GRAMA";
+	
 	
 	private int idTrasplante;
 	private Calendar fecha = new GregorianCalendar();
@@ -97,6 +101,7 @@ public class EvolucionTrasplanteExamenes implements IPersistente{
 
 	@Override
 	public boolean equals(Object obj) {
+		if(obj == null)return false;
 		EvolucionTrasplanteExamenes aux = (EvolucionTrasplanteExamenes) obj;
 		return this.tipo.equalsIgnoreCase(aux.tipo);
 	}

@@ -1,7 +1,11 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
 
 import dominio.Generico;
 
@@ -18,8 +22,12 @@ public class BrkGenerico extends Broker {
 	}
 
 	@Override
+	public PreparedStatement getDeletePreperad() {
+		return null;
+	}
+	
+	@Override
 	public String getDeleteSQL() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -55,7 +63,7 @@ public class BrkGenerico extends Broker {
 				if(es.equalsIgnoreCase(Generico.letras) || es.equalsIgnoreCase(Generico.fechas)){
 					p.getListaObtenida().add(rs.getString(x+1));
 				}
-				if(es.equalsIgnoreCase(Generico.letra)){
+				if(es.equalsIgnoreCase(Generico.character)){
 					p.getListaObtenida().add(rs.getCharacterStream(x+1));
 				}
 				if(es.equalsIgnoreCase(Generico.integer)){
@@ -64,7 +72,7 @@ public class BrkGenerico extends Broker {
 				if(es.equalsIgnoreCase(Generico.VF)){
 					p.getListaObtenida().add(rs.getBoolean(x+1));
 				}
-				if(es.equalsIgnoreCase(Generico.Float)){
+				if(es.equalsIgnoreCase(Generico.FLOAT)){
 					p.getListaObtenida().add(rs.getFloat(x+1));
 				}
 			}

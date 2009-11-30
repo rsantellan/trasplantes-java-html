@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkInmunosupresores;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class Inmunosupresores implements IPersistente{
 

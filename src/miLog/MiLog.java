@@ -92,7 +92,7 @@ public class MiLog {
 			}
 			miRan.seek(miRan.length());
 			miRan.writeBytes(texto);
-		} catch (Exception e) {
+		} catch (IOException e) {
 			System.out.println("Error con java.io.File");
 		}
 	}

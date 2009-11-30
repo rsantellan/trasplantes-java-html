@@ -1,7 +1,14 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import logica.Fachada;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
+import persistencia.broker.basico.ManejadorBD;
 
 import dominio.GenericoAuxiliar;
 
@@ -14,10 +21,28 @@ public class BrkGenericoAuxiliar extends Broker {
 
 	@Override
 	public String getContar() {
-		// TODO Auto-generated method stub
-		return null;
+		GenericoAuxiliar a = (GenericoAuxiliar) this.getObj();
+		String sql = "";
+		sql = "SELECT COUNT(*) FROM consultas WHERE Nombre = '" + a.getNombre() + "'";
+		return sql;
 	}
 
+	@Override
+	public PreparedStatement getDeletePreperad() {
+		GenericoAuxiliar a = (GenericoAuxiliar) this.getObj();
+		String sql = "";
+		sql = "DELETE FROM consultas WHERE ID = ?";
+		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setInt(1, a.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+		}
+		return prep;
+		
+	}
+	
 	@Override
 	public String getDeleteSQL() {
 		GenericoAuxiliar a = (GenericoAuxiliar) this.getObj();

@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkResultadoPBR;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class ResultadoPBR implements IPersistente {
 
@@ -63,6 +63,7 @@ public class ResultadoPBR implements IPersistente {
 	}
 
 	public boolean equals(Object o) {
+		if(o == null)return false;
 		ResultadoPBR r = (ResultadoPBR) o;
 		boolean salida = false;
 		/*if (r.getId() == this.getId()) {

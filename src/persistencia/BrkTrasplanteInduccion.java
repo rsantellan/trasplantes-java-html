@@ -1,7 +1,14 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import logica.Fachada;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
+import persistencia.broker.basico.ManejadorBD;
 
 import dominio.TrasplanteInduccionUsado;
 
@@ -11,6 +18,36 @@ public class BrkTrasplanteInduccion extends Broker {
 		super(p);
 	}
 
+	@Override
+	public PreparedStatement getDeletePreperad() {
+		TrasplanteInduccionUsado s = (TrasplanteInduccionUsado) this.getObj();
+		String sql = "";
+		if (s.getInduccion().getId() != 0) {
+			sql = "DELETE FROM trasplante_induccion WHERE id_trasplante =?  AND id_induccion = ?";
+			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, s.getIdTrasplante());
+				prep.setInt(2,  s.getInduccion().getId());
+				return prep;
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+				Fachada.getInstancia().guardarLog(e1.getStackTrace().toString());
+				return null;
+			}
+		}else{
+			sql = "DELETE FROM trasplante_induccion WHERE id_trasplante =?";
+			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, s.getIdTrasplante());
+				return prep;
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+				Fachada.getInstancia().guardarLog(e1.getStackTrace().toString());
+				return null;
+			}
+		}
+	}
+	
 	@Override
 	public String getDeleteSQL() {
 		TrasplanteInduccionUsado s = (TrasplanteInduccionUsado) this.getObj();

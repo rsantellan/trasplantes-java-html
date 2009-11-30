@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkOrganosDonante;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class OrganosDonante implements IPersistente{
 	private String id;
@@ -44,7 +44,7 @@ public class OrganosDonante implements IPersistente{
 
 	
 	public void guardar() {
-		if(this.getOrgano().equalsIgnoreCase("Riñon")){
+		if(this.getOrgano().equalsIgnoreCase("Riï¿½on")){
 			this.setOrgano("Rinhon");
 		}
 		broker.guardar();
@@ -54,7 +54,7 @@ public class OrganosDonante implements IPersistente{
 	public void leer() {
 		broker.leer();
 		if(this.getOrgano().equalsIgnoreCase("Rinhon")){
-			this.setOrgano("Riñon");
+			this.setOrgano("Riï¿½on");
 		}
 	}
 
@@ -64,7 +64,7 @@ public class OrganosDonante implements IPersistente{
 		for(int x=0;x<salida.size();x++){
 			OrganosDonante aux = salida.get(x);
 			if(aux.getOrgano().equalsIgnoreCase("Rinhon")){
-				aux.setOrgano("Riñon");
+				aux.setOrgano("Riï¿½on");
 			}
 		}
 		return salida;

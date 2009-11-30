@@ -1,7 +1,14 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import logica.Fachada;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
+import persistencia.broker.basico.ManejadorBD;
 
 import dominio.Nefropatia;
 
@@ -11,6 +18,21 @@ public class BrkNefropatia extends Broker {
 		super(n);
 	}
 
+	@Override
+	public PreparedStatement getDeletePreperad() {
+		Nefropatia n = (Nefropatia) this.getObj();
+		String sql = "";
+		sql = "DELETE FROM nefropatia WHERE ID = ?";
+		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setInt(1, n.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+		}
+		return prep;
+	}
+	
 	@Override
 	public String getDeleteSQL() {
 		Nefropatia n = (Nefropatia) this.getObj();

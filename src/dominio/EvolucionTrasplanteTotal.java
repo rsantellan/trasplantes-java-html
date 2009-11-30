@@ -587,6 +587,7 @@ public class EvolucionTrasplanteTotal {
 	}
 	
 	public boolean equals(Object obj) {
+		if(obj == null)return false;
 		EvolucionTrasplanteTotal aux = (EvolucionTrasplanteTotal) obj;
 		return ((this.getIdTrasplante() == aux.getIdTrasplante() && (this.getFecha().equals(aux.getFecha()))));
 	}

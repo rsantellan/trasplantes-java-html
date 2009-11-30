@@ -1,6 +1,6 @@
 package uy.trasplante.consultas.creador.iu;
 
-import iUConsultas.IUConsultaGenerica;
+import iu.consultas.IUConsultaGenerica;
 
 import javax.swing.JPanel;
 import javax.swing.JFrame;
@@ -493,9 +493,9 @@ public class IUCreadorConsultas extends JFrame implements java.util.Observer{
 	
 	private void cargarDatos(){
 		this.getJComboBoxTipos().addItem(Generico.fechas);
-		this.getJComboBoxTipos().addItem(Generico.Float);
+		this.getJComboBoxTipos().addItem(Generico.FLOAT);
 		this.getJComboBoxTipos().addItem(Generico.integer);
-		this.getJComboBoxTipos().addItem(Generico.letra);
+		this.getJComboBoxTipos().addItem(Generico.character);
 		this.getJComboBoxTipos().addItem(Generico.letras);
 		this.getJComboBoxTipos().addItem(Generico.VF);
 		

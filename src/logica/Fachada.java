@@ -7,7 +7,7 @@ import java.util.Observer;
 
 import miLog.MiLog;
 
-import persistencia.ManejadorBD;
+import persistencia.broker.basico.ManejadorBD;
 import uy.auxiliares.log.ManejadorLogs;
 import dominio.AntecedentesDonante;
 import dominio.CMV;
@@ -128,16 +128,18 @@ public class Fachada extends Observable{
 		this.addObserver(o);
 	}
 	
-	public void EliminarObservador(Observer o){
+	public void eliminarObservador(Observer o){
 		this.deleteObserver(o);
 	}
 	
 	public void guardarLog(String texto){
-		ManejadorLogs.getInstancia().guardarLog(texto);
+		//ManejadorLogs.getInstancia().guardarLog(texto);
+		//System.out.println(texto);
 	}
 	
 	public void guardarLogError(String texto){
-		ManejadorLogs.getInstancia().guardarLog(texto);
+		//ManejadorLogs.getInstancia().guardarLog(texto);
+		//System.out.println(texto);
 	}
 	
 	public int crearBackUp(int paso){

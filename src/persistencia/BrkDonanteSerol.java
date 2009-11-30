@@ -1,7 +1,14 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import logica.Fachada;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
+import persistencia.broker.basico.ManejadorBD;
 
 import dominio.DonanteSerolUsado;
 
@@ -11,6 +18,36 @@ public class BrkDonanteSerol extends Broker {
 		super(p);
 	}
 
+	@Override
+	public PreparedStatement getDeletePreperad() {
+		DonanteSerolUsado s = (DonanteSerolUsado) this.getObj();
+		String sql = "";
+		if (s.getSerol() != null) {
+			sql = "DELETE FROM donante_serol WHERE id_donante =?  AND id_serol = ?";
+			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setString(1, s.getIdDonante());
+				prep.setInt(2, s.getSerol().getId());
+				return prep;
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+				Fachada.getInstancia().guardarLog(e1.getStackTrace().toString());
+				return null;
+			}
+		}else{
+			sql = "DELETE FROM donante_serol WHERE id_donante =?";
+			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setString(1, s.getIdDonante());
+				return prep;
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+				Fachada.getInstancia().guardarLog(e1.getStackTrace().toString());
+				return null;
+			}
+		}
+	}
+	
 	@Override
 	public String getDeleteSQL() {
 		DonanteSerolUsado s = (DonanteSerolUsado) this.getObj();
@@ -24,7 +61,6 @@ public class BrkDonanteSerol extends Broker {
 				sql += " AND valor='" + s.getDato().getTipo() + "'";
 			}
 		}*/
-
 		return sql;
 	}
 

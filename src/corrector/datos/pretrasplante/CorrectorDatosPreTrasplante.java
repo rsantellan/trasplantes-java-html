@@ -54,6 +54,11 @@ public class CorrectorDatosPreTrasplante {
 			rs = st.executeQuery(sql);
 		} catch (SQLException e) {
 			System.out.println("Error al ejecutar sql.\n" + e.getMessage());
+			try {
+				conexion.rollback();
+			} catch (SQLException e1) {
+				System.out.println("Error al ejecutar sql.\n" + e.getMessage());
+			}
 		}
 		return rs;
 	}
@@ -123,6 +128,7 @@ public class CorrectorDatosPreTrasplante {
 		this.ejecutar("ROLLBACK");
 		System.out.println("CANCELADO");
 	}
+	
 	private class Duplas{
 		public int idViejo;
 		//public int the;

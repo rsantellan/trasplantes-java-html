@@ -1,8 +1,15 @@
 package persistencia;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+
+import logica.Fachada;
+
+import persistencia.broker.basico.Broker;
+import persistencia.broker.basico.IPersistente;
+import persistencia.broker.basico.ManejadorBD;
 
 import auxiliares.ManejoFechas;
 
@@ -19,6 +26,22 @@ public class BrkLogin extends Broker {
 		return "";
 	}
 
+	@Override
+	public PreparedStatement getDeletePreperad() {
+		Login l = (Login) this.getObj();
+		String sql = "";
+		sql = "DELETE FROM datosutiles WHERE ID = ?";
+		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setInt(1, l.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+		}
+		return prep;
+		
+	}
+	
 	@Override
 	public String getDeleteSQL() {
 		Login l = (Login) this.getObj();

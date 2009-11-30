@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkGermenes;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 
 public class Germenes implements IPersistente {
 
@@ -64,6 +64,7 @@ public class Germenes implements IPersistente {
 	}
 	
 	public boolean equals(Object o){
+		if(o == null)return false;
 		Germenes aux = (Germenes) o;
 		if((aux.getId() == this.getId()) && (aux.getNombre().equalsIgnoreCase(this.getNombre()))){
 			return true;

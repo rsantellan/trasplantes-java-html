@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import persistencia.BrkTrasplanteReoperacion;
-import persistencia.IPersistente;
+import persistencia.broker.basico.IPersistente;
 import auxiliares.ManejoFechas;
 
 public class TrasplanteReoperacion implements IPersistente{

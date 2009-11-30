@@ -43,7 +43,7 @@ public class CrearReporte extends JFrame {
 		exportar += this.donante(d);
 		exportar += this.pie();
 		
-		java.io.File unArchivo = new java.io.File("c:\\exportacion.htm");
+		java.io.File unArchivo = new java.io.File(System.getProperty("user.dir")+"/exportacion.htm");
 		FileWriter buf;
 		try {
 			buf = new FileWriter(unArchivo);

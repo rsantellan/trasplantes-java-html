@@ -152,7 +152,7 @@ public class CrearReporteFondo {
 		salida += "<th scope=\"col\">NEFROPATIA (C&Oacute;DIGO DEL FNR)</th>";
 		salida += "<th scope=\"col\">MES DEL TRASPLANTE</th>";
 		salida += "<th scope=\"col\">A&Ntilde;O DEL TRASPLANTE</th>";
-		salida += "<th scope=\"col\">SITUACI&Oacute;N A DIC 08</th>";
+		salida += "<th scope=\"col\">SITUACI&Oacute;N ACTUAL</th>";
 		salida += "<th scope=\"col\">MES EGRESO</th>";
 		salida += "<th scope=\"col\">A&Ntilde;O EGRESO</th>";
 		salida += "<th scope=\"col\">CAUSA MUERTE</th>";
@@ -181,9 +181,6 @@ public class CrearReporteFondo {
 				salida += "<tr>";
 				salida += "<td><Strong>HE</Strong></td>";
 				System.out.println(String.valueOf(t.getId()));
-				/*synchronized (salida) {
-					this.setLugar(t.getId());
-				}*/
 				this.setLugar(t.getId());
 				PacientePreTrasplante pt = new PacientePreTrasplante();
 				pt.setId(t.getPreTrasplante());
@@ -202,9 +199,9 @@ public class CrearReporteFondo {
 				salida += "<td>"
 						+ ManejoFechas.formatoYear.format(t.getFecha()
 								.getTime()) + "</td>";
-				String estado = "1: EN DIALISIS";
-				if (t.getFechaAlta() == null) {
-					estado = "3. VIVO EN TR";
+				String estado =  "3. VIVO EN TR";
+				if (t.getFecha() == null) {
+					estado = "1: EN DIALISIS";
 				}
 				boolean murio = false;
 				if (p.getMuertePaciente() != null) {
@@ -225,18 +222,6 @@ public class CrearReporteFondo {
 						+ ManejoFechas.formatoYear.format(p.getMuertePaciente().getFechaMuerte()
 								.getTime()) + "</td>";
 				}
-				/*if (t.getFechaAlta() == null) {
-					salida += "<td> Sin Alta </td>";
-					salida += "<td> Sin Alta </td>";
-				} else {
-					salida += "<td>"
-							+ ManejoFechas.formatoMes.format(t.getFechaAlta()
-									.getTime()) + "</td>";
-					salida += "<td>"
-							+ ManejoFechas.formatoYear.format(t.getFechaAlta()
-									.getTime()) + "</td>";
-				}*/
-				
 				if (p.getMuertePaciente() != null) {
 					if (p.getMuertePaciente().getFechaMuerte() != null) {
 						salida += "<td>"
@@ -248,10 +233,23 @@ public class CrearReporteFondo {
 				} else {
 					salida += "<td> Sin Muerte </td>";
 				}
+				p.leerDatosPerdidaInjerto();
 				if(p.getListaPerdidas().size() > 0 ){
-					PacientePerdidaInjerto auxPerdida= (PacientePerdidaInjerto) p.getListaPerdidas().get(0);
-					System.out.println(auxPerdida.getNumCausa());
-					salida += "<td> Tuvo una perdida </td>";
+					salida += "<td> ";
+					boolean encontroPerdida = false;
+					for(PacientePerdidaInjerto auxPerdida1 : p.getListaPerdidas()){
+						if(pt.getId() == auxPerdida1.getNumPreTrasplante()){
+							if(encontroPerdida){
+								salida += "<br>";
+							}
+							salida += "SI : " + auxPerdida1.getCausa().getDetalle();
+							encontroPerdida = true;
+						}
+					}
+					if(!encontroPerdida){
+						salida += "Sin Perdida";
+					}
+					salida += " </td>";
 				}else{
 					salida += "<td> Sin Perdida </td>";
 				}

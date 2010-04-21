@@ -43,7 +43,7 @@ public class IULoginCambiar extends JFrame {
 		this.setSize(463, 271);
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		this.setContentPane(getJContentPane());
-		this.setTitle("Cambie su contrase�a");
+		this.setTitle("Cambie su contraseña");
 	}
 
 	/**
@@ -55,13 +55,13 @@ public class IULoginCambiar extends JFrame {
 		if (jContentPane == null) {
 			jLabelPassRep = new JLabel();
 			jLabelPassRep.setBounds(new Rectangle(9, 122, 190, 31));
-			jLabelPassRep.setText("Reingrese la nueva contrase�a :");
+			jLabelPassRep.setText("Reingrese la nueva contraseña :");
 			jLabelPassNueva = new JLabel();
 			jLabelPassNueva.setBounds(new Rectangle(9, 82, 190, 32));
-			jLabelPassNueva.setText("Ingrese la nueva contrase�a :");
+			jLabelPassNueva.setText("Ingrese la nueva contraseña :");
 			jLabelRootPass = new JLabel();
 			jLabelRootPass.setBounds(new Rectangle(9, 38, 190, 32));
-			jLabelRootPass.setText("Ingrese la contrase�a primaria :");
+			jLabelRootPass.setText("Ingrese la contraseña primaria :");
 			jContentPane = new JPanel();
 			jContentPane.setLayout(null);
 			jContentPane.setBackground(new Color(255, 255, 151));
@@ -101,12 +101,12 @@ public class IULoginCambiar extends JFrame {
 		boolean ok = Fachada.getInstancia().cambiarPassword(this.getJPasswordFieldPass().getPassword(), this.getJPasswordFieldPassNuevo().getPassword(), this.getJPasswordFieldPassReint().getPassword(), this.jCheckBoxPassPrimario.isSelected());
 		if(ok){
 			JOptionPane.showMessageDialog(this,
-					"La contrase�a a sido modificada exitosamente",
+					"La contraseña a sido modificada exitosamente",
 					"OK", 1);
 			this.salir();
 		}else{
 			JOptionPane.showMessageDialog(this,
-					"Ha ingresado mal las contrase�as, verifique que las ingreso correctamente.",
+					"Ha ingresado mal las contraseñas, verifique que las ingreso correctamente.",
 					"ERROR", 3);
 		}
 	}
@@ -182,7 +182,7 @@ public class IULoginCambiar extends JFrame {
 		if (jCheckBoxPassPrimario == null) {
 			jCheckBoxPassPrimario = new JCheckBox();
 			jCheckBoxPassPrimario.setBounds(new Rectangle(36, 7, 234, 27));
-			jCheckBoxPassPrimario.setText("Cambio Contrase�a primaria");
+			jCheckBoxPassPrimario.setText("Cambio Contraseña primaria");
 			jCheckBoxPassPrimario.setBackground(new Color(255, 255, 151));
 		}
 		return jCheckBoxPassPrimario;

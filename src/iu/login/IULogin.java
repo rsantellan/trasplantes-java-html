@@ -97,7 +97,7 @@ public class IULogin extends JFrame implements ActionListener{
 				JOptionPane
 						.showMessageDialog(
 								this,
-								"La contrase�a ha caducado, por favor ingrese una nueva",
+								"La contraseña ha caducado, por favor ingrese una nueva",
 								"Advertencia", 2);
 				IULoginCambiar cambio = new IULoginCambiar();
 				cambio.setVisible(true);
@@ -107,7 +107,7 @@ public class IULogin extends JFrame implements ActionListener{
 		} else {
 			intentos = intentos + 1;
 			JOptionPane.showMessageDialog(this,
-					"Ha ingresado mal la contrase�a, le quedan"
+					"Ha ingresado mal la contraseña, le quedan"
 							+ (3 - intentos) + " intentos.", "ERROR", 3);
 			this.getJPasswordFieldPass().setText("");
 		}

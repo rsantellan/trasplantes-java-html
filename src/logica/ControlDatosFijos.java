@@ -311,8 +311,6 @@ public class ControlDatosFijos {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		System.out.println();
 		return true;
 	}
 	

@@ -32,28 +32,28 @@ public class GeneratePacientReport {
 		p.leer();
 		p.leerDatos();
 		PdfPTable table = new PdfPTable(4);
-		table.addCell(DocumentoBasico.cellWithNoBorder("THE: "));
-		table.addCell(DocumentoBasico.cellWithNoBorder(String.valueOf(p.getThe())));
-		table.addCell(DocumentoBasico.cellWithNoBorder("Cedula de identidad: "));
-		table.addCell(DocumentoBasico.cellWithNoBorder(p.getCi()));
-		table.addCell(DocumentoBasico.cellWithNoBorder("Nombre: "));
-		table.addCell(DocumentoBasico.cellWithNoBorder(p.getNombre()));
-		table.addCell(DocumentoBasico.cellWithNoBorder("Apellido: "));
-		table.addCell(DocumentoBasico.cellWithNoBorder(p.getApellido()));
-		table.addCell(DocumentoBasico.cellWithNoBorder("FNR: "));
-		table.addCell(DocumentoBasico.cellWithNoBorder(String.valueOf(p.getNum_fnr())));
-		table.addCell(DocumentoBasico.cellWithNoBorder("Raza: "));
-		table.addCell(DocumentoBasico.cellWithNoBorder(p.getRaza()));
-		table.addCell(DocumentoBasico.cellWithNoBorder("Sexo: "));
-		table.addCell(DocumentoBasico.cellWithNoBorder(p.getSexo()));
-		table.addCell(DocumentoBasico.cellWithNoBorder("Fecha de nacimiento: "));
-		table.addCell(DocumentoBasico.cellWithNoBorder(ManejoFechas.formatoEspanol.format(p.getFecha_nacimiento().getTime())));
-		table.addCell(DocumentoBasico.cellWithNoBorder("Fecha de dialisis: "));
-		table.addCell(DocumentoBasico.cellWithNoBorder(ManejoFechas.formatoEspanol.format(p.getFecha_dialisis().getTime())));
-		table.addCell(DocumentoBasico.cellWithNoBorder("Grupo sanguineo: "));
-		table.addCell(DocumentoBasico.cellWithNoBorder(p.getGrupoSanguineo()));
-		table.addCell(DocumentoBasico.cellWithNoBorder("Nefropatia: "));
-		table.addCell(DocumentoBasico.cellWithNoBorder(p.getTipoNefropatia().getNefropatia()));
+		table.addCell(DocumentoBasico.cellNoBorderNoColor("THE: "));
+		table.addCell(DocumentoBasico.cellNoBorderNoColor(String.valueOf(p.getThe())));
+		table.addCell(DocumentoBasico.cellNoBorderNoColor("Cedula de identidad: "));
+		table.addCell(DocumentoBasico.cellNoBorderNoColor(p.getCi()));
+		table.addCell(DocumentoBasico.cellNoBorderColor("Nombre: "));
+		table.addCell(DocumentoBasico.cellNoBorderColor(p.getNombre()));
+		table.addCell(DocumentoBasico.cellNoBorderColor("Apellido: "));
+		table.addCell(DocumentoBasico.cellNoBorderColor(p.getApellido()));
+		table.addCell(DocumentoBasico.cellNoBorderNoColor("FNR: "));
+		table.addCell(DocumentoBasico.cellNoBorderNoColor(String.valueOf(p.getNum_fnr())));
+		table.addCell(DocumentoBasico.cellNoBorderNoColor("Raza: "));
+		table.addCell(DocumentoBasico.cellNoBorderNoColor(p.getRaza()));
+		table.addCell(DocumentoBasico.cellNoBorderColor("Sexo: "));
+		table.addCell(DocumentoBasico.cellNoBorderColor(p.getSexo()));
+		table.addCell(DocumentoBasico.cellNoBorderColor("Fecha de nacimiento: "));
+		table.addCell(DocumentoBasico.cellNoBorderColor(ManejoFechas.formatoEspanol.format(p.getFecha_nacimiento().getTime())));
+		table.addCell(DocumentoBasico.cellNoBorderNoColor("Fecha de dialisis: "));
+		table.addCell(DocumentoBasico.cellNoBorderNoColor(ManejoFechas.formatoEspanol.format(p.getFecha_dialisis().getTime())));
+		table.addCell(DocumentoBasico.cellNoBorderNoColor("Grupo sanguineo: "));
+		table.addCell(DocumentoBasico.cellNoBorderNoColor(p.getGrupoSanguineo()));
+		table.addCell(DocumentoBasico.cellNoBorderColor("Nefropatia: "));
+		table.addCell(DocumentoBasico.cellNoBorderColor(p.getTipoNefropatia().getNefropatia()));
 		table.setWidthPercentage(100);
 		
 		Chunk chunk = new Chunk("Reporte basico del paciente número " + p.getThe());
@@ -75,13 +75,12 @@ public class GeneratePacientReport {
 		p.leer();
 		p.leerDatos();
 		PdfPTable table = new PdfPTable(2);
-
 		for(int x=0;x<p.getListaPerdidas().size();x++){
 			PacientePerdidaInjerto auxPerdida = (PacientePerdidaInjerto) p.getListaPerdidas().get(x);
-			table.addCell(DocumentoBasico.cellWithNoBorder("Fecha de la perdida: "));
-			table.addCell(DocumentoBasico.cellWithNoBorder(ManejoFechas.formatoEspanol.format(auxPerdida.getFechaPerdida().getTime())));
-			table.addCell(DocumentoBasico.cellWithNoBorder("Causa de la perdida: "));
-			table.addCell(DocumentoBasico.cellWithNoBorder(auxPerdida.getCausa().getDetalle()));
+			table.addCell(DocumentoBasico.cellNoBorderNoColor("Fecha de la perdida: "));
+			table.addCell(DocumentoBasico.cellNoBorderNoColor(ManejoFechas.formatoEspanol.format(auxPerdida.getFechaPerdida().getTime())));
+			table.addCell(DocumentoBasico.cellNoBorderColor("Causa de la perdida: "));
+			table.addCell(DocumentoBasico.cellNoBorderColor(auxPerdida.getCausa().getDetalle()));
 		}
 		table.setWidthPercentage(100);
 		
@@ -106,15 +105,15 @@ public class GeneratePacientReport {
 		PdfPTable table = new PdfPTable(2);
 
 		if(p.getMuertePaciente() != null){
-			table.addCell(DocumentoBasico.cellWithNoBorder("Fecha de la muerte: "));
-			table.addCell(DocumentoBasico.cellWithNoBorder(ManejoFechas.formatoEspanol.format(p.getMuertePaciente().getFechaMuerte().getTime())));
-			table.addCell(DocumentoBasico.cellWithNoBorder("Causa de la muerte: "));
-			table.addCell(DocumentoBasico.cellWithNoBorder(p.getMuertePaciente().getCausa().getDetalle()));
-			table.addCell(DocumentoBasico.cellWithNoBorder("Trasplante Funcionando: "));
+			table.addCell(DocumentoBasico.cellNoBorderNoColor("Fecha de la muerte: "));
+			table.addCell(DocumentoBasico.cellNoBorderNoColor(ManejoFechas.formatoEspanol.format(p.getMuertePaciente().getFechaMuerte().getTime())));
+			table.addCell(DocumentoBasico.cellNoBorderColor("Causa de la muerte: "));
+			table.addCell(DocumentoBasico.cellNoBorderColor(p.getMuertePaciente().getCausa().getDetalle()));
+			table.addCell(DocumentoBasico.cellNoBorderNoColor("Trasplante Funcionando: "));
 			if(p.getMuertePaciente().isTrFuncionando()){
-				table.addCell(DocumentoBasico.cellWithNoBorder("SI"));
+				table.addCell(DocumentoBasico.cellNoBorderNoColor("SI"));
 			}else{
-				table.addCell(DocumentoBasico.cellWithNoBorder("NO"));
+				table.addCell(DocumentoBasico.cellNoBorderNoColor("NO"));
 			}
 		}
 		table.setWidthPercentage(100);

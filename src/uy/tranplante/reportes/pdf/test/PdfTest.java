@@ -41,7 +41,7 @@ public class PdfTest {
 			document.addHeader("Test 01", "02");
 			document.open();
 			document.add(Imagenes.header());
-			int id = 5;
+			int id = 19;
 			document = GeneratePacientReport.soloPaciente(id, document);
 			document = GeneratePacientReport.pacientePerdidaInjertos(id, document);
 			document = GeneratePacientReport.pacienteMuerte(id, document);

@@ -304,7 +304,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 			jLabelDescTrasplante.setHorizontalTextPosition(SwingConstants.CENTER);
 			jLabelDescTrasplante.setBackground(new Color(255, 51, 51));
 			jLabelDescTrasplante.setForeground(Color.red);
-			jLabelDescTrasplante.setText("Es la primera internaci�n para la realizaci�n del trasplante");
+			jLabelDescTrasplante.setText("Es la primera internación para la realización del trasplante");
 			jLabelComplicacionesNoInf = new JLabel();
 			jLabelComplicacionesNoInf
 					.setBounds(new Rectangle(23, 385, 219, 40));
@@ -313,7 +313,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 					.setHorizontalAlignment(SwingConstants.CENTER);
 			jLabelComplicacionesInf = new JLabel();
 			jLabelComplicacionesInf.setBounds(new Rectangle(21, 323, 218, 40));
-			jLabelComplicacionesInf.setText("N� Complicaciones Infecciosas:");
+			jLabelComplicacionesInf.setText("N° Complicaciones Infecciosas:");
 			jLabelComplicacionesInf
 					.setHorizontalAlignment(SwingConstants.CENTER);
 			jLabelComplicaciones = new JLabel();
@@ -741,9 +741,9 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	private void mostrarComplicaciones(){
 		int compl = this.preTrasplante.getTrasplante().getListaComplicacionesInf().size() + this.preTrasplante.getTrasplante().getListaComplicacionesNoInf().size();
-		this.jLabelComplicaciones.setText("N� Complicaciones: " + String.valueOf(compl));
-		this.jLabelComplicacionesInf.setText("N� Complicaciones Infecciosas: " + String.valueOf(this.preTrasplante.getTrasplante().getListaComplicacionesInf().size()));
-		this.jLabelComplicacionesNoInf.setText("N� Complicaciones No Infecciosas: " + String.valueOf(this.preTrasplante.getTrasplante().getListaComplicacionesNoInf().size()));
+		this.jLabelComplicaciones.setText("N° Complicaciones: " + String.valueOf(compl));
+		this.jLabelComplicacionesInf.setText("N° Complicaciones Infecciosas: " + String.valueOf(this.preTrasplante.getTrasplante().getListaComplicacionesInf().size()));
+		this.jLabelComplicacionesNoInf.setText("N° Complicaciones No Infecciosas: " + String.valueOf(this.preTrasplante.getTrasplante().getListaComplicacionesNoInf().size()));
 
 	}
 	

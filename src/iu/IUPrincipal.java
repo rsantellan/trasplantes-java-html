@@ -153,7 +153,7 @@ public class IUPrincipal extends JFrame implements java.util.Observer {
 	public void cargarDatos() {
 		//this.setVisible(true);
 		this.jLabelPacientes
-				.setText("El n�mero de pacientes registrado es de :"
+				.setText("El número de pacientes registrado es de :"
 						+ Fachada.getInstancia().obtenerCantidadPacientes());
 	}
 
@@ -1687,7 +1687,7 @@ public class IUPrincipal extends JFrame implements java.util.Observer {
 	private JMenu getJMenuDatosManagement() {
 		if (jMenuDatosManagement == null) {
 			jMenuDatosManagement = new JMenu();
-			jMenuDatosManagement.setText("Respaldo y Contrase�as");
+			jMenuDatosManagement.setText("Respaldo y Contraseñas");
 			jMenuDatosManagement.add(getJMenuItemCambiarPassword());
 			jMenuDatosManagement.add(getJMenuItemBackUp());
 			jMenuDatosManagement.add(getJMenuItemBackUpRestore());
@@ -1703,7 +1703,7 @@ public class IUPrincipal extends JFrame implements java.util.Observer {
 	private JMenuItem getJMenuItemCambiarPassword() {
 		if (jMenuItemCambiarPassword == null) {
 			jMenuItemCambiarPassword = new JMenuItem();
-			jMenuItemCambiarPassword.setText("Cambiar Contrase�as");
+			jMenuItemCambiarPassword.setText("Cambiar Contraseñas");
 			jMenuItemCambiarPassword
 					.addActionListener(new java.awt.event.ActionListener() {
 						public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -1839,7 +1839,7 @@ public class IUPrincipal extends JFrame implements java.util.Observer {
 	private JMenuItem getJMenuItemRegistroUruguayoTrasplante() {
 		if (jMenuItemRegistroUruguayoTrasplante == null) {
 			jMenuItemRegistroUruguayoTrasplante = new JMenuItem();
-			jMenuItemRegistroUruguayoTrasplante.setText("Registro Nacional de Trasplantes Por A�o.");
+			jMenuItemRegistroUruguayoTrasplante.setText("Registro Nacional de Trasplantes Por Año.");
 			jMenuItemRegistroUruguayoTrasplante
 					.addActionListener(new java.awt.event.ActionListener() {
 						public void actionPerformed(java.awt.event.ActionEvent e) {

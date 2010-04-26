@@ -107,10 +107,10 @@ public class BrkTrasplante extends Broker{
 			}else{
 				if(t.getId() != 0){
 					sql += " WHERE ID ="+t.getId();
-					if(t.getFecha() !=null){
+					/*if(t.getFecha() !=null){
 						String fecha = ManejoFechas.formatoIngles.format(t.getFecha().getTime());
 						sql += " AND FECHA ='"+ fecha+"'";
-					}
+					}*/
 				}
 			}
 		}

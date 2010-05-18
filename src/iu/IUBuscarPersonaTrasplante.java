@@ -116,7 +116,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes this
-	 * 
+	 *
 	 * @return void
 	 */
 	private void initialize() {
@@ -144,7 +144,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jContentPane
-	 * 
+	 *
 	 * @return javax.swing.JPanel
 	 */
 	private JPanel getJContentPane() {
@@ -165,7 +165,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jDesktopPaneBuscar
-	 * 
+	 *
 	 * @return javax.swing.JDesktopPane
 	 */
 	private JDesktopPane getJDesktopPaneBuscar() {
@@ -193,7 +193,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jTextFieldBuscar
-	 * 
+	 *
 	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextFieldBuscar() {
@@ -206,7 +206,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jScrollPaneResultados
-	 * 
+	 *
 	 * @return javax.swing.JScrollPane
 	 */
 	private JScrollPane getJScrollPaneResultados() {
@@ -220,7 +220,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jListResultados
-	 * 
+	 *
 	 * @return javax.swing.JList
 	 */
 	private JList getJListResultados() {
@@ -239,7 +239,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jButtonBuscar
-	 * 
+	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getJButtonBuscar() {
@@ -289,7 +289,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jDesktopPaneTrasplante
-	 * 
+	 *
 	 * @return javax.swing.JDesktopPane
 	 */
 	private JDesktopPane getJDesktopPaneTrasplante() {
@@ -356,7 +356,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jButtonModificarTrasplante
-	 * 
+	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getJButtonModificarTrasplante() {
@@ -376,7 +376,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jButtonMasInfoTrasplante
-	 * 
+	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getJButtonMasInfoTrasplante() {
@@ -396,7 +396,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jButtonComplicacionesInfTrasplante
-	 * 
+	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getJButtonComplicacionesInfTrasplante() {
@@ -416,7 +416,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jDesktopPanePaciente
-	 * 
+	 *
 	 * @return javax.swing.JDesktopPane
 	 */
 	private JDesktopPane getJDesktopPanePaciente() {
@@ -442,7 +442,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jButtonVerPaciente
-	 * 
+	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getJButtonVerPaciente() {
@@ -513,7 +513,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jButtonComplicacionesNoInfTrasplante
-	 * 
+	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getJButtonComplicacionesNoInfTrasplante() {
@@ -544,7 +544,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jJMenuBarAtras
-	 * 
+	 *
 	 * @return javax.swing.JMenuBar
 	 */
 	private JMenuBar getJJMenuBarAtras() {
@@ -558,7 +558,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jMenuAtras
-	 * 
+	 *
 	 * @return javax.swing.JMenu
 	 */
 	private JMenu getJMenuAtras() {
@@ -573,7 +573,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jMenuItemSalir
-	 * 
+	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getJMenuItemSalir() {
@@ -609,7 +609,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jDesktopPanePreTrasplante
-	 * 
+	 *
 	 * @return javax.swing.JDesktopPane
 	 */
 	private JDesktopPane getJDesktopPanePreTrasplante() {
@@ -632,7 +632,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jScrollPanePreTrasplante
-	 * 
+	 *
 	 * @return javax.swing.JScrollPane
 	 */
 	private JScrollPane getJScrollPanePreTrasplante() {
@@ -646,7 +646,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jButtonVerPreTrasplante
-	 * 
+	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getJButtonVerPreTrasplante() {
@@ -666,7 +666,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 
 	/**
 	 * This method initializes jListPreTrasplante
-	 * 
+	 *
 	 * @return javax.swing.JList
 	 */
 	private JList getJListPreTrasplante() {
@@ -682,7 +682,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 		}
 		return jListPreTrasplante;
 	}
-	
+
 	private void mostrarPaciente() {
 		this.setSize(600, 568);
 		this.jDesktopPanePaciente.setVisible(true);
@@ -697,9 +697,9 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 			this.paciente.leerDatosPreTrasplante();
 			this.cargarTodo();
 		}
-		
+
 	}
-	
+
 	private void cargarTrasplante() {
 		PacientePreTrasplante pt = (PacientePreTrasplante) this.jListPreTrasplante
 				.getSelectedValue();
@@ -721,7 +721,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 				this.mostrarTrasplante();
 			}
 		}
-		
+
 	}
 
 	private void mostrarTrasplante() {
@@ -732,7 +732,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 			this.getJButtonAlta().setText("Dar de alta");
 		}else{
 			long diasL = this.preTrasplante.getTrasplante().getFechaAlta().getTimeInMillis() - this.preTrasplante.getTrasplante().getFecha().getTimeInMillis();
-			
+
 			//int dias = this.preTrasplante.getTrasplante().getFechaAlta().compareTo(this.preTrasplante.getTrasplante().getFecha());
 			this.getJButtonAlta().setText("Dias internado: " + diasL / (1000 * 60 * 60 * 24));
 		}
@@ -746,7 +746,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 		this.jLabelComplicacionesNoInf.setText("N° Complicaciones No Infecciosas: " + String.valueOf(this.preTrasplante.getTrasplante().getListaComplicacionesNoInf().size()));
 
 	}
-	
+
 	private void verPretrasplante() {
 		if(this.preTrasplante != null){
 			IUPacientePreTrasplanteLogic logic = new IUPacientePreTrasplanteLogic();
@@ -758,9 +758,9 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 	}
 
 	/**
-	 * This method initializes jDesktopPaneEvolucionTrasplante	
-	 * 	
-	 * @return javax.swing.JDesktopPane	
+	 * This method initializes jDesktopPaneEvolucionTrasplante
+	 *
+	 * @return javax.swing.JDesktopPane
 	 */
 	private JDesktopPane getJDesktopPaneEvolucionTrasplante() {
 		if (jDesktopPaneEvolucionTrasplante == null) {
@@ -782,9 +782,9 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 	}
 
 	/**
-	 * This method initializes jButtonManejarEvolucion	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButtonManejarEvolucion
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButtonManejarEvolucion() {
 		if (jButtonManejarEvolucion == null) {
@@ -799,7 +799,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 		}
 		return jButtonManejarEvolucion;
 	}
-	
+
 	private void manejarEvolucion(){
 		IUEvolucionesLogic logic = new IUEvolucionesLogic();
 		logic.iuManejarEvolucion(this.preTrasplante.getTrasplante(), this.paciente.getThe());
@@ -808,9 +808,9 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 	}
 
 	/**
-	 * This method initializes jDesktopPaneEvolucionInjerto	
-	 * 	
-	 * @return javax.swing.JDesktopPane	
+	 * This method initializes jDesktopPaneEvolucionInjerto
+	 *
+	 * @return javax.swing.JDesktopPane
 	 */
 	private JDesktopPane getJDesktopPaneEvolucionInjerto() {
 		if (jDesktopPaneEvolucionInjerto == null) {
@@ -832,9 +832,9 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 	}
 
 	/**
-	 * This method initializes jButtonManejarEvolucionInjerto	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButtonManejarEvolucionInjerto
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButtonManejarEvolucionInjerto() {
 		if (jButtonManejarEvolucionInjerto == null) {
@@ -850,7 +850,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 		}
 		return jButtonManejarEvolucionInjerto;
 	}
-	
+
 	private void evolucionInjerto(){
 		IUEvolucionesLogic logic = new IUEvolucionesLogic();
 		logic.iuManejarPrimeraEvolucionInjerto(this.preTrasplante);
@@ -859,9 +859,9 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 	}
 
 	/**
-	 * This method initializes jDesktopPaneCMV	
-	 * 	
-	 * @return javax.swing.JDesktopPane	
+	 * This method initializes jDesktopPaneCMV
+	 *
+	 * @return javax.swing.JDesktopPane
 	 */
 	private JDesktopPane getJDesktopPaneCMV() {
 		if (jDesktopPaneCMV == null) {
@@ -879,9 +879,9 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 	}
 
 	/**
-	 * This method initializes jButtonManejarCMV	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButtonManejarCMV
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButtonManejarCMV() {
 		if (jButtonManejarCMV == null) {
@@ -896,7 +896,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 		}
 		return jButtonManejarCMV;
 	}
-	
+
 	private void manejarCMV(){
 		IUCMVLogic logic = new IUCMVLogic();
 		logic.iuManejarCMV(this.preTrasplante.getTrasplante().getId());
@@ -905,9 +905,9 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 	}
 
 	/**
-	 * This method initializes jButtonManejarEvolucionTrasplante	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButtonManejarEvolucionTrasplante
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButtonManejarEvolucionTrasplante() {
 		if (jButtonManejarEvolucionTrasplante == null) {
@@ -923,21 +923,16 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 		}
 		return jButtonManejarEvolucionTrasplante;
 	}
-	
+
 	private void manejarEvolucionInjertoTrasplante(){
 		IUEvolucionesLogic logic = new IUEvolucionesLogic();
 		logic.iuManejarEvolucionInjerto(this.preTrasplante);
-		/*PacientePreTrasplante modificar = new PacientePreTrasplante(
-				this.preTrasplante);
-		modificar.getTrasplante().leerEvolucionInjerto();
-		IUInjertoEvolucion iuVer = new IUInjertoEvolucion(modificar.getId(),modificar.getTrasplante().getFecha(),modificar.getTrasplante().getEvolucion(), false,true);
-		iuVer.setVisible(true);*/
 	}
 
 	/**
-	 * This method initializes jButtonTratamiento	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButtonTratamiento
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButtonTratamiento() {
 		if (jButtonTratamiento == null) {
@@ -952,7 +947,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 		}
 		return jButtonTratamiento;
 	}
-	
+
 	private void tratamientos(){
 		IUTratamientosLogic logic = new IUTratamientosLogic();
 		logic.iuSeleccionarTratamientos(this.paciente.getThe());
@@ -961,9 +956,9 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 	}
 
 	/**
-	 * This method initializes jButtonReoperacion	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButtonReoperacion
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButtonReoperacion() {
 		if (jButtonReoperacion == null) {
@@ -978,7 +973,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 		}
 		return jButtonReoperacion;
 	}
-	
+
 	private void reoperaciones(){
 		IUReoperacionLogic logic = new IUReoperacionLogic();
 		logic.iuReoperaciones(this.preTrasplante.getTrasplante());
@@ -987,9 +982,9 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 	}
 
 	/**
-	 * This method initializes jButtonAlta	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButtonAlta
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButtonAlta() {
 		if (jButtonAlta == null) {
@@ -1004,7 +999,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 		}
 		return jButtonAlta;
 	}
-	
+
 	private void altaTrasplante(){
 		IUTrasplanteLogic logic = new IUTrasplanteLogic();
 		logic.iuAltaTrasplante(this.preTrasplante.getTrasplante());

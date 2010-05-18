@@ -28,6 +28,64 @@ public class CrearReporteHTMLDonante {
 		}else{
 			relacionFiliar = d.getRelacionFiliar();
 		}
+		aux += "<hr>" +  this.delimiter ;
+		
+		aux += "<div class='div_box'>" +  this.delimiter ;
+		aux +="<p class='titulo'>DONANTE</p>" +  this.delimiter ;
+		aux +="<ul class='lista_donante'>" +  this.delimiter ;
+		aux +="<li><label class='label_donante'>ID: </label>" +String.valueOf(d.getId()) + "</li>" +  this.delimiter ;
+		aux +="<li><label class='label_donante'>EDAD: </label>" + String.valueOf(d.getEdad()) + "</li>" +  this.delimiter ;
+		aux +="<li><label class='label_donante'>TIPO: </label>" +d.getTipo() + "</li>" +  this.delimiter ;
+		aux +="<li><label class='label_donante'>Cr p(mg/dl): </label>" + String.valueOf(d.getCrP()) +"</li>" +  this.delimiter ;
+		aux +="<li><label class='label_donante'>RELACION FILIAR: </label>" +relacionFiliar + "</li>" +  this.delimiter ;
+		aux +="<li><label class='label_donante'>CAUSA DE MUERTE: </label>" +d.getCausaMuerte().getDetalle() +"</li>" +  this.delimiter ;
+		aux +="<li><label class='label_donante'>SEXO: </label>" + d.getSexo() + "</li>" +  this.delimiter ;
+		aux +="<li><label class='label_donante'>GRUPO SANGUINEO: </label>" + d.getGrupoSanguineo() + "</li>" +  this.delimiter ;
+		aux +="<li><label class='label_donante'>CRITERIO EXPANDIDO: </label></li>" +  this.delimiter ;
+		aux +="<li><label class='label_donante'>PESO: </label>" + String.valueOf(d.getPeso()) +"</li>" +  this.delimiter ;
+		aux +="<li><label class='label_donante'>ALTURA: </label>" + String.valueOf(d.getTalla()) + "</li>" +  this.delimiter ;
+		aux +="<li><label class='label_donante'>SEROLES: </label></li>" +  this.delimiter ;
+		aux +="<ol>" +  this.delimiter ;
+		for(int x=0;x<d.getListaSeroles().size();x++){
+			aux += "<li>"+d.getListaSeroles().get(x).toString()+"</li>"+ this.delimiter;
+		}
+		aux +="</ol>" +  this.delimiter ;
+		aux +="<li><label class='label_donante'>ANTECEDENTES: </label></li>" +  this.delimiter ;
+		aux +="<ol>" +  this.delimiter ;
+		for(int x=0;x<d.getAntecedentes().size();x++){
+			aux += "<li>"+d.getAntecedentes().get(x).toString()+"</li>"+ this.delimiter;
+		}
+		aux +="</ol>" +  this.delimiter ;
+		aux +="<li><label class='label_donante'>ORGANOS DONADOS: </label></li>" +  this.delimiter ;
+		aux +="<ol>" +  this.delimiter ;
+		for(int x=0;x<d.getOrganos().size();x++){
+			aux += "<li>"+d.getOrganos().get(x).toString()+"</li>"+ this.delimiter; 
+		}
+		aux +="</ol>" +  this.delimiter ;
+		aux +="<li><label class='label_donante'>OTROS: </label>"+ d.getOtros() +"</li>" +  this.delimiter ;
+		aux +="</ul>" +  this.delimiter ;
+		aux +="</div> " +  this.delimiter ;
+		
+		
+		
+		return aux;
+	}
+
+	public String donanteTable(String idDonante){
+		Donante d = new Donante();
+		d.setId(idDonante);
+		d.leer();
+		d.leerDatos();
+		String aux = "";
+		String relacionFiliar = "";
+		if(d.getRelacionFiliar() != null){
+			System.out.println("nulo");
+		}
+		if(d.getRelacionFiliar() == null || d.getRelacionFiliar() == ""){
+			relacionFiliar = "NO";
+		}else{
+			relacionFiliar = d.getRelacionFiliar();
+		}
 		aux += "<hr><table width=\"600\" border=\"2\">"+ this.delimiter +
 		   "<tr>" + this.delimiter +
 		   "<td>" + this.delimiter ;
@@ -128,4 +186,5 @@ public class CrearReporteHTMLDonante {
 		"</table>" + this.delimiter; 
 		return aux;
 	}
+
 }

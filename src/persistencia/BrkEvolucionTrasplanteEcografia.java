@@ -148,6 +148,7 @@ public class BrkEvolucionTrasplanteEcografia extends Broker {
 			e.setLitiasin(rs.getBoolean("Litiasin"));
 			e.setVejiga(rs.getString("Vejiga"));
 			e.setEspesor(rs.getInt("Espesor"));
+			e.setOtros(rs.getString("OTROS"));
 		} catch (SQLException e1) {
 			System.out.println("Hubo un problema en el leerDesdeResultSet de BrkEvolucionTrasplanteEcografia");
 			System.out.println(e1);

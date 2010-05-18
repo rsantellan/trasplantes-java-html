@@ -19,7 +19,7 @@ import logica.Fachada;
 public class CrearReporteHTMLTratamientos {
 
 	private ArrayList<Tratamiento> lista = new ArrayList<Tratamiento>();
-	private ArrayList<Tratamiento> listaActivos = new ArrayList<Tratamiento>(); // @jve:decl-index=0:
+	private ArrayList<Tratamiento> listaActivos = new ArrayList<Tratamiento>(); 
 	private ArrayList<Tratamiento> listaNoActivos = new ArrayList<Tratamiento>();
 	private String delimiter = "\n";
 
@@ -41,7 +41,43 @@ public class CrearReporteHTMLTratamientos {
 			}
 		}
 
-		aux += "<table width=\"200\" border=\"2\">" + this.delimiter;
+		aux += "<div class='div_box'>" +  this.delimiter ;
+		aux +="<p class='titulo'>TRATAMIENTOS ACTIVOS</p>" +  this.delimiter ;
+		aux +="<ol>" +  this.delimiter ;
+		for(int x =0;x< listaActivos.size();x++){
+			aux += "<li>" +  this.delimiter ;
+			aux += "<ul class='lista_tratamientos'>" +  this.delimiter ;
+			Tratamiento t = listaActivos.get(x);
+			aux +="<li><label class='label_tratamientos'>Fecha de inicio: </label>" +ManejoFechas.formatoEspanol.format(t.getFecha_inicio().getTime())+ "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_tratamientos'>Fecha de fin: </label></li>" +  this.delimiter ;
+			aux +="<li><label class='label_tratamientos'>Medicación: </label>" +t.getMedicacion().getNombre() + "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_tratamientos'>Dosis: </label>" + t.getDosis() + "</li>" +  this.delimiter ;
+			aux += "</ul>" +  this.delimiter ;
+			aux += "</li>" +  this.delimiter ;
+		}
+		aux +="</ol>" +  this.delimiter ;
+		aux +="</div>" +  this.delimiter ;
+		
+		
+		aux += "<div class='div_box'>" +  this.delimiter ;
+		aux +="<p class='titulo'>TRATAMIENTOS INACTIVOS</p>" +  this.delimiter ;
+		aux +="<ol>" +  this.delimiter ;
+		for(int x =0;x< listaNoActivos.size();x++){
+			aux += "<li>" +  this.delimiter ;
+			aux += "<ul class='lista_tratamientos'>" +  this.delimiter ;
+			Tratamiento t = listaNoActivos.get(x);
+			aux +="<li><label class='label_tratamientos'>Fecha de inicio: </label>" +ManejoFechas.formatoEspanol.format(t.getFecha_inicio().getTime())+ "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_tratamientos'>Fecha de fin: </label>" + ManejoFechas.formatoEspanol.format(t.getFecha_fin().getTime()) + "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_tratamientos'>Medicación: </label>" +t.getMedicacion().getNombre() + "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_tratamientos'>Dosis: </label>" + t.getDosis() + "</li>" +  this.delimiter ;
+			aux += "</ul>" +  this.delimiter ;
+			aux += "</li>" +  this.delimiter ;
+		}
+		aux +="</ol>" +  this.delimiter ;
+		aux +="</div>" +  this.delimiter ;
+		
+		
+/*		aux += "<table width=\"200\" border=\"2\">" + this.delimiter;
 		aux += "<tr>" + this.delimiter;
 		aux += "<td>" + this.delimiter;
 		aux += "<div align=\"center\">" + this.delimiter;
@@ -63,12 +99,13 @@ public class CrearReporteHTMLTratamientos {
 			aux += "<td>"+t.getDosis()+"</td>" + this.delimiter;
 			aux += "</tr>" + this.delimiter;
 		}
-		aux += "</table>"+ this.delimiter;
+		aux += "</table>"+ this.delimiter;*/
 		
+	/*
 		aux += "<h3>Inactivos</h3> <hr>" + this.delimiter;
 		aux += "<table width=\"800\" height=\"100\" border=\"0\">" + this.delimiter;
 		for (int x = 0; x < this.listaNoActivos.size(); x++) {
-			Tratamiento t = lista.get(x);
+			Tratamiento t = listaNoActivos.get(x);
 			aux += "<tr>" + this.delimiter;
 			aux += "<td><strong>Fecha de inicio:</strong></td>" + this.delimiter;
 			aux += "<td>"+ManejoFechas.formatoEspanol.format(t.getFecha_inicio().getTime())+"</td>" + this.delimiter;
@@ -81,7 +118,10 @@ public class CrearReporteHTMLTratamientos {
 			aux += "</tr>" + this.delimiter;
 		}
 		aux += "</table>"+ this.delimiter;
-		
+		aux += "</div>" + this.delimiter;
+		aux += "</td>" + this.delimiter;
+		aux += "</tr>" + this.delimiter;
+		aux += "</table>" + this.delimiter;*/
 		
 		return aux;
 	}

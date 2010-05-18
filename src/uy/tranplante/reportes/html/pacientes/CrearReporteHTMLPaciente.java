@@ -30,6 +30,30 @@ public class CrearReporteHTMLPaciente {
 	}
 	
 	public String reportePaciente(int idPaciente){
+	
+		Paciente p = this.getPaciente(idPaciente);
+		String salida = "";
+		salida += "<div class='div_box'>" + this.delimiter +
+		  "<p class='titulo'>PACIENTE</p>" + this.delimiter +
+		  "<ul class='lista_paciente'>" + this.delimiter +
+		    "<li><label class='label_paciente'>THE: </label>" +p.getThe() + "</li>" + this.delimiter +
+		    "<li><label class='label_paciente'>CEDULA IDENTIDAD: </label>" +p.getCi() + "</li>" + this.delimiter +
+		    "<li><label class='label_paciente'>NOMBRE: </label>" + p.getNombre()+ "</li>" + this.delimiter +
+		    "<li><label class='label_paciente'>APELLIDO: </label>"+ p.getApellido()+"</li>" + this.delimiter +
+		    "<li><label class='label_paciente'>N&deg; FNR: </label>"+p.getNum_fnr()+"</li>" + this.delimiter + 
+		    "<li><label class='label_paciente'>RAZA: </label>" + p.getRaza() +"</li>" + this.delimiter +
+		    "<li><label class='label_paciente'>SEXO: </label>"+ p.getSexo() + "</li>" + this.delimiter + 
+		    "<li><label class='label_paciente'>FECHA NACIMIENTO: </label>" + ManejoFechas.formatoEspanol.format(p.getFecha_nacimiento().getTime()) + "</li>" + this.delimiter + 
+		    "<li><label class='label_paciente'>FECHA DE DIALISIS: </label>" +ManejoFechas.formatoEspanol.format(p.getFecha_dialisis().getTime()) +"</li>" + this.delimiter +
+		    "<li><label class='label_paciente'>GRUPO SANGUINEO: </label>"+p.getGrupoSanguineo()+"</li>"+ this.delimiter +
+		    "<li><label class='label_paciente'>NEFROPATIA: </label>"+p.getTipoNefropatia().getNefropatia()+"</li>"+ this.delimiter +
+		  "</ul>"+ this.delimiter +
+		"</div>" + this.delimiter;
+		
+		return salida;
+	}
+
+	public String reportePacienteTable(int idPaciente){
 		Paciente p = this.getPaciente(idPaciente);
 		String salida = "";
 		salida += "<table width=\"200\" border=\"2\">"+ this.delimiter +
@@ -83,8 +107,37 @@ public class CrearReporteHTMLPaciente {
 				"</table>" + this.delimiter; 
 		return salida;
 	}
+
 	
 	public String perdidaDeInjerto(int idPaciente){
+		Paciente p = this.getPaciente(idPaciente);
+		String aux = "";
+
+		if(p.getListaPerdidas().size() > 0){
+			aux += "<hr>" + this.delimiter ;
+			aux += "<div class='div_box'>" + this.delimiter;
+			
+			aux += "<p class='titulo'>PERDIDA DE INJERTO</p>" + this.delimiter ;
+			aux += "<ol>"+ this.delimiter;
+			for(int x=0;x<p.getListaPerdidas().size();x++){
+				aux += "<li>" + this.delimiter ;
+				aux += "<ul class='lista_perdida_injerto'>"+ this.delimiter;
+				PacientePerdidaInjerto auxPerdida = (PacientePerdidaInjerto) p.getListaPerdidas().get(x);
+				aux += "<li><label class='label_perdida_injerto'>FECHA DE LA PERDIDA: </label>"+ ManejoFechas.formatoEspanol.format(auxPerdida.getFechaPerdida().getTime()) + "</li>" + this.delimiter;
+				aux += "<li><label class='label_perdida_injerto'>CAUSA DE LA PERDIDA: </label>"+ auxPerdida.getCausa().getDetalle() +"</li>" + this.delimiter;
+				aux += "</ul>"+ this.delimiter;
+				aux += "</li>" + this.delimiter ;
+				
+			}
+			aux += "</ol>"+ this.delimiter;
+
+			aux += "</div>" + this.delimiter;
+		}
+
+		return aux;
+	}
+
+	public String perdidaDeInjertoTable(int idPaciente){
 		Paciente p = this.getPaciente(idPaciente);
 		String aux = "";
 
@@ -108,6 +161,24 @@ public class CrearReporteHTMLPaciente {
 	}
 	
 	public String muerteDePaciente(int idPaciente){
+		Paciente p = this.getPaciente(idPaciente);
+		String aux = "";
+
+		if(p.getMuertePaciente() != null){
+			aux += "<hr>" + this.delimiter ;
+			aux += "<div class='div_box'>" + this.delimiter;
+			aux += "<p class='titulo'>MUERTE DEL PACIENTE</p>" + this.delimiter;
+			aux += "<ul class='lista_nuerte_paciente'>"+ this.delimiter;
+			aux += "<li><strong>FECHA DE LA MUERTE: </strong>"+ ManejoFechas.formatoEspanol.format(p.getMuertePaciente().getFechaMuerte().getTime()) + "</li>" + this.delimiter ;
+			aux += "<li><strong>CAUSA DE LA MUERTE: </strong>"+ p.getMuertePaciente().getCausa().getDetalle() +"</li>" + this.delimiter ;
+			aux += "</ul>" + this.delimiter ;
+			aux += "</div>";
+		}
+
+		return aux;
+	}
+	
+	public String muerteDePacienteTable(int idPaciente){
 		Paciente p = this.getPaciente(idPaciente);
 		String aux = "";
 

@@ -73,7 +73,7 @@ public class IUTrasplanteReoperacion extends JFrame {
 		}
 		if(lista.size() == 0){
 			this.getJButtonAgregarReoperacion().setEnabled(false);
-			JOptionPane.showMessageDialog(this,"No existe ninguna complicaci�n asociada por lo tanto no podra ingresarse ninguna reoperacion.", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this,"No existe ninguna complicación asociada por lo tanto no podra ingresarse ninguna reoperacion.", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	private void cargarDatos(){

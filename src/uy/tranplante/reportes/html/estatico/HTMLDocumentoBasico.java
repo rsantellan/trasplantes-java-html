@@ -94,6 +94,7 @@ public class HTMLDocumentoBasico {
 		aux += "<head>";
 		aux += "<title>Reporte Paciente</title>";
 		aux += "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">";
+		aux += "<link href='css/reporteHtml.css' rel='stylesheet' type='text/css'>"; 
 		aux += "</head>" + "<body>";
 		return aux;
 	}

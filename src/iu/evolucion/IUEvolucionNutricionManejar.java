@@ -121,7 +121,7 @@ public class IUEvolucionNutricionManejar extends JFrame {
 		this.jTextFieldRCinturaCadera.setText(String.valueOf(0));
 	}
 	private void cargarCombos(){
-		this.jComboBoxEstructuraOsea.addItem("Peque�a");
+		this.jComboBoxEstructuraOsea.addItem("Pequeña");
 		this.jComboBoxEstructuraOsea.addItem("Mediana");
 		this.jComboBoxEstructuraOsea.addItem("Grande");
 		

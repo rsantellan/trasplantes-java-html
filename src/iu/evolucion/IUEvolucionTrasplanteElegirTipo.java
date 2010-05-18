@@ -1273,7 +1273,7 @@ public class IUEvolucionTrasplanteElegirTipo extends JFrame implements
 	}
 	
 	private void nutricionModificar(){
-		if (this.evoTxTorax != null) {
+		if (this.evoNutricion != null) {
 			IUEvolucionNutricionManejar evoTx = new IUEvolucionNutricionManejar(
 					this.t.getId(), this.evoNutricion, this.jDateChooserFecha
 							.getCalendar());
@@ -1282,7 +1282,7 @@ public class IUEvolucionTrasplanteElegirTipo extends JFrame implements
 	}
 	
 	private void nutricionVer(){
-		if (this.evoTxTorax != null) {
+		if (this.evoNutricion != null) {
 			IUEvolucionNutricionManejar evoTx = new IUEvolucionNutricionManejar(
 					this.t.getId(), this.evoNutricion, this.jDateChooserFecha
 							.getCalendar(),true);

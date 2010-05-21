@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="libs"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/rodrigo/workspace/Transplantes/libs/librerias/jcalendar-1.3.2.jar"/>
+	<classpathentry kind="lib" path="/home/rodrigo/workspace/Transplantes/libs/librerias/jcommon-1.0.15.jar"/>
+	<classpathentry kind="lib" path="/home/rodrigo/workspace/Transplantes/libs/librerias/jfreechart-1.0.12.jar"/>
+	<classpathentry kind="lib" path="/home/rodrigo/workspace/Transplantes/libs/librerias/LogAsync.jar"/>
+	<classpathentry kind="lib" path="/home/rodrigo/workspace/Transplantes/libs/librerias/mysql-connector-java-5.1.6-bin.jar"/>
+	<classpathentry kind="lib" path="/home/rodrigo/workspace/Transplantes/libs/librerias/OfficeLnFs_2.7.jar"/>
+	<classpathentry kind="lib" path="/home/rodrigo/workspace/iText-5.0.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,125 @@
+.lista_paciente {
+	list-style-type: none;
+}
+
+.label_paciente{
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
+	width: 100px;
+
+}
+
+.lista_nuerte_paciente{
+	list-style-type: none;
+}
+
+.lista_donante{
+	list-style-type: none;
+}
+
+.lista_pre_transplante{
+	list-style-type: none;
+}
+
+.lista_transplante{
+	list-style-type: none;
+}
+
+.label_transplante{
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
+	width: 100px;
+}
+
+.lista_re_operacion{
+	list-style-type: none;
+}
+
+.label_re_operacion{
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
+	width: 100px;
+}
+
+.lista_complicaciones{
+	list-style-type: none;
+}
+
+.label_complicaciones{
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
+	width: 100px;
+}
+
+.lista_cmv{
+	list-style-type: none;
+}
+
+.label_cmv{
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
+	width: 100px;
+}
+
+.lista_evolucion_injerto{
+	list-style-type: none;
+}
+
+.label_evolucion_injerto{
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
+	width: 100px;
+}
+
+.lista_tratamientos{
+	list-style-type: none;
+}
+
+.label_tratamientos{
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
+	width: 100px;
+}
+
+.lista_perdida_injerto{
+	list-style-type: none;
+}
+
+.label_perdida_injerto{
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
+	width: 100px;
+}
+
+
+
+.label_pre_transplante{
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
+	width: 100px;
+}
+
+.label_donante{
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
+	width: 100px;
+}
+
+.image_container{
+	width: 200px;
+	float:right;
+	height:200px;
+}
+
+.div_box{
+	border-style:dotted;
+	width:800px;
+}
+
+.titulo{
+	font-size: large;
+	font-family: "Times New Roman", Times, serif;
+	font-style: italic;
+	color: #0000FF;
+	
+}

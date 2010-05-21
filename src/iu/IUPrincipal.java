@@ -111,7 +111,8 @@ public class IUPrincipal extends JFrame implements java.util.Observer {
 	private JMenuItem jMenuItemRegistroUruguayoTotal = null;
 	private JMenuItem jMenuItemRegistroUruguayoTotalPreTrasplante = null;
 	private JMenuItem jMenuItemConsultaUrologicaTotal = null;
-
+	private JMenuItem jMenuItemReporteHtml = null;
+	
 	/**
 	 * This is the default constructor
 	 */
@@ -1827,6 +1828,7 @@ public class IUPrincipal extends JFrame implements java.util.Observer {
 			jMenuReportes.add(getJMenuItemRegistroUruguayoTotal());
 			jMenuReportes.add(getJMenuItemRegistroUruguayoTotalPreTrasplante());
 			jMenuReportes.add(getJMenuItemConsultaUrologicaTotal());
+			jMenuReportes.add(getJMenuItemReporteHtml());
 		}
 		return jMenuReportes;
 	}
@@ -1930,5 +1932,29 @@ private JMenuItem getJMenuItemConsultaUrologicaTotal() {
 	}
 	return jMenuItemConsultaUrologicaTotal;
 }
+
+/**
+ * This method initializes jMenuItemConsultaUrologicaTotal	
+ * 	
+ * @return javax.swing.JMenuItem	
+ */
+private JMenuItem getJMenuItemReporteHtml() {
+	if (jMenuItemReporteHtml == null) {
+		jMenuItemReporteHtml = new JMenuItem();
+		jMenuItemReporteHtml.setText("Reporte para imprimir");
+		jMenuItemReporteHtml
+				.addActionListener(new java.awt.event.ActionListener() {
+					public void actionPerformed(java.awt.event.ActionEvent e) {
+						reporteHtml();
+					}
+				});
+	}
+	return jMenuItemReporteHtml;
+}
+
+private void reporteHtml(){
+	IUPrincipalLogic.crearReporteHtml();
+}
+
 
 } // @jve:decl-index=0:visual-constraint="10,10"

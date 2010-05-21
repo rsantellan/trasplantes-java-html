@@ -3,6 +3,7 @@
  */
 package iu.windows.logic;
 
+import uy.tranplante.reportes.html.iu.IUCrearReporteHtml;
 import uy.trasplante.reportes.registrouruguayotrasplantes.IUCrearReporteFondoPerYear;
 import uy.trasplante.reportes.registrouruguayotrasplantes.IUCrearReporteFondoTotal;
 import uy.trasplante.reportes.registrouruguayotrasplantes.IUCrearReporteFondoTotalPreTrasplante;
@@ -315,5 +316,10 @@ public class IUPrincipalLogic {
 	public static void consCausaMuerteDonante() {
 		IUConsultaXCausaMuerteDonante conCMDon = new IUConsultaXCausaMuerteDonante();
 		conCMDon.setVisible(true);
+	}
+	
+	public static void crearReporteHtml(){
+		IUCrearReporteHtml iuReporteHtml = new IUCrearReporteHtml();
+		iuReporteHtml.setVisible(true);
 	}
 }

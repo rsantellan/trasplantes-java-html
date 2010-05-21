@@ -56,7 +56,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 	private JButton jButtonBuscar = null;
 
 	private Paciente paciente = null;
-	private PacientePreTrasplante preTrasplante = null;
+	private PacientePreTrasplante preTrasplante = null;  //  @jve:decl-index=0:
 	private JDesktopPane jDesktopPaneTrasplante = null;
 	private JLabel jLabelTrasplante = null;
 	private JLabel jLabelInfoTrasplante = null;
@@ -120,8 +120,8 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(312, 568);
-		//this.setSize(1235, 649);
+		//this.setSize(312, 568);
+		this.setSize(1235, 649);
 		this.setJMenuBar(getJJMenuBarAtras());
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		this.setContentPane(getJContentPane());
@@ -296,7 +296,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 		if (jDesktopPaneTrasplante == null) {
 			jLabelPrimeraEvolucion = new JLabel();
 			jLabelPrimeraEvolucion.setBounds(new Rectangle(25, 459, 218, 43));
-			jLabelPrimeraEvolucion.setText("PBR del 1� mes.");
+			jLabelPrimeraEvolucion.setText("PBR del 1° mes.");
 			jLabelPrimeraEvolucion.setHorizontalAlignment(SwingConstants.CENTER);
 			jLabelDescTrasplante = new JLabel();
 			jLabelDescTrasplante.setBounds(new Rectangle(10, 5, 401, 38));

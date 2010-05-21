@@ -13,24 +13,42 @@ import java.io.IOException;
 public class HTMLDocumentoBasico {
 
 	private String html = "";
-	
+	private String nombre = "";
 	
 	/**
 	 * 
 	 */
-	public HTMLDocumentoBasico() {
+	public HTMLDocumentoBasico(int the, int preTransplante) {
 		this.html = this.cabezal();
+		this.nombre = java.io.File.separatorChar + "reportePaciente"+the+"Pre"+preTransplante+".html";
 	}
 
 	public void agregarTexto(String texto){
 		this.html += texto;
 	}
 	
+	private String getFile(){
+		String directory = "reportes";
+		String pathEntero = System.getProperty("user.dir") + java.io.File.separatorChar + directory;
+		java.io.File unArchivo = new java.io.File(pathEntero);
+		if(unArchivo.isDirectory()){
+			System.out.println("Es directorio");
+		}else{
+			System.out.println("No es directorio");
+			if(unArchivo.mkdir()){
+				System.out.println("Se creo el directorio");
+			}
+		}
+		return pathEntero + this.nombre;
+	}
+	public String getFileName(){
+		return System.getProperty("user.dir")+this.getFile();
+	}
 	
 	public void cerrarDocumento(){
 		this.html += this.pie();
 		System.out.println(System.getProperty("user.dir"));
-		java.io.File unArchivo = new java.io.File(System.getProperty("user.dir")+ "/htmlTest.html");
+		java.io.File unArchivo = new java.io.File(this.getFile());
 
 		FileWriter buf;
 

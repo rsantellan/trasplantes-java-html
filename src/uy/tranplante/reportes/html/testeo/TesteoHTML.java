@@ -24,7 +24,7 @@ public class TesteoHTML {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int idPaciente = 4;
+		int idPaciente = 7;
 		CrearReporteHTMLPaciente htmlPaciente = new CrearReporteHTMLPaciente();
 		CrearReporteHTMLDonante htmlDonante = new CrearReporteHTMLDonante();
 		CrearReporteHTMLTransplante htmlTransplante = new CrearReporteHTMLTransplante();
@@ -35,11 +35,12 @@ public class TesteoHTML {
 		CrearReporteHTMLEvolucionGlobal htmlEvolucionGlobal = new CrearReporteHTMLEvolucionGlobal(idPaciente);
 		
 		String salida = htmlPaciente.reportePaciente(idPaciente);
-		HTMLDocumentoBasico htmlBasico = new HTMLDocumentoBasico();
+		HTMLDocumentoBasico htmlBasico = new HTMLDocumentoBasico(1,1);
 		htmlBasico.agregarTexto(salida);
 		//htmlBasico.agregarTexto(htmlPaciente.reportePacienteTable(idPaciente));
 		htmlBasico.agregarTexto(htmlPaciente.perdidaDeInjerto(idPaciente));
 		htmlBasico.agregarTexto(htmlPaciente.muerteDePaciente(idPaciente));
+		
 		htmlBasico.agregarTexto(htmlDonante.donante("PTG27061975"));
 		htmlBasico.agregarTexto(htmlTransplante.preTransplante(idPaciente));
 		htmlBasico.agregarTexto(htmlTransplante.transplante(idPaciente));
@@ -68,10 +69,15 @@ public class TesteoHTML {
 		
 		htmlBasico.agregarTexto(htmlEvolucionGlobal.crearReporteEvolucionTxTorax());
 		
-		htmlBasico.agregarTexto(htmlEvolucionGlobal.crearReporteEvolucionTxTorax());
-		
 		htmlBasico.agregarTexto(htmlEvolucionGlobal.crearReporteEvolucionEcografiaDelInjerto());
 		
+		htmlBasico.agregarTexto(htmlEvolucionGlobal.crearReporteEvolucionEcodopler());
+		
+		htmlBasico.agregarTexto(htmlEvolucionGlobal.crearReporteEvolucionOtrosExamenes());
+		
+		htmlBasico.agregarTexto(htmlEvolucionGlobal.crearReporteEvolucionNutricion());
+		
+		htmlBasico.agregarTexto(htmlEvolucionGlobal.crearReporteEvolucionParaclinica());
 		
 		htmlBasico.cerrarDocumento();
 	}

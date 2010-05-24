@@ -28,7 +28,7 @@ public class BrkCMVDiagnostico extends Broker{
 			prep.setInt(1, m.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
-			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
 		}
 		return prep;
 	}

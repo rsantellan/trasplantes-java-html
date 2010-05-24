@@ -10,5 +10,8 @@
 	<classpathentry kind="lib" path="/home/rodrigo/workspace/Transplantes/libs/librerias/mysql-connector-java-5.1.6-bin.jar"/>
 	<classpathentry kind="lib" path="/home/rodrigo/workspace/Transplantes/libs/librerias/OfficeLnFs_2.7.jar"/>
 	<classpathentry kind="lib" path="/home/rodrigo/workspace/iText-5.0.2.jar"/>
+	<classpathentry kind="lib" path="/home/rodrigo/workspace/xerces-2_9_1/xml-apis.jar"/>
+	<classpathentry kind="lib" path="/home/rodrigo/workspace/xerces-2_9_1/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="/home/rodrigo/workspace/apache-log4j-1.2.16/log4j-1.2.16.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

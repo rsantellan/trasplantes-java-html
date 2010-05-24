@@ -47,8 +47,8 @@ public class ManejadorBD {
 			conexion.close();
 		}catch(SQLException e){
 			System.out.println("Error al cerrar la conexion.");
-			Fachada.getInstancia().guardarLog(e.toString());
-			Fachada.getInstancia().guardarLog("Error al cerrar la conexion.");
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, "Error al cerrar la conexion.");
 		}
 	}
 	
@@ -68,8 +68,8 @@ public class ManejadorBD {
 		} catch (SQLException e) {
 			System.out.println("Error al ejecutar sql.\n" + e.getMessage());
 			e.printStackTrace();
-			Fachada.getInstancia().guardarLog(e.toString());
-			Fachada.getInstancia().guardarLog("Error al ejecutar sql.\n" + e.getMessage());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, "Error al ejecutar sql.\n" + e.getMessage());
 		}
 		return true;
 	}
@@ -77,14 +77,14 @@ public class ManejadorBD {
 	private void ejecutar(String sql) {
 		try {
 			Statement st = conexion.createStatement();
-			Fachada.getInstancia().guardarLog(sql);
+			Fachada.getInstancia().guardarLog(Fachada.LOG_INFO, sql);
 			st.executeUpdate(sql);
 			st.close();
 		} catch (SQLException e) {
 			System.out.println("Error al ejecutar sql.\n" + e.getMessage());
 			e.printStackTrace();
-			Fachada.getInstancia().guardarLog(e.toString());
-			Fachada.getInstancia().guardarLog("Error al ejecutar sql.\n" + e.getMessage());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, "Error al ejecutar sql.\n" + e.getMessage());
 		}
 	}
 
@@ -92,12 +92,12 @@ public class ManejadorBD {
 		ResultSet rs = null;
 		try {
 			Statement st = conexion.createStatement();
-			Fachada.getInstancia().guardarLog(sql);
+			Fachada.getInstancia().guardarLog(Fachada.LOG_INFO , sql);
 			rs = st.executeQuery(sql);
 		} catch (SQLException e) {
 			System.out.println("Error al ejecutar sql.\n" + e.getMessage());
-			Fachada.getInstancia().guardarLog(e.toString());
-			Fachada.getInstancia().guardarLog("Error al ejecutar sql.\n" + e.getMessage());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, "Error al ejecutar sql.\n" + e.getMessage());
 			try {
 				conexion.rollback();
 			} catch (SQLException e1) {
@@ -131,8 +131,8 @@ public class ManejadorBD {
 			}
 		} catch (SQLException e) {
 			System.out.println("Error al leer objeto.\n" + e.getMessage());
-			Fachada.getInstancia().guardarLog(e.toString());
-			Fachada.getInstancia().guardarLog("Error al ejecutar sql.\n" + e.getMessage());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, "Error al ejecutar sql.\n" + e.getMessage());
 		}
 	}
 	
@@ -145,8 +145,8 @@ public class ManejadorBD {
 			}
 		}catch (SQLException e) {
 			System.out.println("Error al contar de tabla.\n" + e.getMessage());
-			Fachada.getInstancia().guardarLog(e.toString());
-			Fachada.getInstancia().guardarLog("Error al contar de tabla.\n" + e.getMessage());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, "Error al contar de tabla.\n" + e.getMessage());
 		}
 		return aux;
 	}
@@ -163,8 +163,8 @@ public class ManejadorBD {
 			}
 		} catch (SQLException e) {
 			System.out.println("Error al obtener objetos.\n" + e.getMessage());
-			Fachada.getInstancia().guardarLog(e.toString());
-			Fachada.getInstancia().guardarLog("Error al obtener objetos.\n" + e.getMessage());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, "Error al obtener objetos.\n" + e.getMessage());
 		}
 		return ret;
 	}

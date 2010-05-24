@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Observable;
 import java.util.Observer;
+import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
 
 import miLog.MiLog;
 
@@ -89,6 +91,11 @@ public class Fachada extends Observable{
 	public static int PERDIDA_INJERTO_PACIENTE = 21;
 	public static int ANTECEDENTE_DONANTE = 22;
 	public static int CAUSA_MUERTE_DONANTE = 23;
+	static Logger logger = Logger.getLogger(Fachada.class);
+	public static int LOG_INFO = 0;
+	public static int LOG_WARN = 1;
+	public static int LOG_ERR = 2;
+	public static int LOG_FATAL = 3;
 	
 	public static Fachada getInstancia(){
 		if (instancia == null){
@@ -111,7 +118,7 @@ public class Fachada extends Observable{
 		consultas = new ControlConsultas();
 		backUp = new ControlBackUp();
 		//miLog = new MiLog();
-		this.guardarLog(MiLog.inicioLog());
+		this.guardarLog(Fachada.LOG_INFO, MiLog.inicioLog());
 	}
 	
 	public void salir(){
@@ -132,7 +139,29 @@ public class Fachada extends Observable{
 		this.deleteObserver(o);
 	}
 	
-	public void guardarLog(String texto){
+	public void guardarLog(int type, String texto){
+		DOMConfigurator.configure("configuration.xml");
+		//int type = 0;
+		switch (type) {
+			case 0:
+				logger.info(texto);
+				break;
+			case 1:
+				logger.warn(texto);
+				break;
+			case 2:
+				logger.error(texto);
+				break;
+			case 3:
+				logger.fatal(texto);
+				break;
+			default:
+				logger.fatal(texto);
+				break;
+		}
+		
+	    //logger.debug(texto);
+	    //logger.info(texto);
 		//ManejadorLogs.getInstancia().guardarLog(texto);
 		//System.out.println(texto);
 	}

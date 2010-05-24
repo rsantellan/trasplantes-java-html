@@ -35,7 +35,7 @@ public class BrkEvolucionTrasplanteCMV extends Broker {
 				return prep;
 			} catch (SQLException e1) {
 				e1.printStackTrace();
-				Fachada.getInstancia().guardarLog(e1.getStackTrace().toString());
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
 				return null;
 			}
 		}else{
@@ -46,7 +46,7 @@ public class BrkEvolucionTrasplanteCMV extends Broker {
 				return prep;
 			} catch (SQLException e1) {
 				e1.printStackTrace();
-				Fachada.getInstancia().guardarLog(e1.getStackTrace().toString());
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
 				return null;
 			}
 		}
@@ -127,18 +127,20 @@ public class BrkEvolucionTrasplanteCMV extends Broker {
 		} catch (SQLException e1) {
 			System.out.println("Hubo un problema en el leerDesdeResultSet de BrkEvolucionTrasplanteCMV");
 			System.out.println(e1);
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
 		}catch(ParseException e2){
 			System.out.println("Hubo un problema en el leerDesdeResultSet de BrkEvolucionTrasplanteCMV");
 			System.out.println(e2);
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e2.getStackTrace().toString());
 		}catch(Exception e3){
 			System.out.println("Hubo un problema en el leerDesdeResultSet de BrkEvolucionTrasplanteCMV");
 			System.out.println(e3);
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e3.getStackTrace().toString());
 		}
 	}
 
 	@Override
 	public String getContar() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -27,7 +27,7 @@ public class BrkDonanterefAntecedente extends Broker{
 			prep.setString(1, d.getIdDonante());
 		} catch (SQLException e) {
 			e.printStackTrace();
-			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
 		}
 		return prep;
 		
@@ -52,7 +52,6 @@ public class BrkDonanterefAntecedente extends Broker{
 
 	@Override
 	public IPersistente getNuevo() {
-		// TODO Auto-generated method stub
 		return new DonanterefAntecedentes();
 	}
 
@@ -71,13 +70,12 @@ public class BrkDonanterefAntecedente extends Broker{
 
 	@Override
 	public String getUpdateSQL() {
-		Fachada.getInstancia().guardarLog("Nunca tiene que entrar al update de brkdonanterefantecedente, si esta entrando aca es por el get.IOD()");
+		Fachada.getInstancia().guardarLog(Fachada.LOG_FATAL, "Nunca tiene que entrar al update de brkdonanterefantecedente, si esta entrando aca es por el get.IOD()");
 		return this.getInsertSQL();
 	}
 
 	@Override
 	public void leerDesdeResultSet(ResultSet rs, IPersistente aux) {
-		// TODO Auto-generated method stub
 		try{
 			DonanterefAntecedentes d = (DonanterefAntecedentes) aux;
 			d.setIdDonante((rs.getString("ID_DONANTE")));

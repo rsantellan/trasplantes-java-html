@@ -16,7 +16,6 @@ public class BrkGenericoAuxiliar extends Broker {
 
 	public BrkGenericoAuxiliar(GenericoAuxiliar p) {
 		super(p);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -37,7 +36,7 @@ public class BrkGenericoAuxiliar extends Broker {
 			prep.setInt(1, a.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
-			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
 		}
 		return prep;
 		
@@ -76,7 +75,6 @@ public class BrkGenericoAuxiliar extends Broker {
 
 	@Override
 	public String getUpdateSQL() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

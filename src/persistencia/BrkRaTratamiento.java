@@ -29,7 +29,7 @@ public class BrkRaTratamiento extends Broker{
 			prep.setInt(1, m.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
-			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
 		}
 		return prep;
 	}
@@ -92,7 +92,6 @@ public class BrkRaTratamiento extends Broker{
 
 	@Override
 	public String getContar() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

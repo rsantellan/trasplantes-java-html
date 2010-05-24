@@ -39,7 +39,7 @@ public class BrkEvolucionInjerto extends Broker {
 				return prep;
 			} catch (SQLException e1) {
 				e1.printStackTrace();
-				Fachada.getInstancia().guardarLog(e1.getStackTrace().toString());
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
 				return null;
 			}
 		}else{
@@ -50,7 +50,7 @@ public class BrkEvolucionInjerto extends Broker {
 				return prep;
 			} catch (SQLException e1) {
 				e1.printStackTrace();
-				Fachada.getInstancia().guardarLog(e1.getStackTrace().toString());
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
 				return null;
 			}
 		}

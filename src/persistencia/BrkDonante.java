@@ -27,7 +27,7 @@ public class BrkDonante extends Broker{
 			prep.setString(1, d.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
-			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
 		}
 		return prep;
 		

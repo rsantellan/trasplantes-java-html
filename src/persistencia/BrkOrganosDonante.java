@@ -28,7 +28,7 @@ public class BrkOrganosDonante extends Broker{
 			prep.setString(1, o.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
-			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
 		}
 		return prep;
 	}
@@ -43,7 +43,6 @@ public class BrkOrganosDonante extends Broker{
 
 	@Override
 	public String getInsertSQL() {
-		// TODO Auto-generated method stub
 		OrganosDonante o = (OrganosDonante) this.getObj();
 		String sql = "";
 		sql += "INSERT INTO donante_organos(ID_DONANTE,ORGANO) VALUES('";
@@ -53,13 +52,11 @@ public class BrkOrganosDonante extends Broker{
 
 	@Override
 	public IPersistente getNuevo() {
-		// TODO Auto-generated method stub
 		return new OrganosDonante();
 	}
 
 	@Override
 	public String getSelectSQL() {
-		// TODO Auto-generated method stub
 		OrganosDonante o = (OrganosDonante) this.getObj();
 		String sql = "";
 		sql+= "SELECT * FROM donante_organos WHERE ID_DONANTE='"+ o.getId()+"'";
@@ -74,7 +71,6 @@ public class BrkOrganosDonante extends Broker{
 
 	@Override
 	public void leerDesdeResultSet(ResultSet rs, IPersistente aux) {
-		// TODO Auto-generated method stub
 		try{
 			OrganosDonante o = (OrganosDonante) aux;
 			o.setId(rs.getString("ID_DONANTE"));
@@ -87,7 +83,6 @@ public class BrkOrganosDonante extends Broker{
 
 	@Override
 	public String getContar() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

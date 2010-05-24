@@ -125,7 +125,7 @@ public class ControlBackUp {
 		} catch (Exception e) {
 			System.out.println("Error con java.io.File");
 			System.out.println(e.getMessage());
-			Fachada.getInstancia().guardarLog(
+			Fachada.getInstancia().guardarLog(Fachada.LOG_FATAL,
 					"Error con java.io.File AL CREAR EL BAT de backup");
 			salida = false;
 		}
@@ -138,7 +138,7 @@ public class ControlBackUp {
 		if (!file.exists()) {
 			if (!file.mkdir()) {
 				System.out.println("NO CUENTA CON LOS PERMISOS NECESARIOS");
-				Fachada.getInstancia().guardarLog(
+				Fachada.getInstancia().guardarLog(Fachada.LOG_FATAL,
 						"[ERROR] En el paso de crear directorio de BackUp");
 				return null;
 			}
@@ -153,19 +153,19 @@ public class ControlBackUp {
 			Process i = aplicacion.exec("cmd.exe /c start " + lugar
 					+ "\\backup.bat");
 			TimeUnit.SECONDS.sleep(5);
-			Fachada.getInstancia().guardarLog("BORRANDO EL BAT.");
+			Fachada.getInstancia().guardarLog(Fachada.LOG_INFO, "BORRANDO EL BAT.");
 			borrarBATBackUp();
-			Fachada.getInstancia().guardarLog("BAT BORRADO.");
+			Fachada.getInstancia().guardarLog(Fachada.LOG_INFO, "BAT BORRADO.");
 			TimeUnit.SECONDS.sleep(5);
 			i.destroy();
 			aplicacion.runFinalization();
 		} catch (IOException e) {
 			e.printStackTrace();
 			salida = false;
-			Fachada.getInstancia().guardarLog("[ERROR] En el paso 2 de BackUp");
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, "[ERROR] En el paso 2 de BackUp");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			Fachada.getInstancia().guardarLog("[ERROR] En el paso 2 de BackUp");
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, "[ERROR] En el paso 2 de BackUp");
 			salida = false;
 		}
 		return salida;
@@ -176,12 +176,12 @@ public class ControlBackUp {
 			java.io.File unArchivo;
 			unArchivo = new java.io.File(lugar + "\\backup.bat");
 			if (unArchivo.exists()) {
-				Fachada.getInstancia().guardarLog(
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, 
 						"EL BAT DE BACKUP NO EXISTE PARA BORRARLO");
 				unArchivo.delete();
 			}
 		} catch (Exception e) {
-			Fachada.getInstancia().guardarLog(
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, 
 					"ERROR AL BORRAR EL BAT DE BACKUP.");
 			System.out.println("Error con java.io.File");
 		}
@@ -195,7 +195,7 @@ public class ControlBackUp {
 			TimeUnit.SECONDS.sleep(5);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			Fachada.getInstancia().guardarLog("[ERROR] En el paso 3 de BackUp");
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, "[ERROR] En el paso 3 de BackUp");
 			return false;
 		}
 		return eliminarArchivo();
@@ -267,7 +267,7 @@ public class ControlBackUp {
 			retorno = false;
 			e.printStackTrace();
 			Fachada.getInstancia()
-					.guardarLog("[ERROR] En el paso 1 de Restore");
+					.guardarLog(Fachada.LOG_ERR, "[ERROR] En el paso 1 de Restore");
 		}
 		return retorno;
 	}
@@ -281,7 +281,7 @@ public class ControlBackUp {
 		} catch (IOException e) {
 			System.out.println("ERROR AL COPIAR");
 			Fachada.getInstancia()
-					.guardarLog("[ERROR] En el paso 2 de Restore");
+					.guardarLog(Fachada.LOG_ERR, "[ERROR] En el paso 2 de Restore");
 			e.printStackTrace();
 			return false;
 		}
@@ -310,12 +310,12 @@ public class ControlBackUp {
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("Error con java.io.File");
-			Fachada.getInstancia().guardarLog(
+			Fachada.getInstancia().guardarLog(Fachada.LOG_FATAL, 
 					"[ERROR] En el paso 2 de Restore. Crear el BAT");
 		}catch(InterruptedException e1){
 			e1.printStackTrace();
 			System.out.println("Error con java.io.File");
-			Fachada.getInstancia().guardarLog(
+			Fachada.getInstancia().guardarLog(Fachada.LOG_FATAL,
 					"[ERROR] En el paso 2 de Restore. Crear el BAT");
 		}
 	}
@@ -331,12 +331,12 @@ public class ControlBackUp {
 		} catch (IOException e) {
 			e.printStackTrace();
 			Fachada.getInstancia()
-					.guardarLog("[ERROR] En el paso 3 de Restore");
+					.guardarLog(Fachada.LOG_FATAL, "[ERROR] En el paso 3 de Restore");
 			return false;
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 			Fachada.getInstancia()
-					.guardarLog("[ERROR] En el paso 3 de Restore");
+					.guardarLog(Fachada.LOG_FATAL, "[ERROR] En el paso 3 de Restore");
 			return false;
 		}
 		return retorno;
@@ -347,7 +347,7 @@ public class ControlBackUp {
 			TimeUnit.SECONDS.sleep(3);
 		} catch (InterruptedException e) {
 			Fachada.getInstancia()
-				.guardarLog("[ERROR] En el paso 4 de Restore");
+				.guardarLog(Fachada.LOG_FATAL, "[ERROR] En el paso 4 de Restore");
 			e.printStackTrace();
 			return false;
 		}
@@ -365,7 +365,7 @@ public class ControlBackUp {
 			}
 		} catch (Exception e) {
 			System.out.println("Error con java.io.File");
-			Fachada.getInstancia().guardarLog(
+			Fachada.getInstancia().guardarLog(Fachada.LOG_FATAL,
 					"[ERROR] Al borrar el archivo restore.bat");
 			return false;
 		}
@@ -386,7 +386,7 @@ public class ControlBackUp {
 
 			} catch (Exception e) {
 				System.out.println("Error con java.io.File");
-				Fachada.getInstancia().guardarLog(
+				Fachada.getInstancia().guardarLog(Fachada.LOG_FATAL,  
 						"[ERROR] Al borrar el archivo de el BIN de MySQL");
 				salida = false;
 			}
@@ -402,7 +402,7 @@ public class ControlBackUp {
 
 			} catch (Exception e) {
 				System.out.println("Error con java.io.File");
-				Fachada.getInstancia().guardarLog(
+				Fachada.getInstancia().guardarLog(Fachada.LOG_FATAL,
 						"[ERROR] Al borrar el archivo de el lugar de extraccion.");
 				salida = false;
 			}

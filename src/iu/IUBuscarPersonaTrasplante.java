@@ -120,8 +120,8 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 	 * @return void
 	 */
 	private void initialize() {
-		//this.setSize(312, 568);
-		this.setSize(1235, 649);
+		this.setSize(312, 568);
+		//this.setSize(1235, 649);
 		this.setJMenuBar(getJJMenuBarAtras());
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		this.setContentPane(getJContentPane());

@@ -16,7 +16,6 @@ public class BrkTrasplanteTiposComplicaciones extends Broker{
 
 	public BrkTrasplanteTiposComplicaciones(TrasplanteTiposComplicaciones t) {
 		super(t);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -29,7 +28,7 @@ public class BrkTrasplanteTiposComplicaciones extends Broker{
 			prep.setInt(1,t.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
-			Fachada.getInstancia().guardarLog(e.getStackTrace().toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
 		}
 		return prep;
 	}
@@ -99,7 +98,6 @@ public class BrkTrasplanteTiposComplicaciones extends Broker{
 
 	@Override
 	public String getContar() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

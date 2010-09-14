@@ -997,6 +997,72 @@ public class ControlConsultas {
 		return g;
 	}
 
+	public Generico consultaTransplantesConSangradoIOpLesionArterialYVenalRepefundirOpciones(boolean i_op, boolean lesArt, boolean lesVen, boolean nec_rep){
+		String sql = "SELECT t.PreTrasplante, p.nombre, p.apellido";
+		if(i_op){
+			sql += ", t.sangrado_i_op ";
+		}
+		if(lesArt){
+			sql += ", t.lesion_arterial ";
+		}
+		if(lesVen){
+			sql += ", t.lesion_venosa ";
+		}
+		if(nec_rep){
+			sql += ", t.NECESIDAD_REPEFUNDIR ";
+		}
+		sql += " FROM trasplante t, pacientepretrasplante pt, pacientes p ";
+		sql += " where p.the = pt.the AND t.PreTrasplante = pt.id ";
+		if(i_op){
+			sql += " AND t.sangrado_i_op = 1 ";
+		}
+		if(lesArt){
+			sql += " AND t.lesion_arterial = 1 ";
+		}
+		if(lesVen){
+			sql += " AND  t.lesion_venosa = 1 ";
+		}
+		if(nec_rep){
+			sql += " AND t.NECESIDAD_REPEFUNDIR = 1";
+		}		
+		Generico g = new Generico();
+		g.setSql(sql);
+		g.getListaDada().add(Generico.integer);
+		g.getListaDada().add(Generico.letras);
+		g.getListaDada().add(Generico.letras);
+		if(i_op){
+			g.getListaDada().add(Generico.VF);
+		}
+		if(lesArt){
+			g.getListaDada().add(Generico.VF);
+		}
+		if(lesVen){
+			g.getListaDada().add(Generico.VF);
+		}
+		if(nec_rep){
+			g.getListaDada().add(Generico.VF);
+		}			
+		g.getListaNombre().add("THE");
+		g.getListaNombre().add("NOMBRE");
+		g.getListaNombre().add("APELLIDO");		
+		if(i_op){
+			g.getListaNombre().add("SANGRADO I OP");
+		}
+		if(lesArt){
+			g.getListaNombre().add("LESION ARTERIAL");
+		}
+		if(lesVen){
+			g.getListaNombre().add("LESION VENOSA");
+		}
+		if(nec_rep){
+			g.getListaNombre().add("NECESIDAD REPEFUNDIR");
+		}			
+		
+		g.leer();
+		this.arreglarDatosGenericos(g);		
+		return g;		
+	}
+	
 	public ArrayList<Integer> consultaComplicacionesPorMes(int desde, int hasta) {
 		ArrayList<Integer> salida = new ArrayList<Integer>();
 		if (desde > hasta)

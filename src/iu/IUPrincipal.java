@@ -98,6 +98,7 @@ public class IUPrincipal extends JFrame implements java.util.Observer {
 	private JMenuItem jMenuItemConsultaTrasplantesInmunosupresores = null;
 	private JMenuItem jMenuItemConsultaTrasplantesDiuresisEnBq = null;
 	private JMenuItem jMenuItemConsultaTrasplantesSangradoLesionRepefundir = null;
+	private JMenuItem jMenuItemConsultaTrasplantesSangradoLesionRepefundirOpciones = null;
 	private JMenuItem jMenuItemTrasplantesGermenesInfecciones = null;
 	private JMenuItem jMenuItemConsultaReOperaciones = null;
 	private JMenu jMenuDatosManagement = null;
@@ -1482,6 +1483,26 @@ public class IUPrincipal extends JFrame implements java.util.Observer {
 		return jMenuItemConsultaTrasplantesSangradoLesionRepefundir;
 	}
 	
+	private JMenuItem getJMenuItemConsultaTrasplantesSangradoLesionRepefundirOpciones() {
+		if (jMenuItemConsultaTrasplantesSangradoLesionRepefundirOpciones == null) {
+			jMenuItemConsultaTrasplantesSangradoLesionRepefundirOpciones = new JMenuItem();
+			jMenuItemConsultaTrasplantesSangradoLesionRepefundirOpciones.setText("Sangrado, Lesion, Repefundir opciones");
+			jMenuItemConsultaTrasplantesSangradoLesionRepefundirOpciones.setBackground(new Color(
+					204, 204, 255));
+			jMenuItemConsultaTrasplantesSangradoLesionRepefundirOpciones
+					.addActionListener(new java.awt.event.ActionListener() {
+						public void actionPerformed(java.awt.event.ActionEvent e) {
+							callConsultaTransplanteIOP();
+						}
+					});
+		}
+		return jMenuItemConsultaTrasplantesSangradoLesionRepefundirOpciones;
+	}
+	
+	private void callConsultaTransplanteIOP(){
+		IUPrincipalLogic.consultaTransplantesIOP();
+	}
+	
 	private void consultaGenerica(int id) {
 		IUPrincipalLogic.consultaGenerica(id);
 	}
@@ -1598,6 +1619,7 @@ public class IUPrincipal extends JFrame implements java.util.Observer {
 			jMenuConsultasC.setText("C");
 			jMenuConsultasC.add(getJMenuItemConsultaTrasplantesDiuresisEnBq());
 			jMenuConsultasC.add(getJMenuItemConsultaTrasplantesSangradoLesionRepefundir());
+			jMenuConsultasC.add(getJMenuItemConsultaTrasplantesSangradoLesionRepefundirOpciones());
 		}
 		return jMenuConsultasC;
 	}

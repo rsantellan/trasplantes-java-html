@@ -15,6 +15,7 @@ import iu.consultas.IUConsultaGenerica;
 import iu.consultas.IUConsultaGenericaOpciones;
 import iu.consultas.IUConsultaGermenInfeccion;
 import iu.consultas.IUConsultaMenuLineal;
+import iu.consultas.IUConsultaTransplanteIOP;
 import iu.consultas.IUConsultaXCausaMuerteDonante;
 import iu.datosfijos.IUManejarAntecedentesDonante;
 import iu.datosfijos.IUManejarCMVDiagnostico;
@@ -214,6 +215,10 @@ public class IUPrincipalLogic {
 		consulta.setVisible(true);
 	}
 
+	public static void consultaTransplantesIOP(){
+		IUConsultaTransplanteIOP consulta = new IUConsultaTransplanteIOP();
+		consulta.setVisible(true);
+	}
 	/**
 	 * Crea la pantalla de consulta generica con opciones
 	 */

@@ -160,8 +160,8 @@ public class Fachada extends Observable{
 				break;
 		}
 		
-	    //logger.debug(texto);
-	    //logger.info(texto);
+	    logger.debug(texto);
+	    logger.info(texto);
 		//ManejadorLogs.getInstancia().guardarLog(texto);
 		//System.out.println(texto);
 	}
@@ -1104,6 +1104,10 @@ public class Fachada extends Observable{
 	
 	public Generico consultaTransplantesConSangradoIOpLesionArterialYVenalRepefundir(){
 		return consultas.consultaTransplantesConSangradoIOpLesionArterialYVenalRepefundir();
+	}
+	
+	public Generico consultaTransplantesConSangradoIOpLesionArterialYVenalRepefundirOpciones(boolean i_op, boolean lesArt, boolean lesVen, boolean nec_rep){
+		return this.consultas.consultaTransplantesConSangradoIOpLesionArterialYVenalRepefundirOpciones(i_op, lesArt, lesVen, nec_rep);
 	}
 	
 	public Generico consultaTrasplantesGermenesInfecciones(int idGermen, int idInfeccion, boolean evolucion, FechaControl f){

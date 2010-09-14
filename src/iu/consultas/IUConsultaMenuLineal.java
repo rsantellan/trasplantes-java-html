@@ -37,7 +37,7 @@ public class IUConsultaMenuLineal extends JFrame {
 		}
 		this.getJComboBoxTipo().addItem("Meses");
 		this.getJComboBoxTipo().addItem("Dias");
-		this.getJComboBoxTipo().addItem("A�os");
+		this.getJComboBoxTipo().addItem("Años");
 	}
 	
 	/**

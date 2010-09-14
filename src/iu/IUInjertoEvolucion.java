@@ -518,7 +518,7 @@ public class IUInjertoEvolucion extends JFrame {
 		respuesta = JOptionPane
 				.showInputDialog(
 						this,
-						"Est� a punto de eliminar una evolucion del injerto\n(Ingrese SI para eliminar) Confirmar: ",
+						"Está a punto de eliminar una evolucion del injerto\n(Ingrese SI para eliminar) Confirmar: ",
 						"Confirmar", 1);
 		if (respuesta == null)
 			respuesta = "No";

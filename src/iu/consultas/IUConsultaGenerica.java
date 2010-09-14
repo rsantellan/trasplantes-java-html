@@ -154,11 +154,11 @@ public class IUConsultaGenerica extends JFrame {
 			break;
 		case 14:
 			g = Fachada.getInstancia().consultaNumArteriasVenasYUreter();
-			this.jLabelSeleccione.setText("N� ARTERIAS, VENAS Y URETER");
+			this.jLabelSeleccione.setText("N° ARTERIAS, VENAS Y URETER");
 			break;
 		case 15:
 			g = Fachada.getInstancia().consultaLadoRinhonAnomalia();
-			this.jLabelSeleccione.setText("LADO DEL RI�ON Y ANOMALIA VASCULAR");
+			this.jLabelSeleccione.setText("LADO DEL RIÑON Y ANOMALIA VASCULAR");
 			break;
 		case 16:
 			g = Fachada.getInstancia().consultaPacienteInastabilidadHemodinamica();
@@ -214,6 +214,9 @@ public class IUConsultaGenerica extends JFrame {
 			g = Fachada.getInstancia().consultaTrasplantesDiuresisEnBQ();
 			this.jLabelSeleccione.setText("DIURESIS EN BQ");
 			break;
+		case 29:
+			g = Fachada.getInstancia().consultaTransplantesConSangradoIOpLesionArterialYVenalRepefundir();
+			this.jLabelSeleccione.setText("Consulta de transplantes con sangrado I OP, lesion arterial y venal y necesidad de repefundir");
 		default:
 			this.salir();
 			break;

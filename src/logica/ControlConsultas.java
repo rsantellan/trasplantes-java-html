@@ -219,6 +219,7 @@ public class ControlConsultas {
 	public Generico consultaPacientesPorSexo() {
 		String sql = "SELECT P.THE, P.NOMBRE, P.APELLIDO, P.SEXO FROM pacientes P";
 		sql += " ORDER BY P.SEXO";
+
 		Generico g = new Generico();
 		g.setSql(sql);
 		g.getListaDada().add(Generico.integer);
@@ -890,9 +891,9 @@ public class ControlConsultas {
 		g.getListaNombre().add("DIAS REC DIURESIS");
 		g.getListaNombre().add("DIAS REC FUNCIONAL");
 		g.getListaNombre().add("DIALISIS");
-		g.getListaNombre().add("N� DE HD");
-		g.getListaNombre().add("RA 1� MES");
-		g.getListaNombre().add("NTA 1� MES");
+		g.getListaNombre().add("N° DE HD");
+		g.getListaNombre().add("RA 1° MES");
+		g.getListaNombre().add("NTA 1° MES");
 		g.leer();
 		this.arreglarDatosGenericos(g);
 		g = this.arreglarDatosTrasplantesDiuresisEnBQ(g);
@@ -966,6 +967,33 @@ public class ControlConsultas {
 		g.getListaNombre().add("RE OPERACIONES");
 		g.leer();
 		this.arreglarDatosGenericos(g);
+		return g;
+	}
+	
+	public Generico consultaTransplantesConSangradoIOpLesionArterialYVenalRepefundir(){
+		String sql = "SELECT t.PreTrasplante, p.nombre, p.apellido, t.sangrado_i_op, ";
+		sql += "t.lesion_arterial, t.lesion_venosa, t.NECESIDAD_REPEFUNDIR ";
+		sql += " FROM trasplante t, pacientepretrasplante pt, pacientes p ";
+		sql += " where p.the = pt.the AND t.PreTrasplante = pt.id AND ";
+		sql += "(t.sangrado_i_op = 1 OR t.lesion_arterial = 1 OR t.lesion_venosa = 1 OR t.NECESIDAD_REPEFUNDIR = 1)";
+		Generico g = new Generico();
+		g.setSql(sql);
+		g.getListaDada().add(Generico.integer);
+		g.getListaDada().add(Generico.letras);
+		g.getListaDada().add(Generico.letras);
+		g.getListaDada().add(Generico.VF);
+		g.getListaDada().add(Generico.VF);
+		g.getListaDada().add(Generico.VF);
+		g.getListaDada().add(Generico.VF);
+		g.getListaNombre().add("THE");
+		g.getListaNombre().add("NOMBRE");
+		g.getListaNombre().add("APELLIDO");		
+		g.getListaNombre().add("SANGRADO I OP");
+		g.getListaNombre().add("LESION ARTERIAL");
+		g.getListaNombre().add("LESION VENOSA");		
+		g.getListaNombre().add("NECESIDAD REPEFUNDIR");
+		g.leer();
+		this.arreglarDatosGenericos(g);		
 		return g;
 	}
 

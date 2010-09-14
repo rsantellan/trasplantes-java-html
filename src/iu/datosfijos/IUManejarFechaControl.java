@@ -221,7 +221,7 @@ public class IUManejarFechaControl extends JFrame implements java.util.Observer 
 					nueva = JOptionPane
 							.showInputDialog(
 									this,
-									"Ingrese la cantidad de a�os desde el trasplante\n a la de la nueva Fecha de Control :",
+									"Ingrese la cantidad de años desde el trasplante\n a la de la nueva Fecha de Control :",
 									"Confirmar", 3);
 					boolean ok = false;
 					if (nueva != null) {
@@ -303,7 +303,7 @@ public class IUManejarFechaControl extends JFrame implements java.util.Observer 
 		nuevaS = JOptionPane
 				.showInputDialog(
 						this,
-						"Ingrese la cantidad de a�os desde el trasplante\n a la de la nueva Fecha de Control\nDeje en blanco para no modificar :",
+						"Ingrese la cantidad de años desde el trasplante\n a la de la nueva Fecha de Control\nDeje en blanco para no modificar :",
 						"Confirmar", 3);
 		if (nuevaS != null) {
 			if (!nuevaS.equalsIgnoreCase("") && !nuevaS.equalsIgnoreCase(" ")) {

@@ -167,7 +167,7 @@ public class IUBackUpRestoreProgress extends JFrame implements
 		this.principal.setVisible(false);
 		/*
 		 * JOptionPane .showMessageDialog( this, "Es necesario que ingrese la
-		 * contrase�a maestra para efectuar el backup", "Advertencia", 2);
+		 * contraseña maestra para efectuar el backup", "Advertencia", 2);
 		 */
 	}
 
@@ -181,7 +181,7 @@ public class IUBackUpRestoreProgress extends JFrame implements
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		this.setLocation(100, 100);
 		this.setContentPane(getJContentPane());
-		this.setTitle("Ingrese contrase�a maestra");
+		this.setTitle("Ingrese contraseña maestra");
 		this.getJProgressBar().setVisible(false);
 		this.getJProgressBarRestauracion().setVisible(false);
 		this.jLabelBackUp.setVisible(false);
@@ -248,7 +248,7 @@ public class IUBackUpRestoreProgress extends JFrame implements
 			if (num == 1) {
 				String respuesta = "";
 				respuesta = JOptionPane.showInputDialog(this,
-						"�Esta seguro de querer restaurar la base de datos?.",
+						"¿Esta seguro de querer restaurar la base de datos?.",
 						"Confirmar", 1);
 				if (respuesta == null)
 					respuesta = "No";
@@ -289,7 +289,7 @@ public class IUBackUpRestoreProgress extends JFrame implements
 			JOptionPane
 					.showMessageDialog(
 							this,
-							"Ha ingresado mal la contrase�a, solo pueden generar BackUp los usuarios con contrase�a maestra.",
+							"Ha ingresado mal la contraseña, solo pueden generar BackUp los usuarios con contraseña maestra.",
 							"ERROR", 3);
 		}
 	}

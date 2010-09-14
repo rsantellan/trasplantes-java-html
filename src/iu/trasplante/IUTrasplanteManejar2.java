@@ -218,7 +218,7 @@ public class IUTrasplanteManejar2 extends JFrame implements java.util.Observer{
 	private JPanel getJContentPane() {
 		if (jContentPane == null) {
 			jLabelNumDeHd = new JLabel();
-			jLabelNumDeHd.setText("N� de HD :");
+			jLabelNumDeHd.setText("N° de HD :");
 			jLabelNumDeHd.setBounds(new Rectangle(25, 59, 118, 29));
 			jLabelComentario = new JLabel();
 			jLabelComentario.setText("Comentario traplante:");

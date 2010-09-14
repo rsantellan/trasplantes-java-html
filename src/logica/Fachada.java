@@ -1102,6 +1102,10 @@ public class Fachada extends Observable{
 		return consultas.consultaTrasplantesDiuresisEnBQ();
 	}
 	
+	public Generico consultaTransplantesConSangradoIOpLesionArterialYVenalRepefundir(){
+		return consultas.consultaTransplantesConSangradoIOpLesionArterialYVenalRepefundir();
+	}
+	
 	public Generico consultaTrasplantesGermenesInfecciones(int idGermen, int idInfeccion, boolean evolucion, FechaControl f){
 		return consultas.consultaTrasplantesGermenesInfecciones(idGermen,idInfeccion,evolucion, f);
 	}

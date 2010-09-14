@@ -324,9 +324,9 @@ public class Paciente implements IPersistente{
 	    int diff_month = today.get(Calendar.MONTH) - this.getFecha_nacimiento().get(Calendar.MONTH);
 	    int diff_day = today.get(Calendar.DAY_OF_MONTH) - this.getFecha_nacimiento().get(Calendar.DAY_OF_MONTH);
 
-	    //Si est� en ese a�o pero todav�a no los ha cumplido
+	    //Si está en ese año pero todavía no los ha cumplido
 	    if(diff_month<0 || (diff_month==0 && diff_day<0)){
-	        diff_year = diff_year - 1; //no aparec�an los dos guiones del postincremento :|
+	        diff_year = diff_year - 1; //no aparecéran los dos guiones del postincremento :|
 	    }
 	    return diff_year;
 	}

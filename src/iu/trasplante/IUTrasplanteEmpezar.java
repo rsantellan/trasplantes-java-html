@@ -238,7 +238,7 @@ public class IUTrasplanteEmpezar extends JFrame implements java.util.Observer{
 		PacientePreTrasplante aux = (PacientePreTrasplante) this.jListLista.getSelectedValue();
 		if(aux != null){
 			String respuesta = "";
-			respuesta = JOptionPane.showInputDialog(this, "Est� a punto de eliminar un el inicio de trasplante, se borraran todos los datos asociados.\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+			respuesta = JOptionPane.showInputDialog(this, "Está a punto de eliminar un el inicio de trasplante, se borraran todos los datos asociados.\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 			if(respuesta==null)respuesta="No";
 			if(respuesta.equalsIgnoreCase("Si")){
 				Fachada.getInstancia().eliminarPreTrasplante(aux);

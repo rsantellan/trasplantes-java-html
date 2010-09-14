@@ -208,7 +208,7 @@ public class IUPacientePerdidaInjertoIngresar extends JFrame implements
 		if (jDateChooserMuerte.getCalendar() == null) {
 			JOptionPane.showMessageDialog(this,
 					"Tiene que ingresar la fecha de fallecimiento",
-					"Falta informaci�n", 2);
+					"Falta información", 2);
 		} else {
 			CausaPerdidaInjerto c = (CausaPerdidaInjerto) this.jListOpcionesPerdida
 					.getSelectedValue();
@@ -338,7 +338,7 @@ public class IUPacientePerdidaInjertoIngresar extends JFrame implements
 		}
 		String respuesta = "";
 		respuesta = JOptionPane.showInputDialog(this,
-				"Est� a punto de eliminar a la perdida del injerto de la fecha : "
+				"Está a punto de eliminar a la perdida del injerto de la fecha : "
 						+ ManejoFechas.formatoEspanol.format(this.usado
 								.getFechaPerdida().getTime())
 						+ "\n(Ingrese SI para eliminar) Confirmar: ",

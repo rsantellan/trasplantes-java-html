@@ -90,7 +90,7 @@ public class IUBackUpProgress extends JFrame implements PropertyChangeListener {
 		JOptionPane
 				.showMessageDialog(
 						this,
-						"Es necesario que ingrese la contrase�a maestra para efectuar el backup",
+						"Es necesario que ingrese la contraseña maestra para efectuar el backup",
 						"Advertencia", 2);
 	}
 
@@ -103,7 +103,7 @@ public class IUBackUpProgress extends JFrame implements PropertyChangeListener {
 		this.setSize(319, 214);
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		this.setContentPane(getJContentPane());
-		this.setTitle("Ingrese contrase�a maestra");
+		this.setTitle("Ingrese contraseña maestra");
 		this.getJProgressBar().setVisible(false);
 	}
 
@@ -187,7 +187,7 @@ public class IUBackUpProgress extends JFrame implements PropertyChangeListener {
 				JOptionPane
 						.showMessageDialog(
 								this,
-								"La contrase�a ha caducado, por favor ingrese una nueva",
+								"La contraseña ha caducado, por favor ingrese una nueva",
 								"Advertencia", 2);
 				IULoginCambiar cambio = new IULoginCambiar();
 				cambio.setVisible(true);
@@ -198,7 +198,7 @@ public class IUBackUpProgress extends JFrame implements PropertyChangeListener {
 			JOptionPane
 					.showMessageDialog(
 							this,
-							"Ha ingresado mal la contrase�a, solo pueden generar BackUp los usuarios con contrase�a maestra.",
+							"Ha ingresado mal la contraseña, solo pueden generar BackUp los usuarios con contraseña maestra.",
 							"ERROR", 3);
 		}
 	}

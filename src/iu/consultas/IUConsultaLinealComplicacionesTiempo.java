@@ -67,8 +67,8 @@ public class IUConsultaLinealComplicacionesTiempo extends JFrame {
 			if(this.tipo.equalsIgnoreCase("Dias")){
 				poner = "dia";
 			}
-			if(this.tipo.equalsIgnoreCase("A�os")){
-				poner = "a�o";
+			if(this.tipo.equalsIgnoreCase("Años")){
+				poner = "año";
 			}
 			for(int x=0;x<this.datos.size();x++){
 				String aux = "La cantidad de complicaciones en el "+ poner +": " + (this.desde + x+1) + " es de " + ((Integer) this.datos.get(x)) ;
@@ -122,7 +122,7 @@ public class IUConsultaLinealComplicacionesTiempo extends JFrame {
 		if(this.tipo.equalsIgnoreCase("Dias")){
 			this.datos = Fachada.getInstancia().consultaComplicacionesPorDias(this.desde, this.hasta);
 		}
-		if(this.tipo.equalsIgnoreCase("A�os")){
+		if(this.tipo.equalsIgnoreCase("Años")){
 			this.datos = Fachada.getInstancia().consultaComplicacionesPorYear(this.desde, this.hasta);
 		}
 		for(int x=0;x<datos.size();x++){
@@ -286,7 +286,7 @@ public class IUConsultaLinealComplicacionesTiempo extends JFrame {
 		if(this.tipo.equalsIgnoreCase("Dias")){
 			tipoNum = 2;
 		}
-		if(this.tipo.equalsIgnoreCase("A�os")){
+		if(this.tipo.equalsIgnoreCase("Años")){
 			tipoNum = 3;
 		}
 		IUConsultaGenericaComplicaciones iu = new IUConsultaGenericaComplicaciones(this.desde, this.hasta, tipoNum);
@@ -320,7 +320,7 @@ public class IUConsultaLinealComplicacionesTiempo extends JFrame {
 		if(this.tipo.equalsIgnoreCase("Dias")){
 			tipoNum = 2;
 		}
-		if(this.tipo.equalsIgnoreCase("A�os")){
+		if(this.tipo.equalsIgnoreCase("Años")){
 			tipoNum = 3;
 		}
 		IUConsultaComplicacionesPorTiempoSeparadas iuDetalles = new IUConsultaComplicacionesPorTiempoSeparadas(this.desde, this.hasta, tipoNum);

@@ -229,8 +229,7 @@ public class IUConsultaGrafica extends JFrame {
 				);
 		chart.addSubtitle(new TextTitle("Number of Classes By Release"));
 		TextTitle source = new TextTitle(
-				"Source: Java In A Nutshell (4th Edition) "
-						+ "by David Flanagan (O�Reilly)");
+				"Source: ...");
 		source.setFont(new Font("SansSerif", Font.PLAIN, 10));
 		source.setPosition(RectangleEdge.BOTTOM);
 		source.setHorizontalAlignment(HorizontalAlignment.RIGHT);

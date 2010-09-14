@@ -238,7 +238,7 @@ public class IUManejarCausasPerdidaInjerto extends JFrame implements java.util.O
 		CausaPerdidaInjerto c = (CausaPerdidaInjerto) this.jListCausaPerdidaInjerto.getSelectedValue();
 		if(c!= null){
 			String respuesta = "";
-			respuesta = JOptionPane.showInputDialog(this, "Est� a punto de eliminar una causa de perdida de injerto.\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+			respuesta = JOptionPane.showInputDialog(this, "Está a punto de eliminar una causa de perdida de injerto.\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 			if(respuesta==null)respuesta="No";
 			if(respuesta.equalsIgnoreCase("Si")){
 				boolean eliminar = Fachada.getInstancia().verificarEliminacionCausaPerdidaInjerto(c);

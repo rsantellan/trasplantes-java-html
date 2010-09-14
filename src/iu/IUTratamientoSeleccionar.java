@@ -240,7 +240,7 @@ public class IUTratamientoSeleccionar extends JFrame implements java.util.Observ
 		}
 		if(t != null){
 			String respuesta = "";
-			respuesta = JOptionPane.showInputDialog(this, "Est� a punto de terminar un tratamiento\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+			respuesta = JOptionPane.showInputDialog(this, "Está a punto de terminar un tratamiento\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 			if(respuesta==null)respuesta="No";
 			if(respuesta.equalsIgnoreCase("Si")){
 				this.iuCalendar = new IUCalendarChooser(this);
@@ -307,7 +307,7 @@ public class IUTratamientoSeleccionar extends JFrame implements java.util.Observ
 		}
 		if(t != null){
 			String respuesta = "";
-			respuesta = JOptionPane.showInputDialog(this, "Est� a punto de eliminar un tratamiento\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+			respuesta = JOptionPane.showInputDialog(this, "Está a punto de eliminar un tratamiento\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 			if(respuesta==null)respuesta="No";
 			if(respuesta.equalsIgnoreCase("Si")){
 				Fachada.getInstancia().eliminarTratamiento(t);

@@ -140,7 +140,7 @@ public class IUCMVManejar extends JFrame {
 			jLabelEfectoSecundario = new JLabel();
 			jLabelEfectoSecundario.setBounds(new Rectangle(23, 364, 133, 31));
 			jLabelEfectoSecundario
-					.setText("<HTML>Suspencion por efecto <BR> secundario, �Cual? </HTML>:");
+					.setText("<HTML>Suspencion por efecto <BR> secundario, ¿Cual? </HTML>:");
 			jLabelDiasTratamient = new JLabel();
 			jLabelDiasTratamient.setBounds(new Rectangle(25, 320, 130, 30));
 			jLabelDiasTratamient.setText("Dias de tratamiento :");

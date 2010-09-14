@@ -237,7 +237,7 @@ public class IUManejarCausaMuertePaciente extends JFrame implements java.util.Ob
 		CausaMuertePaciente c = (CausaMuertePaciente) this.jListCausaMuerteP.getSelectedValue();
 		if(c!= null){
 			String respuesta = "";
-			respuesta = JOptionPane.showInputDialog(this, "Est� a punto de eliminar una Causa de muerte de pacientes.\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+			respuesta = JOptionPane.showInputDialog(this, "Está a punto de eliminar una Causa de muerte de pacientes.\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 			if(respuesta==null)respuesta="No";
 			if(respuesta.equalsIgnoreCase("Si")){
 				boolean eliminar = Fachada.getInstancia().verificarEliminacionCausaMuertePaciente(c);

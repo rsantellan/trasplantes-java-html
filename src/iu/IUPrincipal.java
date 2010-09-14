@@ -97,6 +97,7 @@ public class IUPrincipal extends JFrame implements java.util.Observer {
 	private JMenuItem jMenuItemConsultaTrasplantesInduccionesINM = null;
 	private JMenuItem jMenuItemConsultaTrasplantesInmunosupresores = null;
 	private JMenuItem jMenuItemConsultaTrasplantesDiuresisEnBq = null;
+	private JMenuItem jMenuItemConsultaTrasplantesSangradoLesionRepefundir = null;
 	private JMenuItem jMenuItemTrasplantesGermenesInfecciones = null;
 	private JMenuItem jMenuItemConsultaReOperaciones = null;
 	private JMenu jMenuDatosManagement = null;
@@ -769,6 +770,7 @@ public class IUPrincipal extends JFrame implements java.util.Observer {
 	 * This method initializes jMenuConsultas
 	 * 
 	 * @return javax.swing.JMenu
+
 	 */
 	private JMenu getJMenuConsultas() {
 		if (jMenuConsultas == null) {
@@ -1145,7 +1147,7 @@ public class IUPrincipal extends JFrame implements java.util.Observer {
 		if (jMenuItemConsultaNumArteriasNumVenasYUreter == null) {
 			jMenuItemConsultaNumArteriasNumVenasYUreter = new JMenuItem();
 			jMenuItemConsultaNumArteriasNumVenasYUreter
-					.setText("N� Arterias, N� Venas y Ureter");
+					.setText("N° Arterias, N° Venas y Ureter");
 			jMenuItemConsultaNumArteriasNumVenasYUreter
 					.setBackground(new Color(204, 204, 255));
 			jMenuItemConsultaNumArteriasNumVenasYUreter
@@ -1464,7 +1466,22 @@ public class IUPrincipal extends JFrame implements java.util.Observer {
 		}
 		return jMenuItemConsultaTrasplantesDiuresisEnBq;
 	}
-
+	private JMenuItem getJMenuItemConsultaTrasplantesSangradoLesionRepefundir() {
+		if (jMenuItemConsultaTrasplantesSangradoLesionRepefundir == null) {
+			jMenuItemConsultaTrasplantesSangradoLesionRepefundir = new JMenuItem();
+			jMenuItemConsultaTrasplantesSangradoLesionRepefundir.setText("Sangrado, Lesion, Repefundir");
+			jMenuItemConsultaTrasplantesSangradoLesionRepefundir.setBackground(new Color(
+					204, 204, 255));
+			jMenuItemConsultaTrasplantesSangradoLesionRepefundir
+					.addActionListener(new java.awt.event.ActionListener() {
+						public void actionPerformed(java.awt.event.ActionEvent e) {
+							consultaGenerica(29);
+						}
+					});
+		}
+		return jMenuItemConsultaTrasplantesSangradoLesionRepefundir;
+	}
+	
 	private void consultaGenerica(int id) {
 		IUPrincipalLogic.consultaGenerica(id);
 	}
@@ -1580,6 +1597,7 @@ public class IUPrincipal extends JFrame implements java.util.Observer {
 			jMenuConsultasC = new JMenu();
 			jMenuConsultasC.setText("C");
 			jMenuConsultasC.add(getJMenuItemConsultaTrasplantesDiuresisEnBq());
+			jMenuConsultasC.add(getJMenuItemConsultaTrasplantesSangradoLesionRepefundir());
 		}
 		return jMenuConsultasC;
 	}

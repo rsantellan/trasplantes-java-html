@@ -235,7 +235,7 @@ public class IUManejarGermenes extends JFrame implements java.util.Observer {
 		Germenes m = (Germenes) this.jListMedicacion.getSelectedValue();
 		if(m!= null){
 			String respuesta = "";
-			respuesta = JOptionPane.showInputDialog(this, "Est� a punto de eliminar un germen.\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+			respuesta = JOptionPane.showInputDialog(this, "Está a punto de eliminar un germen.\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 			if(respuesta==null)respuesta="No";
 			if(respuesta.equalsIgnoreCase("Si")){
 				boolean eliminar = Fachada.getInstancia().verificarEliminacionGermenes(m);

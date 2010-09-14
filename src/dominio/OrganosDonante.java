@@ -44,7 +44,7 @@ public class OrganosDonante implements IPersistente{
 
 	
 	public void guardar() {
-		if(this.getOrgano().equalsIgnoreCase("Ri�on")){
+		if(this.getOrgano().equalsIgnoreCase("Riñon")){
 			this.setOrgano("Rinhon");
 		}
 		broker.guardar();
@@ -54,7 +54,7 @@ public class OrganosDonante implements IPersistente{
 	public void leer() {
 		broker.leer();
 		if(this.getOrgano().equalsIgnoreCase("Rinhon")){
-			this.setOrgano("Ri�on");
+			this.setOrgano("Riñon");
 		}
 	}
 
@@ -64,7 +64,7 @@ public class OrganosDonante implements IPersistente{
 		for(int x=0;x<salida.size();x++){
 			OrganosDonante aux = salida.get(x);
 			if(aux.getOrgano().equalsIgnoreCase("Rinhon")){
-				aux.setOrgano("Ri�on");
+				aux.setOrgano("Riñon");
 			}
 		}
 		return salida;

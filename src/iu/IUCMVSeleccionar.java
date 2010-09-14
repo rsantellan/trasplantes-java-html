@@ -259,7 +259,7 @@ public class IUCMVSeleccionar extends JFrame implements
 			respuesta = JOptionPane
 					.showInputDialog(
 							this,
-							"Est� a punto de eliminar una CMV\n(Ingrese SI para eliminar) Confirmar: ",
+							"Está a punto de eliminar una CMV\n(Ingrese SI para eliminar) Confirmar: ",
 							"Confirmar", 1);
 			if (respuesta == null)
 				respuesta = "No";

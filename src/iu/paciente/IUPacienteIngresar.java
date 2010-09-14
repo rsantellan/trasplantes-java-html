@@ -71,7 +71,7 @@ public class IUPacienteIngresar extends JFrame {
 		// Raza
 		this.jComboBoxRaza.addItem("Blanca");
 		this.jComboBoxRaza.addItem("Negra");
-		this.jComboBoxRaza.addItem("Asi�tica");
+		this.jComboBoxRaza.addItem("Asiática");
 		this.jComboBoxRaza.addItem("Indio americana");
 
 		// Nefropatia
@@ -139,7 +139,7 @@ public class IUPacienteIngresar extends JFrame {
 			jLabelRaza.setText("Raza :");
 			jLabelNumFnr = new JLabel();
 			jLabelNumFnr.setBounds(new Rectangle(16, 97, 94, 30));
-			jLabelNumFnr.setText("N� FNR :");
+			jLabelNumFnr.setText("N° FNR :");
 			jLabelApellido = new JLabel();
 			jLabelApellido.setBounds(new Rectangle(370, 60, 94, 30));
 			jLabelApellido.setText("Apellido :");
@@ -416,40 +416,40 @@ public class IUPacienteIngresar extends JFrame {
 			todoOk = false;
 			JOptionPane.showMessageDialog(this,
 					"Tiene que ingresar por lo menos un nombre",
-					"Falta informaci�n", 2);
+					"Falta información", 2);
 		}
 		if (this.jTextFieldApellido.getText().equalsIgnoreCase("")
 				|| this.jTextFieldApellido.getText().equalsIgnoreCase(" ")) {
 			todoOk = false;
 			JOptionPane.showMessageDialog(this,
 					"Tiene que ingresar por lo menos un apellido",
-					"Falta informaci�n", 2);
+					"Falta información", 2);
 		}
 		if (this.jTextFieldCi.getText().equalsIgnoreCase("")
 				|| this.jTextFieldCi.getText().equalsIgnoreCase(" ")) {
 			todoOk = false;
 			JOptionPane.showMessageDialog(this,
 					"Tiene que ingresar la Cedula de identidad",
-					"Falta informaci�n", 2);
+					"Falta información", 2);
 		}
 		if (this.jTextFieldNum_Fnr.getText().equalsIgnoreCase("")
 				|| this.jTextFieldNum_Fnr.getText().equalsIgnoreCase(" ")) {
 			todoOk = false;
-			JOptionPane.showMessageDialog(this, "Tiene que ingresar en N� FNR",
-					"Falta informaci�n", 2);
+			JOptionPane.showMessageDialog(this, "Tiene que ingresar en N° FNR",
+					"Falta información", 2);
 		}
 		if (this.jDateChooserFechaNacimiento.getCalendar() == null) {
 			todoOk = false;
 			JOptionPane.showMessageDialog(this,
 					"Tiene que ingresar la fecha de nacimiento",
-					"Falta informaci�n", 2);
+					"Falta información", 2);
 		}
 		if(!this.getJCheckBoxSinDialisis().isSelected()){
 			if (this.jDateChooserFechaDialisis.getCalendar() == null) {
 				todoOk = false;
 				JOptionPane.showMessageDialog(this,
 						"Tiene que ingresar la fecha de comienzo de dialisis",
-						"Falta informaci�n", 2);
+						"Falta información", 2);
 			}
 		}
 		
@@ -472,8 +472,8 @@ public class IUPacienteIngresar extends JFrame {
 					JOptionPane
 							.showMessageDialog(
 									this,
-									"El N� FNR tiene que ser un valor numerico",
-									"Informaci�n incorrecta",
+									"El N° FNR tiene que ser un valor numerico",
+									"Información incorrecta",
 									JOptionPane.ERROR_MESSAGE);
 					return;
 				}

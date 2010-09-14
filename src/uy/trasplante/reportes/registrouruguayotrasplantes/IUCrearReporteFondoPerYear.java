@@ -36,7 +36,7 @@ public class IUCrearReporteFondoPerYear extends JFrame {
 		this.setSize(427, 306);
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		this.setContentPane(getJContentPane());
-		this.setTitle("Ingrese el a�o del reporte.");
+		this.setTitle("Ingrese el año del reporte.");
 	}
 
 	/**

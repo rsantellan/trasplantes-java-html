@@ -272,7 +272,7 @@ public class IUComplicacionesNoInfSeleccionar extends JFrame implements java.uti
 		TrasplanteComplicacionesNoInf t = this.lista.get(fila);
 		if(t != null){
 			String respuesta = "";
-			respuesta = JOptionPane.showInputDialog(this, "Est� a punto de eliminar una complicacion no infecciosa\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+			respuesta = JOptionPane.showInputDialog(this, "Está a punto de eliminar una complicacion no infecciosa\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 			if(respuesta==null)respuesta="No";
 			if(respuesta.equalsIgnoreCase("Si")){
 				Fachada.getInstancia().eliminarComplicacionNoInf(t);

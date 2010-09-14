@@ -178,7 +178,7 @@ public class IUTrasplanteManejar extends JFrame {
 			this.jLabelEdad.setVisible(true);
 			this.jLabelEdad.setText("Edad del receptor: "
 					+ this.p.calcularEdad(this.trasplante.getFecha())
-					+ " a�os.");
+					+ " años.");
 		}
 		if (this.trasplante != null) {
 			if (this.trasplante.getDonante().getId().equalsIgnoreCase("")) {
@@ -266,7 +266,7 @@ public class IUTrasplanteManejar extends JFrame {
 
 	private void cargarDatosFijos() {
 		String aux;
-		// Ri�on
+		// Riñon
 		aux = "Derecho";
 		this.jComboBoxRinhon.addItem(aux);
 		aux = "Izquierdo";
@@ -394,7 +394,7 @@ public class IUTrasplanteManejar extends JFrame {
 			jLabelLiqPerfusion.setText("Liquido Perfusion :");
 			jLabelLiqPerfusion.setBounds(new Rectangle(2, 127, 112, 28));
 			jLabelNumEmbarazo = new JLabel();
-			jLabelNumEmbarazo.setText("N� Embarazo :");
+			jLabelNumEmbarazo.setText("N° Embarazo :");
 			jLabelNumEmbarazo.setBounds(new Rectangle(8, 159, 103, 21));
 			jLabelEmbarazo = new JLabel();
 			jLabelEmbarazo.setText("Embarazo :");
@@ -409,34 +409,34 @@ public class IUTrasplanteManejar extends JFrame {
 			jLabelPraMax.setText("PRA Max :");
 			jLabelPraMax.setBounds(new Rectangle(11, 5, 67, 26));
 			jLabelNumIncompatibilidadDR = new JLabel();
-			jLabelNumIncompatibilidadDR.setText("N� Compatibilidad DR :");
+			jLabelNumIncompatibilidadDR.setText("N° Incompatibilidad DR :");
 			jLabelNumIncompatibilidadDR
 					.setBounds(new Rectangle(3, 108, 133, 23));
 			jLabelNumInCompatibilidadAB = new JLabel();
-			jLabelNumInCompatibilidadAB.setText("N� Incompatibilidad AB :");
+			jLabelNumInCompatibilidadAB.setText("N° Incompatibilidad AB :");
 			jLabelNumInCompatibilidadAB
 					.setBounds(new Rectangle(2, 73, 139, 28));
 			jLabelNumCompatibilidadDR = new JLabel();
-			jLabelNumCompatibilidadDR.setText("N� Compatibilidad DR :");
+			jLabelNumCompatibilidadDR.setText("N° Compatibilidad DR :");
 			jLabelNumCompatibilidadDR.setBounds(new Rectangle(3, 42, 135, 25));
 			jLabelNumCompatibilidadAB = new JLabel();
-			jLabelNumCompatibilidadAB.setText("N� Compatibilidad AB :");
+			jLabelNumCompatibilidadAB.setText("N° Compatibilidad AB :");
 			jLabelNumCompatibilidadAB.setBounds(new Rectangle(4, 9, 132, 25));
 			jLabelUreter = new JLabel();
 			jLabelUreter.setText("Ureter :");
 			jLabelUreter.setBounds(new Rectangle(2, 99, 69, 25));
 			jLabelNumVenas = new JLabel();
-			jLabelNumVenas.setText("N�mero Venas :");
+			jLabelNumVenas.setText("Número Venas :");
 			jLabelNumVenas.setBounds(new Rectangle(2, 70, 133, 25));
 			jLabelNumArterias = new JLabel();
-			jLabelNumArterias.setText("N�mero Arterias :");
+			jLabelNumArterias.setText("Número Arterias :");
 			jLabelNumArterias.setBounds(new Rectangle(2, 40, 133, 25));
 			jLabelRinhon = new JLabel();
-			jLabelRinhon.setText("Ri�on :");
+			jLabelRinhon.setText("Riñon :");
 			jLabelRinhon.setBounds(new Rectangle(3, 8, 67, 26));
 			jLabelNumeroTrasplante = new JLabel();
 			jLabelNumeroTrasplante.setBounds(new Rectangle(621, 56, 128, 26));
-			jLabelNumeroTrasplante.setText("N�mero Trasplante:");
+			jLabelNumeroTrasplante.setText("Número Trasplante:");
 			jLabelFechaTrasplante = new JLabel();
 			jLabelFechaTrasplante.setBounds(new Rectangle(619, 19, 128, 26));
 			jLabelFechaTrasplante.setText("Fecha del Trasplante:");
@@ -975,6 +975,7 @@ public class IUTrasplanteManejar extends JFrame {
 		if (jCheckBoxLesionVenosa == null) {
 			jCheckBoxLesionVenosa = new JCheckBox();
 			jCheckBoxLesionVenosa.setText("Lesion Venosa");
+
 			jCheckBoxLesionVenosa.setBounds(new Rectangle(152, 74, 119, 26));
 			jCheckBoxLesionVenosa.setBackground(Color.WHITE);
 		}

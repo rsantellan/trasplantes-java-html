@@ -996,6 +996,7 @@ public class IUEvolucionTrasplanteElegirTipo extends JFrame implements
 	}
 
 	/**
+
 	 * This method initializes jButtonVerMarvirales
 	 * 
 	 * @return javax.swing.JButton
@@ -1341,7 +1342,7 @@ public class IUEvolucionTrasplanteElegirTipo extends JFrame implements
 	}
 	private void eliminarClasica(){
 		String respuesta = "";
-		respuesta = JOptionPane.showInputDialog(this, "Est� a punto de eliminar una evolucion\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+		respuesta = JOptionPane.showInputDialog(this, "Está a punto de eliminar una evolucion\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 		if(respuesta==null)respuesta="No";
 		if(respuesta.equalsIgnoreCase("Si")){
 			comprobarfecha();
@@ -1354,7 +1355,7 @@ public class IUEvolucionTrasplanteElegirTipo extends JFrame implements
 	
 	private void eliminarCMV(){
 		String respuesta = "";
-		respuesta = JOptionPane.showInputDialog(this, "Est� a punto de eliminar una evolucion\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+		respuesta = JOptionPane.showInputDialog(this, "Está a punto de eliminar una evolucion\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 		if(respuesta==null)respuesta="No";
 		if(respuesta.equalsIgnoreCase("Si")){
 			comprobarfecha();
@@ -1367,7 +1368,7 @@ public class IUEvolucionTrasplanteElegirTipo extends JFrame implements
 	
 	private void eliminarECG(){
 		String respuesta = "";
-		respuesta = JOptionPane.showInputDialog(this, "Est� a punto de eliminar una evolucion\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+		respuesta = JOptionPane.showInputDialog(this, "Está a punto de eliminar una evolucion\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 		if(respuesta==null)respuesta="No";
 		if(respuesta.equalsIgnoreCase("Si")){
 			comprobarfecha();
@@ -1380,7 +1381,7 @@ public class IUEvolucionTrasplanteElegirTipo extends JFrame implements
 	
 	private void eliminarEcoCardio(){
 		String respuesta = "";
-		respuesta = JOptionPane.showInputDialog(this, "Est� a punto de eliminar una evolucion\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+		respuesta = JOptionPane.showInputDialog(this, "Está a punto de eliminar una evolucion\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 		if(respuesta==null)respuesta="No";
 		if(respuesta.equalsIgnoreCase("Si")){
 			comprobarfecha();
@@ -1393,7 +1394,7 @@ public class IUEvolucionTrasplanteElegirTipo extends JFrame implements
 	
 	private void eliminarMarvirales(){
 		String respuesta = "";
-		respuesta = JOptionPane.showInputDialog(this, "Est� a punto de eliminar una evolucion\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+		respuesta = JOptionPane.showInputDialog(this, "Está a punto de eliminar una evolucion\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 		if(respuesta==null)respuesta="No";
 		if(respuesta.equalsIgnoreCase("Si")){
 			comprobarfecha();
@@ -1406,7 +1407,7 @@ public class IUEvolucionTrasplanteElegirTipo extends JFrame implements
 	
 	private void eliminarTxTorax(){
 		String respuesta = "";
-		respuesta = JOptionPane.showInputDialog(this, "Est� a punto de eliminar una evolucion\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+		respuesta = JOptionPane.showInputDialog(this, "Está a punto de eliminar una evolucion\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 		if(respuesta==null)respuesta="No";
 		if(respuesta.equalsIgnoreCase("Si")){
 			comprobarfecha();
@@ -1419,7 +1420,7 @@ public class IUEvolucionTrasplanteElegirTipo extends JFrame implements
 	
 	private void eliminarNutricion(){
 		String respuesta = "";
-		respuesta = JOptionPane.showInputDialog(this, "Est� a punto de eliminar una evolucion\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+		respuesta = JOptionPane.showInputDialog(this, "Está a punto de eliminar una evolucion\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 		if(respuesta==null)respuesta="No";
 		if(respuesta.equalsIgnoreCase("Si")){
 			comprobarfecha();
@@ -1432,7 +1433,7 @@ public class IUEvolucionTrasplanteElegirTipo extends JFrame implements
 	
 	private void borrarTodo(){
 		String respuesta = "";
-		respuesta = JOptionPane.showInputDialog(this, "Est� a punto de eliminar todas las evoluciones de esta fecha\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+		respuesta = JOptionPane.showInputDialog(this, "Está a punto de eliminar todas las evoluciones de esta fecha\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 		if(respuesta==null)respuesta="No";
 		if(respuesta.equalsIgnoreCase("Si")){
 			comprobarfecha();

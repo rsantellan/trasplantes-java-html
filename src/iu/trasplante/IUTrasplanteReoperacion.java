@@ -310,7 +310,7 @@ public class IUTrasplanteReoperacion extends JFrame {
 	private void eliminarReoperacion() {
 		TrasplanteReoperacion treo = (TrasplanteReoperacion) this.jComboBoxReoperaciones.getSelectedItem();
 		String respuesta = "";
-		respuesta = JOptionPane.showInputDialog(this, "Est� a punto de eliminar una reoperacion \n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+		respuesta = JOptionPane.showInputDialog(this, "Está a punto de eliminar una reoperacion \n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 		if(respuesta==null)respuesta="No";
 		if(respuesta.equalsIgnoreCase("Si")){
 			if(treo.getFecha() != null){

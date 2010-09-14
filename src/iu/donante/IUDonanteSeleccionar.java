@@ -226,7 +226,7 @@ public class IUDonanteSeleccionar extends JFrame implements java.util.Observer{
 		Donante d = this.listaDonates.get(fila);
 		if(d != null){
 			String respuesta = "";
-			respuesta = JOptionPane.showInputDialog(this, "Est� a punto de eliminar a el donante : " + d.toString() + "\nEsto solo podra ser posible si no tiene un Trasplante asociado\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+			respuesta = JOptionPane.showInputDialog(this, "Está a punto de eliminar a el donante : " + d.toString() + "\nEsto solo podra ser posible si no tiene un Trasplante asociado\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 			if(respuesta==null)respuesta="No";
 			if(respuesta.equalsIgnoreCase("Si")){
 				if(Fachada.getInstancia().eliminarDonante(d)){

@@ -627,7 +627,7 @@ public class IUDonanteModificar extends JFrame implements java.util.Observer{
 		boolean todoOk = true;
 		if(this.jTextFieldId.getText().equalsIgnoreCase("") || this.jTextFieldId.getText().equalsIgnoreCase(" ")){
 			todoOk = false;
-			JOptionPane.showMessageDialog(this,"Tiene que ingresar un Id" , "Falta informaci�n", 2);
+			JOptionPane.showMessageDialog(this,"Tiene que ingresar un Id" , "Falta información", 2);
 		}
 		if(todoOk){
 			Donante d = new Donante();

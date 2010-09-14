@@ -140,7 +140,7 @@ public class IUTrasplanteFechaAlta extends JFrame implements java.util.Observer 
 	private void confirmar() {
 		if (jDateChooserMuerte.getCalendar() == null) {
 			JOptionPane.showMessageDialog(this,
-					"Tiene que ingresar la fecha de alta", "Falta informaci�n",
+					"Tiene que ingresar la fecha de alta", "Falta información",
 					2);
 		} else {
 			if (this.t.getFecha().after(

@@ -88,7 +88,7 @@ public class FechaControl implements IPersistente {
 	public String toString(){
 		String salida = this.getFecha() + ": ";
 		if(this.getAnos() != 0){
-			salida += this.getAnos() + " A�OS";
+			salida += this.getAnos() + " AÑOS";
 		}
 		if(this.getMeses() != 0){
 			salida += ", "+ this.getMeses() + " MESES";

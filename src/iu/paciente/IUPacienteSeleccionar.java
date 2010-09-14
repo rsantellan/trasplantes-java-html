@@ -272,7 +272,7 @@ public class IUPacienteSeleccionar extends JFrame implements java.util.Observer{
 		Paciente p = this.listaPacientes.get(fila);
 		if(p != null){
 			String respuesta = "";
-			respuesta = JOptionPane.showInputDialog(this, "Est� a punto de eliminar a el paciente : " + p.toString() + "\nSe eliminar�n todos los datos relacionados a el mismo.\nPor un motivo de seguridad quedara vacio el n�mero THE que tenia el paciente\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+			respuesta = JOptionPane.showInputDialog(this, "Está a punto de eliminar a el paciente : " + p.toString() + "\nSe eliminarán todos los datos relacionados a el mismo.\nPor un motivo de seguridad quedara vacio el número THE que tenia el paciente\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 			if(respuesta==null)respuesta="No";
 			if(respuesta.equalsIgnoreCase("Si")){
 				ArrayList<PacientePreTrasplante> salida = null;
@@ -491,7 +491,7 @@ public class IUPacienteSeleccionar extends JFrame implements java.util.Observer{
 	
 	private void crearVacio(){
 		String respuesta = "";
-		respuesta = JOptionPane.showInputDialog(this, "Est� a punto de crear un lugar vacio \nEsto puede realizarse para no perder la numeracion del THE\n(Ingrese SI para ingresar)", "Confirmar", 1);
+		respuesta = JOptionPane.showInputDialog(this, "Está a punto de crear un lugar vacio \nEsto puede realizarse para no perder la numeracion del THE\n(Ingrese SI para ingresar)", "Confirmar", 1);
 		if(respuesta==null)respuesta="No";
 		if(respuesta.equalsIgnoreCase("Si")){
 			Fachada.getInstancia().crearPacienteDummie();

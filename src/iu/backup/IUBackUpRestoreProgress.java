@@ -25,7 +25,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JLabel;
 import javax.swing.JFileChooser;
 
-import auxiliaresfileselector.FiltroSQLZIP;
+import uy.tranplante.auxiliares.file.selector.FiltroSQLZIP;
 
 public class IUBackUpRestoreProgress extends JFrame implements
 		PropertyChangeListener {

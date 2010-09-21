@@ -1,4 +1,4 @@
-package capturaPantalla;
+package uy.tranplante.auxiliares.captura.pantalla;
 
 import java.awt.AWTException;
 import java.awt.HeadlessException;
@@ -12,31 +12,33 @@ import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
-public class Captura {
+import logica.Fachada;
 
-	public static void capturar(String nombreArchivo){
+final class Captura {
+
+	private Captura(){
+		
+	}
+	
+	public static void capturar(final String nombreArchivo){
 		try {
 			TimeUnit.SECONDS.sleep(1);
-			BufferedImage captura = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+			final BufferedImage captura = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
 			
 			// Save as JPEG
-			File file = new File(nombreArchivo + ".jpg");
+			final File file = new File(nombreArchivo + ".jpg");
 			ImageIO.write(captura, "jpg", file);
 			// Save as PNG
 			// File file = new File("screencapture.png");
 			// ImageIO.write(screencapture, "png", file);
 		} catch (HeadlessException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			Fachada.getInstancia().guardarLog(3, e1.getMessage());
 		} catch (AWTException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			Fachada.getInstancia().guardarLog(3, e1.getMessage());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(3, e.getMessage());
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(3, e.getMessage());
 		}
 	}
 }

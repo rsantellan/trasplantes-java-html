@@ -1,6 +1,7 @@
 package uy.transplante.auxiliares.encriptado;
 
 import java.security.*;
+
 import javax.crypto.*;
 import javax.crypto.spec.*;
 
@@ -8,23 +9,23 @@ import javax.crypto.spec.*;
 
 import java.io.*;
 
-public class Blowfish {
+final class Blowfish {
 
+	private Blowfish(){
+		
+	}
 
-    public static String encriptar(String cleartext, String key)
-            throws Exception {
+    public static String encriptar(final String cleartext, final String key) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IOException {
         return crypt(cleartext, key, Cipher.ENCRYPT_MODE);    
     }
 
  
-    public static String desEncriptar(String ciphertext, String key)
-            throws Exception {
+    public static String desEncriptar(final String ciphertext, final String key) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IOException{
         return crypt(ciphertext, key, Cipher.DECRYPT_MODE);    
     }
 
     @SuppressWarnings("all")
-    private static String crypt(String input, String key, int mode) 
-            throws Exception {
+    private static String crypt(String input, String key, int mode) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IOException{
 
         // Install SunJCE provider
         Provider sunJce = new com.sun.crypto.provider.SunJCE();

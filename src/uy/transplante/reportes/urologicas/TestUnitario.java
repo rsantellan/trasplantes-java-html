@@ -1,4 +1,4 @@
-package uy.trasplante.reportes.urologicas;
+package uy.transplante.reportes.urologicas;
 
 import logica.Fachada;
 

@@ -1,4 +1,4 @@
-package uy.trasplante.reportes.registrouruguayotrasplantes;
+package uy.transplante.reportes.registrouruguayotrasplantes;
 
 import java.io.FileWriter;
 import java.io.IOException;

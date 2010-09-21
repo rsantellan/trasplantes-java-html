@@ -1,4 +1,4 @@
-package uy.trasplante.reportes.fichamedica.creador;
+package uy.transplante.reportes.fichamedica.creador;
 
 import java.awt.BorderLayout;
 import java.io.FileWriter;

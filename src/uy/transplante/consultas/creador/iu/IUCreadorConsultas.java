@@ -1,4 +1,4 @@
-package uy.trasplante.consultas.creador.iu;
+package uy.transplante.consultas.creador.iu;
 
 import iu.consultas.IUConsultaGenerica;
 

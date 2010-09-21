@@ -1,4 +1,4 @@
-package uy.trasplante.reportes.registrouruguayotrasplantes;
+package uy.transplante.reportes.registrouruguayotrasplantes;
 
 import javax.swing.JPanel;
 import javax.swing.JFrame;

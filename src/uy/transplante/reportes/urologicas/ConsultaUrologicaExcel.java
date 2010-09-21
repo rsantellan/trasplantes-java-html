@@ -1,7 +1,7 @@
 /**
  * 
  */
-package uy.trasplante.reportes.urologicas;
+package uy.transplante.reportes.urologicas;
 
 import java.io.FileWriter;
 import java.io.IOException;

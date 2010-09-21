@@ -1,4 +1,4 @@
-package auxiliaresfileselector;
+package uy.tranplante.auxiliares.file.selector;
 
 import java.io.File;
 import javax.swing.ImageIcon;

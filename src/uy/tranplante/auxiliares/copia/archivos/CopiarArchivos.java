@@ -1,4 +1,4 @@
-package copiaArchivos;
+package uy.tranplante.auxiliares.copia.archivos;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

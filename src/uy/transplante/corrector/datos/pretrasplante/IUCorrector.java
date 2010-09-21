@@ -1,4 +1,4 @@
-package corrector.datos.pretrasplante;
+package uy.transplante.corrector.datos.pretrasplante;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;

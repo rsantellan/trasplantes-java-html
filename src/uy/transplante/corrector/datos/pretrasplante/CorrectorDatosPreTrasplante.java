@@ -1,4 +1,4 @@
-package corrector.datos.pretrasplante;
+package uy.transplante.corrector.datos.pretrasplante;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

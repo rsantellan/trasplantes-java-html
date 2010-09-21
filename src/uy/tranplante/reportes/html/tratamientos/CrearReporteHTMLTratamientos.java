@@ -48,7 +48,7 @@ public class CrearReporteHTMLTratamientos {
 			aux += "<li>" +  this.delimiter ;
 			aux += "<ul class='lista_tratamientos'>" +  this.delimiter ;
 			Tratamiento t = listaActivos.get(x);
-			aux +="<li><label class='label_tratamientos'>Fecha de inicio: </label>" +ManejoFechas.formatoEspanol.format(t.getFecha_inicio().getTime())+ "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_tratamientos'>Fecha de inicio: </label>" +ManejoFechas.FORMATOESPANOL.format(t.getFecha_inicio().getTime())+ "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_tratamientos'>Fecha de fin: </label></li>" +  this.delimiter ;
 			aux +="<li><label class='label_tratamientos'>Medicación: </label>" +t.getMedicacion().getNombre() + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_tratamientos'>Dosis: </label>" + t.getDosis() + "</li>" +  this.delimiter ;
@@ -66,8 +66,8 @@ public class CrearReporteHTMLTratamientos {
 			aux += "<li>" +  this.delimiter ;
 			aux += "<ul class='lista_tratamientos'>" +  this.delimiter ;
 			Tratamiento t = listaNoActivos.get(x);
-			aux +="<li><label class='label_tratamientos'>Fecha de inicio: </label>" +ManejoFechas.formatoEspanol.format(t.getFecha_inicio().getTime())+ "</li>" +  this.delimiter ;
-			aux +="<li><label class='label_tratamientos'>Fecha de fin: </label>" + ManejoFechas.formatoEspanol.format(t.getFecha_fin().getTime()) + "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_tratamientos'>Fecha de inicio: </label>" +ManejoFechas.FORMATOESPANOL.format(t.getFecha_inicio().getTime())+ "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_tratamientos'>Fecha de fin: </label>" + ManejoFechas.FORMATOESPANOL.format(t.getFecha_fin().getTime()) + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_tratamientos'>Medicación: </label>" +t.getMedicacion().getNombre() + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_tratamientos'>Dosis: </label>" + t.getDosis() + "</li>" +  this.delimiter ;
 			aux += "</ul>" +  this.delimiter ;

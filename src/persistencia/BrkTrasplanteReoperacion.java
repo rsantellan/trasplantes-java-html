@@ -25,7 +25,7 @@ public class BrkTrasplanteReoperacion extends Broker {
 		TrasplanteReoperacion t = (TrasplanteReoperacion) this.getObj();
 		String sql = "";
 		if (t.getFecha() != null) {
-			String fecha = ManejoFechas.formatoIngles.format(t.getFecha()
+			String fecha = ManejoFechas.FORMATOINGLES.format(t.getFecha()
 					.getTime());
 			if (!fecha.equalsIgnoreCase("1900-01-01")) {
 				sql = "DELETE FROM trasplante_reoperacion WHERE id_trasplante =?  AND FECHA = ?";
@@ -66,7 +66,7 @@ public class BrkTrasplanteReoperacion extends Broker {
 				+ t.getIdTrasplante();
 		if (t.getFecha() == null)
 			return sql;
-		String fecha = ManejoFechas.formatoIngles
+		String fecha = ManejoFechas.FORMATOINGLES
 				.format(t.getFecha().getTime());
 		if (!fecha.equalsIgnoreCase("1900-01-01")) {
 			sql += " AND fecha='" + fecha + "'";
@@ -78,7 +78,7 @@ public class BrkTrasplanteReoperacion extends Broker {
 	public String getInsertSQL() {
 		TrasplanteReoperacion t = (TrasplanteReoperacion) this.getObj();
 		String sql = "";
-		String fecha = ManejoFechas.formatoIngles
+		String fecha = ManejoFechas.FORMATOINGLES
 				.format(t.getFecha().getTime());
 		sql += "INSERT INTO trasplante_reoperacion(id_trasplante,fecha,descripcion,complicacion) VALUES (";
 		sql += t.getIdTrasplante() + ",'" + fecha + "','" + t.getComentario()
@@ -97,7 +97,7 @@ public class BrkTrasplanteReoperacion extends Broker {
 		String sql = "";
 		sql += "SELECT * FROM trasplante_reoperacion WHERE id_trasplante ="
 				+ t.getIdTrasplante();
-		String fecha = ManejoFechas.formatoIngles
+		String fecha = ManejoFechas.FORMATOINGLES
 				.format(t.getFecha().getTime());
 		if (fecha.equalsIgnoreCase("1900-01-01")) {
 			sql += " AND fecha='" + fecha + "'";
@@ -113,7 +113,7 @@ public class BrkTrasplanteReoperacion extends Broker {
 		sql += "descripcion ='" + t.getComentario() + "',";
 		sql += "complicacion = " + t.getNumComplicacion();
 		sql += " WHERE id_trasplante =" + t.getIdTrasplante();
-		String fecha = ManejoFechas.formatoIngles
+		String fecha = ManejoFechas.FORMATOINGLES
 				.format(t.getFecha().getTime());
 		sql += " AND fecha ='" + fecha + "'";
 		return sql;
@@ -125,7 +125,7 @@ public class BrkTrasplanteReoperacion extends Broker {
 			TrasplanteReoperacion t = (TrasplanteReoperacion) aux;
 			t.setIdTrasplante(rs.getInt("id_trasplante"));
 			String auxFecha = rs.getString("fecha");
-			t.getFecha().setTime(ManejoFechas.formatoIngles.parse(auxFecha));
+			t.getFecha().setTime(ManejoFechas.FORMATOINGLES.parse(auxFecha));
 			t.setComentario(rs.getString("descripcion"));
 			t.setNumComplicacion(rs.getInt("complicacion"));
 		} catch (SQLException e) {
@@ -146,7 +146,7 @@ public class BrkTrasplanteReoperacion extends Broker {
 		String sql = "";
 		sql += "SELECT COUNT(*) FROM trasplante_reoperacion WHERE id_trasplante ="
 				+ t.getIdTrasplante();
-		String fecha = ManejoFechas.formatoIngles
+		String fecha = ManejoFechas.FORMATOINGLES
 				.format(t.getFecha().getTime());
 		if (!fecha.equalsIgnoreCase("1900-01-01")) {
 			sql += " AND fecha='" + fecha + "'";

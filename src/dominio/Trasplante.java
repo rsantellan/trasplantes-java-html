@@ -1260,7 +1260,7 @@ public class Trasplante implements IPersistente{
 	}
 	
 	public String toString(){
-		return "Num:" + this.getNumTr() + " Fecha Trasplante : " + ManejoFechas.formatoEspanol.format(this.getFecha().getTime()); //" Donante:"+ this.getDonante().toString();
+		return "Num:" + this.getNumTr() + " Fecha Trasplante : " + ManejoFechas.FORMATOESPANOL.format(this.getFecha().getTime()); //" Donante:"+ this.getDonante().toString();
 	}
 
 	

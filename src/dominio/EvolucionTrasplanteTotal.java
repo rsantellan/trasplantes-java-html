@@ -159,7 +159,7 @@ public class EvolucionTrasplanteTotal {
 		ArrayList<EvolucionTrasplante> listaEvolucion = aux.obtenerTodos();
 		for(int x = 0; x<listaEvolucion.size();x++){
 			Calendar auxC = listaEvolucion.get(x).getFecha();
-			String fecha = ManejoFechas.formatoEspanol.format(auxC.getTime());
+			String fecha = ManejoFechas.FORMATOESPANOL.format(auxC.getTime());
 			if(!salida.contains(fecha)){
 				salida.add(fecha);
 			}
@@ -170,7 +170,7 @@ public class EvolucionTrasplanteTotal {
 		ArrayList<EvolucionTrasplanteCMV> listaCMV = auxCMV.obtenerTodos();
 		for(int x=0;x<listaCMV.size(); x++){
 			Calendar auxC = listaCMV.get(x).getFecha();
-			String fecha = ManejoFechas.formatoEspanol.format(auxC.getTime());
+			String fecha = ManejoFechas.FORMATOESPANOL.format(auxC.getTime());
 			if(!salida.contains(fecha)){
 				salida.add(fecha);
 			}
@@ -181,7 +181,7 @@ public class EvolucionTrasplanteTotal {
 		ArrayList<EvolucionTrasplanteECG> listaECG = auxECG.obtenerTodos();
 		for(int x=0;x<listaECG.size(); x++){
 			Calendar auxC = listaECG.get(x).getFecha();
-			String fecha = ManejoFechas.formatoEspanol.format(auxC.getTime());
+			String fecha = ManejoFechas.FORMATOESPANOL.format(auxC.getTime());
 			if(!salida.contains(fecha)){
 				salida.add(fecha);
 			}
@@ -192,7 +192,7 @@ public class EvolucionTrasplanteTotal {
 		ArrayList<EvolucionTrasplanteEcoCardio> listaEco = auxEco.obtenerTodos();
 		for(int x=0;x<listaEco.size(); x++){
 			Calendar auxC = listaEco.get(x).getFecha();
-			String fecha = ManejoFechas.formatoEspanol.format(auxC.getTime());
+			String fecha = ManejoFechas.FORMATOESPANOL.format(auxC.getTime());
 			if(!salida.contains(fecha)){
 				salida.add(fecha);
 			}
@@ -203,7 +203,7 @@ public class EvolucionTrasplanteTotal {
 		ArrayList<EvolucionTrasplanteMarvirales> listaMar = auxMar.obtenerTodos();
 		for(int x=0;x<listaMar.size(); x++){
 			Calendar auxC = listaMar.get(x).getFecha();
-			String fecha = ManejoFechas.formatoEspanol.format(auxC.getTime());
+			String fecha = ManejoFechas.FORMATOESPANOL.format(auxC.getTime());
 			if(!salida.contains(fecha)){
 				salida.add(fecha);
 			}
@@ -214,7 +214,7 @@ public class EvolucionTrasplanteTotal {
 		ArrayList<EvolucionTrasplanteNutricion> listaNut = auxNut.obtenerTodos();
 		for(int x=0;x<listaNut.size(); x++){
 			Calendar auxC = listaNut.get(x).getFecha();
-			String fecha = ManejoFechas.formatoEspanol.format(auxC.getTime());
+			String fecha = ManejoFechas.FORMATOESPANOL.format(auxC.getTime());
 			if(!salida.contains(fecha)){
 				salida.add(fecha);
 			}
@@ -225,7 +225,7 @@ public class EvolucionTrasplanteTotal {
 		ArrayList<EvolucionTrasplanteTxTorax> listaTx = auxTx.obtenerTodos();
 		for(int x=0;x<listaTx.size(); x++){
 			Calendar auxC = listaTx.get(x).getFecha();
-			String fecha = ManejoFechas.formatoEspanol.format(auxC.getTime());
+			String fecha = ManejoFechas.FORMATOESPANOL.format(auxC.getTime());
 			if(!salida.contains(fecha)){
 				salida.add(fecha);
 			}

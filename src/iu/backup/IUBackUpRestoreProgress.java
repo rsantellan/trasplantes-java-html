@@ -25,7 +25,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JLabel;
 import javax.swing.JFileChooser;
 
-import auxiliaresFileSelector.FiltroSQLZIP;
+import auxiliaresfileselector.FiltroSQLZIP;
 
 public class IUBackUpRestoreProgress extends JFrame implements
 		PropertyChangeListener {
@@ -63,29 +63,17 @@ public class IUBackUpRestoreProgress extends JFrame implements
 
 		private void empezar() {
 			cambio1 = true;
-			this.setProgress(0);
-			cambio1 = true;
-			this.setProgress(10);
-			int aux = Fachada.getInstancia().crearBackUp(0);
-			if (aux == -1) {
+			Cursor hourglassCursor = new Cursor(Cursor.WAIT_CURSOR);
+			setCursor(hourglassCursor);
+			this.setProgress(50);
+			int aux = Fachada.getInstancia().crearBackUp();
+			if(aux == -1){
 				error();
 				return;
 			}
-			cambio1 = true;
-			this.setProgress(35);
-			aux = Fachada.getInstancia().crearBackUp(1);
-			if (aux == -1) {
-				error();
-				return;
-			}
-			cambio1 = true;
-			this.setProgress(75);
-			aux = Fachada.getInstancia().crearBackUp(2);
-			if (aux == -1) {
-				error();
-				return;
-			}
-			cambio1 = true;
+			Cursor normalCursor = new Cursor(Cursor.DEFAULT_CURSOR);
+			setCursor(normalCursor);
+			this.setProgress(99);
 			this.setProgress(100);
 		}
 	}
@@ -120,39 +108,20 @@ public class IUBackUpRestoreProgress extends JFrame implements
 
 		private void empezar() {
 			cambio2 = true;
-			this.setProgress(0);
-			int aux = Fachada.getInstancia().crearRestore(
-					archivo.getAbsolutePath(), 0);
-			if (aux == -1) {
-				errorRestaurar();
-				return;
-			}
-			cambio2 = true;
-			this.setProgress(25);
-			aux = Fachada.getInstancia().crearRestore(
-					archivo.getAbsolutePath(), 1);
-			if (aux == -1) {
-				errorRestaurar();
-				return;
-			}
-			cambio2 = true;
+			Cursor hourglassCursor = new Cursor(Cursor.WAIT_CURSOR);
+			setCursor(hourglassCursor);
 			this.setProgress(50);
-			aux = Fachada.getInstancia().crearRestore(
-					archivo.getAbsolutePath(), 2);
-			if (aux == -1) {
-				errorRestaurar();
+			int aux = Fachada.getInstancia().crearRestore(
+					archivo.getAbsolutePath());
+			if(aux == -1){
+				error();
 				return;
 			}
-			cambio2 = true;
-			this.setProgress(75);
-			aux = Fachada.getInstancia().crearRestore(
-					archivo.getAbsolutePath(), 3);
-			if (aux == -1) {
-				errorRestaurar();
-				return;
-			}
-			cambio2 = true;
+			Cursor normalCursor = new Cursor(Cursor.DEFAULT_CURSOR);
+			setCursor(normalCursor);
+			this.setProgress(99);
 			this.setProgress(100);
+			
 		}
 
 	}
@@ -165,10 +134,6 @@ public class IUBackUpRestoreProgress extends JFrame implements
 		initialize();
 		this.principal = principal;
 		this.principal.setVisible(false);
-		/*
-		 * JOptionPane .showMessageDialog( this, "Es necesario que ingrese la
-		 * contraseña maestra para efectuar el backup", "Advertencia", 2);
-		 */
 	}
 
 	/**
@@ -371,14 +336,6 @@ public class IUBackUpRestoreProgress extends JFrame implements
 	private void error() {
 		JOptionPane.showMessageDialog(this, "Error al crear el Respaldo",
 				"ERROR", JOptionPane.ERROR_MESSAGE);
-		this.dispose();
-		this.principal.setVisible(true);
-	}
-
-	private void errorRestaurar() {
-		JOptionPane.showMessageDialog(this,
-				"Error al tratar de restaurar la base de datos", "ERROR",
-				JOptionPane.ERROR_MESSAGE);
 		this.dispose();
 		this.principal.setVisible(true);
 	}

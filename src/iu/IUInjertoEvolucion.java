@@ -145,7 +145,7 @@ public class IUInjertoEvolucion extends JFrame {
 		this.setTitle("Evolucion del Injerto");
 		if (this.fecha != null) {
 			this.setTitle(this.getTitle() + " la fecha del trasplante es :"
-					+ ManejoFechas.formatoEspanol.format(this.fecha.getTime()));
+					+ ManejoFechas.FORMATOESPANOL.format(this.fecha.getTime()));
 		}
 	}
 

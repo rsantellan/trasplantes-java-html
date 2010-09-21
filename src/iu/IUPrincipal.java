@@ -147,7 +147,7 @@ public class IUPrincipal extends JFrame implements java.util.Observer {
 		Calendar cHoy = new GregorianCalendar();
 		cHoy.setTime(hoy);
 		this.jLabelFecha.setText("Hoy es: "
-				+ ManejoFechas.formatoEspanol.format(cHoy.getTime()));
+				+ ManejoFechas.FORMATOESPANOL.format(cHoy.getTime()));
 		inicio = true;
 		cargarDatos();
 		inicio = false;

@@ -897,7 +897,7 @@ public class IUEvolucionEcoDoplerManejar extends JFrame {
 			String respuesta = "";
 			respuesta = JOptionPane.showInputDialog(this,
 					"Esta seguro de eliminar el examen del dia: "
-							+ ManejoFechas.formatoEspanol.format(this.usado
+							+ ManejoFechas.FORMATOESPANOL.format(this.usado
 									.getFecha().getTime())
 							+ "\n(Ingrese SI para eliminar) Confirmar: ",
 					"Confirmar", 1);

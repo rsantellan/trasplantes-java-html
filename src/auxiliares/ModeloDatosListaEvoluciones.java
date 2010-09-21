@@ -44,12 +44,12 @@ public class ModeloDatosListaEvoluciones extends AbstractTableModel{
 		return data[arg0][arg1];
 	}
 
-	public void preCargarLineas(){
+	private void preCargarLineas(){
 		numRows = this.datos.size();
 		data = new String [numRows] [numColumns] ;
 		for(int x= 0; x<this.datos.size();x++){
 			EvolucionTrasplanteTotal p = this.datos.get(x);
-			data[x] [0] = ManejoFechas.formatoEspanol.format(p.getFecha().getTime());
+			data[x] [0] = ManejoFechas.FORMATOESPANOL.format(p.getFecha().getTime());
 			data[x] [1] = String.valueOf(p.getIdTrasplante());
 			if(p.getEvoTrasplante() == null){
 				data[x] [2] = "-";

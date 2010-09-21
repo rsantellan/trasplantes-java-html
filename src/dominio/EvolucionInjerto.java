@@ -161,7 +161,7 @@ public class EvolucionInjerto implements IPersistente{
 	private void leerGPyPBR(){
 		EvolucionInjertoResultadoPBR auxPBR = new EvolucionInjertoResultadoPBR();
 		auxPBR.setIdPretrasplante(this.getIdPretrasplante());
-		ManejoFechas.formatoEspanol.format(this.getFecha().getTime());
+		ManejoFechas.FORMATOESPANOL.format(this.getFecha().getTime());
 		auxPBR.setFecha(this.getFecha());
 		ArrayList<EvolucionInjertoResultadoPBR> lista = auxPBR.obtenerTodos();
 		this.setListaPBR(lista);

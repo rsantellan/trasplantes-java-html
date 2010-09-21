@@ -339,7 +339,7 @@ public class IUPacientePerdidaInjertoIngresar extends JFrame implements
 		String respuesta = "";
 		respuesta = JOptionPane.showInputDialog(this,
 				"Está a punto de eliminar a la perdida del injerto de la fecha : "
-						+ ManejoFechas.formatoEspanol.format(this.usado
+						+ ManejoFechas.FORMATOESPANOL.format(this.usado
 								.getFechaPerdida().getTime())
 						+ "\n(Ingrese SI para eliminar) Confirmar: ",
 				"Confirmar", 1);

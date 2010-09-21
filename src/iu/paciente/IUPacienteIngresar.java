@@ -488,7 +488,7 @@ public class IUPacienteIngresar extends JFrame {
 				if (this.jCheckBoxSinDialisis.isSelected()) {
 					try {
 						p.getFecha_dialisis().setTime(
-								(ManejoFechas.formatoEspanol
+								(ManejoFechas.FORMATOESPANOL
 										.parse("01-01-1800")));
 					} catch (ParseException e) {
 						System.out.println(e);

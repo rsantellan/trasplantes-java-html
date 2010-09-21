@@ -48,7 +48,7 @@ public class BrkTrasplante extends Broker{
 	public String getInsertSQL() {
 		Trasplante t = (Trasplante) this.getObj();
 		String sql = "";
-		String fecha = ManejoFechas.formatoIngles.format(t.getFecha().getTime());
+		String fecha = ManejoFechas.FORMATOINGLES.format(t.getFecha().getTime());
 		sql = "INSERT INTO trasplante(PreTrasplante,FECHA,NUM_TR,ID_DONANTE,INESTAB_HEMOD,RINHON,ANOMALIA_VASC,";
 		sql+= "NUM_ART,NUM_VENAS,URETER,NUM_COMP_A_B,NUM_COMP_DR,NUM_IMCOMP_A_B,";
 		sql+= "NUM_IMCOMP_DR,AUTOAC,PRA_MAX,PRA_TR,TRANS_PREVIAS,NUM_TRANSF,EMBARAZO,NUM_EMBARAZO,";
@@ -187,10 +187,10 @@ public class BrkTrasplante extends Broker{
 	@Override
 	public String getUpdateSQL() {
 		Trasplante t = (Trasplante) this.getObj();
-		String fecha = ManejoFechas.formatoIngles.format(t.getFecha().getTime());
+		String fecha = ManejoFechas.FORMATOINGLES.format(t.getFecha().getTime());
 		String fechaAlta = "null";
 		if(t.getFechaAlta() != null){
-			fechaAlta =  ManejoFechas.formatoIngles.format(t.getFechaAlta().getTime());
+			fechaAlta =  ManejoFechas.FORMATOINGLES.format(t.getFechaAlta().getTime());
 		}else{
 			fechaAlta = null;
 		}
@@ -258,11 +258,11 @@ public class BrkTrasplante extends Broker{
 			t.setId(rs.getInt("Id"));
 			t.setPreTrasplante(rs.getInt("PreTrasplante"));
 			auxFecha = rs.getString("FECHA");
-			t.getFecha().setTime(ManejoFechas.formatoIngles.parse(auxFecha));
+			t.getFecha().setTime(ManejoFechas.FORMATOINGLES.parse(auxFecha));
 			auxFecha = rs.getString("FECHA_ALTA");
 			if(auxFecha != null){
 				t.setFechaAlta(new GregorianCalendar());
-				t.getFechaAlta().setTime(ManejoFechas.formatoIngles.parse(auxFecha));
+				t.getFechaAlta().setTime(ManejoFechas.FORMATOINGLES.parse(auxFecha));
 			}
 			t.setNumTr(rs.getInt("NUM_TR"));
 			t.setNumDonante(rs.getString("ID_DONANTE"));

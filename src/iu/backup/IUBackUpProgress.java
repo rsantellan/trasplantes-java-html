@@ -55,25 +55,16 @@ public class IUBackUpProgress extends JFrame implements PropertyChangeListener {
 		}
 
 		private void empezar() {
-			this.setProgress(0);
-			this.setProgress(10);
-			int aux = Fachada.getInstancia().crearBackUp(0);
+			this.setProgress(50);
+			Cursor hourglassCursor = new Cursor(Cursor.WAIT_CURSOR);
+			setCursor(hourglassCursor);
+			int aux = Fachada.getInstancia().crearBackUp();
 			if(aux == -1){
 				error();
 				return;
 			}
-			this.setProgress(35);
-			aux = Fachada.getInstancia().crearBackUp(1);
-			if(aux == -1){
-				error();
-				return;
-			}
-			this.setProgress(75);
-			aux =Fachada.getInstancia().crearBackUp(2);
-			if(aux == -1){
-				error();
-				return;
-			}
+			Cursor normalCursor = new Cursor(Cursor.DEFAULT_CURSOR);
+			setCursor(normalCursor);
 			this.setProgress(100);
 		}
 	}

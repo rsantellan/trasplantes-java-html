@@ -35,7 +35,7 @@ public class CrearReporteHTMLComplicaciones {
 			aux += "<li>" +  this.delimiter ;
 			aux += "<ul class='lista_complicaciones'>" +  this.delimiter ;
 			TrasplanteComplicacionesNoInf tc = t.getListaComplicacionesNoInf().get(x);
-			aux +="<li><label class='label_complicaciones'>Fecha de inicio: </label>" +ManejoFechas.formatoEspanol.format(tc.getFecha().getTime())+ "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_complicaciones'>Fecha de inicio: </label>" +ManejoFechas.FORMATOESPANOL.format(tc.getFecha().getTime())+ "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_complicaciones'>Internado: </label> SI </li>" +  this.delimiter ;
 			aux +="<li><label class='label_complicaciones'>Medicación: </label>" +tc.getMedicacion().getNombre() + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_complicaciones'>Tipo: </label>" + tc.getComplicacion().getNombre() + "</li>" +  this.delimiter ;
@@ -55,7 +55,7 @@ public class CrearReporteHTMLComplicaciones {
 			aux += "<li>" +  this.delimiter ;
 			aux += "<ul class='lista_complicaciones'>" +  this.delimiter ;
 			TrasplanteComplicacionesInf tc = t.getListaComplicacionesInf().get(x);
-			aux +="<li><label class='label_complicaciones'>Fecha de inicio: </label>" +ManejoFechas.formatoEspanol.format(tc.getFecha().getTime())+ "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_complicaciones'>Fecha de inicio: </label>" +ManejoFechas.FORMATOESPANOL.format(tc.getFecha().getTime())+ "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_complicaciones'>Internado: </label> SI </li>" +  this.delimiter ;
 			aux +="<li><label class='label_complicaciones'>Medicación: </label>" +tc.getMedicacion().getNombre() + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_complicaciones'>Lugar de infeccion: </label>" + tc.getInfeccion().getNombre() + "</li>" +  this.delimiter ;
@@ -91,7 +91,7 @@ public class CrearReporteHTMLComplicaciones {
 			aux += "<li>" +  this.delimiter ;
 			aux += "<ul class='lista_complicaciones'>" +  this.delimiter ;
 			TrasplanteComplicacionesNoInf tc = listaNoInfecciosa.get(x);
-			aux +="<li><label class='label_complicaciones'>Fecha de inicio: </label>" +ManejoFechas.formatoEspanol.format(tc.getFecha().getTime())+ "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_complicaciones'>Fecha de inicio: </label>" +ManejoFechas.FORMATOESPANOL.format(tc.getFecha().getTime())+ "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_complicaciones'>Internado: </label>";
 			if(tc.isInternado()){
 				aux += "SI";
@@ -124,7 +124,7 @@ public class CrearReporteHTMLComplicaciones {
 			aux += "<li>" +  this.delimiter ;
 			aux += "<ul class='lista_complicaciones'>" +  this.delimiter ;
 			TrasplanteComplicacionesInf tc = listaInfecciosa.get(x);
-			aux +="<li><label class='label_complicaciones'>Fecha de inicio: </label>" +ManejoFechas.formatoEspanol.format(tc.getFecha().getTime())+ "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_complicaciones'>Fecha de inicio: </label>" +ManejoFechas.FORMATOESPANOL.format(tc.getFecha().getTime())+ "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_complicaciones'>Internado: </label>";
 			if(tc.isInternado()){
 				aux += "SI";

@@ -88,12 +88,12 @@ public class IUConsultaGenerica extends JFrame {
 		Calendar c = new GregorianCalendar();
 		this.jLabelCantidadRegistros.setText("Cantidad de pacientes : " + this.getJTableConsulta().getRowCount());
 		c = new GregorianCalendar();
-		System.out.println(ManejoFechas.formatoHoras.format(c.getTime()));
+		System.out.println(ManejoFechas.FORMATOHORAS.format(c.getTime()));
 	}
 	
 	private void cargarGenerico(){
 		Calendar c = new GregorianCalendar();
-		System.out.println(ManejoFechas.formatoHoras.format(c.getTime()));
+		System.out.println(ManejoFechas.FORMATOHORAS.format(c.getTime()));
 		Generico g = new Generico();
 		switch (id) {
 		case 0:

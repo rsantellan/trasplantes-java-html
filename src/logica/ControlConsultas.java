@@ -70,12 +70,12 @@ public class ControlConsultas {
 			if (es.equalsIgnoreCase(Generico.fechas)) {
 				Calendar c = new GregorianCalendar();
 				try {
-					c.setTime(ManejoFechas.formatoIngles.parse(g
+					c.setTime(ManejoFechas.FORMATOINGLES.parse(g
 							.getListaObtenida().get(x).toString()));
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-				listaAux.add(ManejoFechas.formatoEspanol.format(c.getTime()));
+				listaAux.add(ManejoFechas.FORMATOESPANOL.format(c.getTime()));
 			} else {
 				if (es.equalsIgnoreCase(Generico.letras)) {
 					if (g.getListaObtenida().get(x).toString()

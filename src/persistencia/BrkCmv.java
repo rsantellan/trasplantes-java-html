@@ -32,7 +32,7 @@ public class BrkCmv extends Broker {
 			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
 			try {
 				prep.setInt(1, e.getIdTrasplante());
-				String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+				String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 						.getTime());
 				prep.setString(2, fecha);
 				return prep;
@@ -62,7 +62,7 @@ public class BrkCmv extends Broker {
 		sql = "DELETE FROM cmv WHERE Trasplante ="
 				+ e.getIdTrasplante();
 		if (e.getFecha() != null) {
-			String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 					.getTime());
 			sql += " AND FECHA = '" + fecha + "'";
 		}
@@ -74,7 +74,7 @@ public class BrkCmv extends Broker {
 		CMV e = (CMV) this.getObj();
 		String sql = "";
 		sql = "INSERT INTO cmv(Trasplante,FECHA,Diagnostico,TM,SindromeViral,Profilaxis,Droga,diasTm,EfectoSecundario) VALUES ";
-		String fecha = ManejoFechas.formatoIngles
+		String fecha = ManejoFechas.FORMATOINGLES
 				.format(e.getFecha().getTime());
 		sql += "(" + e.getIdTrasplante() + ",'" + fecha + "',"
 				+ e.getDiagnostico().getId()+","+e.isTmAnti()+","+e.isSindromeViral()+","+e.isProfilaxis()+","+e.getDroga().getId()+","+e.getDiasTm();
@@ -95,7 +95,7 @@ public class BrkCmv extends Broker {
 		if (e.getIdTrasplante() != 0) {
 			sql += " WHERE Trasplante=" + e.getIdTrasplante();
 			if (e.getFecha() != null) {
-				String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+				String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 						.getTime());
 				sql += " AND FECHA ='" + fecha + "'";
 			}
@@ -115,7 +115,7 @@ public class BrkCmv extends Broker {
 		sql += " ,diasTm =" + e.getDiasTm();
 		sql += " ,EfectoSecundario ='" + e.getEfectoSecundario()+ "' ";
 		sql += " WHERE Trasplante=" + e.getIdTrasplante();
-		String fecha = ManejoFechas.formatoIngles
+		String fecha = ManejoFechas.FORMATOINGLES
 				.format(e.getFecha().getTime());
 		sql += " AND FECHA ='" + fecha + "'";
 		return sql;
@@ -127,7 +127,7 @@ public class BrkCmv extends Broker {
 		try {
 			e.setIdTrasplante(rs.getInt("Trasplante"));
 			String fecha = rs.getString("FECHA");
-			e.getFecha().setTime(ManejoFechas.formatoIngles.parse(fecha));
+			e.getFecha().setTime(ManejoFechas.FORMATOINGLES.parse(fecha));
 			CMVDiagnostico auxCMVDiag = new CMVDiagnostico();
 			auxCMVDiag.setId(rs.getInt("Diagnostico"));
 			auxCMVDiag.leer();
@@ -160,7 +160,7 @@ public class BrkCmv extends Broker {
 		if (e.getIdTrasplante() != 0) {
 			sql += " WHERE Trasplante=" + e.getIdTrasplante();
 			if (e.getFecha() != null) {
-				String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+				String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 						.getTime());
 				sql += " AND FECHA ='" + fecha + "'";
 			}

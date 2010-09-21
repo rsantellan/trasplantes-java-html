@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<database>
+	<information>
+		<user>root</user>
+		<password>root</password>
+		<tablename>trasplante</tablename>
+		<host>localhost</host>
+		<port>3306</port>
+	</information>
+</database>

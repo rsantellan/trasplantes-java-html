@@ -57,7 +57,7 @@ public class IUTrasplanteReoperacion extends JFrame {
 		super();
 		initialize();
 		this.trasplante = t;
-		this.setTitle("Ingresar Reoperacion, fecha trasplante: "+ManejoFechas.formatoEspanol.format(t.getFecha().getTime()));
+		this.setTitle("Ingresar Reoperacion, fecha trasplante: "+ManejoFechas.FORMATOESPANOL.format(t.getFecha().getTime()));
 		this.cargarComplicaciones();
 		TrasplanteReoperacion treo = new TrasplanteReoperacion();
 		treo.setIdTrasplante(t.getId());

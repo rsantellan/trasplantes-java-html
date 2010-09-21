@@ -43,8 +43,8 @@ public class CrearReporteHTMLPaciente {
 		    "<li><label class='label_paciente'>N&deg; FNR: </label>"+p.getNum_fnr()+"</li>" + this.delimiter + 
 		    "<li><label class='label_paciente'>RAZA: </label>" + p.getRaza() +"</li>" + this.delimiter +
 		    "<li><label class='label_paciente'>SEXO: </label>"+ p.getSexo() + "</li>" + this.delimiter + 
-		    "<li><label class='label_paciente'>FECHA NACIMIENTO: </label>" + ManejoFechas.formatoEspanol.format(p.getFecha_nacimiento().getTime()) + "</li>" + this.delimiter + 
-		    "<li><label class='label_paciente'>FECHA DE DIALISIS: </label>" +ManejoFechas.formatoEspanol.format(p.getFecha_dialisis().getTime()) +"</li>" + this.delimiter +
+		    "<li><label class='label_paciente'>FECHA NACIMIENTO: </label>" + ManejoFechas.FORMATOESPANOL.format(p.getFecha_nacimiento().getTime()) + "</li>" + this.delimiter + 
+		    "<li><label class='label_paciente'>FECHA DE DIALISIS: </label>" +ManejoFechas.FORMATOESPANOL.format(p.getFecha_dialisis().getTime()) +"</li>" + this.delimiter +
 		    "<li><label class='label_paciente'>GRUPO SANGUINEO: </label>"+p.getGrupoSanguineo()+"</li>"+ this.delimiter +
 		    "<li><label class='label_paciente'>NEFROPATIA: </label>"+p.getTipoNefropatia().getNefropatia()+"</li>"+ this.delimiter +
 		  "</ul>"+ this.delimiter +
@@ -86,11 +86,11 @@ public class CrearReporteHTMLPaciente {
 		      "<td><strong>SEXO</strong></td>" + this.delimiter +
 		      "<td>"+ p.getSexo() + "</td>" + this.delimiter + 
 		      "<td><strong>FECHA NACIMIENTO</strong></td>" + this.delimiter + 
-		      "<td>" + ManejoFechas.formatoEspanol.format(p.getFecha_nacimiento().getTime()) + "</td>" + this.delimiter + 
+		      "<td>" + ManejoFechas.FORMATOESPANOL.format(p.getFecha_nacimiento().getTime()) + "</td>" + this.delimiter + 
 		    "</tr>" + this.delimiter +
 		    "<tr>" + this.delimiter +
 		      "<td><strong>FECHA DE DIALISIS</strong></td>" + this.delimiter +
-		      "<td>" +ManejoFechas.formatoEspanol.format(p.getFecha_dialisis().getTime()) +"</td>" + this.delimiter +
+		      "<td>" +ManejoFechas.FORMATOESPANOL.format(p.getFecha_dialisis().getTime()) +"</td>" + this.delimiter +
 		      "<td><strong>GRUPO SANGUINEO</strong></td>" + this.delimiter +
 		      "<td>"+p.getGrupoSanguineo()+"</td>"+ this.delimiter +
 		    "</tr>" + this.delimiter +
@@ -123,7 +123,7 @@ public class CrearReporteHTMLPaciente {
 				aux += "<li>" + this.delimiter ;
 				aux += "<ul class='lista_perdida_injerto'>"+ this.delimiter;
 				PacientePerdidaInjerto auxPerdida = (PacientePerdidaInjerto) p.getListaPerdidas().get(x);
-				aux += "<li><label class='label_perdida_injerto'>FECHA DE LA PERDIDA: </label>"+ ManejoFechas.formatoEspanol.format(auxPerdida.getFechaPerdida().getTime()) + "</li>" + this.delimiter;
+				aux += "<li><label class='label_perdida_injerto'>FECHA DE LA PERDIDA: </label>"+ ManejoFechas.FORMATOESPANOL.format(auxPerdida.getFechaPerdida().getTime()) + "</li>" + this.delimiter;
 				aux += "<li><label class='label_perdida_injerto'>CAUSA DE LA PERDIDA: </label>"+ auxPerdida.getCausa().getDetalle() +"</li>" + this.delimiter;
 				aux += "</ul>"+ this.delimiter;
 				aux += "</li>" + this.delimiter ;
@@ -149,7 +149,7 @@ public class CrearReporteHTMLPaciente {
 			aux += "<p align=\"center\"><strong><span class=\"Estilo3\">PERDIDA DE INJERTO</span></strong></p>" + this.delimiter ;
 			for(int x=0;x<p.getListaPerdidas().size();x++){
 				PacientePerdidaInjerto auxPerdida = (PacientePerdidaInjerto) p.getListaPerdidas().get(x);
-				aux += "<p align=\"center\"><strong>FECHA DE LA PERDIDA: </strong>"+ ManejoFechas.formatoEspanol.format(auxPerdida.getFechaPerdida().getTime()) + "</p>" + this.delimiter;
+				aux += "<p align=\"center\"><strong>FECHA DE LA PERDIDA: </strong>"+ ManejoFechas.FORMATOESPANOL.format(auxPerdida.getFechaPerdida().getTime()) + "</p>" + this.delimiter;
 				aux += "<p align=\"center\"><strong>CAUSA DE LA PERDIDA: </strong>"+ auxPerdida.getCausa().getDetalle() +"</p>" + this.delimiter;
 			}
 			aux += "</td>" + this.delimiter +
@@ -169,7 +169,7 @@ public class CrearReporteHTMLPaciente {
 			aux += "<div class='div_box'>" + this.delimiter;
 			aux += "<p class='titulo'>MUERTE DEL PACIENTE</p>" + this.delimiter;
 			aux += "<ul class='lista_nuerte_paciente'>"+ this.delimiter;
-			aux += "<li><strong>FECHA DE LA MUERTE: </strong>"+ ManejoFechas.formatoEspanol.format(p.getMuertePaciente().getFechaMuerte().getTime()) + "</li>" + this.delimiter ;
+			aux += "<li><strong>FECHA DE LA MUERTE: </strong>"+ ManejoFechas.FORMATOESPANOL.format(p.getMuertePaciente().getFechaMuerte().getTime()) + "</li>" + this.delimiter ;
 			aux += "<li><strong>CAUSA DE LA MUERTE: </strong>"+ p.getMuertePaciente().getCausa().getDetalle() +"</li>" + this.delimiter ;
 			aux += "</ul>" + this.delimiter ;
 			aux += "</div>";
@@ -188,7 +188,7 @@ public class CrearReporteHTMLPaciente {
 			   "<tr>" + this.delimiter +
 			   "<td>" + this.delimiter ;
 			aux += "<p align=\"center\"><strong><span class=\"Estilo3\">MUERTE DEL PACIENTE</span></strong></p>" + this.delimiter ;
-			aux += "<p align=\"center\"><strong>FECHA DE LA MUERTE: </strong>"+ ManejoFechas.formatoEspanol.format(p.getMuertePaciente().getFechaMuerte().getTime()) + "</p>" + this.delimiter ;
+			aux += "<p align=\"center\"><strong>FECHA DE LA MUERTE: </strong>"+ ManejoFechas.FORMATOESPANOL.format(p.getMuertePaciente().getFechaMuerte().getTime()) + "</p>" + this.delimiter ;
 			aux += "<p align=\"center\"><strong>CAUSA DE LA MUERTE: </strong>"+ p.getMuertePaciente().getCausa().getDetalle() +"</p>" + this.delimiter ;
 			aux += "</td>" + this.delimiter +
 			"</tr>" + this.delimiter +
@@ -221,9 +221,9 @@ public class CrearReporteHTMLPaciente {
 		    "<strong>SEXO </strong>" +
 		      ""+ p.getSexo() + "<br>" +
 		      "<strong>FECHA NACIMIENTO </strong>" +
-		      "" + ManejoFechas.formatoEspanol.format(p.getFecha_nacimiento().getTime()) + "<br>" +
+		      "" + ManejoFechas.FORMATOESPANOL.format(p.getFecha_nacimiento().getTime()) + "<br>" +
 		    "<strong>FECHA DE DIALISIS </strong>" +
-		      "" +ManejoFechas.formatoEspanol.format(p.getFecha_dialisis().getTime()) +"<br>" +
+		      "" +ManejoFechas.FORMATOESPANOL.format(p.getFecha_dialisis().getTime()) +"<br>" +
 		      "<strong>GRUPO SANGUINEO </strong>" +
 		      ""+p.getGrupoSanguineo()+"<br>"+
 		    "<strong>NEFROPATIA </strong>" +

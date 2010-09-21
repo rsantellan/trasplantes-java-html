@@ -31,7 +31,7 @@ public class BrkPerdidaInjerto extends Broker {
 				.crearPreparedStatement(sql);
 		try {
 			prep.setInt(1, p.getThe());
-			String fecha = ManejoFechas.formatoIngles.format(p.getFechaPerdida()
+			String fecha = ManejoFechas.FORMATOINGLES.format(p.getFechaPerdida()
 					.getTime());
 			prep.setString(2, fecha);
 			return prep;
@@ -48,7 +48,7 @@ public class BrkPerdidaInjerto extends Broker {
 		String sql = "";
 		sql = "DELETE FROM paciente_perdida_injerto WHERE THE = " + p.getThe();
 		sql += " AND FECHA_PERDIDA = '"
-				+ ManejoFechas.formatoIngles.format(p.getFechaPerdida()
+				+ ManejoFechas.FORMATOINGLES.format(p.getFechaPerdida()
 						.getTime()) + "'";
 		return sql;
 	}
@@ -57,7 +57,7 @@ public class BrkPerdidaInjerto extends Broker {
 	public String getInsertSQL() {
 		PacientePerdidaInjerto p = (PacientePerdidaInjerto) this.getObj();
 		String sql = "";
-		String fecha = ManejoFechas.formatoIngles.format(p.getFechaPerdida()
+		String fecha = ManejoFechas.FORMATOINGLES.format(p.getFechaPerdida()
 				.getTime());
 		sql = "INSERT INTO paciente_perdida_injerto(THE,CAUSA,FECHA_PERDIDA,ID_PRETRASPLANTE) VALUES ("
 				+ p.getThe()
@@ -98,7 +98,7 @@ public class BrkPerdidaInjerto extends Broker {
 		sql += " WHERE THE="
 				+ p.getThe()
 				+ " AND FECHA_PERDIDA = '"
-				+ ManejoFechas.formatoIngles.format(p.getFechaPerdida()
+				+ ManejoFechas.FORMATOINGLES.format(p.getFechaPerdida()
 						.getTime()) + "'";
 		return sql;
 	}
@@ -111,7 +111,7 @@ public class BrkPerdidaInjerto extends Broker {
 			p.setNumCausa(rs.getInt("CAUSA"));
 			String auxStr = rs.getString("FECHA_PERDIDA");
 			Calendar auxCal = new GregorianCalendar();
-			auxCal.setTime(ManejoFechas.formatoIngles.parse(auxStr));
+			auxCal.setTime(ManejoFechas.FORMATOINGLES.parse(auxStr));
 			p.setFechaPerdida(auxCal);
 			p.setNumPreTrasplante(rs.getInt("ID_PRETRASPLANTE"));
 		} catch (SQLException e) {
@@ -138,7 +138,7 @@ public class BrkPerdidaInjerto extends Broker {
 			sql = "SELECT COUNT(*) FROM paciente_perdida_injerto WHERE THE = "
 					+ p.getThe();
 			sql += " AND FECHA_PERDIDA = '"
-					+ ManejoFechas.formatoIngles.format(p.getFechaPerdida()
+					+ ManejoFechas.FORMATOINGLES.format(p.getFechaPerdida()
 							.getTime()) + "'";
 		}
 		return sql;

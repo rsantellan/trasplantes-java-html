@@ -61,7 +61,7 @@ public class IUConsultaGenericaOpciones extends JFrame {
 	
 	private void cargarDatos(){
 		Calendar c = new GregorianCalendar();
-		System.out.println(ManejoFechas.formatoHoras.format(c.getTime()));
+		System.out.println(ManejoFechas.FORMATOHORAS.format(c.getTime()));
 		Generico g = new Generico();
 		switch (id) {
 		case 0:
@@ -100,7 +100,7 @@ public class IUConsultaGenericaOpciones extends JFrame {
 		
 		this.usado = g;
 		c = new GregorianCalendar();
-		System.out.println(ManejoFechas.formatoHoras.format(c.getTime()));
+		System.out.println(ManejoFechas.FORMATOHORAS.format(c.getTime()));
 	}
 	/**
 	 * This method initializes this

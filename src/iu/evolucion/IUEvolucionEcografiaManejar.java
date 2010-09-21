@@ -384,7 +384,7 @@ public class IUEvolucionEcografiaManejar extends JFrame {
 	private void eliminar(){
 		if(this.usado != null){
 			String respuesta = "";
-			respuesta = JOptionPane.showInputDialog(this, "Esta seguro de eliminar el examen del dia: "+ManejoFechas.formatoEspanol.format(this.usado.getFecha().getTime()) + "\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
+			respuesta = JOptionPane.showInputDialog(this, "Esta seguro de eliminar el examen del dia: "+ManejoFechas.FORMATOESPANOL.format(this.usado.getFecha().getTime()) + "\n(Ingrese SI para eliminar) Confirmar: ", "Confirmar", 1);
 			if(respuesta==null)respuesta="No";
 			if(respuesta.equalsIgnoreCase("Si")){
 				Fachada.getInstancia().eliminarEvolucionTrasplanteEcografia(this.usado);

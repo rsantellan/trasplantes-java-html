@@ -54,7 +54,7 @@ public class BrkLogin extends Broker {
 	public String getInsertSQL() {
 		Login l = (Login) this.getObj();
 		String sql = "";
-		String fecha = ManejoFechas.formatoIngles
+		String fecha = ManejoFechas.FORMATOINGLES
 				.format(l.getFecha().getTime());
 		sql = "INSERT INTO datosutiles(password,fecha,root) VALUES('"
 				+ l.getPassword() + "','" + fecha + "'," + l.isRoot() + ")";
@@ -83,7 +83,7 @@ public class BrkLogin extends Broker {
 	public String getUpdateSQL() {
 		Login l = (Login) this.getObj();
 		String sql = "";
-		String fecha = ManejoFechas.formatoIngles
+		String fecha = ManejoFechas.FORMATOINGLES
 				.format(l.getFecha().getTime());
 		sql = "UPDATE datosutiles SET ";
 		sql += "password ='" + l.getPassword() + "',";
@@ -101,7 +101,7 @@ public class BrkLogin extends Broker {
 			l.setPassword(rs.getString("password"));
 			l.setRoot(rs.getBoolean("Root"));
 			String fecha = rs.getString("Fecha");
-			l.getFecha().setTime(ManejoFechas.formatoIngles.parse(fecha));
+			l.getFecha().setTime(ManejoFechas.FORMATOINGLES.parse(fecha));
 		} catch (SQLException e1) {
 			System.out.println(e1);
 		} catch (ParseException e2) {

@@ -30,8 +30,8 @@ public class CrearReporteHTMLTransplante {
 		aux += "<div class='div_box'>" +  this.delimiter ;
 		aux +="<p class='titulo'>PRE TRANSPLANTE</p>" +  this.delimiter ;
 		aux +="<ul class='lista_pre_transplante'>" +  this.delimiter ;
-		aux +="<li><label class='label_pre_transplante'>Fecha de ingreso a la lista: </label>" +ManejoFechas.formatoEspanol.format(pt.getFecha_ingreso_lista().getTime()) + "</li>" +  this.delimiter ;
-		aux +="<li><label class='label_pre_transplante'>Fecha de egreso: </label>" + ManejoFechas.formatoEspanol.format(pt.getFecha_egreso().getTime()) + "</li>" +  this.delimiter ;
+		aux +="<li><label class='label_pre_transplante'>Fecha de ingreso a la lista: </label>" +ManejoFechas.FORMATOESPANOL.format(pt.getFecha_ingreso_lista().getTime()) + "</li>" +  this.delimiter ;
+		aux +="<li><label class='label_pre_transplante'>Fecha de egreso: </label>" + ManejoFechas.FORMATOESPANOL.format(pt.getFecha_egreso().getTime()) + "</li>" +  this.delimiter ;
 		aux +="<li><label class='label_pre_transplante'>Modalidad d: </label>" +pt.getModalidad_d() + "</li>" +  this.delimiter ;
 		aux +="<li><label class='label_pre_transplante'>pbr: </label>"; 
 		if (pt.isPbr()) {
@@ -110,7 +110,7 @@ aux += "<hr>" +  this.delimiter ;
 		aux += "<div class='div_box'>" +  this.delimiter ;
 		aux +="<p class='titulo'>TRANSPLANTE</p>" +  this.delimiter ;
 		aux +="<ul class='lista_transplante'>" +  this.delimiter ;
-		aux +="<li><label class='label_transplante'>Fecha del transplante: </label>" +ManejoFechas.formatoEspanol.format(t.getFecha().getTime()) + "</li>" +  this.delimiter ;
+		aux +="<li><label class='label_transplante'>Fecha del transplante: </label>" +ManejoFechas.FORMATOESPANOL.format(t.getFecha().getTime()) + "</li>" +  this.delimiter ;
 		aux +="<li><label class='label_transplante'>Número de transplante: </label>" + String.valueOf(t.getNumTr()) + "</li>" +  this.delimiter ;
 		aux +="<li><label class='label_transplante'>Número del donante: </label>" +t.getNumDonante() + "</li>" +  this.delimiter ;
 		aux +="<li><label class='label_transplante'>Inestabilidad Hemod: </label>";
@@ -220,7 +220,7 @@ aux += "<hr>" +  this.delimiter ;
 		}
 		aux +="</li>" +  this.delimiter ;
 		aux +="<li><label class='label_transplante'>NUM_DE_HD: </label>"+ String.valueOf(t.getNumDeHd()) +"</li>" +  this.delimiter ;
-		aux +="<li><label class='label_transplante'>Fecha de alta: </label>"+ ManejoFechas.formatoEspanol.format(t.getFechaAlta().getTime()) + "</li>" +  this.delimiter ;
+		aux +="<li><label class='label_transplante'>Fecha de alta: </label>"+ ManejoFechas.FORMATOESPANOL.format(t.getFechaAlta().getTime()) + "</li>" +  this.delimiter ;
 		
 		aux +="</ul>" +  this.delimiter ;
 		aux +="</div> " +  this.delimiter ;
@@ -465,7 +465,7 @@ aux += "<hr>" +  this.delimiter ;
 			aux += "<li>" +  this.delimiter ;
 			aux += "<ul class='lista_re_operacion'>" +  this.delimiter ;
 			TrasplanteReoperacion tr = (TrasplanteReoperacion) lista.get(x);
-			aux +="<li><label class='label_re_operacion'>Fecha: </label>" +ManejoFechas.formatoEspanol.format(tr.getFecha().getTime()) + "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_re_operacion'>Fecha: </label>" +ManejoFechas.FORMATOESPANOL.format(tr.getFecha().getTime()) + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_re_operacion'>Descripción: </label>" + tr.getComentario() + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_re_operacion'>Complicacación: </label>" +tr.getComplicacion().getComentario() + "</li>" +  this.delimiter ;
 			aux += "</ul>" +  this.delimiter ;

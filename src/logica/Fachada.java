@@ -171,12 +171,12 @@ public class Fachada extends Observable{
 		//System.out.println(texto);
 	}
 	
-	public int crearBackUp(int paso){
-		return this.backUp.inicializarBackUp(paso);
+	public int crearBackUp(){
+		return this.backUp.inicializarBackUp();
 	}
 	
-	public int crearRestore(String archivo, int paso){
-		return this.backUp.inicializarRestore(archivo, paso);
+	public int crearRestore(String path){
+		return this.backUp.inicializarRestore(path);
 	}
 	
 	public int getLugar(){

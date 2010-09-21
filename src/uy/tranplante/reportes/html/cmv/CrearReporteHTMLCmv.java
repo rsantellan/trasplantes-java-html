@@ -42,7 +42,7 @@ public class CrearReporteHTMLCmv {
 	private String reporteCmv(CMV cmv, String aux){
 		if(cmv != null){
 			aux +="<ul class='lista_cmv'>" +  this.delimiter ;
-			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.formatoEspanol.format(cmv.getFecha().getTime()) + "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.FORMATOESPANOL.format(cmv.getFecha().getTime()) + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>Diagnosito: </label>" +cmv.getDiagnostico().getNombre() + "</li>" +  this.delimiter ;
 			Boolean activado = false;
 			if(cmv.isTmAnti()){

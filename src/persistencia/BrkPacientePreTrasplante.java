@@ -47,9 +47,9 @@ public class BrkPacientePreTrasplante extends Broker {
 	public String getInsertSQL() {
 		PacientePreTrasplante p = (PacientePreTrasplante) this.getObj();
 		String sql = "";
-		String fechaIngresoLista = ManejoFechas.formatoIngles.format(p
+		String fechaIngresoLista = ManejoFechas.FORMATOINGLES.format(p
 				.getFecha_ingreso_lista().getTime());
-		String fechaEgreso = ManejoFechas.formatoIngles.format(p
+		String fechaEgreso = ManejoFechas.FORMATOINGLES.format(p
 				.getFecha_egreso().getTime());
 		sql = "INSERT INTO `pacientepretrasplante` (`THE`,`FECHA_INGRESO_LISTA`,`FECHA_EGRESO`,`MODALIDAD_D`,`PBR`,`DIABETES`,`HTA`,`OBESIDAD`,`IMC`,`DISLIPEMIA`,`TABAQUISMO`,`ORIGEN`, `IAM`, `AVE`, `REVASC_CARDIO`) VALUES (";
 		sql += "" + p.getThe() + ",'" + fechaIngresoLista + "','" + fechaEgreso + "',";
@@ -124,10 +124,10 @@ public class BrkPacientePreTrasplante extends Broker {
 		String sql = "";
 		sql += "UPDATE pacientepretrasplante SET ";
 		sql += "FECHA_INGRESO_LISTA ='"
-				+ ManejoFechas.formatoIngles.format(p.getFecha_ingreso_lista()
+				+ ManejoFechas.FORMATOINGLES.format(p.getFecha_ingreso_lista()
 						.getTime()) + "', ";
 		sql += "FECHA_EGRESO ='"
-				+ ManejoFechas.formatoIngles.format(p.getFecha_egreso()
+				+ ManejoFechas.FORMATOINGLES.format(p.getFecha_egreso()
 						.getTime()) + "', ";
 		sql += "MODALIDAD_D ='" + p.getModalidad_d() + "', ";
 		sql += "PBR =" + p.isPbr() + ", ";
@@ -155,11 +155,11 @@ public class BrkPacientePreTrasplante extends Broker {
 			// Fecha de ingreso a la lista
 			String auxStr = rs.getString("FECHA_INGRESO_LISTA");
 			p.getFecha_ingreso_lista().setTime(
-					ManejoFechas.formatoIngles.parse(auxStr));
+					ManejoFechas.FORMATOINGLES.parse(auxStr));
 			// Fecha de egreso
 			auxStr = rs.getString("FECHA_EGRESO");
 			p.getFecha_egreso().setTime(
-					ManejoFechas.formatoIngles.parse(auxStr));
+					ManejoFechas.FORMATOINGLES.parse(auxStr));
 			// Termina con las fechas
 			p.setModalidad_d(rs.getString("MODALIDAD_D"));
 			p.setPbr(rs.getBoolean("PBR"));

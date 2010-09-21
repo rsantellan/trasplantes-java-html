@@ -47,7 +47,7 @@ public class BrkPacienteMuerte extends Broker{
 	public String getInsertSQL() {
 		PacienteMuerte m = (PacienteMuerte) this.getObj();
 		String sql = "";
-		String fecha = ManejoFechas.formatoEspanol.format(m.getFechaMuerte().getTime());
+		String fecha = ManejoFechas.FORMATOESPANOL.format(m.getFechaMuerte().getTime());
 		sql += "INSERT INTO paciente_muerte (THE,CAUSA,FECHA_MUERTE) VALUES ";
 		sql += "(" + m.getThe() +"," + m.getNumCausa() + ",'" +fecha +"');";
 		return sql;
@@ -70,7 +70,7 @@ public class BrkPacienteMuerte extends Broker{
 	public String getUpdateSQL() {
 		PacienteMuerte m = (PacienteMuerte) this.getObj();
 		String sql = "";
-		String fecha = ManejoFechas.formatoEspanol.format(m.getFechaMuerte().getTime());
+		String fecha = ManejoFechas.FORMATOESPANOL.format(m.getFechaMuerte().getTime());
 		sql += "UPDATE paciente_muerte SET ";
 		sql += "CAUSA =" + m.getNumCausa() + ", ";
 		sql += "FECHA_MUERTE ='"+ fecha +"' ";
@@ -86,7 +86,7 @@ public class BrkPacienteMuerte extends Broker{
 			m.setNumCausa(rs.getInt("CAUSA"));
 			//Fecha de nacimiento
 			String auxStr = rs.getString("FECHA_MUERTE");
-			m.getFechaMuerte().setTime(ManejoFechas.formatoIngles.parse(auxStr));
+			m.getFechaMuerte().setTime(ManejoFechas.FORMATOINGLES.parse(auxStr));
 		}catch(SQLException e){
 			System.out.println("Hubo un problema en el leerDesdeResultSet de BrkPacienteMuerte");
 			System.out.println(e);

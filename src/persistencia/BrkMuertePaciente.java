@@ -50,7 +50,7 @@ public class BrkMuertePaciente extends Broker {
 	public String getInsertSQL() {
 		PacienteMuerte m = (PacienteMuerte) this.getObj();
 		String sql = "";
-		String fecha = ManejoFechas.formatoIngles.format(m.getFechaMuerte().getTime());
+		String fecha = ManejoFechas.FORMATOINGLES.format(m.getFechaMuerte().getTime());
 		sql = "INSERT INTO paciente_muerte(THE,CAUSA,FECHA_MUERTE,TR_Funcionando) VALUES ("+m.getThe()+","+ m.getNumCausa() +",'"+fecha;
 		sql += "',"+m.isTrFuncionando()+")";
 		return sql;
@@ -78,7 +78,7 @@ public class BrkMuertePaciente extends Broker {
 	@Override
 	public String getUpdateSQL() {
 		PacienteMuerte m = (PacienteMuerte) this.getObj();
-		String fecha = ManejoFechas.formatoIngles.format(m.getFechaMuerte().getTime());
+		String fecha = ManejoFechas.FORMATOINGLES.format(m.getFechaMuerte().getTime());
 		String sql = "UPDATE paciente_muerte SET CAUSA ="+ m.getNumCausa()+", FECHA_MUERTE ='"+fecha+"',TR_Funcionando="+ m.isTrFuncionando() +" WHERE THE=" + m.getThe();
 		return sql;
 	}
@@ -91,7 +91,7 @@ public class BrkMuertePaciente extends Broker {
 			m.setNumCausa(rs.getInt("CAUSA"));
 			String auxStr = rs.getString("FECHA_MUERTE");
 			Calendar auxCal = new GregorianCalendar();
-			auxCal.setTime(ManejoFechas.formatoIngles.parse(auxStr));
+			auxCal.setTime(ManejoFechas.FORMATOINGLES.parse(auxStr));
 			m.setFechaMuerte(auxCal);			
 			m.setTrFuncionando(rs.getBoolean("TR_Funcionando"));
 		}catch(SQLException e){

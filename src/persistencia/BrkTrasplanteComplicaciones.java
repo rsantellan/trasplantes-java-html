@@ -70,7 +70,7 @@ public class BrkTrasplanteComplicaciones extends Broker{
 	public String getInsertSQL() {
 		TrasplanteComplicaciones t = (TrasplanteComplicaciones) this.getObj();
 		String sql = "";
-		String fecha = ManejoFechas.formatoIngles.format(t.getFecha().getTime());
+		String fecha = ManejoFechas.FORMATOINGLES.format(t.getFecha().getTime());
 		sql += "INSERT INTO trasplante_complicaciones(IdPreTrasplante,FECHA,MEDICACION,INTERNADO,DIAS_DE_INTERNACION,EVOLUCION,COMENTARIO) VALUES(";
 		sql += t.getIdPretrasplante() + ",'"+ fecha +"',"+t.getNumMedicacion() +","+t.isInternado()+","+t.getDiasInternado()+","+t.isEvolucion()+",'"+t.getComentario()+"')";
 		return sql;
@@ -109,7 +109,7 @@ public class BrkTrasplanteComplicaciones extends Broker{
 	public String getUpdateSQL() {
 		TrasplanteComplicaciones t = (TrasplanteComplicaciones) this.getObj();
 		String sql = "";
-		String fecha = ManejoFechas.formatoIngles.format(t.getFecha().getTime());
+		String fecha = ManejoFechas.FORMATOINGLES.format(t.getFecha().getTime());
 		sql += "UPDATE trasplante_complicaciones SET ";
 		sql += "IdPreTrasplante ="+t.getIdPretrasplante();
 		sql += ",FECHA ='"+fecha+"',";
@@ -129,7 +129,7 @@ public class BrkTrasplanteComplicaciones extends Broker{
 			t.setId(rs.getInt("ID"));
 			t.setIdPretrasplante(rs.getInt("IdPreTrasplante"));
 			String auxFecha = rs.getString("FECHA");
-			t.getFecha().setTime(ManejoFechas.formatoIngles.parse(auxFecha));
+			t.getFecha().setTime(ManejoFechas.FORMATOINGLES.parse(auxFecha));
 			t.setNumMedicacion(rs.getInt("MEDICACION"));
 			t.setInternado(rs.getBoolean("INTERNADO"));
 			t.setDiasInternado(rs.getInt("DIAS_DE_INTERNACION"));

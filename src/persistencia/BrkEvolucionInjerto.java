@@ -32,7 +32,7 @@ public class BrkEvolucionInjerto extends Broker {
 			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
 			try {
 				prep.setInt(1, e.getIdPretrasplante());
-				String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+				String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 						.getTime());
 				prep.setString(2, fecha);
 				prep.setBoolean(3, e.isEnTrasplante());
@@ -63,7 +63,7 @@ public class BrkEvolucionInjerto extends Broker {
 		sql = "DELETE FROM injerto_evolucion WHERE PreTrasplante ="
 				+ e.getIdPretrasplante();
 		if (e.getFecha() != null) {
-			String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 					.getTime());
 			sql += " AND FECHA = '" + fecha + "'";
 			sql += " AND trasplante = " + e.isEnTrasplante();
@@ -76,7 +76,7 @@ public class BrkEvolucionInjerto extends Broker {
 		EvolucionInjerto e = (EvolucionInjerto) this.getObj();
 		String sql = "";
 		sql = "INSERT INTO injerto_evolucion(PreTrasplante,FECHA,TM,TM_CUAL,GP_DE_NOVO,Recidiva_GP_DE_NOVO,RA,RC,tratamiento,trasplante) VALUES (";
-		String fecha = ManejoFechas.formatoIngles
+		String fecha = ManejoFechas.FORMATOINGLES
 				.format(e.getFecha().getTime());
 		sql += e.getIdPretrasplante() + ",'" + fecha + "'," + e.isTm() + ",'"
 				+ e.getTmCual() + "'," + e.isGpNovo() + "," + e.isRecidivaGp()
@@ -99,7 +99,7 @@ public class BrkEvolucionInjerto extends Broker {
 		if (e.getIdPretrasplante() != 0) {
 			sql += " WHERE PreTrasplante=" + e.getIdPretrasplante();
 			if (e.getFecha() != null) {
-				String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+				String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 						.getTime());
 				sql += " AND FECHA ='" + fecha + "'";
 			}
@@ -122,7 +122,7 @@ public class BrkEvolucionInjerto extends Broker {
 		sql += "tratamiento=" + e.getTratamiento().getId() + ", ";
 		sql += "trasplante=" + e.isEnTrasplante() + " ";
 		sql += " WHERE PreTrasplante=" + e.getIdPretrasplante();
-		String fecha = ManejoFechas.formatoIngles
+		String fecha = ManejoFechas.FORMATOINGLES
 				.format(e.getFecha().getTime());
 		sql += " AND FECHA ='" + fecha + "'";
 		return sql;
@@ -137,7 +137,7 @@ public class BrkEvolucionInjerto extends Broker {
 			if(e.getFecha() == null){
 				e.setFecha(new GregorianCalendar());
 			}
-			e.getFecha().setTime(ManejoFechas.formatoIngles.parse(fecha));
+			e.getFecha().setTime(ManejoFechas.FORMATOINGLES.parse(fecha));
 			e.setTm(rs.getBoolean("TM"));
 			e.setTmCual(rs.getString("TM_CUAL"));
 			e.setGpNovo(rs.getBoolean("GP_DE_NOVO"));
@@ -168,7 +168,7 @@ public class BrkEvolucionInjerto extends Broker {
 		if (!e.isBuscarPorTratamiento()) {
 			sql += " WHERE PreTrasplante =" + e.getIdPretrasplante();
 			if (e.getFecha() != null) {
-				String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+				String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 						.getTime());
 				sql += " AND FECHA ='" + fecha + "'";
 			}

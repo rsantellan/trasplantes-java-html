@@ -31,13 +31,9 @@ public class Md5{
      * @return String
      * @throws Exception
      */
-    public static String encriptar(String palabra)throws Exception {
+    public static String encriptar(String palabra) throws Exception {
         String pe="";
-        try {
-            pe = hash(palabra);
-        } catch (Exception e) {
-            throw new Error("<strong>Error: Al encriptar el password</strong>");    
-        }
+        pe = hash(palabra);
         return pe;
     }
 } 

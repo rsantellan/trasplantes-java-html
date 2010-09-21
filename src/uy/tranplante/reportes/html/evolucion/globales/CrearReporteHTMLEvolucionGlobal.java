@@ -67,7 +67,7 @@ public class CrearReporteHTMLEvolucionGlobal {
 	private String reporteEvolucionCmv(EvolucionTrasplanteCMV cmv, String aux){
 		if(cmv != null){
 			aux +="<ul class='lista_cmv'>" +  this.delimiter ;
-			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.formatoEspanol.format(cmv.getFecha().getTime()) + "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.FORMATOESPANOL.format(cmv.getFecha().getTime()) + "</li>" +  this.delimiter ;
 			if(cmv.isAg_pp65()){
 				aux +="<li><label class='label_cmv'>isAg_pp65: </label> SI </li>" +  this.delimiter ;
 			}
@@ -114,7 +114,7 @@ public class CrearReporteHTMLEvolucionGlobal {
 	private String reporteEvolucionEcg(EvolucionTrasplanteECG ecg, String aux){
 		if(ecg != null){
 			aux +="<ul class='lista_cmv'>" +  this.delimiter ;
-			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.formatoEspanol.format(ecg.getFecha().getTime()) + "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.FORMATOESPANOL.format(ecg.getFecha().getTime()) + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>Rs: </label>"+ ecg.getRs() +"</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>Hvi: </label>"+ ecg.getHvi() +"</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>Onda Q: </label>"+ ecg.getOndaQ() +"</li>" +  this.delimiter ;
@@ -152,7 +152,7 @@ public class CrearReporteHTMLEvolucionGlobal {
 	private String reporteEvolucionEcocardiograma(EvolucionTrasplanteEcoCardio eco, String aux){
 		if(eco != null){
 			aux +="<ul class='lista_cmv'>" +  this.delimiter ;
-			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.formatoEspanol.format(eco.getFecha().getTime()) + "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.FORMATOESPANOL.format(eco.getFecha().getTime()) + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>FEVI > 55: </label>";
 			if(eco.isFeviNormal()){
 				aux += "SI";
@@ -278,7 +278,7 @@ public class CrearReporteHTMLEvolucionGlobal {
 	private String reporteEvolucionMarcadoresVirales(EvolucionTrasplanteMarvirales mar, String aux){
 		if(mar != null){
 			aux +="<ul class='lista_cmv'>" +  this.delimiter ;
-			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.formatoEspanol.format(mar.getFecha().getTime()) + "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.FORMATOESPANOL.format(mar.getFecha().getTime()) + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>Hbs Ag: </label>"+ mar.getAghbs() +"</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>Hbs Ac: </label>"+ mar.getHbsac() +"</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>Hbc Ac: </label>"+ mar.getHbcac() +"</li>" +  this.delimiter ;
@@ -325,7 +325,7 @@ public class CrearReporteHTMLEvolucionGlobal {
 	private String reporteEvolucionTxTorax(EvolucionTrasplanteTxTorax tx, String aux){
 		if(tx != null){
 			aux +="<ul class='lista_cmv'>" +  this.delimiter ;
-			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.formatoEspanol.format(tx.getFecha().getTime()) + "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.FORMATOESPANOL.format(tx.getFecha().getTime()) + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>RC/T: </label>"+ tx.getRct() +"</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>Foco: </label>";
 			if(tx.isFoco()){
@@ -381,7 +381,7 @@ public class CrearReporteHTMLEvolucionGlobal {
 	private String reporteEvolucionEcografiaDelInjerto(EvolucionTrasplanteEcografia eco, String aux){
 		if(eco != null){
 			aux +="<ul class='lista_cmv'>" +  this.delimiter ;
-			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.formatoEspanol.format(eco.getFecha().getTime()) + "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.FORMATOESPANOL.format(eco.getFecha().getTime()) + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>Diametros: </label>"+ eco.getDiametros() +"</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>Dilatación: </label>";
 			if(eco.isDilatacion()){
@@ -427,7 +427,7 @@ public class CrearReporteHTMLEvolucionGlobal {
 	private String reporteEvolucionEcodopler(EvolucionTrasplanteEcoDopler eco, String aux){
 		if(eco != null){
 			aux +="<ul class='lista_cmv'>" +  this.delimiter ;
-			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.formatoEspanol.format(eco.getFecha().getTime()) + "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.FORMATOESPANOL.format(eco.getFecha().getTime()) + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>Estructura: </label>"+ eco.getEstructura() +"</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>Dilatación: </label>";
 			if(eco.isDilatacion()){
@@ -477,7 +477,7 @@ public class CrearReporteHTMLEvolucionGlobal {
 	private String reporteEvolucionOtrosExamenes(EvolucionTrasplanteExamenes eco, String aux){
 		if(eco != null){
 			aux +="<ul class='lista_cmv'>" +  this.delimiter ;
-			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.formatoEspanol.format(eco.getFecha().getTime()) + "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.FORMATOESPANOL.format(eco.getFecha().getTime()) + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>Tipo de examen: </label>"+ eco.getTipo() +"</li>" +  this.delimiter ;
 			if(eco.isNormal()){
 				aux +="<li><label class='label_cmv'>Normal: </label>SI</li>";
@@ -516,7 +516,7 @@ public class CrearReporteHTMLEvolucionGlobal {
 	private String reporteEvolucionNutricion(EvolucionTrasplanteNutricion nut, String aux){
 		if(nut != null){
 			aux +="<ul class='lista_cmv'>" +  this.delimiter ;
-			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.formatoEspanol.format(nut.getFecha().getTime()) + "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.FORMATOESPANOL.format(nut.getFecha().getTime()) + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>Talla: </label>"+ String.valueOf(nut.getTalla()) +"</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>Peso deseado: </label>"+ String.valueOf(nut.getPesoDeseado()) +"</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>Peso real: </label>"+ String.valueOf(nut.getPesoReal()) +"</li>" +  this.delimiter ;
@@ -570,7 +570,7 @@ public class CrearReporteHTMLEvolucionGlobal {
 	private String reporteEvolucionParaclinica(EvolucionTrasplante pc, String aux){
 		if(pc != null){
 			aux +="<ul class='lista_cmv'>" +  this.delimiter ;
-			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.formatoEspanol.format(pc.getFecha().getTime()) + "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_cmv'>Fecha: </label>" +ManejoFechas.FORMATOESPANOL.format(pc.getFecha().getTime()) + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>PAS: </label>"+ String.valueOf(pc.getPas()) +"</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>PAD: </label>"+ String.valueOf(pc.getPad()) +"</li>" +  this.delimiter ;
 			aux +="<li><label class='label_cmv'>Diuresis: </label>"+ String.valueOf(pc.getDiuresis()) +"</li>" +  this.delimiter ;

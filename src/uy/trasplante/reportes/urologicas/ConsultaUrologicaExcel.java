@@ -161,7 +161,7 @@ public class ConsultaUrologicaExcel {
 				
 				salida += "<td>" + pacientePreTrasplante.getImc() + "</td>";
 				
-				salida += "<td>" + ManejoFechas.formatoEspanol.format(trasplante.getFecha().getTime()) + "</td>";
+				salida += "<td>" + ManejoFechas.FORMATOESPANOL.format(trasplante.getFecha().getTime()) + "</td>";
 
 				salida += "<td>" + trasplante.getAnastUterial() + "</td>";
 
@@ -186,7 +186,7 @@ public class ConsultaUrologicaExcel {
 						total++;
 						if (!complicacionNoInfecciosa.isEvolucion()) {
 							maximo++;
-							salida += "<td BGCOLOR='#FFFF66'>" + ManejoFechas.formatoEspanol.format(complicacionNoInfecciosa.getFecha().getTime()) + "</td>";
+							salida += "<td BGCOLOR='#FFFF66'>" + ManejoFechas.FORMATOESPANOL.format(complicacionNoInfecciosa.getFecha().getTime()) + "</td>";
 
 							salida += "<td BGCOLOR='#FFFF66'>" + complicacionNoInfecciosa.isEvolucion() + "</td>";
 							
@@ -223,7 +223,7 @@ public class ConsultaUrologicaExcel {
 						total++;
 						if (complicacionNoInfecciosaEvolucion.isEvolucion()) {
 							maximo++;
-							salida += "<td BGCOLOR='#99FF66'>" + ManejoFechas.formatoEspanol.format(complicacionNoInfecciosaEvolucion.getFecha().getTime()) + "</td>";
+							salida += "<td BGCOLOR='#99FF66'>" + ManejoFechas.FORMATOESPANOL.format(complicacionNoInfecciosaEvolucion.getFecha().getTime()) + "</td>";
 
 							salida += "<td BGCOLOR='#99FF66'>" + complicacionNoInfecciosaEvolucion.isEvolucion() + "</td>";
 
@@ -257,7 +257,7 @@ public class ConsultaUrologicaExcel {
 					perdidas++;
 					PacientePerdidaInjerto perdida = aux.getListaPerdidas().get(i);
 					if (perdida.getNumPreTrasplante() == pacientePreTrasplante.getId()) {
-						salida += "<td>" + ManejoFechas.formatoEspanol.format(perdida.getFechaPerdida().getTime()) + "</td>";
+						salida += "<td>" + ManejoFechas.FORMATOESPANOL.format(perdida.getFechaPerdida().getTime()) + "</td>";
 						salida += "<td>" + perdida.getCausa().getDetalle() + "</td>";
 					}else{
 						salida += "<td>-</td>";

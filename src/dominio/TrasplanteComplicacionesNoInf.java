@@ -140,7 +140,7 @@ public class TrasplanteComplicacionesNoInf extends TrasplanteComplicaciones impl
 		}else{
 			salida = "Internado: ";
 		}
-		salida += ManejoFechas.formatoEspanol.format(this.getFecha().getTime()) + " - " + this.getComplicacion().getNombre() + "," + this.getComplicacion().getTipo();
+		salida += ManejoFechas.FORMATOESPANOL.format(this.getFecha().getTime()) + " - " + this.getComplicacion().getNombre() + "," + this.getComplicacion().getTipo();
 		return salida;
 	}
 	

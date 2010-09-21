@@ -29,7 +29,7 @@ public class BrkEvolucionTrasplanteEcoDopler extends Broker {
 			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
 			try {
 				prep.setInt(1, e.getIdTrasplante());
-				String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+				String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 						.getTime());
 				prep.setString(2, fecha);
 				return prep;
@@ -59,7 +59,7 @@ public class BrkEvolucionTrasplanteEcoDopler extends Broker {
 		sql += "DELETE FROM evolucion_trasplante_ecodopler WHERE IdTrasplante ="
 				+ e.getIdTrasplante();
 		if (e.getFecha() != null) {
-			String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 					.getTime());
 			sql += " AND FECHA ='" + fecha + "'";
 		}
@@ -69,7 +69,7 @@ public class BrkEvolucionTrasplanteEcoDopler extends Broker {
 	@Override
 	public String getInsertSQL() {
 		EvolucionTrasplanteEcoDopler e = (EvolucionTrasplanteEcoDopler) this.getObj();
-		String fecha = ManejoFechas.formatoIngles
+		String fecha = ManejoFechas.FORMATOINGLES
 				.format(e.getFecha().getTime());
 		String sql = "";
 		sql = "INSERT INTO evolucion_trasplante_ecodopler(IdTrasplante,FECHA,ESTRUCTURA,DILATACION,COLECCIONES,EJE_ARTERIAL,EJE_VENOSO,ARTERIA_RENAL,VENA_RENAL,ANAST_VENOSA,ANAST_RENOSA,INDICE,OTROS) VALUES (";
@@ -91,7 +91,7 @@ public class BrkEvolucionTrasplanteEcoDopler extends Broker {
 		String sql = "SELECT * FROM evolucion_trasplante_ecodopler WHERE IdTrasplante ="
 				+ e.getIdTrasplante();
 		if (e.getFecha() != null) {
-			String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 					.getTime());
 			sql += " AND FECHA ='" + fecha + "'";
 		}
@@ -115,7 +115,7 @@ public class BrkEvolucionTrasplanteEcoDopler extends Broker {
 		sql += "OTROS ='" + e.getOtros() + "', ";
 		sql += "INDICE =" + e.getIndiceResistencia() + " ";
 		sql += "WHERE IdTrasplante =" + e.getIdTrasplante();
-		String fecha = ManejoFechas.formatoIngles
+		String fecha = ManejoFechas.FORMATOINGLES
 				.format(e.getFecha().getTime());
 		sql += " AND FECHA ='" + fecha + "'";
 		return sql;
@@ -127,7 +127,7 @@ public class BrkEvolucionTrasplanteEcoDopler extends Broker {
 		try {
 			e.setIdTrasplante(rs.getInt("IdTrasplante"));
 			String auxFecha = rs.getString("FECHA");
-			e.getFecha().setTime(ManejoFechas.formatoIngles.parse(auxFecha));
+			e.getFecha().setTime(ManejoFechas.FORMATOINGLES.parse(auxFecha));
 			e.setEstructura(rs.getString("ESTRUCTURA"));
 			e.setDilatacion(rs.getBoolean("DILATACION"));
 			e.setColecciones(rs.getBoolean("COLECCIONES"));
@@ -157,7 +157,7 @@ public class BrkEvolucionTrasplanteEcoDopler extends Broker {
 		String sql = "SELECT COUNT(*) FROM evolucion_trasplante_ecodopler WHERE IdTrasplante ="
 				+ e.getIdTrasplante();
 		if (e.getFecha() != null) {
-			String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 					.getTime());
 			sql += " AND FECHA ='" + fecha + "'";
 		}

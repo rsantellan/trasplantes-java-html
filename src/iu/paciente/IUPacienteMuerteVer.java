@@ -39,7 +39,7 @@ public class IUPacienteMuerteVer extends JFrame {
 	private void cargarDatos(){
 		//miPaciente.getMuertePaciente().leer();
 		this.jLabelPaciente.setText("El paciente :" + miPaciente.toString());
-		this.jLabelFecha.setText("Fallecion en la fecha : " + ManejoFechas.formatoEspanol.format(miPaciente.getMuertePaciente().getFechaMuerte().getTime()));
+		this.jLabelFecha.setText("Fallecion en la fecha : " + ManejoFechas.FORMATOESPANOL.format(miPaciente.getMuertePaciente().getFechaMuerte().getTime()));
 		this.jLabelCausa.setText("De : " + miPaciente.getMuertePaciente().getCausa().toString());
 		if(this.miPaciente.getMuertePaciente().isTrFuncionando()){
 			this.jLabelFuncionando.setText("El trasplante estaba funcionando.");

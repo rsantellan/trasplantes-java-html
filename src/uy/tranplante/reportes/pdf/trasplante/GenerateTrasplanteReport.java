@@ -40,9 +40,9 @@ public class GenerateTrasplanteReport {
 			System.out.println(x);
 			PacientePreTrasplante pt = (PacientePreTrasplante) p.getListaPreTrasplantes().get(x);
 			table.addCell(DocumentoBasico.cellNoBorderNoColor("Fecha de ingreso a la lista: "));
-			table.addCell(DocumentoBasico.cellNoBorderNoColor(ManejoFechas.formatoEspanol.format(pt.getFecha_ingreso_lista().getTime())));
+			table.addCell(DocumentoBasico.cellNoBorderNoColor(ManejoFechas.FORMATOESPANOL.format(pt.getFecha_ingreso_lista().getTime())));
 			table.addCell(DocumentoBasico.cellNoBorderNoColor("Fecha de egreso: "));
-			table.addCell(DocumentoBasico.cellNoBorderNoColor(ManejoFechas.formatoEspanol.format(pt.getFecha_egreso().getTime())));
+			table.addCell(DocumentoBasico.cellNoBorderNoColor(ManejoFechas.FORMATOESPANOL.format(pt.getFecha_egreso().getTime())));
 			table.addCell(DocumentoBasico.cellNoBorderColor("Modalidad d: "));
 			table.addCell(DocumentoBasico.cellNoBorderColor(pt.getModalidad_d()));
 			table.addCell(DocumentoBasico.cellNoBorderColor("pbr: "));
@@ -132,7 +132,7 @@ public class GenerateTrasplanteReport {
 		PdfPTable table = new PdfPTable(4);
 		
 		table.addCell(DocumentoBasico.cellNoBorderNoColor("Fecha del transplante: "));
-		table.addCell(DocumentoBasico.cellNoBorderNoColor(ManejoFechas.formatoEspanol.format(t.getFecha().getTime())));
+		table.addCell(DocumentoBasico.cellNoBorderNoColor(ManejoFechas.FORMATOESPANOL.format(t.getFecha().getTime())));
 		table.addCell(DocumentoBasico.cellNoBorderNoColor("Número de transplante: "));
 		table.addCell(DocumentoBasico.cellNoBorderNoColor(String.valueOf(t.getNumTr())));
 		
@@ -287,7 +287,7 @@ public class GenerateTrasplanteReport {
 		table.addCell(DocumentoBasico.cellNoBorderColor(t.getComentario()));
 		
 		table.addCell(DocumentoBasico.cellNoBorderNoColor("Fecha de alta: "));
-		table.addCell(DocumentoBasico.cellNoBorderNoColor(ManejoFechas.formatoEspanol.format(t.getFechaAlta().getTime())));
+		table.addCell(DocumentoBasico.cellNoBorderNoColor(ManejoFechas.FORMATOESPANOL.format(t.getFechaAlta().getTime())));
 		table.addCell(DocumentoBasico.cellNoBorderNoColor(" "));
 		table.addCell(DocumentoBasico.cellNoBorderNoColor(" "));
 		

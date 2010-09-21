@@ -126,7 +126,7 @@ public class TrasplanteComplicacionesInf extends TrasplanteComplicaciones implem
 		}else{
 			salida = "Internado: ";
 		}
-		salida += ManejoFechas.formatoEspanol.format(this.getFecha().getTime()) + " - " + this.getInfeccion();
+		salida += ManejoFechas.FORMATOESPANOL.format(this.getFecha().getTime()) + " - " + this.getInfeccion();
 		return salida;
 	}
 	

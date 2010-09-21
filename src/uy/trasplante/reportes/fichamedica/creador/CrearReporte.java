@@ -26,6 +26,11 @@ public class CrearReporte extends JFrame {
 	public CrearReporte() {
 		super();
 		initialize();
+		this.constructorMethod();
+
+	}
+	
+	private void constructorMethod(){
 		Paciente p = new Paciente();
 		p.setThe(9);
 		Fachada.getInstancia().cambie();
@@ -52,7 +57,6 @@ public class CrearReporte extends JFrame {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	/**
@@ -145,11 +149,11 @@ public class CrearReporte extends JFrame {
 		      "<td><strong>SEXO</strong></td>" +
 		      "<td>"+ p.getSexo() + "</td>" +
 		      "<td><strong>FECHA NACIMIENTO</strong></td>" +
-		      "<td>" + ManejoFechas.formatoEspanol.format(p.getFecha_nacimiento().getTime()) + "</td>" +
+		      "<td>" + ManejoFechas.FORMATOESPANOL.format(p.getFecha_nacimiento().getTime()) + "</td>" +
 		    "</tr>" +
 		    "<tr>" +
 		      "<td><strong>FECHA DE DIALISIS</strong></td>" +
-		      "<td>" +ManejoFechas.formatoEspanol.format(p.getFecha_dialisis().getTime()) +"</td>" +
+		      "<td>" +ManejoFechas.FORMATOESPANOL.format(p.getFecha_dialisis().getTime()) +"</td>" +
 		      "<td><strong>GRUPO SANGUINEO</strong></td>" +
 		      "<td>"+p.getGrupoSanguineo()+"</td>"+
 		    "</tr>" +
@@ -188,9 +192,9 @@ public class CrearReporte extends JFrame {
 		    "<strong>SEXO </strong>" +
 		      ""+ p.getSexo() + "<br>" +
 		      "<strong>FECHA NACIMIENTO </strong>" +
-		      "" + ManejoFechas.formatoEspanol.format(p.getFecha_nacimiento().getTime()) + "<br>" +
+		      "" + ManejoFechas.FORMATOESPANOL.format(p.getFecha_nacimiento().getTime()) + "<br>" +
 		    "<strong>FECHA DE DIALISIS </strong>" +
-		      "" +ManejoFechas.formatoEspanol.format(p.getFecha_dialisis().getTime()) +"<br>" +
+		      "" +ManejoFechas.FORMATOESPANOL.format(p.getFecha_dialisis().getTime()) +"<br>" +
 		      "<strong>GRUPO SANGUINEO </strong>" +
 		      ""+p.getGrupoSanguineo()+"<br>"+
 		    "<strong>NEFROPATIA </strong>" +
@@ -210,7 +214,7 @@ public class CrearReporte extends JFrame {
 			aux += "<p align=\"center\"><strong><span class=\"Estilo3\">PERDIDA DE INJERTO</span></strong></p>;";
 			for(int x=0;x<p.getListaPerdidas().size();x++){
 				PacientePerdidaInjerto auxPerdida = (PacientePerdidaInjerto) p.getListaPerdidas().get(x);
-				aux += "<p align=\"center\"><strong>FECHA DE LA PERDIDA: </strong>"+ ManejoFechas.formatoEspanol.format(auxPerdida.getFechaPerdida().getTime()) + "</p>";
+				aux += "<p align=\"center\"><strong>FECHA DE LA PERDIDA: </strong>"+ ManejoFechas.FORMATOESPANOL.format(auxPerdida.getFechaPerdida().getTime()) + "</p>";
 				aux += "<p align=\"center\"><strong>CAUSA DE LA PERDIDA: </strong>"+ auxPerdida.getCausa().getDetalle() +"</p>";
 			}
 			aux += "</td>" +
@@ -230,7 +234,7 @@ public class CrearReporte extends JFrame {
 			   "<tr>" +
 			   "<td>";
 			aux += "<p align=\"center\"><strong><span class=\"Estilo3\">MUERTE DEL PACIENTE</span></strong></p>";
-			aux += "<p align=\"center\"><strong>FECHA DE LA MUERTE: </strong>"+ ManejoFechas.formatoEspanol.format(p.getMuertePaciente().getFechaMuerte().getTime()) + "</p>";
+			aux += "<p align=\"center\"><strong>FECHA DE LA MUERTE: </strong>"+ ManejoFechas.FORMATOESPANOL.format(p.getMuertePaciente().getFechaMuerte().getTime()) + "</p>";
 			aux += "<p align=\"center\"><strong>CAUSA DE LA MUERTE: </strong>"+ p.getMuertePaciente().getCausa().getDetalle() +"</p>";
 			aux += "</td>" +
 			"</tr>" +

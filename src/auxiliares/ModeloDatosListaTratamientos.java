@@ -47,7 +47,7 @@ public class ModeloDatosListaTratamientos extends AbstractTableModel {
 		return data[arg0][arg1];
 	}
 
-	public void preCargarLineas() {
+	private void preCargarLineas() {
 		numRows = this.datos.size();
 		data = new String[numRows][numColumns];
 		Calendar c = new GregorianCalendar();
@@ -55,12 +55,12 @@ public class ModeloDatosListaTratamientos extends AbstractTableModel {
 		c.set(1950, 1, 1);
 		for (int x = 0; x < this.datos.size(); x++) {
 			Tratamiento p = this.datos.get(x);
-			data[x][0] = ManejoFechas.formatoEspanol.format(p.getFecha_inicio()
+			data[x][0] = ManejoFechas.FORMATOESPANOL.format(p.getFecha_inicio()
 					.getTime());
 			if (p.getFecha_fin().equals(c)) {
 				data[x][1] = " - ";
 			} else {
-				data[x][1] = ManejoFechas.formatoEspanol.format(p
+				data[x][1] = ManejoFechas.FORMATOESPANOL.format(p
 						.getFecha_fin().getTime());
 			}
 			data[x][2] = p.getMedicacion().getNombre();

@@ -499,7 +499,7 @@ public class EvolucionTrasplante implements IPersistente{
 	
 	
 	public String toString(){
-		return "Evolucion correspondiente a : " + ManejoFechas.formatoEspanol.format(this.getFecha().getTime());
+		return "Evolucion correspondiente a : " + ManejoFechas.FORMATOESPANOL.format(this.getFecha().getTime());
 	}
 
 	

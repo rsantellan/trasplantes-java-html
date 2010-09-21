@@ -62,7 +62,7 @@ public class TrasplanteReoperacion implements IPersistente{
 	public TrasplanteReoperacion(){
 		this.setFecha(new GregorianCalendar());
 		try {
-			this.getFecha().setTime(ManejoFechas.formatoEspanol.parse("1900-01-01"));
+			this.getFecha().setTime(ManejoFechas.FORMATOESPANOL.parse("1900-01-01"));
 		} catch (ParseException e) {
 
 		}
@@ -122,7 +122,7 @@ public class TrasplanteReoperacion implements IPersistente{
 	
 	public String toString(){
 		if(this.getFecha() != null){
-			return ManejoFechas.formatoEspanol.format(this.getFecha().getTime());
+			return ManejoFechas.FORMATOESPANOL.format(this.getFecha().getTime());
 		}else{
 			return "-";
 		}

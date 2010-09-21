@@ -44,7 +44,7 @@ public class ModeloDatosListaDonantes extends AbstractTableModel{
 		return data[arg0][arg1];
 	}
 
-	public void preCargarLineas(){
+	private void preCargarLineas(){
 		numRows = this.datos.size();
 		data = new String [numRows] [numColumns] ;
 		for(int x= 0; x<this.datos.size();x++){

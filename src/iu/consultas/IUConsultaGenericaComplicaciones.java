@@ -70,7 +70,7 @@ public class IUConsultaGenericaComplicaciones extends JFrame {
 	
 	private void cargarDatos(){
 		Calendar c = new GregorianCalendar();
-		System.out.println(ManejoFechas.formatoHoras.format(c.getTime()));
+		System.out.println(ManejoFechas.FORMATOHORAS.format(c.getTime()));
 		this.getJScrollPaneComplicacionesInf().setVisible(false);
 		this.getJScrollPaneComplicacionesNoInf().setVisible(false);
 		Generico g = new Generico();
@@ -100,7 +100,7 @@ public class IUConsultaGenericaComplicaciones extends JFrame {
 		
 		this.usado = g;
 		c = new GregorianCalendar();
-		System.out.println(ManejoFechas.formatoHoras.format(c.getTime()));
+		System.out.println(ManejoFechas.FORMATOHORAS.format(c.getTime()));
 	}
 	/**
 	 * This method initializes this

@@ -113,7 +113,7 @@ public class IUPacienteModificar extends JFrame {
 		}
 		this.jDateChooserFechaNacimiento.setCalendar(this.pacienteUsado
 				.getFecha_nacimiento());
-		if (ManejoFechas.formatoEspanol.format(
+		if (ManejoFechas.FORMATOESPANOL.format(
 				this.pacienteUsado.getFecha_dialisis().getTime())
 				.equalsIgnoreCase("01-01-1800")) {
 			this.jCheckBoxSinDialisis.setSelected(true);
@@ -562,7 +562,7 @@ public class IUPacienteModificar extends JFrame {
 				if (this.jCheckBoxSinDialisis.isSelected()) {
 					try {
 						p.getFecha_dialisis().setTime(
-								(ManejoFechas.formatoEspanol
+								(ManejoFechas.FORMATOESPANOL
 										.parse("01-01-1800")));
 					} catch (ParseException e) {
 						System.out.println(e);
@@ -577,7 +577,7 @@ public class IUPacienteModificar extends JFrame {
 				p.setGrupoSanguineo((String) this.getJComboBoxGrupoSanguineo()
 						.getSelectedItem());
 				p.setNumNefropatia(p.getTipoNefropatia().getId());
-				ManejoFechas.formatoEspanol.format(p.getFecha_nacimiento().getTime());
+				ManejoFechas.FORMATOESPANOL.format(p.getFecha_nacimiento().getTime());
 				if (Fachada.getInstancia().modificarPaciente(p)) {
 					JOptionPane
 							.showMessageDialog(this,

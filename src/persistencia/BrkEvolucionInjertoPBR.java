@@ -31,7 +31,7 @@ public class BrkEvolucionInjertoPBR extends Broker {
 			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
 			try {
 				prep.setInt(1, e.getIdPretrasplante());
-				String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+				String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 						.getTime());
 				prep.setString(2, fecha);
 				return prep;
@@ -62,7 +62,7 @@ public class BrkEvolucionInjertoPBR extends Broker {
 		sql = "DELETE FROM injerto_evolucion_pbr WHERE PreTrasplante ="
 				+ e.getIdPretrasplante();
 		if (e.getFecha() != null) {
-			String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 					.getTime());
 			sql += " AND FECHA = '" + fecha + "'";
 		}
@@ -75,7 +75,7 @@ public class BrkEvolucionInjertoPBR extends Broker {
 				.getObj();
 		String sql = "";
 		sql = "INSERT INTO injerto_evolucion_pbr(PreTrasplante,FECHA,RESULTADO_PBR) VALUES ";
-		String fecha = ManejoFechas.formatoIngles
+		String fecha = ManejoFechas.FORMATOINGLES
 				.format(e.getFecha().getTime());
 		sql += "(" + e.getIdPretrasplante() + ",'" + fecha + "',"
 				+ e.getPbr().getId() + ")";
@@ -96,7 +96,7 @@ public class BrkEvolucionInjertoPBR extends Broker {
 		if (e.getIdPretrasplante() != 0) {
 			sql += " WHERE PreTrasplante=" + e.getIdPretrasplante();
 			if (e.getFecha() != null) {
-				String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+				String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 						.getTime());
 				sql += " AND FECHA ='" + fecha + "'";
 			}
@@ -111,7 +111,7 @@ public class BrkEvolucionInjertoPBR extends Broker {
 		String sql = "UPDATE injerto_evolucion_pbr SET";
 		sql += "RESULTADO_PBR =" + e.getPbr().getId();
 		sql += " WHERE PreTrasplante=" + e.getIdPretrasplante();
-		String fecha = ManejoFechas.formatoIngles
+		String fecha = ManejoFechas.FORMATOINGLES
 				.format(e.getFecha().getTime());
 		sql += " AND FECHA ='" + fecha + "'";
 		sql += " AND RESULTADO_PBR =" + e.getNumPBR();
@@ -124,7 +124,7 @@ public class BrkEvolucionInjertoPBR extends Broker {
 		try {
 			e.setIdPretrasplante(rs.getInt("PreTrasplante"));
 			String fecha = rs.getString("FECHA");
-			e.getFecha().setTime(ManejoFechas.formatoIngles.parse(fecha));
+			e.getFecha().setTime(ManejoFechas.FORMATOINGLES.parse(fecha));
 			ResultadoPBR auxPBR = new ResultadoPBR();
 			auxPBR.setId(rs.getInt("RESULTADO_PBR"));
 			auxPBR.leer();
@@ -150,7 +150,7 @@ public class BrkEvolucionInjertoPBR extends Broker {
 		sql = "SELECT COUNT(*) FROM injerto_evolucion_pbr ";
 		if (e.getIdPretrasplante() > 0) {
 			sql += "WHERE PreTrasplante =" + e.getIdPretrasplante();
-			String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 					.getTime());
 			sql += " AND FECHA ='" + fecha + "'";
 			sql += " AND RESULTADO_PBR =" + e.getNumPBR();

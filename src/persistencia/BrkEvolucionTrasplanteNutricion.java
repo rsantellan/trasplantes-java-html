@@ -29,7 +29,7 @@ public class BrkEvolucionTrasplanteNutricion extends Broker {
 			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
 			try {
 				prep.setInt(1, e.getIdTrasplante());
-				String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+				String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 						.getTime());
 				prep.setString(2, fecha);
 				return prep;
@@ -59,7 +59,7 @@ public class BrkEvolucionTrasplanteNutricion extends Broker {
 		sql += "DELETE FROM evolucion_trasplante_nutricion WHERE IdTrasplante ="
 				+ e.getIdTrasplante();
 		if (e.getFecha() != null) {
-			String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 					.getTime());
 			sql += " AND FECHA ='" + fecha + "'";
 		}
@@ -69,7 +69,7 @@ public class BrkEvolucionTrasplanteNutricion extends Broker {
 	@Override
 	public String getInsertSQL() {
 		EvolucionTrasplanteNutricion e = (EvolucionTrasplanteNutricion) this.getObj();
-		String fecha = ManejoFechas.formatoIngles
+		String fecha = ManejoFechas.FORMATOINGLES
 				.format(e.getFecha().getTime());
 		String sql = "";
 		sql = "INSERT INTO evolucion_trasplante_nutricion(IdTrasplante,FECHA,TALLA,PESO_DESEADO,ESTRUCTURA_OSEA,IMPRESION,";
@@ -97,7 +97,7 @@ public class BrkEvolucionTrasplanteNutricion extends Broker {
 		String sql = "SELECT * FROM evolucion_trasplante_nutricion WHERE IdTrasplante ="
 				+ e.getIdTrasplante();
 		if (e.getFecha() != null) {
-			String fecha = ManejoFechas.formatoIngles.format(e.getFecha()
+			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
 					.getTime());
 			sql += " AND FECHA ='" + fecha + "'";
 		}
@@ -132,7 +132,7 @@ public class BrkEvolucionTrasplanteNutricion extends Broker {
 		sql += "R_CINTURA_CADERA = " +e.getRCinturaCadera() +", ";
 		sql += "DIAG_NUTRICIONAL = '" +e.getDiagNutricional() +"' ";
 		sql += "WHERE IdTrasplante =" + e.getIdTrasplante();
-		String fecha = ManejoFechas.formatoIngles
+		String fecha = ManejoFechas.FORMATOINGLES
 				.format(e.getFecha().getTime());
 		sql += " AND FECHA ='" + fecha + "'";
 		return sql;
@@ -144,7 +144,7 @@ public class BrkEvolucionTrasplanteNutricion extends Broker {
 		try {
 			e.setIdTrasplante(rs.getInt("IdTrasplante"));
 			String auxFecha = rs.getString("FECHA");
-			e.getFecha().setTime(ManejoFechas.formatoIngles.parse(auxFecha));
+			e.getFecha().setTime(ManejoFechas.FORMATOINGLES.parse(auxFecha));
 			e.setTalla(rs.getInt("TALLA"));
 			e.setPesoDeseado(rs.getInt("PESO_DESEADO"));
 			e.setEstructuraOsea(rs.getString("ESTRUCTURA_OSEA"));

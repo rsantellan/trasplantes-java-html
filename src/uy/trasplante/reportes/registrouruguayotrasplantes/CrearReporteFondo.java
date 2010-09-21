@@ -194,10 +194,10 @@ public class CrearReporteFondo {
 				salida += "<td>" + p.getTipoNefropatia().getNefropatia()
 						+ "</td>";
 				salida += "<td>"
-						+ ManejoFechas.formatoMes
+						+ ManejoFechas.FORMATOMES
 								.format(t.getFecha().getTime()) + "</td>";
 				salida += "<td>"
-						+ ManejoFechas.formatoYear.format(t.getFecha()
+						+ ManejoFechas.FORMATOYEAR.format(t.getFecha()
 								.getTime()) + "</td>";
 				String estado =  "3. VIVO EN TR";
 				if (t.getFecha() == null) {
@@ -216,10 +216,10 @@ public class CrearReporteFondo {
 					salida += "<td> Sin Alta </td>";
 				}else{
 					salida += "<td>"
-						+ ManejoFechas.formatoMes.format(p.getMuertePaciente().getFechaMuerte()
+						+ ManejoFechas.FORMATOMES.format(p.getMuertePaciente().getFechaMuerte()
 								.getTime()) + "</td>";
 					salida += "<td>"
-						+ ManejoFechas.formatoYear.format(p.getMuertePaciente().getFechaMuerte()
+						+ ManejoFechas.FORMATOYEAR.format(p.getMuertePaciente().getFechaMuerte()
 								.getTime()) + "</td>";
 				}
 				if (p.getMuertePaciente() != null) {

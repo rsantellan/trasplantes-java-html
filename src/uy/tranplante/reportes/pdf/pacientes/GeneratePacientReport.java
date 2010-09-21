@@ -47,9 +47,9 @@ public class GeneratePacientReport {
 		table.addCell(DocumentoBasico.cellNoBorderColor("Sexo: "));
 		table.addCell(DocumentoBasico.cellNoBorderColor(p.getSexo()));
 		table.addCell(DocumentoBasico.cellNoBorderColor("Fecha de nacimiento: "));
-		table.addCell(DocumentoBasico.cellNoBorderColor(ManejoFechas.formatoEspanol.format(p.getFecha_nacimiento().getTime())));
+		table.addCell(DocumentoBasico.cellNoBorderColor(ManejoFechas.FORMATOESPANOL.format(p.getFecha_nacimiento().getTime())));
 		table.addCell(DocumentoBasico.cellNoBorderNoColor("Fecha de dialisis: "));
-		table.addCell(DocumentoBasico.cellNoBorderNoColor(ManejoFechas.formatoEspanol.format(p.getFecha_dialisis().getTime())));
+		table.addCell(DocumentoBasico.cellNoBorderNoColor(ManejoFechas.FORMATOESPANOL.format(p.getFecha_dialisis().getTime())));
 		table.addCell(DocumentoBasico.cellNoBorderNoColor("Grupo sanguineo: "));
 		table.addCell(DocumentoBasico.cellNoBorderNoColor(p.getGrupoSanguineo()));
 		table.addCell(DocumentoBasico.cellNoBorderColor("Nefropatia: "));
@@ -78,7 +78,7 @@ public class GeneratePacientReport {
 		for(int x=0;x<p.getListaPerdidas().size();x++){
 			PacientePerdidaInjerto auxPerdida = (PacientePerdidaInjerto) p.getListaPerdidas().get(x);
 			table.addCell(DocumentoBasico.cellNoBorderNoColor("Fecha de la perdida: "));
-			table.addCell(DocumentoBasico.cellNoBorderNoColor(ManejoFechas.formatoEspanol.format(auxPerdida.getFechaPerdida().getTime())));
+			table.addCell(DocumentoBasico.cellNoBorderNoColor(ManejoFechas.FORMATOESPANOL.format(auxPerdida.getFechaPerdida().getTime())));
 			table.addCell(DocumentoBasico.cellNoBorderColor("Causa de la perdida: "));
 			table.addCell(DocumentoBasico.cellNoBorderColor(auxPerdida.getCausa().getDetalle()));
 		}
@@ -106,7 +106,7 @@ public class GeneratePacientReport {
 
 		if(p.getMuertePaciente() != null){
 			table.addCell(DocumentoBasico.cellNoBorderNoColor("Fecha de la muerte: "));
-			table.addCell(DocumentoBasico.cellNoBorderNoColor(ManejoFechas.formatoEspanol.format(p.getMuertePaciente().getFechaMuerte().getTime())));
+			table.addCell(DocumentoBasico.cellNoBorderNoColor(ManejoFechas.FORMATOESPANOL.format(p.getMuertePaciente().getFechaMuerte().getTime())));
 			table.addCell(DocumentoBasico.cellNoBorderColor("Causa de la muerte: "));
 			table.addCell(DocumentoBasico.cellNoBorderColor(p.getMuertePaciente().getCausa().getDetalle()));
 			table.addCell(DocumentoBasico.cellNoBorderNoColor("Trasplante Funcionando: "));

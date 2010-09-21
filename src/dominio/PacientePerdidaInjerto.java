@@ -107,7 +107,7 @@ public class PacientePerdidaInjerto implements IPersistente{
 
 	
 	public String toString(){
-		return ManejoFechas.formatoEspanol.format(this.getFechaPerdida().getTime()); 
+		return ManejoFechas.FORMATOESPANOL.format(this.getFechaPerdida().getTime()); 
 	}
 	
 	

@@ -47,9 +47,9 @@ public class BrkPaciente extends Broker {
 	public String getInsertSQL() {
 		Paciente p = (Paciente) this.getObj();
 		String sql = "";
-		String fechaNacimiento = ManejoFechas.formatoIngles.format(p
+		String fechaNacimiento = ManejoFechas.FORMATOINGLES.format(p
 				.getFecha_nacimiento().getTime());
-		String fechaDialisis = ManejoFechas.formatoIngles.format(p
+		String fechaDialisis = ManejoFechas.FORMATOINGLES.format(p
 				.getFecha_dialisis().getTime());
 		sql = "INSERT INTO pacientes(CI,NOMBRE,APELLIDO,NUM_FNR,RAZA,SEXO,";
 		sql += "FECHA_NACIMIENTO,FECHA_DIALISIS,NEFROPATIA,GRUPO_SANG) VALUES ('";
@@ -101,10 +101,10 @@ public class BrkPaciente extends Broker {
 		sql += "RAZA ='" + p.getRaza() + "', ";
 		sql += "SEXO = '" + p.getSexo() + "', ";
 		sql += "FECHA_NACIMIENTO ='"
-				+ ManejoFechas.formatoIngles.format(p.getFecha_nacimiento()
+				+ ManejoFechas.FORMATOINGLES.format(p.getFecha_nacimiento()
 						.getTime()) + "',";
 		sql += "FECHA_DIALISIS ='"
-				+ ManejoFechas.formatoIngles.format(p.getFecha_dialisis()
+				+ ManejoFechas.FORMATOINGLES.format(p.getFecha_dialisis()
 						.getTime()) + "', ";
 		sql += "NEFROPATIA ='" + p.getTipoNefropatia().getId() + "', ";
 		sql += "GRUPO_SANG ='" + p.getGrupoSanguineo() + "' ";
@@ -126,11 +126,11 @@ public class BrkPaciente extends Broker {
 			// Fecha de nacimiento
 			String auxStr = rs.getString("FECHA_NACIMIENTO");
 			p.getFecha_nacimiento().setTime(
-					ManejoFechas.formatoIngles.parse(auxStr));
+					ManejoFechas.FORMATOINGLES.parse(auxStr));
 			// Fecha de dialisis
 			auxStr = rs.getString("FECHA_DIALISIS");
 			p.getFecha_dialisis().setTime(
-					ManejoFechas.formatoIngles.parse(auxStr));
+					ManejoFechas.FORMATOINGLES.parse(auxStr));
 			// Fecha de ingreso a la lista
 			p.setNumNefropatia(rs.getInt("NEFROPATIA"));
 			p.setGrupoSanguineo(rs.getString("GRUPO_SANG"));

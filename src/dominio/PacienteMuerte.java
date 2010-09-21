@@ -106,7 +106,7 @@ public class PacienteMuerte implements IPersistente{
 		}else{
 			aux = "/nEl trasplante no estaba funcionando.";
 		}
-		return this.getThe() + " - " + ManejoFechas.formatoEspanol.format(this.getFechaMuerte().getTime())+" - " + this.getCausa().toString() + " "+aux; 
+		return this.getThe() + " - " + ManejoFechas.FORMATOESPANOL.format(this.getFechaMuerte().getTime())+" - " + this.getCausa().toString() + " "+aux; 
 	}
 	
 	

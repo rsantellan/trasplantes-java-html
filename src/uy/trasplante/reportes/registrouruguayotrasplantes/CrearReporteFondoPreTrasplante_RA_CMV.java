@@ -211,10 +211,10 @@ public class CrearReporteFondoPreTrasplante_RA_CMV {
 				salida += "<td>" + p.getTipoNefropatia().getNefropatia()
 						+ "</td>";
 				salida += "<td>"
-						+ ManejoFechas.formatoMes
+						+ ManejoFechas.FORMATOMES
 								.format(t.getFecha().getTime()) + "</td>";
 				salida += "<td>"
-						+ ManejoFechas.formatoYear.format(t.getFecha()
+						+ ManejoFechas.FORMATOYEAR.format(t.getFecha()
 								.getTime()) + "</td>";
 				String estado = "1: EN DIALISIS";
 				if (t.getFechaAlta() == null) {
@@ -233,11 +233,11 @@ public class CrearReporteFondoPreTrasplante_RA_CMV {
 					salida += "<td> Sin Alta </td>";
 				} else {
 					salida += "<td>"
-							+ ManejoFechas.formatoMes.format(p
+							+ ManejoFechas.FORMATOMES.format(p
 									.getMuertePaciente().getFechaMuerte()
 									.getTime()) + "</td>";
 					salida += "<td>"
-							+ ManejoFechas.formatoYear.format(p
+							+ ManejoFechas.FORMATOYEAR.format(p
 									.getMuertePaciente().getFechaMuerte()
 									.getTime()) + "</td>";
 				}
@@ -346,7 +346,7 @@ public class CrearReporteFondoPreTrasplante_RA_CMV {
 				if (modificar.getTrasplante().getEvolucion() != null) {
 					if (modificar.getTrasplante().getEvolucion().isRa()) {
 						auxEvolucion = "VERDADERO";
-						auxFechaEvolucion = ManejoFechas.formatoEspanol
+						auxFechaEvolucion = ManejoFechas.FORMATOESPANOL
 								.format(modificar.getTrasplante().getFecha()
 										.getTime());
 					}
@@ -355,7 +355,7 @@ public class CrearReporteFondoPreTrasplante_RA_CMV {
 					if (evolucion.isRa()) {
 						auxEvolucion += "<br>" + "VERDADERO";
 						auxFechaEvolucion += "<br>"
-								+ ManejoFechas.formatoEspanol.format(modificar
+								+ ManejoFechas.FORMATOESPANOL.format(modificar
 										.getTrasplante().getFecha().getTime());
 					}
 				}
@@ -372,11 +372,11 @@ public class CrearReporteFondoPreTrasplante_RA_CMV {
 				for(CMV cmv : listaCMV){
 					if(cmv.isSindromeViral()){
 						auxCMV += "Sindrome Viral" + "<br>";
-						auxFechaCMV += ManejoFechas.formatoEspanol.format(cmv.getFecha().getTime())+ "<br>";
+						auxFechaCMV += ManejoFechas.FORMATOESPANOL.format(cmv.getFecha().getTime())+ "<br>";
 					}else{
 						if(cmv.getEnfermedades() != null){
 							auxCMV += "Enfermedad " + "<br>";
-							auxFechaCMV += ManejoFechas.formatoEspanol.format(cmv.getFecha().getTime())+ "<br>";
+							auxFechaCMV += ManejoFechas.FORMATOESPANOL.format(cmv.getFecha().getTime())+ "<br>";
 						}
 					}
 				}

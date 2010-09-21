@@ -25,7 +25,7 @@ public class BrkTratamiento extends Broker {
 		Tratamiento p = (Tratamiento) this.getObj();
 		String sql = "";
 		if (p.getFecha_inicio() != null) {
-			String fecha = ManejoFechas.formatoIngles.format(p.getFecha_inicio()
+			String fecha = ManejoFechas.FORMATOINGLES.format(p.getFecha_inicio()
 					.getTime());
 				sql = "DELETE FROM tratamiento WHERE THE =?  AND MEDICACION = ?  AND FECHA_INICIO = ?";
 				PreparedStatement prep = ManejadorBD.getInstancia()
@@ -62,7 +62,7 @@ public class BrkTratamiento extends Broker {
 		String sql = "";
 		sql = "DELETE FROM tratamiento WHERE THE = " + p.getThe();
 		if(p.getFecha_inicio() != null){
-			sql += " AND MEDICACION =" + p.getMedicamento() + " AND FECHA_INICIO = '"+ ManejoFechas.formatoIngles.format(p.getFecha_inicio()
+			sql += " AND MEDICACION =" + p.getMedicamento() + " AND FECHA_INICIO = '"+ ManejoFechas.FORMATOINGLES.format(p.getFecha_inicio()
 					.getTime()) +"'" ;
 		}
 		return sql;
@@ -72,9 +72,9 @@ public class BrkTratamiento extends Broker {
 	public String getInsertSQL() {
 		Tratamiento p = (Tratamiento) this.getObj();
 		String sql = "";
-		String fechaNacimiento = ManejoFechas.formatoIngles.format(p
+		String fechaNacimiento = ManejoFechas.FORMATOINGLES.format(p
 				.getFecha_inicio().getTime());
-		String fechaDialisis = ManejoFechas.formatoIngles.format(p
+		String fechaDialisis = ManejoFechas.FORMATOINGLES.format(p
 				.getFecha_fin().getTime());
 		sql = "INSERT INTO tratamiento(THE,MEDICACION,DOSIS,FECHA_INICIO,FECHA_FIN) VALUES (";
 		sql += p.getThe() + ","+ p.getMedicamento() + ",";
@@ -106,9 +106,9 @@ public class BrkTratamiento extends Broker {
 		sql += "MEDICACION =" + p.getMedicamento() + " , ";
 		sql += "DOSIS ='" + p.getDosis() + "', ";
 		sql += "FECHA_FIN ='"
-				+ ManejoFechas.formatoIngles.format(p.getFecha_fin()
+				+ ManejoFechas.FORMATOINGLES.format(p.getFecha_fin()
 						.getTime()) + "' ";
-		sql += "WHERE THE =" + p.getThe() + " AND MEDICACION =" + p.getMedicamento() + " AND FECHA_INICIO = '"+ ManejoFechas.formatoIngles.format(p.getFecha_inicio()
+		sql += "WHERE THE =" + p.getThe() + " AND MEDICACION =" + p.getMedicamento() + " AND FECHA_INICIO = '"+ ManejoFechas.FORMATOINGLES.format(p.getFecha_inicio()
 				.getTime()) +"'" ;
 		return sql;
 	}
@@ -122,10 +122,10 @@ public class BrkTratamiento extends Broker {
 			p.setMedicamento(rs.getInt("MEDICACION"));
 			String auxStr = rs.getString("FECHA_INICIO");
 			p.getFecha_inicio().setTime(
-					ManejoFechas.formatoIngles.parse(auxStr));
+					ManejoFechas.FORMATOINGLES.parse(auxStr));
 			auxStr = rs.getString("FECHA_FIN");
 			p.getFecha_fin().setTime(
-					ManejoFechas.formatoIngles.parse(auxStr));
+					ManejoFechas.FORMATOINGLES.parse(auxStr));
 		} catch (SQLException e) {
 			System.out
 					.println("Hubo un problema en el leerDesdeResultSet de BrkTratamiento");
@@ -143,7 +143,7 @@ public class BrkTratamiento extends Broker {
 		Tratamiento p = (Tratamiento) this.getObj();
 		String sql = "SELECT COUNT(*) FROM tratamiento";
 		if(p.getThe() != 0){
-			sql += " WHERE THE =" + p.getThe() + " AND MEDICACION =" + p.getMedicamento() + " AND FECHA_INICIO = '"+ ManejoFechas.formatoIngles.format(p.getFecha_inicio()
+			sql += " WHERE THE =" + p.getThe() + " AND MEDICACION =" + p.getMedicamento() + " AND FECHA_INICIO = '"+ ManejoFechas.FORMATOINGLES.format(p.getFecha_inicio()
 					.getTime()) +"'" ;
 		}
 		return sql;

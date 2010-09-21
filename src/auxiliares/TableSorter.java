@@ -14,6 +14,8 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
+import logica.Fachada;
+
 
 public class TableSorter extends TableMap
 {
@@ -35,9 +37,9 @@ public class TableSorter extends TableMap
 
     public TableSorter(TableModel model)
     {
-        setModel(model);
+    	setModel(model); 
     }
-
+    
     // There is no-where else to put this. 
     // Add a mouse listener to the Table to trigger a table sort 
     // when a column heading is clicked in the JTable. 
@@ -67,7 +69,7 @@ public class TableSorter extends TableMap
     public void checkModel()
     {
         if (indexes.length != model.getRowCount()) {
-            System.err.println("Sorter not informed of a change in model.");
+        	Fachada.getInstancia().guardarLog(4, "Sorter not informed of a change in model.");
         }
     }
 
@@ -314,8 +316,7 @@ space and avoid unnecessary heap allocation.
 	@Override
 	public void tableChanged(TableModelEvent e)
     {
-	System.out.println("Sorter: tableChanged"); 
-        reallocateIndexes();
+		reallocateIndexes();
 
         super.tableChanged(e);
     }

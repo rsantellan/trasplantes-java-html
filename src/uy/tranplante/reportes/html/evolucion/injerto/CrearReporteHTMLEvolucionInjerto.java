@@ -48,7 +48,7 @@ public class CrearReporteHTMLEvolucionInjerto {
 	private String getReportOfEvolutionOfInjert(EvolucionInjerto ei, String aux){
 		if(ei != null){
 			aux +="<ul class='lista_evolucion_injerto'>" +  this.delimiter ;
-			aux +="<li><label class='label_evolucion_injerto'>FECHA: </label>" +ManejoFechas.formatoEspanol.format(ei.getFecha().getTime()) + "</li>" +  this.delimiter ;
+			aux +="<li><label class='label_evolucion_injerto'>FECHA: </label>" +ManejoFechas.FORMATOESPANOL.format(ei.getFecha().getTime()) + "</li>" +  this.delimiter ;
 			aux +="<li><label class='label_evolucion_injerto'>Lista de pbr usados: </label><ol>"+  this.delimiter ;
 			for (int x = 0; x < ei.getListaPBR().size(); x++) {
 				aux += "<li>" + ei.getListaPBR().get(x).getPbr().toString() +"</li>";

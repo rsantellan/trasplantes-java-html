@@ -256,7 +256,7 @@ public class PacientePreTrasplante implements IPersistente {
 		String auxStr = "1900-1-1";
 		try {
 			this.getFecha_egreso().setTime(
-					ManejoFechas.formatoIngles.parse(auxStr));
+					ManejoFechas.FORMATOINGLES.parse(auxStr));
 		} catch (ParseException e) {
 			System.out.println(e);
 		}
@@ -386,7 +386,7 @@ public class PacientePreTrasplante implements IPersistente {
 	
 	public String toString() {
 		return "Fecha ingreso:"
-				+ ManejoFechas.formatoEspanol.format(this
+				+ ManejoFechas.FORMATOESPANOL.format(this
 						.getFecha_ingreso_lista().getTime());
 	}
 
@@ -403,12 +403,12 @@ public class PacientePreTrasplante implements IPersistente {
 			gc1 = (Calendar) g2.clone();
 		}
 		System.out.println("Ingreso a Lista");
-		System.out.println(ManejoFechas.formatoEspanol.format(g1.getTime()));
+		System.out.println(ManejoFechas.FORMATOESPANOL.format(g1.getTime()));
 		System.out.println("Egreso de Lista");
-		System.out.println(ManejoFechas.formatoEspanol.format(g2.getTime()));
+		System.out.println(ManejoFechas.FORMATOESPANOL.format(g2.getTime()));
 		System.out.println("-----------------------------------------------");
-		System.out.println(ManejoFechas.formatoEspanol.format(gc1.getTime()));
-		System.out.println(ManejoFechas.formatoEspanol.format(gc2.getTime()));
+		System.out.println(ManejoFechas.FORMATOESPANOL.format(gc1.getTime()));
+		System.out.println(ManejoFechas.FORMATOESPANOL.format(gc2.getTime()));
 		System.out.println("-----------------------------------------------");
 		
 		

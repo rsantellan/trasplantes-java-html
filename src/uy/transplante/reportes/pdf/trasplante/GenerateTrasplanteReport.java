@@ -1,10 +1,10 @@
 /**
  * 
  */
-package uy.tranplante.reportes.pdf.trasplante;
+package uy.transplante.reportes.pdf.trasplante;
 
 import logica.Fachada;
-import uy.tranplante.reportes.pdf.estaticos.DocumentoBasico;
+import uy.transplante.reportes.pdf.estaticos.DocumentoBasico;
 import auxiliares.ManejoFechas;
 
 import com.itextpdf.text.BaseColor;

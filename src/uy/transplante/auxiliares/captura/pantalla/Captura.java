@@ -1,4 +1,4 @@
-package uy.tranplante.auxiliares.captura.pantalla;
+package uy.transplante.auxiliares.captura.pantalla;
 
 import java.awt.AWTException;
 import java.awt.HeadlessException;

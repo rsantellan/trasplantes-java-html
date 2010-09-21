@@ -1,7 +1,7 @@
 /**
  * 
  */
-package uy.tranplante.reportes.pdf.estaticos;
+package uy.transplante.reportes.pdf.estaticos;
 
 import java.io.IOException;
 import java.net.MalformedURLException;

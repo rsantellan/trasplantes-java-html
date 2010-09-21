@@ -1,9 +1,9 @@
 /**
  * 
  */
-package uy.tranplante.reportes.pdf.pacientes;
+package uy.transplante.reportes.pdf.pacientes;
 
-import uy.tranplante.reportes.pdf.estaticos.DocumentoBasico;
+import uy.transplante.reportes.pdf.estaticos.DocumentoBasico;
 import auxiliares.ManejoFechas;
 
 import com.itextpdf.text.BaseColor;

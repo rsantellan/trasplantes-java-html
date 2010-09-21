@@ -3,7 +3,7 @@
  */
 package iu.windows.logic;
 
-import uy.tranplante.reportes.html.iu.IUCrearReporteHtml;
+import uy.transplante.reportes.html.iu.IUCrearReporteHtml;
 import uy.trasplante.reportes.registrouruguayotrasplantes.IUCrearReporteFondoPerYear;
 import uy.trasplante.reportes.registrouruguayotrasplantes.IUCrearReporteFondoTotal;
 import uy.trasplante.reportes.registrouruguayotrasplantes.IUCrearReporteFondoTotalPreTrasplante;

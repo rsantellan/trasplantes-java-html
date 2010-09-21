@@ -1,4 +1,4 @@
-package uy.tranplante.auxiliares.impresion;
+package uy.transplante.auxiliares.impresion;
 /*
  * Copied from this tutorial:
  * 

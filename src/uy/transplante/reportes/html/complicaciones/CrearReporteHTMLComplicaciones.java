@@ -1,7 +1,7 @@
 /**
  * 
  */
-package uy.tranplante.reportes.html.complicaciones;
+package uy.transplante.reportes.html.complicaciones;
 
 import java.util.ArrayList;
 

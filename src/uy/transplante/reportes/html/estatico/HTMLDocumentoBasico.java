@@ -1,7 +1,7 @@
 /**
  * 
  */
-package uy.tranplante.reportes.html.estatico;
+package uy.transplante.reportes.html.estatico;
 
 import java.io.FileWriter;
 import java.io.IOException;

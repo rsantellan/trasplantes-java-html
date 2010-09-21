@@ -1,7 +1,7 @@
 /**
  * 
  */
-package uy.tranplante.reportes.html.pacientes;
+package uy.transplante.reportes.html.pacientes;
 
 import logica.Fachada;
 import dominio.Paciente;

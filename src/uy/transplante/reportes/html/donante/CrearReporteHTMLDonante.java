@@ -1,7 +1,7 @@
 /**
  * 
  */
-package uy.tranplante.reportes.html.donante;
+package uy.transplante.reportes.html.donante;
 
 import dominio.Donante;
 

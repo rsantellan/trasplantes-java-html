@@ -1,4 +1,4 @@
-package encriptado;
+package uy.transplante.auxiliares.encriptado;
 
 import java.security.MessageDigest;
 

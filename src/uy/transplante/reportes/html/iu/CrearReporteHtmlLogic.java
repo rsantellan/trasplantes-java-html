@@ -1,18 +1,18 @@
 /**
  *
  */
-package uy.tranplante.reportes.html.iu;
+package uy.transplante.reportes.html.iu;
 
 import dominio.PacientePreTrasplante;
-import uy.tranplante.reportes.html.cmv.CrearReporteHTMLCmv;
-import uy.tranplante.reportes.html.complicaciones.CrearReporteHTMLComplicaciones;
-import uy.tranplante.reportes.html.donante.CrearReporteHTMLDonante;
-import uy.tranplante.reportes.html.estatico.HTMLDocumentoBasico;
-import uy.tranplante.reportes.html.evolucion.globales.CrearReporteHTMLEvolucionGlobal;
-import uy.tranplante.reportes.html.evolucion.injerto.CrearReporteHTMLEvolucionInjerto;
-import uy.tranplante.reportes.html.pacientes.CrearReporteHTMLPaciente;
-import uy.tranplante.reportes.html.trasplante.CrearReporteHTMLTransplante;
-import uy.tranplante.reportes.html.tratamientos.CrearReporteHTMLTratamientos;
+import uy.transplante.reportes.html.cmv.CrearReporteHTMLCmv;
+import uy.transplante.reportes.html.complicaciones.CrearReporteHTMLComplicaciones;
+import uy.transplante.reportes.html.donante.CrearReporteHTMLDonante;
+import uy.transplante.reportes.html.estatico.HTMLDocumentoBasico;
+import uy.transplante.reportes.html.evolucion.globales.CrearReporteHTMLEvolucionGlobal;
+import uy.transplante.reportes.html.evolucion.injerto.CrearReporteHTMLEvolucionInjerto;
+import uy.transplante.reportes.html.pacientes.CrearReporteHTMLPaciente;
+import uy.transplante.reportes.html.trasplante.CrearReporteHTMLTransplante;
+import uy.transplante.reportes.html.tratamientos.CrearReporteHTMLTratamientos;
 
 /**
  * @author rodrigo

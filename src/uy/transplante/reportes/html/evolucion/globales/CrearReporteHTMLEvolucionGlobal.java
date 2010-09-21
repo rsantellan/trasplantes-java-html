@@ -1,7 +1,7 @@
 /**
  * 
  */
-package uy.tranplante.reportes.html.evolucion.globales;
+package uy.transplante.reportes.html.evolucion.globales;
 
 import java.util.ArrayList;
 import java.util.Calendar;

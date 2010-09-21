@@ -1,6 +1,6 @@
 package iu.consultas;
 
-import impresion.PrintUtilities;
+import uy.transplante.auxiliares.impresion.PrintUtilities;
 
 import java.awt.Color;
 import java.awt.Font;

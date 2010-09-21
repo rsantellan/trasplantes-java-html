@@ -1,17 +1,17 @@
 /**
  * 
  */
-package uy.tranplante.reportes.pdf.test;
+package uy.transplante.reportes.pdf.test;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
-import uy.tranplante.reportes.pdf.estaticos.DocumentoBasico;
-import uy.tranplante.reportes.pdf.estaticos.Imagenes;
-import uy.tranplante.reportes.pdf.pacientes.GeneratePacientReport;
-import uy.tranplante.reportes.pdf.trasplante.GenerateTrasplanteReport;
+import uy.transplante.reportes.pdf.estaticos.DocumentoBasico;
+import uy.transplante.reportes.pdf.estaticos.Imagenes;
+import uy.transplante.reportes.pdf.pacientes.GeneratePacientReport;
+import uy.transplante.reportes.pdf.trasplante.GenerateTrasplanteReport;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;

@@ -1,6 +1,6 @@
 package testeo;
 
-import uy.tranplante.auxiliares.impresion.PrintUtilities;
+import uy.transplante.auxiliares.impresion.PrintUtilities;
 
 //import java.awt.BorderLayout;
 import javax.swing.JPanel;

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package uy.tranplante.reportes.pdf.estaticos;
+package uy.transplante.reportes.pdf.estaticos;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;

@@ -1,4 +1,4 @@
-package uy.tranplante.reportes.html.iu;
+package uy.transplante.reportes.html.iu;
 
 import java.awt.Color;
 import java.awt.Font;

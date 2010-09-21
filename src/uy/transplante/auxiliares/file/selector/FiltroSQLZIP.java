@@ -1,4 +1,4 @@
-package uy.tranplante.auxiliares.file.selector;
+package uy.transplante.auxiliares.file.selector;
 
 import java.io.File;
 import javax.swing.filechooser.*;

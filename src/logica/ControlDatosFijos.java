@@ -39,7 +39,7 @@ import dominio.TrasplanteInduccionUsado;
 import dominio.TrasplanteInmunosupresoresUsado;
 import dominio.TrasplanteSerolUsado;
 import dominio.TrasplanteTiposComplicaciones;
-import encriptado.Md5;
+import uy.transplante.auxiliares.encriptado.Md5;
 
 public class ControlDatosFijos {
 	public ArrayList<Nefropatia> listarTodasNefropatias(){

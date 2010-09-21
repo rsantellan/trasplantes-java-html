@@ -7,7 +7,7 @@ import java.util.Observer;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
-import miLog.MiLog;
+import uy.transplante.auxiliares.milog.MiLog;
 
 import persistencia.broker.basico.ManejadorBD;
 import uy.auxiliares.log.ManejadorLogs;

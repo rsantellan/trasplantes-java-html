@@ -3,7 +3,7 @@ package uy.transplante.auxiliares.encriptado;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-final class Md5{
+public final class Md5{
 
 	private Md5(){
 		

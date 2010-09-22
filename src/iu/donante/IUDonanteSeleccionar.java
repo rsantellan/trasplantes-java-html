@@ -16,8 +16,8 @@ import javax.swing.JTable;
 import javax.swing.WindowConstants;
 
 import logica.Fachada;
-import auxiliares.ModeloDatosListaDonantes;
-import auxiliares.TableSorter;
+import uy.transplante.auxiliares.tablas.ModeloDatosListaDonantes;
+import uy.transplante.auxiliares.tablas.TableSorter;
 import dominio.Donante;
 
 public class IUDonanteSeleccionar extends JFrame implements java.util.Observer{

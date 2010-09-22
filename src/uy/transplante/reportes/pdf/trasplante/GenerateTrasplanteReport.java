@@ -5,7 +5,7 @@ package uy.transplante.reportes.pdf.trasplante;
 
 import logica.Fachada;
 import uy.transplante.reportes.pdf.estaticos.DocumentoBasico;
-import auxiliares.ManejoFechas;
+import uy.transplante.auxiliares.fechas.ManejoFechas;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;

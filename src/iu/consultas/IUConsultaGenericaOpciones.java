@@ -25,8 +25,8 @@ import logica.Fachada;
 
 import dominio.Generico;
 
-import auxiliares.ManejoFechas;
-import auxiliares.TableSorter;
+import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.auxiliares.tablas.TableSorter;
 import auxiliaresConsultas.AModeloDatosConsultaGenerico;
 
 

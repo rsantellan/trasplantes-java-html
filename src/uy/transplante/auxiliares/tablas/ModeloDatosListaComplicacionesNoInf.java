@@ -1,8 +1,10 @@
-package auxiliares;
+package uy.transplante.auxiliares.tablas;
 
 import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
+
+import uy.transplante.auxiliares.fechas.ManejoFechas;
 
 import dominio.TrasplanteComplicacionesNoInf;
 

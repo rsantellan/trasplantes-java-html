@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
-import auxiliares.ManejoFechas;
+import uy.transplante.auxiliares.fechas.ManejoFechas;
 
 import persistencia.BrkTrasplanteComplicacionesInf;
 import persistencia.broker.basico.IPersistente;

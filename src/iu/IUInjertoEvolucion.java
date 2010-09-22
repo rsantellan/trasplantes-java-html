@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-import auxiliares.ManejoFechas;
+import uy.transplante.auxiliares.fechas.ManejoFechas;
 
 import com.toedter.calendar.JDateChooser;
 

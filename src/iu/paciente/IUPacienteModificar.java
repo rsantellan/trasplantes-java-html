@@ -18,7 +18,7 @@ import javax.swing.WindowConstants;
 
 import logica.Fachada;
 
-import auxiliares.ManejoFechas;
+import uy.transplante.auxiliares.fechas.ManejoFechas;
 
 import com.toedter.calendar.JDateChooser;
 

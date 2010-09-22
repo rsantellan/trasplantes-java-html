@@ -3,7 +3,7 @@ package dominio;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import auxiliares.ManejoFechas;
+import uy.transplante.auxiliares.fechas.ManejoFechas;
 
 public class EvolucionTrasplanteTotal {
 	private int idTrasplante;

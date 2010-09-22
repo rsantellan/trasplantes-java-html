@@ -8,7 +8,7 @@ import java.util.Calendar;
 
 import logica.Fachada;
 
-import auxiliares.ManejoFechas;
+import uy.transplante.auxiliares.fechas.ManejoFechas;
 import dominio.EvolucionTrasplante;
 import dominio.EvolucionTrasplanteCMV;
 import dominio.EvolucionTrasplanteECG;

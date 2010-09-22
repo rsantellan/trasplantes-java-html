@@ -11,7 +11,7 @@ import java.awt.Rectangle;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import auxiliares.ManejoFechas;
+import uy.transplante.auxiliares.fechas.ManejoFechas;
 
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 import com.toedter.calendar.JDateChooser;

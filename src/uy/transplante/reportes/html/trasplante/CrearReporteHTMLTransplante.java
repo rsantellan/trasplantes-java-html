@@ -5,7 +5,7 @@ package uy.transplante.reportes.html.trasplante;
 
 import java.util.ArrayList;
 
-import auxiliares.ManejoFechas;
+import uy.transplante.auxiliares.fechas.ManejoFechas;
 import logica.Fachada;
 import dominio.PacientePreTrasplante;
 import dominio.Trasplante;

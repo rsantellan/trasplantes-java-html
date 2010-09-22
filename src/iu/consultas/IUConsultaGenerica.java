@@ -28,8 +28,8 @@ import dominio.Generico;
 import dominio.Induccion;
 import dominio.Inmunosupresores;
 
-import auxiliares.ManejoFechas;
-import auxiliares.TableSorter;
+import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.auxiliares.tablas.TableSorter;
 import auxiliaresConsultas.AModeloDatosConsultaGenerico;
 
 

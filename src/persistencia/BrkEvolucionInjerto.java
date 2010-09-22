@@ -12,7 +12,7 @@ import persistencia.broker.basico.Broker;
 import persistencia.broker.basico.IPersistente;
 import persistencia.broker.basico.ManejadorBD;
 
-import auxiliares.ManejoFechas;
+import uy.transplante.auxiliares.fechas.ManejoFechas;
 
 import dominio.EvolucionInjerto;
 import dominio.RaTratamiento;

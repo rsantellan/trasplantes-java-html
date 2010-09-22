@@ -14,8 +14,8 @@ import javax.swing.JTable;
 import javax.swing.WindowConstants;
 
 import logica.Fachada;
-import auxiliares.ModeloDatosListaCMV;
-import auxiliares.TableSorter;
+import uy.transplante.auxiliares.tablas.ModeloDatosListaCMV;
+import uy.transplante.auxiliares.tablas.TableSorter;
 import dominio.CMV;
 
 

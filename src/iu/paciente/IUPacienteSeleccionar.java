@@ -21,8 +21,8 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 import logica.Fachada;
-import auxiliares.ModeloDatosListaPacientes;
-import auxiliares.TableSorter;
+import uy.transplante.auxiliares.tablas.ModeloDatosListaPacientes;
+import uy.transplante.auxiliares.tablas.TableSorter;
 import dominio.Paciente;
 import dominio.PacientePreTrasplante;
 

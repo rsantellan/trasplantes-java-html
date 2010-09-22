@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 import persistencia.BrkMuertePaciente;
 import persistencia.broker.basico.IPersistente;
-import auxiliares.ManejoFechas;
+import uy.transplante.auxiliares.fechas.ManejoFechas;
 
 public class PacienteMuerte implements IPersistente{
 

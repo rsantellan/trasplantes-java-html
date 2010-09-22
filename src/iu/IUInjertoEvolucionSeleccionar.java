@@ -14,8 +14,8 @@ import javax.swing.JTable;
 import javax.swing.WindowConstants;
 
 import logica.Fachada;
-import auxiliares.ModeloDatosListaEvolucionInjerto;
-import auxiliares.TableSorter;
+import uy.transplante.auxiliares.tablas.ModeloDatosListaEvolucionInjerto;
+import uy.transplante.auxiliares.tablas.TableSorter;
 import dominio.EvolucionInjerto;
 import dominio.PacientePreTrasplante;
 

@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 
 import logica.Fachada;
 
-import auxiliares.ManejoFechas;
+import uy.transplante.auxiliares.fechas.ManejoFechas;
 
 import dominio.Donante;
 import dominio.Paciente;

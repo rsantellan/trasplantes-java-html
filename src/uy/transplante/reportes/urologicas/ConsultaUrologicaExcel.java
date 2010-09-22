@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import auxiliares.ManejoFechas;
+import uy.transplante.auxiliares.fechas.ManejoFechas;
 
 import dominio.EvolucionTrasplanteTotal;
 import dominio.Paciente;

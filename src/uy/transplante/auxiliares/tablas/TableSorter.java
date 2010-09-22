@@ -1,4 +1,4 @@
-package auxiliares;
+package uy.transplante.auxiliares.tablas;
 
 
 

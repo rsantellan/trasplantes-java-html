@@ -11,7 +11,7 @@ import javax.swing.JTextArea;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import auxiliares.ManejoFechas;
+import uy.transplante.auxiliares.fechas.ManejoFechas;
 
 import com.toedter.calendar.JDateChooser;
 

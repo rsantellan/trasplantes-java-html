@@ -1,8 +1,10 @@
-package auxiliares;
+package uy.transplante.auxiliares.tablas;
 
 import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
+
+import uy.transplante.auxiliares.fechas.ManejoFechas;
 
 import dominio.Trasplante;
 
@@ -13,7 +15,7 @@ public class ModeloDatosListaTrasplante extends AbstractTableModel{
 	 */
 	private static final long serialVersionUID = 1L;
 	//Nombres de los campos
-	private String[] columnNames =  {"Id trasplante","N� Receptor", "N� Donante","Fecha","N� trasplante"};
+	private String[] columnNames =  {"Id trasplante","N° Receptor", "N° Donante","Fecha","N° trasplante"};
 	private String data[][];
 
 	public int numColumns = columnNames.length;

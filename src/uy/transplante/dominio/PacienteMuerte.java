@@ -3,9 +3,9 @@ package uy.transplante.dominio;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import persistencia.BrkMuertePaciente;
-import persistencia.broker.IPersistente;
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.persistencia.broker.IPersistente;
+import uy.transplante.persistencia.dominio.BrkMuertePaciente;
 
 public class PacienteMuerte implements IPersistente{
 

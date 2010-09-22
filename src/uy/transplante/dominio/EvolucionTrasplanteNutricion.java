@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import persistencia.BrkEvolucionTrasplanteNutricion;
-import persistencia.broker.IPersistente;
+import uy.transplante.persistencia.broker.IPersistente;
+import uy.transplante.persistencia.dominio.BrkEvolucionTrasplanteNutricion;
 
 public class EvolucionTrasplanteNutricion implements IPersistente{
 	private int idTrasplante;

@@ -2,8 +2,8 @@ package uy.transplante.dominio;
 
 import java.util.ArrayList;
 
-import persistencia.BrkDonanteSerol;
-import persistencia.broker.IPersistente;
+import uy.transplante.persistencia.broker.IPersistente;
+import uy.transplante.persistencia.dominio.BrkDonanteSerol;
 
 public class DonanteSerolUsado implements IPersistente{
 

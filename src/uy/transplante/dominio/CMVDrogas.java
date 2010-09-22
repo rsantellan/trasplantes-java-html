@@ -2,8 +2,8 @@ package uy.transplante.dominio;
 
 import java.util.ArrayList;
 
-import persistencia.BrkCMVDrogas;
-import persistencia.broker.IPersistente;
+import uy.transplante.persistencia.broker.IPersistente;
+import uy.transplante.persistencia.dominio.BrkCMVDrogas;
 
 public class CMVDrogas implements IPersistente{
 

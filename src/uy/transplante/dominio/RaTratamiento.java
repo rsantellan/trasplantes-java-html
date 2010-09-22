@@ -2,8 +2,8 @@ package uy.transplante.dominio;
 
 import java.util.ArrayList;
 
-import persistencia.BrkRaTratamiento;
-import persistencia.broker.IPersistente;
+import uy.transplante.persistencia.broker.IPersistente;
+import uy.transplante.persistencia.dominio.BrkRaTratamiento;
 
 public class RaTratamiento implements IPersistente{
 

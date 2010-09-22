@@ -2,8 +2,8 @@ package uy.transplante.dominio;
 
 import java.util.ArrayList;
 
-import persistencia.BrkInduccion;
-import persistencia.broker.IPersistente;
+import uy.transplante.persistencia.broker.IPersistente;
+import uy.transplante.persistencia.dominio.BrkInduccion;
 
 public class Induccion implements IPersistente{
 

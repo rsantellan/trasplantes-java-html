@@ -2,8 +2,8 @@ package uy.transplante.dominio;
 
 import java.util.ArrayList;
 
-import persistencia.BrkInmunosupresores;
-import persistencia.broker.IPersistente;
+import uy.transplante.persistencia.broker.IPersistente;
+import uy.transplante.persistencia.dominio.BrkInmunosupresores;
 
 public class Inmunosupresores implements IPersistente{
 

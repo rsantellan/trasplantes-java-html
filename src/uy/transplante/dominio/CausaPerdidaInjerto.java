@@ -2,8 +2,8 @@ package uy.transplante.dominio;
 
 import java.util.ArrayList;
 
-import persistencia.BrkCausaPerdidaInjerto;
-import persistencia.broker.IPersistente;
+import uy.transplante.persistencia.broker.IPersistente;
+import uy.transplante.persistencia.dominio.BrkCausaPerdidaInjerto;
 
 public class CausaPerdidaInjerto implements IPersistente {
 

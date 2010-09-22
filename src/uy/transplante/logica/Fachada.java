@@ -52,8 +52,8 @@ import uy.transplante.dominio.TrasplanteComplicacionesNoInf;
 import uy.transplante.dominio.TrasplanteReoperacion;
 import uy.transplante.dominio.TrasplanteTiposComplicaciones;
 import uy.transplante.dominio.Tratamiento;
+import uy.transplante.persistencia.broker.ManejadorBD;
 
-import persistencia.broker.ManejadorBD;
 import uy.auxiliares.log.ManejadorLogs;
 
 public class Fachada extends Observable{

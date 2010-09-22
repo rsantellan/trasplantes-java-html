@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import persistencia.BrkEvolucionTrasplanteExamenes;
-import persistencia.broker.IPersistente;
+import uy.transplante.persistencia.broker.IPersistente;
+import uy.transplante.persistencia.dominio.BrkEvolucionTrasplanteExamenes;
 
 public class EvolucionTrasplanteExamenes implements IPersistente{
 	public static String GINECOLOGO = "GINECOLOGO";

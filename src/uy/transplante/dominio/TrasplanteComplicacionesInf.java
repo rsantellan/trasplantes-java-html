@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.persistencia.broker.IPersistente;
+import uy.transplante.persistencia.dominio.BrkTrasplanteComplicacionesInf;
 
-import persistencia.BrkTrasplanteComplicacionesInf;
-import persistencia.broker.IPersistente;
 
 public class TrasplanteComplicacionesInf extends TrasplanteComplicaciones implements IPersistente{
 	

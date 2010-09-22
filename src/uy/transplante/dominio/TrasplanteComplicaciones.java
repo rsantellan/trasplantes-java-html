@@ -3,8 +3,8 @@ package uy.transplante.dominio;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import persistencia.BrkTrasplanteComplicaciones;
-import persistencia.broker.IPersistente;
+import uy.transplante.persistencia.broker.IPersistente;
+import uy.transplante.persistencia.dominio.BrkTrasplanteComplicaciones;
 
 public abstract class TrasplanteComplicaciones implements IPersistente{
 

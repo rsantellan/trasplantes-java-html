@@ -8,8 +8,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.Tratamiento;
 
-import dominio.Tratamiento;
 import logica.Fachada;
 
 /**

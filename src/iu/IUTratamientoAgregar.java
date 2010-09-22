@@ -15,10 +15,11 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
 
-import dominio.Medicacion;
-import dominio.Tratamiento;
 
 import javax.swing.JButton;
+
+import uy.transplante.dominio.Medicacion;
+import uy.transplante.dominio.Tratamiento;
 
 import logica.Fachada;
 

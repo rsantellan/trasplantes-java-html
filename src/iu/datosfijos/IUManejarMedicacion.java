@@ -15,8 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.Medicacion;
+
 import logica.Fachada;
-import dominio.Medicacion;
 
 public class IUManejarMedicacion extends JFrame implements java.util.Observer {
 

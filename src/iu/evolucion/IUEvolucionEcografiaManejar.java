@@ -12,11 +12,11 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.EvolucionTrasplanteEcografia;
 
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 import com.toedter.calendar.JDateChooser;
 
-import dominio.EvolucionTrasplanteEcografia;
 
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;

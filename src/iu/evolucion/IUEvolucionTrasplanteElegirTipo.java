@@ -16,19 +16,20 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.EvolucionTrasplante;
+import uy.transplante.dominio.EvolucionTrasplanteCMV;
+import uy.transplante.dominio.EvolucionTrasplanteECG;
+import uy.transplante.dominio.EvolucionTrasplanteEcoCardio;
+import uy.transplante.dominio.EvolucionTrasplanteMarvirales;
+import uy.transplante.dominio.EvolucionTrasplanteNutricion;
+import uy.transplante.dominio.EvolucionTrasplanteTotal;
+import uy.transplante.dominio.EvolucionTrasplanteTxTorax;
+import uy.transplante.dominio.Trasplante;
+
 import logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 
-import dominio.EvolucionTrasplante;
-import dominio.EvolucionTrasplanteCMV;
-import dominio.EvolucionTrasplanteECG;
-import dominio.EvolucionTrasplanteEcoCardio;
-import dominio.EvolucionTrasplanteMarvirales;
-import dominio.EvolucionTrasplanteNutricion;
-import dominio.EvolucionTrasplanteTotal;
-import dominio.EvolucionTrasplanteTxTorax;
-import dominio.Trasplante;
 
 public class IUEvolucionTrasplanteElegirTipo extends JFrame implements
 		java.util.Observer {

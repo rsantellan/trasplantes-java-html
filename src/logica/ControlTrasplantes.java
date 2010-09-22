@@ -3,25 +3,26 @@ package logica;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import dominio.CMV;
-import dominio.CMVDiagnostico;
-import dominio.CMVDrogas;
-import dominio.CMVEnfermedades;
-import dominio.Germenes;
-import dominio.Induccion;
-import dominio.Infeccion;
-import dominio.Inmunosupresores;
-import dominio.Medicacion;
-import dominio.PacientePreTrasplante;
-import dominio.ResultadoPBR;
-import dominio.Serol;
-import dominio.SerolDatos;
-import dominio.Trasplante;
-import dominio.TrasplanteComplicaciones;
-import dominio.TrasplanteComplicacionesInf;
-import dominio.TrasplanteComplicacionesNoInf;
-import dominio.TrasplanteReoperacion;
-import dominio.TrasplanteTiposComplicaciones;
+import uy.transplante.dominio.CMV;
+import uy.transplante.dominio.CMVDiagnostico;
+import uy.transplante.dominio.CMVDrogas;
+import uy.transplante.dominio.CMVEnfermedades;
+import uy.transplante.dominio.Germenes;
+import uy.transplante.dominio.Induccion;
+import uy.transplante.dominio.Infeccion;
+import uy.transplante.dominio.Inmunosupresores;
+import uy.transplante.dominio.Medicacion;
+import uy.transplante.dominio.PacientePreTrasplante;
+import uy.transplante.dominio.ResultadoPBR;
+import uy.transplante.dominio.Serol;
+import uy.transplante.dominio.SerolDatos;
+import uy.transplante.dominio.Trasplante;
+import uy.transplante.dominio.TrasplanteComplicaciones;
+import uy.transplante.dominio.TrasplanteComplicacionesInf;
+import uy.transplante.dominio.TrasplanteComplicacionesNoInf;
+import uy.transplante.dominio.TrasplanteReoperacion;
+import uy.transplante.dominio.TrasplanteTiposComplicaciones;
+
 
 public class ControlTrasplantes {
 

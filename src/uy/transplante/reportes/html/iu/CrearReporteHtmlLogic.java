@@ -3,7 +3,7 @@
  */
 package uy.transplante.reportes.html.iu;
 
-import dominio.PacientePreTrasplante;
+import uy.transplante.dominio.PacientePreTrasplante;
 import uy.transplante.reportes.html.cmv.CrearReporteHTMLCmv;
 import uy.transplante.reportes.html.complicaciones.CrearReporteHTMLComplicaciones;
 import uy.transplante.reportes.html.donante.CrearReporteHTMLDonante;

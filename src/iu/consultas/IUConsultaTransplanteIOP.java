@@ -10,9 +10,10 @@ import javax.swing.WindowConstants;
 import java.awt.Rectangle;
 import javax.swing.JButton;
 
+import uy.transplante.dominio.Generico;
+
 import logica.Fachada;
 
-import dominio.Generico;
 
 public class IUConsultaTransplanteIOP extends JFrame {
 

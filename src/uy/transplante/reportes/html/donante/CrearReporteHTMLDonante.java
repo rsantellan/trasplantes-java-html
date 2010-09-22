@@ -3,7 +3,7 @@
  */
 package uy.transplante.reportes.html.donante;
 
-import dominio.Donante;
+import uy.transplante.dominio.Donante;
 
 /**
  * @author rodrigo

@@ -20,9 +20,9 @@ import javax.swing.WindowConstants;
 
 import logica.Fachada;
 import uy.transplante.auxiliares.tablas.TableSorter;
+import uy.transplante.dominio.CausaMuerteDonante;
+import uy.transplante.dominio.Generico;
 
-import dominio.CausaMuerteDonante;
-import dominio.Generico;
 import javax.swing.ImageIcon;
 
 public class IUConsultaXCausaMuerteDonante extends JFrame {

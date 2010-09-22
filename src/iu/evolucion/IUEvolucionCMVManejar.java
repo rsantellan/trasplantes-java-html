@@ -11,11 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.EvolucionTrasplanteCMV;
+
 import logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 
-import dominio.EvolucionTrasplanteCMV;
 
 public class IUEvolucionCMVManejar extends JFrame {
 

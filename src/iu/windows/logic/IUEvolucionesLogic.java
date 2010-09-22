@@ -3,11 +3,11 @@
  */
 package iu.windows.logic;
 
+import uy.transplante.dominio.PacientePreTrasplante;
+import uy.transplante.dominio.Trasplante;
 import iu.IUInjertoEvolucion;
 import iu.IUInjertoEvolucionSeleccionar;
 import iu.evolucion.IUEvolucionTrasplanteSeleccionar;
-import dominio.PacientePreTrasplante;
-import dominio.Trasplante;
 
 /**
  * @author rodrigo

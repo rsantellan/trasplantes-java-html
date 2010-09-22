@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import persistencia.broker.basico.Broker;
 import persistencia.broker.basico.IPersistente;
 import persistencia.broker.basico.ManejadorBD;
+import uy.transplante.dominio.DonanterefAntecedentes;
 
 import logica.Fachada;
 
-import dominio.DonanterefAntecedentes;
 
 public class BrkDonanterefAntecedente extends Broker{
 

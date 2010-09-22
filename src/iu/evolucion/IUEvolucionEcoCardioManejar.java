@@ -11,11 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.EvolucionTrasplanteEcoCardio;
+
 import logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 
-import dominio.EvolucionTrasplanteEcoCardio;
 
 public class IUEvolucionEcoCardioManejar extends JFrame {
 

@@ -16,9 +16,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.Serol;
+import uy.transplante.dominio.SerolDatos;
+
 import logica.Fachada;
-import dominio.Serol;
-import dominio.SerolDatos;
 
 public class IUManejarSerolDatos extends JFrame implements java.util.Observer {
 

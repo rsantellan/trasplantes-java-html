@@ -18,13 +18,14 @@ import logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 
-import dominio.Germenes;
-import dominio.Infeccion;
-import dominio.Medicacion;
-import dominio.TrasplanteComplicacionesInf;
 import javax.swing.JDesktopPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+
+import uy.transplante.dominio.Germenes;
+import uy.transplante.dominio.Infeccion;
+import uy.transplante.dominio.Medicacion;
+import uy.transplante.dominio.TrasplanteComplicacionesInf;
 
 public class IUComplicacionesInfVerModificar extends JFrame {
 

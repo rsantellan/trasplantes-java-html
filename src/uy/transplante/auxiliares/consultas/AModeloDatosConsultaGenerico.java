@@ -2,7 +2,8 @@ package uy.transplante.auxiliares.consultas;
 
 import javax.swing.table.AbstractTableModel;
 
-import dominio.Generico;
+import uy.transplante.dominio.Generico;
+
 
 public class AModeloDatosConsultaGenerico extends AbstractTableModel {
 

@@ -13,13 +13,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.Paciente;
+import uy.transplante.dominio.PacientePreTrasplante;
+import uy.transplante.dominio.Trasplante;
+
 import logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 
-import dominio.Paciente;
-import dominio.PacientePreTrasplante;
-import dominio.Trasplante;
 
 public class IUPacientePreTrasplante extends JFrame {
 

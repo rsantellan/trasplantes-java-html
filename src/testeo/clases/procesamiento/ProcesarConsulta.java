@@ -12,12 +12,12 @@ import java.util.List;
 
 import logica.Fachada;
 
-import dominio.Generico;
 
 import testeo.clases.base.ElementoBase;
 import testeo.clases.base.TablaBase;
 import testeo.clases.implementacion.RegistroTablas;
 import testeo.uy.dynamic.windows.creator.input.types.MiCheckBox;
+import uy.transplante.dominio.Generico;
 
 /**
  * @author rodrigo

@@ -9,8 +9,8 @@ import logica.Fachada;
 import persistencia.broker.basico.Broker;
 import persistencia.broker.basico.IPersistente;
 import persistencia.broker.basico.ManejadorBD;
+import uy.transplante.dominio.FechaControl;
 
-import dominio.FechaControl;
 
 public class BrkFechaControl extends Broker{
 

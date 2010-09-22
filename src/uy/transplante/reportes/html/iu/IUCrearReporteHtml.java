@@ -22,9 +22,10 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 import logica.Fachada;
-import dominio.Paciente;
-import dominio.PacientePreTrasplante;
 import javax.swing.JCheckBox;
+
+import uy.transplante.dominio.Paciente;
+import uy.transplante.dominio.PacientePreTrasplante;
 
 public class IUCrearReporteHtml extends JFrame implements
 		java.util.Observer {

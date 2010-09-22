@@ -6,17 +6,17 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.CausaMuerteDonante;
+import uy.transplante.dominio.Donante;
+import uy.transplante.dominio.FechaControl;
+import uy.transplante.dominio.Generico;
+import uy.transplante.dominio.GenericoAuxiliar;
+import uy.transplante.dominio.Induccion;
+import uy.transplante.dominio.Inmunosupresores;
+import uy.transplante.dominio.Paciente;
+import uy.transplante.dominio.PacientePreTrasplante;
+import uy.transplante.dominio.Trasplante;
 
-import dominio.CausaMuerteDonante;
-import dominio.Donante;
-import dominio.FechaControl;
-import dominio.Generico;
-import dominio.GenericoAuxiliar;
-import dominio.Induccion;
-import dominio.Inmunosupresores;
-import dominio.Paciente;
-import dominio.PacientePreTrasplante;
-import dominio.Trasplante;
 
 public class ControlConsultas {
 

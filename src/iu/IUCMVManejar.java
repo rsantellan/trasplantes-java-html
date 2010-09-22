@@ -4,11 +4,6 @@ import javax.swing.JPanel;
 import javax.swing.JFrame;
 import com.toedter.calendar.JDateChooser;
 
-import dominio.CMV;
-import dominio.CMVDiagnostico;
-import dominio.CMVDrogas;
-import dominio.CMVEnfermedades;
-import dominio.CMVusoEnfermedades;
 
 import java.awt.Rectangle;
 import javax.swing.JLabel;
@@ -25,6 +20,12 @@ import javax.swing.JTextArea;
 import logica.Fachada;
 import javax.swing.WindowConstants;
 import javax.swing.JRadioButton;
+
+import uy.transplante.dominio.CMV;
+import uy.transplante.dominio.CMVDiagnostico;
+import uy.transplante.dominio.CMVDrogas;
+import uy.transplante.dominio.CMVEnfermedades;
+import uy.transplante.dominio.CMVusoEnfermedades;
 
 public class IUCMVManejar extends JFrame {
 

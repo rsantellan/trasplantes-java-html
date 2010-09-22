@@ -15,8 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.AntecedentesDonante;
+
 import logica.Fachada;
-import dominio.AntecedentesDonante;
 
 public class IUManejarAntecedentesDonante extends JFrame implements java.util.Observer {
 

@@ -5,13 +5,13 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.EvolucionInjerto;
+import uy.transplante.dominio.EvolucionInjertoResultadoPBR;
+import uy.transplante.dominio.RaTratamiento;
+import uy.transplante.dominio.ResultadoPBR;
 
 import com.toedter.calendar.JDateChooser;
 
-import dominio.EvolucionInjerto;
-import dominio.EvolucionInjertoResultadoPBR;
-import dominio.RaTratamiento;
-import dominio.ResultadoPBR;
 
 import java.awt.Rectangle;
 import javax.swing.JLabel;

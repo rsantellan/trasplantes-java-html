@@ -10,13 +10,13 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.EvolucionTrasplanteTotal;
+import uy.transplante.dominio.Paciente;
+import uy.transplante.dominio.PacientePerdidaInjerto;
+import uy.transplante.dominio.PacientePreTrasplante;
+import uy.transplante.dominio.Trasplante;
+import uy.transplante.dominio.TrasplanteComplicacionesNoInf;
 
-import dominio.EvolucionTrasplanteTotal;
-import dominio.Paciente;
-import dominio.PacientePerdidaInjerto;
-import dominio.PacientePreTrasplante;
-import dominio.Trasplante;
-import dominio.TrasplanteComplicacionesNoInf;
 
 /**
  * @author rodrigo

@@ -4,9 +4,9 @@
 package uy.transplante.reportes.html.pacientes;
 
 import logica.Fachada;
-import dominio.Paciente;
-import dominio.PacientePerdidaInjerto;
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.Paciente;
+import uy.transplante.dominio.PacientePerdidaInjerto;
 
 /**
  * @author rodrigo

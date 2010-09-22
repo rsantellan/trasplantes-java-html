@@ -23,11 +23,11 @@ import javax.swing.table.TableColumn;
 
 import logica.Fachada;
 
-import dominio.Generico;
 
 import uy.transplante.auxiliares.consultas.AModeloDatosConsultaGenerico;
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.auxiliares.tablas.TableSorter;
+import uy.transplante.dominio.Generico;
 
 
 public class IUConsultaGenericaComplicaciones extends JFrame {

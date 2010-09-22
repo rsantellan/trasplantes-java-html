@@ -12,7 +12,7 @@ import persistencia.broker.basico.IPersistente;
 import persistencia.broker.basico.ManejadorBD;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
-import dominio.EvolucionTrasplante;
+import uy.transplante.dominio.EvolucionTrasplante;
 
 public class BrkEvolucionTrasplante extends Broker{
 

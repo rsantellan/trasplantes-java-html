@@ -15,8 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.RaTratamiento;
+
 import logica.Fachada;
-import dominio.RaTratamiento;
 
 public class IUManejarTratamientoRA extends JFrame implements java.util.Observer {
 

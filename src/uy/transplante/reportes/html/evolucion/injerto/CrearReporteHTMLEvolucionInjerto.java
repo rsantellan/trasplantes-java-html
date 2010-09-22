@@ -6,9 +6,9 @@ package uy.transplante.reportes.html.evolucion.injerto;
 import java.util.ArrayList;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.EvolucionInjerto;
+import uy.transplante.dominio.Trasplante;
 import logica.Fachada;
-import dominio.EvolucionInjerto;
-import dominio.Trasplante;
 
 /**
  * @author rodrigo

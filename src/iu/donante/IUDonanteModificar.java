@@ -21,14 +21,15 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.AntecedentesDonante;
+import uy.transplante.dominio.CausaMuerteDonante;
+import uy.transplante.dominio.Donante;
+import uy.transplante.dominio.DonanteSerolUsado;
+import uy.transplante.dominio.OrganosDonante;
+import uy.transplante.dominio.Serol;
+import uy.transplante.dominio.SerolDatos;
+
 import logica.Fachada;
-import dominio.AntecedentesDonante;
-import dominio.CausaMuerteDonante;
-import dominio.Donante;
-import dominio.DonanteSerolUsado;
-import dominio.OrganosDonante;
-import dominio.Serol;
-import dominio.SerolDatos;
 
 public class IUDonanteModificar extends JFrame implements java.util.Observer{
 

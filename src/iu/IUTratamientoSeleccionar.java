@@ -17,8 +17,8 @@ import javax.swing.WindowConstants;
 import logica.Fachada;
 import uy.transplante.auxiliares.tablas.ModeloDatosListaTratamientos;
 import uy.transplante.auxiliares.tablas.TableSorter;
+import uy.transplante.dominio.Tratamiento;
 import uy.transplante.iu.observador.seleccionarfecha.IUCalendarChooser;
-import dominio.Tratamiento;
 import javax.swing.JRadioButton;
 import java.awt.Color;
 

@@ -1,8 +1,8 @@
 package iu.windows.logic;
 
+import uy.transplante.dominio.Paciente;
+import uy.transplante.dominio.PacientePreTrasplante;
 import iu.paciente.IUPacientePreTrasplante;
-import dominio.Paciente;
-import dominio.PacientePreTrasplante;
 
 public class IUPacientePreTrasplanteLogic {
 

@@ -24,13 +24,13 @@ import javax.swing.table.TableColumn;
 
 import logica.Fachada;
 
-import dominio.Generico;
-import dominio.Induccion;
-import dominio.Inmunosupresores;
 
 import uy.transplante.auxiliares.consultas.AModeloDatosConsultaGenerico;
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.auxiliares.tablas.TableSorter;
+import uy.transplante.dominio.Generico;
+import uy.transplante.dominio.Induccion;
+import uy.transplante.dominio.Inmunosupresores;
 
 
 public class IUConsultaGenerica extends JFrame {

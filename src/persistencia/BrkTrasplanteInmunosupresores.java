@@ -9,8 +9,8 @@ import logica.Fachada;
 import persistencia.broker.basico.Broker;
 import persistencia.broker.basico.IPersistente;
 import persistencia.broker.basico.ManejadorBD;
+import uy.transplante.dominio.TrasplanteInmunosupresoresUsado;
 
-import dominio.TrasplanteInmunosupresoresUsado;
 
 public class BrkTrasplanteInmunosupresores extends Broker {
 

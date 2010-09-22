@@ -9,7 +9,7 @@ import logica.Fachada;
 import persistencia.broker.basico.Broker;
 import persistencia.broker.basico.IPersistente;
 import persistencia.broker.basico.ManejadorBD;
-import dominio.CausaMuerteDonante;
+import uy.transplante.dominio.CausaMuerteDonante;
 
 public class BrkCausaMuerteDonante extends Broker {
 

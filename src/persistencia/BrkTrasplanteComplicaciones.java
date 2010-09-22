@@ -12,9 +12,9 @@ import persistencia.broker.basico.IPersistente;
 import persistencia.broker.basico.ManejadorBD;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
-import dominio.TrasplanteComplicaciones;
-import dominio.TrasplanteComplicacionesInf;
-import dominio.TrasplanteComplicacionesNoInf;
+import uy.transplante.dominio.TrasplanteComplicaciones;
+import uy.transplante.dominio.TrasplanteComplicacionesInf;
+import uy.transplante.dominio.TrasplanteComplicacionesNoInf;
 
 public class BrkTrasplanteComplicaciones extends Broker{
 

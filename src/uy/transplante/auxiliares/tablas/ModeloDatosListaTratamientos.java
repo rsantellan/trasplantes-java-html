@@ -7,8 +7,8 @@ import java.util.GregorianCalendar;
 import javax.swing.table.AbstractTableModel;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.Tratamiento;
 
-import dominio.Tratamiento;
 
 public class ModeloDatosListaTratamientos extends AbstractTableModel {
 

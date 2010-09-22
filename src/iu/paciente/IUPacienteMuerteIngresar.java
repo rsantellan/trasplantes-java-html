@@ -16,13 +16,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.CausaMuertePaciente;
+import uy.transplante.dominio.Paciente;
+import uy.transplante.dominio.PacienteMuerte;
+
 import logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 
-import dominio.CausaMuertePaciente;
-import dominio.Paciente;
-import dominio.PacienteMuerte;
 
 public class IUPacienteMuerteIngresar extends JFrame implements java.util.Observer{
 

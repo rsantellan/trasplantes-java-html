@@ -6,9 +6,9 @@ package uy.transplante.reportes.html.cmv;
 import java.util.ArrayList;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.CMV;
+import uy.transplante.dominio.CMVusoEnfermedades;
 import logica.Fachada;
-import dominio.CMV;
-import dominio.CMVusoEnfermedades;
 
 /**
  * @author rodrigo

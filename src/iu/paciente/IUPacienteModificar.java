@@ -19,11 +19,11 @@ import javax.swing.WindowConstants;
 import logica.Fachada;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.Nefropatia;
+import uy.transplante.dominio.Paciente;
 
 import com.toedter.calendar.JDateChooser;
 
-import dominio.Nefropatia;
-import dominio.Paciente;
 import javax.swing.JCheckBox;
 import java.awt.Color;
 

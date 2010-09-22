@@ -5,16 +5,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.CausaMuerteDonante;
+import uy.transplante.dominio.Donante;
+import uy.transplante.dominio.Paciente;
+import uy.transplante.dominio.PacientePerdidaInjerto;
+import uy.transplante.dominio.PacientePreTrasplante;
+import uy.transplante.dominio.Trasplante;
+import uy.transplante.dominio.TrasplanteInduccionUsado;
 
 import logica.Fachada;
 
-import dominio.CausaMuerteDonante;
-import dominio.Donante;
-import dominio.Paciente;
-import dominio.PacientePerdidaInjerto;
-import dominio.PacientePreTrasplante;
-import dominio.Trasplante;
-import dominio.TrasplanteInduccionUsado;
 
 public class CrearReporteFondo {
 

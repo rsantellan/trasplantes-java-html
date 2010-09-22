@@ -11,7 +11,7 @@ import javax.swing.WindowConstants;
 
 import logica.Fachada;
 import uy.transplante.auxiliares.fechas.ManejoFechas;
-import dominio.Paciente;
+import uy.transplante.dominio.Paciente;
 
 public class IUPacienteMuerteVer extends JFrame {
 

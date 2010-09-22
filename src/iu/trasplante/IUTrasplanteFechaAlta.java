@@ -11,11 +11,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.Trasplante;
+
 import logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 
-import dominio.Trasplante;
 
 public class IUTrasplanteFechaAlta extends JFrame implements java.util.Observer {
 

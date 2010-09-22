@@ -19,8 +19,8 @@ import javax.swing.WindowConstants;
 import logica.Fachada;
 import uy.transplante.auxiliares.tablas.ModeloDatosListaEvoluciones;
 import uy.transplante.auxiliares.tablas.TableSorter;
-import dominio.EvolucionTrasplanteTotal;
-import dominio.Trasplante;
+import uy.transplante.dominio.EvolucionTrasplanteTotal;
+import uy.transplante.dominio.Trasplante;
 
 public class IUEvolucionTrasplanteSeleccionar extends JFrame implements java.util.Observer{
 

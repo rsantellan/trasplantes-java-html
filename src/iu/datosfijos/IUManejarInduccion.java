@@ -15,8 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.Induccion;
+
 import logica.Fachada;
-import dominio.Induccion;
 
 public class IUManejarInduccion extends JFrame implements java.util.Observer {
 

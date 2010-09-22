@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 import persistencia.broker.basico.Broker;
 import persistencia.broker.basico.IPersistente;
+import uy.transplante.dominio.Generico;
 
-import dominio.Generico;
 
 public class BrkGenerico extends Broker {
 

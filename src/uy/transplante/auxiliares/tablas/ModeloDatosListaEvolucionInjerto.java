@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.EvolucionInjerto;
 
-import dominio.EvolucionInjerto;
 
 public class ModeloDatosListaEvolucionInjerto extends AbstractTableModel{
 

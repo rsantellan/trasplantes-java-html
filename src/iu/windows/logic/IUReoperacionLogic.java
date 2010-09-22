@@ -3,8 +3,8 @@
  */
 package iu.windows.logic;
 
+import uy.transplante.dominio.Trasplante;
 import iu.trasplante.IUTrasplanteReoperacion;
-import dominio.Trasplante;
 
 /**
  * @author rodrigo

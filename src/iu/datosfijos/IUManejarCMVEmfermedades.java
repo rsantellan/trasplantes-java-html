@@ -15,8 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.CMVEnfermedades;
+
 import logica.Fachada;
-import dominio.CMVEnfermedades;
 
 public class IUManejarCMVEmfermedades extends JFrame implements java.util.Observer {
 

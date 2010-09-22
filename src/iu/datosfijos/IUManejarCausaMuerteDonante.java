@@ -15,8 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.CausaMuerteDonante;
+
 import logica.Fachada;
-import dominio.CausaMuerteDonante;
 
 public class IUManejarCausaMuerteDonante extends JFrame implements java.util.Observer {
 

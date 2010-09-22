@@ -10,10 +10,10 @@ import javax.swing.JFrame;
 import logica.Fachada;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.Donante;
+import uy.transplante.dominio.Paciente;
+import uy.transplante.dominio.PacientePerdidaInjerto;
 
-import dominio.Donante;
-import dominio.Paciente;
-import dominio.PacientePerdidaInjerto;
 
 public class CrearReporte extends JFrame {
 

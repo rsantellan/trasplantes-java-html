@@ -23,9 +23,10 @@ import javax.swing.WindowConstants;
 
 import logica.Fachada;
 
-import dominio.Generico;
-import dominio.GenericoAuxiliar;
 import javax.swing.JList;
+
+import uy.transplante.dominio.Generico;
+import uy.transplante.dominio.GenericoAuxiliar;
 
 public class IUCreadorConsultas extends JFrame implements java.util.Observer{
 

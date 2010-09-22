@@ -9,17 +9,17 @@ import java.util.Calendar;
 import logica.Fachada;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
-import dominio.EvolucionTrasplante;
-import dominio.EvolucionTrasplanteCMV;
-import dominio.EvolucionTrasplanteECG;
-import dominio.EvolucionTrasplanteEcoCardio;
-import dominio.EvolucionTrasplanteEcoDopler;
-import dominio.EvolucionTrasplanteEcografia;
-import dominio.EvolucionTrasplanteExamenes;
-import dominio.EvolucionTrasplanteMarvirales;
-import dominio.EvolucionTrasplanteNutricion;
-import dominio.EvolucionTrasplanteTotal;
-import dominio.EvolucionTrasplanteTxTorax;
+import uy.transplante.dominio.EvolucionTrasplante;
+import uy.transplante.dominio.EvolucionTrasplanteCMV;
+import uy.transplante.dominio.EvolucionTrasplanteECG;
+import uy.transplante.dominio.EvolucionTrasplanteEcoCardio;
+import uy.transplante.dominio.EvolucionTrasplanteEcoDopler;
+import uy.transplante.dominio.EvolucionTrasplanteEcografia;
+import uy.transplante.dominio.EvolucionTrasplanteExamenes;
+import uy.transplante.dominio.EvolucionTrasplanteMarvirales;
+import uy.transplante.dominio.EvolucionTrasplanteNutricion;
+import uy.transplante.dominio.EvolucionTrasplanteTotal;
+import uy.transplante.dominio.EvolucionTrasplanteTxTorax;
 
 /**
  * @author rodrigo

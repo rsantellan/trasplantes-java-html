@@ -15,8 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.CausaPerdidaInjerto;
+
 import logica.Fachada;
-import dominio.CausaPerdidaInjerto;
 
 public class IUManejarCausasPerdidaInjerto extends JFrame implements java.util.Observer {
 

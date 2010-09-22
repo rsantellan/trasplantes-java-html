@@ -18,13 +18,13 @@ import javax.swing.WindowConstants;
 import logica.Fachada;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.CausaPerdidaInjerto;
+import uy.transplante.dominio.Paciente;
+import uy.transplante.dominio.PacientePerdidaInjerto;
+import uy.transplante.dominio.PacientePreTrasplante;
 
 import com.toedter.calendar.JDateChooser;
 
-import dominio.CausaPerdidaInjerto;
-import dominio.Paciente;
-import dominio.PacientePerdidaInjerto;
-import dominio.PacientePreTrasplante;
 
 import javax.swing.JDesktopPane;
 

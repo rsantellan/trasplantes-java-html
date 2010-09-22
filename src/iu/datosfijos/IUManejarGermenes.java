@@ -15,8 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.Germenes;
+
 import logica.Fachada;
-import dominio.Germenes;
 
 public class IUManejarGermenes extends JFrame implements java.util.Observer {
 

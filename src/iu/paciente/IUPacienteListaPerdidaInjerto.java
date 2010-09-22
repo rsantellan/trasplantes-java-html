@@ -7,8 +7,9 @@ import java.awt.Rectangle;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
-import dominio.Paciente;
-import dominio.PacientePerdidaInjerto;
+import uy.transplante.dominio.Paciente;
+import uy.transplante.dominio.PacientePerdidaInjerto;
+
 
 import java.awt.Color;
 import java.util.ArrayList;

@@ -19,17 +19,18 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.Induccion;
+import uy.transplante.dominio.Inmunosupresores;
+import uy.transplante.dominio.PacientePreTrasplante;
+import uy.transplante.dominio.Serol;
+import uy.transplante.dominio.SerolDatos;
+import uy.transplante.dominio.Trasplante;
+import uy.transplante.dominio.TrasplanteInduccionUsado;
+import uy.transplante.dominio.TrasplanteInmunosupresoresUsado;
+import uy.transplante.dominio.TrasplanteSerolUsado;
+
 import logica.Fachada;
 
-import dominio.Induccion;
-import dominio.Inmunosupresores;
-import dominio.PacientePreTrasplante;
-import dominio.Serol;
-import dominio.SerolDatos;
-import dominio.Trasplante;
-import dominio.TrasplanteInduccionUsado;
-import dominio.TrasplanteInmunosupresoresUsado;
-import dominio.TrasplanteSerolUsado;
 
 public class IUTrasplanteManejar2 extends JFrame implements java.util.Observer{
 

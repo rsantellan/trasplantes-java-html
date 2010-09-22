@@ -2,14 +2,15 @@ package logica;
 
 import java.util.ArrayList;
 
-import dominio.CausaMuertePaciente;
-import dominio.Donante;
-import dominio.Paciente;
-import dominio.PacienteMuerte;
-import dominio.PacientePerdidaInjerto;
-import dominio.PacientePreTrasplante;
-import dominio.Trasplante;
-import dominio.Tratamiento;
+import uy.transplante.dominio.CausaMuertePaciente;
+import uy.transplante.dominio.Donante;
+import uy.transplante.dominio.Paciente;
+import uy.transplante.dominio.PacienteMuerte;
+import uy.transplante.dominio.PacientePerdidaInjerto;
+import uy.transplante.dominio.PacientePreTrasplante;
+import uy.transplante.dominio.Trasplante;
+import uy.transplante.dominio.Tratamiento;
+
 
 public class ControlPersonas {
 	

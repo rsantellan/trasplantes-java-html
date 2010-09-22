@@ -18,8 +18,8 @@ import logica.Fachada;
 
 import uy.transplante.auxiliares.consultas.AModeloDatosConsultaGenerico;
 import uy.transplante.auxiliares.tablas.TableSorter;
+import uy.transplante.dominio.Generico;
 
-import dominio.Generico;
 
 public class IUConsultaComplicacionesPorTiempoSeparadas extends JFrame {
 

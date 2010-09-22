@@ -5,6 +5,8 @@ package uy.transplante.reportes.pdf.pacientes;
 
 import uy.transplante.reportes.pdf.estaticos.DocumentoBasico;
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.Paciente;
+import uy.transplante.dominio.PacientePerdidaInjerto;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
@@ -16,8 +18,6 @@ import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPTable;
 
 import logica.Fachada;
-import dominio.Paciente;
-import dominio.PacientePerdidaInjerto;
 
 /**
  * @author rodrigo

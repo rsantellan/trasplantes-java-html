@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
-import dominio.Paciente;
+import uy.transplante.dominio.Paciente;
+
 
 public class ModeloDatosListaPacientes extends AbstractTableModel{
 

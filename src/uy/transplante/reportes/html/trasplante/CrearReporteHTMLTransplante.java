@@ -6,10 +6,10 @@ package uy.transplante.reportes.html.trasplante;
 import java.util.ArrayList;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.PacientePreTrasplante;
+import uy.transplante.dominio.Trasplante;
+import uy.transplante.dominio.TrasplanteReoperacion;
 import logica.Fachada;
-import dominio.PacientePreTrasplante;
-import dominio.Trasplante;
-import dominio.TrasplanteReoperacion;
 
 /**
  * @author rodrigo

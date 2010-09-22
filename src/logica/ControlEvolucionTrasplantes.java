@@ -3,19 +3,20 @@ package logica;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import dominio.EvolucionInjerto;
-import dominio.EvolucionTrasplante;
-import dominio.EvolucionTrasplanteCMV;
-import dominio.EvolucionTrasplanteECG;
-import dominio.EvolucionTrasplanteEcoCardio;
-import dominio.EvolucionTrasplanteEcoDopler;
-import dominio.EvolucionTrasplanteEcografia;
-import dominio.EvolucionTrasplanteExamenes;
-import dominio.EvolucionTrasplanteMarvirales;
-import dominio.EvolucionTrasplanteNutricion;
-import dominio.EvolucionTrasplanteTxTorax;
-import dominio.FechaControl;
-import dominio.RaTratamiento;
+import uy.transplante.dominio.EvolucionInjerto;
+import uy.transplante.dominio.EvolucionTrasplante;
+import uy.transplante.dominio.EvolucionTrasplanteCMV;
+import uy.transplante.dominio.EvolucionTrasplanteECG;
+import uy.transplante.dominio.EvolucionTrasplanteEcoCardio;
+import uy.transplante.dominio.EvolucionTrasplanteEcoDopler;
+import uy.transplante.dominio.EvolucionTrasplanteEcografia;
+import uy.transplante.dominio.EvolucionTrasplanteExamenes;
+import uy.transplante.dominio.EvolucionTrasplanteMarvirales;
+import uy.transplante.dominio.EvolucionTrasplanteNutricion;
+import uy.transplante.dominio.EvolucionTrasplanteTxTorax;
+import uy.transplante.dominio.FechaControl;
+import uy.transplante.dominio.RaTratamiento;
+
 
 public class ControlEvolucionTrasplantes {
 

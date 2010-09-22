@@ -12,12 +12,12 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.Trasplante;
+import uy.transplante.dominio.TrasplanteComplicaciones;
+import uy.transplante.dominio.TrasplanteReoperacion;
 
 import com.toedter.calendar.JDateChooser;
 
-import dominio.Trasplante;
-import dominio.TrasplanteComplicaciones;
-import dominio.TrasplanteReoperacion;
 
 import javax.swing.JComboBox;
 import javax.swing.JButton;

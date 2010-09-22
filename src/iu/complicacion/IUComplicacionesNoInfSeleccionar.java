@@ -16,9 +16,9 @@ import javax.swing.WindowConstants;
 import logica.Fachada;
 import uy.transplante.auxiliares.tablas.ModeloDatosListaComplicacionesNoInf;
 import uy.transplante.auxiliares.tablas.TableSorter;
-import dominio.EvolucionTrasplanteTotal;
-import dominio.Trasplante;
-import dominio.TrasplanteComplicacionesNoInf;
+import uy.transplante.dominio.EvolucionTrasplanteTotal;
+import uy.transplante.dominio.Trasplante;
+import uy.transplante.dominio.TrasplanteComplicacionesNoInf;
 
 public class IUComplicacionesNoInfSeleccionar extends JFrame implements java.util.Observer{
 

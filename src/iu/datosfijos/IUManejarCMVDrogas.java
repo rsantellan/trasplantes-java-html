@@ -15,8 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.CMVDrogas;
+
 import logica.Fachada;
-import dominio.CMVDrogas;
 
 public class IUManejarCMVDrogas extends JFrame implements java.util.Observer {
 

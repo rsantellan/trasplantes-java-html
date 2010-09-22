@@ -3,9 +3,9 @@
  */
 package iu.windows.logic;
 
-import dominio.Paciente;
-import dominio.PacientePreTrasplante;
-import dominio.Trasplante;
+import uy.transplante.dominio.Paciente;
+import uy.transplante.dominio.PacientePreTrasplante;
+import uy.transplante.dominio.Trasplante;
 import iu.complicacion.IUComplicacionesInfSeleccionar;
 import iu.complicacion.IUComplicacionesNoInfSeleccionar;
 import iu.trasplante.IUTrasplanteFechaAlta;

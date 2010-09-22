@@ -12,8 +12,8 @@ import persistencia.broker.basico.IPersistente;
 import persistencia.broker.basico.ManejadorBD;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.Login;
 
-import dominio.Login;
 
 public class BrkLogin extends Broker {
 

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.CMV;
 
-import dominio.CMV;
 
 public class ModeloDatosListaCMV extends AbstractTableModel{
 

@@ -3,10 +3,10 @@
  */
 package testeo.clases.implementacion;
 
-import dominio.Generico;
 
 import testeo.clases.base.ElementoBase;
 import testeo.clases.base.TablaBase;
+import uy.transplante.dominio.Generico;
 
 /**
  * @author rodrigo

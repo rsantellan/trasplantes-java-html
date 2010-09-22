@@ -37,10 +37,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.Paciente;
+import uy.transplante.dominio.PacientePreTrasplante;
+
 import logica.Fachada;
-import dominio.Paciente;
-import dominio.PacientePreTrasplante;
-//import dominio.Trasplante;
 
 public class IUBuscarPersonaTrasplante extends JFrame implements
 		java.util.Observer {

@@ -12,10 +12,10 @@ import persistencia.broker.basico.IPersistente;
 import persistencia.broker.basico.ManejadorBD;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.CMV;
+import uy.transplante.dominio.CMVDiagnostico;
+import uy.transplante.dominio.CMVDrogas;
 
-import dominio.CMV;
-import dominio.CMVDiagnostico;
-import dominio.CMVDrogas;
 
 public class BrkCmv extends Broker {
 

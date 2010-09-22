@@ -15,13 +15,14 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.EvolucionTrasplante;
+import uy.transplante.dominio.Trasplante;
+
 import logica.Fachada;
 
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 import com.toedter.calendar.JDateChooser;
 
-import dominio.EvolucionTrasplante;
-import dominio.Trasplante;
 
 public class IUEvolucionManejarSimple extends JFrame {
 

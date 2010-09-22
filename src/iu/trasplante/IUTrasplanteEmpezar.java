@@ -15,9 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.Paciente;
+import uy.transplante.dominio.PacientePreTrasplante;
+
 import logica.Fachada;
-import dominio.Paciente;
-import dominio.PacientePreTrasplante;
 
 public class IUTrasplanteEmpezar extends JFrame implements java.util.Observer{
 

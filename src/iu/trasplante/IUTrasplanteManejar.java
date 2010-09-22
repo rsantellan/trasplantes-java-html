@@ -19,11 +19,12 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.Paciente;
+import uy.transplante.dominio.PacientePreTrasplante;
+import uy.transplante.dominio.Trasplante;
+
 import com.toedter.calendar.JDateChooser;
 
-import dominio.Paciente;
-import dominio.PacientePreTrasplante;
-import dominio.Trasplante;
 
 public class IUTrasplanteManejar extends JFrame {
 

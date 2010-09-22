@@ -15,8 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.Inmunosupresores;
+
 import logica.Fachada;
-import dominio.Inmunosupresores;
 
 public class IUManejarInmunosupresores extends JFrame implements java.util.Observer {
 

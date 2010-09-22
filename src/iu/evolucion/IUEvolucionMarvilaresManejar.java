@@ -12,11 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.EvolucionTrasplanteMarvirales;
+
 import logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 
-import dominio.EvolucionTrasplanteMarvirales;
 
 public class IUEvolucionMarvilaresManejar extends JFrame {
 

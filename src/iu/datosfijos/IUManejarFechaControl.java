@@ -15,8 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.FechaControl;
+
 import logica.Fachada;
-import dominio.FechaControl;
 
 public class IUManejarFechaControl extends JFrame implements java.util.Observer {
 

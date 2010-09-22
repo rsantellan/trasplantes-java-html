@@ -15,8 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.Nefropatia;
+
 import logica.Fachada;
-import dominio.Nefropatia;
 
 public class IUManejarNefropatias extends JFrame implements java.util.Observer {
 

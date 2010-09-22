@@ -20,10 +20,11 @@ import javax.swing.WindowConstants;
 
 import logica.Fachada;
 import uy.transplante.auxiliares.tablas.TableSorter;
-import dominio.FechaControl;
-import dominio.Generico;
-import dominio.Germenes;
-import dominio.Infeccion;
+import uy.transplante.dominio.FechaControl;
+import uy.transplante.dominio.Generico;
+import uy.transplante.dominio.Germenes;
+import uy.transplante.dominio.Infeccion;
+
 import javax.swing.JDesktopPane;
 import javax.swing.JCheckBox;
 import javax.swing.ImageIcon;

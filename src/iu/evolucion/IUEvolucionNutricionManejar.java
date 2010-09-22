@@ -13,11 +13,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+import uy.transplante.dominio.EvolucionTrasplanteNutricion;
+
 import logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 
-import dominio.EvolucionTrasplanteNutricion;
 
 public class IUEvolucionNutricionManejar extends JFrame {
 

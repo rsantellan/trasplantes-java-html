@@ -18,10 +18,11 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import com.toedter.calendar.JDateChooser;
 
-import dominio.EvolucionTrasplanteExamenes;
 
 import javax.swing.JList;
 import javax.swing.JButton;
+
+import uy.transplante.dominio.EvolucionTrasplanteExamenes;
 
 import logica.Fachada;
 

@@ -16,7 +16,7 @@ import javax.swing.WindowConstants;
 import logica.Fachada;
 import uy.transplante.auxiliares.tablas.ModeloDatosListaCMV;
 import uy.transplante.auxiliares.tablas.TableSorter;
-import dominio.CMV;
+import uy.transplante.dominio.CMV;
 
 
 public class IUCMVSeleccionar extends JFrame implements

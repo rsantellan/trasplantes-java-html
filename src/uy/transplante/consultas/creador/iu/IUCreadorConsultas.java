@@ -1,6 +1,5 @@
 package uy.transplante.consultas.creador.iu;
 
-import iu.consultas.IUConsultaGenerica;
 
 import javax.swing.JPanel;
 import javax.swing.JFrame;
@@ -27,6 +26,7 @@ import javax.swing.JList;
 
 import uy.transplante.dominio.Generico;
 import uy.transplante.dominio.GenericoAuxiliar;
+import uy.transplante.iu.consultas.IUConsultaGenerica;
 
 public class IUCreadorConsultas extends JFrame implements java.util.Observer{
 

@@ -3,7 +3,6 @@
  */
 package testeo.clases.procesamiento;
 
-import iu.consultas.IUConsultaGenerica;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,6 +17,7 @@ import testeo.clases.base.TablaBase;
 import testeo.clases.implementacion.RegistroTablas;
 import testeo.uy.dynamic.windows.creator.input.types.MiCheckBox;
 import uy.transplante.dominio.Generico;
+import uy.transplante.iu.consultas.IUConsultaGenerica;
 
 /**
  * @author rodrigo

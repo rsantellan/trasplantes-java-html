@@ -1,4 +1,4 @@
-package uy.transplante.iu.observador.seleccionarFecha;
+package uy.transplante.iu.observador.seleccionarfecha;
 
 import javax.swing.JPanel;
 import javax.swing.JFrame;
@@ -14,14 +14,14 @@ import javax.swing.WindowConstants;
 public class IUCalendarChooser extends JFrame implements ObservadoCalendario{
 
 	private static final long serialVersionUID = 1L;
-	private JPanel jContentPane = null;
-	private JCalendar jCalendarFecha = null;
-	private JButton jButtonUsar = null;
+	private transient JPanel jContentPane = null;
+	private transient JCalendar jCalendarFecha = null;
+	private transient JButton jButtonUsar = null;
 
 	/**
 	 * This is the default constructor
 	 */
-	public IUCalendarChooser(ObservadorCalendario obs) {
+	public IUCalendarChooser(final ObservadorCalendario obs) {
 		super();
 		initialize();
 		this.agregarObsevador(obs);
@@ -36,7 +36,7 @@ public class IUCalendarChooser extends JFrame implements ObservadoCalendario{
 	private void initialize() {
 		this.setSize(608, 338);
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		this.setContentPane(getJContentPane());
+		this.setContentPane(this.getJContentPane());
 		this.setTitle("Seleccione la fecha");
 		this.setResizable(false);
 		
@@ -84,7 +84,7 @@ public class IUCalendarChooser extends JFrame implements ObservadoCalendario{
 			jButtonUsar.setBackground(new Color(204, 255, 204));
 			jButtonUsar.setText("Usar");
 			jButtonUsar.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
+				public void actionPerformed(final java.awt.event.ActionEvent event) {
 					notificarCambios();
 				}
 			});
@@ -99,14 +99,14 @@ public class IUCalendarChooser extends JFrame implements ObservadoCalendario{
 	public void terminar(){
 		this.dispose();
 	}
-	private ObservadorCalendario ob;
+	private transient ObservadorCalendario observer;
 	
-	public void agregarObsevador(ObservadorCalendario ob) {
-		this.ob = ob;
+	public void agregarObsevador(final ObservadorCalendario observer) {
+		this.observer = observer;
 	}
 
 	public void notificarCambios() {
-		this.ob.actualizar();
+		this.observer.actualizar();
 	}
 	
 	

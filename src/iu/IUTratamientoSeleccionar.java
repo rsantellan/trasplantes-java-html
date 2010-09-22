@@ -17,12 +17,12 @@ import javax.swing.WindowConstants;
 import logica.Fachada;
 import auxiliares.ModeloDatosListaTratamientos;
 import auxiliares.TableSorter;
-import auxiliares.seleccionarFecha.IUCalendarChooser;
+import uy.transplante.iu.observador.seleccionarfecha.IUCalendarChooser;
 import dominio.Tratamiento;
 import javax.swing.JRadioButton;
 import java.awt.Color;
 
-public class IUTratamientoSeleccionar extends JFrame implements java.util.Observer, auxiliares.seleccionarFecha.ObservadorCalendario{
+public class IUTratamientoSeleccionar extends JFrame implements java.util.Observer, uy.transplante.iu.observador.seleccionarfecha.ObservadorCalendario{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel jContentPane = null;

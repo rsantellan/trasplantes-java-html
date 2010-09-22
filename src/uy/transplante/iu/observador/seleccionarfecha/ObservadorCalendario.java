@@ -1,10 +1,10 @@
 /**
  *  For using IUCalendarChooser without using java.util.Observer
  */
-package uy.transplante.iu.observador.seleccionarFecha;
+package uy.transplante.iu.observador.seleccionarfecha;
 
 /**
- * @author Rodrigo Santell�n Wibmer
+ * @author Rodrigo Santellán Wibmer
  *
  */
 public interface ObservadorCalendario {

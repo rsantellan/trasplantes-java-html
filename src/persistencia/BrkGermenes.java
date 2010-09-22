@@ -5,9 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-import persistencia.broker.basico.Broker;
-import persistencia.broker.basico.IPersistente;
-import persistencia.broker.basico.ManejadorBD;
+import persistencia.broker.Broker;
+import persistencia.broker.IPersistente;
+import persistencia.broker.ManejadorBD;
 import uy.transplante.dominio.Germenes;
 import uy.transplante.logica.Fachada;
 

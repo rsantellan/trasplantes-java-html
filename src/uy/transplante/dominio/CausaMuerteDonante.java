@@ -3,7 +3,7 @@ package uy.transplante.dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkCausaMuerteDonante;
-import persistencia.broker.basico.IPersistente;
+import persistencia.broker.IPersistente;
 
 public class CausaMuerteDonante implements IPersistente{
 	

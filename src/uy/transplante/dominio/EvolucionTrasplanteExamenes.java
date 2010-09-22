@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import persistencia.BrkEvolucionTrasplanteExamenes;
-import persistencia.broker.basico.IPersistente;
+import persistencia.broker.IPersistente;
 
 public class EvolucionTrasplanteExamenes implements IPersistente{
 	public static String GINECOLOGO = "GINECOLOGO";

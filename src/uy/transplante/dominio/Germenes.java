@@ -3,7 +3,7 @@ package uy.transplante.dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkGermenes;
-import persistencia.broker.basico.IPersistente;
+import persistencia.broker.IPersistente;
 
 public class Germenes implements IPersistente {
 

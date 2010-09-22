@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import persistencia.BrkEvolucionTrasplanteEcoDopler;
-import persistencia.broker.basico.IPersistente;
+import persistencia.broker.IPersistente;
 
 public class EvolucionTrasplanteEcoDopler implements IPersistente{
 	private int idTrasplante;

@@ -3,7 +3,7 @@ package uy.transplante.dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkCMVDiagnostico;
-import persistencia.broker.basico.IPersistente;
+import persistencia.broker.IPersistente;
 
 public class CMVDiagnostico implements IPersistente{
 

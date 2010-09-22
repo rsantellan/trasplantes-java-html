@@ -8,9 +8,9 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 
-import persistencia.broker.basico.Broker;
-import persistencia.broker.basico.IPersistente;
-import persistencia.broker.basico.ManejadorBD;
+import persistencia.broker.Broker;
+import persistencia.broker.IPersistente;
+import persistencia.broker.ManejadorBD;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.PacienteMuerte;

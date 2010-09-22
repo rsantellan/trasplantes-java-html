@@ -3,7 +3,7 @@ package uy.transplante.dominio;
 import java.util.ArrayList;
 
 import persistencia.BrkDonante;
-import persistencia.broker.basico.IPersistente;
+import persistencia.broker.IPersistente;
 
 public class Donante implements IPersistente{
 	

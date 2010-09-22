@@ -25,9 +25,9 @@ import logica.Fachada;
 
 import dominio.Generico;
 
+import uy.transplante.auxiliares.consultas.AModeloDatosConsultaGenerico;
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.auxiliares.tablas.TableSorter;
-import auxiliaresConsultas.AModeloDatosConsultaGenerico;
 
 
 public class IUConsultaGenericaOpciones extends JFrame {

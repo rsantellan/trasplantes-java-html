@@ -1,4 +1,4 @@
-package auxiliaresConsultas;
+package uy.transplante.auxiliares.consultas;
 
 import javax.swing.table.AbstractTableModel;
 

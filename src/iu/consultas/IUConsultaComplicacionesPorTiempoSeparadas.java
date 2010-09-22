@@ -16,8 +16,8 @@ import javax.swing.JButton;
 
 import logica.Fachada;
 
+import uy.transplante.auxiliares.consultas.AModeloDatosConsultaGenerico;
 import uy.transplante.auxiliares.tablas.TableSorter;
-import auxiliaresConsultas.AModeloDatosConsultaGenerico;
 
 import dominio.Generico;
 

@@ -1,5 +1,6 @@
 package iu.consultas;
 
+import uy.transplante.auxiliares.consultas.AModeloDatosConsultaGenerico;
 import uy.transplante.auxiliares.impresion.PrintUtilities;
 
 import java.awt.Color;
@@ -19,7 +20,6 @@ import javax.swing.WindowConstants;
 
 import logica.Fachada;
 import uy.transplante.auxiliares.tablas.TableSorter;
-import auxiliaresConsultas.AModeloDatosConsultaGenerico;
 
 import dominio.CausaMuerteDonante;
 import dominio.Generico;

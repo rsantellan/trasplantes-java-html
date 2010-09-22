@@ -28,9 +28,9 @@ import dominio.Generico;
 import dominio.Induccion;
 import dominio.Inmunosupresores;
 
+import uy.transplante.auxiliares.consultas.AModeloDatosConsultaGenerico;
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.auxiliares.tablas.TableSorter;
-import auxiliaresConsultas.AModeloDatosConsultaGenerico;
 
 
 public class IUConsultaGenerica extends JFrame {

@@ -25,7 +25,7 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.WindowConstants;
 
-import uy.trasplante.reportes.urologicas.ConsultaUrologicaExcel;
+import uy.transplante.reportes.urologicas.ConsultaUrologicaExcel;
 
 public class IUPrincipal extends JFrame implements java.util.Observer {
 

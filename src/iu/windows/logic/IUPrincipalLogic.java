@@ -4,9 +4,9 @@
 package iu.windows.logic;
 
 import uy.transplante.reportes.html.iu.IUCrearReporteHtml;
-import uy.trasplante.reportes.registrouruguayotrasplantes.IUCrearReporteFondoPerYear;
-import uy.trasplante.reportes.registrouruguayotrasplantes.IUCrearReporteFondoTotal;
-import uy.trasplante.reportes.registrouruguayotrasplantes.IUCrearReporteFondoTotalPreTrasplante;
+import uy.transplante.reportes.registrouruguayotrasplantes.IUCrearReporteFondoPerYear;
+import uy.transplante.reportes.registrouruguayotrasplantes.IUCrearReporteFondoTotal;
+import uy.transplante.reportes.registrouruguayotrasplantes.IUCrearReporteFondoTotalPreTrasplante;
 import iu.IUBuscarPersonaTrasplante;
 import iu.IUPrincipal;
 import iu.backup.IUBackUpProgress;

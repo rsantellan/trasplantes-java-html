@@ -20,8 +20,8 @@ import javax.swing.JButton;
 
 import uy.transplante.dominio.Medicacion;
 import uy.transplante.dominio.Tratamiento;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 public class IUTratamientoAgregar extends JFrame {
 

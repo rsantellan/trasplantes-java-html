@@ -15,6 +15,7 @@ import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.Trasplante;
 import uy.transplante.dominio.TrasplanteComplicaciones;
 import uy.transplante.dominio.TrasplanteReoperacion;
+import uy.transplante.logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 
@@ -23,7 +24,6 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.WindowConstants;
 
-import logica.Fachada;
 import javax.swing.JList;
 
 public class IUTrasplanteReoperacion extends JFrame {

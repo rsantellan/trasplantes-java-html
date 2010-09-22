@@ -14,7 +14,6 @@ import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import java.awt.Color;
 
-import logica.Fachada;
 import javax.swing.WindowConstants;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -26,6 +25,7 @@ import javax.swing.SwingConstants;
 
 import uy.transplante.iu.basico.IUPrincipal;
 import uy.transplante.iu.login.IULoginCambiar;
+import uy.transplante.logica.Fachada;
 
 public class IUBackUpProgress extends JFrame implements PropertyChangeListener {
 

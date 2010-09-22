@@ -12,7 +12,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
-import logica.Fachada;
+import uy.transplante.logica.Fachada;
+
 
 final class Captura {
 

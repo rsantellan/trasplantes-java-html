@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-import logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 
@@ -25,6 +24,7 @@ import javax.swing.JTextArea;
 import uy.transplante.dominio.Medicacion;
 import uy.transplante.dominio.TrasplanteComplicacionesNoInf;
 import uy.transplante.dominio.TrasplanteTiposComplicaciones;
+import uy.transplante.logica.Fachada;
 
 public class IUComplicacionesNoInfVerModificar extends JFrame {
 

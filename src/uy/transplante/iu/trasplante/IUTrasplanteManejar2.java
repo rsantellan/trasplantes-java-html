@@ -28,8 +28,8 @@ import uy.transplante.dominio.Trasplante;
 import uy.transplante.dominio.TrasplanteInduccionUsado;
 import uy.transplante.dominio.TrasplanteInmunosupresoresUsado;
 import uy.transplante.dominio.TrasplanteSerolUsado;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 
 public class IUTrasplanteManejar2 extends JFrame implements java.util.Observer{

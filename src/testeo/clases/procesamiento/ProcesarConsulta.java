@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
-import logica.Fachada;
 
 
 import testeo.clases.base.ElementoBase;
@@ -18,6 +17,7 @@ import testeo.clases.implementacion.RegistroTablas;
 import testeo.uy.dynamic.windows.creator.input.types.MiCheckBox;
 import uy.transplante.dominio.Generico;
 import uy.transplante.iu.consultas.IUConsultaGenerica;
+import uy.transplante.logica.Fachada;
 
 /**
  * @author rodrigo

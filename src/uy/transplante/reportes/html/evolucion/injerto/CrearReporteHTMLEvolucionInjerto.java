@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.EvolucionInjerto;
 import uy.transplante.dominio.Trasplante;
-import logica.Fachada;
+import uy.transplante.logica.Fachada;
 
 /**
  * @author rodrigo

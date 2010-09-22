@@ -3,7 +3,7 @@
  */
 package uy.transplante.reportes.pdf.trasplante;
 
-import logica.Fachada;
+import uy.transplante.logica.Fachada;
 import uy.transplante.reportes.pdf.estaticos.DocumentoBasico;
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.Paciente;

@@ -15,7 +15,6 @@ import javax.swing.JPasswordField;
 import java.awt.Color;
 import java.io.File;
 
-import logica.Fachada;
 import javax.swing.WindowConstants;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -26,6 +25,7 @@ import javax.swing.JFileChooser;
 
 import uy.transplante.auxiliares.file.selector.FiltroSQLZIP;
 import uy.transplante.iu.basico.IUPrincipal;
+import uy.transplante.logica.Fachada;
 
 public class IUBackUpRestoreProgress extends JFrame implements
 		PropertyChangeListener {

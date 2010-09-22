@@ -7,7 +7,6 @@ import java.text.ParseException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import logica.Fachada;
 
 import persistencia.broker.basico.Broker;
 import persistencia.broker.basico.IPersistente;
@@ -15,6 +14,7 @@ import persistencia.broker.basico.ManejadorBD;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.PacientePerdidaInjerto;
+import uy.transplante.logica.Fachada;
 
 public class BrkPerdidaInjerto extends Broker {
 

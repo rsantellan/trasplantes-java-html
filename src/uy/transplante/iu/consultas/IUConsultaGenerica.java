@@ -22,7 +22,6 @@ import javax.swing.WindowConstants;
 import javax.swing.ImageIcon;
 import javax.swing.table.TableColumn;
 
-import logica.Fachada;
 
 
 import uy.transplante.auxiliares.consultas.AModeloDatosConsultaGenerico;
@@ -31,6 +30,7 @@ import uy.transplante.auxiliares.tablas.TableSorter;
 import uy.transplante.dominio.Generico;
 import uy.transplante.dominio.Induccion;
 import uy.transplante.dominio.Inmunosupresores;
+import uy.transplante.logica.Fachada;
 
 
 public class IUConsultaGenerica extends JFrame {

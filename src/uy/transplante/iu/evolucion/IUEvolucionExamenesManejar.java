@@ -23,8 +23,8 @@ import javax.swing.JList;
 import javax.swing.JButton;
 
 import uy.transplante.dominio.EvolucionTrasplanteExamenes;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 public class IUEvolucionExamenesManejar extends JFrame {
 

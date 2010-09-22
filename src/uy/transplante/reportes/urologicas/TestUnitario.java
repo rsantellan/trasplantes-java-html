@@ -1,6 +1,6 @@
 package uy.transplante.reportes.urologicas;
 
-import logica.Fachada;
+import uy.transplante.logica.Fachada;
 
 public class TestUnitario {
 

@@ -12,8 +12,8 @@ import uy.transplante.dominio.PacientePerdidaInjerto;
 import uy.transplante.dominio.PacientePreTrasplante;
 import uy.transplante.dominio.Trasplante;
 import uy.transplante.dominio.TrasplanteInduccionUsado;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 
 public class CrearReporteFondo {

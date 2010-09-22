@@ -4,12 +4,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import logica.Fachada;
 
 import persistencia.broker.basico.Broker;
 import persistencia.broker.basico.IPersistente;
 import persistencia.broker.basico.ManejadorBD;
 import uy.transplante.dominio.Nefropatia;
+import uy.transplante.logica.Fachada;
 
 
 public class BrkNefropatia extends Broker {

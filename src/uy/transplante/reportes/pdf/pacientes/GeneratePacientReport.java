@@ -3,6 +3,7 @@
  */
 package uy.transplante.reportes.pdf.pacientes;
 
+import uy.transplante.logica.Fachada;
 import uy.transplante.reportes.pdf.estaticos.DocumentoBasico;
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.Paciente;
@@ -17,7 +18,6 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPTable;
 
-import logica.Fachada;
 
 /**
  * @author rodrigo

@@ -13,6 +13,7 @@ import java.util.GregorianCalendar;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.EvolucionTrasplanteEcografia;
+import uy.transplante.logica.Fachada;
 
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 import com.toedter.calendar.JDateChooser;
@@ -22,7 +23,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-import logica.Fachada;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 

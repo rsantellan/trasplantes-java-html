@@ -17,7 +17,6 @@ import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import logica.Fachada;
 import javax.swing.WindowConstants;
 import javax.swing.JRadioButton;
 
@@ -26,6 +25,7 @@ import uy.transplante.dominio.CMVDiagnostico;
 import uy.transplante.dominio.CMVDrogas;
 import uy.transplante.dominio.CMVEnfermedades;
 import uy.transplante.dominio.CMVusoEnfermedades;
+import uy.transplante.logica.Fachada;
 
 public class IUCMVManejar extends JFrame {
 

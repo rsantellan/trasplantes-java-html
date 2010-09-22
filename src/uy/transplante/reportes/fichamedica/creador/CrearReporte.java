@@ -7,12 +7,12 @@ import java.io.IOException;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 
-import logica.Fachada;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.Donante;
 import uy.transplante.dominio.Paciente;
 import uy.transplante.dominio.PacientePerdidaInjerto;
+import uy.transplante.logica.Fachada;
 
 
 public class CrearReporte extends JFrame {

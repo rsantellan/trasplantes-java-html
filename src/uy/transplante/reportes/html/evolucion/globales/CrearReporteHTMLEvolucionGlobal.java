@@ -6,7 +6,6 @@ package uy.transplante.reportes.html.evolucion.globales;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import logica.Fachada;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.EvolucionTrasplante;
@@ -20,6 +19,7 @@ import uy.transplante.dominio.EvolucionTrasplanteMarvirales;
 import uy.transplante.dominio.EvolucionTrasplanteNutricion;
 import uy.transplante.dominio.EvolucionTrasplanteTotal;
 import uy.transplante.dominio.EvolucionTrasplanteTxTorax;
+import uy.transplante.logica.Fachada;
 
 /**
  * @author rodrigo

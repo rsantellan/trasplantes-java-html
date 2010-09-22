@@ -10,7 +10,7 @@ import uy.transplante.dominio.EvolucionTrasplanteTotal;
 import uy.transplante.dominio.Trasplante;
 import uy.transplante.dominio.TrasplanteComplicacionesInf;
 import uy.transplante.dominio.TrasplanteComplicacionesNoInf;
-import logica.Fachada;
+import uy.transplante.logica.Fachada;
 
 /**
  * @author rodrigo

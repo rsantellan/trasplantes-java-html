@@ -14,11 +14,11 @@ import javax.swing.JTable;
 import javax.swing.JTabbedPane;
 import javax.swing.JButton;
 
-import logica.Fachada;
 
 import uy.transplante.auxiliares.consultas.AModeloDatosConsultaGenerico;
 import uy.transplante.auxiliares.tablas.TableSorter;
 import uy.transplante.dominio.Generico;
+import uy.transplante.logica.Fachada;
 
 
 public class IUConsultaComplicacionesPorTiempoSeparadas extends JFrame {

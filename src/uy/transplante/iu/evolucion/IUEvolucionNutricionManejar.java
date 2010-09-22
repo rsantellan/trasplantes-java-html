@@ -14,8 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 import uy.transplante.dominio.EvolucionTrasplanteNutricion;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 

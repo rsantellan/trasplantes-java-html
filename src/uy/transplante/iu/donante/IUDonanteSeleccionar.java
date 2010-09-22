@@ -15,10 +15,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 
-import logica.Fachada;
 import uy.transplante.auxiliares.tablas.ModeloDatosListaDonantes;
 import uy.transplante.auxiliares.tablas.TableSorter;
 import uy.transplante.dominio.Donante;
+import uy.transplante.logica.Fachada;
 
 public class IUDonanteSeleccionar extends JFrame implements java.util.Observer{
 

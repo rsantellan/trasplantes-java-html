@@ -28,8 +28,8 @@ import uy.transplante.dominio.DonanteSerolUsado;
 import uy.transplante.dominio.OrganosDonante;
 import uy.transplante.dominio.Serol;
 import uy.transplante.dominio.SerolDatos;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 public class IUDonanteModificar extends JFrame implements java.util.Observer{
 

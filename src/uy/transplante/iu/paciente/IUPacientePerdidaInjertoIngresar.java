@@ -15,13 +15,13 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
-import logica.Fachada;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.CausaPerdidaInjerto;
 import uy.transplante.dominio.Paciente;
 import uy.transplante.dominio.PacientePerdidaInjerto;
 import uy.transplante.dominio.PacientePreTrasplante;
+import uy.transplante.logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 

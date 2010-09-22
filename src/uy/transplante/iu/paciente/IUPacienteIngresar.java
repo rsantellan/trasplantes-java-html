@@ -15,11 +15,11 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-import logica.Fachada;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.Nefropatia;
 import uy.transplante.dominio.Paciente;
+import uy.transplante.logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 

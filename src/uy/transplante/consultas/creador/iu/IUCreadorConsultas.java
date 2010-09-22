@@ -20,13 +20,13 @@ import java.util.Observable;
 import javax.swing.JComboBox;
 import javax.swing.WindowConstants;
 
-import logica.Fachada;
 
 import javax.swing.JList;
 
 import uy.transplante.dominio.Generico;
 import uy.transplante.dominio.GenericoAuxiliar;
 import uy.transplante.iu.consultas.IUConsultaGenerica;
+import uy.transplante.logica.Fachada;
 
 public class IUCreadorConsultas extends JFrame implements java.util.Observer{
 

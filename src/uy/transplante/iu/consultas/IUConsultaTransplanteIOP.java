@@ -11,8 +11,8 @@ import java.awt.Rectangle;
 import javax.swing.JButton;
 
 import uy.transplante.dominio.Generico;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 
 public class IUConsultaTransplanteIOP extends JFrame {

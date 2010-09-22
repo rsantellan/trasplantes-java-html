@@ -16,13 +16,13 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
-import logica.Fachada;
 import uy.transplante.auxiliares.tablas.ModeloDatosListaDonantes;
 import uy.transplante.auxiliares.tablas.TableSorter;
 import uy.transplante.dominio.Donante;
 import uy.transplante.dominio.Trasplante;
 import uy.transplante.iu.donante.IUDonanteIngresar;
 import uy.transplante.iu.donante.IUDonanteModificar;
+import uy.transplante.logica.Fachada;
 
 public class IUTrasplanteDonanteSeleccionar extends JFrame implements java.util.Observer{
 

@@ -21,11 +21,11 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
-import logica.Fachada;
 import javax.swing.JCheckBox;
 
 import uy.transplante.dominio.Paciente;
 import uy.transplante.dominio.PacientePreTrasplante;
+import uy.transplante.logica.Fachada;
 
 public class IUCrearReporteHtml extends JFrame implements
 		java.util.Observer {

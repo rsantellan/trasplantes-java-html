@@ -14,7 +14,8 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
-import logica.Fachada;
+import uy.transplante.logica.Fachada;
+
 
 
 public class TableSorter extends TableMap

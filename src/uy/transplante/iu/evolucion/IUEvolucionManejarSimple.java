@@ -17,8 +17,8 @@ import javax.swing.WindowConstants;
 
 import uy.transplante.dominio.EvolucionTrasplante;
 import uy.transplante.dominio.Trasplante;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 import com.toedter.calendar.JDateChooser;

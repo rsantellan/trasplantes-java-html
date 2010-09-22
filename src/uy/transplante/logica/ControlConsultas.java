@@ -1,4 +1,4 @@
-package logica;
+package uy.transplante.logica;
 
 import java.text.ParseException;
 import java.util.ArrayList;

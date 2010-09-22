@@ -9,8 +9,8 @@ import java.util.GregorianCalendar;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.Tratamiento;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 /**
  * @author rodrigo

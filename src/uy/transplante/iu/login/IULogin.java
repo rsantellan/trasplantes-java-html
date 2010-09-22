@@ -9,13 +9,13 @@ import javax.swing.JButton;
 import javax.swing.JPasswordField;
 
 import uy.transplante.iu.basico.IUPrincipal;
+import uy.transplante.logica.Fachada;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-import logica.Fachada;
 
 public class IULogin extends JFrame implements ActionListener{
 

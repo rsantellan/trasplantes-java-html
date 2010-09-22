@@ -13,12 +13,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 
-import logica.Fachada;
 import uy.transplante.auxiliares.tablas.ModeloDatosListaComplicacionesNoInf;
 import uy.transplante.auxiliares.tablas.TableSorter;
 import uy.transplante.dominio.EvolucionTrasplanteTotal;
 import uy.transplante.dominio.Trasplante;
 import uy.transplante.dominio.TrasplanteComplicacionesNoInf;
+import uy.transplante.logica.Fachada;
 
 public class IUComplicacionesNoInfSeleccionar extends JFrame implements java.util.Observer{
 

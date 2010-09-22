@@ -1,4 +1,4 @@
-package logica;
+package uy.transplante.logica;
 
 import uy.mysql.backup.MysqlBackupManager;
 

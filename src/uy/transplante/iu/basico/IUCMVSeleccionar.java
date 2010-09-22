@@ -13,10 +13,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 
-import logica.Fachada;
 import uy.transplante.auxiliares.tablas.ModeloDatosListaCMV;
 import uy.transplante.auxiliares.tablas.TableSorter;
 import uy.transplante.dominio.CMV;
+import uy.transplante.logica.Fachada;
 
 
 public class IUCMVSeleccionar extends JFrame implements

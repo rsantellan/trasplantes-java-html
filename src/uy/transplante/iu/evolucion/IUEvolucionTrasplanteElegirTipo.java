@@ -25,8 +25,8 @@ import uy.transplante.dominio.EvolucionTrasplanteNutricion;
 import uy.transplante.dominio.EvolucionTrasplanteTotal;
 import uy.transplante.dominio.EvolucionTrasplanteTxTorax;
 import uy.transplante.dominio.Trasplante;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 

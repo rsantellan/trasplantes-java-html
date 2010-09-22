@@ -1,4 +1,4 @@
-package logica;
+package uy.transplante.logica;
 
 import java.util.ArrayList;
 import java.util.Calendar;

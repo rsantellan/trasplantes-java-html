@@ -9,9 +9,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-import logica.Fachada;
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.Paciente;
+import uy.transplante.logica.Fachada;
 
 public class IUPacienteMuerteVer extends JFrame {
 

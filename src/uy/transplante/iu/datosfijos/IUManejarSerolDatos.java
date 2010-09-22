@@ -18,8 +18,8 @@ import javax.swing.WindowConstants;
 import uy.transplante.dominio.Serol;
 import uy.transplante.dominio.SerolDatos;
 import uy.transplante.iu.windows.auxiliaries.IUAuxiliarPaneles;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 public class IUManejarSerolDatos extends JFrame implements java.util.Observer {
 

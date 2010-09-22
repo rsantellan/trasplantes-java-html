@@ -17,13 +17,14 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.HorizontalAlignment;
 import org.jfree.ui.RectangleEdge;
 
+import uy.transplante.logica.Fachada;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
 
-import logica.Fachada;
 import javax.swing.JList;
 import javax.swing.WindowConstants;
 import javax.swing.JButton;

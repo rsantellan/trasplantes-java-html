@@ -3,7 +3,8 @@ package uy.transplante.auxiliares.file.selector;
 import java.io.File;
 import javax.swing.ImageIcon;
 
-import logica.Fachada;
+import uy.transplante.logica.Fachada;
+
 
 final class Utils {
 	public final static String JPEG = "jpeg";

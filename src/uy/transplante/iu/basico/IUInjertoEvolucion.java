@@ -9,6 +9,7 @@ import uy.transplante.dominio.EvolucionInjerto;
 import uy.transplante.dominio.EvolucionInjertoResultadoPBR;
 import uy.transplante.dominio.RaTratamiento;
 import uy.transplante.dominio.ResultadoPBR;
+import uy.transplante.logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 
@@ -25,7 +26,6 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import logica.Fachada;
 import java.awt.Color;
 
 public class IUInjertoEvolucion extends JFrame {

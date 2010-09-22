@@ -28,12 +28,13 @@ import org.jfree.ui.HorizontalAlignment;
 import org.jfree.ui.RectangleEdge;
 import org.jfree.ui.RectangleInsets;
 
+import uy.transplante.logica.Fachada;
+
 import javax.swing.JInternalFrame;
 import javax.swing.WindowConstants;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
-import logica.Fachada;
 import javax.swing.JScrollPane;
 import java.awt.GridBagLayout;
 

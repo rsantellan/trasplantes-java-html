@@ -39,8 +39,8 @@ import uy.transplante.iu.windows.logic.IUPacientePreTrasplanteLogic;
 import uy.transplante.iu.windows.logic.IUReoperacionLogic;
 import uy.transplante.iu.windows.logic.IUTrasplanteLogic;
 import uy.transplante.iu.windows.logic.IUTratamientosLogic;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 public class IUBuscarPersonaTrasplante extends JFrame implements
 		java.util.Observer {

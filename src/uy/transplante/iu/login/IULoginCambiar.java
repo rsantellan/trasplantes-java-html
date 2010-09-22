@@ -11,7 +11,8 @@ import javax.swing.WindowConstants;
 import java.awt.Color;
 import javax.swing.JCheckBox;
 
-import logica.Fachada;
+import uy.transplante.logica.Fachada;
+
 
 public class IULoginCambiar extends JFrame {
 

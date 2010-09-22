@@ -13,7 +13,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 
-import logica.Fachada;
 import uy.transplante.auxiliares.tablas.ModeloDatosListaEvoluciones;
 import uy.transplante.auxiliares.tablas.TableSorter;
 import uy.transplante.dominio.EvolucionTrasplanteTotal;
@@ -21,6 +20,7 @@ import uy.transplante.dominio.Trasplante;
 import uy.transplante.iu.basico.IUTratamientoSeleccionar;
 import uy.transplante.iu.complicacion.IUComplicacionesInfSeleccionar;
 import uy.transplante.iu.complicacion.IUComplicacionesNoInfSeleccionar;
+import uy.transplante.logica.Fachada;
 
 public class IUEvolucionTrasplanteSeleccionar extends JFrame implements java.util.Observer{
 

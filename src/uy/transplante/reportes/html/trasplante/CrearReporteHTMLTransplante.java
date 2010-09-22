@@ -9,7 +9,7 @@ import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.PacientePreTrasplante;
 import uy.transplante.dominio.Trasplante;
 import uy.transplante.dominio.TrasplanteReoperacion;
-import logica.Fachada;
+import uy.transplante.logica.Fachada;
 
 /**
  * @author rodrigo

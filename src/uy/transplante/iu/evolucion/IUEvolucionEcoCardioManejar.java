@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import uy.transplante.dominio.EvolucionTrasplanteEcoCardio;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 

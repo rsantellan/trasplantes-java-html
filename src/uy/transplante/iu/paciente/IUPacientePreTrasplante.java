@@ -16,8 +16,8 @@ import uy.transplante.dominio.Paciente;
 import uy.transplante.dominio.PacientePreTrasplante;
 import uy.transplante.dominio.Trasplante;
 import uy.transplante.iu.trasplante.IUTrasplanteManejar;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 

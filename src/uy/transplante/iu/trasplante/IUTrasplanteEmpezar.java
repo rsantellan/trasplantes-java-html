@@ -17,8 +17,8 @@ import javax.swing.WindowConstants;
 import uy.transplante.dominio.Paciente;
 import uy.transplante.dominio.PacientePreTrasplante;
 import uy.transplante.iu.paciente.IUPacientePreTrasplante;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 public class IUTrasplanteEmpezar extends JFrame implements java.util.Observer{
 

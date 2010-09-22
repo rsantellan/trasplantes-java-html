@@ -18,9 +18,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
-import logica.Fachada;
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.iu.windows.logic.IUPrincipalLogic;
+import uy.transplante.logica.Fachada;
 
 import java.awt.Color;
 import javax.swing.JButton;

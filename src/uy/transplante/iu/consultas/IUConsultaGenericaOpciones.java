@@ -21,13 +21,13 @@ import javax.swing.WindowConstants;
 import javax.swing.ImageIcon;
 import javax.swing.table.TableColumn;
 
-import logica.Fachada;
 
 
 import uy.transplante.auxiliares.consultas.AModeloDatosConsultaGenerico;
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.auxiliares.tablas.TableSorter;
 import uy.transplante.dominio.Generico;
+import uy.transplante.logica.Fachada;
 
 
 public class IUConsultaGenericaOpciones extends JFrame {

@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-import logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 
@@ -26,6 +25,7 @@ import uy.transplante.dominio.Germenes;
 import uy.transplante.dominio.Infeccion;
 import uy.transplante.dominio.Medicacion;
 import uy.transplante.dominio.TrasplanteComplicacionesInf;
+import uy.transplante.logica.Fachada;
 
 public class IUComplicacionesInfInsertar extends JFrame {
 

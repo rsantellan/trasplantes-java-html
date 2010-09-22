@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-import logica.Fachada;
 
 import persistencia.broker.basico.Broker;
 import persistencia.broker.basico.IPersistente;
@@ -15,6 +14,7 @@ import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.TrasplanteComplicaciones;
 import uy.transplante.dominio.TrasplanteComplicacionesInf;
 import uy.transplante.dominio.TrasplanteComplicacionesNoInf;
+import uy.transplante.logica.Fachada;
 
 public class BrkTrasplanteComplicaciones extends Broker{
 

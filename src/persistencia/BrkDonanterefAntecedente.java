@@ -8,8 +8,8 @@ import persistencia.broker.basico.Broker;
 import persistencia.broker.basico.IPersistente;
 import persistencia.broker.basico.ManejadorBD;
 import uy.transplante.dominio.DonanterefAntecedentes;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 
 public class BrkDonanterefAntecedente extends Broker{

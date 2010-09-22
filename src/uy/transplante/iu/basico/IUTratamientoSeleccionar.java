@@ -14,11 +14,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 
-import logica.Fachada;
 import uy.transplante.auxiliares.tablas.ModeloDatosListaTratamientos;
 import uy.transplante.auxiliares.tablas.TableSorter;
 import uy.transplante.dominio.Tratamiento;
 import uy.transplante.iu.observador.seleccionarfecha.IUCalendarChooser;
+import uy.transplante.logica.Fachada;
+
 import javax.swing.JRadioButton;
 import java.awt.Color;
 

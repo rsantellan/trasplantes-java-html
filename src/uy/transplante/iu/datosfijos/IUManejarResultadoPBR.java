@@ -16,8 +16,8 @@ import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
 import uy.transplante.dominio.ResultadoPBR;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 public class IUManejarResultadoPBR extends JFrame implements java.util.Observer {
 

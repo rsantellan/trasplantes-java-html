@@ -19,8 +19,8 @@ import uy.transplante.dominio.CausaMuertePaciente;
 import uy.transplante.dominio.Paciente;
 import uy.transplante.dominio.PacienteMuerte;
 import uy.transplante.iu.windows.auxiliaries.IUAuxiliarPaneles;
+import uy.transplante.logica.Fachada;
 
-import logica.Fachada;
 
 import com.toedter.calendar.JDateChooser;
 

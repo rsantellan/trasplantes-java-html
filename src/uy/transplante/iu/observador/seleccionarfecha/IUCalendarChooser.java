@@ -1,4 +1,4 @@
-package auxiliares.seleccionarFecha;
+package uy.transplante.iu.observador.seleccionarFecha;
 
 import javax.swing.JPanel;
 import javax.swing.JFrame;

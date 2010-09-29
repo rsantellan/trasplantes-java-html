@@ -66,7 +66,9 @@ public class IUBackUpRestoreProgress extends JFrame implements
 			Cursor hourglassCursor = new Cursor(Cursor.WAIT_CURSOR);
 			setCursor(hourglassCursor);
 			this.setProgress(50);
+			Fachada.getInstancia().guardarLog(5, "Empieza el respaldo");
 			int aux = Fachada.getInstancia().crearBackUp();
+			Fachada.getInstancia().guardarLog(5, "Termino el respaldo");
 			if(aux == -1){
 				error();
 				return;
@@ -111,8 +113,10 @@ public class IUBackUpRestoreProgress extends JFrame implements
 			Cursor hourglassCursor = new Cursor(Cursor.WAIT_CURSOR);
 			setCursor(hourglassCursor);
 			this.setProgress(50);
+			Fachada.getInstancia().guardarLog(5, "Empieza el volcado de datos");
 			int aux = Fachada.getInstancia().crearRestore(
 					archivo.getAbsolutePath());
+			Fachada.getInstancia().guardarLog(5, "Termino el volcado de datos");
 			if(aux == -1){
 				error();
 				return;

@@ -156,14 +156,9 @@ public class Fachada extends Observable{
 				logger.fatal(texto);
 				break;
 			default:
-				logger.fatal(texto);
+				logger.info(texto);
 				break;
 		}
-		
-	    logger.debug(texto);
-	    logger.info(texto);
-		//ManejadorLogs.getInstancia().guardarLog(texto);
-		//System.out.println(texto);
 	}
 	
 	public void guardarLogError(String texto){

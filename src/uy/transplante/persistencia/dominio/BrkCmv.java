@@ -154,26 +154,59 @@ public class BrkCmv extends Broker {
 	}
 
 	@Override
-	public String getContar() {
+	public PreparedStatement getContarPrepared() {
 		CMV e = (CMV) this.getObj();
 		String sql = "SELECT COUNT(*) FROM cmv";
+		PreparedStatement prep = null;
 		if (e.getIdTrasplante() != 0) {
-			sql += " WHERE Trasplante=" + e.getIdTrasplante();
+			sql += " WHERE Trasplante= ?";
 			if (e.getFecha() != null) {
-				String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
-						.getTime());
-				sql += " AND FECHA ='" + fecha + "'";
+				sql += " AND FECHA = ?";
+				prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+				try{
+					prep.setInt(1, e.getIdTrasplante());
+					String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
+							.getTime());
+					prep.setString(2, fecha);
+				}catch(SQLException e1) {
+					Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+					prep = null;
+				}
+
+			}else{
+				prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+				try {
+					prep.setInt(1, e.getIdTrasplante());
+				} catch (SQLException e1) {
+					Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+					prep = null;
+				}
 			}
 		}else{
 			if(e.getDroga() != null){
-				sql += " WHERE Droga = "+e.getDroga().getId();
+				sql += " WHERE Droga = ?";
+				prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+				try {
+					prep.setInt(1, e.getDroga().getId());
+				} catch (SQLException e1) {
+					Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+					prep = null;
+				}
+
 			}else{
 				if(e.getDiagnostico() != null){
-					sql += " WHERE Diagnostico = "+e.getDiagnostico().getId();
+					sql += " WHERE Diagnostico = ?"; 
+					prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+					try {
+						prep.setInt(1, e.getDiagnostico().getId());
+					} catch (SQLException e1) {
+						Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+						prep = null;
+					}
 				}
 			}
 		}
-		return sql;
+		
+		return prep;
 	}
-
 }

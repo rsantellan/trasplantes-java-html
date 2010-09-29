@@ -70,11 +70,6 @@ public class BrkAntecedentesDonante extends Broker {
 	}
 
 	@Override
-	public String getContar() {
-		return null;
-	}
-
-	@Override
 	public PreparedStatement getDeletePreperad() {
 		String sql = "";
 		sql = "DELETE FROM donante_antecedentes WHERE ID = ?";
@@ -87,6 +82,11 @@ public class BrkAntecedentesDonante extends Broker {
 			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
 		}
 		return prep;
+	}
+
+	@Override
+	public PreparedStatement getContarPrepared() {
+		return null;
 	}
 
 }

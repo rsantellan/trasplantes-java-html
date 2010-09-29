@@ -126,13 +126,22 @@ public class BrkDonante extends Broker{
 	}
 
 	@Override
-	public String getContar() {
+	public PreparedStatement getContarPrepared() {
 		Donante d = (Donante) this.getObj();
-		String sql = "";
+		PreparedStatement prep = null;
 		if(d.getNumCausaMuerte() != 0){
-			sql = "SELECT COUNT(*) FROM donante where CAUSA_MUERTE_DONANTE = "+d.getNumCausaMuerte();
+			String sql = "SELECT COUNT(*) FROM donante where CAUSA_MUERTE_DONANTE = ?";
+			//+d.getNumCausaMuerte();
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try{
+				prep.setInt(1, d.getNumCausaMuerte());
+			}catch(SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+				prep = null;
+			}
+			
 		}
-		return sql;
+		return prep;
 	}
 
 }

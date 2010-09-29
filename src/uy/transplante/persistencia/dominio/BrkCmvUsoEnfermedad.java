@@ -138,20 +138,34 @@ public class BrkCmvUsoEnfermedad extends Broker {
 	}
 
 	@Override
-	public String getContar() {
+	public PreparedStatement getContarPrepared() {
 		CMVusoEnfermedades e = (CMVusoEnfermedades) this.getObj();
 		String sql = "SELECT COUNT(*) FROM cmv_uso_enfermedades";
+		PreparedStatement prep = null;
 		if (e.getNumViejo() != -1) {
-			sql += " WHERE Trasplante =" + e.getIdTrasplante();
-			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
-					.getTime());
-			sql += " AND FECHA ='" + fecha + "'";
-			sql += " AND cmvenfermedades =" + e.getEnfermedad().getId();
+			sql += " WHERE Trasplante = ? AND FECHA = ? AND cmvenfermedades = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try{
+				prep.setInt(1, e.getIdTrasplante());
+				String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
+						.getTime());
+				prep.setString(2, fecha);
+				prep.setInt(3, e.getEnfermedad().getId());
+			}catch(SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+				prep = null;
+			}
 		} else {
-			sql += " WHERE cmvenfermedades =" + e.getEnfermedad().getId();
+			sql += " WHERE cmvenfermedades = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try{
+				prep.setInt(1, e.getEnfermedad().getId());
+			}catch(SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+				prep = null;
+			}
 		}
-
-		return sql;
+		
+		return prep;
 	}
-
 }

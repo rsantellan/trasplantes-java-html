@@ -162,4 +162,9 @@ public class BrkEvolucionTrasplanteEcografia extends Broker {
 
 	}
 
+	@Override
+	public PreparedStatement getContarPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -112,15 +112,29 @@ public class BrkDonanteSerol extends Broker {
 	}
 
 	@Override
-	public String getContar() {
+	public PreparedStatement getContarPrepared() {
 		DonanteSerolUsado s = (DonanteSerolUsado) this.getObj();
 		String sql = "SELECT COUNT(*) FROM donante_serol ";
+		PreparedStatement prep = null;
 		if(s.getSerol() != null){
-			sql += "WHERE id_serol ="+s.getSerol().getId();
+			sql += "WHERE id_serol = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try{
+				prep.setInt(1, s.getSerol().getId());
+			}catch(SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+				prep = null;
+			}
 		}else{
-			sql += "WHERE valor ='"+s.getDato().getTipo()+"'";
+			sql += "WHERE valor =? ";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try{
+				prep.setString(1, s.getDato().getTipo());
+			}catch(SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+				prep = null;
+			}
 		}
-		return sql;
+		return prep;
 	}
-
 }

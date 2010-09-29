@@ -84,7 +84,7 @@ public class BrkCausaMuerteDonante extends Broker {
 	}
 
 	@Override
-	public String getContar() {
+	public PreparedStatement getContarPrepared() {
 		return null;
 	}
 

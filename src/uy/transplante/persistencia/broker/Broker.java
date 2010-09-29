@@ -24,7 +24,8 @@ public abstract class Broker {
 	public abstract String getSelectSQL();
 	public abstract void leerDesdeResultSet(ResultSet rs, IPersistente aux);
 	public abstract IPersistente getNuevo();
-	public abstract String getContar();
+	//public abstract String getContar();
+	public abstract PreparedStatement getContarPrepared();
 	
 	public int contarDesdeResultSet(ResultSet rs){
 		int aux= 0;
@@ -37,7 +38,7 @@ public abstract class Broker {
 	}
 	
 	public int contar(){
-		return ManejadorBD.getInstancia().contar(this);
+		return ManejadorBD.getInstancia().contarPrep(this);
 	}
 	public void guardar() {
 		IPersistente p = this.getObj();

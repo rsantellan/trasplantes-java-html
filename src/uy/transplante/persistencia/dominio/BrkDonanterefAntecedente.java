@@ -88,13 +88,20 @@ public class BrkDonanterefAntecedente extends Broker{
 	}
 
 	@Override
-	public String getContar() {
+	public PreparedStatement getContarPrepared() {
 		DonanterefAntecedentes d = (DonanterefAntecedentes) this.getObj();
-		String sql = "";
+		PreparedStatement prep = null;
 		if(d.getIdAntecedente() != 0){
-			sql = "SELECT COUNT(*) FROM donanterefantecedentes WHERE ID_ANTECEDENTE ="+d.getIdAntecedente();
+			String sql = "SELECT COUNT(*) FROM donanterefantecedentes WHERE ID_ANTECEDENTE = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try{
+				prep.setInt(1, d.getIdAntecedente());
+			}catch(SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+				prep = null;
+			}
 		}
-		return sql;
+		
+		return prep;
 	}
-
 }

@@ -143,21 +143,39 @@ public class BrkEvolucionInjertoPBR extends Broker {
 	}
 
 	@Override
-	public String getContar() {
+	public PreparedStatement getContarPrepared() {
 		EvolucionInjertoResultadoPBR e = (EvolucionInjertoResultadoPBR) this
-				.getObj();
+		.getObj();
+		PreparedStatement prep = null;
 		String sql = "";
 		sql = "SELECT COUNT(*) FROM injerto_evolucion_pbr ";
 		if (e.getIdPretrasplante() > 0) {
-			sql += "WHERE PreTrasplante =" + e.getIdPretrasplante();
-			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
-					.getTime());
-			sql += " AND FECHA ='" + fecha + "'";
-			sql += " AND RESULTADO_PBR =" + e.getNumPBR();
+			sql += "WHERE PreTrasplante = ?";
+			sql += " AND FECHA = ?";
+			sql += " AND RESULTADO_PBR = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try{
+				prep.setInt(1, e.getIdPretrasplante());
+				String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
+						.getTime());
+				prep.setString(2, fecha);
+				prep.setInt(3, e.getNumPBR());
+			}catch(SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+				prep = null;
+			}
 		}else{
-			sql += "WHERE RESULTADO_PBR =" + e.getNumPBR();
+			
+			sql += "WHERE RESULTADO_PBR = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try{
+				prep.setInt(1, e.getNumPBR());
+				
+			}catch(SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+				prep = null;
+			}
 		}
-		return sql;
+		return prep;
 	}
-
 }

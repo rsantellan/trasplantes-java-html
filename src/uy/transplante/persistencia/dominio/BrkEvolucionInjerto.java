@@ -161,23 +161,49 @@ public class BrkEvolucionInjerto extends Broker {
 	}
 
 	@Override
-	public String getContar() {
+	public PreparedStatement getContarPrepared() {
 		EvolucionInjerto e = (EvolucionInjerto) this.getObj();
-		String sql = "";
-		sql = "SELECT COUNT(*) FROM injerto_evolucion ";
+		PreparedStatement prep = null;
+		String sql = "SELECT COUNT(*) FROM injerto_evolucion ";
 		if (!e.isBuscarPorTratamiento()) {
-			sql += " WHERE PreTrasplante =" + e.getIdPretrasplante();
+			sql += " WHERE PreTrasplante = ?";
+			//+ e.getIdPretrasplante();
 			if (e.getFecha() != null) {
-				String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
-						.getTime());
-				sql += " AND FECHA ='" + fecha + "'";
+				sql += " AND FECHA = ?";
+				sql += " AND trasplante = ?";
+				prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+				try{
+					prep.setInt(1, e.getIdPretrasplante());
+					String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
+							.getTime());
+					prep.setString(2, fecha);
+					prep.setBoolean(3, e.isEnTrasplante());
+				}catch(SQLException e1) {
+					Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+					prep = null;
+				}
+			}else{
+				sql += " AND trasplante = ?";
+				prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+				try{
+					prep.setInt(1, e.getIdPretrasplante());
+					prep.setBoolean(2, e.isEnTrasplante());
+				}catch(SQLException e1) {
+					Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+					prep = null;
+				}
 			}
-			sql += " AND trasplante = " + e.isEnTrasplante();
 		} else {
-			sql += " WHERE tratamiento =" + e.getTratamiento().getId();
+			sql += " WHERE tratamiento = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try{
+				prep.setInt(1, e.getTratamiento().getId());
+			}catch(SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+				prep = null;
+			}
 		}
-		
-		return sql;
+		return prep;
 	}
 
 }

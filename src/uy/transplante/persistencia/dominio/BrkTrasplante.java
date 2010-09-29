@@ -323,5 +323,9 @@ public class BrkTrasplante extends Broker{
 		sql = "SELECT COUNT(*) FROM trasplante WHERE GRADO_BANFF";
 		return sql;
 	}
-
+	@Override
+	public PreparedStatement getContarPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

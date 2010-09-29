@@ -89,6 +89,23 @@ public class ManejadorBD {
 		}
 	}
 
+	private ResultSet obtenerResultSetPrep(PreparedStatement prep){
+		ResultSet rs = null;
+		try {
+			rs = prep.executeQuery();
+		} catch (SQLException e) {
+			System.out.println("Error al ejecutar sql.\n" + e.getMessage());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, "Error al ejecutar sql.\n" + e.getMessage());
+			try {
+				conexion.rollback();
+			} catch (SQLException e1) {
+				System.out.println("Error al ejecutar sql.\n" + e.getMessage());
+			}
+		}
+		return rs;
+	}
+	
 	private ResultSet obtenerResultSet(String sql) {
 		ResultSet rs = null;
 		try {
@@ -120,9 +137,9 @@ public class ManejadorBD {
 		return this.ejecutar(b.getDeletePreperad());
 	}
 	
-	public void eliminar(Broker b) {
+	/*public void eliminar(Broker b) {
 		this.ejecutar(b.getDeleteSQL());
-	}
+	}*/
 
 	public void leer(Broker b) {
 		try {
@@ -137,6 +154,21 @@ public class ManejadorBD {
 		}
 	}
 	
+	public int contarPrep(Broker b){
+		int aux =0;
+		try{
+			ResultSet rs = this.obtenerResultSetPrep(b.getContarPrepared());
+			while(rs.next()){
+				aux =b.contarDesdeResultSet(rs);
+			}
+		}catch (SQLException e) {
+			System.out.println("Error al contar de tabla.\n" + e.getMessage());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, "Error al contar de tabla.\n" + e.getMessage());
+		}
+		return aux;
+	}
+	/*
 	public int contar(Broker b){
 		int aux=0;
 		try{
@@ -151,7 +183,7 @@ public class ManejadorBD {
 		}
 		return aux;
 	}
-	
+	*/
 	@SuppressWarnings("all")
 	public ArrayList obtenerTodos(Broker b) {
 		ArrayList ret = new ArrayList();

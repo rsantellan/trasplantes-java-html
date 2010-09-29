@@ -85,8 +85,7 @@ public class BrkCausaMuertePaciente extends Broker {
 	}
 
 	@Override
-	public String getContar() {
-		// TODO Auto-generated method stub
+	public PreparedStatement getContarPrepared() {
 		return null;
 	}
 

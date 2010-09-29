@@ -114,4 +114,9 @@ public class BrkSerolDatos extends Broker {
 		return null;
 	}
 
+	@Override
+	public PreparedStatement getContarPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

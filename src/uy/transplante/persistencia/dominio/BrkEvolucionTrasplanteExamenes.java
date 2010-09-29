@@ -135,4 +135,9 @@ public class BrkEvolucionTrasplanteExamenes extends Broker{
 		return sql;
 	}
 
+	@Override
+	public PreparedStatement getContarPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

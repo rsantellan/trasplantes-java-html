@@ -22,11 +22,6 @@ public class BrkLogin extends Broker {
 	}
 
 	@Override
-	public String getContar() {
-		return "";
-	}
-
-	@Override
 	public PreparedStatement getDeletePreperad() {
 		Login l = (Login) this.getObj();
 		String sql = "";

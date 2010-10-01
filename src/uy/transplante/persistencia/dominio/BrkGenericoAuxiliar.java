@@ -19,14 +19,6 @@ public class BrkGenericoAuxiliar extends Broker {
 	}
 
 	@Override
-	public String getContar() {
-		GenericoAuxiliar a = (GenericoAuxiliar) this.getObj();
-		String sql = "";
-		sql = "SELECT COUNT(*) FROM consultas WHERE Nombre = '" + a.getNombre() + "'";
-		return sql;
-	}
-
-	@Override
 	public PreparedStatement getDeletePreperad() {
 		GenericoAuxiliar a = (GenericoAuxiliar) this.getObj();
 		String sql = "";
@@ -97,7 +89,12 @@ public class BrkGenericoAuxiliar extends Broker {
 
 	@Override
 	public PreparedStatement getContarPrepared() {
-		// TODO Auto-generated method stub
+		/*public String getContar() {
+			GenericoAuxiliar a = (GenericoAuxiliar) this.getObj();
+			String sql = "";arg0
+			sql = "SELECT COUNT(*) FROM consultas WHERE Nombre = '" + a.getNombre() + "'";
+			return sql;
+		}*/
 		return null;
 	}
 }

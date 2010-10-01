@@ -22,21 +22,6 @@ public class BrkEvolucionTrasplanteEcografia extends Broker {
 	}
 
 	@Override
-	public String getContar() {
-		EvolucionTrasplanteEcografia e = (EvolucionTrasplanteEcografia) this
-				.getObj();
-		String sql = "";
-		sql = "SELECT COUNT(*) FROM evolucion_trasplante_ecografia WHERE IdTrasplante ="
-				+ e.getIdTrasplante();
-		if (e.getFecha() != null) {
-			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
-					.getTime());
-			sql += " AND FECHA ='" + fecha + "'";
-		}
-		return sql;
-	}
-
-	@Override
 	public PreparedStatement getDeletePreperad() {
 		EvolucionTrasplanteEcografia e = (EvolucionTrasplanteEcografia) this.getObj();
 		String sql = "";
@@ -164,7 +149,32 @@ public class BrkEvolucionTrasplanteEcografia extends Broker {
 
 	@Override
 	public PreparedStatement getContarPrepared() {
-		// TODO Auto-generated method stub
-		return null;
+		EvolucionTrasplanteEcografia e = (EvolucionTrasplanteEcografia) this
+		.getObj();
+		PreparedStatement prep = null;
+		String sql = "SELECT COUNT(*) FROM evolucion_trasplante_ecografia WHERE IdTrasplante = ?";
+				
+		if (e.getFecha() != null) {
+			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
+					.getTime());
+			sql += " AND FECHA = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try{
+				prep.setInt(1, e.getIdTrasplante());
+				prep.setString(2, fecha);
+			}catch(SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+				prep = null;
+			}
+		}else{
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try{
+				prep.setInt(1, e.getIdTrasplante());
+			}catch(SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+				prep = null;
+			}	
+		}
+		return prep;
 	}
 }

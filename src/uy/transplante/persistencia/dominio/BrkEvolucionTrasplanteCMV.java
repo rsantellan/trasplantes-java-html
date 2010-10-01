@@ -140,13 +140,7 @@ public class BrkEvolucionTrasplanteCMV extends Broker {
 	}
 
 	@Override
-	public String getContar() {
-		return null;
-	}
-
-	@Override
 	public PreparedStatement getContarPrepared() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

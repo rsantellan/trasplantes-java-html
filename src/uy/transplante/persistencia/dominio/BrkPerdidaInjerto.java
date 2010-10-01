@@ -7,8 +7,6 @@ import java.text.ParseException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-
-
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.PacientePerdidaInjerto;
 import uy.transplante.logica.Fachada;
@@ -31,13 +29,14 @@ public class BrkPerdidaInjerto extends Broker {
 				.crearPreparedStatement(sql);
 		try {
 			prep.setInt(1, p.getThe());
-			String fecha = ManejoFechas.FORMATOINGLES.format(p.getFechaPerdida()
-					.getTime());
+			String fecha = ManejoFechas.FORMATOINGLES.format(p
+					.getFechaPerdida().getTime());
 			prep.setString(2, fecha);
 			return prep;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
-			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+					e1.getStackTrace().toString());
 			return null;
 		}
 	}
@@ -127,26 +126,38 @@ public class BrkPerdidaInjerto extends Broker {
 	}
 
 	@Override
-	public String getContar() {
+	public PreparedStatement getContarPrepared() {
 		PacientePerdidaInjerto p = (PacientePerdidaInjerto) this.getObj();
-		String sql = "";
+		PreparedStatement prep = null;
 		if (p.isBuscarNumCausas()) {
-			return "SELECT COUNT(*) FROM paciente_perdida_injerto WHERE CAUSA ="
-					+ p.getNumCausa();
+
+			String sql = "SELECT COUNT(*) FROM paciente_perdida_injerto WHERE CAUSA = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, p.getNumCausa());
+
+			} catch (SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+						e1.getStackTrace().toString());
+				prep = null;
+			}
+
 		}
 		if (p.getThe() != 0) {
-			sql = "SELECT COUNT(*) FROM paciente_perdida_injerto WHERE THE = "
-					+ p.getThe();
-			sql += " AND FECHA_PERDIDA = '"
-					+ ManejoFechas.FORMATOINGLES.format(p.getFechaPerdida()
-							.getTime()) + "'";
-		}
-		return sql;
-	}
+			String sql = "SELECT COUNT(*) FROM paciente_perdida_injerto WHERE THE = ? AND FECHA_PERDIDA = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, p.getThe());
+				String fecha = ManejoFechas.FORMATOINGLES.format(p
+						.getFechaPerdida().getTime());
+				prep.setString(2, fecha);
 
-	@Override
-	public PreparedStatement getContarPrepared() {
-		// TODO Auto-generated method stub
-		return null;
+			} catch (SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+						e1.getStackTrace().toString());
+				prep = null;
+			}
+		}
+		return prep;
 	}
 }

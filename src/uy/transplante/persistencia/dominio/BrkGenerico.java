@@ -15,12 +15,7 @@ public class BrkGenerico extends Broker {
 		super(p);
 	}
 
-	@Override
-	public String getContar() {
-		Generico g = (Generico) this.getObj();
-		return g.getSql();
-	}
-
+	
 	@Override
 	public PreparedStatement getDeletePreperad() {
 		return null;
@@ -87,6 +82,10 @@ public class BrkGenerico extends Broker {
 	@Override
 	public PreparedStatement getContarPrepared() {
 		// TODO Auto-generated method stub
+		//public String getContar() {
+		//	Generico g = (Generico) this.getObj();
+		//	return g.getSql();
+		//}
 		return null;
 	}
 }

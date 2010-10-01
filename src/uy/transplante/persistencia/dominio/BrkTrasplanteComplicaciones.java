@@ -146,30 +146,52 @@ public class BrkTrasplanteComplicaciones extends Broker{
 	}
 
 	@Override
-	public String getContar() {
+	public PreparedStatement getContarPrepared() {
 		TrasplanteComplicaciones t = (TrasplanteComplicaciones) this.getObj();
 		String sql = "";
+		PreparedStatement prep = null;
 		if(t.getNumMedicacion() != 0){
-			sql = "SELECT COUNT(*) FROM trasplante_complicaciones WHERE MEDICACION = " + t.getNumMedicacion();
+			sql = "SELECT COUNT(*) FROM trasplante_complicaciones WHERE MEDICACION = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, t.getNumMedicacion());
+
+			} catch (SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+						e1.getStackTrace().toString());
+				prep = null;
+			}
 		}else{
 			if(t.isBuscarComplicacionesInfecciosasEvolucion()){
 				sql = "SELECT COUNT(*) FROM trasplante_complicaciones WHERE EVOLUCION=1";
-				sql += " AND IdPreTrasplante = " + t.getIdPretrasplante();
+				sql += " AND IdPreTrasplante = ?";
 				sql += " AND ID IN (SELECT ID_TR_COMPLICACION FROM complicaciones_inf) ";
+				prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+				try {
+					prep.setInt(1, t.getIdPretrasplante());
+
+				} catch (SQLException e1) {
+					Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+							e1.getStackTrace().toString());
+					prep = null;
+				}
 			}
 			if(t.isBuscarComplicacionesNoInfecciosasEvolucion()){
 				sql = "SELECT COUNT(*) FROM trasplante_complicaciones WHERE EVOLUCION=1";
-				sql += " AND IdPreTrasplante = " + t.getIdPretrasplante();
+				sql += " AND IdPreTrasplante = ?";
 				sql += " AND ID IN (SELECT ID_TR_COMPLICACION FROM complicaciones_no_inf) ";
+				prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+				try {
+					prep.setInt(1, t.getIdPretrasplante());
+
+				} catch (SQLException e1) {
+					Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+							e1.getStackTrace().toString());
+					prep = null;
+				}
 			}
 		}
-		return sql;
-	}
-	
-	@Override
-	public PreparedStatement getContarPrepared() {
-		// TODO Auto-generated method stub
-		return null;
+		return prep;
 	}
 
 }

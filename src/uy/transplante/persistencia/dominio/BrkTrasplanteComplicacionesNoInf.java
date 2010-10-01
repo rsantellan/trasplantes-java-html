@@ -121,24 +121,35 @@ public class BrkTrasplanteComplicacionesNoInf extends Broker{
 	}
 
 	@Override
-	public String getContar() {
+	public PreparedStatement getContarPrepared() {
 		TrasplanteComplicacionesNoInf t = (TrasplanteComplicacionesNoInf) this.getObj();
+		PreparedStatement prep = null;
 		if(t.getId() != 0){
-			String sql = "Select COUNT(*) From complicaciones_no_inf where ID_TR_COMPLICACION = " + t.getId();
-			return sql;
+			String sql = "Select COUNT(*) From complicaciones_no_inf where ID_TR_COMPLICACION = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, t.getId());
+
+			} catch (SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+						e1.getStackTrace().toString());
+				prep = null;
+			}
 		}else{
 			if(t.getComplicacion() != null){
-				String sql = "Select COUNT(*) From complicaciones_no_inf where ID_COMPLICACION = " + t.getComplicacion().getId();
-				return sql;
+				String sql = "Select COUNT(*) From complicaciones_no_inf where ID_COMPLICACION = ?";
+				prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+				try {
+					prep.setInt(1, t.getComplicacion().getId());
+
+				} catch (SQLException e1) {
+					Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+							e1.getStackTrace().toString());
+					prep = null;
+				}
 			}
 		}
-		return null;
-	}
-	
-	@Override
-	public PreparedStatement getContarPrepared() {
-		// TODO Auto-generated method stub
-		return null;
+		return prep;
 	}
 
 }

@@ -114,18 +114,23 @@ public class BrkTrasplanteInduccion extends Broker {
 	}
 
 	@Override
-	public String getContar() {
+	public PreparedStatement getContarPrepared() {
 		TrasplanteInduccionUsado s = (TrasplanteInduccionUsado) this.getObj();
+		PreparedStatement prep = null;
 		String sql = "";
 		if(s.getInduccion().getId() != 0){
-			sql = "SELECT COUNT(*) FROM trasplante_induccion WHERE id_induccion = "+ s.getInduccion().getId();
-		}
-		return sql;
-	}
+			sql = "SELECT COUNT(*) FROM trasplante_induccion WHERE id_induccion = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, s.getInduccion().getId());
 
-	@Override
-	public PreparedStatement getContarPrepared() {
-		// TODO Auto-generated method stub
-		return null;
+			} catch (SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+						e1.getStackTrace().toString());
+				prep = null;
+			}
+		}
+		
+		return prep;
 	}
 }

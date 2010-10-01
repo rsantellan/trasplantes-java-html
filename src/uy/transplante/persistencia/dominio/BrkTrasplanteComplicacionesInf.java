@@ -4,13 +4,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 import uy.transplante.dominio.TrasplanteComplicacionesInf;
 import uy.transplante.logica.Fachada;
 import uy.transplante.persistencia.broker.Broker;
 import uy.transplante.persistencia.broker.IPersistente;
 import uy.transplante.persistencia.broker.ManejadorBD;
-
 
 public class BrkTrasplanteComplicacionesInf extends Broker {
 
@@ -20,35 +18,40 @@ public class BrkTrasplanteComplicacionesInf extends Broker {
 
 	@Override
 	public PreparedStatement getDeletePreperad() {
-		TrasplanteComplicacionesInf t = (TrasplanteComplicacionesInf) this.getObj();
+		TrasplanteComplicacionesInf t = (TrasplanteComplicacionesInf) this
+				.getObj();
 		String sql = "";
 		if (!t.isBorradoTotal()) {
 			sql = "DELETE FROM complicaciones_inf WHERE ID_TR_COMPLICACION =? ";
-			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			PreparedStatement prep = ManejadorBD.getInstancia()
+					.crearPreparedStatement(sql);
 			try {
 				prep.setInt(1, t.getId());
 				return prep;
 			} catch (SQLException e1) {
 				e1.printStackTrace();
-				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+						e1.getStackTrace().toString());
 				return null;
 			}
-		}else{
+		} else {
 			sql += "DELETE FROM complicaciones_inf ";
 			sql += "where id_tr_complicacion in ";
 			sql += "(select id from trasplante_complicaciones where idpretrasplante =?)";
-			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			PreparedStatement prep = ManejadorBD.getInstancia()
+					.crearPreparedStatement(sql);
 			try {
 				prep.setInt(1, t.getIdPretrasplante());
 				return prep;
 			} catch (SQLException e1) {
 				e1.printStackTrace();
-				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+						e1.getStackTrace().toString());
 				return null;
 			}
 		}
 	}
-	
+
 	@Override
 	public String getDeleteSQL() {
 		TrasplanteComplicacionesInf t = (TrasplanteComplicacionesInf) this
@@ -139,24 +142,38 @@ public class BrkTrasplanteComplicacionesInf extends Broker {
 	}
 
 	@Override
-	public String getContar() {
+	public PreparedStatement getContarPrepared() {
 		TrasplanteComplicacionesInf t = (TrasplanteComplicacionesInf) this
 				.getObj();
 		String sql = "";
+		PreparedStatement prep = null;
 		if (t.getGermen().getId() != 0) {
-			sql = "SELECT COUNT(*) FROM complicaciones_inf WHERE GERMEN = "
-					+ t.getGermen().getId();
+			sql = "SELECT COUNT(*) FROM complicaciones_inf WHERE GERMEN = ?";
+					
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, t.getGermen().getId());
+
+			} catch (SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+						e1.getStackTrace().toString());
+				prep = null;
+			}
 		}
 		if (t.getInfeccion().getId() != 0) {
-			sql = "SELECT COUNT(*) FROM complicaciones_inf WHERE INFECCION = "
-					+ t.getInfeccion().getId();
-		}
-		return sql;
-	}
+			sql = "SELECT COUNT(*) FROM complicaciones_inf WHERE INFECCION = ?";
+					
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, t.getInfeccion().getId());
 
-	@Override
-	public PreparedStatement getContarPrepared() {
-		// TODO Auto-generated method stub
+			} catch (SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+						e1.getStackTrace().toString());
+				prep = null;
+			}
+		}
+		
 		return null;
 	}
 }

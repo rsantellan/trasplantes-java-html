@@ -97,13 +97,7 @@ public class BrkTrasplanteTiposComplicaciones extends Broker{
 	}
 
 	@Override
-	public String getContar() {
-		return null;
-	}
-
-	@Override
 	public PreparedStatement getContarPrepared() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

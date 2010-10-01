@@ -5,8 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-
-
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.Tratamiento;
 import uy.transplante.logica.Fachada;
@@ -25,22 +23,22 @@ public class BrkTratamiento extends Broker {
 		Tratamiento p = (Tratamiento) this.getObj();
 		String sql = "";
 		if (p.getFecha_inicio() != null) {
-			String fecha = ManejoFechas.FORMATOINGLES.format(p.getFecha_inicio()
-					.getTime());
-				sql = "DELETE FROM tratamiento WHERE THE =?  AND MEDICACION = ?  AND FECHA_INICIO = ?";
-				PreparedStatement prep = ManejadorBD.getInstancia()
-						.crearPreparedStatement(sql);
-				try {
-					prep.setInt(1, p.getThe());
-					prep.setInt(2, p.getMedicamento());
-					prep.setString(3, fecha);
-					return prep;
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-					Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
-							e1.getStackTrace().toString());
-					return null;
-				}
+			String fecha = ManejoFechas.FORMATOINGLES.format(p
+					.getFecha_inicio().getTime());
+			sql = "DELETE FROM tratamiento WHERE THE =?  AND MEDICACION = ?  AND FECHA_INICIO = ?";
+			PreparedStatement prep = ManejadorBD.getInstancia()
+					.crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, p.getThe());
+				prep.setInt(2, p.getMedicamento());
+				prep.setString(3, fecha);
+				return prep;
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+						e1.getStackTrace().toString());
+				return null;
+			}
 		}
 		sql = "DELETE FROM tratamiento WHERE THE =?";
 		PreparedStatement prep = ManejadorBD.getInstancia()
@@ -50,20 +48,24 @@ public class BrkTratamiento extends Broker {
 			return prep;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
-			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+					e1.getStackTrace().toString());
 			return null;
 		}
 
 	}
-	
+
 	@Override
 	public String getDeleteSQL() {
 		Tratamiento p = (Tratamiento) this.getObj();
 		String sql = "";
 		sql = "DELETE FROM tratamiento WHERE THE = " + p.getThe();
-		if(p.getFecha_inicio() != null){
-			sql += " AND MEDICACION =" + p.getMedicamento() + " AND FECHA_INICIO = '"+ ManejoFechas.FORMATOINGLES.format(p.getFecha_inicio()
-					.getTime()) +"'" ;
+		if (p.getFecha_inicio() != null) {
+			sql += " AND MEDICACION ="
+					+ p.getMedicamento()
+					+ " AND FECHA_INICIO = '"
+					+ ManejoFechas.FORMATOINGLES.format(p.getFecha_inicio()
+							.getTime()) + "'";
 		}
 		return sql;
 	}
@@ -77,8 +79,8 @@ public class BrkTratamiento extends Broker {
 		String fechaDialisis = ManejoFechas.FORMATOINGLES.format(p
 				.getFecha_fin().getTime());
 		sql = "INSERT INTO tratamiento(THE,MEDICACION,DOSIS,FECHA_INICIO,FECHA_FIN) VALUES (";
-		sql += p.getThe() + ","+ p.getMedicamento() + ",";
-		sql += "'" + p.getDosis() + "'," ;
+		sql += p.getThe() + "," + p.getMedicamento() + ",";
+		sql += "'" + p.getDosis() + "',";
 		sql += "'" + fechaNacimiento + "','" + fechaDialisis + "')";
 		return sql;
 	}
@@ -94,7 +96,7 @@ public class BrkTratamiento extends Broker {
 		String sql = "SELECT * FROM tratamiento";
 		if (p.getThe() != 0) {
 			sql += " WHERE THE = " + p.getThe();
-		} 
+		}
 		return sql;
 	}
 
@@ -106,10 +108,15 @@ public class BrkTratamiento extends Broker {
 		sql += "MEDICACION =" + p.getMedicamento() + " , ";
 		sql += "DOSIS ='" + p.getDosis() + "', ";
 		sql += "FECHA_FIN ='"
-				+ ManejoFechas.FORMATOINGLES.format(p.getFecha_fin()
-						.getTime()) + "' ";
-		sql += "WHERE THE =" + p.getThe() + " AND MEDICACION =" + p.getMedicamento() + " AND FECHA_INICIO = '"+ ManejoFechas.FORMATOINGLES.format(p.getFecha_inicio()
-				.getTime()) +"'" ;
+				+ ManejoFechas.FORMATOINGLES.format(p.getFecha_fin().getTime())
+				+ "' ";
+		sql += "WHERE THE ="
+				+ p.getThe()
+				+ " AND MEDICACION ="
+				+ p.getMedicamento()
+				+ " AND FECHA_INICIO = '"
+				+ ManejoFechas.FORMATOINGLES.format(p.getFecha_inicio()
+						.getTime()) + "'";
 		return sql;
 	}
 
@@ -124,8 +131,7 @@ public class BrkTratamiento extends Broker {
 			p.getFecha_inicio().setTime(
 					ManejoFechas.FORMATOINGLES.parse(auxStr));
 			auxStr = rs.getString("FECHA_FIN");
-			p.getFecha_fin().setTime(
-					ManejoFechas.FORMATOINGLES.parse(auxStr));
+			p.getFecha_fin().setTime(ManejoFechas.FORMATOINGLES.parse(auxStr));
 		} catch (SQLException e) {
 			System.out
 					.println("Hubo un problema en el leerDesdeResultSet de BrkTratamiento");
@@ -139,19 +145,28 @@ public class BrkTratamiento extends Broker {
 	}
 
 	@Override
-	public String getContar() {
-		Tratamiento p = (Tratamiento) this.getObj();
-		String sql = "SELECT COUNT(*) FROM tratamiento";
-		if(p.getThe() != 0){
-			sql += " WHERE THE =" + p.getThe() + " AND MEDICACION =" + p.getMedicamento() + " AND FECHA_INICIO = '"+ ManejoFechas.FORMATOINGLES.format(p.getFecha_inicio()
-					.getTime()) +"'" ;
-		}
-		return sql;
-	}
-
-	@Override
 	public PreparedStatement getContarPrepared() {
-		// TODO Auto-generated method stub
-		return null;
+		Tratamiento p = (Tratamiento) this.getObj();
+		PreparedStatement prep = null;
+		String sql = "SELECT COUNT(*) FROM tratamiento";
+		if (p.getThe() != 0) {
+			sql += " WHERE THE = ? AND MEDICACION = ? AND FECHA_INICIO = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, p.getThe());
+				prep.setInt(2, p.getMedicamento());
+				String fecha = ManejoFechas.FORMATOINGLES.format(p
+						.getFecha_inicio().getTime());
+				prep.setString(2, fecha);
+
+			} catch (SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+						e1.getStackTrace().toString());
+				prep = null;
+			}
+		} else {
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		}
+		return prep;
 	}
 }

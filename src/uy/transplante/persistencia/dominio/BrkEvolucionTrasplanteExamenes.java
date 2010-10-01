@@ -125,19 +125,32 @@ public class BrkEvolucionTrasplanteExamenes extends Broker{
 	}
 
 	@Override
-	public String getContar() {
+	public PreparedStatement getContarPrepared() {
+		PreparedStatement prep = null;
 		EvolucionTrasplanteExamenes e = (EvolucionTrasplanteExamenes) this.getObj();
-		String sql = "SELECT COUNT(*) FROM evolucion_trasplanteexamenes WHERE IdTrasplante =" +e.getIdTrasplante();
+		String sql = "SELECT COUNT(*) FROM evolucion_trasplanteexamenes WHERE IdTrasplante = ?";
 		if(e.getFecha() != null){
 			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha().getTime());
-			sql += " AND FECHA ='"+ fecha+"' AND Tipo = '" + e.getTipo()+"'";
+			
+			sql += " AND FECHA = ? AND Tipo = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try{
+				prep.setInt(1, e.getIdTrasplante());
+				prep.setString(2, fecha);
+				prep.setString(3, e.getTipo());
+			}catch(SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+				prep = null;
+			}
+		}else{
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try{
+				prep.setInt(1, e.getIdTrasplante());
+			}catch(SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+				prep = null;
+			}
 		}
-		return sql;
-	}
-
-	@Override
-	public PreparedStatement getContarPrepared() {
-		// TODO Auto-generated method stub
-		return null;
+		return prep;
 	}
 }

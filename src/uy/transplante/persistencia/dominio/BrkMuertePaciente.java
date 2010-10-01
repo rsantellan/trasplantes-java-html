@@ -103,20 +103,24 @@ public class BrkMuertePaciente extends Broker {
 		
 	}
 
-	@Override
-	public String getContar() {
-		PacienteMuerte m = (PacienteMuerte) this.getObj();
-		String sql = "";
-		if(m.getNumCausa() != 0){
-			sql = "SELECT COUNT(*) FROM paciente_muerte WHERE CAUSA = "+ m.getNumCausa();
-		}
-		return sql;
-	}
-	
+
 	@Override
 	public PreparedStatement getContarPrepared() {
-		// TODO Auto-generated method stub
-		return null;
+		PacienteMuerte m = (PacienteMuerte) this.getObj();
+		PreparedStatement prep = null;
+		if(m.getNumCausa() != 0){
+			String sql = "SELECT COUNT(*) FROM paciente_muerte WHERE CAUSA = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try{
+				prep.setInt(1, m.getNumCausa());
+				
+			}catch(SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+				prep = null;
+			}
+			
+		}
+		return prep;
 	}
 
 }

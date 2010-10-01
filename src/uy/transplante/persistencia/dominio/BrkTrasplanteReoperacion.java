@@ -5,8 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-
-
 import uy.transplante.auxiliares.fechas.ManejoFechas;
 import uy.transplante.dominio.TrasplanteReoperacion;
 import uy.transplante.logica.Fachada;
@@ -52,7 +50,8 @@ public class BrkTrasplanteReoperacion extends Broker {
 			return prep;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
-			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+					e1.getStackTrace().toString());
 			return null;
 		}
 
@@ -141,22 +140,36 @@ public class BrkTrasplanteReoperacion extends Broker {
 	}
 
 	@Override
-	public String getContar() {
+	public PreparedStatement getContarPrepared() {
 		TrasplanteReoperacion t = (TrasplanteReoperacion) this.getObj();
-		String sql = "";
-		sql += "SELECT COUNT(*) FROM trasplante_reoperacion WHERE id_trasplante ="
-				+ t.getIdTrasplante();
+		PreparedStatement prep = null;
+		String sql = "SELECT COUNT(*) FROM trasplante_reoperacion WHERE id_trasplante = ?";
 		String fecha = ManejoFechas.FORMATOINGLES
 				.format(t.getFecha().getTime());
 		if (!fecha.equalsIgnoreCase("1900-01-01")) {
-			sql += " AND fecha='" + fecha + "'";
-		}
-		return sql;
-	}
+			sql += " AND fecha= ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, t.getIdTrasplante());
+				prep.setString(2, fecha);
 
-	@Override
-	public PreparedStatement getContarPrepared() {
-		// TODO Auto-generated method stub
-		return null;
+			} catch (SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+						e1.getStackTrace().toString());
+				prep = null;
+			}
+		} else {
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, t.getIdTrasplante());
+
+			} catch (SQLException e1) {
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR,
+						e1.getStackTrace().toString());
+				prep = null;
+			}
+		}
+
+		return prep;
 	}
 }

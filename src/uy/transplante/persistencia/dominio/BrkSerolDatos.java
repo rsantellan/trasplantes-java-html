@@ -49,17 +49,6 @@ public class BrkSerolDatos extends Broker {
 	}
 
 	@Override
-	public String getDeleteSQL() {
-		SerolDatos s = (SerolDatos) this.getObj();
-		String sql = "";
-		sql += "DELETE FROM serol_valor WHERE ID =" + s.getId();
-		if (s.getTipo() != null) {
-			sql += " AND valor='" + s.getTipo() + "'";
-		}
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		SerolDatos s = (SerolDatos) this.getObj();
 		String sql = "";

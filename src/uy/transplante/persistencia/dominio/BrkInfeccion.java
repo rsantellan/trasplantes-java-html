@@ -35,14 +35,6 @@ public class BrkInfeccion extends Broker{
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		Infeccion m = (Infeccion) this.getObj();
-		String sql ="";
-		sql += "DELETE FROM infeccion WHERE ID =" + m.getId();
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		Infeccion m = (Infeccion) this.getObj();
 		String sql ="";

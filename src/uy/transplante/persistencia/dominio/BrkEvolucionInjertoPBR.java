@@ -55,21 +55,6 @@ public class BrkEvolucionInjertoPBR extends Broker {
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		EvolucionInjertoResultadoPBR e = (EvolucionInjertoResultadoPBR) this
-				.getObj();
-		String sql = "";
-		sql = "DELETE FROM injerto_evolucion_pbr WHERE PreTrasplante ="
-				+ e.getIdPretrasplante();
-		if (e.getFecha() != null) {
-			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
-					.getTime());
-			sql += " AND FECHA = '" + fecha + "'";
-		}
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		EvolucionInjertoResultadoPBR e = (EvolucionInjertoResultadoPBR) this
 				.getObj();

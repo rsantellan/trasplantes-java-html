@@ -35,14 +35,6 @@ public class BrkInduccion extends Broker{
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		Induccion s = (Induccion) this.getObj();
-		String sql ="";
-		sql += "DELETE FROM induccion WHERE ID =" + s.getId();
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		Induccion s = (Induccion) this.getObj();
 		String sql ="";

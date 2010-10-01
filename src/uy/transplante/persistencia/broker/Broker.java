@@ -20,11 +20,9 @@ public abstract class Broker {
 	public abstract String getInsertSQL();
 	public abstract String getUpdateSQL();
 	public abstract PreparedStatement getDeletePreperad();
-	public abstract String getDeleteSQL();
 	public abstract String getSelectSQL();
 	public abstract void leerDesdeResultSet(ResultSet rs, IPersistente aux);
 	public abstract IPersistente getNuevo();
-	//public abstract String getContar();
 	public abstract PreparedStatement getContarPrepared();
 	
 	public int contarDesdeResultSet(ResultSet rs){
@@ -65,8 +63,4 @@ public abstract class Broker {
 	public int getOid() {
 		return this.getObj().getOid();
 	}
-	/*
-	public void setOid(int oid) {
-		this.getObj().setOid(oid);
-	}*/
 }

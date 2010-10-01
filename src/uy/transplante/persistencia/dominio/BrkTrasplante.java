@@ -37,14 +37,6 @@ public class BrkTrasplante extends Broker{
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		Trasplante t = (Trasplante) this.getObj();
-		String sql = "";
-		sql = "DELETE FROM trasplante WHERE ID = " +t.getId();
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		Trasplante t = (Trasplante) this.getObj();
 		String sql = "";

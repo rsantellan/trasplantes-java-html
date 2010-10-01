@@ -53,20 +53,6 @@ public class BrkEvolucionTrasplanteEcoCardio extends Broker {
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		EvolucionTrasplanteEcoCardio e = (EvolucionTrasplanteEcoCardio) this.getObj();
-		String sql = "";
-		sql += "DELETE FROM evolucion_trasplante_eco_cardio WHERE IdTrasplante ="
-				+ e.getIdTrasplante();
-		if (e.getFecha() != null) {
-			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
-					.getTime());
-			sql += " AND FECHA ='" + fecha + "'";
-		}
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		EvolucionTrasplanteEcoCardio e = (EvolucionTrasplanteEcoCardio) this.getObj();
 		String fecha = ManejoFechas.FORMATOINGLES

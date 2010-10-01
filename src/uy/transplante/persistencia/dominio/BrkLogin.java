@@ -38,14 +38,6 @@ public class BrkLogin extends Broker {
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		Login l = (Login) this.getObj();
-		String sql = "";
-		sql = "DELETE FROM datosutiles WHERE id=" + l.getId();
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		Login l = (Login) this.getObj();
 		String sql = "";

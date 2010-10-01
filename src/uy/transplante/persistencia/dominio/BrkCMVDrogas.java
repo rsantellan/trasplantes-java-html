@@ -34,14 +34,6 @@ public class BrkCMVDrogas extends Broker{
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		CMVDrogas m = (CMVDrogas) this.getObj();
-		String sql ="";
-		sql += "DELETE FROM cmvdrogas WHERE ID =" + m.getId();
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		CMVDrogas m = (CMVDrogas) this.getObj();
 		String sql ="";

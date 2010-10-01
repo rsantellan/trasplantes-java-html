@@ -22,11 +22,6 @@ public class BrkGenerico extends Broker {
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		return null;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		Generico g = (Generico) this.getObj();
 		return g.getSql();

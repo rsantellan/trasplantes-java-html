@@ -34,14 +34,6 @@ public class BrkCMVDiagnostico extends Broker{
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		CMVDiagnostico m = (CMVDiagnostico) this.getObj();
-		String sql ="";
-		sql += "DELETE FROM cmvdiagnostico WHERE ID =" + m.getId();
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		CMVDiagnostico m = (CMVDiagnostico) this.getObj();
 		String sql ="";

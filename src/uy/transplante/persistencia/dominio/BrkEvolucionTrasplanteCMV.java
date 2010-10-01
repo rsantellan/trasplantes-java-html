@@ -53,20 +53,6 @@ public class BrkEvolucionTrasplanteCMV extends Broker {
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		EvolucionTrasplanteCMV e = (EvolucionTrasplanteCMV) this.getObj();
-		String sql = "";
-		sql += "DELETE FROM evolucion_trasplante_cmv WHERE IdTrasplante ="
-				+ e.getIdTrasplante();
-		if (e.getFecha() != null) {
-			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
-					.getTime());
-			sql += " AND FECHA ='" + fecha + "'";
-		}
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		EvolucionTrasplanteCMV e = (EvolucionTrasplanteCMV) this.getObj();
 		String fecha = ManejoFechas.FORMATOINGLES

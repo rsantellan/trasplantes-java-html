@@ -36,14 +36,6 @@ public class BrkGermenes extends Broker{
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		Germenes m = (Germenes) this.getObj();
-		String sql ="";
-		sql += "DELETE FROM germenes WHERE ID =" + m.getId();
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		Germenes m = (Germenes) this.getObj();
 		String sql ="";

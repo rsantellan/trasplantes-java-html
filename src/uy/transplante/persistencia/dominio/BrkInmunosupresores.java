@@ -34,14 +34,6 @@ public class BrkInmunosupresores extends Broker{
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		Inmunosupresores s = (Inmunosupresores) this.getObj();
-		String sql ="";
-		sql += "DELETE FROM inmunosupresores WHERE ID =" + s.getId();
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		Inmunosupresores s = (Inmunosupresores) this.getObj();
 		String sql ="";

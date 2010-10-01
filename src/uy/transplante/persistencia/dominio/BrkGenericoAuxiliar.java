@@ -35,14 +35,6 @@ public class BrkGenericoAuxiliar extends Broker {
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		GenericoAuxiliar a = (GenericoAuxiliar) this.getObj();
-		String sql = "";
-		sql = "DELETE FROM consultas WHERE id = " + a.getId();
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		GenericoAuxiliar a = (GenericoAuxiliar) this.getObj();
 		String sql = "";

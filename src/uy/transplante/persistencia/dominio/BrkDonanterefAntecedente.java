@@ -34,14 +34,6 @@ public class BrkDonanterefAntecedente extends Broker{
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		DonanterefAntecedentes d = (DonanterefAntecedentes) this.getObj();
-		String sql = "";
-		sql +="DELETE FROM donanterefantecedentes WHERE ID_DONANTE = '" + d.getIdDonante() +"'";
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		DonanterefAntecedentes d = (DonanterefAntecedentes) this.getObj();
 		String sql = "";

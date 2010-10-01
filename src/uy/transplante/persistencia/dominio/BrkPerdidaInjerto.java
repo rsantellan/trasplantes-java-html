@@ -42,17 +42,6 @@ public class BrkPerdidaInjerto extends Broker {
 	}
 
 	@Override
-	public String getDeleteSQL() {
-		PacientePerdidaInjerto p = (PacientePerdidaInjerto) this.getObj();
-		String sql = "";
-		sql = "DELETE FROM paciente_perdida_injerto WHERE THE = " + p.getThe();
-		sql += " AND FECHA_PERDIDA = '"
-				+ ManejoFechas.FORMATOINGLES.format(p.getFechaPerdida()
-						.getTime()) + "'";
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		PacientePerdidaInjerto p = (PacientePerdidaInjerto) this.getObj();
 		String sql = "";

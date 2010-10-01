@@ -34,18 +34,6 @@ public class BrkTrasplanteTiposComplicaciones extends Broker{
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		TrasplanteTiposComplicaciones t = (TrasplanteTiposComplicaciones) this.getObj();
-		String sql = "";
-		
-		if(t.getOid() != 0){
-			sql += "DELETE FROM complicaciones_tipos";
-			sql += " WHERE ID ="+t.getId();
-		}
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		TrasplanteTiposComplicaciones t = (TrasplanteTiposComplicaciones) this.getObj();
 		String sql = "";

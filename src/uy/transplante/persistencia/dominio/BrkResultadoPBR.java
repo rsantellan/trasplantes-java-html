@@ -32,14 +32,6 @@ public class BrkResultadoPBR extends Broker{
 		}
 		return prep;
 	}
-	
-	@Override
-	public String getDeleteSQL() {
-		ResultadoPBR r =  (ResultadoPBR) this.getObj();
-		String sql = "";
-		sql = "DELETE FROM resultado_pbr WHERE ID ="+r.getId();
-		return sql;
-	}
 
 	@Override
 	public String getInsertSQL() {

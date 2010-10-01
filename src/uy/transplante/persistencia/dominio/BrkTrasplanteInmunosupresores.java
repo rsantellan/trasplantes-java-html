@@ -47,18 +47,6 @@ public class BrkTrasplanteInmunosupresores extends Broker {
 			}
 		}
 	}
-	
-	@Override
-	public String getDeleteSQL() {
-		TrasplanteInmunosupresoresUsado s = (TrasplanteInmunosupresoresUsado) this.getObj();
-		String sql = "";
-		sql += "DELETE FROM trasplante_inmunosupresores WHERE id_trasplante ='"
-				+ s.getIdTrasplante() + "'";
-		if (s.getInmunosupresores().getId() != 0) {
-			sql += " AND id_inmunosupresores=" + s.getInmunosupresores().getId();
-		}
-		return sql;
-	}
 
 	@Override
 	public String getInsertSQL() {

@@ -35,14 +35,6 @@ public class BrkFechaControl extends Broker{
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		FechaControl m = (FechaControl) this.getObj();
-		String sql ="";
-		sql += "DELETE FROM fecha_control WHERE ID =" + m.getId();
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		FechaControl m = (FechaControl) this.getObj();
 		String sql ="";

@@ -53,23 +53,6 @@ public class BrkTrasplanteComplicacionesInf extends Broker {
 	}
 
 	@Override
-	public String getDeleteSQL() {
-		TrasplanteComplicacionesInf t = (TrasplanteComplicacionesInf) this
-				.getObj();
-		String sql = "";
-		if (!t.isBorradoTotal()) {
-			sql += "DELETE FROM complicaciones_inf WHERE ID_TR_COMPLICACION ="
-					+ t.getId();
-		} else {
-			sql += "DELETE FROM complicaciones_inf ";
-			sql += "where id_tr_complicacion in ";
-			sql += "(select id from trasplante_complicaciones where idpretrasplante ="
-					+ t.getIdPretrasplante() + " )";
-		}
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		TrasplanteComplicacionesInf t = (TrasplanteComplicacionesInf) this
 				.getObj();

@@ -34,14 +34,6 @@ public class BrkCausaMuertePaciente extends Broker {
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		CausaMuertePaciente p = (CausaMuertePaciente) this.getObj();
-		String sql = "";
-		sql = "DELETE FROM paciente_causa_muerte WHERE ID = " + p.getId();
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		CausaMuertePaciente p = (CausaMuertePaciente) this.getObj();
 		String sql = "";

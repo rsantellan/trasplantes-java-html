@@ -58,22 +58,6 @@ public class BrkTrasplanteReoperacion extends Broker {
 	}
 
 	@Override
-	public String getDeleteSQL() {
-		TrasplanteReoperacion t = (TrasplanteReoperacion) this.getObj();
-		String sql = "";
-		sql += "DELETE FROM trasplante_reoperacion WHERE id_trasplante ="
-				+ t.getIdTrasplante();
-		if (t.getFecha() == null)
-			return sql;
-		String fecha = ManejoFechas.FORMATOINGLES
-				.format(t.getFecha().getTime());
-		if (!fecha.equalsIgnoreCase("1900-01-01")) {
-			sql += " AND fecha='" + fecha + "'";
-		}
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		TrasplanteReoperacion t = (TrasplanteReoperacion) this.getObj();
 		String sql = "";

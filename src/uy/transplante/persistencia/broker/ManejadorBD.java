@@ -137,10 +137,6 @@ public class ManejadorBD {
 		return this.ejecutar(b.getDeletePreperad());
 	}
 	
-	/*public void eliminar(Broker b) {
-		this.ejecutar(b.getDeleteSQL());
-	}*/
-
 	public void leer(Broker b) {
 		try {
 			ResultSet rs = this.obtenerResultSet(b.getSelectSQL());

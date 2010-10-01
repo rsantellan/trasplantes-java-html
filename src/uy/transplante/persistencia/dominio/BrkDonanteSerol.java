@@ -49,22 +49,6 @@ public class BrkDonanteSerol extends Broker {
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		DonanteSerolUsado s = (DonanteSerolUsado) this.getObj();
-		String sql = "";
-		sql += "DELETE FROM donante_serol WHERE id_donante ='"
-				+ s.getIdDonante() + "'";
-		if (s.getSerol() != null) {
-			sql += " AND id_serol=" + s.getSerol().getId();
-		} /*else {
-			if (s.getDato() != null) {
-				sql += " AND valor='" + s.getDato().getTipo() + "'";
-			}
-		}*/
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		DonanteSerolUsado s = (DonanteSerolUsado) this.getObj();
 		String sql = "";

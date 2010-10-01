@@ -55,20 +55,6 @@ public class BrkCmvUsoEnfermedad extends Broker {
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		CMVusoEnfermedades e = (CMVusoEnfermedades) this.getObj();
-		String sql = "";
-		sql = "DELETE FROM cmv_uso_enfermedades WHERE Trasplante ="
-				+ e.getIdTrasplante();
-		if (e.getFecha() != null) {
-			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
-					.getTime());
-			sql += " AND FECHA = '" + fecha + "'";
-		}
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		CMVusoEnfermedades e = (CMVusoEnfermedades) this.getObj();
 		String sql = "";

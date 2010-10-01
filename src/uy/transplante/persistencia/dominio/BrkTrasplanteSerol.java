@@ -49,18 +49,6 @@ public class BrkTrasplanteSerol extends Broker {
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		TrasplanteSerolUsado s = (TrasplanteSerolUsado) this.getObj();
-		String sql = "";
-		sql += "DELETE FROM trasplante_serol WHERE id_trasplante ='"
-				+ s.getIdTrasplante() + "'";
-		if (s.getSerol().getId() != 0) {
-			sql += " AND id_serol=" + s.getSerol().getId();
-		}
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		TrasplanteSerolUsado s = (TrasplanteSerolUsado) this.getObj();
 		String sql = "";

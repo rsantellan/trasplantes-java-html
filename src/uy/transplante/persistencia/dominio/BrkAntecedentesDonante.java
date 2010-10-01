@@ -19,14 +19,6 @@ public class BrkAntecedentesDonante extends Broker {
 	}
 
 	@Override
-	public String getDeleteSQL() {
-		AntecedentesDonante a = (AntecedentesDonante) this.getObj();
-		String sql = "";
-		sql = "DELETE FROM donante_antecedentes WHERE ID = " + a.getId();
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		AntecedentesDonante a = (AntecedentesDonante) this.getObj();
 		String sql = "";

@@ -34,14 +34,6 @@ public class BrkOrganosDonante extends Broker{
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		OrganosDonante o = (OrganosDonante) this.getObj();
-		String sql = "";
-		sql += "DELETE FROM donante_organos WHERE ID_DONANTE ='" + o.getId()+"'"; 
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		OrganosDonante o = (OrganosDonante) this.getObj();
 		String sql = "";

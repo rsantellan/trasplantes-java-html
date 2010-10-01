@@ -35,14 +35,6 @@ public class BrkMedicacion extends Broker{
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		Medicacion m = (Medicacion) this.getObj();
-		String sql ="";
-		sql += "DELETE FROM medicaciones WHERE ID =" + m.getId();
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		Medicacion m = (Medicacion) this.getObj();
 		String sql ="";

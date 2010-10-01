@@ -56,21 +56,6 @@ public class BrkTratamiento extends Broker {
 	}
 
 	@Override
-	public String getDeleteSQL() {
-		Tratamiento p = (Tratamiento) this.getObj();
-		String sql = "";
-		sql = "DELETE FROM tratamiento WHERE THE = " + p.getThe();
-		if (p.getFecha_inicio() != null) {
-			sql += " AND MEDICACION ="
-					+ p.getMedicamento()
-					+ " AND FECHA_INICIO = '"
-					+ ManejoFechas.FORMATOINGLES.format(p.getFecha_inicio()
-							.getTime()) + "'";
-		}
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		Tratamiento p = (Tratamiento) this.getObj();
 		String sql = "";

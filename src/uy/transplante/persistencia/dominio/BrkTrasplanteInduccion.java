@@ -47,18 +47,6 @@ public class BrkTrasplanteInduccion extends Broker {
 			}
 		}
 	}
-	
-	@Override
-	public String getDeleteSQL() {
-		TrasplanteInduccionUsado s = (TrasplanteInduccionUsado) this.getObj();
-		String sql = "";
-		sql += "DELETE FROM trasplante_induccion WHERE id_trasplante ='"
-				+ s.getIdTrasplante() + "'";
-		if (s.getInduccion().getId() != 0) {
-			sql += " AND id_induccion=" + s.getInduccion().getId();
-		}
-		return sql;
-	}
 
 	@Override
 	public String getInsertSQL() {

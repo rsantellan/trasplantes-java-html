@@ -57,21 +57,6 @@ public class BrkEvolucionInjerto extends Broker {
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		EvolucionInjerto e = (EvolucionInjerto) this.getObj();
-		String sql = "";
-		sql = "DELETE FROM injerto_evolucion WHERE PreTrasplante ="
-				+ e.getIdPretrasplante();
-		if (e.getFecha() != null) {
-			String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
-					.getTime());
-			sql += " AND FECHA = '" + fecha + "'";
-			sql += " AND trasplante = " + e.isEnTrasplante();
-		}
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		EvolucionInjerto e = (EvolucionInjerto) this.getObj();
 		String sql = "";

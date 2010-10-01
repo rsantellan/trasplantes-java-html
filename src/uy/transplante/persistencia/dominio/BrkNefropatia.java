@@ -34,14 +34,6 @@ public class BrkNefropatia extends Broker {
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		Nefropatia n = (Nefropatia) this.getObj();
-		String sql = "";
-		sql = "DELETE FROM nefropatia WHERE ID = " + n.getId();
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		Nefropatia n = (Nefropatia) this.getObj();
 		String sql = "";

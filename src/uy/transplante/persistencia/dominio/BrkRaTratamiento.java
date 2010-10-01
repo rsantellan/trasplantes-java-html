@@ -35,14 +35,6 @@ public class BrkRaTratamiento extends Broker{
 	}
 	
 	@Override
-	public String getDeleteSQL() {
-		RaTratamiento m = (RaTratamiento) this.getObj();
-		String sql ="";
-		sql += "DELETE FROM ratratamiento WHERE ID =" + m.getId();
-		return sql;
-	}
-
-	@Override
 	public String getInsertSQL() {
 		RaTratamiento m = (RaTratamiento) this.getObj();
 		String sql ="";

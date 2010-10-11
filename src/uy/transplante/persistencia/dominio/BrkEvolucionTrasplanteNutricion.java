@@ -21,7 +21,7 @@ public class BrkEvolucionTrasplanteNutricion extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		EvolucionTrasplanteNutricion e = (EvolucionTrasplanteNutricion) this.getObj();
 		String sql = "";
 		if (e.getFecha() != null) {
@@ -166,7 +166,25 @@ public class BrkEvolucionTrasplanteNutricion extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

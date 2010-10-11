@@ -24,7 +24,7 @@ public class BrkCmv extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		CMV e = (CMV) this.getObj();
 		String sql = "";
 		if (e.getFecha() != null) {
@@ -69,6 +69,32 @@ public class BrkCmv extends Broker {
 	}
 
 	@Override
+	public PreparedStatement getInsertPrepared() {
+		CMV e = (CMV) this.getObj();
+		PreparedStatement prep = null;
+		String sql = "INSERT INTO cmv(Trasplante,FECHA,Diagnostico,TM,SindromeViral,Profilaxis,Droga,diasTm,EfectoSecundario) VALUES (?,?,?,?,?,?,?,?,?)";
+		prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			String fecha = ManejoFechas.FORMATOINGLES
+					.format(e.getFecha().getTime());
+			prep.setInt(1, e.getIdTrasplante());
+			prep.setString(2, fecha);
+			prep.setInt(3, e.getDiagnostico().getId());
+			prep.setBoolean(4, e.isTmAnti());
+			prep.setBoolean(5, e.isSindromeViral());
+			prep.setBoolean(6, e.isProfilaxis());
+			prep.setInt(7, e.getDroga().getId());
+			prep.setInt(8, e.getDiasTm());
+			prep.setString(9, e.getEfectoSecundario());
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+		}
+		
+		return prep;
+	}
+	
+	@Override
 	public IPersistente getNuevo() {
 		return new CMV();
 	}
@@ -88,6 +114,40 @@ public class BrkCmv extends Broker {
 		}
 		return sql;
 	}
+	
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		CMV e = (CMV) this.getObj();
+		String sql = "SELECT * FROM cmv";
+		PreparedStatement prep = null;
+		if (e.getIdTrasplante() != 0) {
+			sql += " WHERE Trasplante= ?";
+			if (e.getFecha() != null) {
+				sql += " AND FECHA = ?";
+				prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+				try{
+					prep.setInt(1, e.getIdTrasplante());
+					String fecha = ManejoFechas.FORMATOINGLES.format(e.getFecha()
+							.getTime());
+					prep.setString(2, fecha);
+				}catch(SQLException e1) {
+					Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+					prep = null;
+				}
+				
+			}else{
+				prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+				try {
+					prep.setInt(1, e.getIdTrasplante());
+				} catch (SQLException e1) {
+					Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+					prep = null;
+				}
+			}
+		}
+		
+		return prep;
+	}
 
 	@Override
 	public String getUpdateSQL() {
@@ -105,6 +165,40 @@ public class BrkCmv extends Broker {
 				.format(e.getFecha().getTime());
 		sql += " AND FECHA ='" + fecha + "'";
 		return sql;
+	}
+	
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		CMV e = (CMV) this.getObj();
+		String sql = "UPDATE cmv SET";
+		PreparedStatement prep = null;
+		sql += " Diagnostico = ?";
+		sql += " ,TM = ?";
+		sql += " ,SindromeViral = ?";
+		sql += " ,Profilaxis = ?";
+		sql += " ,Droga = ?"; 
+		sql += " ,diasTm = ?";
+		sql += " ,EfectoSecundario = ?";
+		sql += " WHERE Trasplante= ?";
+		sql += " AND FECHA = ?";
+		prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			String fecha = ManejoFechas.FORMATOINGLES
+					.format(e.getFecha().getTime());
+			prep.setInt(1, e.getDiagnostico().getId());
+			prep.setBoolean(2, e.isTmAnti());
+			prep.setBoolean(3, e.isSindromeViral());
+			prep.setBoolean(4, e.isProfilaxis());
+			prep.setInt(5, e.getDroga().getId());
+			prep.setInt(6, e.getDiasTm());
+			prep.setString(7, e.getEfectoSecundario());
+			prep.setInt(8, e.getIdTrasplante());
+			prep.setString(9, fecha);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e1.getStackTrace().toString());
+		}
+		return prep;
 	}
 
 	@Override
@@ -140,7 +234,7 @@ public class BrkCmv extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		CMV e = (CMV) this.getObj();
 		String sql = "SELECT COUNT(*) FROM cmv";
 		PreparedStatement prep = null;

@@ -19,7 +19,7 @@ public class BrkTrasplanteInduccion extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		TrasplanteInduccionUsado s = (TrasplanteInduccionUsado) this.getObj();
 		String sql = "";
 		if (s.getInduccion().getId() != 0) {
@@ -102,7 +102,7 @@ public class BrkTrasplanteInduccion extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		TrasplanteInduccionUsado s = (TrasplanteInduccionUsado) this.getObj();
 		PreparedStatement prep = null;
 		String sql = "";
@@ -120,5 +120,23 @@ public class BrkTrasplanteInduccion extends Broker {
 		}
 		
 		return prep;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

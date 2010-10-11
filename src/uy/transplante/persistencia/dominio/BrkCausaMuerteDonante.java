@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 import uy.transplante.dominio.CausaMuerteDonante;
 import uy.transplante.logica.Fachada;
 import uy.transplante.persistencia.broker.Broker;
@@ -18,7 +17,7 @@ public class BrkCausaMuerteDonante extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		CausaMuerteDonante c = (CausaMuerteDonante) this.getObj();
 		String sql = "";
 		sql = "DELETE FROM donante_causa_muerte WHERE ID =? ";
@@ -33,6 +32,11 @@ public class BrkCausaMuerteDonante extends Broker {
 	}
 	
 	@Override
+	public IPersistente getNuevo() {
+		return new CausaMuerteDonante();
+	}
+
+	@Override
 	public String getInsertSQL() {
 		CausaMuerteDonante c = (CausaMuerteDonante) this.getObj();
 		String sql = "";
@@ -41,10 +45,20 @@ public class BrkCausaMuerteDonante extends Broker {
 	}
 
 	@Override
-	public IPersistente getNuevo() {
-		return new CausaMuerteDonante();
+	public PreparedStatement getInsertPrepared() {
+		String sql = "";
+		sql = "INSERT INTO donante_causa_muerte(DETALLES) VALUES (?)";
+		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			CausaMuerteDonante c = (CausaMuerteDonante) this.getObj();
+			prep.setString(1, c.getDetalle());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+		}
+		return prep;
 	}
-
+	
 	@Override
 	public String getSelectSQL() {
 		CausaMuerteDonante c = (CausaMuerteDonante) this.getObj();
@@ -57,10 +71,47 @@ public class BrkCausaMuerteDonante extends Broker {
 	}
 
 	@Override
+	public PreparedStatement getSelectPrepared() {
+		String sql = "SELECT * FROM donante_causa_muerte";
+		CausaMuerteDonante c = (CausaMuerteDonante) this.getObj();
+		PreparedStatement prep = null;
+		if(c.getId() != 0){
+			sql += " WHERE ID = ? ORDER BY DETALLES ASC";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, c.getId());
+			} catch (SQLException e) {
+				e.printStackTrace();
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+			}
+		}else{
+			sql += " ORDER BY DETALLES ASC";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		}
+		return prep;
+	}
+	
+	@Override
 	public String getUpdateSQL() {
 		CausaMuerteDonante c = (CausaMuerteDonante) this.getObj();
 		String sql = "UPDATE donante_causa_muerte SET DETALLES ='"+ c.getDetalle() +"' WHERE ID=" + c.getId();
 		return sql;
+	}
+	
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		CausaMuerteDonante c = (CausaMuerteDonante) this.getObj();
+		PreparedStatement prep = null;
+		String sql = "UPDATE donante_causa_muerte SET DETALLES = ? WHERE ID= ?";
+		prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setString(1, c.getDetalle());
+			prep.setInt(2, c.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+		}
+		return prep;
 	}
 	
 	@Override
@@ -76,7 +127,7 @@ public class BrkCausaMuerteDonante extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		return null;
 	}
 

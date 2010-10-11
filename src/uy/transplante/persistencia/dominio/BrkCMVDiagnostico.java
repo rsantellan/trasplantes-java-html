@@ -19,7 +19,7 @@ public class BrkCMVDiagnostico extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		CMVDiagnostico m = (CMVDiagnostico) this.getObj();
 		String sql ="";
 		sql += "DELETE FROM cmvdiagnostico WHERE ID =?";
@@ -42,6 +42,22 @@ public class BrkCMVDiagnostico extends Broker{
 		return sql;
 	}
 
+	
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		CMVDiagnostico m = (CMVDiagnostico) this.getObj();
+		String sql ="";
+		sql += "INSERT INTO cmvdiagnostico (NOMBRE) VALUES (?)";
+		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setString(1, m.getNombre());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+		}
+		return prep;
+	}
+	
 	@Override
 	public IPersistente getNuevo() {
 		return new CMVDiagnostico();
@@ -61,6 +77,27 @@ public class BrkCMVDiagnostico extends Broker{
 	}
 
 	@Override
+	public PreparedStatement getSelectPrepared() {
+		CMVDiagnostico m = (CMVDiagnostico) this.getObj();
+		String sql = "SELECT * FROM cmvdiagnostico";
+		PreparedStatement prep = null;
+		if(m.getOid() != 0){
+			sql += " WHERE id = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, m.getId());
+			} catch (SQLException e) {
+				e.printStackTrace();
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+			}
+		}else{
+			sql += " ORDER BY NOMBRE";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		}
+		return prep;
+	}
+	
+	@Override
 	public String getUpdateSQL() {
 		CMVDiagnostico m = (CMVDiagnostico) this.getObj();
 		String sql ="";
@@ -70,6 +107,24 @@ public class BrkCMVDiagnostico extends Broker{
 		return sql;
 	}
 
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		CMVDiagnostico m = (CMVDiagnostico) this.getObj();
+		PreparedStatement prep = null;
+		String sql = "UPDATE cmvdiagnostico SET";
+		sql += " NOMBRE = ? ";
+		sql += " WHERE id= ?";
+		prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setString(1, m.getNombre());
+			prep.setInt(2, m.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+		}
+		return prep;
+	}
+	
 	@Override
 	public void leerDesdeResultSet(ResultSet rs, IPersistente aux) {
 		try{
@@ -84,7 +139,7 @@ public class BrkCMVDiagnostico extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		return null;
 	}
 }

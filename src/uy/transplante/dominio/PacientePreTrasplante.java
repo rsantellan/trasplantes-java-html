@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.logica.Fachada;
 import uy.transplante.persistencia.broker.IPersistente;
 import uy.transplante.persistencia.dominio.BrkPacientePreTrasplante;
 
@@ -316,16 +317,31 @@ public class PacientePreTrasplante implements IPersistente {
 		this.guardar();
 	}
 
+	private void readAndCorrect(){
+		broker.leer();
+		String fechaVieja = "01-01-1900";
+		String fechaBase = ManejoFechas.FORMATOESPANOL.format(this.getFecha_egreso().getTime());
+		if(fechaVieja.equals(fechaBase)){
+			Trasplante t = new Trasplante();
+			t.setPreTrasplante(this.getId());
+			t.leerSoloTrasplante();
+			if(t.getId() != 0){
+				this.setFecha_egreso(t.getFecha());
+				this.guardar();
+			}
+		}
+	}
 	
 	public void leer() {
-		broker.leer();
+		this.readAndCorrect();
 		Trasplante t = new Trasplante();
 		t.setPreTrasplante(this.getId());
 		t.leerDatosMinimos();
 	}
 
 	public void leerMinimo(){
-		broker.leer();
+		this.readAndCorrect();
+		
 	}
 	
 	public void leerTrasplante() {
@@ -402,14 +418,14 @@ public class PacientePreTrasplante implements IPersistente {
 			gc2 = (Calendar) g1.clone();
 			gc1 = (Calendar) g2.clone();
 		}
-		System.out.println("Ingreso a Lista");
-		System.out.println(ManejoFechas.FORMATOESPANOL.format(g1.getTime()));
-		System.out.println("Egreso de Lista");
-		System.out.println(ManejoFechas.FORMATOESPANOL.format(g2.getTime()));
-		System.out.println("-----------------------------------------------");
-		System.out.println(ManejoFechas.FORMATOESPANOL.format(gc1.getTime()));
-		System.out.println(ManejoFechas.FORMATOESPANOL.format(gc2.getTime()));
-		System.out.println("-----------------------------------------------");
+		Fachada.getInstancia().guardarLog(3,"Ingreso a Lista");
+		Fachada.getInstancia().guardarLog(3,ManejoFechas.FORMATOESPANOL.format(g1.getTime()));
+		Fachada.getInstancia().guardarLog(3,"Egreso de Lista");
+		Fachada.getInstancia().guardarLog(3,ManejoFechas.FORMATOESPANOL.format(g2.getTime()));
+		Fachada.getInstancia().guardarLog(3,"-----------------------------------------------");
+		Fachada.getInstancia().guardarLog(3,ManejoFechas.FORMATOESPANOL.format(gc1.getTime()));
+		Fachada.getInstancia().guardarLog(3,ManejoFechas.FORMATOESPANOL.format(gc2.getTime()));
+		Fachada.getInstancia().guardarLog(3,"-----------------------------------------------");
 		
 		
 		while (gc1.before(gc2)) {
@@ -417,8 +433,8 @@ public class PacientePreTrasplante implements IPersistente {
 			elapsed++;
 
 		}
-		System.out.println(String.valueOf(elapsed));
-		System.out.println("-----------------------------------------------");
+		Fachada.getInstancia().guardarLog(5,String.valueOf(elapsed));
+		Fachada.getInstancia().guardarLog(5,"-----------------------------------------------");
 		return elapsed;
 	}
 

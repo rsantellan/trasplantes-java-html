@@ -125,6 +125,7 @@ public class ManejadorBD {
 		return rs;
 	}
 
+	
 	public void agregar(Broker b) {
 		this.ejecutar(b.getInsertSQL());
 	}
@@ -133,8 +134,16 @@ public class ManejadorBD {
 		this.ejecutar(b.getUpdateSQL());
 	}
 
+	public void agregarPrep(Broker b){
+		this.ejecutar(b.getInsertPrepared());
+	}
+
+	public void modificarPrep(Broker b){
+		this.ejecutar(b.getUpdatePrepared());
+	}
+	
 	public boolean eliminarPrep(Broker b) {
-		return this.ejecutar(b.getDeletePreperad());
+		return this.ejecutar(b.getDelete());
 	}
 	
 	public void leer(Broker b) {
@@ -153,7 +162,7 @@ public class ManejadorBD {
 	public int contarPrep(Broker b){
 		int aux =0;
 		try{
-			ResultSet rs = this.obtenerResultSetPrep(b.getContarPrepared());
+			ResultSet rs = this.obtenerResultSetPrep(b.getContar());
 			while(rs.next()){
 				aux =b.contarDesdeResultSet(rs);
 			}
@@ -164,22 +173,7 @@ public class ManejadorBD {
 		}
 		return aux;
 	}
-	/*
-	public int contar(Broker b){
-		int aux=0;
-		try{
-			ResultSet rs = this.obtenerResultSet(b.getContar());
-			while(rs.next()){
-				aux =b.contarDesdeResultSet(rs);
-			}
-		}catch (SQLException e) {
-			System.out.println("Error al contar de tabla.\n" + e.getMessage());
-			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.toString());
-			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, "Error al contar de tabla.\n" + e.getMessage());
-		}
-		return aux;
-	}
-	*/
+
 	@SuppressWarnings("all")
 	public ArrayList obtenerTodos(Broker b) {
 		ArrayList ret = new ArrayList();

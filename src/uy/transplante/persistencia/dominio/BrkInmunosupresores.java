@@ -19,7 +19,7 @@ public class BrkInmunosupresores extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		Inmunosupresores s = (Inmunosupresores) this.getObj();
 		String sql = "";
 		sql = "DELETE FROM inmunosupresores WHERE ID = ?";
@@ -86,7 +86,25 @@ public class BrkInmunosupresores extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

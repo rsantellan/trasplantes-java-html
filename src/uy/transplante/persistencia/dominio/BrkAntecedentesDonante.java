@@ -19,18 +19,34 @@ public class BrkAntecedentesDonante extends Broker {
 	}
 
 	@Override
+	public IPersistente getNuevo() {
+		return new AntecedentesDonante();
+	}
+
+	@Override
 	public String getInsertSQL() {
 		AntecedentesDonante a = (AntecedentesDonante) this.getObj();
 		String sql = "";
 		sql = "INSERT INTO donante_antecedentes(DETALLES) VALUES ('" + a.getDetalle() +"')";
 		return sql;
 	}
-
+	
 	@Override
-	public IPersistente getNuevo() {
-		return new AntecedentesDonante();
+	public PreparedStatement getInsertPrepared() {
+		String sql = "";
+		sql = "INSERT INTO donante_antecedentes(DETALLES) VALUES (?)";
+		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			AntecedentesDonante a = (AntecedentesDonante) this.getObj();
+			prep.setString(1, a.getDetalle());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+		}
+		return prep;
+		
 	}
-
+	
 	@Override
 	public String getSelectSQL() {
 		AntecedentesDonante a = (AntecedentesDonante) this.getObj();
@@ -43,10 +59,47 @@ public class BrkAntecedentesDonante extends Broker {
 	}
 
 	@Override
+	public PreparedStatement getSelectPrepared() {
+		String sql = "SELECT * FROM donante_antecedentes";
+		AntecedentesDonante a = (AntecedentesDonante) this.getObj();
+		PreparedStatement prep = null;
+		if(a.getId() != 0){
+			sql += " WHERE ID = ? ORDER BY DETALLES ASC";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, a.getId());
+			} catch (SQLException e) {
+				e.printStackTrace();
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+			}
+		}else{
+			sql += " ORDER BY DETALLES ASC";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		}
+		return prep;
+	}
+	
+	@Override
 	public String getUpdateSQL() {
 		AntecedentesDonante a = (AntecedentesDonante) this.getObj();
 		String sql = "UPDATE donante_antecedentes SET DETALLES ='"+ a.getDetalle() +"' WHERE ID=" + a.getId();
 		return sql;
+	}
+	
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		AntecedentesDonante a = (AntecedentesDonante) this.getObj();
+		PreparedStatement prep = null;
+		String sql = "UPDATE donante_antecedentes SET DETALLES = ? WHERE ID= ?";
+		prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setString(1, a.getDetalle());
+			prep.setInt(2, a.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+		}
+		return prep;
 	}
 	
 	@Override
@@ -62,7 +115,7 @@ public class BrkAntecedentesDonante extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		String sql = "";
 		sql = "DELETE FROM donante_antecedentes WHERE ID = ?";
 		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
@@ -77,7 +130,7 @@ public class BrkAntecedentesDonante extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		return null;
 	}
 

@@ -19,7 +19,7 @@ public class BrkTratamiento extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		Tratamiento p = (Tratamiento) this.getObj();
 		String sql = "";
 		if (p.getFecha_inicio() != null) {
@@ -130,7 +130,7 @@ public class BrkTratamiento extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		Tratamiento p = (Tratamiento) this.getObj();
 		PreparedStatement prep = null;
 		String sql = "SELECT COUNT(*) FROM tratamiento";
@@ -153,5 +153,23 @@ public class BrkTratamiento extends Broker {
 			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
 		}
 		return prep;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

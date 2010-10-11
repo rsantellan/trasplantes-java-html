@@ -19,7 +19,7 @@ public class BrkNefropatia extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		Nefropatia n = (Nefropatia) this.getObj();
 		String sql = "";
 		sql = "DELETE FROM nefropatia WHERE ID = ?";
@@ -78,7 +78,25 @@ public class BrkNefropatia extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

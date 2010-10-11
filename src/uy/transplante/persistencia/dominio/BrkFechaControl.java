@@ -19,7 +19,7 @@ public class BrkFechaControl extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		FechaControl m = (FechaControl) this.getObj();
 		String sql = "";
 		sql = "DELETE FROM fecha_control WHERE ID = ?";
@@ -88,7 +88,25 @@ public class BrkFechaControl extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

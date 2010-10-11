@@ -17,13 +17,17 @@ public abstract class Broker {
 		return obj;
 	}
 
+	public abstract PreparedStatement getInsertPrepared();
 	public abstract String getInsertSQL();
+	public abstract PreparedStatement getUpdatePrepared();
 	public abstract String getUpdateSQL();
-	public abstract PreparedStatement getDeletePreperad();
+	public abstract PreparedStatement getDelete();
+	public abstract PreparedStatement getSelectPrepared();
 	public abstract String getSelectSQL();
 	public abstract void leerDesdeResultSet(ResultSet rs, IPersistente aux);
 	public abstract IPersistente getNuevo();
-	public abstract PreparedStatement getContarPrepared();
+	public abstract PreparedStatement getContar();
+	private boolean debugMode = false;
 	
 	public int contarDesdeResultSet(ResultSet rs){
 		int aux= 0;
@@ -41,12 +45,30 @@ public abstract class Broker {
 	public void guardar() {
 		IPersistente p = this.getObj();
 		if (p.getOid() == 0) {
-			ManejadorBD.getInstancia().agregar(this);
+			if(this.debugMode){
+				ManejadorBD.getInstancia().agregarPrep(this);
+			}else{
+				ManejadorBD.getInstancia().agregar(this);
+			}
+			
 		} else {
-			ManejadorBD.getInstancia().modificar(this);
+			if(this.debugMode){
+				ManejadorBD.getInstancia().modificarPrep(this);
+			}else{
+				ManejadorBD.getInstancia().modificar(this);
+			}
+			
 		}
 	}
 
+	public void guardarPrep(){
+		IPersistente p = this.getObj();
+		if (p.getOid() == 0) {
+			ManejadorBD.getInstancia().agregar(this);
+		} else {
+			ManejadorBD.getInstancia().modificar(this);
+		}		
+	}
 	public void leer() {
 		ManejadorBD.getInstancia().leer(this);
 	}

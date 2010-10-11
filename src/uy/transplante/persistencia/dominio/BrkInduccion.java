@@ -19,7 +19,7 @@ public class BrkInduccion extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		Induccion s = (Induccion) this.getObj();
 		String sql = "";
 		sql = "DELETE FROM induccion WHERE ID = ?";
@@ -87,7 +87,25 @@ public class BrkInduccion extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

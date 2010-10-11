@@ -22,7 +22,7 @@ public class BrkTrasplante extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		Trasplante t = (Trasplante) this.getObj();
 		String sql = "";
 		sql = "DELETE FROM trasplante WHERE ID = ?";
@@ -309,8 +309,26 @@ public class BrkTrasplante extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		String sql = "SELECT COUNT(*) FROM trasplante WHERE GRADO_BANFF";
 		return ManejadorBD.getInstancia().crearPreparedStatement(sql);
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

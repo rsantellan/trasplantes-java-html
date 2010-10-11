@@ -23,7 +23,7 @@ public class BrkMuertePaciente extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		PacienteMuerte m = (PacienteMuerte) this.getObj();
 		String sql = "";
 		sql = "DELETE FROM paciente_muerte WHERE THE = ?";
@@ -97,7 +97,7 @@ public class BrkMuertePaciente extends Broker {
 
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		PacienteMuerte m = (PacienteMuerte) this.getObj();
 		PreparedStatement prep = null;
 		if(m.getNumCausa() != 0){
@@ -113,6 +113,24 @@ public class BrkMuertePaciente extends Broker {
 			
 		}
 		return prep;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

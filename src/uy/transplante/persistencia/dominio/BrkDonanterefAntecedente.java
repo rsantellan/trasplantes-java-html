@@ -19,7 +19,7 @@ public class BrkDonanterefAntecedente extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		DonanterefAntecedentes d = (DonanterefAntecedentes) this.getObj();
 		String sql= "DELETE FROM donanterefantecedentes WHERE ID_DONANTE =?";
 		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
@@ -80,7 +80,7 @@ public class BrkDonanterefAntecedente extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		DonanterefAntecedentes d = (DonanterefAntecedentes) this.getObj();
 		PreparedStatement prep = null;
 		if(d.getIdAntecedente() != 0){
@@ -95,5 +95,23 @@ public class BrkDonanterefAntecedente extends Broker{
 		}
 		
 		return prep;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

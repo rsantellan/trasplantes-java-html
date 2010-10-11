@@ -19,7 +19,7 @@ public class BrkGenericoAuxiliar extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		GenericoAuxiliar a = (GenericoAuxiliar) this.getObj();
 		String sql = "";
 		sql = "DELETE FROM consultas WHERE ID = ?";
@@ -80,13 +80,31 @@ public class BrkGenericoAuxiliar extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		/*public String getContar() {
 			GenericoAuxiliar a = (GenericoAuxiliar) this.getObj();
 			String sql = "";arg0
 			sql = "SELECT COUNT(*) FROM consultas WHERE Nombre = '" + a.getNombre() + "'";
 			return sql;
 		}*/
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

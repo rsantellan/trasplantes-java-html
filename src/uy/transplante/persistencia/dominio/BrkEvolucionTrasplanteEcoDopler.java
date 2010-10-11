@@ -21,7 +21,7 @@ public class BrkEvolucionTrasplanteEcoDopler extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		EvolucionTrasplanteEcoDopler e = (EvolucionTrasplanteEcoDopler) this.getObj();
 		String sql = "";
 		if (e.getFecha() != null) {
@@ -138,7 +138,7 @@ public class BrkEvolucionTrasplanteEcoDopler extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		PreparedStatement prep = null;
 		EvolucionTrasplanteEcoDopler e = (EvolucionTrasplanteEcoDopler) this.getObj();
 		String sql = "SELECT COUNT(*) FROM evolucion_trasplante_ecodopler WHERE IdTrasplante = ?";
@@ -167,5 +167,23 @@ public class BrkEvolucionTrasplanteEcoDopler extends Broker {
 		}
 		
 		return prep;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

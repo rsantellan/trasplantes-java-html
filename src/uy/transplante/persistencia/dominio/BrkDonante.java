@@ -19,7 +19,7 @@ public class BrkDonante extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		Donante d = (Donante) this.getObj();
 		String sql= "DELETE FROM donante WHERE ID =?";
 		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
@@ -43,6 +43,33 @@ public class BrkDonante extends Broker{
 		sql+= d.getNumCausaMuerte()+","+d.getCrP()+",'"+d.getOtros()+"','"+d.getGrupoSanguineo()+"','"+ d.getRelacionFiliar()+"',";
 		sql+= d.getPeso() + "," + d.getTalla() + ")";
 		return sql;
+	}
+	
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		PreparedStatement prep = null;
+		Donante d = (Donante) this.getObj();
+		String sql = "INSERT INTO donante(ID,TIPO_DONANTE,SEXO_DONANTE,EDAD_DONANTE,ENASTAB_HEMOD,CAUSA_MUERTE_DONANTE,";
+		sql+= "CR_P,OTROS,GRUPO_SANG,RELACION_FILIAR,PESO,ALTURA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+		prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setString(1, d.getId());
+			prep.setString(2, d.getTipo());
+			prep.setString(3, d.getSexo());
+			prep.setInt(4, d.getEdad());
+			prep.setBoolean(5, d.isEnastabHemod());
+			prep.setInt(6, d.getNumCausaMuerte());
+			prep.setFloat(7, d.getCrP());
+			prep.setString(8, d.getOtros());
+			prep.setString(9, d.getGrupoSanguineo());
+			prep.setString(10, d.getRelacionFiliar());
+			prep.setInt(11, d.getPeso());
+			prep.setInt(12, d.getTalla());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+		}
+		return prep;
 	}
 
 	@Override
@@ -72,6 +99,43 @@ public class BrkDonante extends Broker{
 
 		return sql;
 	}
+	
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		Donante d = (Donante) this.getObj();
+		PreparedStatement prep = null;
+		if(d.isLibres()){
+			prep = ManejadorBD.getInstancia().crearPreparedStatement("SELECT * FROM donante D WHERE EXISTS (SELECT ID_DONANTE FROM trasplante T WHERE T.ID_DONANTE = D.ID)");
+		}else{
+			if(d.isLibres()){
+				prep = ManejadorBD.getInstancia().crearPreparedStatement("SELECT * FROM donante D WHERE NOT EXISTS (SELECT ID_DONANTE FROM trasplante T WHERE T.ID_DONANTE = D.ID)");
+			}else{
+				String sql = "SELECT * FROM donante";
+				if(!d.getId().isEmpty()){
+					sql+= " WHERE ID = ?";
+					prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+					try {
+						prep.setString(1, d.getId());
+					} catch (SQLException e) {
+						e.printStackTrace();
+						Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+					}
+				}else{
+					if(d.getNumCausaMuerte() != 0){
+						sql+= " WHERE CAUSA_MUERTE_DONANTE = ?";
+						prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+						try {
+							prep.setInt(1, d.getNumCausaMuerte());
+						} catch (SQLException e) {
+							e.printStackTrace();
+							Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+						}
+					}
+				}
+			}
+		}
+		return prep;
+	}
 
 	private String getSelectUsados(){
 		return "SELECT * FROM donante D WHERE EXISTS (SELECT ID_DONANTE FROM trasplante T WHERE T.ID_DONANTE = D.ID)";
@@ -93,6 +157,44 @@ public class BrkDonante extends Broker{
 		sql+= "PESO ="+ d.getPeso()+" ";
 		sql+= "WHERE ID ='"+d.getId()+"'";
 		return sql;
+	}
+	
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		Donante d = (Donante) this.getObj();
+		PreparedStatement prep = null;
+		String sql = "UPDATE donante SET ";
+		sql+= "TIPO_DONANTE = ?, ";// + d.getTipo() +"',";
+		sql+= "SEXO_DONANTE = ?,";//+d.getSexo()+"',";
+		sql+= "EDAD_DONANTE = ?, ";//+d.getEdad()+",";
+		sql+= "ENASTAB_HEMOD = ?, ";//+d.isEnastabHemod()+",";
+		sql+= "CAUSA_MUERTE_DONANTE = ?,";//+d.getNumCausaMuerte()+",";
+		sql+= "CR_P = ?,";//+d.getCrP()+",";
+		sql+= "OTROS = ?,";//'"+d.getOtros()+"', ";
+		sql+= "GRUPO_SANG = ?, ";//+ d.getGrupoSanguineo()+"', ";
+		sql+= "RELACION_FILIAR = ?,";//+ d.getRelacionFiliar()+"', ";
+		sql+= "ALTURA = ?,";//+ d.getTalla()+", ";
+		sql+= "PESO = ? ";//+ d.getPeso()+" ";
+		sql+= "WHERE ID = ?";//+d.getId()+"'";
+		prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setString(1, d.getTipo());
+			prep.setString(2, d.getSexo());
+			prep.setInt(3, d.getEdad());
+			prep.setBoolean(4, d.isEnastabHemod());
+			prep.setInt(5, d.getNumCausaMuerte());
+			prep.setFloat(6, d.getCrP());
+			prep.setString(7, d.getOtros());
+			prep.setString(8, d.getGrupoSanguineo());
+			prep.setString(9, d.getRelacionFiliar());
+			prep.setInt(10, d.getPeso());
+			prep.setInt(11, d.getTalla());
+			prep.setString(12, d.getId());			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+		}
+		return prep;
 	}
 
 	@Override
@@ -119,12 +221,11 @@ public class BrkDonante extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		Donante d = (Donante) this.getObj();
 		PreparedStatement prep = null;
 		if(d.getNumCausaMuerte() != 0){
 			String sql = "SELECT COUNT(*) FROM donante where CAUSA_MUERTE_DONANTE = ?";
-			//+d.getNumCausaMuerte();
 			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
 			try{
 				prep.setInt(1, d.getNumCausaMuerte());

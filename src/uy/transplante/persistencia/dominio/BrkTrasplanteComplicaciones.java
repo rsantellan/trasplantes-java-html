@@ -23,7 +23,7 @@ public class BrkTrasplanteComplicaciones extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		TrasplanteComplicaciones t = (TrasplanteComplicaciones) this.getObj();
 		String sql = "";
 		if(t.getOid() != 0 ){
@@ -133,7 +133,7 @@ public class BrkTrasplanteComplicaciones extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		TrasplanteComplicaciones t = (TrasplanteComplicaciones) this.getObj();
 		String sql = "";
 		PreparedStatement prep = null;
@@ -179,6 +179,24 @@ public class BrkTrasplanteComplicaciones extends Broker{
 			}
 		}
 		return prep;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

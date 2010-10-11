@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 import uy.transplante.dominio.CausaMuertePaciente;
 import uy.transplante.logica.Fachada;
 import uy.transplante.persistencia.broker.Broker;
@@ -19,7 +18,7 @@ public class BrkCausaMuertePaciente extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		CausaMuertePaciente p = (CausaMuertePaciente) this.getObj();
 		String sql = "";
 		sql = "DELETE FROM paciente_causa_muerte WHERE ID = ?";
@@ -42,6 +41,21 @@ public class BrkCausaMuertePaciente extends Broker {
 	}
 
 	@Override
+	public PreparedStatement getInsertPrepared() {
+		String sql = "";
+		sql = "INSERT INTO paciente_causa_muerte(DETALLES) VALUES (?)";
+		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			CausaMuertePaciente p = (CausaMuertePaciente) this.getObj();
+			prep.setString(1, p.getDetalle());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+		}
+		return prep;
+	}
+	
+	@Override
 	public IPersistente getNuevo() {
 		return new CausaMuertePaciente();
 	}
@@ -58,10 +72,47 @@ public class BrkCausaMuertePaciente extends Broker {
 	}
 
 	@Override
+	public PreparedStatement getSelectPrepared() {
+		String sql = "SELECT * FROM paciente_causa_muerte";
+		CausaMuertePaciente p = (CausaMuertePaciente) this.getObj();
+		PreparedStatement prep = null;
+		if(p.getId() != 0){
+			sql += " WHERE ID = ? ORDER BY DETALLES ASC";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, p.getId());
+			} catch (SQLException e) {
+				e.printStackTrace();
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+			}
+		}else{
+			sql += " ORDER BY DETALLES ASC";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		}
+		return prep;
+	}
+	
+	@Override
 	public String getUpdateSQL() {
 		CausaMuertePaciente p = (CausaMuertePaciente) this.getObj();
 		String sql = "UPDATE paciente_causa_muerte SET DETALLES ='"+ p.getDetalle() +"' WHERE ID=" + p.getId();
 		return sql;
+	}
+	
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		CausaMuertePaciente p = (CausaMuertePaciente) this.getObj();
+		PreparedStatement prep = null;
+		String sql = "UPDATE paciente_causa_muerte SET DETALLES = ? WHERE ID= ?";
+		prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setString(1, p.getDetalle());
+			prep.setInt(2, p.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+		}
+		return prep;
 	}
 	
 	@Override
@@ -77,7 +128,7 @@ public class BrkCausaMuertePaciente extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		return null;
 	}
 

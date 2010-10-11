@@ -48,9 +48,8 @@ public class CrearReporteFondo {
 		exportar += this.datosTabla(year);
 		exportar += this.cerrarTabla();
 		exportar += this.pie();
-		System.out.println(exportar);
-		System.out.println();
-		System.out.println(System.getProperty("user.dir"));
+		Fachada.getInstancia().guardarLog(3,exportar);
+		Fachada.getInstancia().guardarLog(3,System.getProperty("user.dir"));
 		java.io.File unArchivo = new java.io.File(System.getProperty("user.dir")+ "/exportacionFondo.xls");
 
 		FileWriter buf;
@@ -61,10 +60,10 @@ public class CrearReporteFondo {
 			buf.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-			System.out.println(e.getMessage());
+			Fachada.getInstancia().guardarLog(3,e.getMessage());
 		}catch(Exception e1){
 			e1.printStackTrace();
-			System.out.println(e1.getMessage());
+			Fachada.getInstancia().guardarLog(3,e1.getMessage());
 		}
 	}
 	
@@ -74,9 +73,8 @@ public class CrearReporteFondo {
 		exportar += this.datosTabla();
 		exportar += this.cerrarTabla();
 		exportar += this.pie();
-		System.out.println(exportar);
-		System.out.println();
-		System.out.println(System.getProperty("user.dir"));
+		Fachada.getInstancia().guardarLog(3,exportar);
+		Fachada.getInstancia().guardarLog(3,System.getProperty("user.dir"));
 		java.io.File unArchivo = new java.io.File(System.getProperty("user.dir")+ "/exportacionFondoCompleta.xls");
 		FileWriter buf;
 		try {
@@ -85,10 +83,10 @@ public class CrearReporteFondo {
 			buf.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-			System.out.println(e.getMessage());
+			Fachada.getInstancia().guardarLog(3,e.getMessage());
 		}catch(Exception e1){
 			e1.printStackTrace();
-			System.out.println(e1.getMessage());
+			Fachada.getInstancia().guardarLog(3,e1.getMessage());
 		}
 		java.io.File archivoHTML = new java.io.File(System.getProperty("user.dir") + "/archivo.html");
 		FileWriter bufHTML;
@@ -98,10 +96,10 @@ public class CrearReporteFondo {
 			bufHTML.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-			System.out.println(e.getMessage());
+			Fachada.getInstancia().guardarLog(3,e.getMessage());
 		}catch(Exception e1){
 			e1.printStackTrace();
-			System.out.println(e1.getMessage());
+			Fachada.getInstancia().guardarLog(3,e1.getMessage());
 		}
 		this.setLugar(-2);
 	}
@@ -180,7 +178,7 @@ public class CrearReporteFondo {
 				Trasplante t = (Trasplante) lista.get(x);
 				salida += "<tr>";
 				salida += "<td><Strong>HE</Strong></td>";
-				System.out.println(String.valueOf(t.getId()));
+				Fachada.getInstancia().guardarLog(3,String.valueOf(t.getId()));
 				this.setLugar(t.getId());
 				PacientePreTrasplante pt = new PacientePreTrasplante();
 				pt.setId(t.getPreTrasplante());

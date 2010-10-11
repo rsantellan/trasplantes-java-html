@@ -22,7 +22,7 @@ public class BrkEvolucionTrasplanteEcografia extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		EvolucionTrasplanteEcografia e = (EvolucionTrasplanteEcografia) this.getObj();
 		String sql = "";
 		if (e.getFecha() != null) {
@@ -133,7 +133,7 @@ public class BrkEvolucionTrasplanteEcografia extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		EvolucionTrasplanteEcografia e = (EvolucionTrasplanteEcografia) this
 		.getObj();
 		PreparedStatement prep = null;
@@ -161,5 +161,23 @@ public class BrkEvolucionTrasplanteEcografia extends Broker {
 			}	
 		}
 		return prep;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 import uy.transplante.dominio.CMVDrogas;
 import uy.transplante.logica.Fachada;
 import uy.transplante.persistencia.broker.Broker;
@@ -19,7 +18,7 @@ public class BrkCMVDrogas extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		CMVDrogas m = (CMVDrogas) this.getObj();
 		String sql ="";
 		sql += "DELETE FROM cmvdrogas WHERE ID =?";
@@ -43,6 +42,21 @@ public class BrkCMVDrogas extends Broker{
 	}
 
 	@Override
+	public PreparedStatement getInsertPrepared() {
+		CMVDrogas m = (CMVDrogas) this.getObj();
+		String sql ="";
+		sql += "INSERT INTO cmvdrogas (NOMBRE) VALUES (?)";
+		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setString(1, m.getNombre());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+		}
+		return prep;
+	}
+	
+	@Override
 	public IPersistente getNuevo() {
 		return new CMVDrogas();
 	}
@@ -59,6 +73,27 @@ public class BrkCMVDrogas extends Broker{
 		}
 		return sql;
 	}
+	
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		CMVDrogas m = (CMVDrogas) this.getObj();
+		String sql = "SELECT * FROM cmvdrogas";
+		PreparedStatement prep = null;
+		if(m.getOid() != 0){
+			sql += " WHERE id = ?";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, m.getId());
+			} catch (SQLException e) {
+				e.printStackTrace();
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+			}
+		}else{
+			sql += " ORDER BY NOMBRE";
+			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		}
+		return prep;
+	}
 
 	@Override
 	public String getUpdateSQL() {
@@ -70,6 +105,24 @@ public class BrkCMVDrogas extends Broker{
 		return sql;
 	}
 
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		CMVDrogas m = (CMVDrogas) this.getObj();
+		PreparedStatement prep = null;
+		String sql = "UPDATE cmvdrogas SET";
+		sql += " NOMBRE = ? ";
+		sql += " WHERE id= ?";
+		prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setString(1, m.getNombre());
+			prep.setInt(2, m.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+		}
+		return prep;
+	}
+	
 	@Override
 	public void leerDesdeResultSet(ResultSet rs, IPersistente aux) {
 		try{
@@ -83,7 +136,7 @@ public class BrkCMVDrogas extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		return null;
 	}
 

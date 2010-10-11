@@ -19,7 +19,7 @@ public class BrkTrasplanteComplicacionesNoInf extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		TrasplanteComplicacionesNoInf t = (TrasplanteComplicacionesNoInf) this.getObj();
 		String sql = "";
 		if (!t.isBorradoTotal()) {
@@ -106,7 +106,7 @@ public class BrkTrasplanteComplicacionesNoInf extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		TrasplanteComplicacionesNoInf t = (TrasplanteComplicacionesNoInf) this.getObj();
 		PreparedStatement prep = null;
 		if(t.getId() != 0){
@@ -135,6 +135,24 @@ public class BrkTrasplanteComplicacionesNoInf extends Broker{
 			}
 		}
 		return prep;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

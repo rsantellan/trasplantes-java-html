@@ -19,7 +19,7 @@ public class BrkDonanteSerol extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		DonanteSerolUsado s = (DonanteSerolUsado) this.getObj();
 		String sql = "";
 		if (s.getSerol() != null) {
@@ -96,7 +96,7 @@ public class BrkDonanteSerol extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		DonanteSerolUsado s = (DonanteSerolUsado) this.getObj();
 		String sql = "SELECT COUNT(*) FROM donante_serol ";
 		PreparedStatement prep = null;
@@ -120,5 +120,23 @@ public class BrkDonanteSerol extends Broker {
 			}
 		}
 		return prep;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

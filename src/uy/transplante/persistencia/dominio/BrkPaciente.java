@@ -21,7 +21,7 @@ public class BrkPaciente extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		Paciente p = (Paciente) this.getObj();
 		String sql = "";
 		sql = "DELETE FROM pacientes WHERE THE = ?";
@@ -139,7 +139,7 @@ public class BrkPaciente extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		Paciente p = (Paciente) this.getObj();
 		PreparedStatement prep = null;
 		String sql = "SELECT COUNT(*) FROM pacientes";
@@ -158,6 +158,24 @@ public class BrkPaciente extends Broker {
 			prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
 		}
 		return prep;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

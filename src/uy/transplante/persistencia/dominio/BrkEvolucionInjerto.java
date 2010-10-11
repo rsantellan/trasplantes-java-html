@@ -24,7 +24,7 @@ public class BrkEvolucionInjerto extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		EvolucionInjerto e = (EvolucionInjerto) this.getObj();
 		String sql = "";
 		if (e.getFecha() != null) {
@@ -146,7 +146,7 @@ public class BrkEvolucionInjerto extends Broker {
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
 		EvolucionInjerto e = (EvolucionInjerto) this.getObj();
 		PreparedStatement prep = null;
 		String sql = "SELECT COUNT(*) FROM injerto_evolucion ";
@@ -189,6 +189,24 @@ public class BrkEvolucionInjerto extends Broker {
 			}
 		}
 		return prep;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -19,7 +19,7 @@ public class BrkOrganosDonante extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getDeletePreperad() {
+	public PreparedStatement getDelete() {
 		OrganosDonante o = (OrganosDonante) this.getObj();
 		String sql = "";
 		sql = "DELETE FROM donante_organos WHERE ID_DONANTE = ?";
@@ -74,7 +74,25 @@ public class BrkOrganosDonante extends Broker{
 	}
 
 	@Override
-	public PreparedStatement getContarPrepared() {
+	public PreparedStatement getContar() {
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getInsertPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getSelectPrepared() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

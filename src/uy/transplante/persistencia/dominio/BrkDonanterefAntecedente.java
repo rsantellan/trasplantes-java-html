@@ -34,6 +34,23 @@ public class BrkDonanterefAntecedente extends Broker{
 	}
 	
 	@Override
+	public PreparedStatement getInsertPrepared() {
+		
+		DonanterefAntecedentes d = (DonanterefAntecedentes) this.getObj();
+		String sql ="";
+		sql += "INSERT INTO donanterefantecedentes(ID_DONANTE,ID_ANTECEDENTE) VALUES (?, ?)";
+		PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+		try {
+			prep.setString(1, d.getIdDonante());
+			prep.setInt(2, d.getIdAntecedente());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+		}
+		return prep;
+	}
+	
+	@Override
 	public String getInsertSQL() {
 		DonanterefAntecedentes d = (DonanterefAntecedentes) this.getObj();
 		String sql = "";
@@ -48,6 +65,34 @@ public class BrkDonanterefAntecedente extends Broker{
 	}
 
 	@Override
+	public PreparedStatement getSelectPrepared() {
+		DonanterefAntecedentes d = (DonanterefAntecedentes) this.getObj();
+		String sql = "";
+		sql += "SELECT * FROM donanterefantecedentes";
+		if(!d.getIdDonante().isEmpty()){
+			sql +=" WHERE ID_DONANTE = ?";
+			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setString(1, d.getIdDonante());
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+			}
+		}else{
+			sql +=" WHERE ID_ANTECEDENTE = ?";
+			PreparedStatement prep = ManejadorBD.getInstancia().crearPreparedStatement(sql);
+			try {
+				prep.setInt(1, d.getIdAntecedente());
+			} catch (SQLException e) {
+				e.printStackTrace();
+				Fachada.getInstancia().guardarLog(Fachada.LOG_ERR, e.getStackTrace().toString());
+			}
+		}
+		return null;
+	}
+	
+	@Override
 	public String getSelectSQL() {
 		DonanterefAntecedentes d = (DonanterefAntecedentes) this.getObj();
 		String sql = "";
@@ -60,6 +105,12 @@ public class BrkDonanterefAntecedente extends Broker{
 		return sql;
 	}
 
+	@Override
+	public PreparedStatement getUpdatePrepared() {
+		Fachada.getInstancia().guardarLog(Fachada.LOG_FATAL, "Nunca tiene que entrar al update de brkdonanterefantecedente, si esta entrando aca es por el get.IOD()");
+		return null;
+	}
+	
 	@Override
 	public String getUpdateSQL() {
 		Fachada.getInstancia().guardarLog(Fachada.LOG_FATAL, "Nunca tiene que entrar al update de brkdonanterefantecedente, si esta entrando aca es por el get.IOD()");
@@ -97,21 +148,4 @@ public class BrkDonanterefAntecedente extends Broker{
 		return prep;
 	}
 
-	@Override
-	public PreparedStatement getInsertPrepared() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PreparedStatement getSelectPrepared() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PreparedStatement getUpdatePrepared() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

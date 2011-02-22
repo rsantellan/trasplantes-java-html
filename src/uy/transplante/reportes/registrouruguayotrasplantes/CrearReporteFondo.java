@@ -186,6 +186,7 @@ public class CrearReporteFondo {
 				Paciente p = new Paciente();
 				p.setThe(pt.getThe());
 				p.leer();
+				p.leerDatosPerdidaInjerto();
 				salida += "<td>" + p.getThe() + "</td>";
 				salida += "<td>" + pt.getDiabetes() + "</td>";
 
@@ -201,6 +202,22 @@ public class CrearReporteFondo {
 				if (t.getFecha() == null) {
 					estado = "1: EN DIALISIS";
 				}
+				boolean conPerdida = false;
+				int idPerdida = 0;
+				while(idPerdida < p.getListaPerdidas().size() && !conPerdida)
+				{
+					PacientePerdidaInjerto perdida = p.getListaPerdidas().get(idPerdida);
+					if(perdida.getNumPreTrasplante() == pt.getId())
+					{
+						estado = "1: EN DIALISIS";
+						conPerdida = true;
+					}
+					else
+					{
+						idPerdida++;
+					}
+					
+				}
 				boolean murio = false;
 				if (p.getMuertePaciente() != null) {
 					if (p.getMuertePaciente().getFechaMuerte() != null) {
@@ -210,8 +227,21 @@ public class CrearReporteFondo {
 				}
 				salida += "<td>" + estado + "</td>";
 				if(!murio){
-					salida += "<td> Sin Alta </td>";
-					salida += "<td> Sin Alta </td>";
+					if(conPerdida)
+					{
+						PacientePerdidaInjerto perdida = p.getListaPerdidas().get(idPerdida);
+						salida += "<td>"
+							+ ManejoFechas.FORMATOMES.format(perdida.getFechaPerdida()
+									.getTime()) + "</td>";
+						salida += "<td>"
+							+ ManejoFechas.FORMATOYEAR.format(perdida.getFechaPerdida()
+									.getTime()) + "</td>";						
+					}
+					else
+					{
+						salida += "<td> Sin Alta </td>";
+						salida += "<td> Sin Alta </td>";
+					}
 				}else{
 					salida += "<td>"
 						+ ManejoFechas.FORMATOMES.format(p.getMuertePaciente().getFechaMuerte()

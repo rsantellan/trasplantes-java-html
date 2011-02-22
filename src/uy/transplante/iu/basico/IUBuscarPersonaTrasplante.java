@@ -41,7 +41,6 @@ import uy.transplante.iu.windows.logic.IUTrasplanteLogic;
 import uy.transplante.iu.windows.logic.IUTratamientosLogic;
 import uy.transplante.logica.Fachada;
 
-
 public class IUBuscarPersonaTrasplante extends JFrame implements
 		java.util.Observer {
 
@@ -96,6 +95,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 	private JButton jButtonTratamiento = null;
 	private JButton jButtonReoperacion = null;
 	private JButton jButtonAlta = null;
+	private JButton jButton = null;
 	/**
 	 * This is the default constructor
 	 */
@@ -159,6 +159,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 			jContentPane.add(getJDesktopPaneEvolucionTrasplante(), null);
 			jContentPane.add(getJDesktopPaneEvolucionInjerto(), null);
 			jContentPane.add(getJDesktopPaneCMV(), null);
+			jContentPane.add(getJButton(), null);
 		}
 		return jContentPane;
 	}
@@ -621,7 +622,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 			jLabelPreTrasplante.setFont(new Font("Dialog", Font.BOLD
 					| Font.ITALIC, 18));
 			jDesktopPanePreTrasplante = new JDesktopPane();
-			jDesktopPanePreTrasplante.setBounds(new Rectangle(300, 240, 272, 250));
+			jDesktopPanePreTrasplante.setBounds(new Rectangle(296, 240, 276, 250));
 			jDesktopPanePreTrasplante.add(jLabelPreTrasplante, null);
 			jDesktopPanePreTrasplante.add(getJScrollPanePreTrasplante(), null);
 			jDesktopPanePreTrasplante.add(getJButtonVerPreTrasplante(), null);
@@ -719,13 +720,15 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 			}else{
 				this.preTrasplante = pt;
 				this.mostrarTrasplante();
+				this.hideBusquedaBox();
 			}
 		}
 
 	}
 
 	private void mostrarTrasplante() {
-		this.setSize(1235, 649);
+
+		this.setSize(940, 649);
 		this.jLabelInfoTrasplante.setText(this.preTrasplante.getTrasplante()
 				.toString());
 		if(this.preTrasplante.getTrasplante().getFechaAlta() == null){
@@ -737,6 +740,30 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 			this.getJButtonAlta().setText("Dias internado: " + diasL / (1000 * 60 * 60 * 24));
 		}
 		this.mostrarComplicaciones();
+	}
+
+	private void hideBusquedaBox()
+	{
+		this.getJDesktopPaneBuscar().setVisible(false);
+		this.getJDesktopPanePaciente().setBounds(new Rectangle(10, 15, 276, 196));
+		this.getJDesktopPanePreTrasplante().setBounds(new Rectangle(10, 240, 272, 250));
+		this.getJDesktopPaneTrasplante().setBounds(new Rectangle(304, 17, 418, 530));
+		this.getJDesktopPaneEvolucionTrasplante().setBounds(new Rectangle(732, 15, 189, 203));
+		this.getJDesktopPaneEvolucionInjerto().setBounds(new Rectangle(732, 222, 189, 203));
+		this.getJDesktopPaneCMV().setBounds(new Rectangle(732, 432, 188, 139));
+	}
+
+	private void showBusquedaBox()
+	{
+		this.getJDesktopPaneBuscar().setVisible(true);
+		this.setSize(312, 568);
+		this.getJDesktopPanePaciente().setBounds(new Rectangle(296, 15, 276, 196));
+		this.getJDesktopPanePreTrasplante().setBounds(new Rectangle(296, 240, 276, 250));
+		this.getJDesktopPaneTrasplante().setBounds(new Rectangle(594, 17, 418, 530));
+		this.getJDesktopPaneEvolucionTrasplante().setBounds(new Rectangle(1022, 15, 189, 203));
+		this.getJDesktopPaneEvolucionInjerto().setBounds(new Rectangle(1022, 222, 189, 203));
+		this.getJDesktopPaneCMV().setBounds(new Rectangle(1022, 432, 188, 139));
+
 	}
 
 	private void mostrarComplicaciones(){
@@ -871,7 +898,7 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 			jLabelCMV.setText("CMV");
 			jLabelCMV.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 18));
 			jDesktopPaneCMV = new JDesktopPane();
-			jDesktopPaneCMV.setBounds(new Rectangle(1023, 432, 188, 139));
+			jDesktopPaneCMV.setBounds(new Rectangle(1022, 432, 188, 139));
 			jDesktopPaneCMV.add(jLabelCMV, null);
 			jDesktopPaneCMV.add(getJButtonManejarCMV(), null);
 		}
@@ -1005,5 +1032,24 @@ public class IUBuscarPersonaTrasplante extends JFrame implements
 		logic.iuAltaTrasplante(this.preTrasplante.getTrasplante());
 		/*IUTrasplanteFechaAlta alta = new IUTrasplanteFechaAlta(this.preTrasplante.getTrasplante());
 		alta.setVisible(true);*/
+	}
+
+	/**
+	 * This method initializes jButton
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getJButton() {
+		if (jButton == null) {
+			jButton = new JButton();
+			jButton.setBounds(new Rectangle(66, 521, 144, 37));
+			jButton.setText("Mostrar Buscar");
+			jButton.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					showBusquedaBox();
+				}
+			});
+		}
+		return jButton;
 	}
 } // @jve:decl-index=0:visual-constraint="10,10"

@@ -15,7 +15,8 @@ abstract class BasePacientesForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'the'              => new sfWidgetFormInputHidden(),
+      'id'               => new sfWidgetFormInputHidden(),
+      'the'              => new sfWidgetFormInputText(),
       'ci'               => new sfWidgetFormInputText(),
       'nombre'           => new sfWidgetFormInputText(),
       'apellido'         => new sfWidgetFormInputText(),
@@ -24,22 +25,23 @@ abstract class BasePacientesForm extends BaseFormDoctrine
       'sexo'             => new sfWidgetFormInputText(),
       'fecha_nacimiento' => new sfWidgetFormDate(),
       'fecha_dialisis'   => new sfWidgetFormDate(),
-      'nefropatia'       => new sfWidgetFormInputText(),
-      'grupo_sang'       => new sfWidgetFormInputText(),
+      'nefropatia_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Nefropatia'), 'add_empty' => false)),
+      'grupo_sanguineo'  => new sfWidgetFormChoice(array('choices' => array('A' => 'A', 'B' => 'B', 'AB' => 'AB', 'O' => 'O'))),
     ));
 
     $this->setValidators(array(
-      'the'              => new sfValidatorChoice(array('choices' => array($this->getObject()->get('the')), 'empty_value' => $this->getObject()->get('the'), 'required' => false)),
+      'id'               => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'the'              => new sfValidatorInteger(),
       'ci'               => new sfValidatorString(array('max_length' => 12)),
-      'nombre'           => new sfValidatorString(array('max_length' => 50, 'required' => false)),
-      'apellido'         => new sfValidatorString(array('max_length' => 50, 'required' => false)),
-      'num_fnr'          => new sfValidatorInteger(array('required' => false)),
-      'raza'             => new sfValidatorString(array('max_length' => 15, 'required' => false)),
-      'sexo'             => new sfValidatorString(array('max_length' => 1, 'required' => false)),
-      'fecha_nacimiento' => new sfValidatorDate(array('required' => false)),
-      'fecha_dialisis'   => new sfValidatorDate(array('required' => false)),
-      'nefropatia'       => new sfValidatorInteger(array('required' => false)),
-      'grupo_sang'       => new sfValidatorString(array('max_length' => 2, 'required' => false)),
+      'nombre'           => new sfValidatorString(array('max_length' => 50)),
+      'apellido'         => new sfValidatorString(array('max_length' => 50)),
+      'num_fnr'          => new sfValidatorInteger(),
+      'raza'             => new sfValidatorString(array('max_length' => 15)),
+      'sexo'             => new sfValidatorString(array('max_length' => 1)),
+      'fecha_nacimiento' => new sfValidatorDate(),
+      'fecha_dialisis'   => new sfValidatorDate(),
+      'nefropatia_id'    => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Nefropatia'))),
+      'grupo_sanguineo'  => new sfValidatorChoice(array('choices' => array(0 => 'A', 1 => 'B', 2 => 'AB', 3 => 'O'))),
     ));
 
     $this->widgetSchema->setNameFormat('pacientes[%s]');

@@ -13,23 +13,27 @@ abstract class BaseCmvFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'diagnostico'      => new sfWidgetFormFilterInput(),
-      'tm'               => new sfWidgetFormFilterInput(),
-      'sindromeviral'    => new sfWidgetFormFilterInput(),
-      'profilaxis'       => new sfWidgetFormFilterInput(),
-      'droga'            => new sfWidgetFormFilterInput(),
-      'diastm'           => new sfWidgetFormFilterInput(),
-      'efectosecundario' => new sfWidgetFormFilterInput(),
+      'trasplante_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Trasplante'), 'add_empty' => true)),
+      'fecha'              => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'cmv_diagnostico_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Cmvdiagnostico'), 'add_empty' => true)),
+      'tipo'               => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'cmv_droga_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Cmvdrogas'), 'add_empty' => true)),
+      'dias_tratamiento'   => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'efecto_secundario'  => new sfWidgetFormFilterInput(),
+      'created_at'         => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'updated_at'         => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
     ));
 
     $this->setValidators(array(
-      'diagnostico'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'tm'               => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'sindromeviral'    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'profilaxis'       => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'droga'            => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'diastm'           => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'efectosecundario' => new sfValidatorPass(array('required' => false)),
+      'trasplante_id'      => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Trasplante'), 'column' => 'id')),
+      'fecha'              => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDateTime(array('required' => false)))),
+      'cmv_diagnostico_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Cmvdiagnostico'), 'column' => 'id')),
+      'tipo'               => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'cmv_droga_id'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Cmvdrogas'), 'column' => 'id')),
+      'dias_tratamiento'   => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'efecto_secundario'  => new sfValidatorPass(array('required' => false)),
+      'created_at'         => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
+      'updated_at'         => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
     ));
 
     $this->widgetSchema->setNameFormat('cmv_filters[%s]');
@@ -49,15 +53,16 @@ abstract class BaseCmvFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'trasplante'       => 'Number',
-      'fecha'            => 'Date',
-      'diagnostico'      => 'Number',
-      'tm'               => 'Number',
-      'sindromeviral'    => 'Number',
-      'profilaxis'       => 'Number',
-      'droga'            => 'Number',
-      'diastm'           => 'Number',
-      'efectosecundario' => 'Text',
+      'id'                 => 'Number',
+      'trasplante_id'      => 'ForeignKey',
+      'fecha'              => 'Date',
+      'cmv_diagnostico_id' => 'ForeignKey',
+      'tipo'               => 'Number',
+      'cmv_droga_id'       => 'ForeignKey',
+      'dias_tratamiento'   => 'Number',
+      'efecto_secundario'  => 'Text',
+      'created_at'         => 'Date',
+      'updated_at'         => 'Date',
     );
   }
 }

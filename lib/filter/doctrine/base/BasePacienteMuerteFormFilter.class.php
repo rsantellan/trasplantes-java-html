@@ -13,15 +13,15 @@ abstract class BasePacienteMuerteFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'causa'          => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'fecha_muerte'   => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
-      'tr_funcionando' => new sfWidgetFormFilterInput(),
+      'causa_muerte_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('PacienteCausaMuerte'), 'add_empty' => true)),
+      'fecha_muerte'            => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'transplante_funcionando' => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
-      'causa'          => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'fecha_muerte'   => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDateTime(array('required' => false)))),
-      'tr_funcionando' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'causa_muerte_id'         => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('PacienteCausaMuerte'), 'column' => 'id')),
+      'fecha_muerte'            => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDateTime(array('required' => false)))),
+      'transplante_funcionando' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('paciente_muerte_filters[%s]');
@@ -41,10 +41,10 @@ abstract class BasePacienteMuerteFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'the'            => 'Number',
-      'causa'          => 'Number',
-      'fecha_muerte'   => 'Date',
-      'tr_funcionando' => 'Number',
+      'paciente_id'             => 'Number',
+      'causa_muerte_id'         => 'ForeignKey',
+      'fecha_muerte'            => 'Date',
+      'transplante_funcionando' => 'Number',
     );
   }
 }

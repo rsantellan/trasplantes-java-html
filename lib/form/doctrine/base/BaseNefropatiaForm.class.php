@@ -16,12 +16,16 @@ abstract class BaseNefropatiaForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'         => new sfWidgetFormInputHidden(),
-      'nefropatia' => new sfWidgetFormInputText(),
+      'nombre'     => new sfWidgetFormInputText(),
+      'created_at' => new sfWidgetFormDateTime(),
+      'updated_at' => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
       'id'         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'nefropatia' => new sfValidatorString(array('max_length' => 255)),
+      'nombre'     => new sfValidatorString(array('max_length' => 255)),
+      'created_at' => new sfValidatorDateTime(),
+      'updated_at' => new sfValidatorDateTime(),
     ));
 
     $this->widgetSchema->setNameFormat('nefropatia[%s]');

@@ -15,27 +15,29 @@ abstract class BaseCmvForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'trasplante'       => new sfWidgetFormInputHidden(),
-      'fecha'            => new sfWidgetFormInputHidden(),
-      'diagnostico'      => new sfWidgetFormInputText(),
-      'tm'               => new sfWidgetFormInputText(),
-      'sindromeviral'    => new sfWidgetFormInputText(),
-      'profilaxis'       => new sfWidgetFormInputText(),
-      'droga'            => new sfWidgetFormInputText(),
-      'diastm'           => new sfWidgetFormInputText(),
-      'efectosecundario' => new sfWidgetFormInputText(),
+      'id'                 => new sfWidgetFormInputHidden(),
+      'trasplante_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Trasplante'), 'add_empty' => false)),
+      'fecha'              => new sfWidgetFormDate(),
+      'cmv_diagnostico_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Cmvdiagnostico'), 'add_empty' => false)),
+      'tipo'               => new sfWidgetFormInputText(),
+      'cmv_droga_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Cmvdrogas'), 'add_empty' => false)),
+      'dias_tratamiento'   => new sfWidgetFormInputText(),
+      'efecto_secundario'  => new sfWidgetFormInputText(),
+      'created_at'         => new sfWidgetFormDateTime(),
+      'updated_at'         => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
-      'trasplante'       => new sfValidatorChoice(array('choices' => array($this->getObject()->get('trasplante')), 'empty_value' => $this->getObject()->get('trasplante'), 'required' => false)),
-      'fecha'            => new sfValidatorChoice(array('choices' => array($this->getObject()->get('fecha')), 'empty_value' => $this->getObject()->get('fecha'), 'required' => false)),
-      'diagnostico'      => new sfValidatorInteger(array('required' => false)),
-      'tm'               => new sfValidatorInteger(array('required' => false)),
-      'sindromeviral'    => new sfValidatorInteger(array('required' => false)),
-      'profilaxis'       => new sfValidatorInteger(array('required' => false)),
-      'droga'            => new sfValidatorInteger(array('required' => false)),
-      'diastm'           => new sfValidatorInteger(array('required' => false)),
-      'efectosecundario' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'id'                 => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'trasplante_id'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Trasplante'))),
+      'fecha'              => new sfValidatorDate(),
+      'cmv_diagnostico_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Cmvdiagnostico'))),
+      'tipo'               => new sfValidatorInteger(),
+      'cmv_droga_id'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Cmvdrogas'))),
+      'dias_tratamiento'   => new sfValidatorInteger(array('required' => false)),
+      'efecto_secundario'  => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'created_at'         => new sfValidatorDateTime(),
+      'updated_at'         => new sfValidatorDateTime(),
     ));
 
     $this->widgetSchema->setNameFormat('cmv[%s]');

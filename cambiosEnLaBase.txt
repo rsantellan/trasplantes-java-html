@@ -1,0 +1,32 @@
+TABLA cmv:
+    -se agrego id
+    -campo Trasplante se pasa a llamar trasplante_id
+    -campo diagnostico se pasa a llamar cmv_diagnostico_id
+    -campo droga se pasa a llamar cmv_droga_id
+    -campo diastm se pasa a llamar dias_tratamiento
+    -los campos tm, sindromeviral , profilaxis en realidad son opciones. Se va a poner un campo solo llamado tipo
+    -campo efectosecundario se pasa a llamar efecto_secundario
+
+TABLA cmv_uso_enfermedades:
+    -campo Trasplante y FECHA se cambiaron por cmv_id
+    
+TABLA pacientes:
+    -se agrego id
+    -se le agrego notnull: true a todos los campos
+    -campo grupo_sang se pasa a llamar grupo_sanguineo y paso a ser un enum
+    -campo nefropatia se pasa a llamar nefropatia_id
+
+TABLA nefropatia:
+    -campo nefropatia se paso a llamar nombre
+
+TABLA pacientepretrasplante:
+    -se pasa a llamar paciente_pre_trasplante
+    -se agrego paciente_id y the no es mas foreign
+    
+TABLA paciente_causa_muerte:
+    -campo detalles se paso a llamar nombre
+
+TABLA paciente_muerte:
+    -campo the se paso a llamar paciente_id
+    -campo tr_funcionando se paso a llamar transplante_funcionando
+    -campo causa se paso a llamar causa_muerte_id

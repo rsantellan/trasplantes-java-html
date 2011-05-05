@@ -1,0 +1,2553 @@
+Trasplante:
+
+  tableName: trasplante
+  columns:
+    id:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    pretrasplante:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fecha:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    num_tr:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    id_donante:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    inestab_hemod:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    rinhon:
+      type: string(10)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    anomalia_vasc:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    num_art:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    num_venas:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    ureter:
+      type: string(5)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    num_comp_a_b:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    num_comp_dr:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    num_imcomp_a_b:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    num_imcomp_dr:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    autoac:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    pra_max:
+      type: string(10)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    pra_tr:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    trans_previas:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    num_transf:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    embarazo:
+      type: string(9)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    num_embarazo:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    liq_perfusion:
+      type: string(11)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    tq_de_banco:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    lado_implante:
+      type: string(10)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    anast_venosa:
+      type: string(17)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    anast_arterial:
+      type: string(17)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    anast_ureteral:
+      type: string(9)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    t_isq_cal_min:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    t_isq_fria_hs:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    t_isq_fria_min:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    t_isq_tibia_hs:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    repercusion:
+      type: string(7)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    sangrado_i_op:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    lesion_arterial:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    lesion_venosa:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    necesidad_repefundir:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    otras_compl_quirur:
+      type: string(250)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    diuresis_i_op:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    cr_inicial:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    dia_rec_diuresis:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    dia_rec_funcional:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    dialisis:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    num_de_hd:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    comentario:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fecha_alta:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+
+Cmv:
+  actAs: [Timestampable]
+  tableName: cmv
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true  
+    trasplante_id:
+      type: integer(4)
+      notnull: true
+    fecha:
+      type: date(25)
+      notnull: true
+    diagnostico:
+      type: integer(2)
+    tm:
+      type: integer(1)
+    sindromeviral:
+      type: integer(1)
+    profilaxis:
+      type: integer(1)
+    droga:
+      type: integer(2)
+    diastm:
+      type: integer(2)
+    efectosecundario:
+      type: string(255)
+  relations:
+    Trasplante:
+      local: trasplante_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
+        
+CmvUsoEnfermedades:
+
+  tableName: cmv_uso_enfermedades
+  columns:
+    trasplante:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    fecha:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    cmvenfermedades:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+      
+Cmvdiagnostico:
+
+  tableName: cmvdiagnostico
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+Cmvdrogas:
+
+  tableName: cmvdrogas
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+Cmvemfermedades:
+
+  tableName: cmvemfermedades
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+ComplicacionesInf:
+
+  tableName: complicaciones_inf
+  columns:
+    id_tr_complicacion:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    infeccion:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    germen:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+ComplicacionesNoInf:
+
+  tableName: complicaciones_no_inf
+  columns:
+    id_tr_complicacion:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    id_complicacion:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+ComplicacionesTipos:
+
+  tableName: complicaciones_tipos
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    tipo:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    nombre:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+Consultas:
+
+  tableName: consultas
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    sentencia:
+      type: string(10000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    tipos:
+      type: string(10000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    nombres:
+      type: string(10000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+Datosutiles:
+
+  tableName: datosutiles
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    password:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: pass
+      notnull: true
+      autoincrement: false
+    fecha:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    root:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+Donante:
+
+  tableName: donante
+  columns:
+    id:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    tipo_donante:
+      type: string(10)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    sexo_donante:
+      type: string(1)
+      fixed: true
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    edad_donante:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: false
+      autoincrement: false
+    enastab_hemod:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    causa_muerte_donante:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    cr_p:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    otros:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    grupo_sang:
+      type: string(2)
+      fixed: true
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    relacion_filiar:
+      type: string(11)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    peso:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    altura:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+DonanteAntecedentes:
+
+  tableName: donante_antecedentes
+  columns:
+    id:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    detalles:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+DonanteCausaMuerte:
+
+  tableName: donante_causa_muerte
+  columns:
+    id:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    detalles:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+DonanteOrganos:
+
+  tableName: donante_organos
+  columns:
+    id:
+      type: integer(8)
+      autoincrement: true
+      primary: true
+    id_donante:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    organo:
+      type: string(10)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+DonanteSerol:
+
+  tableName: donante_serol
+  columns:
+    id_donante:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    id_serol:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    valor:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+Donanterefantecedentes:
+
+  tableName: donanterefantecedentes
+  columns:
+    id_donante:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    id_antecedente:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+EvolucionTrasplante:
+
+  tableName: evolucion_trasplante
+  columns:
+    idtrasplante:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    fecha:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    pas:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    pad:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    diuresis:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    peso:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    urea:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    creatinina:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    ht:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    hb:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    gb:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    plaquetas:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    sodio:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    potasio:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    cloro:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    calcio:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fosforo:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    glicemia:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    uricemia:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    prot_u:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    ccreatinina:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    curea:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    na_u:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    k_u:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    cya_pv:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    cya_pp:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fk_p:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    mfm_p:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    eve_p:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    bd:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    bi:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    tgo:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    tgp:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    gammagt:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    f_alc:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    t_prot:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    kptt:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    howell:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fibrinogeno:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    colesterol:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    hdl:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    ldl:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    r_at:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    tg:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    hna1c:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    albumina:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    globulinas:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    pthi:
+      type: string(10)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    otros:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    numpthi:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+EvolucionTrasplanteCmv:
+
+  tableName: evolucion_trasplante_cmv
+  columns:
+    idtrasplante:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    fecha:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    igg_cmv:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    igm_cmv:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    pcr_cmv:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    ag_pp65:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+EvolucionTrasplanteEcg:
+
+  tableName: evolucion_trasplante_ecg
+  columns:
+    idtrasplante:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    fecha:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    rs_ecg:
+      type: string(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    hvi_ecg:
+      type: string(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    onda_q_ecg:
+      type: string(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+EvolucionTrasplanteEcoCardio:
+
+  tableName: evolucion_trasplante_eco_cardio
+  columns:
+    idtrasplante:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    fecha:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    fevi_normal:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    insuf_hipodiast:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    i_ao:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    e_ao:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    i_m:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    e_m:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    i_p:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    e_p:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    i_t:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    e_t:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    derrame:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    calcif_valvular:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    hvi:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+EvolucionTrasplanteEcodopler:
+
+  tableName: evolucion_trasplante_ecodopler
+  columns:
+    idtrasplante:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    fecha:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    estructura:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    dilatacion:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    colecciones:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    eje_arterial:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    eje_venoso:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    arteria_renal:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    vena_renal:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    anast_venosa:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    anast_renosa:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    indice:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    otros:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+EvolucionTrasplanteEcografia:
+
+  tableName: evolucion_trasplante_ecografia
+  columns:
+    idtrasplante:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    fecha:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    diametros:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    dilatacion:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    litiasin:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    vejiga:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: ''
+      notnull: true
+      autoincrement: false
+    espesor:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    otros:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: ' '
+      notnull: false
+      autoincrement: false
+EvolucionTrasplanteMarvirales:
+
+  tableName: evolucion_trasplante_marvirales
+  columns:
+    idtrasplante:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    fecha:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    hsv:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    aghbs:
+      type: string(13)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    hbsac:
+      type: string(13)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    hbcac:
+      type: string(13)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    hvc:
+      type: string(13)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    hiv:
+      type: string(13)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+EvolucionTrasplanteNutricion:
+
+  tableName: evolucion_trasplante_nutricion
+  columns:
+    idtrasplante:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    fecha:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    talla:
+      type: integer(2)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: false
+      autoincrement: false
+    peso_deseado:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: false
+      autoincrement: false
+    estructura_osea:
+      type: string(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    impresion:
+      type: string(11)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    peso_real:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: false
+      autoincrement: false
+    p_tricipital:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    p_tricipital_p:
+      type: string(6)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    p_subescapular:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    p_subescapular_p:
+      type: string(6)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    sum_pliegues:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    p_sum_pliegues:
+      type: string(6)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    cf_brazo:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    p_cf_brazo:
+      type: string(6)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    cf_musc_brazo:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    p_cf_musc_brazo:
+      type: string(6)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    area_brazo:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    area_musc_brazo:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    p_area_musc_brazo:
+      type: string(6)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    area_grasa_brazo:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    p_area_grasa_brazo:
+      type: string(6)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    r_cintura_cadera:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    diag_nutricional:
+      type: string(13)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+EvolucionTrasplanteTxtorax:
+  tableName: evolucion_trasplante_txtorax
+  columns:
+    idtrasplante:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    fecha:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    rct:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    foco:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    lateralizado:
+      type: string(9)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    derrame_pleural:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    lateral_derrame:
+      type: string(9)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    secuelas:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    otros:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+EvolucionTrasplanteexamenes:
+  tableName: evolucion_trasplanteexamenes
+  columns:
+    idtrasplante:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    fecha:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    tipo:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    normal:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    comentario:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+FechaControl:
+  tableName: fecha_control
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    fecha:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    anos:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    meses:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    dias:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+Germenes:
+  tableName: germenes
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+Induccion:
+  tableName: induccion
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    tipo:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+Infeccion:
+  tableName: infeccion
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+InjertoEvolucion:
+  tableName: injerto_evolucion
+  columns:
+    pretrasplante:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    fecha:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    tm:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    tm_cual:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    gp_de_novo:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    recidiva_gp_de_novo:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    ra:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    rc:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    tratamiento:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    trasplante:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+InjertoEvolucionPbr:
+  tableName: injerto_evolucion_pbr
+  columns:
+    pretrasplante:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    fecha:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    resultado_pbr:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+Inmunosupresores:
+  tableName: inmunosupresores
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    tipo:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+Medicaciones:
+  tableName: medicaciones
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+Nefropatia:
+  tableName: nefropatia
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    nefropatia:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+PacienteCausaMuerte:
+  tableName: paciente_causa_muerte
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    detalles:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+PacienteCausaPerdidaInjerto:
+  tableName: paciente_causa_perdida_injerto
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    detalles:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+PacienteMuerte:
+  tableName: paciente_muerte
+  columns:
+    the:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    causa:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    fecha_muerte:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    tr_funcionando:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+PacientePerdidaInjerto:
+  tableName: paciente_perdida_injerto
+  columns:
+    the:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    causa:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fecha_perdida:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: true
+      default: '1900-01-01'
+      autoincrement: false
+    id_pretrasplante:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+Pacientepretrasplante:
+  tableName: pacientepretrasplante
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    the:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    fecha_ingreso_lista:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fecha_egreso:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    modalidad_d:
+      type: string(10)
+      fixed: true
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    pbr:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    diabetes:
+      type: string(7)
+      fixed: true
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    hta:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    obesidad:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    imc:
+      type: string(13)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    dislipemia:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    tabaquismo:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    origen:
+      type: string(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    iam:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ave:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    revasc_cardio:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+Pacientes:
+  tableName: pacientes
+  columns:
+    the:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    ci:
+      type: string(12)
+      fixed: true
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    nombre:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    apellido:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    num_fnr:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    raza:
+      type: string(15)
+      fixed: true
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    sexo:
+      type: string(1)
+      fixed: true
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fecha_nacimiento:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fecha_dialisis:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    nefropatia:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    grupo_sang:
+      type: string(2)
+      fixed: true
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+Ratratamiento:
+  tableName: ratratamiento
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+ResultadoPbr:
+  tableName: resultado_pbr
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    grado:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    criterio:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+Serol:
+  tableName: serol
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    tipo:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+SerolValor:
+  tableName: serol_valor
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: false
+      autoincrement: false
+    valor:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+      
+
+TrasplanteComplicaciones:
+  tableName: trasplante_complicaciones
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    idpretrasplante:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '-1'
+      notnull: true
+      autoincrement: false
+    fecha:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    medicacion:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    internado:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    dias_de_internacion:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    evolucion:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    comentario:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+TrasplanteInduccion:
+  tableName: trasplante_induccion
+  columns:
+    id_trasplante:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    id_induccion:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    valor:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+TrasplanteInmunosupresores:
+  tableName: trasplante_inmunosupresores
+  columns:
+    id_trasplante:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    id_inmunosupresores:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    valor:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+TrasplanteReoperacion:
+  tableName: trasplante_reoperacion
+  columns:
+    id_trasplante:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    fecha:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    descripcion:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    complicacion:
+      type: integer(3)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+TrasplanteSerol:
+  tableName: trasplante_serol
+  columns:
+    id_trasplante:
+      type: integer(3)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    id_serol:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    valor:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+Tratamiento:
+  tableName: tratamiento
+  columns:
+    the:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    medicacion:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    dosis:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fecha_inicio:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    fecha_fin:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false

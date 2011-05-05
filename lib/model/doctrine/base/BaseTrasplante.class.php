@@ -1,6 +1,4 @@
 <?php
-// Connection Component Binding
-Doctrine_Manager::getInstance()->bindComponent('Trasplante', 'doctrine');
 
 /**
  * BaseTrasplante
@@ -53,99 +51,102 @@ Doctrine_Manager::getInstance()->bindComponent('Trasplante', 'doctrine');
  * @property integer $num_de_hd
  * @property string $comentario
  * @property date $fecha_alta
+ * @property Doctrine_Collection $Cmv
  * 
- * @method integer    getId()                   Returns the current record's "id" value
- * @method integer    getPretrasplante()        Returns the current record's "pretrasplante" value
- * @method date       getFecha()                Returns the current record's "fecha" value
- * @method integer    getNumTr()                Returns the current record's "num_tr" value
- * @method string     getIdDonante()            Returns the current record's "id_donante" value
- * @method integer    getInestabHemod()         Returns the current record's "inestab_hemod" value
- * @method string     getRinhon()               Returns the current record's "rinhon" value
- * @method integer    getAnomaliaVasc()         Returns the current record's "anomalia_vasc" value
- * @method integer    getNumArt()               Returns the current record's "num_art" value
- * @method integer    getNumVenas()             Returns the current record's "num_venas" value
- * @method string     getUreter()               Returns the current record's "ureter" value
- * @method integer    getNumCompAB()            Returns the current record's "num_comp_a_b" value
- * @method integer    getNumCompDr()            Returns the current record's "num_comp_dr" value
- * @method integer    getNumImcompAB()          Returns the current record's "num_imcomp_a_b" value
- * @method integer    getNumImcompDr()          Returns the current record's "num_imcomp_dr" value
- * @method integer    getAutoac()               Returns the current record's "autoac" value
- * @method string     getPraMax()               Returns the current record's "pra_max" value
- * @method string     getPraTr()                Returns the current record's "pra_tr" value
- * @method integer    getTransPrevias()         Returns the current record's "trans_previas" value
- * @method integer    getNumTransf()            Returns the current record's "num_transf" value
- * @method string     getEmbarazo()             Returns the current record's "embarazo" value
- * @method integer    getNumEmbarazo()          Returns the current record's "num_embarazo" value
- * @method string     getLiqPerfusion()         Returns the current record's "liq_perfusion" value
- * @method integer    getTqDeBanco()            Returns the current record's "tq_de_banco" value
- * @method string     getLadoImplante()         Returns the current record's "lado_implante" value
- * @method string     getAnastVenosa()          Returns the current record's "anast_venosa" value
- * @method string     getAnastArterial()        Returns the current record's "anast_arterial" value
- * @method string     getAnastUreteral()        Returns the current record's "anast_ureteral" value
- * @method integer    getTIsqCalMin()           Returns the current record's "t_isq_cal_min" value
- * @method integer    getTIsqFriaHs()           Returns the current record's "t_isq_fria_hs" value
- * @method integer    getTIsqFriaMin()          Returns the current record's "t_isq_fria_min" value
- * @method integer    getTIsqTibiaHs()          Returns the current record's "t_isq_tibia_hs" value
- * @method string     getRepercusion()          Returns the current record's "repercusion" value
- * @method integer    getSangradoIOp()          Returns the current record's "sangrado_i_op" value
- * @method integer    getLesionArterial()       Returns the current record's "lesion_arterial" value
- * @method integer    getLesionVenosa()         Returns the current record's "lesion_venosa" value
- * @method integer    getNecesidadRepefundir()  Returns the current record's "necesidad_repefundir" value
- * @method string     getOtrasComplQuirur()     Returns the current record's "otras_compl_quirur" value
- * @method integer    getDiuresisIOp()          Returns the current record's "diuresis_i_op" value
- * @method float      getCrInicial()            Returns the current record's "cr_inicial" value
- * @method integer    getDiaRecDiuresis()       Returns the current record's "dia_rec_diuresis" value
- * @method integer    getDiaRecFuncional()      Returns the current record's "dia_rec_funcional" value
- * @method integer    getDialisis()             Returns the current record's "dialisis" value
- * @method integer    getNumDeHd()              Returns the current record's "num_de_hd" value
- * @method string     getComentario()           Returns the current record's "comentario" value
- * @method date       getFechaAlta()            Returns the current record's "fecha_alta" value
- * @method Trasplante setId()                   Sets the current record's "id" value
- * @method Trasplante setPretrasplante()        Sets the current record's "pretrasplante" value
- * @method Trasplante setFecha()                Sets the current record's "fecha" value
- * @method Trasplante setNumTr()                Sets the current record's "num_tr" value
- * @method Trasplante setIdDonante()            Sets the current record's "id_donante" value
- * @method Trasplante setInestabHemod()         Sets the current record's "inestab_hemod" value
- * @method Trasplante setRinhon()               Sets the current record's "rinhon" value
- * @method Trasplante setAnomaliaVasc()         Sets the current record's "anomalia_vasc" value
- * @method Trasplante setNumArt()               Sets the current record's "num_art" value
- * @method Trasplante setNumVenas()             Sets the current record's "num_venas" value
- * @method Trasplante setUreter()               Sets the current record's "ureter" value
- * @method Trasplante setNumCompAB()            Sets the current record's "num_comp_a_b" value
- * @method Trasplante setNumCompDr()            Sets the current record's "num_comp_dr" value
- * @method Trasplante setNumImcompAB()          Sets the current record's "num_imcomp_a_b" value
- * @method Trasplante setNumImcompDr()          Sets the current record's "num_imcomp_dr" value
- * @method Trasplante setAutoac()               Sets the current record's "autoac" value
- * @method Trasplante setPraMax()               Sets the current record's "pra_max" value
- * @method Trasplante setPraTr()                Sets the current record's "pra_tr" value
- * @method Trasplante setTransPrevias()         Sets the current record's "trans_previas" value
- * @method Trasplante setNumTransf()            Sets the current record's "num_transf" value
- * @method Trasplante setEmbarazo()             Sets the current record's "embarazo" value
- * @method Trasplante setNumEmbarazo()          Sets the current record's "num_embarazo" value
- * @method Trasplante setLiqPerfusion()         Sets the current record's "liq_perfusion" value
- * @method Trasplante setTqDeBanco()            Sets the current record's "tq_de_banco" value
- * @method Trasplante setLadoImplante()         Sets the current record's "lado_implante" value
- * @method Trasplante setAnastVenosa()          Sets the current record's "anast_venosa" value
- * @method Trasplante setAnastArterial()        Sets the current record's "anast_arterial" value
- * @method Trasplante setAnastUreteral()        Sets the current record's "anast_ureteral" value
- * @method Trasplante setTIsqCalMin()           Sets the current record's "t_isq_cal_min" value
- * @method Trasplante setTIsqFriaHs()           Sets the current record's "t_isq_fria_hs" value
- * @method Trasplante setTIsqFriaMin()          Sets the current record's "t_isq_fria_min" value
- * @method Trasplante setTIsqTibiaHs()          Sets the current record's "t_isq_tibia_hs" value
- * @method Trasplante setRepercusion()          Sets the current record's "repercusion" value
- * @method Trasplante setSangradoIOp()          Sets the current record's "sangrado_i_op" value
- * @method Trasplante setLesionArterial()       Sets the current record's "lesion_arterial" value
- * @method Trasplante setLesionVenosa()         Sets the current record's "lesion_venosa" value
- * @method Trasplante setNecesidadRepefundir()  Sets the current record's "necesidad_repefundir" value
- * @method Trasplante setOtrasComplQuirur()     Sets the current record's "otras_compl_quirur" value
- * @method Trasplante setDiuresisIOp()          Sets the current record's "diuresis_i_op" value
- * @method Trasplante setCrInicial()            Sets the current record's "cr_inicial" value
- * @method Trasplante setDiaRecDiuresis()       Sets the current record's "dia_rec_diuresis" value
- * @method Trasplante setDiaRecFuncional()      Sets the current record's "dia_rec_funcional" value
- * @method Trasplante setDialisis()             Sets the current record's "dialisis" value
- * @method Trasplante setNumDeHd()              Sets the current record's "num_de_hd" value
- * @method Trasplante setComentario()           Sets the current record's "comentario" value
- * @method Trasplante setFechaAlta()            Sets the current record's "fecha_alta" value
+ * @method integer             getId()                   Returns the current record's "id" value
+ * @method integer             getPretrasplante()        Returns the current record's "pretrasplante" value
+ * @method date                getFecha()                Returns the current record's "fecha" value
+ * @method integer             getNumTr()                Returns the current record's "num_tr" value
+ * @method string              getIdDonante()            Returns the current record's "id_donante" value
+ * @method integer             getInestabHemod()         Returns the current record's "inestab_hemod" value
+ * @method string              getRinhon()               Returns the current record's "rinhon" value
+ * @method integer             getAnomaliaVasc()         Returns the current record's "anomalia_vasc" value
+ * @method integer             getNumArt()               Returns the current record's "num_art" value
+ * @method integer             getNumVenas()             Returns the current record's "num_venas" value
+ * @method string              getUreter()               Returns the current record's "ureter" value
+ * @method integer             getNumCompAB()            Returns the current record's "num_comp_a_b" value
+ * @method integer             getNumCompDr()            Returns the current record's "num_comp_dr" value
+ * @method integer             getNumImcompAB()          Returns the current record's "num_imcomp_a_b" value
+ * @method integer             getNumImcompDr()          Returns the current record's "num_imcomp_dr" value
+ * @method integer             getAutoac()               Returns the current record's "autoac" value
+ * @method string              getPraMax()               Returns the current record's "pra_max" value
+ * @method string              getPraTr()                Returns the current record's "pra_tr" value
+ * @method integer             getTransPrevias()         Returns the current record's "trans_previas" value
+ * @method integer             getNumTransf()            Returns the current record's "num_transf" value
+ * @method string              getEmbarazo()             Returns the current record's "embarazo" value
+ * @method integer             getNumEmbarazo()          Returns the current record's "num_embarazo" value
+ * @method string              getLiqPerfusion()         Returns the current record's "liq_perfusion" value
+ * @method integer             getTqDeBanco()            Returns the current record's "tq_de_banco" value
+ * @method string              getLadoImplante()         Returns the current record's "lado_implante" value
+ * @method string              getAnastVenosa()          Returns the current record's "anast_venosa" value
+ * @method string              getAnastArterial()        Returns the current record's "anast_arterial" value
+ * @method string              getAnastUreteral()        Returns the current record's "anast_ureteral" value
+ * @method integer             getTIsqCalMin()           Returns the current record's "t_isq_cal_min" value
+ * @method integer             getTIsqFriaHs()           Returns the current record's "t_isq_fria_hs" value
+ * @method integer             getTIsqFriaMin()          Returns the current record's "t_isq_fria_min" value
+ * @method integer             getTIsqTibiaHs()          Returns the current record's "t_isq_tibia_hs" value
+ * @method string              getRepercusion()          Returns the current record's "repercusion" value
+ * @method integer             getSangradoIOp()          Returns the current record's "sangrado_i_op" value
+ * @method integer             getLesionArterial()       Returns the current record's "lesion_arterial" value
+ * @method integer             getLesionVenosa()         Returns the current record's "lesion_venosa" value
+ * @method integer             getNecesidadRepefundir()  Returns the current record's "necesidad_repefundir" value
+ * @method string              getOtrasComplQuirur()     Returns the current record's "otras_compl_quirur" value
+ * @method integer             getDiuresisIOp()          Returns the current record's "diuresis_i_op" value
+ * @method float               getCrInicial()            Returns the current record's "cr_inicial" value
+ * @method integer             getDiaRecDiuresis()       Returns the current record's "dia_rec_diuresis" value
+ * @method integer             getDiaRecFuncional()      Returns the current record's "dia_rec_funcional" value
+ * @method integer             getDialisis()             Returns the current record's "dialisis" value
+ * @method integer             getNumDeHd()              Returns the current record's "num_de_hd" value
+ * @method string              getComentario()           Returns the current record's "comentario" value
+ * @method date                getFechaAlta()            Returns the current record's "fecha_alta" value
+ * @method Doctrine_Collection getCmv()                  Returns the current record's "Cmv" collection
+ * @method Trasplante          setId()                   Sets the current record's "id" value
+ * @method Trasplante          setPretrasplante()        Sets the current record's "pretrasplante" value
+ * @method Trasplante          setFecha()                Sets the current record's "fecha" value
+ * @method Trasplante          setNumTr()                Sets the current record's "num_tr" value
+ * @method Trasplante          setIdDonante()            Sets the current record's "id_donante" value
+ * @method Trasplante          setInestabHemod()         Sets the current record's "inestab_hemod" value
+ * @method Trasplante          setRinhon()               Sets the current record's "rinhon" value
+ * @method Trasplante          setAnomaliaVasc()         Sets the current record's "anomalia_vasc" value
+ * @method Trasplante          setNumArt()               Sets the current record's "num_art" value
+ * @method Trasplante          setNumVenas()             Sets the current record's "num_venas" value
+ * @method Trasplante          setUreter()               Sets the current record's "ureter" value
+ * @method Trasplante          setNumCompAB()            Sets the current record's "num_comp_a_b" value
+ * @method Trasplante          setNumCompDr()            Sets the current record's "num_comp_dr" value
+ * @method Trasplante          setNumImcompAB()          Sets the current record's "num_imcomp_a_b" value
+ * @method Trasplante          setNumImcompDr()          Sets the current record's "num_imcomp_dr" value
+ * @method Trasplante          setAutoac()               Sets the current record's "autoac" value
+ * @method Trasplante          setPraMax()               Sets the current record's "pra_max" value
+ * @method Trasplante          setPraTr()                Sets the current record's "pra_tr" value
+ * @method Trasplante          setTransPrevias()         Sets the current record's "trans_previas" value
+ * @method Trasplante          setNumTransf()            Sets the current record's "num_transf" value
+ * @method Trasplante          setEmbarazo()             Sets the current record's "embarazo" value
+ * @method Trasplante          setNumEmbarazo()          Sets the current record's "num_embarazo" value
+ * @method Trasplante          setLiqPerfusion()         Sets the current record's "liq_perfusion" value
+ * @method Trasplante          setTqDeBanco()            Sets the current record's "tq_de_banco" value
+ * @method Trasplante          setLadoImplante()         Sets the current record's "lado_implante" value
+ * @method Trasplante          setAnastVenosa()          Sets the current record's "anast_venosa" value
+ * @method Trasplante          setAnastArterial()        Sets the current record's "anast_arterial" value
+ * @method Trasplante          setAnastUreteral()        Sets the current record's "anast_ureteral" value
+ * @method Trasplante          setTIsqCalMin()           Sets the current record's "t_isq_cal_min" value
+ * @method Trasplante          setTIsqFriaHs()           Sets the current record's "t_isq_fria_hs" value
+ * @method Trasplante          setTIsqFriaMin()          Sets the current record's "t_isq_fria_min" value
+ * @method Trasplante          setTIsqTibiaHs()          Sets the current record's "t_isq_tibia_hs" value
+ * @method Trasplante          setRepercusion()          Sets the current record's "repercusion" value
+ * @method Trasplante          setSangradoIOp()          Sets the current record's "sangrado_i_op" value
+ * @method Trasplante          setLesionArterial()       Sets the current record's "lesion_arterial" value
+ * @method Trasplante          setLesionVenosa()         Sets the current record's "lesion_venosa" value
+ * @method Trasplante          setNecesidadRepefundir()  Sets the current record's "necesidad_repefundir" value
+ * @method Trasplante          setOtrasComplQuirur()     Sets the current record's "otras_compl_quirur" value
+ * @method Trasplante          setDiuresisIOp()          Sets the current record's "diuresis_i_op" value
+ * @method Trasplante          setCrInicial()            Sets the current record's "cr_inicial" value
+ * @method Trasplante          setDiaRecDiuresis()       Sets the current record's "dia_rec_diuresis" value
+ * @method Trasplante          setDiaRecFuncional()      Sets the current record's "dia_rec_funcional" value
+ * @method Trasplante          setDialisis()             Sets the current record's "dialisis" value
+ * @method Trasplante          setNumDeHd()              Sets the current record's "num_de_hd" value
+ * @method Trasplante          setComentario()           Sets the current record's "comentario" value
+ * @method Trasplante          setFechaAlta()            Sets the current record's "fecha_alta" value
+ * @method Trasplante          setCmv()                  Sets the current record's "Cmv" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -157,417 +158,190 @@ abstract class BaseTrasplante extends sfDoctrineRecord
     public function setTableDefinition()
     {
         $this->setTableName('trasplante');
-        $this->hasColumn('id', 'integer', 3, array(
+        $this->hasColumn('id', 'integer', 4, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
              'primary' => true,
              'autoincrement' => true,
-             'length' => 3,
+             'length' => 4,
              ));
         $this->hasColumn('pretrasplante', 'integer', 4, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 4,
              ));
         $this->hasColumn('fecha', 'date', 25, array(
              'type' => 'date',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 25,
              ));
         $this->hasColumn('num_tr', 'integer', 4, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 4,
              ));
         $this->hasColumn('id_donante', 'string', 20, array(
              'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 20,
              ));
         $this->hasColumn('inestab_hemod', 'integer', 1, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 1,
              ));
         $this->hasColumn('rinhon', 'string', 10, array(
              'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 10,
              ));
         $this->hasColumn('anomalia_vasc', 'integer', 1, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 1,
              ));
         $this->hasColumn('num_art', 'integer', 1, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 1,
              ));
         $this->hasColumn('num_venas', 'integer', 1, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 1,
              ));
         $this->hasColumn('ureter', 'string', 5, array(
              'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 5,
              ));
         $this->hasColumn('num_comp_a_b', 'integer', 3, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 3,
              ));
         $this->hasColumn('num_comp_dr', 'integer', 3, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 3,
              ));
         $this->hasColumn('num_imcomp_a_b', 'integer', 3, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 3,
              ));
         $this->hasColumn('num_imcomp_dr', 'integer', 3, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 3,
              ));
         $this->hasColumn('autoac', 'integer', 1, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 1,
              ));
         $this->hasColumn('pra_max', 'string', 10, array(
              'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 10,
              ));
         $this->hasColumn('pra_tr', 'string', 20, array(
              'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 20,
              ));
         $this->hasColumn('trans_previas', 'integer', 1, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 1,
              ));
         $this->hasColumn('num_transf', 'integer', 1, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 1,
              ));
         $this->hasColumn('embarazo', 'string', 9, array(
              'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 9,
              ));
         $this->hasColumn('num_embarazo', 'integer', 1, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 1,
              ));
         $this->hasColumn('liq_perfusion', 'string', 11, array(
              'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 11,
              ));
         $this->hasColumn('tq_de_banco', 'integer', 1, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 1,
              ));
         $this->hasColumn('lado_implante', 'string', 10, array(
              'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 10,
              ));
         $this->hasColumn('anast_venosa', 'string', 17, array(
              'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 17,
              ));
         $this->hasColumn('anast_arterial', 'string', 17, array(
              'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 17,
              ));
         $this->hasColumn('anast_ureteral', 'string', 9, array(
              'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 9,
              ));
         $this->hasColumn('t_isq_cal_min', 'integer', 3, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 3,
              ));
         $this->hasColumn('t_isq_fria_hs', 'integer', 3, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 3,
              ));
         $this->hasColumn('t_isq_fria_min', 'integer', 3, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 3,
              ));
         $this->hasColumn('t_isq_tibia_hs', 'integer', 3, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 3,
              ));
         $this->hasColumn('repercusion', 'string', 7, array(
              'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 7,
              ));
         $this->hasColumn('sangrado_i_op', 'integer', 1, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 1,
              ));
         $this->hasColumn('lesion_arterial', 'integer', 1, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 1,
              ));
         $this->hasColumn('lesion_venosa', 'integer', 1, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 1,
              ));
         $this->hasColumn('necesidad_repefundir', 'integer', 1, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 1,
              ));
         $this->hasColumn('otras_compl_quirur', 'string', 250, array(
              'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 250,
              ));
         $this->hasColumn('diuresis_i_op', 'integer', 1, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 1,
              ));
         $this->hasColumn('cr_inicial', 'float', null, array(
              'type' => 'float',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => '',
              ));
         $this->hasColumn('dia_rec_diuresis', 'integer', 2, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 2,
              ));
         $this->hasColumn('dia_rec_funcional', 'integer', 2, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 2,
              ));
         $this->hasColumn('dialisis', 'integer', 1, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 1,
              ));
         $this->hasColumn('num_de_hd', 'integer', 2, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 2,
              ));
         $this->hasColumn('comentario', 'string', 255, array(
              'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 255,
              ));
         $this->hasColumn('fecha_alta', 'date', 25, array(
              'type' => 'date',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
              'length' => 25,
              ));
     }
@@ -575,6 +349,12 @@ abstract class BaseTrasplante extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasMany('Cmv', array(
+             'local' => 'id',
+             'foreign' => 'trasplante_id'));
+
+        $timestampable0 = new Doctrine_Template_Timestampable(array(
+             ));
+        $this->actAs($timestampable0);
     }
 }

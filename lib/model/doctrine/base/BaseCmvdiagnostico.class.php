@@ -1,6 +1,4 @@
 <?php
-// Connection Component Binding
-Doctrine_Manager::getInstance()->bindComponent('Cmvdiagnostico', 'doctrine');
 
 /**
  * BaseCmvdiagnostico
@@ -9,11 +7,14 @@ Doctrine_Manager::getInstance()->bindComponent('Cmvdiagnostico', 'doctrine');
  * 
  * @property integer $id
  * @property string $nombre
+ * @property Doctrine_Collection $Cmv
  * 
- * @method integer        getId()     Returns the current record's "id" value
- * @method string         getNombre() Returns the current record's "nombre" value
- * @method Cmvdiagnostico setId()     Sets the current record's "id" value
- * @method Cmvdiagnostico setNombre() Sets the current record's "nombre" value
+ * @method integer             getId()     Returns the current record's "id" value
+ * @method string              getNombre() Returns the current record's "nombre" value
+ * @method Doctrine_Collection getCmv()    Returns the current record's "Cmv" collection
+ * @method Cmvdiagnostico      setId()     Sets the current record's "id" value
+ * @method Cmvdiagnostico      setNombre() Sets the current record's "nombre" value
+ * @method Cmvdiagnostico      setCmv()    Sets the current record's "Cmv" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -25,21 +26,15 @@ abstract class BaseCmvdiagnostico extends sfDoctrineRecord
     public function setTableDefinition()
     {
         $this->setTableName('cmvdiagnostico');
-        $this->hasColumn('id', 'integer', 2, array(
+        $this->hasColumn('id', 'integer', 4, array(
              'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
              'primary' => true,
              'autoincrement' => true,
-             'length' => 2,
+             'length' => 4,
              ));
         $this->hasColumn('nombre', 'string', 50, array(
              'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
+             'notnull' => true,
              'length' => 50,
              ));
     }
@@ -47,6 +42,12 @@ abstract class BaseCmvdiagnostico extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasMany('Cmv', array(
+             'local' => 'id',
+             'foreign' => 'cmv_diagnostico_id'));
+
+        $timestampable0 = new Doctrine_Template_Timestampable(array(
+             ));
+        $this->actAs($timestampable0);
     }
 }

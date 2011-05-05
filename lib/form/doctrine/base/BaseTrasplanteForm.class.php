@@ -61,6 +61,8 @@ abstract class BaseTrasplanteForm extends BaseFormDoctrine
       'num_de_hd'            => new sfWidgetFormInputText(),
       'comentario'           => new sfWidgetFormInputText(),
       'fecha_alta'           => new sfWidgetFormDate(),
+      'created_at'           => new sfWidgetFormDateTime(),
+      'updated_at'           => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
@@ -110,6 +112,8 @@ abstract class BaseTrasplanteForm extends BaseFormDoctrine
       'num_de_hd'            => new sfValidatorInteger(array('required' => false)),
       'comentario'           => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'fecha_alta'           => new sfValidatorDate(array('required' => false)),
+      'created_at'           => new sfValidatorDateTime(),
+      'updated_at'           => new sfValidatorDateTime(),
     ));
 
     $this->widgetSchema->setNameFormat('trasplante[%s]');

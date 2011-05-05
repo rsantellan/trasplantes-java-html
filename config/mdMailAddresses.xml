@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mails>
+  <titles> 
+    <contact>Contacto desde Manos del uruguay</contact>
+    <automatic>Contacto</automatic>
+  </titles>
+  <from>Manos del uruguay</from>
+  <email>rsantellan@gmail.com</email>
+</mails>

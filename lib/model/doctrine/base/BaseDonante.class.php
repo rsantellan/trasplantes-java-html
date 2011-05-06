@@ -22,6 +22,7 @@
  * @property Doctrine_Collection $DonanteOrganos
  * @property Doctrine_Collection $DonanteAntecedentes
  * @property Doctrine_Collection $DonanteSerol
+ * @property Doctrine_Collection $Trasplante
  * 
  * @method integer             getId()                      Returns the current record's "id" value
  * @method string              getIdentificador()           Returns the current record's "identificador" value
@@ -40,6 +41,7 @@
  * @method Doctrine_Collection getDonanteOrganos()          Returns the current record's "DonanteOrganos" collection
  * @method Doctrine_Collection getDonanteAntecedentes()     Returns the current record's "DonanteAntecedentes" collection
  * @method Doctrine_Collection getDonanteSerol()            Returns the current record's "DonanteSerol" collection
+ * @method Doctrine_Collection getTrasplante()              Returns the current record's "Trasplante" collection
  * @method Donante             setId()                      Sets the current record's "id" value
  * @method Donante             setIdentificador()           Sets the current record's "identificador" value
  * @method Donante             setTipoDonante()             Sets the current record's "tipo_donante" value
@@ -57,6 +59,7 @@
  * @method Donante             setDonanteOrganos()          Sets the current record's "DonanteOrganos" collection
  * @method Donante             setDonanteAntecedentes()     Sets the current record's "DonanteAntecedentes" collection
  * @method Donante             setDonanteSerol()            Sets the current record's "DonanteSerol" collection
+ * @method Donante             setTrasplante()              Sets the current record's "Trasplante" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -173,6 +176,10 @@ abstract class BaseDonante extends sfDoctrineRecord
              'foreign' => 'antecedente_de_donante_id'));
 
         $this->hasMany('DonanteSerol', array(
+             'local' => 'id',
+             'foreign' => 'donante_id'));
+
+        $this->hasMany('Trasplante', array(
              'local' => 'id',
              'foreign' => 'donante_id'));
 

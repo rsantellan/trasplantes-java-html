@@ -24,13 +24,21 @@ class donantesConvertorHandler
     self::saveAllSerolesValores($username, $password, $database);
   }
 
-  public static function saveAllSeroles($username,$password, $database)
+  public static function saveAllSeroles($username,$password, $database, $starting = 0, $quantity =0)
   {
         mysql_connect("localhost",$username,$password);
         
         @mysql_select_db($database) or die( "Unable to select database");
         mysql_query("set names 'utf8'");
-        $query="SELECT * FROM serol";
+        //$query="SELECT * FROM serol";
+        if($starting == 0 && $quantity == 0)
+        {
+          $query="SELECT * FROM serol";
+        }
+        else
+        {
+          $query="SELECT * FROM serol LIMIT ".$starting.", ".$quantity;
+        }
         $result=mysql_query($query);
         $num=mysql_numrows($result);
         mysql_close();
@@ -43,17 +51,31 @@ class donantesConvertorHandler
           $serol->setId($id);
           $serol->setTipo($tipo);
           $serol->save();
+          $serol->free(true);
           $i++;
         }
+        if($num == 0 || $num == "0")
+        {
+          return 0;
+        }
+        return 1;
   }
   
-  public static function saveAllSerolesValores($username,$password, $database)
+  public static function saveAllSerolesValores($username,$password, $database, $starting = 0, $quantity =0)
   {
         mysql_connect("localhost",$username,$password);
         
         @mysql_select_db($database) or die( "Unable to select database");
         mysql_query("set names 'utf8'");
         $query="SELECT * FROM serol_valor";
+        if($starting == 0 && $quantity == 0)
+        {
+          $query="SELECT * FROM serol_valor";
+        }
+        else
+        {
+          $query="SELECT * FROM serol_valor LIMIT ".$starting.", ".$quantity;
+        }
         $result=mysql_query($query);
         $num=mysql_numrows($result);
         mysql_close();
@@ -66,17 +88,31 @@ class donantesConvertorHandler
           $serolValor->setSerolId($id);
           $serolValor->setValor($tipo);
           $serolValor->save();
+          $serolValor->free(true);
           $i++;
         }
+
+        if($num == 0 || $num == "0")
+        {
+          return 0;
+        }
+        return 1;
   }
 
-  public static function saveAllAntecedentes($username,$password, $database)
+  public static function saveAllAntecedentes($username,$password, $database, $starting = 0, $quantity =0)
   {
         mysql_connect("localhost",$username,$password);
         
         @mysql_select_db($database) or die( "Unable to select database");
         mysql_query("set names 'utf8'");
-        $query="SELECT * FROM donante_antecedentes";
+        if($starting == 0 && $quantity == 0)
+        {
+          $query="SELECT * FROM donante_antecedentes";
+        }
+        else
+        {
+          $query="SELECT * FROM donante_antecedentes LIMIT ".$starting.", ".$quantity;
+        }
         $result=mysql_query($query);
         $num=mysql_numrows($result);
         mysql_close();
@@ -89,18 +125,30 @@ class donantesConvertorHandler
           $donanteAntecedente->setId($id);
           $donanteAntecedente->setNombre($name);
           $donanteAntecedente->save();
+          $donanteAntecedente->free(true);
           $i++;
         }         
-
+        if($num == 0 || $num == "0")
+        {
+          return 0;
+        }
+        return 1;
   }
 
-  public static function saveAllCausasDeMuerte($username,$password, $database)
+  public static function saveAllCausasDeMuerte($username,$password, $database, $starting = 0, $quantity =0)
   {
         mysql_connect("localhost",$username,$password);
 
         @mysql_select_db($database) or die( "Unable to select database");
         mysql_query("set names 'utf8'");
-        $query="SELECT * FROM donante_causa_muerte";
+        if($starting == 0 && $quantity == 0)
+        {
+          $query="SELECT * FROM donante_causa_muerte";
+        }
+        else
+        {
+          $query="SELECT * FROM donante_causa_muerte LIMIT ".$starting.", ".$quantity;
+        }
         $result=mysql_query($query);
         $num=mysql_numrows($result);
         mysql_close();
@@ -113,18 +161,30 @@ class donantesConvertorHandler
           $donanteCausaMuerte->setId($id);
           $donanteCausaMuerte->setNombre($name);
           $donanteCausaMuerte->save();
+          $donanteCausaMuerte->free(true);
           $i++;
         }
-
+        if($num == 0 || $num == "0")
+        {
+          return 0;
+        }
+        return 1;
   }
 
-  public static function saveAllDonantes($username,$password, $database)
+  public static function saveAllDonantes($username,$password, $database, $starting = 0, $quantity =0)
   {
         mysql_connect("localhost",$username,$password);
 
         @mysql_select_db($database) or die( "Unable to select database");
         mysql_query("set names 'utf8'");
-        $query="SELECT * FROM donante";
+        if($starting == 0 && $quantity == 0)
+        {
+          $query="SELECT * FROM donante";
+        }
+        else
+        {
+          $query="SELECT * FROM donante LIMIT ".$starting.", ".$quantity;
+        }
         $result=mysql_query($query);
         $num=mysql_numrows($result);
         mysql_close();
@@ -173,17 +233,32 @@ class donantesConvertorHandler
           $donante->setAltura($ALTURA);
 
           $donante->save();
+          $donante->free(true);
           $i++;
         }
+
+        if($num == 0 || $num == "0")
+        {
+          return 0;
+        }
+        return 1;
   }
 
-  public static function saveDonanteOrganos($username,$password, $database)
+  public static function saveDonanteOrganos($username,$password, $database, $starting = 0, $quantity =0)
   {
         mysql_connect("localhost",$username,$password);
 
         @mysql_select_db($database) or die( "Unable to select database");
         mysql_query("set names 'utf8'");
         $query="SELECT * FROM donante_organos";
+        if($starting == 0 && $quantity == 0)
+        {
+          $query="SELECT * FROM donante_organos";
+        }
+        else
+        {
+          $query="SELECT * FROM donante_organos LIMIT ".$starting.", ".$quantity;
+        }
         $result=mysql_query($query);
         $num=mysql_numrows($result);
         mysql_close();
@@ -216,24 +291,41 @@ class donantesConvertorHandler
             $DonanteOrganos->setDonanteId($donante->getId());
             $DonanteOrganos->setOrganoId($organo->getId());
             $DonanteOrganos->save();
+            $DonanteOrganos->free(true);
+            $donante->free(true);
+            $organo->free(true);
           }
           else
           {
-            echo "Existe un registro sin DONANTE asociado";
-            echo " DONANTE supuesto id: ".$id." ";
-            echo "\n";
+            //echo "Existe un registro sin DONANTE asociado";
+            //echo " DONANTE supuesto id: ".$id." ";
+            //echo "\n";
           }
           $i++;
         }
+
+        if($num == 0 || $num == "0")
+        {
+          return 0;
+        }
+        return 1;
   }
 
-  public static function saveDonanteAntecedentes($username,$password, $database)
+  public static function saveDonanteAntecedentes($username,$password, $database, $starting = 0, $quantity =0)
   {
         mysql_connect("localhost",$username,$password);
 
         @mysql_select_db($database) or die( "Unable to select database");
         mysql_query("set names 'utf8'");
         $query="SELECT * FROM donanterefantecedentes";
+        if($starting == 0 && $quantity == 0)
+        {
+          $query="SELECT * FROM donanterefantecedentes";
+        }
+        else
+        {
+          $query="SELECT * FROM donanterefantecedentes LIMIT ".$starting.", ".$quantity;
+        }
         $result=mysql_query($query);
         $num=mysql_numrows($result);
         mysql_close();
@@ -262,24 +354,40 @@ class donantesConvertorHandler
             $donanteAntecedente->setDonanteId($donante->getId());
             $donanteAntecedente->setAntecedenteDeDonanteId($antecedente->getId());
             $donanteAntecedente->save();
+            $donanteAntecedente->free(true);
+            $donante->free(true);
+            $antecedente->free(true);
           }
           else
           {
-            echo "Existe un registro sin DONANTE asociado";
-            echo " DONANTE supuesto id: ".$id." ";
-            echo "\n";
+//            echo "Existe un registro sin DONANTE asociado";
+//            echo " DONANTE supuesto id: ".$id." ";
+//            echo "\n";
           }
           $i++;
         }
+        if($num == 0 || $num == "0")
+        {
+          return 0;
+        }
+        return 1;
   }
 
-  public static function saveDonanteSerol($username,$password, $database)
+  public static function saveDonanteSerol($username,$password, $database, $starting = 0, $quantity =0)
   {
         mysql_connect("localhost",$username,$password);
 
         @mysql_select_db($database) or die( "Unable to select database");
         mysql_query("set names 'utf8'");
         $query="SELECT * FROM donante_serol";
+        if($starting == 0 && $quantity == 0)
+        {
+          $query="SELECT * FROM donante_serol";
+        }
+        else
+        {
+          $query="SELECT * FROM donante_serol LIMIT ".$starting.", ".$quantity;
+        }
         $result=mysql_query($query);
         $num=mysql_numrows($result);
         mysql_close();
@@ -318,15 +426,24 @@ class donantesConvertorHandler
             $donanteSerol->setSerolId($serol->getId());
             $donanteSerol->setSerolValorId($SerolValor->getId());
             $donanteSerol->save();
+            $donanteSerol->free(true);
+            $donante->free(true);
+            $serol->free(true);
+            $SerolValor->free(true);
           }
           else
           {
-            echo "Existe un registro sin DONANTE asociado";
-            echo " DONANTE supuesto id: ".$id." ";
-            echo "\n";
+//            echo "Existe un registro sin DONANTE asociado";
+//            echo " DONANTE supuesto id: ".$id." ";
+//            echo "\n";
           }
           $i++;
         }
+        if($num == 0 || $num == "0")
+        {
+          return 0;
+        }
+        return 1;
   }
 
 }

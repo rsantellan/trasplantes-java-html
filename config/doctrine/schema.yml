@@ -406,7 +406,7 @@ Trasplante:
       notnull: true
     numero_de_transplantes_realizados:
       type: integer(4)
-    id_donante:
+    donante_id:
       type: integer(4)
       notnull: true
     inestab_hemodial:
@@ -421,11 +421,11 @@ Trasplante:
       type: integer(1)
     ureter:
       type: string(5)
-    numero_compabilidad_a_b:
+    numero_compatibilidad_ab:
       type: integer(3)
-    numero_compabilidad_dr:
+    numero_compatibilidad_dr:
       type: integer(3)
-    numero_incompatibilidad_a_b:
+    numero_incompatibilidad_ab:
       type: integer(3)
     numero_incompatibilidad_dr:
       type: integer(3)
@@ -521,7 +521,18 @@ Trasplante:
       type: string(255)
     fecha_alta:
       type: date(25)
-
+  relations:       
+    Pacientepretrasplante:
+      local: paciente_pre_trasplante_id
+      foreign: id
+      type: one
+      onDelete: CASCADE 
+    Donante:
+      local: donante_id
+      foreign: id
+      type: one
+     
+      
 Cmv:
   actAs: [Timestampable]
   tableName: cmv

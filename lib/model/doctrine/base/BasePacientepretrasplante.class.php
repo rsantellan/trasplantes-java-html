@@ -23,6 +23,7 @@
  * @property integer $ave
  * @property integer $revasc_cardio
  * @property Pacientes $Pacientes
+ * @property Doctrine_Collection $Trasplante
  * 
  * @method integer               getId()                  Returns the current record's "id" value
  * @method integer               getPacienteId()          Returns the current record's "paciente_id" value
@@ -42,6 +43,7 @@
  * @method integer               getAve()                 Returns the current record's "ave" value
  * @method integer               getRevascCardio()        Returns the current record's "revasc_cardio" value
  * @method Pacientes             getPacientes()           Returns the current record's "Pacientes" value
+ * @method Doctrine_Collection   getTrasplante()          Returns the current record's "Trasplante" collection
  * @method Pacientepretrasplante setId()                  Sets the current record's "id" value
  * @method Pacientepretrasplante setPacienteId()          Sets the current record's "paciente_id" value
  * @method Pacientepretrasplante setThe()                 Sets the current record's "the" value
@@ -60,6 +62,7 @@
  * @method Pacientepretrasplante setAve()                 Sets the current record's "ave" value
  * @method Pacientepretrasplante setRevascCardio()        Sets the current record's "revasc_cardio" value
  * @method Pacientepretrasplante setPacientes()           Sets the current record's "Pacientes" value
+ * @method Pacientepretrasplante setTrasplante()          Sets the current record's "Trasplante" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -195,5 +198,9 @@ abstract class BasePacientepretrasplante extends sfDoctrineRecord
              'local' => 'paciente_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasMany('Trasplante', array(
+             'local' => 'id',
+             'foreign' => 'paciente_pre_trasplante_id'));
     }
 }

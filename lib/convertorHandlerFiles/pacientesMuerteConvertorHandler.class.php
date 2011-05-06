@@ -3,16 +3,25 @@
 class pacientesMuerteConvertorHandler
 {
   
-  public static function saveAllPacientesCausaDeMuerte($username,$password, $database)
+  public static function saveAllPacientesCausaDeMuerte($username,$password, $database, $starting = 0, $quantity =0)
   {
         mysql_connect("localhost",$username,$password);
         
         @mysql_select_db($database) or die( "Unable to select database");
         mysql_query("set names 'utf8'");
-        $query="SELECT * FROM paciente_causa_muerte";
+        
+        if($starting == 0 && $quantity == 0)
+        {
+          $query="SELECT * FROM paciente_causa_muerte";
+        }
+        else
+        {
+          $query="SELECT * FROM paciente_causa_muerte LIMIT ".$starting.", ".$quantity;
+        }
         $result=mysql_query($query);
 
         $num=mysql_numrows($result);
+        mysql_close();
         $i=0;
         while ($i < $num) {
           $id = mysql_result($result,$i,"ID");
@@ -21,18 +30,32 @@ class pacientesMuerteConvertorHandler
           $PacienteCausaMuerte->setId($id);
           $PacienteCausaMuerte->setNombre($DETALLES);
           $PacienteCausaMuerte->save();
+          $PacienteCausaMuerte->free(true);
           $i++;
         }         
-        mysql_close();
+        
+        if($num == 0 || $num == "0")
+        {
+          return 0;
+        }
+        return 1;
   }
 
-  public static function saveAllPacientesMuertes($username,$password, $database)
+  public static function saveAllPacientesMuertes($username,$password, $database, $starting = 0, $quantity =0)
   {
         mysql_connect("localhost",$username,$password);
 
         @mysql_select_db($database) or die( "Unable to select database");
         mysql_query("set names 'utf8'");
         $query="SELECT * FROM paciente_muerte";
+        if($starting == 0 && $quantity == 0)
+        {
+          $query="SELECT * FROM paciente_muerte";
+        }
+        else
+        {
+          $query="SELECT * FROM paciente_muerte LIMIT ".$starting.", ".$quantity;
+        }
         $result=mysql_query($query);
         $num=mysql_numrows($result);
         mysql_close();
@@ -55,9 +78,16 @@ class pacientesMuerteConvertorHandler
           $pacienteMuerte->setFechaMuerte($FECHA_MUERTE);
           $pacienteMuerte->setTransplanteFuncionando($TR_Funcionando);
           $pacienteMuerte->save();
+          $pacienteMuerte->free(true);
+          $paciente->free(true);
           $i++;
         }
-        
+
+        if($num == 0 || $num == "0")
+        {
+          return 0;
+        }
+        return 1;
   }
   
 }

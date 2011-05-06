@@ -3,13 +3,21 @@
 class pacientesConvertorHandler
 {
   
-  public static function saveAllPacientes($username,$password, $database)
+  public static function saveAllPacientes($username,$password, $database, $starting = 0, $quantity =0)
   {
         mysql_connect("localhost",$username,$password);
         
         @mysql_select_db($database) or die( "Unable to select database");
         mysql_query("set names 'utf8'");
         $query="SELECT * FROM pacientes";
+        if($starting == 0 && $quantity == 0)
+        {
+          $query="SELECT * FROM pacientes";
+        }
+        else
+        {
+          $query="SELECT * FROM pacientes LIMIT ".$starting.", ".$quantity;
+        }
         $result=mysql_query($query);
         $num=mysql_numrows($result);
         mysql_close();
@@ -40,27 +48,44 @@ class pacientesConvertorHandler
           $paciente->setGrupoSanguineo($GRUPO_SANG);
           $paciente->setSexo($SEXO);
           $paciente->save();
-          
+          $paciente->free(true);
           $i++;
         }         
-        
+        if($num == 0 || $num == "0")
+        {
+          return 0;
+        }
+        return 1;
   }
 
-  public static function saveAllPacientesPreTransplantes($username,$password, $database)
+  public static function saveAllPacientesPreTransplantes($username,$password, $database, $starting = 0, $quantity =0, $log = false)
   {
         mysql_connect("localhost",$username,$password);
 
         @mysql_select_db($database) or die( "Unable to select database");
         mysql_query("set names 'utf8'");
         $query="SELECT * FROM pacientepretrasplante";
+        if($starting == 0 && $quantity == 0)
+        {
+          $query="SELECT * FROM pacientepretrasplante";
+        }
+        else
+        {
+          $query="SELECT * FROM pacientepretrasplante LIMIT ".$starting.", ".$quantity;
+        }
         $result=mysql_query($query);
         $num=mysql_numrows($result);
         mysql_close();
         $i=0;
-        echo "En caso de Modalidad D nula se pondra HD";
-        echo "\n";
-        echo "En caso de IMC nula se pondra entre 20 y 25";
-        echo "\n";
+
+        if($log)
+        {
+          $echo =  "En caso de Modalidad D nula se pondra HD";
+          //sfContext::getInstance()->getLogger()->err($echo);
+          $echo =  "En caso de IMC nula se pondra entre 20 y 25";
+          //sfContext::getInstance()->getLogger()->err($echo);
+        }
+
         while ($i < $num) {
           $ID = mysql_result($result,$i,"ID");
           $THE = mysql_result($result,$i,"THE");
@@ -85,17 +110,27 @@ class pacientesConvertorHandler
           }
           if($MODALIDAD_D == "null")
           {
-            echo "Modalidad D del pretransplante es nula: ";
-            echo "Paciente THE: ".$ID." ";
-            echo "\n";
-            $MODALIDAD_D = "HD";
+            if($log)
+            {
+              $echo =  "Modalidad D del pretransplante es nula: ";
+              //sfContext::getInstance()->getLogger()->err($echo);
+              $echo =  "Paciente THE: ".$ID." ";
+              //sfContext::getInstance()->getLogger()->err($echo);
+              $MODALIDAD_D = "HD";
+            }
+
           }
 
           if($IMC == "null")
           {
-            echo "IMC del pretransplante es nula: ";
-            echo "Paciente THE: ".$ID." ";
-            echo "\n";
+            if($log)
+            {
+              $echo =  "IMC del pretransplante es nula: ";
+              //sfContext::getInstance()->getLogger()->err($echo);
+              $echo =  "Paciente THE: ".$ID." ";
+              //sfContext::getInstance()->getLogger()->err($echo);
+            }
+
             $IMC = "entre 20 y 25";            
           }          
           
@@ -118,10 +153,15 @@ class pacientesConvertorHandler
           $preTransplante->setRevascCardio($REVASC_CARDIO);
 
           $preTransplante->save();
-
+          $preTransplante->free(true);
+          $paciente->free(true);
           $i++;
         }
-
+        if($num == 0 || $num == "0")
+        {
+          return 0;
+        }
+        return 1;
   }
   
 }

@@ -24,7 +24,9 @@ Pacientes:
       type: string(15)
       notnull: true
     sexo:
-      type: string(1)
+      type: enum
+      length: 1
+      values: ['M','F']
       notnull: true
     fecha_nacimiento:
       type: date(25)
@@ -71,6 +73,7 @@ Pacientepretrasplante:
       notnull: true
     the:
       type: integer(4)
+      unique: true
       notnull: true      
     fecha_ingreso_lista:
       type: date(25)
@@ -165,7 +168,228 @@ PacienteCausaMuerte:
     nombre:
       type: string(255)
       notnull: true
+
+Donante:
+  actAs: [Timestampable]
+  tableName: donante
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    identificador:
+      type: string(20)
+      unique: true
+    tipo_donante:
+      type: enum
+      length: 10
+      values: ['Cadavérico','Vivo']
+      notnull: true
+    sexo_donante:
+      type: enum
+      length: 1
+      values: ['M','F']
+      notnull: true
+    edad_donante:
+      type: integer(1)
+    enastab_hemod:
+      type: integer(1)
+    donante_causa_muerte_id:
+      type: integer(4)
+      notnull: true
+    cr_p:
+      type: float()
+      default: 0
+    otros:
+      type: string(255)
+    grupo_sanguineo:
+      type: enum
+      length: 2
+      values: ['A','B','AB','O']
+      notnull: true
+    relacion_filiar:
+      type: enum
+      length: 11
+      values: ['padre/madre','hermano/a','Hijo/a','esposo/a','otro']
+    peso:
+      type: integer(4)
+    altura:
+      type: float()
+  relations:
+    DonanteCausaMuerte:
+      local: donante_causa_muerte_id
+      foreign: id
+      type: one
+    DonanteOrganos:
+      class: Organos
+      local: donante_id
+      foreign: organo_id
+      refClass: DonanteOrganos
+      foreignAlias: Donantes
+    DonanteAntecedentes:
+      class: AntecedentesDeDonante
+      local: donante_id
+      foreign: antecedente_de_donante_id
+      refClass: DonanteAntecedentes
+      foreignAlias: Donantes      
+            
+AntecedentesDeDonante:
+  actAs: [Timestampable]
+  tableName: antecedentes_de_donante
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(255)
+      notnull: true
+
+DonanteCausaMuerte:
+  actAs: [Timestampable]
+  tableName: donante_causa_muerte
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(255)
+      notnull: true
+      
+DonanteOrganos:
+  actAs: [Timestampable]
+  tableName: donante_organos
+  options:
+    symfony:
+      form:   false
+      filter: false  
+  columns:
+    donante_id:
+      type: integer(4)
+      notnull: true
+      primary: true
+    organo_id:
+      type: integer(4)
+      notnull: true
+      primary: true
+  relations:
+    Donante:
+      local: donante_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
+    Organos:
+      local: organo_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
+            
+Organos:
+  actAs: [Timestampable]
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(255)
+      notnull: true
+      
+DonanteAntecedentes:
+  actAs: [Timestampable]
+  tableName: donante_antecedentes
+  options:
+    symfony:
+      form:   false
+      filter: false  
+  columns:
+    donante_id:
+      type: integer(4)
+      notnull: true
+      primary: true
+    antecedente_de_donante_id:
+      type: integer(4)
+      notnull: true
+      primary: true
+  relations:      
+    Donante:
+      local: donante_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
+    AntecedentesDeDonante:
+      local: antecedente_de_donante_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
+
+# Serol no esta implementado.
+DonanteSerol:
+  actAs: [Timestampable]
+  tableName: donante_serol
+  options:
+    symfony:
+      form:   false
+      filter: false  
+  columns:
+    donante_id:
+      type: integer(4)
+      notnull: true
+      primary: true
+    serol_id:
+      type: integer(4)
+      notnull: true
+      primary: true
+    serol_valor_id:
+      type: integer(4)
+      notnull: true
+  relations:      
+    Donante:
+      local: donante_id
+      foreign: id
+      type: one
+    Serol:
+      local: serol_id
+      foreign: id
+      type: one
+    SerolValor:
+      local: serol_valor_id
+      foreign: id
+      type: one
                   
+Serol:
+  tableName: serol
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    tipo:
+      type: string(50)
+      notnull: true
+      
+SerolValor:
+  tableName: serol_valor
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true  
+    serol_id:
+      type: integer(4)
+      notnull: true
+    valor:
+      type: string(50)
+      notnull: true
+  relations:       
+    Serol:
+      local: serol_id
+      foreign: id
+      type: one
+      onDelete: CASCADE    
+      
+                                    
 Trasplante:
   actAs: [Timestampable]
   tableName: trasplante
@@ -174,33 +398,36 @@ Trasplante:
       type: integer(4)
       primary: true
       autoincrement: true
-    pretrasplante:
+    paciente_pre_trasplante_id:
       type: integer(4)
+      notnull: true
     fecha:
       type: date(25)
-    num_tr:
+      notnull: true
+    numero_de_transplantes_realizados:
       type: integer(4)
     id_donante:
-      type: string(20)
-    inestab_hemod:
+      type: integer(4)
+      notnull: true
+    inestab_hemodial:
       type: integer(1)
     rinhon:
       type: string(10)
-    anomalia_vasc:
+    anomalia_vascular:
       type: integer(1)
-    num_art:
+    numero_arterias:
       type: integer(1)
-    num_venas:
+    numero_venas:
       type: integer(1)
     ureter:
       type: string(5)
-    num_comp_a_b:
+    numero_compabilidad_a_b:
       type: integer(3)
-    num_comp_dr:
+    numero_compabilidad_dr:
       type: integer(3)
-    num_imcomp_a_b:
+    numero_incompatibilidad_a_b:
       type: integer(3)
-    num_imcomp_dr:
+    numero_incompatibilidad_dr:
       type: integer(3)
     autoac:
       type: integer(1)
@@ -210,34 +437,61 @@ Trasplante:
       type: string(20)
     trans_previas:
       type: integer(1)
-    num_transf:
+    numero_transf:
       type: integer(1)
     embarazo:
-      type: string(9)
-    num_embarazo:
+      type: enum
+      length: 9
+      values: ['si','no','no aplica']
+      notnull: true
+      default: 'no aplica'
+    numero_embarazo:
       type: integer(1)
-    liq_perfusion:
-      type: string(11)
+      default: 0
+    liquido_perfusion:
+      type: enum
+      length: 12
+      values: ['Eurocollins','WC','Custodiol','Otro']
+      notnull: true
     tq_de_banco:
       type: integer(1)
     lado_implante:
-      type: string(10)
+      type: enum
+      length: 12
+      values: ['Derecho','Izquierdo']
+      notnull: true
     anast_venosa:
-      type: string(17)
+      type: enum
+      length: 17
+      values: ['Termino lateral','Termino terminal','otra']
+      notnull: true      
     anast_arterial:
-      type: string(17)
+      type: enum
+      length: 17
+      values: ['Termino lateral','Termino terminal','otra']
+      notnull: true
     anast_ureteral:
-      type: string(9)
+      type: enum
+      length: 9
+      values: ['Alferez','Taguchi','Gregoire','Lick','Otra']
+      notnull: true      
     t_isq_cal_min:
       type: integer(3)
+      default: 0
     t_isq_fria_hs:
       type: integer(3)
+      default: 0
     t_isq_fria_min:
       type: integer(3)
+      default: 0
     t_isq_tibia_hs:
       type: integer(3)
-    repercusion:
-      type: string(7)
+      default: 0
+    reperfusion:
+      type: enum
+      length: 7
+      values: ['buena','regular','mala']
+      notnull: true      
     sangrado_i_op:
       type: integer(1)
     lesion_arterial:
@@ -252,10 +506,13 @@ Trasplante:
       type: integer(1)
     cr_inicial:
       type: float()
+      default: 0
     dia_rec_diuresis:
       type: integer(2)
+      default: 0
     dia_rec_funcional:
       type: integer(2)
+      default: 0
     dialisis:
       type: integer(1)
     num_de_hd:
@@ -308,6 +565,12 @@ Cmv:
       local: cmv_droga_id
       foreign: id
       type: one
+    CmvEmfermedades:
+      class: Cmvemfermedades
+      local: cmv_id
+      foreign: cmv_emfermedades_id
+      refClass: CmvUsoEnfermedades
+      foreignAlias: Cmvs      
       
 Cmvdiagnostico:
   actAs: [Timestampable]

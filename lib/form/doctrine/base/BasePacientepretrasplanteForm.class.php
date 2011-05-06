@@ -54,6 +54,10 @@ abstract class BasePacientepretrasplanteForm extends BaseFormDoctrine
       'revasc_cardio'       => new sfValidatorInteger(array('required' => false)),
     ));
 
+    $this->validatorSchema->setPostValidator(
+      new sfValidatorDoctrineUnique(array('model' => 'Pacientepretrasplante', 'column' => array('the')))
+    );
+
     $this->widgetSchema->setNameFormat('pacientepretrasplante[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);

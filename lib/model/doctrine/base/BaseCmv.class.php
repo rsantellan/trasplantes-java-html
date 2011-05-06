@@ -16,6 +16,7 @@
  * @property Trasplante $Trasplante
  * @property Cmvdiagnostico $Cmvdiagnostico
  * @property Cmvdrogas $Cmvdrogas
+ * @property Doctrine_Collection $CmvEmfermedades
  * @property Doctrine_Collection $CmvUsoEnfermedades
  * 
  * @method integer             getId()                 Returns the current record's "id" value
@@ -29,6 +30,7 @@
  * @method Trasplante          getTrasplante()         Returns the current record's "Trasplante" value
  * @method Cmvdiagnostico      getCmvdiagnostico()     Returns the current record's "Cmvdiagnostico" value
  * @method Cmvdrogas           getCmvdrogas()          Returns the current record's "Cmvdrogas" value
+ * @method Doctrine_Collection getCmvEmfermedades()    Returns the current record's "CmvEmfermedades" collection
  * @method Doctrine_Collection getCmvUsoEnfermedades() Returns the current record's "CmvUsoEnfermedades" collection
  * @method Cmv                 setId()                 Sets the current record's "id" value
  * @method Cmv                 setTrasplanteId()       Sets the current record's "trasplante_id" value
@@ -41,6 +43,7 @@
  * @method Cmv                 setTrasplante()         Sets the current record's "Trasplante" value
  * @method Cmv                 setCmvdiagnostico()     Sets the current record's "Cmvdiagnostico" value
  * @method Cmv                 setCmvdrogas()          Sets the current record's "Cmvdrogas" value
+ * @method Cmv                 setCmvEmfermedades()    Sets the current record's "CmvEmfermedades" collection
  * @method Cmv                 setCmvUsoEnfermedades() Sets the current record's "CmvUsoEnfermedades" collection
  * 
  * @package    transplantes
@@ -111,6 +114,11 @@ abstract class BaseCmv extends sfDoctrineRecord
         $this->hasOne('Cmvdrogas', array(
              'local' => 'cmv_droga_id',
              'foreign' => 'id'));
+
+        $this->hasMany('Cmvemfermedades as CmvEmfermedades', array(
+             'refClass' => 'CmvUsoEnfermedades',
+             'local' => 'cmv_id',
+             'foreign' => 'cmv_emfermedades_id'));
 
         $this->hasMany('CmvUsoEnfermedades', array(
              'local' => 'id',

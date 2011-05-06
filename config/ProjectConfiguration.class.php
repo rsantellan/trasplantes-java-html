@@ -7,6 +7,12 @@ class ProjectConfiguration extends sfProjectConfiguration
 {
   public function setup()
   {
-    $this->enableAllPluginsExcept(array('sfPropelPlugin'));      
+    $this->enablePlugins('sfDoctrinePlugin');
+    $this->enablePlugins('mastodontePlugin');
+    $this->enablePlugins('mdAuthDoctrinePlugin');
+    $this->enablePlugins('mdMediaDoctrinePlugin');
+    $this->enablePlugins('mdContactPlugin');
+    $this->enablePlugins('mdMediaManagerPlugin');
+    $this->enablePlugins('mdUserDoctrinePlugin');
   }
 }

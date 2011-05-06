@@ -84,6 +84,7 @@ abstract class BasePacientepretrasplante extends sfDoctrineRecord
              ));
         $this->hasColumn('the', 'integer', 4, array(
              'type' => 'integer',
+             'unique' => true,
              'notnull' => true,
              'length' => 4,
              ));

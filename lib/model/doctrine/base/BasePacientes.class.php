@@ -12,7 +12,7 @@
  * @property string $apellido
  * @property integer $num_fnr
  * @property string $raza
- * @property string $sexo
+ * @property enum $sexo
  * @property date $fecha_nacimiento
  * @property date $fecha_dialisis
  * @property integer $nefropatia_id
@@ -28,7 +28,7 @@
  * @method string              getApellido()              Returns the current record's "apellido" value
  * @method integer             getNumFnr()                Returns the current record's "num_fnr" value
  * @method string              getRaza()                  Returns the current record's "raza" value
- * @method string              getSexo()                  Returns the current record's "sexo" value
+ * @method enum                getSexo()                  Returns the current record's "sexo" value
  * @method date                getFechaNacimiento()       Returns the current record's "fecha_nacimiento" value
  * @method date                getFechaDialisis()         Returns the current record's "fecha_dialisis" value
  * @method integer             getNefropatiaId()          Returns the current record's "nefropatia_id" value
@@ -98,10 +98,15 @@ abstract class BasePacientes extends sfDoctrineRecord
              'notnull' => true,
              'length' => 15,
              ));
-        $this->hasColumn('sexo', 'string', 1, array(
-             'type' => 'string',
-             'notnull' => true,
+        $this->hasColumn('sexo', 'enum', 1, array(
+             'type' => 'enum',
              'length' => 1,
+             'values' => 
+             array(
+              0 => 'M',
+              1 => 'F',
+             ),
+             'notnull' => true,
              ));
         $this->hasColumn('fecha_nacimiento', 'date', 25, array(
              'type' => 'date',

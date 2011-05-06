@@ -1,0 +1,13 @@
+Organos:
+  Corazon:
+    nombre: "Corazon"
+  Pancreas:
+    nombre: "Pancreas"
+  Pulmon:
+    nombre: "Pulmon"
+  Rinon:
+    nombre: "Riñon"
+  Intestino:
+    nombre: "Intestino"
+  Otros:
+    nombre: "Otros"    

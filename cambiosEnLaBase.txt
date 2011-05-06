@@ -22,6 +22,7 @@ TABLA nefropatia:
 TABLA pacientepretrasplante:
     -se pasa a llamar paciente_pre_trasplante
     -se agrego paciente_id y the no es mas foreign
+    -THE ahora es unique por lo tanto se pasa a usar el id de la tabla para que quede consistente.
     
 TABLA paciente_causa_muerte:
     -campo detalles se paso a llamar nombre
@@ -30,3 +31,58 @@ TABLA paciente_muerte:
     -campo the se paso a llamar paciente_id
     -campo tr_funcionando se paso a llamar transplante_funcionando
     -campo causa se paso a llamar causa_muerte_id
+    
+TABLA trasplante:
+    -campo pretrasplante pasa a llamarse paciente_pre_trasplante_id
+    -campo num_tr pasa a llamarse numero_de_transplantes_realizados
+    -campo id_donante pasa a llamarse donante_id y pasa a ser un int
+    -campo inestab_hemod pasa a llamarse inestab_hemodial
+    -campo anomalia_vasc pasa a llamarse anomalia_vascular
+    -campo num_art pasa a llamarse numero_arterias
+    -campo num_venas pasa a llamarse numero_venas
+    -campo num_comp_a_b pasa a llamarse numero_compabilidad_a_b
+    -campo num_comp_dr pasa a llamarse numero_compabilidad_dr
+    -campo num_imcomp_a_b pasa a llamarse numero_incompatibilidad_a_b
+    -campo num_imcomp_dr pasa a llamarse numero_incompatibilidad_dr
+    -campo num_transf pasa a llamarse numero_transf
+    -campo embarazo pasa a ser un enum
+    -campo num_embarazo pasa a llamarse numero_embarazo
+    -campo liq_perfusion pasa a llamarse liquido_perfusion y es un enum
+    -campo lado_implante pasa a ser un enum
+    -campo anast_venosa pasa a ser un enum
+    -campo anast_arterial pasa a ser un enum
+    -campo anast_ureteral pasa a ser un enum
+    -campo repercusion pasa a llamarse reperfusion y es un enum
+    -campo otras_compl_quirur pasa a llamarse otras_complicaciones_quirurgicas
+
+TABLA donante:
+    -campo id paso a ser un int autoincrement
+    -campo id viejo se cambio a identificador
+    -campo tipo_donante se paso a enum
+    -campo sexo_donante se paso a enum
+    -campo causa_muerte_donante pasa a llamarse donante_causa_muerte_id
+    -campo grupo_sang pasa a llamarse grupo_sanguineo y pasa a ser un enum
+
+TABLA donante_causa_muerte:
+    -campo detalles pasa a llamarse nombre
+    
+TABLA donante_organos:
+    - Se saco el campo id
+    -campo id_donante pasa a llamarse donante_id
+    -campo organos pasa a llamarse organo_id que refiere a la tabla organos.
+    
+TABLA organos:
+    - Es nueva.
+
+TABLA donante_antecedentes:
+    -tabla pasa a llamarse antecedentes_de_donante
+    -campo detalles pasa a llamarse nombre
+    
+TABLA donanterefantecedentes:
+    -pasa a llamarse donante_antecedentes
+    -campo id_donante pasa a llamarse donante_id
+    
+TABLA donante_serol:
+    -campo id_donante pasa a llamarse donante_id 
+    -campo id_serol pasa a llamarse serol_id
+    -campo valor pasa a llamarse serol_valor_id

@@ -1,9 +1,9 @@
 CREATE TABLE antecedentes_de_donante (id INT AUTO_INCREMENT, nombre VARCHAR(255) NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE cmv (id INT AUTO_INCREMENT, trasplante_id INT NOT NULL, fecha DATE NOT NULL, cmv_diagnostico_id INT NOT NULL, tipo TINYINT NOT NULL, cmv_droga_id INT NOT NULL, dias_tratamiento SMALLINT DEFAULT 0 NOT NULL, efecto_secundario VARCHAR(255), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX trasplante_id_idx (trasplante_id), INDEX cmv_diagnostico_id_idx (cmv_diagnostico_id), INDEX cmv_droga_id_idx (cmv_droga_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE cmv (id INT AUTO_INCREMENT, trasplante_id INT NOT NULL, fecha DATE NOT NULL, cmv_diagnostico_id INT NOT NULL, tipo TINYINT NOT NULL, cmv_droga_id INT NOT NULL, dias_tratamiento SMALLINT DEFAULT 0 NOT NULL, efecto_secundario VARCHAR(255), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX trasplante_id_idx (trasplante_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE cmv_diagnostico (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE cmv_drogas (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE cmv_uso_enfermedades (cmv_id INT, cmv_emfermedades_id INT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(cmv_id, cmv_emfermedades_id)) ENGINE = INNODB;
-CREATE TABLE cmvdiagnostico (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE cmvdrogas (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE cmvemfermedades (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE cmv_emfermedades (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE donante (id INT AUTO_INCREMENT, identificador VARCHAR(20) UNIQUE, tipo_donante VARCHAR(10) NOT NULL, sexo_donante VARCHAR(1) NOT NULL, edad_donante TINYINT, enastab_hemod TINYINT, donante_causa_muerte_id INT NOT NULL, cr_p FLOAT(18, 2) DEFAULT 0, otros VARCHAR(255), grupo_sanguineo VARCHAR(2) NOT NULL, relacion_filiar VARCHAR(11), peso INT, altura FLOAT(18, 2), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX donante_causa_muerte_id_idx (donante_causa_muerte_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE donante_antecedentes (donante_id INT, antecedente_de_donante_id INT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(donante_id, antecedente_de_donante_id)) ENGINE = INNODB;
 CREATE TABLE donante_causa_muerte (id INT AUTO_INCREMENT, nombre VARCHAR(255) NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
@@ -33,10 +33,8 @@ CREATE TABLE md_passport_remember_key (id INT AUTO_INCREMENT, md_passport_id INT
 CREATE TABLE md_user (id INT AUTO_INCREMENT, email VARCHAR(128) NOT NULL UNIQUE, super_admin TINYINT DEFAULT '0' NOT NULL, deleted_at DATETIME, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE md_user_profile (id INT AUTO_INCREMENT, name VARCHAR(128), last_name VARCHAR(128), city VARCHAR(128), country_code VARCHAR(2) DEFAULT 'UY', PRIMARY KEY(id)) ENGINE = INNODB;
 ALTER TABLE cmv ADD CONSTRAINT cmv_trasplante_id_trasplante_id FOREIGN KEY (trasplante_id) REFERENCES trasplante(id) ON DELETE CASCADE;
-ALTER TABLE cmv ADD CONSTRAINT cmv_cmv_droga_id_cmvdrogas_id FOREIGN KEY (cmv_droga_id) REFERENCES cmvdrogas(id);
-ALTER TABLE cmv ADD CONSTRAINT cmv_cmv_diagnostico_id_cmvdiagnostico_id FOREIGN KEY (cmv_diagnostico_id) REFERENCES cmvdiagnostico(id);
 ALTER TABLE cmv_uso_enfermedades ADD CONSTRAINT cmv_uso_enfermedades_cmv_id_cmv_id FOREIGN KEY (cmv_id) REFERENCES cmv(id) ON DELETE CASCADE;
-ALTER TABLE cmv_uso_enfermedades ADD CONSTRAINT cmv_uso_enfermedades_cmv_emfermedades_id_cmvemfermedades_id FOREIGN KEY (cmv_emfermedades_id) REFERENCES cmvemfermedades(id) ON DELETE CASCADE;
+ALTER TABLE cmv_uso_enfermedades ADD CONSTRAINT cmv_uso_enfermedades_cmv_emfermedades_id_cmv_emfermedades_id FOREIGN KEY (cmv_emfermedades_id) REFERENCES cmv_emfermedades(id) ON DELETE CASCADE;
 ALTER TABLE donante ADD CONSTRAINT donante_donante_causa_muerte_id_donante_causa_muerte_id FOREIGN KEY (donante_causa_muerte_id) REFERENCES donante_causa_muerte(id);
 ALTER TABLE donante_antecedentes ADD CONSTRAINT donante_antecedentes_donante_id_donante_id FOREIGN KEY (donante_id) REFERENCES donante(id) ON DELETE CASCADE;
 ALTER TABLE donante_antecedentes ADD CONSTRAINT daai FOREIGN KEY (antecedente_de_donante_id) REFERENCES antecedentes_de_donante(id) ON DELETE CASCADE;

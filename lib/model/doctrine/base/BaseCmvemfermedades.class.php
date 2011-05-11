@@ -28,7 +28,7 @@ abstract class BaseCmvemfermedades extends sfDoctrineRecord
 {
     public function setTableDefinition()
     {
-        $this->setTableName('cmvemfermedades');
+        $this->setTableName('cmv_emfermedades');
         $this->hasColumn('id', 'integer', 4, array(
              'type' => 'integer',
              'primary' => true,

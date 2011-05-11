@@ -9,6 +9,15 @@ TABLA cmv:
 
 TABLA cmv_uso_enfermedades:
     -campo Trasplante y FECHA se cambiaron por cmv_id
+
+TABLA cmvdiagnostico:
+    -se pasa a llamar cmv_diagnostico
+    
+TABLA cmvdrogas:
+    -se pasa a llamar cmv_drogas    
+
+TABLA cmvemfermedades:
+    -se pasa a llamar cmv_emfermedades  
     
 TABLA pacientes:
     -se agrego id

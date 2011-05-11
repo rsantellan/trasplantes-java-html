@@ -5,7 +5,9 @@ date
 echo "Empezando la carga de datos"
 php symfony loading:cargarDatos
 date
-echo "Empezando la carga de datos de transplantes"
+echo "Empezando la carga de datos de transplantes (java)"
 java -jar exportarDatosTrasplante.jar
 date
-#php symfony loading:cargarDatosTransplante
+echo "Empezando la carga de datos de cmv"
+php symfony loading:cargarDatosTransplante
+date

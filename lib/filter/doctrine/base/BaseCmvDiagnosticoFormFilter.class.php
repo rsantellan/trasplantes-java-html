@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Cmvdrogas filter form base class.
+ * CmvDiagnostico filter form base class.
  *
  * @package    transplantes
  * @subpackage filter
  * @author     Rodrigo Santellan
  * @version    SVN: $Id: sfDoctrineFormFilterGeneratedTemplate.php 29570 2010-05-21 14:49:47Z Kris.Wallsmith $
  */
-abstract class BaseCmvdrogasFormFilter extends BaseFormFilterDoctrine
+abstract class BaseCmvDiagnosticoFormFilter extends BaseFormFilterDoctrine
 {
   public function setup()
   {
@@ -24,7 +24,7 @@ abstract class BaseCmvdrogasFormFilter extends BaseFormFilterDoctrine
       'updated_at' => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
     ));
 
-    $this->widgetSchema->setNameFormat('cmvdrogas_filters[%s]');
+    $this->widgetSchema->setNameFormat('cmv_diagnostico_filters[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -35,7 +35,7 @@ abstract class BaseCmvdrogasFormFilter extends BaseFormFilterDoctrine
 
   public function getModelName()
   {
-    return 'Cmvdrogas';
+    return 'CmvDiagnostico';
   }
 
   public function getFields()

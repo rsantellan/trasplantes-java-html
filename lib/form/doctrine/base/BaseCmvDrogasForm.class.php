@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Cmvdrogas form base class.
+ * CmvDrogas form base class.
  *
- * @method Cmvdrogas getObject() Returns the current form's model object
+ * @method CmvDrogas getObject() Returns the current form's model object
  *
  * @package    transplantes
  * @subpackage form
  * @author     Rodrigo Santellan
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
-abstract class BaseCmvdrogasForm extends BaseFormDoctrine
+abstract class BaseCmvDrogasForm extends BaseFormDoctrine
 {
   public function setup()
   {
@@ -28,7 +28,7 @@ abstract class BaseCmvdrogasForm extends BaseFormDoctrine
       'updated_at' => new sfValidatorDateTime(),
     ));
 
-    $this->widgetSchema->setNameFormat('cmvdrogas[%s]');
+    $this->widgetSchema->setNameFormat('cmv_drogas[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -39,7 +39,7 @@ abstract class BaseCmvdrogasForm extends BaseFormDoctrine
 
   public function getModelName()
   {
-    return 'Cmvdrogas';
+    return 'CmvDrogas';
   }
 
 }

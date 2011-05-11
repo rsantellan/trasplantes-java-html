@@ -16,4 +16,12 @@ class CmvTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Cmv');
     }
+
+    public function retrieveByTrasplanteIdAndDate($trasplanteId, $fecha)
+    {
+      $query = $this->createQuery("cmv")
+              ->addWhere("cmv.trasplante_id = ?", $trasplanteId)
+              ->addWhere("cmv.fecha = ?", $fecha);
+      return $query->fetchOne();
+    }
 }

@@ -44,9 +44,10 @@ EOF;
         $username="root";
         $password="root";
         $database="trasplante";    
-        echo memory_get_usage();
+        
         echo "------------------------------------------------------------------\n";
-        transplanteConvertorHandler::saveAllTransplantes($username, $password, $database);
+        cmvConvertorHandler::startAll($username, $password, $database);
+        //transplanteConvertorHandler::saveAllTransplantes($username, $password, $database);
         echo "------------------------------------------------------------------\n";
         
     } else {

@@ -583,9 +583,9 @@ Cmv:
       refClass: CmvUsoEnfermedades
       foreignAlias: Cmvs      
       
-Cmvdiagnostico:
+CmvDiagnostico:
   actAs: [Timestampable]
-  tableName: cmvdiagnostico
+  tableName: cmv_diagnostico
   columns:
     id:
       type: integer(4)
@@ -595,9 +595,9 @@ Cmvdiagnostico:
       type: string(50)
       notnull: true
       
-Cmvdrogas:
+CmvDrogas:
   actAs: [Timestampable]
-  tableName: cmvdrogas
+  tableName: cmv_drogas
   columns:
     id:
       type: integer(4)
@@ -632,7 +632,7 @@ CmvUsoEnfermedades:
            
 Cmvemfermedades:
   actAs: [Timestampable]
-  tableName: cmvemfermedades
+  tableName: cmv_emfermedades
   columns:
     id:
       type: integer(4)

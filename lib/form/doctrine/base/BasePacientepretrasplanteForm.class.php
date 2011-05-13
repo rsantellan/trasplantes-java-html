@@ -32,6 +32,7 @@ abstract class BasePacientepretrasplanteForm extends BaseFormDoctrine
       'iam'                 => new sfWidgetFormInputText(),
       'ave'                 => new sfWidgetFormInputText(),
       'revasc_cardio'       => new sfWidgetFormInputText(),
+      'meses_en_lista'      => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -52,6 +53,7 @@ abstract class BasePacientepretrasplanteForm extends BaseFormDoctrine
       'iam'                 => new sfValidatorInteger(array('required' => false)),
       'ave'                 => new sfValidatorInteger(array('required' => false)),
       'revasc_cardio'       => new sfValidatorInteger(array('required' => false)),
+      'meses_en_lista'      => new sfValidatorInteger(array('required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(

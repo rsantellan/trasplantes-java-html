@@ -123,6 +123,9 @@ Pacientepretrasplante:
     revasc_cardio:
       type: integer(1)
       default: 0
+    meses_en_lista:
+      type: integer(2)
+      default: 0 
   relations:
     Pacientes:
       local: paciente_id
@@ -510,6 +513,9 @@ Trasplante:
       type: string(255)
     fecha_alta:
       type: date(25)
+    edad_receptor:
+      type: integer(2)
+      default: 0      
   relations:       
     Pacientepretrasplante:
       local: paciente_pre_trasplante_id
@@ -625,7 +631,7 @@ Cmvemfermedades:
     nombre:
       type: string(50)
       notnull: true
-#desde aca es nuevo!! no esta en el diagrama.
+
 TrasplanteSerol:
   tableName: trasplante_serol
   options:
@@ -657,7 +663,7 @@ TrasplanteSerol:
       local: serol_valor_id
       foreign: id
       type: one
-
+#desde aca es nuevo no esta probado en el diagrama
 ComplicacionesTipos:
   tableName: complicaciones_tipos
   columns:
@@ -759,3 +765,152 @@ ComplicacionesNoInfecciosas:
       local: complicacion_valor_id
       foreign: id
       type: one  
+# ----------------
+Induccion:
+  tableName: induccion
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(50)
+      notnull: true
+
+TrasplanteInduccion:
+  tableName: trasplante_induccion
+  columns:
+    trasplante_id:
+      type: integer(4)
+      primary: true
+    induccion_id:
+      type: integer(4)
+      primary: true
+  relations:      
+    Trasplante:
+      local: trasplante_id
+      foreign: id
+      type: one
+    Induccion:
+      local: induccion_id
+      foreign: id
+      type: one      
+
+Inmunosupresores:
+  tableName: inmunosupresores
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(50)
+      notnull: true
+      
+TrasplanteInmunosupresores:
+  tableName: trasplante_inmunosupresores
+  columns:
+    trasplante_id:
+      type: integer(4)
+      primary: true
+    inmunosupresores_id:
+      type: integer(4)
+      primary: true
+  relations:      
+    Trasplante:
+      local: trasplante_id
+      foreign: id
+      type: one
+    Inmunosupresores:
+      local: inmunosupresores_id
+      foreign: id
+      type: one 
+
+ResultadoPbr:
+  tableName: resultado_pbr
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    grado:
+      type: string(50)
+      notnull: true
+    criterio:
+      type: string(50)
+
+Ratratamiento:
+  tableName: ratratamiento
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(50)
+      notnull: true
+
+EvolucionTrasplanteCmv:
+  tableName: evolucion_trasplante_cmv
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true  
+    trasplante_id:
+      type: integer(4)
+      notnull: true
+    fecha:
+      type: date(25)
+      notnull: true
+    igg_cmv:
+      type: integer(1)
+      default: 0
+    igm_cmv:
+      type: integer(1)
+      default: 0
+    pcr_cmv:
+      type: integer(1)
+      default: 0
+    ag_pp65:
+      type: integer(1)
+      default: 0
+  relations:      
+    Trasplante:
+      local: trasplante_id
+      foreign: id
+      type: one
+      
+EvolucionTrasplanteEcg:
+  tableName: evolucion_trasplante_ecg
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true  
+    trasplante_id:
+      type: integer(4)
+      notnull: true
+    fecha:
+      type: date(25)
+      notnull: true
+    rs_ecg:
+      type: enum
+      length: 8
+      values: ['Ausente','Presente','Falta']
+      notnull: true 
+    hvi_ecg:
+      type: enum
+      length: 8
+      values: ['Ausente','Presente','Falta']
+      notnull: true 
+    onda_q_ecg:
+      type: enum
+      length: 8
+      values: ['Ausente','Presente','Falta']
+      notnull: true 
+  relations:      
+    Trasplante:
+      local: trasplante_id
+      foreign: id
+      type: one

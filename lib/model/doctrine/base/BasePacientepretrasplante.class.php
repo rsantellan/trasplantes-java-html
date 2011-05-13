@@ -22,6 +22,7 @@
  * @property integer $iam
  * @property integer $ave
  * @property integer $revasc_cardio
+ * @property integer $meses_en_lista
  * @property Pacientes $Pacientes
  * @property Doctrine_Collection $Trasplante
  * 
@@ -42,6 +43,7 @@
  * @method integer               getIam()                 Returns the current record's "iam" value
  * @method integer               getAve()                 Returns the current record's "ave" value
  * @method integer               getRevascCardio()        Returns the current record's "revasc_cardio" value
+ * @method integer               getMesesEnLista()        Returns the current record's "meses_en_lista" value
  * @method Pacientes             getPacientes()           Returns the current record's "Pacientes" value
  * @method Doctrine_Collection   getTrasplante()          Returns the current record's "Trasplante" collection
  * @method Pacientepretrasplante setId()                  Sets the current record's "id" value
@@ -61,6 +63,7 @@
  * @method Pacientepretrasplante setIam()                 Sets the current record's "iam" value
  * @method Pacientepretrasplante setAve()                 Sets the current record's "ave" value
  * @method Pacientepretrasplante setRevascCardio()        Sets the current record's "revasc_cardio" value
+ * @method Pacientepretrasplante setMesesEnLista()        Sets the current record's "meses_en_lista" value
  * @method Pacientepretrasplante setPacientes()           Sets the current record's "Pacientes" value
  * @method Pacientepretrasplante setTrasplante()          Sets the current record's "Trasplante" collection
  * 
@@ -188,6 +191,11 @@ abstract class BasePacientepretrasplante extends sfDoctrineRecord
              'type' => 'integer',
              'default' => 0,
              'length' => 1,
+             ));
+        $this->hasColumn('meses_en_lista', 'integer', 2, array(
+             'type' => 'integer',
+             'default' => 0,
+             'length' => 2,
              ));
     }
 

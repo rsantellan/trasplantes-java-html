@@ -29,6 +29,7 @@ abstract class BasePacientepretrasplanteFormFilter extends BaseFormFilterDoctrin
       'iam'                 => new sfWidgetFormFilterInput(),
       'ave'                 => new sfWidgetFormFilterInput(),
       'revasc_cardio'       => new sfWidgetFormFilterInput(),
+      'meses_en_lista'      => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
@@ -48,6 +49,7 @@ abstract class BasePacientepretrasplanteFormFilter extends BaseFormFilterDoctrin
       'iam'                 => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'ave'                 => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'revasc_cardio'       => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'meses_en_lista'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('pacientepretrasplante_filters[%s]');
@@ -84,6 +86,7 @@ abstract class BasePacientepretrasplanteFormFilter extends BaseFormFilterDoctrin
       'iam'                 => 'Number',
       'ave'                 => 'Number',
       'revasc_cardio'       => 'Number',
+      'meses_en_lista'      => 'Number',
     );
   }
 }

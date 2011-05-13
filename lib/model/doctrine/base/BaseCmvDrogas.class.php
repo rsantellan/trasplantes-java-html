@@ -39,8 +39,6 @@ abstract class BaseCmvDrogas extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $timestampable0 = new Doctrine_Template_Timestampable(array(
-             ));
-        $this->actAs($timestampable0);
+        
     }
 }

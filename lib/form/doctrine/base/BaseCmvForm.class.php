@@ -23,8 +23,6 @@ abstract class BaseCmvForm extends BaseFormDoctrine
       'cmv_droga_id'          => new sfWidgetFormInputText(),
       'dias_tratamiento'      => new sfWidgetFormInputText(),
       'efecto_secundario'     => new sfWidgetFormInputText(),
-      'created_at'            => new sfWidgetFormDateTime(),
-      'updated_at'            => new sfWidgetFormDateTime(),
       'cmv_emfermedades_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Cmvemfermedades')),
     ));
 
@@ -37,8 +35,6 @@ abstract class BaseCmvForm extends BaseFormDoctrine
       'cmv_droga_id'          => new sfValidatorInteger(),
       'dias_tratamiento'      => new sfValidatorInteger(array('required' => false)),
       'efecto_secundario'     => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'created_at'            => new sfValidatorDateTime(),
-      'updated_at'            => new sfValidatorDateTime(),
       'cmv_emfermedades_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Cmvemfermedades', 'required' => false)),
     ));
 

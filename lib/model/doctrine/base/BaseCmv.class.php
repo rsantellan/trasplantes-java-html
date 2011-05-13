@@ -109,9 +109,5 @@ abstract class BaseCmv extends sfDoctrineRecord
         $this->hasMany('CmvUsoEnfermedades', array(
              'local' => 'id',
              'foreign' => 'cmv_id'));
-
-        $timestampable0 = new Doctrine_Template_Timestampable(array(
-             ));
-        $this->actAs($timestampable0);
     }
 }

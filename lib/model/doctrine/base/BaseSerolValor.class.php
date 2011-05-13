@@ -10,17 +10,20 @@
  * @property string $valor
  * @property Serol $Serol
  * @property Doctrine_Collection $DonanteSerol
+ * @property Doctrine_Collection $TrasplanteSerol
  * 
- * @method integer             getId()           Returns the current record's "id" value
- * @method integer             getSerolId()      Returns the current record's "serol_id" value
- * @method string              getValor()        Returns the current record's "valor" value
- * @method Serol               getSerol()        Returns the current record's "Serol" value
- * @method Doctrine_Collection getDonanteSerol() Returns the current record's "DonanteSerol" collection
- * @method SerolValor          setId()           Sets the current record's "id" value
- * @method SerolValor          setSerolId()      Sets the current record's "serol_id" value
- * @method SerolValor          setValor()        Sets the current record's "valor" value
- * @method SerolValor          setSerol()        Sets the current record's "Serol" value
- * @method SerolValor          setDonanteSerol() Sets the current record's "DonanteSerol" collection
+ * @method integer             getId()              Returns the current record's "id" value
+ * @method integer             getSerolId()         Returns the current record's "serol_id" value
+ * @method string              getValor()           Returns the current record's "valor" value
+ * @method Serol               getSerol()           Returns the current record's "Serol" value
+ * @method Doctrine_Collection getDonanteSerol()    Returns the current record's "DonanteSerol" collection
+ * @method Doctrine_Collection getTrasplanteSerol() Returns the current record's "TrasplanteSerol" collection
+ * @method SerolValor          setId()              Sets the current record's "id" value
+ * @method SerolValor          setSerolId()         Sets the current record's "serol_id" value
+ * @method SerolValor          setValor()           Sets the current record's "valor" value
+ * @method SerolValor          setSerol()           Sets the current record's "Serol" value
+ * @method SerolValor          setDonanteSerol()    Sets the current record's "DonanteSerol" collection
+ * @method SerolValor          setTrasplanteSerol() Sets the current record's "TrasplanteSerol" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -59,6 +62,10 @@ abstract class BaseSerolValor extends sfDoctrineRecord
              'onDelete' => 'CASCADE'));
 
         $this->hasMany('DonanteSerol', array(
+             'local' => 'id',
+             'foreign' => 'serol_valor_id'));
+
+        $this->hasMany('TrasplanteSerol', array(
              'local' => 'id',
              'foreign' => 'serol_valor_id'));
     }

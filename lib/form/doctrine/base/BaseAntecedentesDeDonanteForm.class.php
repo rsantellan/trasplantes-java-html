@@ -17,16 +17,12 @@ abstract class BaseAntecedentesDeDonanteForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'            => new sfWidgetFormInputHidden(),
       'nombre'        => new sfWidgetFormInputText(),
-      'created_at'    => new sfWidgetFormDateTime(),
-      'updated_at'    => new sfWidgetFormDateTime(),
       'donantes_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Donante')),
     ));
 
     $this->setValidators(array(
       'id'            => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'nombre'        => new sfValidatorString(array('max_length' => 255)),
-      'created_at'    => new sfValidatorDateTime(),
-      'updated_at'    => new sfValidatorDateTime(),
       'donantes_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Donante', 'required' => false)),
     ));
 

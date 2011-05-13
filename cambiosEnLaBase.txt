@@ -95,3 +95,15 @@ TABLA donante_serol:
     -campo id_donante pasa a llamarse donante_id 
     -campo id_serol pasa a llamarse serol_id
     -campo valor pasa a llamarse serol_valor_id
+
+TABLA trasplante_serol:
+    -campo id_trasplante pasa a llamarse trasplante_id
+    -campo id_serol pasa a llamarse serol_id
+    -campo valor pasa a llamarse serol_valor_id
+
+TABLA complicaciones_tipos:
+    -pasa a ser dos tablas complicaciones_tipos y complicaciones_tipos_valores
+
+TABLA trasplante_complicaciones:
+    - pasa a estar relacionado contra la tabla trasplantes en vez de pretrasplantes
+    

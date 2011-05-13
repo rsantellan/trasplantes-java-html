@@ -9,15 +9,18 @@
  * @property string $tipo
  * @property Doctrine_Collection $DonanteSerol
  * @property Doctrine_Collection $SerolValor
+ * @property Doctrine_Collection $TrasplanteSerol
  * 
- * @method integer             getId()           Returns the current record's "id" value
- * @method string              getTipo()         Returns the current record's "tipo" value
- * @method Doctrine_Collection getDonanteSerol() Returns the current record's "DonanteSerol" collection
- * @method Doctrine_Collection getSerolValor()   Returns the current record's "SerolValor" collection
- * @method Serol               setId()           Sets the current record's "id" value
- * @method Serol               setTipo()         Sets the current record's "tipo" value
- * @method Serol               setDonanteSerol() Sets the current record's "DonanteSerol" collection
- * @method Serol               setSerolValor()   Sets the current record's "SerolValor" collection
+ * @method integer             getId()              Returns the current record's "id" value
+ * @method string              getTipo()            Returns the current record's "tipo" value
+ * @method Doctrine_Collection getDonanteSerol()    Returns the current record's "DonanteSerol" collection
+ * @method Doctrine_Collection getSerolValor()      Returns the current record's "SerolValor" collection
+ * @method Doctrine_Collection getTrasplanteSerol() Returns the current record's "TrasplanteSerol" collection
+ * @method Serol               setId()              Sets the current record's "id" value
+ * @method Serol               setTipo()            Sets the current record's "tipo" value
+ * @method Serol               setDonanteSerol()    Sets the current record's "DonanteSerol" collection
+ * @method Serol               setSerolValor()      Sets the current record's "SerolValor" collection
+ * @method Serol               setTrasplanteSerol() Sets the current record's "TrasplanteSerol" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -50,6 +53,10 @@ abstract class BaseSerol extends sfDoctrineRecord
              'foreign' => 'serol_id'));
 
         $this->hasMany('SerolValor', array(
+             'local' => 'id',
+             'foreign' => 'serol_id'));
+
+        $this->hasMany('TrasplanteSerol', array(
              'local' => 'id',
              'foreign' => 'serol_id'));
     }

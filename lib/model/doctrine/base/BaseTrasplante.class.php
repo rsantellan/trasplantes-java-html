@@ -54,6 +54,8 @@
  * @property Pacientepretrasplante $Pacientepretrasplante
  * @property Donante $Donante
  * @property Doctrine_Collection $Cmv
+ * @property Doctrine_Collection $TrasplanteSerol
+ * @property Doctrine_Collection $TrasplanteComplicaciones
  * 
  * @method integer               getId()                                Returns the current record's "id" value
  * @method integer               getPacientePreTrasplanteId()           Returns the current record's "paciente_pre_trasplante_id" value
@@ -104,6 +106,8 @@
  * @method Pacientepretrasplante getPacientepretrasplante()             Returns the current record's "Pacientepretrasplante" value
  * @method Donante               getDonante()                           Returns the current record's "Donante" value
  * @method Doctrine_Collection   getCmv()                               Returns the current record's "Cmv" collection
+ * @method Doctrine_Collection   getTrasplanteSerol()                   Returns the current record's "TrasplanteSerol" collection
+ * @method Doctrine_Collection   getTrasplanteComplicaciones()          Returns the current record's "TrasplanteComplicaciones" collection
  * @method Trasplante            setId()                                Sets the current record's "id" value
  * @method Trasplante            setPacientePreTrasplanteId()           Sets the current record's "paciente_pre_trasplante_id" value
  * @method Trasplante            setFecha()                             Sets the current record's "fecha" value
@@ -153,6 +157,8 @@
  * @method Trasplante            setPacientepretrasplante()             Sets the current record's "Pacientepretrasplante" value
  * @method Trasplante            setDonante()                           Sets the current record's "Donante" value
  * @method Trasplante            setCmv()                               Sets the current record's "Cmv" collection
+ * @method Trasplante            setTrasplanteSerol()                   Sets the current record's "TrasplanteSerol" collection
+ * @method Trasplante            setTrasplanteComplicaciones()          Sets the current record's "TrasplanteComplicaciones" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -428,6 +434,14 @@ abstract class BaseTrasplante extends sfDoctrineRecord
              'foreign' => 'id'));
 
         $this->hasMany('Cmv', array(
+             'local' => 'id',
+             'foreign' => 'trasplante_id'));
+
+        $this->hasMany('TrasplanteSerol', array(
+             'local' => 'id',
+             'foreign' => 'trasplante_id'));
+
+        $this->hasMany('TrasplanteComplicaciones', array(
              'local' => 'id',
              'foreign' => 'trasplante_id'));
 

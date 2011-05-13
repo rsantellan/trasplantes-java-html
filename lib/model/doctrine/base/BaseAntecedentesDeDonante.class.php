@@ -53,9 +53,5 @@ abstract class BaseAntecedentesDeDonante extends sfDoctrineRecord
         $this->hasMany('DonanteAntecedentes', array(
              'local' => 'id',
              'foreign' => 'antecedente_de_donante_id'));
-
-        $timestampable0 = new Doctrine_Template_Timestampable(array(
-             ));
-        $this->actAs($timestampable0);
     }
 }

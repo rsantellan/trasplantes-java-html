@@ -53,9 +53,5 @@ abstract class BaseOrganos extends sfDoctrineRecord
         $this->hasMany('DonanteOrganos', array(
              'local' => 'id',
              'foreign' => 'organo_id'));
-
-        $timestampable0 = new Doctrine_Template_Timestampable(array(
-             ));
-        $this->actAs($timestampable0);
     }
 }

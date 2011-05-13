@@ -3,6 +3,88 @@
 class transplanteConvertorHandler
 {
 
+  public static function saveTrasplanteSerol($username,$password, $database, $starting = 0, $quantity =0)
+  {
+        mysql_connect("localhost",$username,$password);
+
+        @mysql_select_db($database) or die( "Unable to select database");
+        mysql_query("set names 'utf8'");
+        $query="SELECT * FROM trasplante_serol";
+        if($starting == 0 && $quantity == 0)
+        {
+          $query="SELECT * FROM trasplante_serol";
+        }
+        else
+        {
+          $query="SELECT * FROM trasplante_serol LIMIT ".$starting.", ".$quantity;
+        }
+        $result=mysql_query($query);
+        $num=mysql_numrows($result);
+        mysql_close();
+        $i=0;
+        while ($i < $num) {
+          $id = mysql_result($result,$i,"id_trasplante");
+          $serolId = mysql_result($result,$i,"id_serol");
+          $valor = mysql_result($result,$i,"valor");
+
+          //var_dump($valor);
+          $SerolValor = Doctrine::getTable("SerolValor")->findOneBy("valor", $valor);
+          if(!$SerolValor)
+          {
+            die("inconscitencia de datos en la tabla donante_serol!!");
+          }
+
+          $serol = Doctrine::getTable("Serol")->findOneBy("id", $serolId);
+
+          if(!$serol)
+          {
+            die("inconscitencia de datos en la tabla donante_serol!!");
+          }
+          
+          $trasplante = Doctrine::getTable("Trasplante")->find($id);
+
+          $save = true;
+          if(!$trasplante)
+          {
+            echo "El trasplante con id: ".$id." no existe en la base serol incompleto para guardar\n";
+            
+            $save = false;
+          }
+
+          if($save)
+          {
+            $TrasplanteSerol = new TrasplanteSerol();
+            $TrasplanteSerol->setTrasplanteId($trasplante->getId());
+            $TrasplanteSerol->setSerolId($serol->getId());
+            $TrasplanteSerol->setSerolValorId($SerolValor->getId());
+            $TrasplanteSerol->save();
+            $TrasplanteSerol->free(true);
+            $trasplante->free(true);
+            $serol->free(true);
+            $SerolValor->free(true);
+          }
+          else
+          {
+//            echo "Existe un registro sin DONANTE asociado";
+//            echo " DONANTE supuesto id: ".$id." ";
+//            echo "\n";
+          }
+          $i++;
+        }
+        if($num == 0 || $num == "0")
+        {
+          return 0;
+        }
+        return 1;
+  }
+
+
+
+
+
+
+
+// DE ACA PARA ABAJO NO FUNCA POR DOCTRINE....
   public static function saveAllTransplantes($username,$password, $database)
   {
 

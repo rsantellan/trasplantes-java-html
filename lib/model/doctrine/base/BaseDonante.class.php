@@ -182,9 +182,5 @@ abstract class BaseDonante extends sfDoctrineRecord
         $this->hasMany('Trasplante', array(
              'local' => 'id',
              'foreign' => 'donante_id'));
-
-        $timestampable0 = new Doctrine_Template_Timestampable(array(
-             ));
-        $this->actAs($timestampable0);
     }
 }

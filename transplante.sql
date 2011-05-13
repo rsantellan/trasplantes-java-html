@@ -19,7 +19,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Database: `trasplante`
 --
-DROP DATABASE `trasplante`;
+-- DROP DATABASE `trasplante`;
 CREATE DATABASE `trasplante` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `trasplante`;
 

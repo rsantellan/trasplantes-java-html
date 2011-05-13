@@ -28,8 +28,6 @@ abstract class BaseDonanteForm extends BaseFormDoctrine
       'relacion_filiar'           => new sfWidgetFormChoice(array('choices' => array('padre/madre' => 'padre/madre', 'hermano/a' => 'hermano/a', 'Hijo/a' => 'Hijo/a', 'esposo/a' => 'esposo/a', 'otro' => 'otro'))),
       'peso'                      => new sfWidgetFormInputText(),
       'altura'                    => new sfWidgetFormInputText(),
-      'created_at'                => new sfWidgetFormDateTime(),
-      'updated_at'                => new sfWidgetFormDateTime(),
       'donante_organos_list'      => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Organos')),
       'donante_antecedentes_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'AntecedentesDeDonante')),
     ));
@@ -48,8 +46,6 @@ abstract class BaseDonanteForm extends BaseFormDoctrine
       'relacion_filiar'           => new sfValidatorChoice(array('choices' => array(0 => 'padre/madre', 1 => 'hermano/a', 2 => 'Hijo/a', 3 => 'esposo/a', 4 => 'otro'), 'required' => false)),
       'peso'                      => new sfValidatorInteger(array('required' => false)),
       'altura'                    => new sfValidatorNumber(array('required' => false)),
-      'created_at'                => new sfValidatorDateTime(),
-      'updated_at'                => new sfValidatorDateTime(),
       'donante_organos_list'      => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Organos', 'required' => false)),
       'donante_antecedentes_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'AntecedentesDeDonante', 'required' => false)),
     ));

@@ -45,9 +45,5 @@ abstract class BasePacienteCausaMuerte extends sfDoctrineRecord
         $this->hasMany('PacienteMuerte', array(
              'local' => 'id',
              'foreign' => 'causa_muerte_id'));
-
-        $timestampable0 = new Doctrine_Template_Timestampable(array(
-             ));
-        $this->actAs($timestampable0);
     }
 }

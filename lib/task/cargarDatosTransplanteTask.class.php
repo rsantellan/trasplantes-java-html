@@ -45,11 +45,20 @@ EOF;
         $password="root";
         $database="trasplante";    
         
-        echo "------------------------------------------------------------------\n";
-        cmvConvertorHandler::startAll($username, $password, $database);
+        echo "---------------------------Guarda los cmv---------------------------------------\n";
+        //cmvConvertorHandler::startAll($username, $password, $database);
         //transplanteConvertorHandler::saveAllTransplantes($username, $password, $database);
-        echo "------------------------------------------------------------------\n";
-        
+        echo "-------------------------Guarda los seroles de los trasplantes-----------------------------------------\n";
+        //transplanteConvertorHandler::saveTrasplanteSerol($username, $password, $database);
+        echo "-----------------------Guarda los tipos de complicaciones-------------------------------------------\n";
+        complicacionHandler::saveAllComplicacionesTipo($username, $password, $database);
+        echo "--------------------------Guarda las medicaciones----------------------------------------\n";
+        //complicacionHandler::saveAllMedicaciones($username, $password, $database);
+        echo "---------------------------Guarda los trasplantes complicaciones---------------------------------------\n"; 
+        //complicacionHandler::saveAllTrasplantesComplicaciones($username, $password, $database);    
+        echo "---------------------------Guarda los trasplantes complicaciones no infecciosas---------------------------------------\n"; 
+        complicacionHandler::saveAllComplicacionesNoInfecciosas($username, $password, $database);    
+           
     } else {
         die('Task is Locked');
     }    

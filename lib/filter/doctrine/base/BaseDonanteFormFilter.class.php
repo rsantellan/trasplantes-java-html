@@ -25,8 +25,6 @@ abstract class BaseDonanteFormFilter extends BaseFormFilterDoctrine
       'relacion_filiar'           => new sfWidgetFormChoice(array('choices' => array('' => '', 'padre/madre' => 'padre/madre', 'hermano/a' => 'hermano/a', 'Hijo/a' => 'Hijo/a', 'esposo/a' => 'esposo/a', 'otro' => 'otro'))),
       'peso'                      => new sfWidgetFormFilterInput(),
       'altura'                    => new sfWidgetFormFilterInput(),
-      'created_at'                => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
-      'updated_at'                => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'donante_organos_list'      => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Organos')),
       'donante_antecedentes_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'AntecedentesDeDonante')),
     ));
@@ -44,8 +42,6 @@ abstract class BaseDonanteFormFilter extends BaseFormFilterDoctrine
       'relacion_filiar'           => new sfValidatorChoice(array('required' => false, 'choices' => array('padre/madre' => 'padre/madre', 'hermano/a' => 'hermano/a', 'Hijo/a' => 'Hijo/a', 'esposo/a' => 'esposo/a', 'otro' => 'otro'))),
       'peso'                      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'altura'                    => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
-      'created_at'                => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
-      'updated_at'                => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'donante_organos_list'      => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Organos', 'required' => false)),
       'donante_antecedentes_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'AntecedentesDeDonante', 'required' => false)),
     ));
@@ -116,8 +112,6 @@ abstract class BaseDonanteFormFilter extends BaseFormFilterDoctrine
       'relacion_filiar'           => 'Enum',
       'peso'                      => 'Number',
       'altura'                    => 'Number',
-      'created_at'                => 'Date',
-      'updated_at'                => 'Date',
       'donante_organos_list'      => 'ManyKey',
       'donante_antecedentes_list' => 'ManyKey',
     );

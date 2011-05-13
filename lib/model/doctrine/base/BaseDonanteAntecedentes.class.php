@@ -58,9 +58,5 @@ abstract class BaseDonanteAntecedentes extends sfDoctrineRecord
              'local' => 'antecedente_de_donante_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
-
-        $timestampable0 = new Doctrine_Template_Timestampable(array(
-             ));
-        $this->actAs($timestampable0);
     }
 }

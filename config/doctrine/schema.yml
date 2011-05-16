@@ -688,7 +688,6 @@ ComplicacionesTiposValores:
     complicacion_tipo_id:
       type: integer(4)
       notnull: true
-      primary: true      
   relations:      
     ComplicacionesTipos:
       local: complicacion_tipo_id
@@ -914,3 +913,170 @@ EvolucionTrasplanteEcg:
       local: trasplante_id
       foreign: id
       type: one
+
+Infeccion:
+  tableName: infeccion
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(50)
+      notnull: true
+      
+Germenes:
+  tableName: germenes
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(50)
+      notnull: true     
+
+ComplicacionesInfecciosas:
+  tableName: complicaciones_infecciosas
+  columns:
+    tr_complicacion_id:
+      type: integer(4)
+      primary: true
+    infeccion_id:
+      type: integer(4)
+      notnull: true
+    germen_id:
+      type: integer(4)    
+      notnull: true
+  relations:      
+    TrasplanteComplicaciones:
+      local: tr_complicacion_id
+      foreign: id
+      type: one
+    Infeccion:
+      local: infeccion_id
+      foreign: id
+      type: one
+    Germenes:
+      local: germen_id
+      foreign: id
+      type: one      
+
+EvolucionTrasplanteEcoCardio:
+  tableName: evolucion_trasplante_eco_cardio
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true  
+    trasplante_id:
+      type: integer(4)
+      notnull: true
+    fecha:
+      type: date(25)
+      notnull: true
+    fevi_normal:
+      type: integer(1)
+      default: 0
+    insuf_hipodiast:
+      type: integer(1)
+      default: 0
+    iao:
+      type: integer(1)
+      default: 0
+    eao:
+      type: integer(1)
+      default: 0
+    im:
+      type: integer(1)
+      default: 0
+    em:
+      type: integer(1)
+      default: 0
+    ip:
+      type: integer(1)
+      default: 0
+    ep:
+      type: integer(1)
+      default: 0
+    it:
+      type: integer(1)
+      default: 0
+    et:
+      type: integer(1)
+      default: 0
+    derrame:
+      type: integer(1)
+      default: 0
+    calcif_valvular:
+      type: integer(1)
+      default: 0
+    hvi:
+      type: integer(1)
+      default: 0
+  relations:      
+    Trasplante:
+      local: trasplante_id
+      foreign: id
+      type: one
+
+# A donde va el campo complicacion???
+#TrasplanteReoperacion:
+#  tableName: trasplante_reoperacion
+#  columns:
+#    id:
+#      type: integer(4)
+#      primary: true
+#      autoincrement: true  
+#    trasplante_id:
+#      type: integer(4)
+#      notnull: true
+#    fecha:
+#      type: date(25)
+#      notnull: true
+#    descripcion:
+#      type: string(64)
+#    complicacion:
+#      type: integer(3)
+#      default: '0'
+#  relations:      
+#    Trasplante:
+#      local: trasplante_id
+#      foreign: id
+#      type: one
+
+#Tratamiento:
+#  tableName: tratamiento
+#  columns:
+#    the:
+#      type: integer(4)
+#      fixed: false
+#      unsigned: false
+#      primary: true
+#      autoincrement: false
+#    medicacion:
+#      type: integer(2)
+#      fixed: false
+#      unsigned: false
+#      primary: true
+#      autoincrement: false
+#    dosis:
+#      type: string(50)
+#      fixed: false
+#      unsigned: false
+#      primary: false
+#      notnull: false
+#      autoincrement: false
+#    fecha_inicio:
+#      type: date(25)
+#      fixed: false
+#      unsigned: false
+#      primary: true
+#      autoincrement: false
+#    fecha_fin:
+#      type: date(25)
+#      fixed: false
+#      unsigned: false
+#      primary: false
+#      notnull: false
+#      autoincrement: false

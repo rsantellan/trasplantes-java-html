@@ -17,13 +17,13 @@ abstract class BaseComplicacionesTiposValoresForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'                   => new sfWidgetFormInputHidden(),
       'nombre'               => new sfWidgetFormInputText(),
-      'complicacion_tipo_id' => new sfWidgetFormInputHidden(),
+      'complicacion_tipo_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ComplicacionesTipos'), 'add_empty' => false)),
     ));
 
     $this->setValidators(array(
       'id'                   => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'nombre'               => new sfValidatorString(array('max_length' => 50)),
-      'complicacion_tipo_id' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('complicacion_tipo_id')), 'empty_value' => $this->getObject()->get('complicacion_tipo_id'), 'required' => false)),
+      'complicacion_tipo_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('ComplicacionesTipos'))),
     ));
 
     $this->widgetSchema->setNameFormat('complicaciones_tipos_valores[%s]');

@@ -44,20 +44,25 @@ EOF;
         $username="root";
         $password="root";
         $database="trasplante";    
-        
+   
         echo "---------------------------Guarda los cmv---------------------------------------\n";
         cmvConvertorHandler::startAll($username, $password, $database);
         echo "-------------------------Guarda los seroles de los trasplantes-----------------------------------------\n";
         transplanteConvertorHandler::saveTrasplanteSerol($username, $password, $database);
         echo "-----------------------Guarda los tipos de complicaciones-------------------------------------------\n";
-        //complicacionHandler::saveAllComplicacionesTipo($username, $password, $database);
+        complicacionHandler::saveAllComplicacionesTipo($username, $password, $database);
         echo "--------------------------Guarda las medicaciones----------------------------------------\n";
-        //complicacionHandler::saveAllMedicaciones($username, $password, $database);
+        complicacionHandler::saveAllMedicaciones($username, $password, $database);
         echo "---------------------------Guarda los trasplantes complicaciones---------------------------------------\n"; 
-        //complicacionHandler::saveAllTrasplantesComplicaciones($username, $password, $database);    
+        complicacionHandler::saveAllTrasplantesComplicaciones($username, $password, $database);    
         echo "---------------------------Guarda los trasplantes complicaciones no infecciosas---------------------------------------\n"; 
-       // complicacionHandler::saveAllComplicacionesNoInfecciosas($username, $password, $database);
-
+        complicacionHandler::saveAllComplicacionesNoInfecciosas($username, $password, $database);
+        echo "---------------------------Guarda las infeciones---------------------------------------\n"; 
+        complicacionHandler::saveAllInfeccion($username, $password, $database);
+        echo "---------------------------Guarda los Germenes---------------------------------------\n"; 
+        complicacionHandler::saveAllGermenes($username, $password, $database);
+        echo "---------------------------Guarda las complicaciones infecciosas---------------------------------------\n"; 
+        complicacionHandler::saveAllComplicacionesInfecciosas($username, $password, $database);
         echo "---------------------------Guarda las inducciones---------------------------------------\n";
         transplanteConvertorHandler::saveAllInducciones($username, $password, $database);
         echo "---------------------------Guarda las inducciones de trasplantes---------------------------------------\n";
@@ -74,7 +79,8 @@ EOF;
         evolucionConvertorHandler::saveAllEvolucionCmv($username, $password, $database);
         echo "---------------------------Guarda los Evolucion trasplante Ecg---------------------------------------\n";
         evolucionConvertorHandler::saveAllEvolucionEcg($username, $password, $database);
-
+        echo "---------------------------Guarda los Evolucion trasplante Eco cardio---------------------------------------\n";
+        evolucionConvertorHandler::saveAllEvolucionEcoCardio($username, $password, $database);
         
     } else {
         die('Task is Locked');

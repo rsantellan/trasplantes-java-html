@@ -4,9 +4,10 @@ CREATE TABLE cmv_diagnostico (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL
 CREATE TABLE cmv_drogas (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE cmv_uso_enfermedades (cmv_id INT, cmv_emfermedades_id INT, PRIMARY KEY(cmv_id, cmv_emfermedades_id)) ENGINE = INNODB;
 CREATE TABLE cmv_emfermedades (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE complicaciones_infecciosas (tr_complicacion_id INT, infeccion_id INT NOT NULL, germen_id INT NOT NULL, INDEX infeccion_id_idx (infeccion_id), INDEX germen_id_idx (germen_id), PRIMARY KEY(tr_complicacion_id)) ENGINE = INNODB;
 CREATE TABLE complicaciones_no_infecciosas (tr_complicacion_id INT, complicacion_valor_id INT NOT NULL, INDEX complicacion_valor_id_idx (complicacion_valor_id), PRIMARY KEY(tr_complicacion_id)) ENGINE = INNODB;
 CREATE TABLE complicaciones_tipos (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE complicaciones_tipos_valores (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, complicacion_tipo_id INT, PRIMARY KEY(id, complicacion_tipo_id)) ENGINE = INNODB;
+CREATE TABLE complicaciones_tipos_valores (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, complicacion_tipo_id INT NOT NULL, INDEX complicacion_tipo_id_idx (complicacion_tipo_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE donante (id INT AUTO_INCREMENT, identificador VARCHAR(20) UNIQUE, tipo_donante VARCHAR(10) NOT NULL, sexo_donante VARCHAR(1) NOT NULL, edad_donante TINYINT, enastab_hemod TINYINT, donante_causa_muerte_id INT NOT NULL, cr_p FLOAT(18, 2) DEFAULT 0, otros VARCHAR(255), grupo_sanguineo VARCHAR(2) NOT NULL, relacion_filiar VARCHAR(11), peso INT, altura FLOAT(18, 2), INDEX donante_causa_muerte_id_idx (donante_causa_muerte_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE donante_antecedentes (donante_id INT, antecedente_de_donante_id INT, PRIMARY KEY(donante_id, antecedente_de_donante_id)) ENGINE = INNODB;
 CREATE TABLE donante_causa_muerte (id INT AUTO_INCREMENT, nombre VARCHAR(255) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
@@ -14,7 +15,10 @@ CREATE TABLE donante_organos (donante_id INT, organo_id INT, PRIMARY KEY(donante
 CREATE TABLE donante_serol (donante_id INT, serol_id INT, serol_valor_id INT NOT NULL, INDEX serol_valor_id_idx (serol_valor_id), PRIMARY KEY(donante_id, serol_id)) ENGINE = INNODB;
 CREATE TABLE evolucion_trasplante_cmv (id INT AUTO_INCREMENT, trasplante_id INT NOT NULL, fecha DATE NOT NULL, igg_cmv TINYINT DEFAULT 0, igm_cmv TINYINT DEFAULT 0, pcr_cmv TINYINT DEFAULT 0, ag_pp65 TINYINT DEFAULT 0, INDEX trasplante_id_idx (trasplante_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE evolucion_trasplante_ecg (id INT AUTO_INCREMENT, trasplante_id INT NOT NULL, fecha DATE NOT NULL, rs_ecg VARCHAR(8) NOT NULL, hvi_ecg VARCHAR(8) NOT NULL, onda_q_ecg VARCHAR(8) NOT NULL, INDEX trasplante_id_idx (trasplante_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE evolucion_trasplante_eco_cardio (id INT AUTO_INCREMENT, trasplante_id INT NOT NULL, fecha DATE NOT NULL, fevi_normal TINYINT DEFAULT 0, insuf_hipodiast TINYINT DEFAULT 0, iao TINYINT DEFAULT 0, eao TINYINT DEFAULT 0, im TINYINT DEFAULT 0, em TINYINT DEFAULT 0, ip TINYINT DEFAULT 0, ep TINYINT DEFAULT 0, it TINYINT DEFAULT 0, et TINYINT DEFAULT 0, derrame TINYINT DEFAULT 0, calcif_valvular TINYINT DEFAULT 0, hvi TINYINT DEFAULT 0, INDEX trasplante_id_idx (trasplante_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE germenes (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE induccion (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE infeccion (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE inmunosupresores (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE medicaciones (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE nefropatia (id INT AUTO_INCREMENT, nombre VARCHAR(255) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
@@ -49,8 +53,9 @@ CREATE TABLE md_user_profile (id INT AUTO_INCREMENT, name VARCHAR(128), last_nam
 ALTER TABLE cmv ADD CONSTRAINT cmv_trasplante_id_trasplante_id FOREIGN KEY (trasplante_id) REFERENCES trasplante(id) ON DELETE CASCADE;
 ALTER TABLE cmv_uso_enfermedades ADD CONSTRAINT cmv_uso_enfermedades_cmv_id_cmv_id FOREIGN KEY (cmv_id) REFERENCES cmv(id) ON DELETE CASCADE;
 ALTER TABLE cmv_uso_enfermedades ADD CONSTRAINT cmv_uso_enfermedades_cmv_emfermedades_id_cmv_emfermedades_id FOREIGN KEY (cmv_emfermedades_id) REFERENCES cmv_emfermedades(id) ON DELETE CASCADE;
+ALTER TABLE complicaciones_infecciosas ADD CONSTRAINT complicaciones_infecciosas_infeccion_id_infeccion_id FOREIGN KEY (infeccion_id) REFERENCES infeccion(id);
+ALTER TABLE complicaciones_infecciosas ADD CONSTRAINT complicaciones_infecciosas_germen_id_germenes_id FOREIGN KEY (germen_id) REFERENCES germenes(id);
 ALTER TABLE complicaciones_no_infecciosas ADD CONSTRAINT ccci FOREIGN KEY (complicacion_valor_id) REFERENCES complicaciones_tipos_valores(id);
-ALTER TABLE complicaciones_tipos_valores ADD CONSTRAINT cicc_1 FOREIGN KEY (id) REFERENCES complicaciones_no_infecciosas(complicacion_valor_id);
 ALTER TABLE complicaciones_tipos_valores ADD CONSTRAINT ccci_1 FOREIGN KEY (complicacion_tipo_id) REFERENCES complicaciones_tipos(id);
 ALTER TABLE donante ADD CONSTRAINT donante_donante_causa_muerte_id_donante_causa_muerte_id FOREIGN KEY (donante_causa_muerte_id) REFERENCES donante_causa_muerte(id);
 ALTER TABLE donante_antecedentes ADD CONSTRAINT donante_antecedentes_donante_id_donante_id FOREIGN KEY (donante_id) REFERENCES donante(id) ON DELETE CASCADE;
@@ -62,6 +67,7 @@ ALTER TABLE donante_serol ADD CONSTRAINT donante_serol_serol_id_serol_id FOREIGN
 ALTER TABLE donante_serol ADD CONSTRAINT donante_serol_donante_id_donante_id FOREIGN KEY (donante_id) REFERENCES donante(id);
 ALTER TABLE evolucion_trasplante_cmv ADD CONSTRAINT evolucion_trasplante_cmv_trasplante_id_trasplante_id FOREIGN KEY (trasplante_id) REFERENCES trasplante(id);
 ALTER TABLE evolucion_trasplante_ecg ADD CONSTRAINT evolucion_trasplante_ecg_trasplante_id_trasplante_id FOREIGN KEY (trasplante_id) REFERENCES trasplante(id);
+ALTER TABLE evolucion_trasplante_eco_cardio ADD CONSTRAINT evolucion_trasplante_eco_cardio_trasplante_id_trasplante_id FOREIGN KEY (trasplante_id) REFERENCES trasplante(id);
 ALTER TABLE paciente_muerte ADD CONSTRAINT paciente_muerte_causa_muerte_id_paciente_causa_muerte_id FOREIGN KEY (causa_muerte_id) REFERENCES paciente_causa_muerte(id);
 ALTER TABLE paciente_pre_trasplante ADD CONSTRAINT paciente_pre_trasplante_paciente_id_pacientes_id FOREIGN KEY (paciente_id) REFERENCES pacientes(id) ON DELETE CASCADE;
 ALTER TABLE pacientes ADD CONSTRAINT pacientes_nefropatia_id_nefropatia_id FOREIGN KEY (nefropatia_id) REFERENCES nefropatia(id) ON DELETE CASCADE;

@@ -16,4 +16,12 @@ class ComplicacionesTiposValoresTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('ComplicacionesTiposValores');
     }
+    
+    public function retrieveOneByComplicacionTipoIdAndName($complicacionTipoId, $nombre)
+    {
+      $query = $this->createQuery("ctv")
+                ->addWhere("ctv.complicacion_tipo_id = ?", $complicacionTipoId)
+                ->addWhere("ctv.nombre = ?", $nombre);
+      return $query->fetchOne();
+    }
 }

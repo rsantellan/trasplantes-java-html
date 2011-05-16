@@ -45,7 +45,7 @@ abstract class BaseComplicacionesTiposValores extends sfDoctrineRecord
              ));
         $this->hasColumn('complicacion_tipo_id', 'integer', 4, array(
              'type' => 'integer',
-             'primary' => true,
+             'notnull' => true,
              'length' => 4,
              ));
     }

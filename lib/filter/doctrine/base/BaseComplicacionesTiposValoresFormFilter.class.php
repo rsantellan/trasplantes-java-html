@@ -14,10 +14,12 @@ abstract class BaseComplicacionesTiposValoresFormFilter extends BaseFormFilterDo
   {
     $this->setWidgets(array(
       'nombre'               => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'complicacion_tipo_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ComplicacionesTipos'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
       'nombre'               => new sfValidatorPass(array('required' => false)),
+      'complicacion_tipo_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('ComplicacionesTipos'), 'column' => 'id')),
     ));
 
     $this->widgetSchema->setNameFormat('complicaciones_tipos_valores_filters[%s]');
@@ -39,7 +41,7 @@ abstract class BaseComplicacionesTiposValoresFormFilter extends BaseFormFilterDo
     return array(
       'id'                   => 'Number',
       'nombre'               => 'Text',
-      'complicacion_tipo_id' => 'Number',
+      'complicacion_tipo_id' => 'ForeignKey',
     );
   }
 }

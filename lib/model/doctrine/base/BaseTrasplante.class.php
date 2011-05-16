@@ -61,6 +61,7 @@
  * @property Doctrine_Collection $TrasplanteInmunosupresores
  * @property Doctrine_Collection $EvolucionTrasplanteCmv
  * @property Doctrine_Collection $EvolucionTrasplanteEcg
+ * @property Doctrine_Collection $EvolucionTrasplanteEcoCardio
  * 
  * @method integer               getId()                                Returns the current record's "id" value
  * @method integer               getPacientePreTrasplanteId()           Returns the current record's "paciente_pre_trasplante_id" value
@@ -118,6 +119,7 @@
  * @method Doctrine_Collection   getTrasplanteInmunosupresores()        Returns the current record's "TrasplanteInmunosupresores" collection
  * @method Doctrine_Collection   getEvolucionTrasplanteCmv()            Returns the current record's "EvolucionTrasplanteCmv" collection
  * @method Doctrine_Collection   getEvolucionTrasplanteEcg()            Returns the current record's "EvolucionTrasplanteEcg" collection
+ * @method Doctrine_Collection   getEvolucionTrasplanteEcoCardio()      Returns the current record's "EvolucionTrasplanteEcoCardio" collection
  * @method Trasplante            setId()                                Sets the current record's "id" value
  * @method Trasplante            setPacientePreTrasplanteId()           Sets the current record's "paciente_pre_trasplante_id" value
  * @method Trasplante            setFecha()                             Sets the current record's "fecha" value
@@ -174,6 +176,7 @@
  * @method Trasplante            setTrasplanteInmunosupresores()        Sets the current record's "TrasplanteInmunosupresores" collection
  * @method Trasplante            setEvolucionTrasplanteCmv()            Sets the current record's "EvolucionTrasplanteCmv" collection
  * @method Trasplante            setEvolucionTrasplanteEcg()            Sets the current record's "EvolucionTrasplanteEcg" collection
+ * @method Trasplante            setEvolucionTrasplanteEcoCardio()      Sets the current record's "EvolucionTrasplanteEcoCardio" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -478,6 +481,10 @@ abstract class BaseTrasplante extends sfDoctrineRecord
              'foreign' => 'trasplante_id'));
 
         $this->hasMany('EvolucionTrasplanteEcg', array(
+             'local' => 'id',
+             'foreign' => 'trasplante_id'));
+
+        $this->hasMany('EvolucionTrasplanteEcoCardio', array(
              'local' => 'id',
              'foreign' => 'trasplante_id'));
 

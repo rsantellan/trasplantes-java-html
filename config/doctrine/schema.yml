@@ -134,6 +134,7 @@ Pacientepretrasplante:
       onDelete: CASCADE
 
 PacienteMuerte:
+  tableName: paciente_muerte
   columns:
     paciente_id:
       type: integer(4)
@@ -1020,6 +1021,115 @@ EvolucionTrasplanteEcoCardio:
       foreign: id
       type: one
 
+EvolucionTrasplanteNutricion:
+  tableName: evolucion_trasplante_nutricion
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true  
+    trasplante_id:
+      type: integer(4)
+      notnull: true
+    fecha:
+      type: date(25)
+      notnull: true
+    talla:
+      type: integer(2)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: false
+      autoincrement: false
+    peso_deseado:
+      type: integer(1)
+      default: 0
+    estructura_osea:
+      type: enum
+      length: 8
+      values: ['Pequeña','Mediana','Grande']
+      notnull: true    
+    impresion:
+      type: enum
+      length: 11
+      values: ['Adelgazado','Normopeso','Sobrepeso','Obesidad']
+      notnull: true 
+    peso_real:
+      type: integer(1)
+      default: 0
+    p_tricipital:
+      type: integer(4)
+      default: 0
+    p_tricipital_p:
+      type: enum
+      length: 6
+      values: ['<10','10-25','26-50','51-75','76-91','>90']
+      notnull: true 
+    p_subescapular:
+      type: integer(4)
+      default: 0
+    p_subescapular_p:
+      type: enum
+      length: 6
+      values: ['<10','10-25','26-50','51-75','76-91','>90']
+      notnull: true
+    sum_pliegues:
+      type: integer(4)
+      default: 0
+    p_sum_pliegues:
+      type: enum
+      length: 6
+      values: ['<10','10-25','26-50','51-75','76-91','>90']
+      notnull: true
+    cf_brazo:
+      type: integer(2)
+      default: 0
+    p_cf_brazo:
+      type: enum
+      length: 6
+      values: ['<10','10-25','26-50','51-75','76-91','>90']
+      notnull: true
+    cf_musc_brazo:
+      type: integer(2)
+      default: 0
+    p_cf_musc_brazo:
+      type: enum
+      length: 6
+      values: ['<10','10-25','26-50','51-75','76-91','>90']
+      notnull: true
+    area_brazo:
+      type: integer(2)
+      default: 0
+    area_musc_brazo:
+      type: integer(2)
+      default: 0
+    p_area_musc_brazo:
+      type: enum
+      length: 6
+      values: ['<10','10-25','26-50','51-75','76-91','>90']
+      notnull: true
+    area_grasa_brazo:
+      type: integer(2)
+      default: 0
+    p_area_grasa_brazo:
+      type: enum
+      length: 6
+      values: ['<10','10-25','26-50','51-75','76-91','>90']
+      notnull: true
+    r_cintura_cadera:
+      type: integer(2)
+      default: 0
+    diag_nutricional:
+      type: enum
+      length: 13
+      values: ['Desnleve','Desnmoderada','Desnsevera','Normopeso','Sobrepeso','Obesidad']
+      notnull: true      
+  relations:      
+    Trasplante:
+      local: trasplante_id
+      foreign: id
+      type: one    
+        
 # A donde va el campo complicacion???
 #TrasplanteReoperacion:
 #  tableName: trasplante_reoperacion

@@ -81,7 +81,8 @@ EOF;
         evolucionConvertorHandler::saveAllEvolucionEcg($username, $password, $database);
         echo "---------------------------Guarda los Evolucion trasplante Eco cardio---------------------------------------\n";
         evolucionConvertorHandler::saveAllEvolucionEcoCardio($username, $password, $database);
-        
+        echo "---------------------------Guarda los Evolucion trasplante Nutricionales---------------------------------------\n";
+        evolucionConvertorHandler::saveAllEvolucionNutricionales($username, $password, $database);        
     } else {
         die('Task is Locked');
     }    

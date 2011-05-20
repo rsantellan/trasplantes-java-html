@@ -8,13 +8,16 @@
  * @property integer $id
  * @property string $nombre
  * @property Doctrine_Collection $TrasplanteComplicaciones
+ * @property Doctrine_Collection $Tratamiento
  * 
  * @method integer             getId()                       Returns the current record's "id" value
  * @method string              getNombre()                   Returns the current record's "nombre" value
  * @method Doctrine_Collection getTrasplanteComplicaciones() Returns the current record's "TrasplanteComplicaciones" collection
+ * @method Doctrine_Collection getTratamiento()              Returns the current record's "Tratamiento" collection
  * @method Medicaciones        setId()                       Sets the current record's "id" value
  * @method Medicaciones        setNombre()                   Sets the current record's "nombre" value
  * @method Medicaciones        setTrasplanteComplicaciones() Sets the current record's "TrasplanteComplicaciones" collection
+ * @method Medicaciones        setTratamiento()              Sets the current record's "Tratamiento" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -43,6 +46,10 @@ abstract class BaseMedicaciones extends sfDoctrineRecord
     {
         parent::setUp();
         $this->hasMany('TrasplanteComplicaciones', array(
+             'local' => 'id',
+             'foreign' => 'medicacion_id'));
+
+        $this->hasMany('Tratamiento', array(
              'local' => 'id',
              'foreign' => 'medicacion_id'));
     }

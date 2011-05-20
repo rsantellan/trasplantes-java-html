@@ -1,0 +1,15 @@
+EvolucionTrasplanteExamenesTipo:
+  GINECOLOGO:
+    nombre: "GINECOLOGO"
+  UROLOGO:
+    nombre: "UROLOGO"
+  OFTALMOLOGO:
+    nombre: "OFTALMOLOGO"
+  RXOSEAS:
+    nombre: "RX OSEAS"
+  TAC:
+    nombre: "TAC"
+  RNM:
+    nombre: "RNM"    
+  CENTELLO_GRAMA:
+    nombre: "CENTELLO GRAMA" 

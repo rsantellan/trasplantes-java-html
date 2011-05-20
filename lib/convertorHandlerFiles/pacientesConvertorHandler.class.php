@@ -164,4 +164,155 @@ class pacientesConvertorHandler
         return 1;
   }
   
+  public static function saveAllTratamientos($username,$password, $database, $starting = 0, $quantity =0)
+  {
+        mysql_connect("localhost",$username,$password);
+
+        @mysql_select_db($database) or die( "Unable to select database");
+        mysql_query("set names 'utf8'");
+
+        if($starting == 0 && $quantity == 0)
+        {
+          $query="SELECT * FROM tratamiento";
+        }
+        else
+        {
+          $query="SELECT * FROM tratamiento LIMIT ".$starting.", ".$quantity;
+        }
+
+        $result=mysql_query($query);
+        $num=mysql_numrows($result);
+        mysql_close();
+        $i=0;
+        //sfContext::getInstance()->getLogger()->err($num);
+        while ($i < $num) {
+          $THE = mysql_result($result,$i,"THE");
+          $MEDICACION = mysql_result($result,$i,"MEDICACION");
+          $DOSIS = mysql_result($result,$i,"DOSIS");
+          $FECHA_INICIO = mysql_result($result,$i,"FECHA_INICIO");
+          $FECHA_FIN = mysql_result($result,$i,"FECHA_FIN");
+          
+          if($FECHA_FIN == "1950-02-01")
+          {
+            $FECHA_FIN = null;
+          }
+          $paciente = Doctrine::getTable("Pacientes")->findOneBy("the", $THE);
+          $save = true;
+          if(!$paciente)
+          {
+            echo "El Pacientes con id: ".$THE." no existe en la base tratamiento incompleto para guardar\n";
+
+            $save = false;
+          }
+
+          if($save)
+          {
+            $object = new Tratamiento();
+            $object->setPacienteId($paciente->getId());
+            $object->setMedicacionId($MEDICACION);
+            $object->setDosis($DOSIS);
+            $object->setFechaInicio($FECHA_INICIO);
+            $object->setFechaFin($FECHA_FIN);
+            
+            $object->save();
+
+            $object->free(true);
+          }
+          $i++;
+
+        }
+
+        if($num == 0 || $num == "0")
+        {
+          return 0;
+        }
+        return 1;
+  }  
+  
+  public static function saveAllPacientePerdidaDeInjertoCausa($username,$password, $database, $starting = 0, $quantity =0)
+  {
+        mysql_connect("localhost",$username,$password);
+        
+        @mysql_select_db($database) or die( "Unable to select database");
+        mysql_query("set names 'utf8'");
+        
+        if($starting == 0 && $quantity == 0)
+        {
+          $query="SELECT * FROM paciente_causa_perdida_injerto";
+        }
+        else
+        {
+          $query="SELECT * FROM paciente_causa_perdida_injerto LIMIT ".$starting.", ".$quantity;
+        }
+        
+        $result=mysql_query($query);
+        $num=mysql_numrows($result);
+        mysql_close();
+        $i=0;
+        //sfContext::getInstance()->getLogger()->err($num);
+        while ($i < $num) {
+          $id = mysql_result($result,$i,"ID");
+          $name = mysql_result($result,$i,"DETALLES");
+          $Nefropatia = new PacienteCausaPerdidaInjerto();
+          $Nefropatia->setId($id);
+          $Nefropatia->setNombre($name);
+          $Nefropatia->save();
+          $i++;
+          $Nefropatia->free(true);
+        }
+
+        if($num == 0 || $num == "0")
+        {
+          return 0;
+        }
+        return 1;
+
+  }
+
+  public static function saveAllPacientePerdidaDeInjerto($username,$password, $database, $starting = 0, $quantity =0)
+  {
+        mysql_connect("localhost",$username,$password);
+        
+        @mysql_select_db($database) or die( "Unable to select database");
+        mysql_query("set names 'utf8'");
+        
+        if($starting == 0 && $quantity == 0)
+        {
+          $query="SELECT * FROM paciente_perdida_injerto";
+        }
+        else
+        {
+          $query="SELECT * FROM paciente_perdida_injerto LIMIT ".$starting.", ".$quantity;
+        }
+        
+        $result=mysql_query($query);
+        $num=mysql_numrows($result);
+        mysql_close();
+        $i=0;
+        //sfContext::getInstance()->getLogger()->err($num);
+        while ($i < $num) {
+          $THE = mysql_result($result,$i,"THE");
+          $CAUSA = mysql_result($result,$i,"CAUSA");
+          $FECHA_PERDIDA = mysql_result($result,$i,"FECHA_PERDIDA");
+          $ID_PRETRASPLANTE = mysql_result($result,$i,"ID_PRETRASPLANTE");          
+          
+          $Nefropatia = new PacientePerdidaInjerto();
+          $Nefropatia->setPacienteId($THE);
+          $Nefropatia->setPacienteCausaPerdidaInjertoId($CAUSA);
+          $Nefropatia->setFechaPerdida($FECHA_PERDIDA);
+          $Nefropatia->setPacientePreTrasplanteId($ID_PRETRASPLANTE);
+                  
+          $Nefropatia->save();
+          $i++;
+          $Nefropatia->free(true);
+        }
+
+        if($num == 0 || $num == "0")
+        {
+          return 0;
+        }
+        return 1;
+
+  }
+      
 }

@@ -63,6 +63,12 @@
  * @property Doctrine_Collection $EvolucionTrasplanteEcg
  * @property Doctrine_Collection $EvolucionTrasplanteEcoCardio
  * @property Doctrine_Collection $EvolucionTrasplanteNutricion
+ * @property Doctrine_Collection $EvolucionTrasplanteParaclinica
+ * @property Doctrine_Collection $EvolucionTrasplanteEcodopler
+ * @property Doctrine_Collection $EvolucionTrasplanteEcografia
+ * @property Doctrine_Collection $EvolucionTrasplanteMarvirales
+ * @property Doctrine_Collection $EvolucionTrasplanteTxtorax
+ * @property Doctrine_Collection $EvolucionTrasplanteExamenes
  * 
  * @method integer               getId()                                Returns the current record's "id" value
  * @method integer               getPacientePreTrasplanteId()           Returns the current record's "paciente_pre_trasplante_id" value
@@ -122,6 +128,12 @@
  * @method Doctrine_Collection   getEvolucionTrasplanteEcg()            Returns the current record's "EvolucionTrasplanteEcg" collection
  * @method Doctrine_Collection   getEvolucionTrasplanteEcoCardio()      Returns the current record's "EvolucionTrasplanteEcoCardio" collection
  * @method Doctrine_Collection   getEvolucionTrasplanteNutricion()      Returns the current record's "EvolucionTrasplanteNutricion" collection
+ * @method Doctrine_Collection   getEvolucionTrasplanteParaclinica()    Returns the current record's "EvolucionTrasplanteParaclinica" collection
+ * @method Doctrine_Collection   getEvolucionTrasplanteEcodopler()      Returns the current record's "EvolucionTrasplanteEcodopler" collection
+ * @method Doctrine_Collection   getEvolucionTrasplanteEcografia()      Returns the current record's "EvolucionTrasplanteEcografia" collection
+ * @method Doctrine_Collection   getEvolucionTrasplanteMarvirales()     Returns the current record's "EvolucionTrasplanteMarvirales" collection
+ * @method Doctrine_Collection   getEvolucionTrasplanteTxtorax()        Returns the current record's "EvolucionTrasplanteTxtorax" collection
+ * @method Doctrine_Collection   getEvolucionTrasplanteExamenes()       Returns the current record's "EvolucionTrasplanteExamenes" collection
  * @method Trasplante            setId()                                Sets the current record's "id" value
  * @method Trasplante            setPacientePreTrasplanteId()           Sets the current record's "paciente_pre_trasplante_id" value
  * @method Trasplante            setFecha()                             Sets the current record's "fecha" value
@@ -180,6 +192,12 @@
  * @method Trasplante            setEvolucionTrasplanteEcg()            Sets the current record's "EvolucionTrasplanteEcg" collection
  * @method Trasplante            setEvolucionTrasplanteEcoCardio()      Sets the current record's "EvolucionTrasplanteEcoCardio" collection
  * @method Trasplante            setEvolucionTrasplanteNutricion()      Sets the current record's "EvolucionTrasplanteNutricion" collection
+ * @method Trasplante            setEvolucionTrasplanteParaclinica()    Sets the current record's "EvolucionTrasplanteParaclinica" collection
+ * @method Trasplante            setEvolucionTrasplanteEcodopler()      Sets the current record's "EvolucionTrasplanteEcodopler" collection
+ * @method Trasplante            setEvolucionTrasplanteEcografia()      Sets the current record's "EvolucionTrasplanteEcografia" collection
+ * @method Trasplante            setEvolucionTrasplanteMarvirales()     Sets the current record's "EvolucionTrasplanteMarvirales" collection
+ * @method Trasplante            setEvolucionTrasplanteTxtorax()        Sets the current record's "EvolucionTrasplanteTxtorax" collection
+ * @method Trasplante            setEvolucionTrasplanteExamenes()       Sets the current record's "EvolucionTrasplanteExamenes" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -492,6 +510,30 @@ abstract class BaseTrasplante extends sfDoctrineRecord
              'foreign' => 'trasplante_id'));
 
         $this->hasMany('EvolucionTrasplanteNutricion', array(
+             'local' => 'id',
+             'foreign' => 'trasplante_id'));
+
+        $this->hasMany('EvolucionTrasplanteParaclinica', array(
+             'local' => 'id',
+             'foreign' => 'trasplante_id'));
+
+        $this->hasMany('EvolucionTrasplanteEcodopler', array(
+             'local' => 'id',
+             'foreign' => 'trasplante_id'));
+
+        $this->hasMany('EvolucionTrasplanteEcografia', array(
+             'local' => 'id',
+             'foreign' => 'trasplante_id'));
+
+        $this->hasMany('EvolucionTrasplanteMarvirales', array(
+             'local' => 'id',
+             'foreign' => 'trasplante_id'));
+
+        $this->hasMany('EvolucionTrasplanteTxtorax', array(
+             'local' => 'id',
+             'foreign' => 'trasplante_id'));
+
+        $this->hasMany('EvolucionTrasplanteExamenes', array(
              'local' => 'id',
              'foreign' => 'trasplante_id'));
 

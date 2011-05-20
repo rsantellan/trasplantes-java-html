@@ -1,0 +1,9 @@
+Para enterderse:
+ - InjertoEvolucion esta en el archivo src/uy/transplante/iu/basico/IUInjertoEvolucion.java 
+ - InjertoEvolucionPbr es el primer injerto evolucion y tiene una relacion a Injerto Evolucion.
+ 
+ - TrasplanteReoperacion el campo complicacion va a trasplante complicaciones
+
+Sentecia SQL para usar:
+
+SELECT t.id, t.paciente_pre_trasplante_id, t1.id FROM trasplante t, trasplante.trasplante t1 where t.paciente_pre_trasplante_id = t1.pretrasplante

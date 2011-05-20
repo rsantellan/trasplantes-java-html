@@ -107,3 +107,5 @@ TABLA complicaciones_tipos:
 TABLA trasplante_complicaciones:
     - pasa a estar relacionado contra la tabla trasplantes en vez de pretrasplantes
     
+TABLA evolucion_trasplante:
+    - pasa a llamarse evolucion_trasplante_para_clinica

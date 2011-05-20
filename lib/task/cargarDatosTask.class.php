@@ -42,7 +42,7 @@ EOF;
         $username="root";
         $password="root";
         $database="trasplante";    
-        echo "------------------------------------------------------------------\n";
+        echo "---------------------------- Cargando las nefropatias --------------------------------------\n";
         $page = 0;
         $hasValue = true;
         while($hasValue)
@@ -50,19 +50,16 @@ EOF;
           $hasValue = nefropatiasConvertorHandler::saveAllNefropatias($username,$password, $database, $page, 1);
           $page++;
         }
-        echo "------------------------------------------------------------------\n";
+        echo "----------------------------Cargando los pacientes --------------------------------------\n";
         pacientesConvertorHandler::saveAllPacientes($username,$password, $database);
-        echo "------------------------------------------------------------------\n";
+        echo "---------------------------------Cargando las causas de muere---------------------------------\n";
         pacientesMuerteConvertorHandler::saveAllPacientesCausaDeMuerte($username,$password, $database);
-        echo "------------------------------------------------------------------\n";
+        echo "--------------------------Cargando las muertes de los pacientes---------------------------------------\n";
         pacientesMuerteConvertorHandler::saveAllPacientesMuertes($username, $password, $database);
-        echo "------------------------------------------------------------------\n";
+        echo "--------------------------------Cargando los pre trasplantes----------------------------------\n";
         pacientesConvertorHandler::saveAllPacientesPreTransplantes($username, $password, $database);
-        echo "------------------------------------------------------------------\n";
-
+        echo "-----------------------------Cargando los donantes-------------------------------------\n";
         donantesConvertorHandler::proccessDonantes($username, $password, $database);
-        echo "------------------------------------------------------------------\n";
-        sleep(5);
     } else {
         die('Task is Locked');
     }    

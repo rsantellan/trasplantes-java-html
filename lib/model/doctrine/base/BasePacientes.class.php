@@ -20,37 +20,43 @@
  * @property Nefropatia $Nefropatia
  * @property Doctrine_Collection $Pacientepretrasplante
  * @property Doctrine_Collection $PacienteMuerte
+ * @property Doctrine_Collection $Tratamiento
+ * @property Doctrine_Collection $PacientePerdidaInjerto
  * 
- * @method integer             getId()                    Returns the current record's "id" value
- * @method integer             getThe()                   Returns the current record's "the" value
- * @method string              getCi()                    Returns the current record's "ci" value
- * @method string              getNombre()                Returns the current record's "nombre" value
- * @method string              getApellido()              Returns the current record's "apellido" value
- * @method integer             getNumFnr()                Returns the current record's "num_fnr" value
- * @method string              getRaza()                  Returns the current record's "raza" value
- * @method enum                getSexo()                  Returns the current record's "sexo" value
- * @method date                getFechaNacimiento()       Returns the current record's "fecha_nacimiento" value
- * @method date                getFechaDialisis()         Returns the current record's "fecha_dialisis" value
- * @method integer             getNefropatiaId()          Returns the current record's "nefropatia_id" value
- * @method enum                getGrupoSanguineo()        Returns the current record's "grupo_sanguineo" value
- * @method Nefropatia          getNefropatia()            Returns the current record's "Nefropatia" value
- * @method Doctrine_Collection getPacientepretrasplante() Returns the current record's "Pacientepretrasplante" collection
- * @method Doctrine_Collection getPacienteMuerte()        Returns the current record's "PacienteMuerte" collection
- * @method Pacientes           setId()                    Sets the current record's "id" value
- * @method Pacientes           setThe()                   Sets the current record's "the" value
- * @method Pacientes           setCi()                    Sets the current record's "ci" value
- * @method Pacientes           setNombre()                Sets the current record's "nombre" value
- * @method Pacientes           setApellido()              Sets the current record's "apellido" value
- * @method Pacientes           setNumFnr()                Sets the current record's "num_fnr" value
- * @method Pacientes           setRaza()                  Sets the current record's "raza" value
- * @method Pacientes           setSexo()                  Sets the current record's "sexo" value
- * @method Pacientes           setFechaNacimiento()       Sets the current record's "fecha_nacimiento" value
- * @method Pacientes           setFechaDialisis()         Sets the current record's "fecha_dialisis" value
- * @method Pacientes           setNefropatiaId()          Sets the current record's "nefropatia_id" value
- * @method Pacientes           setGrupoSanguineo()        Sets the current record's "grupo_sanguineo" value
- * @method Pacientes           setNefropatia()            Sets the current record's "Nefropatia" value
- * @method Pacientes           setPacientepretrasplante() Sets the current record's "Pacientepretrasplante" collection
- * @method Pacientes           setPacienteMuerte()        Sets the current record's "PacienteMuerte" collection
+ * @method integer             getId()                     Returns the current record's "id" value
+ * @method integer             getThe()                    Returns the current record's "the" value
+ * @method string              getCi()                     Returns the current record's "ci" value
+ * @method string              getNombre()                 Returns the current record's "nombre" value
+ * @method string              getApellido()               Returns the current record's "apellido" value
+ * @method integer             getNumFnr()                 Returns the current record's "num_fnr" value
+ * @method string              getRaza()                   Returns the current record's "raza" value
+ * @method enum                getSexo()                   Returns the current record's "sexo" value
+ * @method date                getFechaNacimiento()        Returns the current record's "fecha_nacimiento" value
+ * @method date                getFechaDialisis()          Returns the current record's "fecha_dialisis" value
+ * @method integer             getNefropatiaId()           Returns the current record's "nefropatia_id" value
+ * @method enum                getGrupoSanguineo()         Returns the current record's "grupo_sanguineo" value
+ * @method Nefropatia          getNefropatia()             Returns the current record's "Nefropatia" value
+ * @method Doctrine_Collection getPacientepretrasplante()  Returns the current record's "Pacientepretrasplante" collection
+ * @method Doctrine_Collection getPacienteMuerte()         Returns the current record's "PacienteMuerte" collection
+ * @method Doctrine_Collection getTratamiento()            Returns the current record's "Tratamiento" collection
+ * @method Doctrine_Collection getPacientePerdidaInjerto() Returns the current record's "PacientePerdidaInjerto" collection
+ * @method Pacientes           setId()                     Sets the current record's "id" value
+ * @method Pacientes           setThe()                    Sets the current record's "the" value
+ * @method Pacientes           setCi()                     Sets the current record's "ci" value
+ * @method Pacientes           setNombre()                 Sets the current record's "nombre" value
+ * @method Pacientes           setApellido()               Sets the current record's "apellido" value
+ * @method Pacientes           setNumFnr()                 Sets the current record's "num_fnr" value
+ * @method Pacientes           setRaza()                   Sets the current record's "raza" value
+ * @method Pacientes           setSexo()                   Sets the current record's "sexo" value
+ * @method Pacientes           setFechaNacimiento()        Sets the current record's "fecha_nacimiento" value
+ * @method Pacientes           setFechaDialisis()          Sets the current record's "fecha_dialisis" value
+ * @method Pacientes           setNefropatiaId()           Sets the current record's "nefropatia_id" value
+ * @method Pacientes           setGrupoSanguineo()         Sets the current record's "grupo_sanguineo" value
+ * @method Pacientes           setNefropatia()             Sets the current record's "Nefropatia" value
+ * @method Pacientes           setPacientepretrasplante()  Sets the current record's "Pacientepretrasplante" collection
+ * @method Pacientes           setPacienteMuerte()         Sets the current record's "PacienteMuerte" collection
+ * @method Pacientes           setTratamiento()            Sets the current record's "Tratamiento" collection
+ * @method Pacientes           setPacientePerdidaInjerto() Sets the current record's "PacientePerdidaInjerto" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -150,6 +156,14 @@ abstract class BasePacientes extends sfDoctrineRecord
              'foreign' => 'paciente_id'));
 
         $this->hasMany('PacienteMuerte', array(
+             'local' => 'id',
+             'foreign' => 'paciente_id'));
+
+        $this->hasMany('Tratamiento', array(
+             'local' => 'id',
+             'foreign' => 'paciente_id'));
+
+        $this->hasMany('PacientePerdidaInjerto', array(
              'local' => 'id',
              'foreign' => 'paciente_id'));
     }

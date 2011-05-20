@@ -68,8 +68,8 @@ class TrasplanteActions extends sfActions
 
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
-    print_r($request->getParameter($form->getName()));
-    die;
+    //print_r($request->getParameter($form->getName()));
+    //die;
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {

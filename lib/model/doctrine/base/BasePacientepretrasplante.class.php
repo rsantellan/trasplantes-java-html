@@ -25,47 +25,50 @@
  * @property integer $meses_en_lista
  * @property Pacientes $Pacientes
  * @property Doctrine_Collection $Trasplante
+ * @property Doctrine_Collection $PacientePerdidaInjerto
  * 
- * @method integer               getId()                  Returns the current record's "id" value
- * @method integer               getPacienteId()          Returns the current record's "paciente_id" value
- * @method integer               getThe()                 Returns the current record's "the" value
- * @method date                  getFechaIngresoLista()   Returns the current record's "fecha_ingreso_lista" value
- * @method date                  getFechaEgreso()         Returns the current record's "fecha_egreso" value
- * @method enum                  getModalidadD()          Returns the current record's "modalidad_d" value
- * @method enum                  getDiabetes()            Returns the current record's "diabetes" value
- * @method enum                  getImc()                 Returns the current record's "imc" value
- * @method enum                  getOrigen()              Returns the current record's "origen" value
- * @method integer               getPbr()                 Returns the current record's "pbr" value
- * @method integer               getHta()                 Returns the current record's "hta" value
- * @method integer               getObesidad()            Returns the current record's "obesidad" value
- * @method integer               getDislipemia()          Returns the current record's "dislipemia" value
- * @method integer               getTabaquismo()          Returns the current record's "tabaquismo" value
- * @method integer               getIam()                 Returns the current record's "iam" value
- * @method integer               getAve()                 Returns the current record's "ave" value
- * @method integer               getRevascCardio()        Returns the current record's "revasc_cardio" value
- * @method integer               getMesesEnLista()        Returns the current record's "meses_en_lista" value
- * @method Pacientes             getPacientes()           Returns the current record's "Pacientes" value
- * @method Doctrine_Collection   getTrasplante()          Returns the current record's "Trasplante" collection
- * @method Pacientepretrasplante setId()                  Sets the current record's "id" value
- * @method Pacientepretrasplante setPacienteId()          Sets the current record's "paciente_id" value
- * @method Pacientepretrasplante setThe()                 Sets the current record's "the" value
- * @method Pacientepretrasplante setFechaIngresoLista()   Sets the current record's "fecha_ingreso_lista" value
- * @method Pacientepretrasplante setFechaEgreso()         Sets the current record's "fecha_egreso" value
- * @method Pacientepretrasplante setModalidadD()          Sets the current record's "modalidad_d" value
- * @method Pacientepretrasplante setDiabetes()            Sets the current record's "diabetes" value
- * @method Pacientepretrasplante setImc()                 Sets the current record's "imc" value
- * @method Pacientepretrasplante setOrigen()              Sets the current record's "origen" value
- * @method Pacientepretrasplante setPbr()                 Sets the current record's "pbr" value
- * @method Pacientepretrasplante setHta()                 Sets the current record's "hta" value
- * @method Pacientepretrasplante setObesidad()            Sets the current record's "obesidad" value
- * @method Pacientepretrasplante setDislipemia()          Sets the current record's "dislipemia" value
- * @method Pacientepretrasplante setTabaquismo()          Sets the current record's "tabaquismo" value
- * @method Pacientepretrasplante setIam()                 Sets the current record's "iam" value
- * @method Pacientepretrasplante setAve()                 Sets the current record's "ave" value
- * @method Pacientepretrasplante setRevascCardio()        Sets the current record's "revasc_cardio" value
- * @method Pacientepretrasplante setMesesEnLista()        Sets the current record's "meses_en_lista" value
- * @method Pacientepretrasplante setPacientes()           Sets the current record's "Pacientes" value
- * @method Pacientepretrasplante setTrasplante()          Sets the current record's "Trasplante" collection
+ * @method integer               getId()                     Returns the current record's "id" value
+ * @method integer               getPacienteId()             Returns the current record's "paciente_id" value
+ * @method integer               getThe()                    Returns the current record's "the" value
+ * @method date                  getFechaIngresoLista()      Returns the current record's "fecha_ingreso_lista" value
+ * @method date                  getFechaEgreso()            Returns the current record's "fecha_egreso" value
+ * @method enum                  getModalidadD()             Returns the current record's "modalidad_d" value
+ * @method enum                  getDiabetes()               Returns the current record's "diabetes" value
+ * @method enum                  getImc()                    Returns the current record's "imc" value
+ * @method enum                  getOrigen()                 Returns the current record's "origen" value
+ * @method integer               getPbr()                    Returns the current record's "pbr" value
+ * @method integer               getHta()                    Returns the current record's "hta" value
+ * @method integer               getObesidad()               Returns the current record's "obesidad" value
+ * @method integer               getDislipemia()             Returns the current record's "dislipemia" value
+ * @method integer               getTabaquismo()             Returns the current record's "tabaquismo" value
+ * @method integer               getIam()                    Returns the current record's "iam" value
+ * @method integer               getAve()                    Returns the current record's "ave" value
+ * @method integer               getRevascCardio()           Returns the current record's "revasc_cardio" value
+ * @method integer               getMesesEnLista()           Returns the current record's "meses_en_lista" value
+ * @method Pacientes             getPacientes()              Returns the current record's "Pacientes" value
+ * @method Doctrine_Collection   getTrasplante()             Returns the current record's "Trasplante" collection
+ * @method Doctrine_Collection   getPacientePerdidaInjerto() Returns the current record's "PacientePerdidaInjerto" collection
+ * @method Pacientepretrasplante setId()                     Sets the current record's "id" value
+ * @method Pacientepretrasplante setPacienteId()             Sets the current record's "paciente_id" value
+ * @method Pacientepretrasplante setThe()                    Sets the current record's "the" value
+ * @method Pacientepretrasplante setFechaIngresoLista()      Sets the current record's "fecha_ingreso_lista" value
+ * @method Pacientepretrasplante setFechaEgreso()            Sets the current record's "fecha_egreso" value
+ * @method Pacientepretrasplante setModalidadD()             Sets the current record's "modalidad_d" value
+ * @method Pacientepretrasplante setDiabetes()               Sets the current record's "diabetes" value
+ * @method Pacientepretrasplante setImc()                    Sets the current record's "imc" value
+ * @method Pacientepretrasplante setOrigen()                 Sets the current record's "origen" value
+ * @method Pacientepretrasplante setPbr()                    Sets the current record's "pbr" value
+ * @method Pacientepretrasplante setHta()                    Sets the current record's "hta" value
+ * @method Pacientepretrasplante setObesidad()               Sets the current record's "obesidad" value
+ * @method Pacientepretrasplante setDislipemia()             Sets the current record's "dislipemia" value
+ * @method Pacientepretrasplante setTabaquismo()             Sets the current record's "tabaquismo" value
+ * @method Pacientepretrasplante setIam()                    Sets the current record's "iam" value
+ * @method Pacientepretrasplante setAve()                    Sets the current record's "ave" value
+ * @method Pacientepretrasplante setRevascCardio()           Sets the current record's "revasc_cardio" value
+ * @method Pacientepretrasplante setMesesEnLista()           Sets the current record's "meses_en_lista" value
+ * @method Pacientepretrasplante setPacientes()              Sets the current record's "Pacientes" value
+ * @method Pacientepretrasplante setTrasplante()             Sets the current record's "Trasplante" collection
+ * @method Pacientepretrasplante setPacientePerdidaInjerto() Sets the current record's "PacientePerdidaInjerto" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -208,6 +211,10 @@ abstract class BasePacientepretrasplante extends sfDoctrineRecord
              'onDelete' => 'CASCADE'));
 
         $this->hasMany('Trasplante', array(
+             'local' => 'id',
+             'foreign' => 'paciente_pre_trasplante_id'));
+
+        $this->hasMany('PacientePerdidaInjerto', array(
              'local' => 'id',
              'foreign' => 'paciente_pre_trasplante_id'));
     }

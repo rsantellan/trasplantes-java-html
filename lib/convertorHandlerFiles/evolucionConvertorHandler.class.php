@@ -40,8 +40,9 @@ class evolucionConvertorHandler {
           $PCR_CMV = mysql_result($result,$i,"PCR_CMV");
           $Ag_pp65 = mysql_result($result,$i,"Ag_pp65");
           
-          $trasplante = Doctrine::getTable("Trasplante")->find($IdTrasplante);
-
+          $idPretrasplante = transplanteConvertorHandler::retrievePreTrasplanteId($username,$password, $database, $IdTrasplante);
+          $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $idPretrasplante);          
+          
           $save = true;
           if(!$trasplante)
           {
@@ -54,7 +55,7 @@ class evolucionConvertorHandler {
           {
             $object = new EvolucionTrasplanteCmv();
             $object->setFecha($FECHA);
-            $object->setTrasplanteId($IdTrasplante);
+            $object->setTrasplanteId($trasplante->getId());
             $object->setIggCmv($IgG_CMV);
             $object->setIgmCmv($IgM_CMV);
             $object->setPcrCmv($PCR_CMV);
@@ -103,7 +104,9 @@ class evolucionConvertorHandler {
           $HVI_ECG = mysql_result($result,$i,"HVI_ECG");
           $Onda_Q_ECG = mysql_result($result,$i,"Onda_Q_ECG");
           
-          $trasplante = Doctrine::getTable("Trasplante")->find($IdTrasplante);
+          $idPretrasplante = transplanteConvertorHandler::retrievePreTrasplanteId($username,$password, $database, $IdTrasplante);
+          $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $idPretrasplante);          
+
 
           $save = true;
           if(!$trasplante)
@@ -117,7 +120,7 @@ class evolucionConvertorHandler {
           {
             $object = new EvolucionTrasplanteEcg();
             $object->setFecha($FECHA);
-            $object->setTrasplanteId($IdTrasplante);
+            $object->setTrasplanteId($trasplante->getId());
             $object->setRsEcg($RS_ECG);
             $object->setHviEcg($HVI_ECG);
             $object->setOndaQEcg($Onda_Q_ECG);
@@ -174,7 +177,8 @@ class evolucionConvertorHandler {
           $Calcif_valvular = mysql_result($result,$i,"Calcif_valvular");
           $HVI = mysql_result($result,$i,"HVI");
                               
-          $trasplante = Doctrine::getTable("Trasplante")->find($IdTrasplante);
+          $idPretrasplante = transplanteConvertorHandler::retrievePreTrasplanteId($username,$password, $database, $IdTrasplante);
+          $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $idPretrasplante);          
 
           $save = true;
           if(!$trasplante)
@@ -188,7 +192,7 @@ class evolucionConvertorHandler {
           {
             $object = new EvolucionTrasplanteEcoCardio();
             $object->setFecha($FECHA);
-            $object->setTrasplanteId($IdTrasplante);
+            $object->setTrasplanteId($trasplante->getId());
             $object->setFeviNormal($FEVI_NORMAL);
             $object->setInsufHipodiast($Insuf_Hipodiast);
             $object->setIao($I_Ao);
@@ -266,7 +270,8 @@ class evolucionConvertorHandler {
           $R_CINTURA_CADERA = mysql_result($result,$i,"R_CINTURA_CADERA");
           $DIAG_NUTRICIONAL = mysql_result($result,$i,"DIAG_NUTRICIONAL");
                               
-          $trasplante = Doctrine::getTable("Trasplante")->find($IdTrasplante);
+          $idPretrasplante = transplanteConvertorHandler::retrievePreTrasplanteId($username,$password, $database, $IdTrasplante);
+          $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $idPretrasplante);          
 
           $save = true;
           if(!$trasplante)
@@ -280,7 +285,7 @@ class evolucionConvertorHandler {
           {
             $object = new EvolucionTrasplanteNutricion();
             $object->setFecha($FECHA);
-            $object->setTrasplanteId($IdTrasplante);
+            $object->setTrasplanteId($trasplante->getId());
             $object->setTalla($TALLA);
             $object->setPesoDeseado($PESO_DESEADO);
             $object->setEstructuraOsea($ESTRUCTURA_OSEA);
@@ -462,7 +467,8 @@ class evolucionConvertorHandler {
           $object->setOtros($OTROS);
           $object->setNumpthi($NUMPTHi);
                                                                                           
-          $trasplante = Doctrine::getTable("Trasplante")->find($IdTrasplante);
+          $idPretrasplante = transplanteConvertorHandler::retrievePreTrasplanteId($username,$password, $database, $IdTrasplante);
+          $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $idPretrasplante);          
 
           $save = true;
           if(!$trasplante)
@@ -474,7 +480,7 @@ class evolucionConvertorHandler {
 
           if($save)
           {
-            $object->setTrasplanteId($IdTrasplante);
+            $object->setTrasplanteId($trasplante->getId());
             $object->save();
           }
           $object->free(true);
@@ -526,7 +532,8 @@ class evolucionConvertorHandler {
           $INDICE = mysql_result($result,$i,"INDICE");
           $setOtros = mysql_result($result,$i,"OTROS");
                               
-          $trasplante = Doctrine::getTable("Trasplante")->find($IdTrasplante);
+          $idPretrasplante = transplanteConvertorHandler::retrievePreTrasplanteId($username,$password, $database, $IdTrasplante);
+          $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $idPretrasplante);          
 
           $save = true;
           if(!$trasplante)
@@ -540,7 +547,7 @@ class evolucionConvertorHandler {
           {
             $object = new EvolucionTrasplanteEcodopler();
             $object->setFecha($FECHA);
-            $object->setTrasplanteId($IdTrasplante);
+            $object->setTrasplanteId($trasplante->getId());
             $object->setEstructura($ESTRUCTURA);
             $object->setDilatacion($DILATACION);
             $object->setColecciones($COLECCIONES);
@@ -601,7 +608,8 @@ class evolucionConvertorHandler {
           $Espesor = mysql_result($result,$i,"Espesor");
           $OTROS = mysql_result($result,$i,"OTROS");
                               
-          $trasplante = Doctrine::getTable("Trasplante")->find($IdTrasplante);
+          $idPretrasplante = transplanteConvertorHandler::retrievePreTrasplanteId($username,$password, $database, $IdTrasplante);
+          $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $idPretrasplante);          
 
           $save = true;
           if(!$trasplante)
@@ -615,7 +623,7 @@ class evolucionConvertorHandler {
           {
             $object = new EvolucionTrasplanteEcografia();
             $object->setFecha($FECHA);
-            $object->setTrasplanteId($IdTrasplante);
+            $object->setTrasplanteId($trasplante->getId());
             $object->setDiametros($Diametros);
             $object->setDilatacion($Dilatacion);
             $object->setLitiasin($Litiasin);
@@ -669,7 +677,8 @@ class evolucionConvertorHandler {
           $HVC = mysql_result($result,$i,"HVC");
           $HIV = mysql_result($result,$i,"HIV");
                               
-          $trasplante = Doctrine::getTable("Trasplante")->find($IdTrasplante);
+          $idPretrasplante = transplanteConvertorHandler::retrievePreTrasplanteId($username,$password, $database, $IdTrasplante);
+          $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $idPretrasplante);          
 
           $save = true;
           if(!$trasplante)
@@ -683,7 +692,7 @@ class evolucionConvertorHandler {
           {
             $object = new EvolucionTrasplanteMarvirales();
             $object->setFecha($FECHA);
-            $object->setTrasplanteId($IdTrasplante);
+            $object->setTrasplanteId($trasplante->getId());
             $object->setHsv($HSV);
             $object->setAghbs($AGHBS);
             $object->setHbsac($HBSAC);
@@ -738,7 +747,8 @@ class evolucionConvertorHandler {
           $SECUELAS = mysql_result($result,$i,"SECUELAS");
           $OTROS = mysql_result($result,$i,"OTROS");
                               
-          $trasplante = Doctrine::getTable("Trasplante")->find($IdTrasplante);
+          $idPretrasplante = transplanteConvertorHandler::retrievePreTrasplanteId($username,$password, $database, $IdTrasplante);
+          $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $idPretrasplante);          
 
           $save = true;
           if(!$trasplante)
@@ -752,7 +762,7 @@ class evolucionConvertorHandler {
           {
             $object = new EvolucionTrasplanteTxtorax();
             $object->setFecha($FECHA);
-            $object->setTrasplanteId($IdTrasplante);
+            $object->setTrasplanteId($trasplante->getId());
             $object->setRct($RCT);
             $object->setFoco($FOCO);
             $object->setLateralizado($LATERALIZADO);
@@ -812,7 +822,8 @@ class evolucionConvertorHandler {
             $Normal = "Patologico";
           }
           
-          $trasplante = Doctrine::getTable("Trasplante")->find($IdTrasplante);
+          $idPretrasplante = transplanteConvertorHandler::retrievePreTrasplanteId($username,$password, $database, $IdTrasplante);
+          $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $idPretrasplante);          
 
           $EvolucionTrasplanteExamenesTipo = Doctrine::getTable("EvolucionTrasplanteExamenesTipo")->findOneBy("nombre", $Tipo);
           $save = true;
@@ -825,7 +836,7 @@ class evolucionConvertorHandler {
 
           if(!$EvolucionTrasplanteExamenesTipo)
           {
-            echo "El EvolucionTrasplanteExamenesTipo con nombre: ".$Tipo." e id".$IdTrasplante ."no existe en la base evolucion_trasplanteexamenes incompleto para guardar\n";
+            echo "El EvolucionTrasplanteExamenesTipo con nombre: ".$Tipo." e id: ".$IdTrasplante ." no existe en la base evolucion_trasplanteexamenes incompleto para guardar\n";
 
             $save = false;
           }
@@ -834,7 +845,7 @@ class evolucionConvertorHandler {
           {
             $object = new EvolucionTrasplanteExamenes();
             $object->setFecha($FECHA);
-            $object->setTrasplanteId($IdTrasplante);
+            $object->setTrasplanteId($trasplante->getId());
             $object->setEvolucionTrasplanteExamenesTipoId($EvolucionTrasplanteExamenesTipo->getId());
             $object->setTipo($Normal);
             $object->setComentario($Comentario);

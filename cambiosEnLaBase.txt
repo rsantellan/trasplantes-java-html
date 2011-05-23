@@ -109,3 +109,7 @@ TABLA trasplante_complicaciones:
     
 TABLA evolucion_trasplante:
     - pasa a llamarse evolucion_trasplante_para_clinica
+
+TABLA injerto_evolucion
+    - pasa a referenciar al trasplante en vez del pre trasplante
+    - tratamiento paso a ser ra_tratamiento_id

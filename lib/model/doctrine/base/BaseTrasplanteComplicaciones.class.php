@@ -18,6 +18,7 @@
  * @property Trasplante $Trasplante
  * @property Doctrine_Collection $ComplicacionesNoInfecciosas
  * @property Doctrine_Collection $ComplicacionesInfecciosas
+ * @property Doctrine_Collection $TrasplanteReoperacion
  * 
  * @method integer                  getId()                          Returns the current record's "id" value
  * @method integer                  getTrasplanteId()                Returns the current record's "trasplante_id" value
@@ -32,6 +33,7 @@
  * @method Trasplante               getTrasplante()                  Returns the current record's "Trasplante" value
  * @method Doctrine_Collection      getComplicacionesNoInfecciosas() Returns the current record's "ComplicacionesNoInfecciosas" collection
  * @method Doctrine_Collection      getComplicacionesInfecciosas()   Returns the current record's "ComplicacionesInfecciosas" collection
+ * @method Doctrine_Collection      getTrasplanteReoperacion()       Returns the current record's "TrasplanteReoperacion" collection
  * @method TrasplanteComplicaciones setId()                          Sets the current record's "id" value
  * @method TrasplanteComplicaciones setTrasplanteId()                Sets the current record's "trasplante_id" value
  * @method TrasplanteComplicaciones setFecha()                       Sets the current record's "fecha" value
@@ -45,6 +47,7 @@
  * @method TrasplanteComplicaciones setTrasplante()                  Sets the current record's "Trasplante" value
  * @method TrasplanteComplicaciones setComplicacionesNoInfecciosas() Sets the current record's "ComplicacionesNoInfecciosas" collection
  * @method TrasplanteComplicaciones setComplicacionesInfecciosas()   Sets the current record's "ComplicacionesInfecciosas" collection
+ * @method TrasplanteComplicaciones setTrasplanteReoperacion()       Sets the current record's "TrasplanteReoperacion" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -122,5 +125,9 @@ abstract class BaseTrasplanteComplicaciones extends sfDoctrineRecord
         $this->hasMany('ComplicacionesInfecciosas', array(
              'local' => 'id',
              'foreign' => 'tr_complicacion_id'));
+
+        $this->hasMany('TrasplanteReoperacion', array(
+             'local' => 'id',
+             'foreign' => 'trasplante_complicacion_id'));
     }
 }

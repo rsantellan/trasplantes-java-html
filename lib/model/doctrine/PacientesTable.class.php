@@ -16,4 +16,17 @@ class PacientesTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Pacientes');
     }
+    
+    public function retrivePacienteByTrasplanteId($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("p")
+                ->select("p.*")
+                ->addFrom("Pacientepretrasplante pa, Trasplante t")
+                ->addWhere("pa.id = t.paciente_pre_trasplante_id")
+                ->addWhere("pa.paciente_id = p.id")
+                ->addWhere("t.id = ?", $trasplanteId);
+ 
+      $query->setHydrationMode($hydrationMode);
+      return $query->execute();
+    }
 }

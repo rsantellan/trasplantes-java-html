@@ -8,13 +8,16 @@
  * @property integer $id
  * @property string $grado
  * @property string $criterio
+ * @property Doctrine_Collection $InjertoEvolucionPbr
  * 
- * @method integer      getId()       Returns the current record's "id" value
- * @method string       getGrado()    Returns the current record's "grado" value
- * @method string       getCriterio() Returns the current record's "criterio" value
- * @method ResultadoPbr setId()       Sets the current record's "id" value
- * @method ResultadoPbr setGrado()    Sets the current record's "grado" value
- * @method ResultadoPbr setCriterio() Sets the current record's "criterio" value
+ * @method integer             getId()                  Returns the current record's "id" value
+ * @method string              getGrado()               Returns the current record's "grado" value
+ * @method string              getCriterio()            Returns the current record's "criterio" value
+ * @method Doctrine_Collection getInjertoEvolucionPbr() Returns the current record's "InjertoEvolucionPbr" collection
+ * @method ResultadoPbr        setId()                  Sets the current record's "id" value
+ * @method ResultadoPbr        setGrado()               Sets the current record's "grado" value
+ * @method ResultadoPbr        setCriterio()            Sets the current record's "criterio" value
+ * @method ResultadoPbr        setInjertoEvolucionPbr() Sets the current record's "InjertoEvolucionPbr" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -46,6 +49,8 @@ abstract class BaseResultadoPbr extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasMany('InjertoEvolucionPbr', array(
+             'local' => 'id',
+             'foreign' => 'resultado_pbr_id'));
     }
 }

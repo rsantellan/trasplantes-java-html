@@ -43,7 +43,8 @@ EOF;
         Md_TaskManager::unlockTask(__class__);
         $username="root";
         $password="root";
-        $database="trasplante";    
+        $database="trasplante";   
+        /* 
         echo "---------------------------Guarda los cmv---------------------------------------\n";
         cmvConvertorHandler::startAll($username, $password, $database);
         echo "-------------------------Guarda los seroles de los trasplantes-----------------------------------------\n";
@@ -98,9 +99,20 @@ EOF;
         evolucionConvertorHandler::saveAllEvolucionExamenenes($username, $password, $database);
         echo "---------------------------Guarda las Causas de perdidas de Injerto---------------------------------------\n";
         pacientesConvertorHandler::saveAllPacientePerdidaDeInjertoCausa($username, $password, $database);        
-        
         echo "---------------------------Guarda las perdidas de Injerto---------------------------------------\n";
-        pacientesConvertorHandler::saveAllPacientePerdidaDeInjerto($username, $password, $database);        
+        pacientesConvertorHandler::saveAllPacientePerdidaDeInjerto($username, $password, $database);
+        echo "---------------------------Guarda las reoperaciones de trasplantes---------------------------------------\n";
+        transplanteConvertorHandler::saveAllTrasplanteReoperacion($username, $password, $database);        
+        echo "---------------------------Guarda las evoluciones de los injertos de los trasplantes---------------------------------------\n";
+        transplanteConvertorHandler::saveAllTrasplanteInjertoEvolucion($username, $password, $database); 
+        echo "---------------------------Guarda las evoluciones de los injertos pbr de los trasplantes---------------------------------------\n";
+        transplanteConvertorHandler::saveAllTrasplanteInjertoEvolucionPbr($username, $password, $database); 
+        echo "---------------------------Pone todas las edades del receptor en los trasplantes---------------------------------------\n";
+        transplanteConvertorHandler::cargarEdadesDelReceptorEnTrasplante();
+        */
+        echo "---------------------------Pone los meses en lista del receptor ---------------------\n";
+        transplanteConvertorHandler::cargarMesesEnListaPaciente();                        
+                        
     } else {
         die('Task is Locked');
     }    

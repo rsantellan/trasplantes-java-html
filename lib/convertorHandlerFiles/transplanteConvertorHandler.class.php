@@ -40,8 +40,9 @@ class transplanteConvertorHandler
           {
             die("inconscitencia de datos en la tabla donante_serol!!");
           }
-          
-          $trasplante = Doctrine::getTable("Trasplante")->find($id);
+          $idPretrasplante = transplanteConvertorHandler::retrievePreTrasplanteId($username,$password, $database, $id);
+          $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $idPretrasplante);
+          //$trasplante = Doctrine::getTable("Trasplante")->find($id);
 
           $save = true;
           if(!$trasplante)
@@ -139,9 +140,8 @@ class transplanteConvertorHandler
           $id = mysql_result($result,$i,"id_trasplante");
           $idInduccion = mysql_result($result,$i,"id_induccion");
           $name = mysql_result($result,$i,"valor");
-
-          $trasplante = Doctrine::getTable("Trasplante")->find($id);
-
+          $idPretrasplante = transplanteConvertorHandler::retrievePreTrasplanteId($username,$password, $database, $id);
+          $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $idPretrasplante);
           $save = true;
           if(!$trasplante)
           {
@@ -153,7 +153,7 @@ class transplanteConvertorHandler
           if($save)
           {
             $object = new TrasplanteInduccion();
-            $object->setTrasplanteId($id);
+            $object->setTrasplanteId($trasplante->getId());
             $object->setInduccionId($idInduccion);
             $object->save();
             
@@ -238,8 +238,8 @@ class transplanteConvertorHandler
           $id = mysql_result($result,$i,"id_trasplante");
           $idInduccion = mysql_result($result,$i,"id_inmunosupresores");
           $name = mysql_result($result,$i,"valor");
-
-          $trasplante = Doctrine::getTable("Trasplante")->find($id);
+          $idPretrasplante = transplanteConvertorHandler::retrievePreTrasplanteId($username,$password, $database, $id);
+          $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $idPretrasplante);
 
           $save = true;
           if(!$trasplante)
@@ -252,7 +252,7 @@ class transplanteConvertorHandler
           if($save)
           {
             $object = new TrasplanteInmunosupresores();
-            $object->setTrasplanteId($id);
+            $object->setTrasplanteId($trasplante->getId());
             $object->setInmunosupresoresId($idInduccion);
             $object->save();
 
@@ -353,4 +353,293 @@ class transplanteConvertorHandler
         return 1;
 
   }
+  
+  public static function retrievePreTrasplanteId($username,$password, $database, $oldTrasplanteId)
+  {
+    mysql_connect("localhost",$username,$password);
+
+    @mysql_select_db($database) or die( "Unable to select database");
+    mysql_query("set names 'utf8'"); 
+    $query="SELECT PreTrasplante FROM trasplante WHERE id = ".$oldTrasplanteId;    
+    $result=mysql_query($query);
+    $num=mysql_numrows($result);
+    mysql_close();    
+    $i=0;
+    $id = 0;
+    while ($i < $num) {
+        $id = mysql_result($result,$i,"PreTrasplante");
+        $i++;
+    }
+    return $id;
+    //SELECT `PreTrasplante` FROM `trasplante` WHERE `id` = 1
+  }
+  
+  public static function saveAllTrasplanteReoperacion($username,$password, $database, $starting = 0, $quantity =0)
+  {
+      mysql_connect("localhost",$username,$password);
+
+      @mysql_select_db($database) or die( "Unable to select database");
+      mysql_query("set names 'utf8'");
+
+      if($starting == 0 && $quantity == 0)
+      {
+        $query="SELECT * FROM trasplante_reoperacion";
+      }
+      else
+      {
+        $query="SELECT * FROM trasplante_reoperacion LIMIT ".$starting.", ".$quantity;
+      }
+
+      $result=mysql_query($query);
+      $num=mysql_numrows($result);
+      mysql_close();
+      $i=0;
+      //sfContext::getInstance()->getLogger()->err($num);
+      while ($i < $num) {
+        $id_trasplante = mysql_result($result,$i,"id_trasplante");
+        $fecha = mysql_result($result,$i,"fecha");
+        $descripcion = mysql_result($result,$i,"descripcion");
+        $complicacion = mysql_result($result,$i,"complicacion");
+        
+        $idPretrasplante = transplanteConvertorHandler::retrievePreTrasplanteId($username,$password, $database, $id_trasplante);
+        $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $idPretrasplante);
+
+        $save = true;
+        if(!$trasplante)
+        {
+          echo "El trasplante con id: ".$idPretrasplante." no existe en la base trasplante_reoperacion incompleto para guardar\n";
+
+          $save = false;
+        }
+
+        $complicacion = Doctrine::getTable("TrasplanteComplicaciones")->find($complicacion);
+        if(!$complicacion)
+        {
+          echo "El TrasplanteComplicaciones con id: ".$complicacion." no existe en la base trasplante_reoperacion incompleto para guardar\n";
+
+          $save = false;
+        }
+
+        if($save)
+        {
+          $object = new TrasplanteReoperacion();
+          $object->setTrasplanteId($trasplante->getId());
+          $object->setFecha($fecha);
+          $object->setDescripcion($descripcion);
+          $object->setTrasplanteComplicacionId($complicacion);
+          $object->save();
+          $object->free(true);
+        }
+        $i++;
+      }
+
+      if($num == 0 || $num == "0")
+      {
+        return 0;
+      }
+      return 1;
+  }
+
+  public static function saveAllTrasplanteInjertoEvolucion($username,$password, $database, $starting = 0, $quantity =0)
+  {
+      mysql_connect("localhost",$username,$password);
+
+      @mysql_select_db($database) or die( "Unable to select database");
+      mysql_query("set names 'utf8'");
+
+      if($starting == 0 && $quantity == 0)
+      {
+        $query="SELECT * FROM injerto_evolucion";
+      }
+      else
+      {
+        $query="SELECT * FROM injerto_evolucion LIMIT ".$starting.", ".$quantity;
+      }
+
+      $result=mysql_query($query);
+      $num=mysql_numrows($result);
+      mysql_close();
+      $i=0;
+      //sfContext::getInstance()->getLogger()->err($num);
+      while ($i < $num) {
+        $PreTrasplante = mysql_result($result,$i,"PreTrasplante");
+        $FECHA = mysql_result($result,$i,"FECHA");
+        $TM = mysql_result($result,$i,"TM");
+        $TM_CUAL = mysql_result($result,$i,"TM_CUAL");
+        $GP_DE_NOVO = mysql_result($result,$i,"GP_DE_NOVO");
+        $Recidiva_GP_DE_NOVO = mysql_result($result,$i,"Recidiva_GP_DE_NOVO");
+        $RA = mysql_result($result,$i,"RA");
+        $RC = mysql_result($result,$i,"RC");
+        $tratamiento = mysql_result($result,$i,"tratamiento");
+        $en_trasplante = mysql_result($result,$i,"trasplante");
+                        
+        $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $PreTrasplante);
+
+        $save = true;
+        if(!$trasplante)
+        {
+          echo "El trasplante con id: ".$PreTrasplante." no existe en la base injerto_evolucion incompleto para guardar\n";
+
+          $save = false;
+        }
+
+        $raTratamiento = Doctrine::getTable("Ratratamiento")->find($tratamiento);
+        if(!$raTratamiento)
+        {
+          echo "El Ratratamiento con id: ".$tratamiento." no existe en la base injerto_evolucion incompleto para guardar\n";
+
+          $save = false;
+        }
+
+        if($save)
+        {
+          $object = new InjertoEvolucion();
+          $object->setTrasplanteId($trasplante->getId());
+          $object->setFecha($FECHA);
+          $object->setTm($TM);
+          $object->setTmCual($TM_CUAL);
+          $object->setGpDeNovo($GP_DE_NOVO);
+          $object->setRecidivaGpDeNovo($Recidiva_GP_DE_NOVO);
+          $object->setRa($RA);
+
+          $object->setRc($RC);
+          $object->setRaTratamientoId($raTratamiento->getId());
+          $object->setEnTrasplante($en_trasplante);                    
+          $object->save();
+          $object->free(true);
+        }
+        $i++;
+      }
+
+      if($num == 0 || $num == "0")
+      {
+        return 0;
+      }
+      return 1;
+  }
+
+  public static function saveAllTrasplanteInjertoEvolucionPbr($username,$password, $database, $starting = 0, $quantity =0)
+  {
+      mysql_connect("localhost",$username,$password);
+
+      @mysql_select_db($database) or die( "Unable to select database");
+      mysql_query("set names 'utf8'");
+
+      if($starting == 0 && $quantity == 0)
+      {
+        $query="SELECT * FROM injerto_evolucion_pbr";
+      }
+      else
+      {
+        $query="SELECT * FROM injerto_evolucion_pbr LIMIT ".$starting.", ".$quantity;
+      }
+
+      $result=mysql_query($query);
+      $num=mysql_numrows($result);
+      mysql_close();
+      $i=0;
+      //sfContext::getInstance()->getLogger()->err($num);
+      while ($i < $num) {
+        $PreTrasplante = mysql_result($result,$i,"PreTrasplante");
+        $FECHA = mysql_result($result,$i,"FECHA");
+        $RESULTADO_PBR = mysql_result($result,$i,"RESULTADO_PBR");
+                                
+        $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $PreTrasplante);
+
+        $save = true;
+        if(!$trasplante)
+        {
+          echo "El trasplante con id: ".$PreTrasplante." no existe en la base injerto_evolucion_pbr incompleto para guardar\n";
+
+          $save = false;
+        }
+
+        if($save)
+        {
+            $InjertoEvolucion = Doctrine::getTable("InjertoEvolucion")->retrieveByTrasplanteIdAndDate($trasplante->getId(), $FECHA);
+            
+            if(!$InjertoEvolucion)
+            {
+              echo "El InjertoEvolucion con id: ".$trasplante->getId()." no existe en la base injerto_evolucion incompleto para guardar\n";
+
+              $save = false;
+            }
+        }
+
+        $ResultadoPbr = Doctrine::getTable("ResultadoPbr")->find($RESULTADO_PBR);
+
+        if(!$ResultadoPbr)
+        {
+          echo "El ResultadoPbr con id: ".$ResultadoPbr." no existe en la base ResultadoPbr incompleto para guardar\n";
+
+          $save = false;
+        }
+
+        if($save)
+        {
+          $object = new InjertoEvolucionPbr();
+          $object->setInjertoEvolucionId($InjertoEvolucion->getId());
+          $object->setResultadoPbrId($RESULTADO_PBR);
+          $object->save();
+          $object->free(true);
+        }
+        $i++;
+      }
+
+      if($num == 0 || $num == "0")
+      {
+        return 0;
+      }
+      return 1;
+  }
+  
+  public static function cargarEdadesDelReceptorEnTrasplante()
+  {
+    $trasplantesIds = trasplanteHandler::retriveAllTrasplantesId();
+    foreach($trasplantesIds as $id)
+    {
+      $paciente = PacienteHandler::retrivePacienteByTrasplanteId($id[0], Doctrine::HYDRATE_ARRAY);
+      $fecha_nacimiento = $paciente[0]['fecha_nacimiento'];
+      
+      $trasplante = Doctrine::getTable("Trasplante")->find($id[0]);
+      $fecha = $trasplante->getFecha();
+      $age = basicFunction::calculateDifferenceInYears($fecha_nacimiento, $fecha);
+      $trasplante->setEdadReceptor($age);
+      $trasplante->save();
+      $trasplante->free(true);
+    }
+  }
+  
+  public static function cargarMesesEnListaPaciente()
+  {
+    die("la funcion de calcular meses no funciona");
+    $pacientePreTrasplantesIds = preTrasplanteHandler::retrieveAllPacientepreTrasplantesIds();
+    $counter = 0;
+    $counterGood = 0;
+    foreach($pacientePreTrasplantesIds as $id)
+    {
+      $fecha = trasplanteHandler::retrieveTrasplanteFechaFromPreTrasplanteId($id[0]);
+      
+      $pacientePreTrasplante = Doctrine::getTable("Pacientepretrasplante")->find($id[0]);
+      
+      $return = basicFunction::calculateDifferenceInMonth($pacientePreTrasplante->getFechaIngresoLista(), $fecha[0][0]);
+      
+      if($return == false)
+      {
+        /*var_dump($fecha[0][0]);
+        var_dump($pacientePreTrasplante->getFechaIngresoLista());
+        var_dump("-");*/
+        $counter++;
+      }
+      else
+      {
+        var_dump($return);
+        $counterGood++;
+      }
+    }
+    var_dump($counter);
+    var_dump($counterGood);
+  }
+  
+  
 }

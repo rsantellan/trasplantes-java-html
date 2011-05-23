@@ -69,6 +69,8 @@
  * @property Doctrine_Collection $EvolucionTrasplanteMarvirales
  * @property Doctrine_Collection $EvolucionTrasplanteTxtorax
  * @property Doctrine_Collection $EvolucionTrasplanteExamenes
+ * @property Doctrine_Collection $TrasplanteReoperacion
+ * @property Doctrine_Collection $InjertoEvolucion
  * 
  * @method integer               getId()                                Returns the current record's "id" value
  * @method integer               getPacientePreTrasplanteId()           Returns the current record's "paciente_pre_trasplante_id" value
@@ -134,6 +136,8 @@
  * @method Doctrine_Collection   getEvolucionTrasplanteMarvirales()     Returns the current record's "EvolucionTrasplanteMarvirales" collection
  * @method Doctrine_Collection   getEvolucionTrasplanteTxtorax()        Returns the current record's "EvolucionTrasplanteTxtorax" collection
  * @method Doctrine_Collection   getEvolucionTrasplanteExamenes()       Returns the current record's "EvolucionTrasplanteExamenes" collection
+ * @method Doctrine_Collection   getTrasplanteReoperacion()             Returns the current record's "TrasplanteReoperacion" collection
+ * @method Doctrine_Collection   getInjertoEvolucion()                  Returns the current record's "InjertoEvolucion" collection
  * @method Trasplante            setId()                                Sets the current record's "id" value
  * @method Trasplante            setPacientePreTrasplanteId()           Sets the current record's "paciente_pre_trasplante_id" value
  * @method Trasplante            setFecha()                             Sets the current record's "fecha" value
@@ -198,6 +202,8 @@
  * @method Trasplante            setEvolucionTrasplanteMarvirales()     Sets the current record's "EvolucionTrasplanteMarvirales" collection
  * @method Trasplante            setEvolucionTrasplanteTxtorax()        Sets the current record's "EvolucionTrasplanteTxtorax" collection
  * @method Trasplante            setEvolucionTrasplanteExamenes()       Sets the current record's "EvolucionTrasplanteExamenes" collection
+ * @method Trasplante            setTrasplanteReoperacion()             Sets the current record's "TrasplanteReoperacion" collection
+ * @method Trasplante            setInjertoEvolucion()                  Sets the current record's "InjertoEvolucion" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -534,6 +540,14 @@ abstract class BaseTrasplante extends sfDoctrineRecord
              'foreign' => 'trasplante_id'));
 
         $this->hasMany('EvolucionTrasplanteExamenes', array(
+             'local' => 'id',
+             'foreign' => 'trasplante_id'));
+
+        $this->hasMany('TrasplanteReoperacion', array(
+             'local' => 'id',
+             'foreign' => 'trasplante_id'));
+
+        $this->hasMany('InjertoEvolucion', array(
              'local' => 'id',
              'foreign' => 'trasplante_id'));
 

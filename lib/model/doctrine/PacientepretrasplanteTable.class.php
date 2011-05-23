@@ -16,4 +16,12 @@ class PacientepretrasplanteTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Pacientepretrasplante');
     }
+    
+    public function retrieveAllPacientepreTrasplantesIds()
+    {
+        $query = $this->createQuery("pt");
+        $query->select("pt.id");
+        $query->setHydrationMode(Doctrine_Core::HYDRATE_NONE);
+        return $query->execute();
+    }    
 }

@@ -16,4 +16,22 @@ class TrasplanteTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Trasplante');
     }
+    
+    
+    public function retrieveAllTrasplantesIds()
+    {
+        $query = $this->createQuery("T");
+        $query->select("T.id");
+        $query->setHydrationMode(Doctrine_Core::HYDRATE_NONE);
+        return $query->execute();
+    }
+    
+    public function retrieveTrasplanteFechaFromPreTrasplanteId($paciente_pre_trasplante_id)
+    {
+        $query = $this->createQuery("T");
+        $query->select("T.fecha");
+        $query->addWhere("T.paciente_pre_trasplante_id = ?", $paciente_pre_trasplante_id);
+        $query->setHydrationMode(Doctrine_Core::HYDRATE_NONE);
+        return $query->execute();
+    }            
 }

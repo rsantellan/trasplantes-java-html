@@ -1601,29 +1601,95 @@ PacientePerdidaInjerto:
       foreign: id
       type: one
                                                              
-# A donde va el campo complicacion???
-#TrasplanteReoperacion:
-#  tableName: trasplante_reoperacion
-#  columns:
-#    id:
-#      type: integer(4)
-#      primary: true
-#      autoincrement: true  
-#    trasplante_id:
-#      type: integer(4)
-#      notnull: true
-#    fecha:
-#      type: date(25)
-#      notnull: true
-#    descripcion:
-#      type: string(64)
-#    complicacion:
-#      type: integer(3)
-#      default: '0'
-#  relations:      
-#    Trasplante:
-#      local: trasplante_id
-#      foreign: id
-#      type: one
+TrasplanteReoperacion:
+  tableName: trasplante_reoperacion
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true  
+    trasplante_id:
+      type: integer(4)
+      notnull: true
+    fecha:
+      type: date(25)
+      notnull: true
+    descripcion:
+      type: string(64)
+    trasplante_complicacion_id:
+      type: integer(4)
+      notnull: true
+  relations:      
+    Trasplante:
+      local: trasplante_id
+      foreign: id
+      type: one
+    TrasplanteComplicaciones:
+      local: trasplante_complicacion_id
+      foreign: id
+      type: one    
 
-
+InjertoEvolucion:
+  tableName: injerto_evolucion
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true    
+    trasplante_id:
+      type: integer(4)
+      notnull: true
+    fecha:
+      type: date(25)
+      notnull: true
+    tm:
+      type: integer(1)
+      default: 0
+    tm_cual:
+      type: string(255)
+    gp_de_novo:
+      type: integer(1)
+      default: 0
+    recidiva_gp_de_novo:
+      type: integer(1)
+      default: 0
+    ra:
+      type: integer(1)
+      default: 0
+    rc:
+      type: integer(1)
+      default: 0
+    ra_tratamiento_id:
+      type: integer(4)
+      notnull: true
+    en_trasplante:
+      type: integer(1)
+      default: 0
+  relations:      
+    Trasplante:
+      local: trasplante_id
+      foreign: id
+      type: one
+    Ratratamiento:
+      local: ra_tratamiento_id
+      foreign: id
+      type: one
+      
+InjertoEvolucionPbr:
+  tableName: injerto_evolucion_pbr
+  columns:
+    injerto_evolucion_id:
+      type: integer(4)
+      primary: true
+    resultado_pbr_id:
+      type: integer(4)
+      primary: true
+  relations:      
+    InjertoEvolucion:
+      local: injerto_evolucion_id
+      foreign: id
+      type: one
+    ResultadoPbr:
+      local: resultado_pbr_id
+      foreign: id
+      type: one    

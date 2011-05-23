@@ -27,6 +27,8 @@ CREATE TABLE evolucion_trasplante_txtorax (id INT AUTO_INCREMENT, trasplante_id 
 CREATE TABLE germenes (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE induccion (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE infeccion (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE injerto_evolucion (id INT AUTO_INCREMENT, trasplante_id INT NOT NULL, fecha DATE NOT NULL, tm TINYINT DEFAULT 0, tm_cual VARCHAR(255), gp_de_novo TINYINT DEFAULT 0, recidiva_gp_de_novo TINYINT DEFAULT 0, ra TINYINT DEFAULT 0, rc TINYINT DEFAULT 0, ra_tratamiento_id INT NOT NULL, en_trasplante TINYINT DEFAULT 0, INDEX trasplante_id_idx (trasplante_id), INDEX ra_tratamiento_id_idx (ra_tratamiento_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE injerto_evolucion_pbr (injerto_evolucion_id INT, resultado_pbr_id INT, PRIMARY KEY(injerto_evolucion_id, resultado_pbr_id)) ENGINE = INNODB;
 CREATE TABLE inmunosupresores (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE medicaciones (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE nefropatia (id INT AUTO_INCREMENT, nombre VARCHAR(255) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
@@ -45,6 +47,7 @@ CREATE TABLE trasplante (id INT AUTO_INCREMENT, paciente_pre_trasplante_id INT N
 CREATE TABLE trasplante_complicaciones (id INT AUTO_INCREMENT, trasplante_id INT NOT NULL, fecha DATE NOT NULL, medicacion_id INT NOT NULL, internado TINYINT NOT NULL, dias_de_internacion SMALLINT DEFAULT 0, evolucion TINYINT NOT NULL, comentario TEXT, infecciosa TINYINT DEFAULT 0 NOT NULL, INDEX medicacion_id_idx (medicacion_id), INDEX trasplante_id_idx (trasplante_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE trasplante_induccion (trasplante_id INT, induccion_id INT, PRIMARY KEY(trasplante_id, induccion_id)) ENGINE = INNODB;
 CREATE TABLE trasplante_inmunosupresores (trasplante_id INT, inmunosupresores_id INT, PRIMARY KEY(trasplante_id, inmunosupresores_id)) ENGINE = INNODB;
+CREATE TABLE trasplante_reoperacion (id INT AUTO_INCREMENT, trasplante_id INT NOT NULL, fecha DATE NOT NULL, descripcion VARCHAR(64), trasplante_complicacion_id INT NOT NULL, INDEX trasplante_id_idx (trasplante_id), INDEX trasplante_complicacion_id_idx (trasplante_complicacion_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE trasplante_serol (trasplante_id INT, serol_id INT, serol_valor_id INT NOT NULL, INDEX serol_valor_id_idx (serol_valor_id), PRIMARY KEY(trasplante_id, serol_id)) ENGINE = INNODB;
 CREATE TABLE tratamiento (id INT AUTO_INCREMENT, paciente_id INT NOT NULL, medicacion_id INT, dosis VARCHAR(50) DEFAULT '-', fecha_inicio DATE NOT NULL, fecha_fin DATE, INDEX paciente_id_idx (paciente_id), INDEX medicacion_id_idx (medicacion_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE md_content (id INT AUTO_INCREMENT, md_user_id INT NOT NULL, object_class VARCHAR(128) NOT NULL, object_id INT NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX md_user_id_idx (md_user_id), PRIMARY KEY(id)) ENGINE = INNODB;
@@ -86,6 +89,10 @@ ALTER TABLE evolucion_trasplante_marvirales ADD CONSTRAINT evolucion_trasplante_
 ALTER TABLE evolucion_trasplante_nutricion ADD CONSTRAINT evolucion_trasplante_nutricion_trasplante_id_trasplante_id FOREIGN KEY (trasplante_id) REFERENCES trasplante(id);
 ALTER TABLE evolucion_trasplante_para_clinica ADD CONSTRAINT evolucion_trasplante_para_clinica_trasplante_id_trasplante_id FOREIGN KEY (trasplante_id) REFERENCES trasplante(id);
 ALTER TABLE evolucion_trasplante_txtorax ADD CONSTRAINT evolucion_trasplante_txtorax_trasplante_id_trasplante_id FOREIGN KEY (trasplante_id) REFERENCES trasplante(id);
+ALTER TABLE injerto_evolucion ADD CONSTRAINT injerto_evolucion_trasplante_id_trasplante_id FOREIGN KEY (trasplante_id) REFERENCES trasplante(id);
+ALTER TABLE injerto_evolucion ADD CONSTRAINT injerto_evolucion_ra_tratamiento_id_ratratamiento_id FOREIGN KEY (ra_tratamiento_id) REFERENCES ratratamiento(id);
+ALTER TABLE injerto_evolucion_pbr ADD CONSTRAINT injerto_evolucion_pbr_resultado_pbr_id_resultado_pbr_id FOREIGN KEY (resultado_pbr_id) REFERENCES resultado_pbr(id);
+ALTER TABLE injerto_evolucion_pbr ADD CONSTRAINT injerto_evolucion_pbr_injerto_evolucion_id_injerto_evolucion_id FOREIGN KEY (injerto_evolucion_id) REFERENCES injerto_evolucion(id);
 ALTER TABLE paciente_muerte ADD CONSTRAINT paciente_muerte_causa_muerte_id_paciente_causa_muerte_id FOREIGN KEY (causa_muerte_id) REFERENCES paciente_causa_muerte(id);
 ALTER TABLE paciente_perdida_injerto ADD CONSTRAINT pppi_1 FOREIGN KEY (paciente_causa_perdida_injerto_id) REFERENCES paciente_causa_perdida_injerto(id);
 ALTER TABLE paciente_perdida_injerto ADD CONSTRAINT pppi FOREIGN KEY (paciente_pre_trasplante_id) REFERENCES paciente_pre_trasplante(id) ON DELETE CASCADE;
@@ -101,6 +108,8 @@ ALTER TABLE trasplante_induccion ADD CONSTRAINT trasplante_induccion_trasplante_
 ALTER TABLE trasplante_induccion ADD CONSTRAINT trasplante_induccion_induccion_id_induccion_id FOREIGN KEY (induccion_id) REFERENCES induccion(id);
 ALTER TABLE trasplante_inmunosupresores ADD CONSTRAINT trasplante_inmunosupresores_trasplante_id_trasplante_id FOREIGN KEY (trasplante_id) REFERENCES trasplante(id);
 ALTER TABLE trasplante_inmunosupresores ADD CONSTRAINT tiii FOREIGN KEY (inmunosupresores_id) REFERENCES inmunosupresores(id);
+ALTER TABLE trasplante_reoperacion ADD CONSTRAINT ttti FOREIGN KEY (trasplante_complicacion_id) REFERENCES trasplante_complicaciones(id);
+ALTER TABLE trasplante_reoperacion ADD CONSTRAINT trasplante_reoperacion_trasplante_id_trasplante_id FOREIGN KEY (trasplante_id) REFERENCES trasplante(id);
 ALTER TABLE trasplante_serol ADD CONSTRAINT trasplante_serol_trasplante_id_trasplante_id FOREIGN KEY (trasplante_id) REFERENCES trasplante(id);
 ALTER TABLE trasplante_serol ADD CONSTRAINT trasplante_serol_serol_valor_id_serol_valor_id FOREIGN KEY (serol_valor_id) REFERENCES serol_valor(id);
 ALTER TABLE trasplante_serol ADD CONSTRAINT trasplante_serol_serol_id_serol_id FOREIGN KEY (serol_id) REFERENCES serol(id);

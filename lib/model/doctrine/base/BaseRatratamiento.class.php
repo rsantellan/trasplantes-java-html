@@ -7,11 +7,14 @@
  * 
  * @property integer $id
  * @property string $nombre
+ * @property Doctrine_Collection $InjertoEvolucion
  * 
- * @method integer       getId()     Returns the current record's "id" value
- * @method string        getNombre() Returns the current record's "nombre" value
- * @method Ratratamiento setId()     Sets the current record's "id" value
- * @method Ratratamiento setNombre() Sets the current record's "nombre" value
+ * @method integer             getId()               Returns the current record's "id" value
+ * @method string              getNombre()           Returns the current record's "nombre" value
+ * @method Doctrine_Collection getInjertoEvolucion() Returns the current record's "InjertoEvolucion" collection
+ * @method Ratratamiento       setId()               Sets the current record's "id" value
+ * @method Ratratamiento       setNombre()           Sets the current record's "nombre" value
+ * @method Ratratamiento       setInjertoEvolucion() Sets the current record's "InjertoEvolucion" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -39,6 +42,8 @@ abstract class BaseRatratamiento extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasMany('InjertoEvolucion', array(
+             'local' => 'id',
+             'foreign' => 'ra_tratamiento_id'));
     }
 }

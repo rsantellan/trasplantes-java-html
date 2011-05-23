@@ -44,7 +44,7 @@ EOF;
         $username="root";
         $password="root";
         $database="trasplante";   
-        /* 
+         
         echo "---------------------------Guarda los cmv---------------------------------------\n";
         cmvConvertorHandler::startAll($username, $password, $database);
         echo "-------------------------Guarda los seroles de los trasplantes-----------------------------------------\n";
@@ -109,7 +109,6 @@ EOF;
         transplanteConvertorHandler::saveAllTrasplanteInjertoEvolucionPbr($username, $password, $database); 
         echo "---------------------------Pone todas las edades del receptor en los trasplantes---------------------------------------\n";
         transplanteConvertorHandler::cargarEdadesDelReceptorEnTrasplante();
-        */
         echo "---------------------------Pone los meses en lista del receptor ---------------------\n";
         transplanteConvertorHandler::cargarMesesEnListaPaciente();                        
                         

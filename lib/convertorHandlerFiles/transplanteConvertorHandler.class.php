@@ -612,33 +612,25 @@ class transplanteConvertorHandler
   
   public static function cargarMesesEnListaPaciente()
   {
-    die("la funcion de calcular meses no funciona");
     $pacientePreTrasplantesIds = preTrasplanteHandler::retrieveAllPacientepreTrasplantesIds();
-    $counter = 0;
-    $counterGood = 0;
     foreach($pacientePreTrasplantesIds as $id)
     {
       $fecha = trasplanteHandler::retrieveTrasplanteFechaFromPreTrasplanteId($id[0]);
-      
       $pacientePreTrasplante = Doctrine::getTable("Pacientepretrasplante")->find($id[0]);
-      
       $return = basicFunction::calculateDifferenceInMonth($pacientePreTrasplante->getFechaIngresoLista(), $fecha[0][0]);
-      
-      if($return == false)
+      if($return !== false)
       {
-        /*var_dump($fecha[0][0]);
-        var_dump($pacientePreTrasplante->getFechaIngresoLista());
-        var_dump("-");*/
-        $counter++;
+        $pacientePreTrasplante->setMesesEnLista($return);
+        $pacientePreTrasplante->save();
       }
       else
       {
-        var_dump($return);
-        $counterGood++;
+        echo "Fecha ingreso a la lista: ".$pacientePreTrasplante->getFechaIngresoLista()."\n";
+        echo "Fecha del trasplante: ".$fecha[0][0]."\n";
+        echo "Id del pretrasplantes: ".$id[0]."\n";
       }
     }
-    var_dump($counter);
-    var_dump($counterGood);
+
   }
   
   

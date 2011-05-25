@@ -17,6 +17,11 @@ class TrasplanteActions extends sfActions
       ->execute();
   }
 
+  public function executeArchivo(sfWebRequest $request)
+  {
+    reportesHandler::CrearReporteDeFondo();
+  }
+  
   public function executeShow(sfWebRequest $request)
   {
     $this->trasplante = Doctrine_Core::getTable('Trasplante')->find(array($request->getParameter('id')));

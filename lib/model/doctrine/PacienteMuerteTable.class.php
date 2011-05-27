@@ -16,4 +16,13 @@ class PacienteMuerteTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('PacienteMuerte');
     }
+    
+    
+    public function retriveByPacienteId($pacienteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("PM")
+                ->addWhere("PM.paciente_id = ?", $pacienteId);
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }    
 }

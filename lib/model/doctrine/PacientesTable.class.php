@@ -29,4 +29,12 @@ class PacientesTable extends Doctrine_Table
       $query->setHydrationMode($hydrationMode);
       return $query->execute();
     }
+    
+    public function retrieveAllPacientesIds()
+    {
+        $query = $this->createQuery("P");
+        $query->select("P.id");
+        $query->setHydrationMode(Doctrine_Core::HYDRATE_NONE);
+        return $query->execute();
+    }    
 }

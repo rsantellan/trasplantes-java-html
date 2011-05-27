@@ -33,5 +33,22 @@ class TrasplanteTable extends Doctrine_Table
         $query->addWhere("T.paciente_pre_trasplante_id = ?", $paciente_pre_trasplante_id);
         $query->setHydrationMode(Doctrine_Core::HYDRATE_NONE);
         return $query->execute();
-    }            
+    }
+    
+    public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("T")
+                ->addWhere("T.id = ?", $id);
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }  
+
+    public function retriveByPacientePreTrasplanteId($PreTrasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("T")
+                ->select("T.*")
+                ->addWhere("T.paciente_pre_trasplante_id = ?", $PreTrasplanteId);
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }                
 }

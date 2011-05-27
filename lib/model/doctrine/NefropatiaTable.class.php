@@ -16,4 +16,24 @@ class NefropatiaTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Nefropatia');
     }
+    
+    public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("N")
+                ->addWhere("N.id = ?", $id);
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }  
+
+    public function retriveByPacienteId($pacienteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("N")
+                ->select("N.*")
+                ->addFrom("Pacientes p")
+                ->addWhere("N.id = p.nefropatia_id")
+                ->addWhere("p.id = ?", $pacienteId);
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }  
+        
 }

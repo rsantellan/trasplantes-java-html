@@ -24,4 +24,20 @@ class PacientepretrasplanteTable extends Doctrine_Table
         $query->setHydrationMode(Doctrine_Core::HYDRATE_NONE);
         return $query->execute();
     }    
+    
+    public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("pt")
+                ->addWhere("pt.id = ?", $id);
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }
+    
+    public function retrieveNumberPreTrasplantesOfPaciente($pacienteId)
+    {
+        $query = $this->createQuery("pt");
+        $query->select("count(pt.id)")->addWhere("pt.paciente_id = ?", $pacienteId);
+        $query->setHydrationMode(Doctrine_Core::HYDRATE_NONE);
+        return $query->execute();
+    }         
 }

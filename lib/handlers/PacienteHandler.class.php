@@ -26,5 +26,10 @@ class PacienteHandler
   public static function retrivePacientePerdidasByPacienteId($pacienteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
   {
       return Doctrine::getTable("PacientePerdidaInjerto")->retriveByPacienteId($pacienteId, $hydrationMode);
-  }       
+  }
+
+  public static function retriveById($pacienteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+    return Doctrine::getTable("Pacientes")->retriveById($pacienteId, $hydrationMode);
+  }
 }

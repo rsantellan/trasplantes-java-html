@@ -36,5 +36,14 @@ class PacientesTable extends Doctrine_Table
         $query->select("P.id");
         $query->setHydrationMode(Doctrine_Core::HYDRATE_NONE);
         return $query->execute();
-    }    
+    }
+
+    public function retriveById($pacienteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("p")
+                ->addWhere("p.id = ?", $pacienteId);
+
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }
 }

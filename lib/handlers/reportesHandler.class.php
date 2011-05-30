@@ -26,11 +26,11 @@ class reportesHandler
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
     $index++;
     $objPHPExcel->getActiveSheet()
-            ->setCellValue($letter, "DIAB&Eacute;TICO PRE TR");
+            ->setCellValue($letter, "DIABÉTICO PRE TR");
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
     $index++;
     $objPHPExcel->getActiveSheet()
-            ->setCellValue($letter, "NEFROPATIA (C&Oacute;DIGO DEL FNR)");    
+            ->setCellValue($letter, "NEFROPATIA (CÓDIGO DEL FNR)");    
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
     $index++;
     $objPHPExcel->getActiveSheet()
@@ -38,11 +38,11 @@ class reportesHandler
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
     $index++;
     $objPHPExcel->getActiveSheet()
-            ->setCellValue($letter, "A&Ntilde;O DEL TRASPLANTE");
+            ->setCellValue($letter, "AÑO DEL TRASPLANTE");
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
     $index++;
     $objPHPExcel->getActiveSheet()
-            ->setCellValue($letter, "SITUACI&Oacute;N ACTUAL"); 
+            ->setCellValue($letter, "SITUACIÓN ACTUAL"); 
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
     $index++;
     $objPHPExcel->getActiveSheet()
@@ -50,7 +50,7 @@ class reportesHandler
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
     $index++;
     $objPHPExcel->getActiveSheet()
-            ->setCellValue($letter, "A&Ntilde;O EGRESO");   
+            ->setCellValue($letter, "AÑO EGRESO");   
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
     $index++;
     $objPHPExcel->getActiveSheet()
@@ -94,19 +94,19 @@ class reportesHandler
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
     $index++;
     $objPHPExcel->getActiveSheet()
-            ->setCellValue($letter, "N&deg; INCOMPATIBILIDAD AB");
+            ->setCellValue($letter, "N° INCOMPATIBILIDAD AB");
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
     $index++;
     $objPHPExcel->getActiveSheet()
-            ->setCellValue($letter, "N&deg; INCOMPATIBILIDAD DR");
+            ->setCellValue($letter, "N° INCOMPATIBILIDAD DR");
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
     $index++;
     $objPHPExcel->getActiveSheet()
-            ->setCellValue($letter, "IF: ISQUEMIA FR&Iacute;A");
+            ->setCellValue($letter, "IF: ISQUEMIA FRÍA");
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
     $index++;
     $objPHPExcel->getActiveSheet()
-            ->setCellValue($letter, "INDUCCI&Oacute;N: MARQUE LO QUE INCLUY&Oacute;");
+            ->setCellValue($letter, "INDUCCIÓN: MARQUE LO QUE INCLUYÓ");
 
     $pacientePreTrasplantesIds = preTrasplanteHandler::retrieveAllPacientepreTrasplantesIds();
     $position = 2;
@@ -150,7 +150,7 @@ class reportesHandler
       $objPHPExcel->getActiveSheet()
               ->setCellValue($letter, $fechaList[1]);        
       
-      // ANIO DEL TRASPLANTE
+      // AÑO DEL TRASPLANTE
       $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
       $index++;
       $objPHPExcel->getActiveSheet()
@@ -180,6 +180,23 @@ class reportesHandler
       $objPHPExcel->getActiveSheet()
               ->setCellValue($letter, $estado); 
 
+      //CHEQUEO QUE EL PACIENTE TENGA UNA PERDIDA RELACIONADA CON ESTE TRASPLANTE.
+      $conPerdida = false;
+      $counter = 0;
+      
+      while($counter < count($pacientePerdidas) && !$conPerdida)
+      {
+        $aux = $pacientePerdidas[$counter];
+        if($aux["paciente_pre_trasplante_id"] == $preTrasplante["id"])
+        {
+          $conPerdida = true; 
+        }
+        else
+        {
+          $counter++;
+        }
+      }
+        
       if($pacienteMuerte)
       {
         $fecha_muerte = $pacienteMuerte["fecha_muerte"];
@@ -192,11 +209,18 @@ class reportesHandler
         $objPHPExcel->getActiveSheet()
                 ->setCellValue($letter, $fechaList[1]);        
         
-        // ANIO DE LA MUERTE
+        // AÑO DE LA MUERTE
         $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
         $index++;
         $objPHPExcel->getActiveSheet()
-                ->setCellValue($letter, $fechaList[0]);        
+                ->setCellValue($letter, $fechaList[0]);
+        
+        //CAUSA DE LA MUERTE
+        $causa_de_muerte = PacienteMuertehandler::retrieveCausaById($pacienteMuerte["causa_muerte_id"]);
+        $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+        $index++;
+        $objPHPExcel->getActiveSheet()
+                ->setCellValue($letter, $causa_de_muerte["nombre"]);                       
       }
       else
       {
@@ -228,10 +252,76 @@ class reportesHandler
         }
         else
         {
+          $fecha_perdida = $pacientePerdidas[$counter]["fecha_perdida"];
           
+          $fechaList = explode("-", $fecha_perdida);
+          
+          // MES DE LA MUERTE
+          $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+          $index++;
+          $objPHPExcel->getActiveSheet()
+                  ->setCellValue($letter, $fechaList[1]);        
+          
+          // AÑO DE LA MUERTE
+          $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+          $index++;
+          $objPHPExcel->getActiveSheet()
+                  ->setCellValue($letter, $fechaList[0]);  
         }
-      }      
-                    
+        $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+        $index++;
+        $objPHPExcel->getActiveSheet()
+                ->setCellValue($letter, "Sin muerte");   
+        
+      }
+      
+      if(!$conPerdida)
+      {
+        $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+        $index++;
+        $objPHPExcel->getActiveSheet()
+                ->setCellValue($letter, "Sin Perdida");         
+      }
+      else
+      {
+        //CAUSA DE LA PERDIDA
+        $causa_de_perdida = PacientePerdidahandler::retrieveById($pacientePerdidas[$counter]["paciente_causa_perdida_injerto_id"]);
+        $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+        $index++;
+        $objPHPExcel->getActiveSheet()
+                ->setCellValue($letter, $causa_de_perdida["nombre"]);      
+      }
+      
+      // EDAD AL MOMENTO DEL TRASPLANTE      
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $trasplante["edad_receptor"]);                    
+
+      // SEXO DEL PACIENTE
+      $paciente = PacienteHandler::retriveById($preTrasplante["paciente_id"], Doctrine::HYDRATE_ARRAY);
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $paciente["sexo"]);                    
+
+      // MESES DE DIALISIS (Esto es la cantidad de meses entre que el paciente empezo dialisis y se efectuo el trasplante)
+      $return = basicFunction::calculateDifferenceInMonth($paciente["fecha_dialisis"], $trasplante["fecha"]);
+      
+      var_dump($return);
+      die;
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $preTrasplante["meses_en_lista"]);
+
+      // MESES EN LISTA DE ESPERA
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $preTrasplante["meses_en_lista"]);
+
+
       $position++;
     }
                                                                                                                         

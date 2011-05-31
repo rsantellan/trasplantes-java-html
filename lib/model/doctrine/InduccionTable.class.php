@@ -16,4 +16,16 @@ class InduccionTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Induccion');
     }
+    
+    public function retriveAllInduccionesByTrasplanteId($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("i")
+                ->select("i.*")
+                ->addFrom("TrasplanteInduccion t")
+                ->addWhere("i.id = t.induccion_id")
+                ->addWhere("t.trasplante_id = ?", $trasplanteId);
+ 
+      $query->setHydrationMode($hydrationMode);
+      return $query->execute();
+    }    
 }

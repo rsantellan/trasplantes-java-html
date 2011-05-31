@@ -16,4 +16,13 @@ class DonanteCausaMuerteTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('DonanteCausaMuerte');
     }
+    
+    public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("dcm")
+                ->addWhere("dcm.id = ?", $id);
+
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }    
 }

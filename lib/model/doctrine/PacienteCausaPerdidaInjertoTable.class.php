@@ -16,4 +16,13 @@ class PacienteCausaPerdidaInjertoTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('PacienteCausaPerdidaInjerto');
     }
+    
+    public function retriveById($causaId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("pci")
+                ->addWhere("pci.id = ?", $causaId);
+
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }    
 }

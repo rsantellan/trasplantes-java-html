@@ -102,7 +102,7 @@ class reportesHandler
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
     $index++;
     $objPHPExcel->getActiveSheet()
-            ->setCellValue($letter, "IF: ISQUEMIA FRÍA");
+            ->setCellValue($letter, "ISQUEMIA FRÍA");
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
     $index++;
     $objPHPExcel->getActiveSheet()
@@ -226,16 +226,20 @@ class reportesHandler
       {
         $conPerdida = false;
         $counter = 0;
-        
+
         while($counter < count($pacientePerdidas) && !$conPerdida)
         {
-          if($pacientePerdidas["paciente_pre_trasplante_id"] == $preTrasplante["id"])
+          
+          if($pacientePerdidas[$counter]["paciente_pre_trasplante_id"] == $preTrasplante["id"])
           {
             $conPerdida = true; 
           }
-          $counter++;
+          else
+          {
+            $counter++;
+          }
         }
-        
+     
         if(!$conPerdida)
         {
           // MES DE LA MUERTE
@@ -285,7 +289,7 @@ class reportesHandler
       else
       {
         //CAUSA DE LA PERDIDA
-        $causa_de_perdida = PacientePerdidahandler::retrieveById($pacientePerdidas[$counter]["paciente_causa_perdida_injerto_id"]);
+        $causa_de_perdida = PacientePerdidahandler::retrieveCausaById($pacientePerdidas[$counter]["paciente_causa_perdida_injerto_id"]);
         $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
         $index++;
         $objPHPExcel->getActiveSheet()
@@ -308,27 +312,93 @@ class reportesHandler
       // MESES DE DIALISIS (Esto es la cantidad de meses entre que el paciente empezo dialisis y se efectuo el trasplante)
       $return = basicFunction::calculateDifferenceInMonth($paciente["fecha_dialisis"], $trasplante["fecha"]);
       
-      var_dump($return);
-      die;
       $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
       $index++;
       $objPHPExcel->getActiveSheet()
-              ->setCellValue($letter, $preTrasplante["meses_en_lista"]);
+              ->setCellValue($letter, $return);
 
       // MESES EN LISTA DE ESPERA
       $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
       $index++;
       $objPHPExcel->getActiveSheet()
               ->setCellValue($letter, $preTrasplante["meses_en_lista"]);
+      $donante = Donantehandler::retrieveById($trasplante["donante_id"], Doctrine::HYDRATE_ARRAY);
+      
+      // EDAD DEL DONANTE
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $donante["edad_donante"]);  
+              
+      // SEXO DEL DONANTE
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $donante["sexo_donante"]);              
+              
+      // TIPO DEL DONANTE
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $donante["tipo_donante"]);
 
+      // CAUSA DE MUERTE DEL DONANTE
+      $donanteCausaMuerte = Donantehandler::retrieveCausaMuerteDonanteById($donante["donante_causa_muerte_id"], Doctrine::HYDRATE_ARRAY);
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $donanteCausaMuerte["nombre"]);      
+      
+      // NUMERO DE INCOMPATIBILIDAD AB
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $trasplante["numero_incompatibilidad_ab"]);
+
+      // NUMERO DE INCOMPATIBILIDAD DR
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $trasplante["numero_incompatibilidad_dr"]);
+
+      // NUMERO DE T isq fria en hs y min
+      $t_isq = $trasplante["t_isq_fria_hs"]." : ".$trasplante["t_isq_fria_min"];
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $t_isq);
+                        
+      //INDUCCIONES
+      
+      $inducciones = trasplanteHandler::retriveAllInduccionesByTrasplanteId($trasplante["id"], Doctrine::HYDRATE_ARRAY);
+      $string = "";
+      $start = true;
+      foreach($inducciones as $induc)
+      {
+        if(!$start)
+        {
+          $string .= " - ";
+        }
+        else
+        {
+          $start = false;
+        }
+        $string .= $induc["nombre"];
+      }
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $string);      
 
       $position++;
     }
-                                                                                                                        
+    $fileFolder = 'completo/';     
+    $fileName = 'reporte.xls';
     $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-    $realPath = sfConfig::get('sf_cache_dir')."/reportes/";
-    MdFileHandler::checkPathFormat($realPath);
-    $objWriter->save($realPath.'reporte.xls');
+    $realPath = sfConfig::get('sf_cache_dir')."/reportes/reporteFondo/";
+    //MdFileHandler::checkPathFormat($realPath);
+    MdFileHandler::checkPathFormat($realPath.$fileFolder);
+    $objWriter->save($realPath.$fileFolder.$fileName);
   }
 
 }

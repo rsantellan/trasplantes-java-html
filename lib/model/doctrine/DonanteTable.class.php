@@ -16,4 +16,13 @@ class DonanteTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Donante');
     }
+    
+    public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("d")
+                ->addWhere("d.id = ?", $id);
+
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }     
 }

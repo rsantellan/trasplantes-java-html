@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import uy.transplante.auxiliares.fechas.ManejoFechas;
+import uy.transplante.dominio.CMV;
 import uy.transplante.dominio.CausaMuerteDonante;
 import uy.transplante.dominio.Donante;
+import uy.transplante.dominio.EvolucionInjerto;
 import uy.transplante.dominio.Paciente;
 import uy.transplante.dominio.PacientePerdidaInjerto;
 import uy.transplante.dominio.PacientePreTrasplante;
@@ -16,12 +18,11 @@ import uy.transplante.logica.Fachada;
 
 
 
-public class CrearReporteFondo {
+public class CrearReporteFondoPreTrasplante_RA_CMV {
 
 	private String exportar = "";
 	private int lugar = 0;
-	//private String synch = "";
-	
+
 	public int getLugar() {
 		return lugar;
 	}
@@ -38,19 +39,22 @@ public class CrearReporteFondo {
 		this.exportar = exportar;
 	}
 
-	public CrearReporteFondo() {
-		
+	public CrearReporteFondoPreTrasplante_RA_CMV() {
+
 	}
 
-	public void crear(int year){
+	public void crear(int year) {
 		exportar = this.cabezal(year);
 		exportar += this.inicioTabla();
 		exportar += this.datosTabla(year);
 		exportar += this.cerrarTabla();
 		exportar += this.pie();
-		Fachada.getInstancia().guardarLog(3,exportar);
-		Fachada.getInstancia().guardarLog(3,System.getProperty("user.dir"));
-		java.io.File unArchivo = new java.io.File(System.getProperty("user.dir")+ "/exportacionFondo.xls");
+		System.out.println(exportar);
+		System.out.println();
+		System.out.println(System.getProperty("user.dir"));
+		java.io.File unArchivo = new java.io.File(System
+				.getProperty("user.dir")
+				+ "/exportacionFondoEstadisticos.xls");
 
 		FileWriter buf;
 
@@ -60,22 +64,25 @@ public class CrearReporteFondo {
 			buf.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-			Fachada.getInstancia().guardarLog(3,e.getMessage());
-		}catch(Exception e1){
+			System.out.println(e.getMessage());
+		} catch (Exception e1) {
 			e1.printStackTrace();
-			Fachada.getInstancia().guardarLog(3,e1.getMessage());
+			System.out.println(e1.getMessage());
 		}
 	}
-	
-	public void crear(){
+
+	public void crear() {
 		exportar = this.cabezal();
 		exportar += this.inicioTabla();
 		exportar += this.datosTabla();
 		exportar += this.cerrarTabla();
 		exportar += this.pie();
-		Fachada.getInstancia().guardarLog(3,exportar);
-		Fachada.getInstancia().guardarLog(3,System.getProperty("user.dir"));
-		java.io.File unArchivo = new java.io.File(System.getProperty("user.dir")+ "/exportacionFondoCompleta.xls");
+		System.out.println(exportar);
+		System.out.println();
+		System.out.println(System.getProperty("user.dir"));
+		java.io.File unArchivo = new java.io.File(System
+				.getProperty("user.dir")
+				+ "/exportacionFondoEstadisticos.xls");
 		FileWriter buf;
 		try {
 			buf = new FileWriter(unArchivo);
@@ -83,12 +90,14 @@ public class CrearReporteFondo {
 			buf.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-			Fachada.getInstancia().guardarLog(3,e.getMessage());
-		}catch(Exception e1){
+			System.out.println(e.getMessage());
+		} catch (Exception e1) {
 			e1.printStackTrace();
-			Fachada.getInstancia().guardarLog(3,e1.getMessage());
+			System.out.println(e1.getMessage());
 		}
-		java.io.File archivoHTML = new java.io.File(System.getProperty("user.dir") + "/archivo.html");
+		java.io.File archivoHTML = new java.io.File(System
+				.getProperty("user.dir")
+				+ "/exportacionFondoEstadisticos.html");
 		FileWriter bufHTML;
 		try {
 			bufHTML = new FileWriter(archivoHTML);
@@ -96,14 +105,14 @@ public class CrearReporteFondo {
 			bufHTML.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-			Fachada.getInstancia().guardarLog(3,e.getMessage());
-		}catch(Exception e1){
+			System.out.println(e.getMessage());
+		} catch (Exception e1) {
 			e1.printStackTrace();
-			Fachada.getInstancia().guardarLog(3,e1.getMessage());
+			System.out.println(e1.getMessage());
 		}
 		this.setLugar(-2);
 	}
-	
+
 	public String cabezal() {
 		String aux = "";
 		aux = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" ";
@@ -120,7 +129,7 @@ public class CrearReporteFondo {
 				"<body>";
 		return aux;
 	}
-	
+
 	public String cabezal(int year) {
 		String aux = "";
 		aux = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" ";
@@ -150,7 +159,7 @@ public class CrearReporteFondo {
 		salida += "<th scope=\"col\">NEFROPATIA (C&Oacute;DIGO DEL FNR)</th>";
 		salida += "<th scope=\"col\">MES DEL TRASPLANTE</th>";
 		salida += "<th scope=\"col\">A&Ntilde;O DEL TRASPLANTE</th>";
-		salida += "<th scope=\"col\">SITUACI&Oacute;N ACTUAL</th>";
+		salida += "<th scope=\"col\">SITUACI&Oacute;N A DIC 08</th>";
 		salida += "<th scope=\"col\">MES EGRESO</th>";
 		salida += "<th scope=\"col\">A&Ntilde;O EGRESO</th>";
 		salida += "<th scope=\"col\">CAUSA MUERTE</th>";
@@ -167,18 +176,28 @@ public class CrearReporteFondo {
 		salida += "<th scope=\"col\">N&deg; INCOMPATIBILIDAD DR</th>";
 		salida += "<th scope=\"col\">IF: ISQUEMIA FR&Iacute;A</th>";
 		salida += "<th scope=\"col\">INDUCCI&Oacute;N: MARQUE LO QUE INCLUY&Oacute;</th>";
+		salida += "<th scope=\"col\">HTA</th>";
+		salida += "<th scope=\"col\">Obesidad</th>";
+		salida += "<th scope=\"col\">IMC</th>";
+		salida += "<th scope=\"col\">Dislipemia</th>";
+		salida += "<th scope=\"col\">Tabaquismo</th>";
+		salida += "<th scope=\"col\">Diabetes</th>";
+		salida += "<th scope=\"col\">RA Rechazo Agudo</th>";
+		salida += "<th scope=\"col\">RA Fecha Rechazo Agudo</th>";
+		salida += "<th scope=\"col\">CMV</th>";
+		salida += "<th scope=\"col\">CMV Fecha</th>";
 		salida += "</tr>";
 		return salida;
 	}
 
-	private String formarTabla(ArrayList<Trasplante> lista){
+	private String formarTabla(ArrayList<Trasplante> lista) {
 		String salida = "";
 		if (lista.size() > 0) {
 			for (int x = 0; x < lista.size(); x++) {
 				Trasplante t = (Trasplante) lista.get(x);
 				salida += "<tr>";
 				salida += "<td><Strong>HE</Strong></td>";
-				Fachada.getInstancia().guardarLog(3,String.valueOf(t.getId()));
+				System.out.println(String.valueOf(t.getId()));
 				this.setLugar(t.getId());
 				PacientePreTrasplante pt = new PacientePreTrasplante();
 				pt.setId(t.getPreTrasplante());
@@ -186,7 +205,6 @@ public class CrearReporteFondo {
 				Paciente p = new Paciente();
 				p.setThe(pt.getThe());
 				p.leer();
-				p.leerDatosPerdidaInjerto();
 				salida += "<td>" + p.getThe() + "</td>";
 				salida += "<td>" + pt.getDiabetes() + "</td>";
 
@@ -198,25 +216,9 @@ public class CrearReporteFondo {
 				salida += "<td>"
 						+ ManejoFechas.FORMATOYEAR.format(t.getFecha()
 								.getTime()) + "</td>";
-				String estado =  "3. VIVO EN TR";
-				if (t.getFecha() == null) {
-					estado = "1: EN DIALISIS";
-				}
-				boolean conPerdida = false;
-				int idPerdida = 0;
-				while(idPerdida < p.getListaPerdidas().size() && !conPerdida)
-				{
-					PacientePerdidaInjerto perdida = p.getListaPerdidas().get(idPerdida);
-					if(perdida.getNumPreTrasplante() == pt.getId())
-					{
-						estado = "1: EN DIALISIS";
-						conPerdida = true;
-					}
-					else
-					{
-						idPerdida++;
-					}
-					
+				String estado = "1: EN DIALISIS";
+				if (t.getFechaAlta() == null) {
+					estado = "3. VIVO EN TR";
 				}
 				boolean murio = false;
 				if (p.getMuertePaciente() != null) {
@@ -226,30 +228,29 @@ public class CrearReporteFondo {
 					}
 				}
 				salida += "<td>" + estado + "</td>";
-				if(!murio){
-					if(conPerdida)
-					{
-						PacientePerdidaInjerto perdida = p.getListaPerdidas().get(idPerdida);
-						salida += "<td>"
-							+ ManejoFechas.FORMATOMES.format(perdida.getFechaPerdida()
+				if (!murio) {
+					salida += "<td> Sin Alta </td>";
+					salida += "<td> Sin Alta </td>";
+				} else {
+					salida += "<td>"
+							+ ManejoFechas.FORMATOMES.format(p
+									.getMuertePaciente().getFechaMuerte()
 									.getTime()) + "</td>";
-						salida += "<td>"
-							+ ManejoFechas.FORMATOYEAR.format(perdida.getFechaPerdida()
-									.getTime()) + "</td>";						
-					}
-					else
-					{
-						salida += "<td> Sin Alta </td>";
-						salida += "<td> Sin Alta </td>";
-					}
-				}else{
 					salida += "<td>"
-						+ ManejoFechas.FORMATOMES.format(p.getMuertePaciente().getFechaMuerte()
-								.getTime()) + "</td>";
-					salida += "<td>"
-						+ ManejoFechas.FORMATOYEAR.format(p.getMuertePaciente().getFechaMuerte()
-								.getTime()) + "</td>";
+							+ ManejoFechas.FORMATOYEAR.format(p
+									.getMuertePaciente().getFechaMuerte()
+									.getTime()) + "</td>";
 				}
+				/*
+				 * if (t.getFechaAlta() == null) { salida +=
+				 * "<td> Sin Alta </td>"; salida += "<td> Sin Alta </td>"; }
+				 * else { salida += "<td>" +
+				 * ManejoFechas.formatoMes.format(t.getFechaAlta() .getTime()) +
+				 * "</td>"; salida += "<td>" +
+				 * ManejoFechas.formatoYear.format(t.getFechaAlta() .getTime())
+				 * + "</td>"; }
+				 */
+
 				if (p.getMuertePaciente() != null) {
 					if (p.getMuertePaciente().getFechaMuerte() != null) {
 						salida += "<td>"
@@ -261,36 +262,22 @@ public class CrearReporteFondo {
 				} else {
 					salida += "<td> Sin Muerte </td>";
 				}
-				p.leerDatosPerdidaInjerto();
-				if(p.getListaPerdidas().size() > 0 ){
-					salida += "<td> ";
-					boolean encontroPerdida = false;
-					for(PacientePerdidaInjerto auxPerdida1 : p.getListaPerdidas()){
-						if(pt.getId() == auxPerdida1.getNumPreTrasplante()){
-							if(encontroPerdida){
-								salida += "<br>";
-							}
-							salida += "SI : " + auxPerdida1.getCausa().getDetalle();
-							encontroPerdida = true;
-						}
-					}
-					if(!encontroPerdida){
-						salida += "Sin Perdida";
-					}
-					salida += " </td>";
-				}else{
+				if (p.getListaPerdidas().size() > 0) {
+					PacientePerdidaInjerto auxPerdida = (PacientePerdidaInjerto) p
+							.getListaPerdidas().get(0);
+					System.out.println(auxPerdida.getNumCausa());
+					salida += "<td> Tuvo una perdida </td>";
+				} else {
 					salida += "<td> Sin Perdida </td>";
 				}
-				
-				salida += "<td>"
-						+ String.valueOf(p.calcularEdad(t.getFecha()))
+
+				salida += "<td>" + String.valueOf(p.calcularEdad(t.getFecha()))
 						+ "</td>";
 				salida += "<td>" + p.getSexo() + "</td>";
 				salida += "<td>"
 						+ String.valueOf(t.getMeses(p.getFecha_dialisis()))
 						+ "</td>";
-				salida += "<td>" + String.valueOf(pt.getMeses())
-						+ "</td>";
+				salida += "<td>" + String.valueOf(pt.getMeses()) + "</td>";
 				Donante d = new Donante();
 				d.setId(t.getNumDonante());
 				d.leerMinimo();
@@ -301,12 +288,10 @@ public class CrearReporteFondo {
 				cd.setId(d.getNumCausaMuerte());
 				cd.leer();
 				salida += "<td>" + cd.getDetalle() + "</td>";
-				salida += "<td>" + String.valueOf(t.getNumIncompAB())
-						+ "</td>";
-				salida += "<td>" + String.valueOf(t.getNumIncompDR())
-						+ "</td>";
-				salida += "<td>" + String.valueOf(t.getTIsqFriqHs()) + " : " + String.valueOf(t.getTIsqFriaMin())
-						+ "</td>";
+				salida += "<td>" + String.valueOf(t.getNumIncompAB()) + "</td>";
+				salida += "<td>" + String.valueOf(t.getNumIncompDR()) + "</td>";
+				salida += "<td>" + String.valueOf(t.getTIsqFriqHs()) + " : "
+						+ String.valueOf(t.getTIsqFriaMin()) + "</td>";
 				salida += "<td>";
 				t.leerInducciones();
 				for (int i = 0; i < t.getListaInducciones().size(); i++) {
@@ -316,11 +301,97 @@ public class CrearReporteFondo {
 					salida += " - ";
 				}
 				salida += "</td>";
+				salida += "<td>";
+				if (pt.isHta()) {
+					salida += "VERDADERO";
+				} else {
+					salida += "FALSO";
+				}
+				salida += "</td>";
+				salida += "<td>";
+				if (pt.isObesidad()) {
+					salida += "VERDADERO";
+				} else {
+					salida += "FALSO";
+				}
+				salida += "</td>";
+				salida += "<td>";
+				salida += pt.getImc();
+				salida += "</td>";
+				salida += "<td>";
+				if (pt.isDislipemia()) {
+					salida += "VERDADERO";
+				} else {
+					salida += "FALSO";
+				}
+				salida += "</td>";
+				salida += "<td>";
+				if (pt.isTabaquismo()) {
+					salida += "VERDADERO";
+				} else {
+					salida += "FALSO";
+				}
+				salida += "</td>";
+				salida += "<td>";
+				salida += pt.getDiabetes();
+				salida += "</td>";
+				pt.setTrasplante(t);
+				PacientePreTrasplante modificar = new PacientePreTrasplante(pt);
+				modificar.getTrasplante().leerEvolucionInjerto();
+				ArrayList<EvolucionInjerto> listaEvolucionesInjerto = new ArrayList<EvolucionInjerto>();
+				listaEvolucionesInjerto = Fachada.getInstancia()
+						.obtenertodosEvolucionInjerto(pt.getId());
+				String auxFechaEvolucion = " - " + "<br>";;
+				String auxEvolucion = "FALSO" + "<br>";;
+				if (modificar.getTrasplante().getEvolucion() != null) {
+					if (modificar.getTrasplante().getEvolucion().isRa()) {
+						auxEvolucion = "VERDADERO";
+						auxFechaEvolucion = ManejoFechas.FORMATOESPANOL
+								.format(modificar.getTrasplante().getFecha()
+										.getTime());
+					}
+				}
+				for (EvolucionInjerto evolucion : listaEvolucionesInjerto) {
+					if (evolucion.isRa()) {
+						auxEvolucion += "<br>" + "VERDADERO";
+						auxFechaEvolucion += "<br>"
+								+ ManejoFechas.FORMATOESPANOL.format(modificar
+										.getTrasplante().getFecha().getTime());
+					}
+				}
+				salida += "<td>";
+				salida += auxEvolucion;
+				salida += "</td>";
+				salida += "<td>";
+				salida += auxFechaEvolucion;
+				salida += "</td>";
+				ArrayList<CMV> listaCMV = new ArrayList<CMV>();
+				listaCMV = Fachada.getInstancia().obtenerTodosCMV(t.getId());
+				String auxCMV = " - " + "<br>";;
+				String auxFechaCMV = " - " + "<br>";;
+				for(CMV cmv : listaCMV){
+					if(cmv.isSindromeViral()){
+						auxCMV += "Sindrome Viral" + "<br>";
+						auxFechaCMV += ManejoFechas.FORMATOESPANOL.format(cmv.getFecha().getTime())+ "<br>";
+					}else{
+						if(cmv.getEnfermedades() != null){
+							auxCMV += "Enfermedad " + "<br>";
+							auxFechaCMV += ManejoFechas.FORMATOESPANOL.format(cmv.getFecha().getTime())+ "<br>";
+						}
+					}
+				}
+				salida += "<td>";
+				salida += auxCMV;
+				salida += "</td>";
+				salida += "<td>";
+				salida += auxFechaCMV;
+				salida += "</td>";
 				salida += "</tr>";
 			}
 		}
 		return salida;
 	}
+
 	private String datosTabla(int year) {
 		String salida = "";
 		ArrayList<Trasplante> lista = Fachada.getInstancia()
@@ -336,7 +407,7 @@ public class CrearReporteFondo {
 		salida = this.formarTabla(lista);
 		return salida;
 	}
-	
+
 	private String cerrarTabla() {
 		return "</table>";
 	}

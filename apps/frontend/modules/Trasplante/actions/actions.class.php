@@ -20,6 +20,18 @@ class TrasplanteActions extends sfActions
   public function executeArchivo(sfWebRequest $request)
   {
     reportesHandler::CrearReporteDeFondo();
+    
+    $year = 2000;
+    while($year < 2011)
+    {
+      reportesHandler::CrearReporteDeFondo($year);
+      $year++;
+      var_dump($year);
+      sleep(50);
+    }
+    
+    
+    die('aca');
   }
   
   public function executeShow(sfWebRequest $request)

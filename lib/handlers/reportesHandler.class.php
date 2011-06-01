@@ -108,7 +108,16 @@ class reportesHandler
     $objPHPExcel->getActiveSheet()
             ->setCellValue($letter, "INDUCCIÓN: MARQUE LO QUE INCLUYÓ");
 
-    $pacientePreTrasplantesIds = preTrasplanteHandler::retrieveAllPacientepreTrasplantesIds();
+    if(is_null($year))
+    {
+      $fileFolder = 'completo/';
+      $pacientePreTrasplantesIds = preTrasplanteHandler::retrieveAllPacientepreTrasplantesIds();
+    }
+    else
+    {
+      $fileFolder = $year.'/';
+      $pacientePreTrasplantesIds = preTrasplanteHandler::retrieveAllPacientepreTrasplantesIdsByYear($year);
+    }
     $position = 2;
     foreach($pacientePreTrasplantesIds as $pacientePreTrasplantesId)
     {
@@ -392,7 +401,7 @@ class reportesHandler
 
       $position++;
     }
-    $fileFolder = 'completo/';     
+         
     $fileName = 'reporte.xls';
     $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
     $realPath = sfConfig::get('sf_cache_dir')."/reportes/reporteFondo/";

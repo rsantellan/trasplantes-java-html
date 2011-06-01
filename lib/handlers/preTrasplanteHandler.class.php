@@ -8,6 +8,10 @@ class preTrasplanteHandler
       return Doctrine::getTable("Pacientepretrasplante")->retrieveAllPacientepreTrasplantesIds();
   }
 
+  public static function retrieveAllPacientepreTrasplantesIdsByYear($year)
+  {
+      return Doctrine::getTable("Pacientepretrasplante")->retrieveAllPacientepreTrasplantesIdsByYear($year);
+  }
 
   public static function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
   {

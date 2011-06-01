@@ -24,6 +24,20 @@ class PacientepretrasplanteTable extends Doctrine_Table
         $query->setHydrationMode(Doctrine_Core::HYDRATE_NONE);
         return $query->execute();
     }    
+
+    public function retrieveAllPacientepreTrasplantesIdsByYear($year)
+    {
+        $start = $year. "-1-1";
+        $end = $year. "-12-31";
+        $query = $this->createQuery("pt");
+        $query->select("pt.id")
+          ->addFrom("Trasplante t")
+          ->addWhere("pt.id = t.paciente_pre_trasplante_id")
+          ->addWhere("t.fecha > ?", $start)
+          ->addWhere("t.fecha < ?", $end);
+        $query->setHydrationMode(Doctrine_Core::HYDRATE_NONE);
+        return $query->execute();
+    }   
     
     public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
     {

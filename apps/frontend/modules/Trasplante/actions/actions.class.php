@@ -19,8 +19,8 @@ class TrasplanteActions extends sfActions
 
   public function executeArchivo(sfWebRequest $request)
   {
-    reportesHandler::CrearReporteDeFondo();
-    
+    reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV();
+    /*
     $year = 2000;
     while($year < 2011)
     {
@@ -29,7 +29,7 @@ class TrasplanteActions extends sfActions
       var_dump($year);
       sleep(50);
     }
-    
+    */
     
     die('aca');
   }

@@ -414,6 +414,8 @@ class reportesHandler
 
   public static function CrearReporteDeFondoPreTrasplanteRACMV($situationYear = 2008, $year = null)
   {
+  
+	
     $objPHPExcel = new PHPExcel();
     $objPHPExcel->getProperties()
             ->setCreator("Rodrigo Santellan")
@@ -579,6 +581,7 @@ class reportesHandler
       $fileFolder = $year.'/';
       $pacientePreTrasplantesIds = preTrasplanteHandler::retrieveAllPacientepreTrasplantesIdsByYear($year);
     }
+
     //$pacientePreTrasplantesIds = array();
     $position = 2;
     foreach($pacientePreTrasplantesIds as $pacientePreTrasplantesId)
@@ -920,7 +923,6 @@ class reportesHandler
     $fileName = 'reporte.xls';
     $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
     $realPath = sfConfig::get('sf_cache_dir')."/reportes/reporteFondoPreTrasplante/";
-    //MdFileHandler::checkPathFormat($realPath);
     MdFileHandler::checkPathFormat($realPath.$fileFolder);
     $objWriter->save($realPath.$fileFolder.$fileName);
   }

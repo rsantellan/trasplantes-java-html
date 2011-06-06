@@ -5,8 +5,11 @@
     <?php include_metas() ?>
     <?php include_title() ?>
     <link rel="shortcut icon" href="/favicon.ico" />
+    <?php use_javascript("jquery-1.6.1.min.js","first");?>
+    
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
+    
   </head>
   <body>
     <?php echo $sf_content ?>

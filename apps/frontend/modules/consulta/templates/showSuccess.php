@@ -23,33 +23,37 @@
 
 
   <hr/>
-  <table>
+  <table id="hor-minimalist-b">
 	<tbody>
   <?php
 	  $head = false;
 	  $head_list = array();
+    $index = 0;
 	?>
   <?php 
 	foreach($result as $row):
   ?>
 	
 	  <tr>
+    <?php $index = 0;?>
 	<?php foreach($row as $key => $data): ?>
 		<?php 
 		  if(!$head)
 			array_push($head_list, $key);
 		?>
-		<td><?php echo $data?></td>
+		<td class="table_position_<?php echo $index;?>"><?php echo $data?></td>
 
-
+      <?php $index++;?>
 	  <?php endforeach; ?>
 	  <?php $head = true; ?>
 	  </tr>
   <?php endforeach; ?>
 	</tbody>
 	<thead>
+    <?php $index = 0;?>
 	  <?php foreach($head_list as $title): ?>
-		<th><?php echo $title?></th>
+		<th class="table_position_<?php echo $index;?>"><?php echo $title?></th>
+    <?php $index++;?>
 	  <?php endforeach; ?>
 	</thead>
   </table>

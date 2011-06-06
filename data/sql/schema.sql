@@ -8,6 +8,8 @@ CREATE TABLE complicaciones_infecciosas (tr_complicacion_id INT, infeccion_id IN
 CREATE TABLE complicaciones_no_infecciosas (tr_complicacion_id INT, complicacion_valor_id INT NOT NULL, INDEX complicacion_valor_id_idx (complicacion_valor_id), PRIMARY KEY(tr_complicacion_id)) ENGINE = INNODB;
 CREATE TABLE complicaciones_tipos (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE complicaciones_tipos_valores (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, complicacion_tipo_id INT NOT NULL, INDEX complicacion_tipo_id_idx (complicacion_tipo_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE consulta (id INT AUTO_INCREMENT, nombre VARCHAR(45) NOT NULL, sentencia TEXT NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE consulta_campo (id INT AUTO_INCREMENT, nombre VARCHAR(45) NOT NULL, consulta_id INT NOT NULL, INDEX consulta_id_idx (consulta_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE donante (id INT AUTO_INCREMENT, identificador VARCHAR(20) UNIQUE, tipo_donante VARCHAR(10) NOT NULL, sexo_donante VARCHAR(1) NOT NULL, edad_donante TINYINT, enastab_hemod TINYINT, donante_causa_muerte_id INT NOT NULL, cr_p FLOAT(18, 2) DEFAULT 0, otros VARCHAR(255), grupo_sanguineo VARCHAR(2) NOT NULL, relacion_filiar VARCHAR(11), peso INT, altura FLOAT(18, 2), INDEX donante_causa_muerte_id_idx (donante_causa_muerte_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE donante_antecedentes (donante_id INT, antecedente_de_donante_id INT, PRIMARY KEY(donante_id, antecedente_de_donante_id)) ENGINE = INNODB;
 CREATE TABLE donante_causa_muerte (id INT AUTO_INCREMENT, nombre VARCHAR(255) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
@@ -71,6 +73,7 @@ ALTER TABLE complicaciones_infecciosas ADD CONSTRAINT complicaciones_infecciosas
 ALTER TABLE complicaciones_infecciosas ADD CONSTRAINT complicaciones_infecciosas_germen_id_germenes_id FOREIGN KEY (germen_id) REFERENCES germenes(id);
 ALTER TABLE complicaciones_no_infecciosas ADD CONSTRAINT ccci FOREIGN KEY (complicacion_valor_id) REFERENCES complicaciones_tipos_valores(id);
 ALTER TABLE complicaciones_tipos_valores ADD CONSTRAINT ccci_1 FOREIGN KEY (complicacion_tipo_id) REFERENCES complicaciones_tipos(id);
+ALTER TABLE consulta_campo ADD CONSTRAINT consulta_campo_consulta_id_consulta_id FOREIGN KEY (consulta_id) REFERENCES consulta(id);
 ALTER TABLE donante ADD CONSTRAINT donante_donante_causa_muerte_id_donante_causa_muerte_id FOREIGN KEY (donante_causa_muerte_id) REFERENCES donante_causa_muerte(id);
 ALTER TABLE donante_antecedentes ADD CONSTRAINT donante_antecedentes_donante_id_donante_id FOREIGN KEY (donante_id) REFERENCES donante(id) ON DELETE CASCADE;
 ALTER TABLE donante_antecedentes ADD CONSTRAINT daai FOREIGN KEY (antecedente_de_donante_id) REFERENCES antecedentes_de_donante(id) ON DELETE CASCADE;

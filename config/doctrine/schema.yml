@@ -1693,3 +1693,37 @@ InjertoEvolucionPbr:
       local: resultado_pbr_id
       foreign: id
       type: one    
+
+#Consultas
+Consulta:
+  tableName: consulta
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(45)
+      notnull: true
+    sentencia:
+      type: string(10000)
+      notnull: true
+
+ConsultaCampo:
+  tableName: consulta_campo
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(45)
+      notnull: true
+    consulta_id:
+      type: integer(4)
+      notnull: true
+  relations:      
+    Consulta:
+      local: consulta_id
+      foreign: id
+      type: one      

@@ -1,43 +1,5 @@
 
 ######## DE ACA PARA ABAJO NO SE SI VA
-Consultas:
-
-  tableName: consultas
-  columns:
-    id:
-      type: integer(4)
-      fixed: false
-      unsigned: true
-      primary: true
-      autoincrement: true
-    nombre:
-      type: string(45)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    sentencia:
-      type: string(10000)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    tipos:
-      type: string(10000)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    nombres:
-      type: string(10000)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
 Datosutiles:
 
   tableName: datosutiles

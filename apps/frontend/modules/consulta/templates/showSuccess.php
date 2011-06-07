@@ -1,3 +1,7 @@
+<?php use_javascript("consultasManagement.js"); ?>
+<?php use_javascript("jqplot/jquery.jqplot.js"); ?>
+<?php use_javascript("jqplot/plugins/jqplot.pieRenderer.js"); ?>
+<?php use_stylesheet("jqplot/jquery.jqplot.css"); ?>
 <table>
   <tbody>
     <tr>
@@ -22,6 +26,11 @@
 <a href="<?php echo url_for('consulta/index') ?>">List</a>
 
 
+<hr/>
+<div style="text-align: 'center' ">
+  
+  <div id="pie1" style="margin-top:20px; margin-left:20px; width:400px; height:400px;"></div>
+</div>
   <hr/>
   <table id="hor-minimalist-b">
 	<tbody>
@@ -58,3 +67,7 @@
 	</thead>
   </table>
   
+<script class="code" type="text/javascript">
+  $(document).ready(function(){
+	consultasManagement.getInstance().renderPlot('pie1', 3);
+});</script>

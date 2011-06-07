@@ -69,5 +69,5 @@
   
 <script class="code" type="text/javascript">
   $(document).ready(function(){
-	consultasManagement.getInstance().renderPlot('pie1', 3);
+	consultasManagement.getInstance().renderPiePlot('pie1', 6);
 });</script>

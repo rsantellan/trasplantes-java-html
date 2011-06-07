@@ -2,6 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
+var _plot1 = null;
+
 consultasManagement = function(options){
     this._initialize();
 
@@ -60,25 +63,26 @@ consultasManagement.prototype = {
 	  return aux;
 	},
 
-	renderPlot: function(container_id, position)
+	renderPiePlot: function(container_id, position)
 	{
-	  //console.log(position);
 	  var lista = consultasManagement.getInstance().createList(position);
-	  //console.log(lista);
-	  plot1 = $.jqplot(container_id, [lista], {
-		  gridPadding: {top:0, bottom:38, left:0, right:0},
-		seriesDefaults:{renderer:$.jqplot.PieRenderer, trendline:{show:false}, rendererOptions: { padding: 8, showDataLabels: true}},
-					legend:{
-						show:true, 
-						placement: 'outside', 
-						rendererOptions: {
-							numberRows: 1
-						}, 
-						location:'s',
-						marginTop: '15px',
-						marginLeft: "150px"
-					}       
-	  });	  
-	}
+	  $('#'+container_id).empty();
+    _plot1 = $.jqplot(container_id, [lista], {
+        gridPadding: {top:0, bottom:38, left:0, right:0},
+      seriesDefaults:{
+            renderer:$.jqplot.PieRenderer, 
+            trendline:{show:true}, 
+            rendererOptions: { padding: 8, showDataLabels: true, sliceMargin: 4, startAngle: -90}},
+            legend:{ show:true }       
+      });	 
+    
+    
+	},
+  
+  
+  renderBarPlot: function(container_id, position)
+	{
+    
+  }
 }
 

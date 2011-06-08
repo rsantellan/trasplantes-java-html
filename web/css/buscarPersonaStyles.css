@@ -1,0 +1,40 @@
+.ui-autocomplete {
+	max-height: 100px;
+	overflow-y: auto;
+	/* prevent horizontal scrollbar */
+	overflow-x: hidden;
+	/* add padding to account for vertical scrollbar */
+	padding-right: 20px;
+}
+/* IE 6 doesn't support max-height
+ * we use height instead, but this forces the menu to always be this tall
+ */
+html .ui-autocomplete {
+	height: 100px;
+}
+
+.ui-autocomplete-input
+{
+  width: 450px !important;
+  height: 20px !important;
+}
+
+.simple_rounded
+{
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background-color: #FFFFCD;
+  border: 1px solid #253183;  
+  width: 520px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  text-align: center;  
+}
+
+.box_container
+{
+  margin-left: auto;
+  margin-right: auto;
+  width: 550px;
+}

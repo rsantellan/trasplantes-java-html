@@ -8,21 +8,39 @@
 ?>
 <div class="box_container">
   <div class="simple_rounded">
-	<form method="GET" action="<?php echo url_for("@buscarPersona");?>">
+	<form method="POST" action="<?php echo url_for("@buscarPersona");?>">
 	  <label for="buscarPaciente_nombre"><?php echo __("buscar_escriba el nombre de la persona a buscar");?></label>
 	  <a href="javascript:void(0)" class="simple_tip_container">
-		<?php echo image_tag("Categories-system-help-icon.png", array("width" => 25)); ?>
-		<div class="tooltip">A simple tooltip</div>		
+		<?php echo image_tag("help-icon2.png", array("width" => 24)); ?>
+		<div class="tooltip_text"><?php echo __("buscar_ayuda sobre buscar persona");?></div>		
 	  </a>
+	  <a href="<?php echo url_for("@agregarPaciente");?>" class="simple_tip_container">
+		<?php echo image_tag("add-icon.png", array("width" => 24)); ?>
+		<div class="tooltip_text"><?php echo __("buscar_agregar nueva persona");?></div>		
+	  </a>	  
 	  <div class="clear"></div>
 	  <?php
 		echo $buscarForm->renderHiddenFields();
 		echo $buscarForm["nombre"]->render();
 		echo $buscarForm["nombre"]->renderError();
 	  ?>
-	  <input type="submit" value="<?php echo __("buscar_buscar persona");?>" />
+	  <input class="button_submit" type="submit" value="<?php echo __("buscar_buscar persona");?>" />
 	</form>
   </div>  
 </div>
 
-$(".simple_tip_container").simpletip({ fixed: true, position: ["25", "-40"] });
+<script type="text/javascript">
+$(document).ready(function(){
+
+  $('.simple_tip_container').each(function() {
+	  $(this).simpletip({
+		  content : $(this).find("div.tooltip_text").text(),
+		  fixed: true, 
+		  position: ["25", "-40"]
+	  });
+  });
+  
+  $(".button_submit").button();
+  
+});
+</script>

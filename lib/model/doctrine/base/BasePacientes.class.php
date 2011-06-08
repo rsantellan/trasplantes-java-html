@@ -11,7 +11,7 @@
  * @property string $nombre
  * @property string $apellido
  * @property integer $num_fnr
- * @property string $raza
+ * @property enum $raza
  * @property enum $sexo
  * @property date $fecha_nacimiento
  * @property date $fecha_dialisis
@@ -29,7 +29,7 @@
  * @method string              getNombre()                 Returns the current record's "nombre" value
  * @method string              getApellido()               Returns the current record's "apellido" value
  * @method integer             getNumFnr()                 Returns the current record's "num_fnr" value
- * @method string              getRaza()                   Returns the current record's "raza" value
+ * @method enum                getRaza()                   Returns the current record's "raza" value
  * @method enum                getSexo()                   Returns the current record's "sexo" value
  * @method date                getFechaNacimiento()        Returns the current record's "fecha_nacimiento" value
  * @method date                getFechaDialisis()          Returns the current record's "fecha_dialisis" value
@@ -99,10 +99,17 @@ abstract class BasePacientes extends sfDoctrineRecord
              'notnull' => true,
              'length' => 3,
              ));
-        $this->hasColumn('raza', 'string', 15, array(
-             'type' => 'string',
-             'notnull' => true,
+        $this->hasColumn('raza', 'enum', 15, array(
+             'type' => 'enum',
              'length' => 15,
+             'values' => 
+             array(
+              0 => 'Blanca',
+              1 => 'Negra',
+              2 => 'Asiática',
+              3 => 'Indio americana',
+             ),
+             'notnull' => true,
              ));
         $this->hasColumn('sexo', 'enum', 1, array(
              'type' => 'enum',

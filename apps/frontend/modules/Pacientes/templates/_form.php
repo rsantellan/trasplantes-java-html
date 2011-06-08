@@ -3,7 +3,7 @@
 
 <form action="<?php echo url_for('Pacientes/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
 <?php if (!$form->getObject()->isNew()): ?>
-<input type="hidden" name="sf_method" value="put" />
+  <input type="hidden" name="sf_method" value="put" />
 <?php endif; ?>
   <table>
     <tfoot>
@@ -20,13 +20,6 @@
     </tfoot>
     <tbody>
       <?php echo $form->renderGlobalErrors() ?>
-      <tr>
-        <th><?php echo $form['the']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['the']->renderError() ?>
-          <?php echo $form['the'] ?>
-        </td>
-      </tr>
       <tr>
         <th><?php echo $form['ci']->renderLabel() ?></th>
         <td>

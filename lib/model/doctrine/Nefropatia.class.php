@@ -12,4 +12,8 @@
  */
 class Nefropatia extends BaseNefropatia
 {
+  public function __toString()
+  {
+	return $this->getNombre();
+  }
 }

@@ -236,4 +236,10 @@ Sidebar no lo puse por ahora
   left: 0; 
   z-index: 3; 
   display: none; 
+  background-color: #FFFFCC;
+}
+
+.tooltip_text
+{
+  display: none; 
 }

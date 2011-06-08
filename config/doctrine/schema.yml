@@ -21,7 +21,9 @@ Pacientes:
       type: integer(3)
       notnull: true
     raza:
-      type: string(15)
+      type: enum
+      length: 15
+      values: ['Blanca','Negra','Asiática','Indio americana']
       notnull: true
     sexo:
       type: enum

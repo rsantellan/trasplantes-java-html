@@ -24,3 +24,5 @@
 	</form>
   </div>  
 </div>
+
+$(".simple_tip_container").simpletip({ fixed: true, position: ["25", "-40"] });

@@ -34,7 +34,9 @@ li {
 	width:100%;
 	padding-top:20px;
 	padding-bottom:20px;
-	background-color:#FFFFFF;
+/*	Saco este por que no tengo la imagen
+	background-color:#FFFFFF;*/
+	background-color: #0000CC;
 	margin-bottom:50px;
 	color:#FFFFFF;
 	text-align:center;

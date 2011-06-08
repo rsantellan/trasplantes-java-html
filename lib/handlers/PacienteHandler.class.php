@@ -32,4 +32,16 @@ class PacienteHandler
   {
     return Doctrine::getTable("Pacientes")->retriveById($pacienteId, $hydrationMode);
   }
+  
+  public static function retrieveAllPacientesNamesArray()
+  {
+	$pacientes = Doctrine::getTable('Pacientes')->findAll();
+	$list = array();
+	$list[''] = '';
+	foreach($pacientes as $paciente)
+	{
+		$list[$paciente->getId()] = $paciente->getNombre()." ".$paciente->getApellido();
+	}
+	return $list;
+  }
 }

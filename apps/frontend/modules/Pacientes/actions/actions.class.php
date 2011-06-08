@@ -76,4 +76,9 @@ class PacientesActions extends sfActions
       $this->redirect('Pacientes/edit?id='.$pacientes->getId());
     }
   }
+  
+  public function executeBuscar(sfWebRequest $request)
+  {
+	$this->buscarForm = new buscarPacienteForm();
+  }
 }

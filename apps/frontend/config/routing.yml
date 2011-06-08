@@ -1,6 +1,18 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+consultas:
+  url:   /consultas.html
+  param: { module: consulta, action: index }
+
+buscarPersona:
+  url:   /paciente
+  param: { module: Pacientes, action: buscarAccion }
+  
+buscar:
+  url:   /pacientes.html
+  param: { module: Pacientes, action: buscar }
+  
 # default rules
 homepage:
   url:   /

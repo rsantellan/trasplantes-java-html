@@ -243,3 +243,34 @@ Sidebar no lo puse por ahora
 {
   display: none; 
 }
+
+/**  Estilos de los formularios   **/
+.form_container form
+{
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.form_block
+{
+	float: left;
+/*    font-size: 12px;*/
+    margin: 0 30px 15px 0;
+}
+
+.form_block h4
+{
+	color: #253183;
+    margin-bottom: 5px;
+}
+
+.form_block_field
+{
+  float: left; 
+  padding: 2px; 
+  margin: 2px;
+}
+
+.error_msg {
+    background-color: red;
+}

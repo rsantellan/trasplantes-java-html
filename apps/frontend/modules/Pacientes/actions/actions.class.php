@@ -68,7 +68,11 @@ class PacientesActions extends sfActions
 
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
-    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+	print_r($request->getPostParameters());
+	print_r("<hr/>");
+	print_r($request->getParameter($form->getName()));
+    print_r("<hr/>");
+	$form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
       $pacientes = $form->save();

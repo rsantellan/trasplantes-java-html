@@ -84,22 +84,23 @@ class PacientesActions extends sfActions
   
   public function executeBuscar(sfWebRequest $request)
   {
-	$this->buscarForm = new buscarPacienteForm();
+    $this->buscarForm = new buscarPacienteForm();
   }
   
   public function executeBuscarAccion(sfWebRequest $request)
   {
-	$buscarForm = new buscarPacienteForm();
-	$parameters = $request->getParameter($buscarForm->getName());
-	$id = $parameters["nombre"];
-	$this->forward404Unless($id);
-	sfContext::getInstance()->getConfiguration()->loadHelpers(array('url'));
-	$this->redirect(url_for("@mostrarPaciente?id=".$id));
+    $buscarForm = new buscarPacienteForm();
+    $parameters = $request->getParameter($buscarForm->getName());
+    $id = $parameters["nombre"];
+    $this->forward404Unless($id);
+    sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url'));
+    $this->redirect(url_for("@mostrarPaciente?id=".$id));
   }
   
   public function executeMostrar(sfWebRequest $request)
   {
-	$id = $request->getParameter("id");
-	$this->forward404Unless($id);
+    $id = $request->getParameter("id");
+    $this->forward404Unless($id);
+    $this->paciente = PacienteHandler::retriveById($id, Doctrine::HYDRATE_ARRAY);
   }  
 }

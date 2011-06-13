@@ -40,6 +40,7 @@
 	  </label>
 	</div>	
   </div>
+  <div class="clear"></div>
   <div class="form_block">
 	<h4><?php echo __("paciente_Apellido");?></h4>
 	<div class="form_block_field<?php if($form['apellido']->hasError()):?> error_msg<?php endif; ?>">
@@ -60,7 +61,6 @@
 	  </label>
 	</div>	
   </div>
-  <div class="clear"></div>
   <div class="form_block">
 	<h4><?php echo __("paciente_Numero del fondo nacional de recursos");?></h4>
 	<div class="form_block_field<?php if($form['num_fnr']->hasError()):?> error_msg<?php endif; ?>">
@@ -81,7 +81,9 @@
 	  </label>
 	</div>	
   </div>
+  <div class="clear"></div>
   <div class="form_block">
+  
 	<h4><?php echo __("paciente_Raza");?></h4>
 	<div class="form_block_field<?php if($form['raza']->hasError()):?> error_msg<?php endif; ?>">
 	  <?php echo $form['raza']->render() ?>
@@ -168,6 +170,7 @@
 	  </label>
 	</div>	
   </div>
+  <div class="clear"></div>
   <div class="form_block">
 	<h4><?php echo __("paciente_Nefropatia");?></h4>
 	<div class="form_block_field<?php if($form['nefropatia_id']->hasError()):?> error_msg<?php endif; ?>">
@@ -187,7 +190,6 @@
 	  </label>
 	</div>	
   </div>
-  <div class="clear"></div>
   <div class="form_block">
 	<h4><?php echo __("paciente_Grupo sanguineo");?></h4>
 	<div class="form_block_field<?php if($form['grupo_sanguineo']->hasError()):?> error_msg<?php endif; ?>">

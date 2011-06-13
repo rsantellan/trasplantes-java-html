@@ -68,10 +68,11 @@ class PacientesActions extends sfActions
 
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
-	print_r($request->getPostParameters());
-	print_r("<hr/>");
-	print_r($request->getParameter($form->getName()));
-    print_r("<hr/>");
+//	print_r($request->getPostParameters());
+//	print_r("<hr/>");
+//	print_r($request->getParameter($form->getName()));
+//    print_r("<hr/>");
+//	die;
 	$form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
@@ -85,4 +86,20 @@ class PacientesActions extends sfActions
   {
 	$this->buscarForm = new buscarPacienteForm();
   }
+  
+  public function executeBuscarAccion(sfWebRequest $request)
+  {
+	$buscarForm = new buscarPacienteForm();
+	$parameters = $request->getParameter($buscarForm->getName());
+	$id = $parameters["nombre"];
+	$this->forward404Unless($id);
+	sfContext::getInstance()->getConfiguration()->loadHelpers(array('url'));
+	$this->redirect(url_for("@mostrarPaciente?id=".$id));
+  }
+  
+  public function executeMostrar(sfWebRequest $request)
+  {
+	$id = $request->getParameter("id");
+	$this->forward404Unless($id);
+  }  
 }

@@ -8,7 +8,7 @@
 ?>
 <div class="box_container">
   <div class="simple_rounded">
-	<form method="POST" action="<?php echo url_for("@buscarPersona");?>">
+	<form method="POST" action="<?php echo url_for("@buscarPaciente");?>">
 	  <label for="buscarPaciente_nombre"><?php echo __("buscar_escriba el nombre de la persona a buscar");?></label>
 	  <a href="javascript:void(0)" class="simple_tip_container">
 		<?php echo image_tag("help-icon2.png", array("width" => 24)); ?>

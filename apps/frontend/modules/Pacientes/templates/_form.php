@@ -1,7 +1,7 @@
 <?php use_stylesheets_for_form($form) ?>
 <?php use_javascripts_for_form($form) ?>
 
-<form action="<?php echo url_for('Pacientes/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+<form id="paciente_form" action="<?php echo url_for('Pacientes/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
 <?php if (!$form->getObject()->isNew()): ?>
   <input type="hidden" name="sf_method" value="put" />
 <?php endif; ?>
@@ -66,7 +66,7 @@
         <th><?php echo $form['fecha_nacimiento']->renderLabel() ?></th>
         <td>
           <?php echo $form['fecha_nacimiento']->renderError() ?>
-          <?php echo $form['fecha_nacimiento'] ?>
+          <?php echo $form['fecha_nacimiento']->render(array("class" => "date_widget")) ?>
         </td>
       </tr>
       <tr>

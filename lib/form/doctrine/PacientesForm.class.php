@@ -15,23 +15,15 @@ class PacientesForm extends BasePacientesForm
 	unset($this["the"]);
 	$years = range(1920,date('Y'));
 	
-	$this->widgetSchema['fecha_nacimiento'] = new sfWidgetFormJQueryDate(
-															array(	
-																'image' => '/mastodontePlugin/images/calendar.gif',
-																'date_widget' => new sfWidgetFormDate(
-																				array(
-																					'format' => '%year% %month% %day%',
-																					'years' =>array_combine($years, $years)))));
+	$this->widgetSchema['fecha_nacimiento'] = new sfWidgetFormDate(
+														array(
+															'format' => '%year% %month% %day%',
+															'years' =>array_combine($years, $years)));
 
-	$this->widgetSchema['fecha_dialisis'] = new sfWidgetFormJQueryDate(
-															array(
-																'image' => '/mastodontePlugin/images/calendar.gif',
-																'date_widget' => new sfWidgetFormDate(
-																				array(
-																					'format' => '%year% %month% %day%',
-																					'years' =>array_combine($years, $years)))));
-	$this->validatorSchema['fecha_nacimiento'] = new sfValidatorDate(array(
-																		'date_format' => '%year% %month% %day%'
-																	  ));
+	$this->widgetSchema['fecha_dialisis'] = new sfWidgetFormDate(
+														array(
+															'format' => '%year% %month% %day%',
+															'years' =>array_combine($years, $years)));
+
   }
 }

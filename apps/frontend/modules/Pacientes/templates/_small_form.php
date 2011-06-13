@@ -1,4 +1,4 @@
-<form action="<?php echo url_for('Pacientes/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+<form id="paciente_form" action="<?php echo url_for('Pacientes/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
 
         <?php echo $form->renderHiddenFields(false) ?>
         <?php echo $form->renderGlobalErrors() ?>
@@ -124,8 +124,12 @@
   <div class="clear"></div>
   <div class="form_block">
 	<h4><?php echo __("paciente_Fecha de nacimiento");?></h4>
+	<a href="javascript:void(0)" class="simple_tip_container">
+		<?php echo image_tag("help-icon2.png", array("width" => 24)); ?>
+		<div class="tooltip_text"><?php echo __("ayuda_formato de las fechas yy - mm - dd");?></div>		
+	</a>
 	<div class="form_block_field<?php if($form['fecha_nacimiento']->hasError()):?> error_msg<?php endif; ?>">
-	  <?php echo $form['fecha_nacimiento']->render() ?>
+	  <?php echo $form['fecha_nacimiento']->render(array("class" => "date_widget")) ?>
 	</div>
 	<div>
 		<?php 
@@ -143,8 +147,12 @@
   </div>
   <div class="form_block">
 	<h4><?php echo __("paciente_Fecha de dialisis");?></h4>
+	<a href="javascript:void(0)" class="simple_tip_container">
+		<?php echo image_tag("help-icon2.png", array("width" => 24)); ?>
+		<div class="tooltip_text"><?php echo __("ayuda_formato de las fechas yy - mm - dd");?></div>		
+	</a>
 	<div class="form_block_field<?php if($form['fecha_dialisis']->hasError()):?> error_msg<?php endif; ?>">
-	  <?php echo $form['fecha_dialisis']->render() ?>
+	  <?php echo $form['fecha_dialisis']->render(array("class" => "date_widget")) ?>
 	</div>
 	<div>
 		<?php 
@@ -198,7 +206,8 @@
 		?>
 	  </label>
 	</div>	
-  </div>  
-  <input type="submit" value="test"/>
+  </div>
+  <div class="clear"></div>
+  <input class="save_button" type="submit" value="<?php echo __("paciente_Guardar");?>"/>
 </form>
 <div class="clear"></div>

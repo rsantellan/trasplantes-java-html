@@ -9,7 +9,11 @@ consultas:
   url:   /consultas.html
   param: { module: consulta, action: index }
 
-buscarPersona:
+mostrarPaciente:
+  url:   /paciente/:id
+  param: { module: Pacientes, action: mostrar }
+
+buscarPaciente:
   url:   /paciente
   param: { module: Pacientes, action: buscarAccion }
   

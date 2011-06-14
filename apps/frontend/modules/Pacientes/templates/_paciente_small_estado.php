@@ -20,4 +20,8 @@
 	  <?php endif;?>
 	<?php endif;?>
   <?php endif;?>
+  <a href="<?php echo url_for("@editarEstadoPaciente?id=".$id); ?>" class="simple_tip_container">
+    <?php echo image_tag("edit-icon.png", array("width" => 24)); ?>
+    <div class="tooltip_text"><?php echo __("paciente_editar el estado del paciente");?></div>		
+  </a>  
 </div>

@@ -210,6 +210,11 @@
 	</div>	
   </div>
   <div class="clear"></div>
+  <?php if($form->getObject()->isNew()) : ?>
+    <a href="<?php echo url_for("@buscar");?>" class="save_button" ><?php echo __("paciente_Cancelar");?></a> 
+  <?php else: ?>
+    <a href="<?php echo url_for("@mostrarPaciente?id=".$form->getObject()->getId());?>" class="save_button"><?php echo __("paciente_Cancelar");?></a> 
+  <?php endif;?>
   <input class="save_button" type="submit" value="<?php echo __("paciente_Guardar");?>"/>
 </form>
 <div class="clear"></div>

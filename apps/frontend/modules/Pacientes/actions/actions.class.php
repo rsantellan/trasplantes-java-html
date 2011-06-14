@@ -34,9 +34,17 @@ class PacientesActions extends sfActions
 
     $this->form = new PacientesForm();
 
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('new');
+    $return = $this->processForm($request, $this->form);
+	if($return != 0)
+	{
+	  sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url'));
+	  $this->redirect(url_for("@mostrarPaciente?id=".$request->getParameter('id')));	
+	}
+	else
+	{
+	  $this->setTemplate('new');
+	} 
+    //$this->setTemplate('new');
   }
 
   public function executeEdit(sfWebRequest $request)
@@ -51,9 +59,16 @@ class PacientesActions extends sfActions
     $this->forward404Unless($pacientes = Doctrine_Core::getTable('Pacientes')->find(array($request->getParameter('id'))), sprintf('Object pacientes does not exist (%s).', $request->getParameter('id')));
     $this->form = new PacientesForm($pacientes);
 
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('edit');
+    $return = $this->processForm($request, $this->form);
+	if($return != 0)
+	{
+	  sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url'));
+	  $this->redirect(url_for("@mostrarPaciente?id=".$request->getParameter('id')));	
+	}
+	else
+	{
+	  $this->setTemplate('edit');
+	}  
   }
 
   public function executeDelete(sfWebRequest $request)
@@ -68,18 +83,19 @@ class PacientesActions extends sfActions
 
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
-//	print_r($request->getPostParameters());
-//	print_r("<hr/>");
-//	print_r($request->getParameter($form->getName()));
-//    print_r("<hr/>");
-//	die;
 	$form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
       $pacientes = $form->save();
-
-      $this->redirect('Pacientes/edit?id='.$pacientes->getId());
+	  $cacheManager = $this->getContext()->getViewCacheManager();
+	  if($cacheManager)
+	  {
+		$cacheManager->remove('@sf_cache_partial?module=Pacientes&action=_paciente_small_ul_info&sf_cache_key='.$pacientes->getId());
+	  }
+	  
+	  return $pacientes->getId();
     }
+	return 0;
   }
   
   public function executeBuscar(sfWebRequest $request)

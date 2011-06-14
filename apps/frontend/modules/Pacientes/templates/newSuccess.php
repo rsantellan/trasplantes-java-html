@@ -24,4 +24,3 @@ $('.simple_tip_container').each(function() {
   $(".save_button").button();
 });
 </script>
-<?php //include_partial('form', array('form' => $form)) ?>

@@ -16,7 +16,11 @@
 	  <div class="menu">
 		<?php include_partial("global/menu");?>	
 	  </div>
-	  <?php include_partial("global/header");?>
+	  <?php if(has_slot('layout_paciente')): ?>
+		<?php include_partial("global/header_paciente");?>
+	  <?php else: ?>
+		<?php include_partial("global/header");?>
+	  <?php endif; ?>
 	  <div class="content">
 		<?php if(has_slot('layout_introduccion')): ?>
 		  <?php include_partial("global/introduccion");?>

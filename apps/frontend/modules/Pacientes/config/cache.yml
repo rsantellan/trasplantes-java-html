@@ -1,0 +1,5 @@
+_paciente_small_ul_info:
+  enabled: true
+  
+_paciente_small_estado:
+  enabled: true  

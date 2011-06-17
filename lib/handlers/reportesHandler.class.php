@@ -143,7 +143,7 @@ class reportesHandler
       $objPHPExcel->getActiveSheet()
               ->setCellValue($letter, $preTrasplante["diabetes"]);   
               
-      $nefropatia = PacienteHandler::retriveNefropatiaByPacienteId($preTrasplante["paciente_id"], Doctrine::HYDRATE_ARRAY);
+      $nefropatia = NefropatiaHandler::retriveNefropatiaByPacienteId($preTrasplante["paciente_id"], Doctrine::HYDRATE_ARRAY);
       // NEFROPATIA
       $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
       $index++;
@@ -606,7 +606,7 @@ class reportesHandler
       $objPHPExcel->getActiveSheet()
               ->setCellValue($letter, $preTrasplante["diabetes"]);   
               
-      $nefropatia = PacienteHandler::retriveNefropatiaByPacienteId($preTrasplante["paciente_id"], Doctrine::HYDRATE_ARRAY);
+      $nefropatia = NefropatiaHandler::retriveNefropatiaByPacienteId($preTrasplante["paciente_id"], Doctrine::HYDRATE_ARRAY);
       // NEFROPATIA
       $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
       $index++;

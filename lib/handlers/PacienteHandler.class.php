@@ -13,11 +13,6 @@ class PacienteHandler
       return Doctrine::getTable("Pacientes")->retrieveAllPacientesIds();
   }
   
-  public static function retriveNefropatiaByPacienteId($pacienteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
-  {
-      return Doctrine::getTable("Nefropatia")->retriveByPacienteId($pacienteId, $hydrationMode);
-  }  
-  
   public static function retrivePacienteMuerteByPacienteId($pacienteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
   {
       return Doctrine::getTable("PacienteMuerte")->retriveByPacienteId($pacienteId, $hydrationMode);

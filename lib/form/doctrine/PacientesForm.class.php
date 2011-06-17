@@ -24,6 +24,5 @@ class PacientesForm extends BasePacientesForm
 														array(
 															'format' => '%year% %month% %day%',
 															'years' =>array_combine($years, $years)));
-
   }
 }

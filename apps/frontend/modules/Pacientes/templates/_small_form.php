@@ -1,7 +1,6 @@
 <form id="paciente_form" action="<?php echo url_for('Pacientes/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
-
-        <?php echo $form->renderHiddenFields(false) ?>
-        <?php echo $form->renderGlobalErrors() ?>
+  <?php echo $form->renderHiddenFields(false) ?>
+  <?php echo $form->renderGlobalErrors() ?>
   <div class="form_block">
 	<h4><?php echo __("paciente_Cedula de identida");?></h4>
 	<div class="form_block_field<?php if($form['ci']->hasError()):?> error_msg<?php endif; ?>">

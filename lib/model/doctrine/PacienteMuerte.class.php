@@ -12,4 +12,5 @@
  */
 class PacienteMuerte extends BasePacienteMuerte
 {
+
 }

@@ -32,12 +32,12 @@
             <?php else: ?>
               <?php echo __("paciente_El paciente fallecio sin el trasplante funcionando.");?>
             <?php endif;?>
-            
           </label>
+          
         </li>
       </ul>
       <div style="float: right;width: 25px;">
-        <a href="<?php echo url_for("@editarPaciente?id=".$id); ?>"><?php echo image_tag("edit-icon.png")?></a>
+        <a href="<?php echo url_for("@editarMuertePaciente?id=".$muerte['paciente_id']); ?>"><?php echo image_tag("edit-icon.png")?></a>
       </div>
     </div>
   </div>  
@@ -52,7 +52,10 @@
 		<?php echo __("paciente_El paciente esta vivo con el trasplante funcionando.");?>
 	  <?php endif;?>
 	<?php endif;?>
+  <a href="<?php echo url_for("@crearMuertePaciente?id=".$id); ?>">muerte...</a>
 <?php endif;?>
+<div class="clear"></div>
+<a href="<?php echo url_for("@mostrarPaciente?id=".$id); ?>">Volver</a>
 
 <script type="text/javascript">
 $(document).ready(function(){

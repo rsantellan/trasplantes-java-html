@@ -23,3 +23,18 @@
 <p>
   
 </p>
+
+<?php
+  $preTrasplantes = preTrasplanteHandler::retriveByPacienteId($paciente["id"]);
+
+  foreach($preTrasplantes as $preTrasplante):
+?>
+
+  <?php print_r($preTrasplante->toArray()); ?>
+
+<?php 
+  endforeach;
+
+?>
+
+

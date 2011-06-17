@@ -246,15 +246,15 @@ Sidebar no lo puse por ahora
 /**  Estilos de los formularios   **/
 .form_container form
 {
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 .form_block
 {
 	float: left;
 /*    font-size: 12px;*/
-    margin: 0 30px 15px 0;
+    margin: 10px 30px 25px 20px;
 }
 
 .form_block h4

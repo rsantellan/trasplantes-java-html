@@ -16,5 +16,10 @@ class PacienteMuertehandler {
   {
     return Doctrine::getTable("PacienteCausaMuerte")->retriveById($pacienteId, $hydrationMode);
   }
+  
+  public static function retrieveByPacienteId($pacienteId)
+  {
+    return Doctrine::getTable("PacienteMuerte")->retriveByPacienteId($pacienteId);
+  }
 }
 

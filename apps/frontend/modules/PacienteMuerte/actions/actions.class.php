@@ -19,7 +19,9 @@ class PacienteMuerteActions extends sfActions
 
   public function executeNew(sfWebRequest $request)
   {
-    $this->form = new PacienteMuerteForm();
+    $paciente_muerte = new PacienteMuerte();
+    $paciente_muerte->setPacienteId($request->getParameter('id'));
+    $this->form = new PacienteMuerteForm($paciente_muerte);
   }
 
   public function executeCreate(sfWebRequest $request)
@@ -29,32 +31,52 @@ class PacienteMuerteActions extends sfActions
     $this->form = new PacienteMuerteForm();
 
     $this->processForm($request, $this->form);
-
-    $this->setTemplate('new');
+    $return = $this->processForm($request, $this->form);
+    
+    if($return != 0)
+    {
+      sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url'));
+      $this->redirect(url_for("@editarEstadoPaciente?id=".$return));	
+    }
+    else
+    {
+      $this->setTemplate('new');
+    }
   }
 
   public function executeEdit(sfWebRequest $request)
   {
-    $this->forward404Unless($paciente_muerte = Doctrine_Core::getTable('PacienteMuerte')->find(array($request->getParameter('paciente_id'))), sprintf('Object paciente_muerte does not exist (%s).', $request->getParameter('paciente_id')));
+    $paciente_muerte =PacienteMuertehandler::retrieveByPacienteId($request->getParameter('id'));
+    $this->forward404Unless($paciente_muerte, sprintf('Object paciente_muerte does not exist (%s).', $request->getParameter('paciente_id')));
     $this->form = new PacienteMuerteForm($paciente_muerte);
   }
 
   public function executeUpdate(sfWebRequest $request)
   {
     $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-    $this->forward404Unless($paciente_muerte = Doctrine_Core::getTable('PacienteMuerte')->find(array($request->getParameter('paciente_id'))), sprintf('Object paciente_muerte does not exist (%s).', $request->getParameter('paciente_id')));
+    $paciente_muerte =PacienteMuertehandler::retrieveByPacienteId($request->getParameter('paciente_id'));
+    $this->forward404Unless($paciente_muerte, sprintf('Object paciente_muerte does not exist (%s).', $request->getParameter('paciente_id')));
     $this->form = new PacienteMuerteForm($paciente_muerte);
 
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('edit');
+    $return = $this->processForm($request, $this->form);
+    
+    if($return != 0)
+    {
+      sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url'));
+      $this->redirect(url_for("@editarEstadoPaciente?id=".$return));	
+    }
+    else
+    {
+      $this->setTemplate('edit');
+    }
   }
 
   public function executeDelete(sfWebRequest $request)
   {
     $request->checkCSRFProtection();
 
-    $this->forward404Unless($paciente_muerte = Doctrine_Core::getTable('PacienteMuerte')->find(array($request->getParameter('paciente_id'))), sprintf('Object paciente_muerte does not exist (%s).', $request->getParameter('paciente_id')));
+    $paciente_muerte =PacienteMuertehandler::retrieveByPacienteId($request->getParameter('id'));
+    $this->forward404Unless($paciente_muerte, sprintf('Object paciente_muerte does not exist (%s).', $request->getParameter('paciente_id')));
     $paciente_muerte->delete();
 
     $this->redirect('PacienteMuerte/index');
@@ -66,8 +88,14 @@ class PacienteMuerteActions extends sfActions
     if ($form->isValid())
     {
       $paciente_muerte = $form->save();
-
-      $this->redirect('PacienteMuerte/edit?paciente_id='.$paciente_muerte->getPacienteId());
+      $cacheManager = $this->getContext()->getViewCacheManager();
+      if($cacheManager)
+      {
+        $cacheManager->remove('@sf_cache_partial?module=Pacientes&action=_paciente_small_estado&sf_cache_key='.$paciente_muerte->getPacienteId());
+      }      
+      return $paciente_muerte->getPacienteId();
+      //$this->redirect('PacienteMuerte/edit?id='.$paciente_muerte->getPacienteId());
     }
+    return 0;
   }
 }

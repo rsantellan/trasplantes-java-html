@@ -10,4 +10,10 @@
  */
 class BaseForm extends sfFormSymfony
 {
+    public function render($attributes = array()) {
+         return strtr(
+                 $this->getWidgetSchema()->getFormFormatter()->getDecoratorFormat(),
+                 array('%content%' => parent::render($attributes))
+         );
+     }  
 }

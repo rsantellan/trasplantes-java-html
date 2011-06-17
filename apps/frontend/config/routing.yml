@@ -1,6 +1,13 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
+crearMuertePaciente:
+  url:   /muerte-paciente/:id
+  param: { module: PacienteMuerte, action: new }
 
+editarMuertePaciente:
+  url:   /editar-muerte-paciente/:id
+  param: { module: PacienteMuerte, action: edit }
+  
 editarEstadoPaciente:
   url:   /editar-estado-paciente/:id
   param: { module: estadoPaciente, action: edit }

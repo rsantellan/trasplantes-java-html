@@ -9,4 +9,12 @@ class sfWidgetFormSchemaFormatterDefList extends sfWidgetFormSchemaFormatter {
        $errorRowFormatInARow      = '<li>%error%</li>',
        $namedErrorRowFormatInARow = '<li>%name%: %error%</li>',
        $decoratorFormat           = '<dl id="formContainer">%content%</dl>';
+       
+   
+   public function generateLabelName($name)
+   {
+     $auxName = parent::generateLabelName($name);
+     sfContext::getInstance()->getConfiguration()->loadHelpers(array('I18N'));
+     return __("form_".$auxName);
+   }
 }

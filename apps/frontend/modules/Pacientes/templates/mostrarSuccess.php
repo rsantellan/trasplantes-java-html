@@ -25,8 +25,15 @@
 </p>
 
 <?php
+  $perdidas = PacienteHandler::retrivePacientePerdidasByPacienteId($paciente["id"], Doctrine_Core::HYDRATE_ARRAY);
   $preTrasplantes = preTrasplanteHandler::retriveByPacienteId($paciente["id"]);
+?>
+<?php 
+  if(count($perdidas) == count($preTrasplantes)):
+?>
 
+<?php endif;?>
+<?php
   foreach($preTrasplantes as $preTrasplante):
 ?>
 

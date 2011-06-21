@@ -20,9 +20,9 @@
 
 <?php include_partial('paciente_small_estado', array('id' =>$paciente["id"], 'sf_cache_key' => $paciente["id"]));?>
 
-<p>
-  
-</p>
+<div class="clear"></div>
+<br/>
+
 
 <?php
   $perdidas = PacienteHandler::retrivePacientePerdidasByPacienteId($paciente["id"], Doctrine_Core::HYDRATE_ARRAY);
@@ -31,7 +31,12 @@
 <?php 
   if(count($perdidas) == count($preTrasplantes)):
 ?>
-
+<div class="iniciar_pre_trasplante">
+  <label><?php echo __("preTrasplante_iniciar proceso de pretrasplante");?></label>
+  <a href="<?php echo url_for("@iniciarPreTrasplante?paciente_id=".$paciente["id"]);?>" class="simple_tip_container">
+	<?php echo image_tag("add-icon.png", array("width" => 24)); ?>
+  </a>	
+</div>
 <?php endif;?>
 <?php
   foreach($preTrasplantes as $preTrasplante):

@@ -14,15 +14,17 @@ class PacientesForm extends BasePacientesForm
   {
 	unset($this["the"]);
 	$years = range(1920,date('Y'));
+	$years = range(1920,date('Y'));
+    $years = (array_combine($years, $years));
 	
 	$this->widgetSchema['fecha_nacimiento'] = new sfWidgetFormDate(
 														array(
 															'format' => '%year% %month% %day%',
-															'years' =>array_combine($years, $years)));
+															'years' =>$years));
 
 	$this->widgetSchema['fecha_dialisis'] = new sfWidgetFormDate(
 														array(
 															'format' => '%year% %month% %day%',
-															'years' =>array_combine($years, $years)));
+															'years' =>$years));
   }
 }

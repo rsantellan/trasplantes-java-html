@@ -20,6 +20,10 @@
   </div> 
   <div class="form_block">
     <h4><?php echo __("pacienteMuerte_Fecha de muerte");?></h4>
+	<a href="javascript:void(0)" class="simple_tip_container">
+		<?php echo image_tag("help-icon2.png", array("width" => 24)); ?>
+		<div class="tooltip_text"><?php echo __("ayuda_formato de las fechas yy - mm - dd");?></div>		
+	</a>	
     <div class="form_block_field<?php if($form['fecha_muerte']->hasError()):?> error_msg<?php endif; ?>">
       <?php echo $form['fecha_muerte']->render() ?>
     </div>
@@ -54,6 +58,12 @@
     </div>
   </div>
   <div class="clear"></div>
+  <a class="cancel_href" href="<?php echo url_for("@editarEstadoPaciente?id=".$form->getObject()->getPacienteId()); ?>"><?php echo __("pacienteMuerte_Cancelar");?></a>
+  <?php if (!$form->getObject()->isNew()): ?>
+	<?php echo link_to(__("pacienteMuerte_Eliminar"), 'PacienteMuerte/delete?id='.$form->getObject()->getPacienteId(), array('class'=> 'cancel_href' , 'method' => 'delete', 'confirm' => __("pacienteMuerte_Esta seguro de querer eliminar?"))) ?>
+  <?php endif; ?>  
+  
   <input class="save_button" type="submit" value="<?php echo __("pacienteMuerte_Guardar");?>"/>  
+  
 </form>
 <div class="clear"></div>

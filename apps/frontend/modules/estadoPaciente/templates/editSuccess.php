@@ -1,8 +1,8 @@
 <?php slot('layout_paciente',':D') ?>
 <?php 
   use_helper('mdAsset', 'Date'); 
-  use_javascript("jquery-1.6.1.min.js","first");
-  use_javascript("simpleTip/jquery.simpletip-1.3.1.js");
+//  use_javascript("jquery-1.6.1.min.js","first");
+//  use_javascript("simpleTip/jquery.simpletip-1.3.1.js");
   use_plugin_stylesheet('mastodontePlugin', '../js/fancybox/jquery.fancybox-1.3.1.css');
   use_plugin_javascript('mastodontePlugin','fancybox/jquery.fancybox-1.3.1.pack.js','last');
   

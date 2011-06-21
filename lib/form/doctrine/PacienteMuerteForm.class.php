@@ -12,13 +12,15 @@ class PacienteMuerteForm extends BasePacienteMuerteForm
 {
   public function configure()
   {
-    
-    $years = range(1920,date('Y'));
-    
+    $paciente_id = $this->getObject()->getPacienteId();
+	$paciente = PacienteHandler::retriveById($paciente_id, Doctrine_Core::HYDRATE_ARRAY);
+	$age = mdBasicFunction::calculateAge($paciente["fecha_nacimiento"], true);
+    $years = range(date('Y') - $age,date('Y'));
+    $years = array_combine($years, $years);
     $this->widgetSchema['fecha_muerte'] = new sfWidgetFormDate(
                               array(
                                 'format' => '%year% %month% %day%',
-                                'years' =>array_combine($years, $years)));
+                                'years' => $years));
                                 
     $this->widgetSchema['transplante_funcionando'] =  new sfWidgetFormChoice(array(
                                                               'expanded' => true,

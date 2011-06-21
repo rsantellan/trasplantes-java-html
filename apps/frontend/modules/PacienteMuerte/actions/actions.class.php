@@ -21,7 +21,7 @@ class PacienteMuerteActions extends sfActions
   {
     $paciente_muerte = new PacienteMuerte();
     $paciente_muerte->setPacienteId($request->getParameter('id'));
-    $this->form = new PacienteMuerteForm($paciente_muerte);
+	$this->form = new PacienteMuerteForm($paciente_muerte);
   }
 
   public function executeCreate(sfWebRequest $request)
@@ -74,12 +74,22 @@ class PacienteMuerteActions extends sfActions
   public function executeDelete(sfWebRequest $request)
   {
     $request->checkCSRFProtection();
+	$id = $request->getParameter('id');
+    $paciente_muerte =PacienteMuertehandler::retrieveByPacienteId($id);
+    $this->forward404Unless($paciente_muerte, sprintf('Object paciente_muerte does not exist (%s).', $id));
+	
+	
+    if($paciente_muerte->delete())
+	{
+	  $cacheManager = $this->getContext()->getViewCacheManager();
+	  if($cacheManager)
+	  {
+		$cacheManager->remove('@sf_cache_partial?module=Pacientes&action=_paciente_small_estado&sf_cache_key='.$id);
+	  }
+	}
 
-    $paciente_muerte =PacienteMuertehandler::retrieveByPacienteId($request->getParameter('id'));
-    $this->forward404Unless($paciente_muerte, sprintf('Object paciente_muerte does not exist (%s).', $request->getParameter('paciente_id')));
-    $paciente_muerte->delete();
-
-    $this->redirect('PacienteMuerte/index');
+    sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url'));
+	$this->redirect(url_for("@editarEstadoPaciente?id=".$id));
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)

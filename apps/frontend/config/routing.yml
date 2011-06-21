@@ -1,5 +1,9 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
+iniciarPreTrasplante:
+  url:   /agregar-pre-trasplante/:paciente_id
+  param: { module: Pacientepretrasplante, action: new }
+  
 crearMuertePaciente:
   url:   /muerte-paciente/:id
   param: { module: PacienteMuerte, action: new }

@@ -53,5 +53,15 @@ class preTrasplanteHandler
   {
       return Doctrine::getTable("Pacientepretrasplante")->retriveByPacienteId($id, $hydrationMode);
   }
-      
+
+  /**
+   * Devuelve la lista de pretrasplante de un paciente ordenada
+   * @param int $id del paciente
+   * @param Doctrine_Core $hydrationMode metodo de hidratacion
+   * @return Depende del metodo de hidratacion 
+   */
+  public static function retriveByPacienteIdOrdered($id, $order = "DESC",  $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+      return Doctrine::getTable("Pacientepretrasplante")->retriveByPacienteId($id, $hydrationMode);
+  }  
 }

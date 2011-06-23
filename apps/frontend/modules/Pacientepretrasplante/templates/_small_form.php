@@ -32,7 +32,7 @@
 		<div class="tooltip_text"><?php echo __("ayuda_formato de las fechas yy - mm - dd");?></div>		
 	</a>
 	<div class="form_block_field<?php if($form['fecha_ingreso_lista']->hasError()):?> error_msg<?php endif; ?>">
-	  <?php echo $form['the']->render() ?>
+	  <?php echo $form['fecha_ingreso_lista']->render() ?>
 	</div>
 	<div>
 		<?php 
@@ -274,21 +274,13 @@
 </div>
 
 <div class="clear"></div>
-  <table>
-    
-    <tbody>
-    </tbody>
-<tfoot>
-      <tr>
-        <td colspan="2">
-          
-          &nbsp;<a href="<?php echo url_for('Pacientepretrasplante/index') ?>">Back to list</a>
-          <?php if (!$form->getObject()->isNew()): ?>
-            &nbsp;<?php echo link_to('Delete', 'Pacientepretrasplante/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
-          <?php endif; ?>
-          <input type="submit" value="Save" />
-        </td>
-      </tr>
-    </tfoot>
-  </table>
+  
+&nbsp;
+<?php if (!$form->getObject()->isNew()): ?>
+  <?php echo link_to('Delete', 'Pacientepretrasplante/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
+<?php else: ?>
+  <a class="cancel_link" href="<?php echo url_for("@mostrarPaciente?id=".$form->getObject()->getPacienteId()) ?>"><?php echo __("pacientePreTrasplante_cancelar");?></a>
+<?php endif; ?>
+
+<input class="save_button" type="submit" value="<?php echo __("pacientePreTrasplante_guardar");?>" />
 </form>

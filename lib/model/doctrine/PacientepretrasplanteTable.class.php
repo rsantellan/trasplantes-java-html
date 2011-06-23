@@ -43,18 +43,30 @@ class PacientepretrasplanteTable extends Doctrine_Table
     {
       $query = $this->createQuery("pt")
                 ->addWhere("pt.id = ?", $id);
-      $query->setHydrationMode($hydrationMode);
+	  $query->setHydrationMode($hydrationMode);
       return $query->fetchOne();
     }
 
     public function retriveByPacienteId($pacienteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
     {
-      $query = $this->createQuery("pt")
+      return $this->retriveByPacienteIdQuery($pacienteId, $hydrationMode)->execute();
+    }
+    
+	public function retriveByPacienteIdOrdered($id, $order = "DESC",  $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+	{
+	  $query = $this->retriveByPacienteIdQuery($pacienteId, $hydrationMode);
+	  $query->addOrderBy($query->getRootAlias()."id ".$order);
+	  return $query->execute();
+	}
+	
+	private function retriveByPacienteIdQuery($pacienteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+	{
+	  $query = $this->createQuery("pt")
                 ->addWhere("pt.paciente_id = ?", $pacienteId);
       $query->setHydrationMode($hydrationMode);
-      return $query->execute();
-    }
-        
+      return $query;
+	}
+	
     public function retrieveNumberPreTrasplantesOfPaciente($pacienteId)
     {
         $query = $this->createQuery("pt");

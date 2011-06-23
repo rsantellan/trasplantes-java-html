@@ -290,3 +290,33 @@ Sidebar no lo puse por ahora
   font-weight: bold;
   text-transform: uppercase;
 }
+
+.small_pre_trasplante
+{
+  width: 60%;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background-color: #CACDE1;
+  border: 0.5px solid #253183;  
+  margin-left: 20%;
+  margin-bottom: 2%;
+  text-align: center;  
+}
+
+.pre_trasplante_perdido
+{
+  background-color: #2B2B2D;
+  color: white;
+}
+
+.small_pre_trasplante ul
+{
+  list-style-type: none !important;
+  
+}
+
+.small_pre_trasplante ul li
+{
+  list-style-image: none !important;
+}

@@ -26,7 +26,7 @@
 
 <?php
   $perdidas = PacienteHandler::retrivePacientePerdidasByPacienteId($paciente["id"], Doctrine_Core::HYDRATE_ARRAY);
-  $preTrasplantes = preTrasplanteHandler::retriveByPacienteId($paciente["id"]);
+  $preTrasplantes = preTrasplanteHandler::retriveByPacienteIdOrdered($paciente["id"]);
 ?>
 <?php 
   if(count($perdidas) == count($preTrasplantes)):
@@ -38,15 +38,40 @@
   </a>	
 </div>
 <?php endif;?>
-<?php
-  foreach($preTrasplantes as $preTrasplante):
-?>
-
-  <?php print_r($preTrasplante->toArray()); ?>
 
 <?php 
-  endforeach;
-
+  $auxPerdidas = array();
+  foreach($perdidas as $perdida)
+  {
+	$auxPerdidas[$perdida["paciente_pre_trasplante_id"]] = $perdida["paciente_pre_trasplante_id"];
+  }
 ?>
 
+<?php
+  
+  foreach($preTrasplantes as $preTrasplante):
+?>
+<div class="small_pre_trasplante<?php if(array_key_exists($preTrasplante["id"], $auxPerdidas)) echo " pre_trasplante_perdido" ?>">
+  <ul>
+	<li><?php echo __("pacientePreTrasplante_Informacion del pretrasplante");?></li>
+	<li><?php echo __("pacientePreTrasplante_the");?> : <label class="bold_text"><?php echo $preTrasplante['the']?></label></li>
+	<li><?php echo __("pacientePreTrasplante_fecha de ingreso a la lista");?> : <label class="bold_text"><?php echo format_date($preTrasplante['fecha_ingreso_lista'], 'D');?></label></li>
+	<?php if($preTrasplante["fecha_egreso"]): ?>
+	  <li><?php echo __("pacientePreTrasplante_fecha de egreso de la lista (fecha del trasplante)");?> : <label class="bold_text"><?php echo format_date($preTrasplante['fecha_egreso'], 'D');?></label></li>
+	  <?php if(array_key_exists($preTrasplante["id"], $auxPerdidas)): ?>
+		<li><label class="bold_text"><?php echo __("pacientePreTrasplante_Hubo perdida del trasplante.");?></label></li>
+	  <?php endif;?>
+	<?php else: ?>
+	  <li><label class="bold_text"><?php echo __("pacientePreTrasplante_No se a realizado el trasplante de este pretrasplante");?></label></li>
+	<?php endif; ?>
+  </ul>
+  <div style="margin-left: 95%; width: 25px;">
+	<a href="<?php echo url_for("@editarPaciente?id=".$preTrasplante['id']); ?>"><?php echo image_tag("edit-icon.png")?></a>
+  </div>
+</div>
+<div class="clear"></div>
+<?php 
+  endforeach;
+?>
 
+<div class="clear"></div>

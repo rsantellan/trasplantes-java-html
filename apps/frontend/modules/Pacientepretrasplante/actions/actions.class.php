@@ -37,9 +37,13 @@ class PacientepretrasplanteActions extends sfActions
 
     $this->form = new PacientepretrasplanteForm();
 
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('new');
+    $return = $this->processForm($request, $this->form);
+	if(count($return) != 0)
+	{
+	  sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url'));
+	  $this->redirect(url_for("@mostrarPaciente?id=".$return["paciente_id"]));
+	}
+	$this->setTemplate('new');
   }
 
   public function executeEdit(sfWebRequest $request)
@@ -72,11 +76,27 @@ class PacientepretrasplanteActions extends sfActions
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+	$return = array();
     if ($form->isValid())
     {
       $pacientepretrasplante = $form->save();
 
-      $this->redirect('Pacientepretrasplante/edit?id='.$pacientepretrasplante->getId());
+	  $this->refresCache($pacientepretrasplante->getId(), $pacientepretrasplante->getPacienteId()); 
+	  
+	  $return["id"] = $pacientepretrasplante->getId();
+	  $return["paciente_id"] = $pacientepretrasplante->getPacienteId();
+	  return $return;
     }
+	return $return;
   }
+  
+  protected function refresCache($preTrasplanteId, $pacienteId)
+  {
+	$cacheManager = $this->getContext()->getViewCacheManager();
+	if($cacheManager)
+	{
+	  $cacheManager->remove('@sf_cache_partial?module=Pacientes&action=_paciente_small_estado&sf_cache_key='.$pacientepretrasplante->getPacienteId());
+	} 	
+  }
+  
 }

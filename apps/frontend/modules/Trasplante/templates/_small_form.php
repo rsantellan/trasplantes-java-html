@@ -328,34 +328,6 @@
           <?php echo $form['comentario'] ?>
         </td>
       </tr>
-      <tr>
-        <th><?php echo $form['fecha_alta']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['fecha_alta']->renderError() ?>
-          <?php echo $form['fecha_alta'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['edad_receptor']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['edad_receptor']->renderError() ?>
-          <?php echo $form['edad_receptor'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['created_at']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['created_at']->renderError() ?>
-          <?php echo $form['created_at'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['updated_at']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['updated_at']->renderError() ?>
-          <?php echo $form['updated_at'] ?>
-        </td>
-      </tr>
     </tbody>
   </table>
 </form>

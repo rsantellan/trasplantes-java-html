@@ -49,6 +49,7 @@
       <th>Num de hd</th>
       <th>Comentario</th>
       <th>Fecha alta</th>
+      <th>Edad receptor</th>
       <th>Created at</th>
       <th>Updated at</th>
     </tr>
@@ -102,6 +103,7 @@
       <td><?php echo $trasplante->getNumDeHd() ?></td>
       <td><?php echo $trasplante->getComentario() ?></td>
       <td><?php echo $trasplante->getFechaAlta() ?></td>
+      <td><?php echo $trasplante->getEdadReceptor() ?></td>
       <td><?php echo $trasplante->getCreatedAt() ?></td>
       <td><?php echo $trasplante->getUpdatedAt() ?></td>
     </tr>

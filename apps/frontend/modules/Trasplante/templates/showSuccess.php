@@ -185,6 +185,10 @@
       <td><?php echo $trasplante->getFechaAlta() ?></td>
     </tr>
     <tr>
+      <th>Edad receptor:</th>
+      <td><?php echo $trasplante->getEdadReceptor() ?></td>
+    </tr>
+    <tr>
       <th>Created at:</th>
       <td><?php echo $trasplante->getCreatedAt() ?></td>
     </tr>

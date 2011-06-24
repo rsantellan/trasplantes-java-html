@@ -1,5 +1,30 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+eliminarNefropatia:
+  url:   /eliminar-nefropatia
+  param: { module: Nefropatia, action: delete }
+
+crearNefropatia:
+  url:   /crear-nefropatia
+  param: { module: Nefropatia, action: new }
+
+salvarNefropatia:
+  url:   /salvar-nefropatia
+  param: { module: Nefropatia, action: save }
+
+editarNefropatia:
+  url:   /editar-nefropatia
+  param: { module: Nefropatia, action: edit }
+
+manejarNefropatias:
+  url:   /nefropatias
+  param: { module: Nefropatia, action: index }
+
+iniciarTrasplante:
+  url:   /agregar-trasplante/:paciente_id/:pre_trasplante_id
+  param: { module: Trasplante, action: new }
+
 iniciarPreTrasplante:
   url:   /agregar-pre-trasplante/:paciente_id
   param: { module: Pacientepretrasplante, action: new }

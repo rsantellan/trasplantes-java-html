@@ -16,8 +16,8 @@ class PacientepretrasplanteForm extends BasePacientepretrasplanteForm
 	$paciente_id = $this->getObject()->getPacienteId();
 	$paciente = PacienteHandler::retriveById($paciente_id, Doctrine_Core::HYDRATE_ARRAY);
 	$age = mdBasicFunction::calculateAge($paciente["fecha_nacimiento"], true);
-    $years = range(date('Y') - $age,date('Y'));
-    $years = array_combine($years, $years);
+  $years = range(date('Y') - $age,date('Y'));
+  $years = array_combine($years, $years);
   
 	$this->widgetSchema['paciente_id'] = new sfWidgetFormInputHidden();
 	

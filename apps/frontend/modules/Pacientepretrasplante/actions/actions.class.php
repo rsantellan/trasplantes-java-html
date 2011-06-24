@@ -95,7 +95,7 @@ class PacientepretrasplanteActions extends sfActions
 	$cacheManager = $this->getContext()->getViewCacheManager();
 	if($cacheManager)
 	{
-	  $cacheManager->remove('@sf_cache_partial?module=Pacientes&action=_paciente_small_estado&sf_cache_key='.$pacientepretrasplante->getPacienteId());
+	  $cacheManager->remove('@sf_cache_partial?module=Pacientes&action=_paciente_small_estado&sf_cache_key='.$preTrasplanteId);
 	} 	
   }
   

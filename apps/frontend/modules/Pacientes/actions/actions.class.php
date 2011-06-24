@@ -38,7 +38,7 @@ class PacientesActions extends sfActions
 	if($return != 0)
 	{
 	  sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url'));
-	  $this->redirect(url_for("@mostrarPaciente?id=".$request->getParameter('id')));	
+	  $this->redirect(url_for("@mostrarPaciente?id=".$return));	
 	}
 	else
 	{
@@ -83,17 +83,17 @@ class PacientesActions extends sfActions
 
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
-	$form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
       $pacientes = $form->save();
-	  $cacheManager = $this->getContext()->getViewCacheManager();
-	  if($cacheManager)
-	  {
-		$cacheManager->remove('@sf_cache_partial?module=Pacientes&action=_paciente_small_ul_info&sf_cache_key='.$pacientes->getId());
-	  }
-	  
-	  return $pacientes->getId();
+      $cacheManager = $this->getContext()->getViewCacheManager();
+      if($cacheManager)
+      {
+        $cacheManager->remove('@sf_cache_partial?module=Pacientes&action=_paciente_small_ul_info&sf_cache_key='.$pacientes->getId());
+      }
+      
+      return $pacientes->getId();
     }
 	return 0;
   }

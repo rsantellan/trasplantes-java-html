@@ -1,8 +1,3 @@
-<h1><?php echo __("pacientePreTrasplante_Titulo de uno nuevo");?></h1>
-
-<?php include_partial('small_form', array('form' => $form)) ?>
-
-<script type="text/javascript">
 $(document).ready(function(){
 $('.simple_tip_container').each(function() {
 	  $(this).simpletip({
@@ -12,6 +7,13 @@ $('.simple_tip_container').each(function() {
 	  });
   });  
   $(".save_button").button();
-  $(".cancel_link").button();
+  
+  $("#manage_nefropatias_link").fancybox({
+        'transitionIn'        :   'fade',
+        'transitionOut'       :   'fade',
+        'hideOnOverlayClick'  :   false
+    
+    });
 });
-</script>
+
+

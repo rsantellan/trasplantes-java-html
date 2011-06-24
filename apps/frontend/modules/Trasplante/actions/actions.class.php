@@ -17,23 +17,6 @@ class TrasplanteActions extends sfActions
       ->execute();
   }
 
-  public function executeArchivo(sfWebRequest $request)
-  {
-    reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV();
-    /*
-    $year = 2000;
-    while($year < 2011)
-    {
-      reportesHandler::CrearReporteDeFondo($year);
-      $year++;
-      var_dump($year);
-      sleep(50);
-    }
-    */
-    
-    die('aca');
-  }
-  
   public function executeShow(sfWebRequest $request)
   {
     $this->trasplante = Doctrine_Core::getTable('Trasplante')->find(array($request->getParameter('id')));
@@ -85,8 +68,6 @@ class TrasplanteActions extends sfActions
 
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
-    //print_r($request->getParameter($form->getName()));
-    //die;
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {

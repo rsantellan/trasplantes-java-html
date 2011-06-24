@@ -1,3 +1,9 @@
+<?php
+  use_helper('mdAsset');
+  use_plugin_stylesheet('mastodontePlugin', '../js/fancybox/jquery.fancybox-1.3.1.css');
+  use_plugin_javascript('mastodontePlugin','fancybox/jquery.fancybox-1.3.1.pack.js','last');
+?>
+
 <form id="paciente_form" action="<?php echo url_for('Pacientes/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
   <?php echo $form->renderHiddenFields(false) ?>
   <?php echo $form->renderGlobalErrors() ?>
@@ -175,6 +181,10 @@
 	<div class="form_block_field<?php if($form['nefropatia_id']->hasError()):?> error_msg<?php endif; ?>">
 	  <?php echo $form['nefropatia_id']->render() ?>
 	</div>
+  <a id="manage_nefropatias_link" href="<?php echo url_for("@manejarNefropatias");?>" class="simple_tip_container">
+		<?php echo image_tag("add_block.png", array("width" => 24)); ?>
+		<div class="tooltip_text"><?php echo __("Nefropatia_agregar una nueva");?></div>		
+	</a>
 	<div>
 		<?php 
 		if($form['nefropatia_id']->hasError()): 
@@ -217,3 +227,4 @@
   <input class="save_button" type="submit" value="<?php echo __("paciente_Guardar");?>"/>
 </form>
 <div class="clear"></div>
+

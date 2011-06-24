@@ -320,3 +320,21 @@ Sidebar no lo puse por ahora
 {
   list-style-image: none !important;
 }
+
+.selector_style
+{
+  color: #253183;
+  background-color: #E9EAF3;
+}
+
+.nefropatia_new_form
+{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.nefropatia_new_form .save_button
+{
+  margin-left: 20%;
+  margin-right: 10%;
+}

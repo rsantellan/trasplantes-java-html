@@ -51,6 +51,7 @@
   
   foreach($preTrasplantes as $preTrasplante):
 ?>
+
 <div class="small_pre_trasplante<?php if(array_key_exists($preTrasplante["id"], $auxPerdidas)) echo " pre_trasplante_perdido" ?>">
   <ul>
 	<li><?php echo __("pacientePreTrasplante_Informacion del pretrasplante");?></li>
@@ -62,7 +63,14 @@
 		<li><label class="bold_text"><?php echo __("pacientePreTrasplante_Hubo perdida del trasplante.");?></label></li>
 	  <?php endif;?>
 	<?php else: ?>
-	  <li><label class="bold_text"><?php echo __("pacientePreTrasplante_No se a realizado el trasplante de este pretrasplante");?></label></li>
+	  <li>
+      <label class="bold_text">
+        <?php echo __("pacientePreTrasplante_No se a realizado el trasplante de este pretrasplante");?>
+      </label>
+      <a href="<?php echo url_for("@iniciarTrasplante?paciente_id=".$paciente["id"]."&pre_trasplante_id=".$preTrasplante["id"]);?>">
+        <?php echo image_tag("add_block.png", array("width" => 24)); ?>
+      </a>
+    </li>
 	<?php endif; ?>
   </ul>
   <div style="margin-left: 95%; width: 25px;">
@@ -70,8 +78,9 @@
   </div>
 </div>
 <div class="clear"></div>
+
 <?php 
   endforeach;
 ?>
 
-<div class="clear"></div>
+

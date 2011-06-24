@@ -12,6 +12,8 @@ class TrasplanteForm extends BaseTrasplanteForm
 {
   public function configure()
   {
+    unset($this["created_at"], $this["updated_at"], $this["fecha_alta"]);
+    
     
   }
 }

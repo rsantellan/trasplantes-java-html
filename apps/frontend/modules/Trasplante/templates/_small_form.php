@@ -1,74 +1,159 @@
-<?php use_stylesheets_for_form($form) ?>
-<?php use_javascripts_for_form($form) ?>
+<?php
+  use_helper('mdAsset');
+  use_plugin_stylesheet('mastodontePlugin', '../js/fancybox/jquery.fancybox-1.3.1.css');
+  use_plugin_javascript('mastodontePlugin','fancybox/jquery.fancybox-1.3.1.pack.js','last');
+?>
 
 <form action="<?php echo url_for('Trasplante/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+  <?php echo $form->renderHiddenFields(false) ?>
+  <?php echo $form->renderGlobalErrors() ?>
+  
+  <div class="form_block">
+    <h4><?php echo __("Trasplante_Fecha del trasplante");?></h4>
+    <a href="javascript:void(0)" class="simple_tip_container">
+      <?php echo image_tag("help-icon2.png", array("width" => 24)); ?>
+      <div class="tooltip_text"><?php echo __("ayuda_formato de las fechas yy - mm - dd");?></div>		
+    </a>    
+    <div class="form_block_field<?php if($form['fecha']->hasError()):?> error_msg<?php endif; ?>">
+      <?php echo $form['fecha']->render() ?>
+    </div>
+    <div>
+      <?php 
+      if($form['fecha']->hasError()): 
+      ?>  
+      <div class="clear"></div>
+      <?php
+        $msg_error = __("Trasplante_Fecha del trasplante").': '.__("Trasplante_error ".$form['fecha']->getError());
+        echo $msg_error;  
+      endif; 
+      ?>
+    </div>
+  </div> 
+  
+  <div class="form_block">
+    <h4><?php echo __("Trasplante_Numero de trasplantes realizados");?></h4>
+    <div class="form_block_field<?php if($form['numero_de_transplantes_realizados']->hasError()):?> error_msg<?php endif; ?>">
+      <?php echo $form['numero_de_transplantes_realizados']->render() ?>
+    </div>
+    <div>
+      <?php 
+      
+      if($form['numero_de_transplantes_realizados']->hasError()): 
+      ?>  
+      <div class="clear"></div>
+      <?php
+        $msg_error = __("Trasplante_Numero de trasplantes realizados").': '.__("Trasplante_error ".$form['numero_de_transplantes_realizados']->getError());
+        echo $msg_error;  
+      endif; 
+      ?>
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  <div class="form_block">
+    <h4><?php echo __("Trasplante_Donante");?></h4>
+    <div class="form_block_field<?php if($form['donante_id']->hasError()):?> error_msg<?php endif; ?>">
+      <?php echo $form['donante_id']->render() ?>
+    </div>
+    <div>
+      <?php 
+      
+      if($form['donante_id']->hasError()): 
+      ?>  
+      <div class="clear"></div>
+      <?php
+        $msg_error = __("Trasplante_Donante").': '.__("Trasplante_error ".$form['donante_id']->getError());
+        echo $msg_error;  
+      endif; 
+      ?>
+    </div>
+  </div>  
+  
+  <div class="form_block">
+    <h4><?php echo __("Trasplante_Inestabilidad hemodial");?></h4>
+    <div class="form_block_field<?php if($form['inestab_hemodial']->hasError()):?> error_msg<?php endif; ?>">
+      <?php echo $form['inestab_hemodial']->render() ?>
+    </div>
+    <div>
+      <?php 
+      
+      if($form['inestab_hemodial']->hasError()): 
+      ?>  
+      <div class="clear"></div>
+      <?php
+        $msg_error = __("Trasplante_Inestabilidad hemodial").': '.__("Trasplante_error ".$form['inestab_hemodial']->getError());
+        echo $msg_error;  
+      endif; 
+      ?>
+    </div>    
+  </div>
+  <div class="clear"></div>
+  
+  <div class="form_block">
+    <h4><?php echo __("Trasplante_Riñon");?></h4>
+    <div class="form_block_field<?php if($form['rinhon']->hasError()):?> error_msg<?php endif; ?>">
+      <?php echo $form['rinhon']->render() ?>
+    </div>
+    <div>
+      <?php 
+      
+      if($form['rinhon']->hasError()): 
+      ?>  
+      <div class="clear"></div>
+      <?php
+        $msg_error = __("Trasplante_Riñon").': '.__("Trasplante_error ".$form['rinhon']->getError());
+        echo $msg_error;  
+      endif; 
+      ?>
+    </div>    
+  </div>
+
+  <div class="form_block">
+    <h4><?php echo __("Trasplante_Anomalia vascular");?></h4>
+    <div class="form_block_field<?php if($form['anomalia_vascular']->hasError()):?> error_msg<?php endif; ?>">
+      <?php echo $form['anomalia_vascular']->render() ?>
+    </div>
+    <div>
+      <?php 
+      
+      if($form['anomalia_vascular']->hasError()): 
+      ?>  
+      <div class="clear"></div>
+      <?php
+        $msg_error = __("Trasplante_Anomalia vascular").': '.__("Trasplante_error ".$form['anomalia_vascular']->getError());
+        echo $msg_error;  
+      endif; 
+      ?>
+    </div>    
+  </div>
+  <div class="clear"></div>
+  
+  <div class="form_block">
+    <h4><?php echo __("Trasplante_Numero de arterias");?></h4>
+    <div class="form_block_field<?php if($form['numero_arterias']->hasError()):?> error_msg<?php endif; ?>">
+      <?php echo $form['numero_arterias']->render() ?>
+    </div>
+    <div>
+      <?php 
+      
+      if($form['numero_arterias']->hasError()): 
+      ?>  
+      <div class="clear"></div>
+      <?php
+        $msg_error = __("Trasplante_Riñon").': '.__("Trasplante_error ".$form['numero_arterias']->getError());
+        echo $msg_error;  
+      endif; 
+      ?>
+    </div>    
+  </div>  
+  
+         
 <?php if (!$form->getObject()->isNew()): ?>
 <input type="hidden" name="sf_method" value="put" />
 <?php endif; ?>
   <table>
-    <tfoot>
-      <tr>
-        <td colspan="2">
-          <?php echo $form->renderHiddenFields(false) ?>
-          &nbsp;<a href="<?php echo url_for('Trasplante/index') ?>">Back to list</a>
-          <?php if (!$form->getObject()->isNew()): ?>
-            &nbsp;<?php echo link_to('Delete', 'Trasplante/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
-          <?php endif; ?>
-          <input type="submit" value="Save" />
-        </td>
-      </tr>
-    </tfoot>
     <tbody>
-      <?php echo $form->renderGlobalErrors() ?>
-      <tr>
-        <th><?php echo $form['paciente_pre_trasplante_id']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['paciente_pre_trasplante_id']->renderError() ?>
-          <?php echo $form['paciente_pre_trasplante_id'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['fecha']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['fecha']->renderError() ?>
-          <?php echo $form['fecha'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['numero_de_transplantes_realizados']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['numero_de_transplantes_realizados']->renderError() ?>
-          <?php echo $form['numero_de_transplantes_realizados'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['donante_id']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['donante_id']->renderError() ?>
-          <?php echo $form['donante_id'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['inestab_hemodial']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['inestab_hemodial']->renderError() ?>
-          <?php echo $form['inestab_hemodial'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['rinhon']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['rinhon']->renderError() ?>
-          <?php echo $form['rinhon'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['anomalia_vascular']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['anomalia_vascular']->renderError() ?>
-          <?php echo $form['anomalia_vascular'] ?>
-        </td>
-      </tr>
+
       <tr>
         <th><?php echo $form['numero_arterias']->renderLabel() ?></th>
         <td>

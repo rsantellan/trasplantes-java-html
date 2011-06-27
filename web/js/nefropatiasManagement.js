@@ -27,7 +27,7 @@ nefropatiasManagement.prototype = {
               if(json.response == "OK")
               {
                 $("#nefropatia_container").html(json.options.body);
-                $.fancybox.resize();
+                
                 $(".save_button").button();
               }
               else 
@@ -38,6 +38,7 @@ nefropatiasManagement.prototype = {
           complete: function()
           {
             $.fancybox.hideActivity();
+            $.fancybox.resize();
           }
       });
 
@@ -58,7 +59,7 @@ nefropatiasManagement.prototype = {
               if(json.response == "OK")
               {
                 $("#nefropatia_container").html(json.options.body);
-                $.fancybox.resize();
+                
                 $(".save_button").button();
               }
               else 
@@ -69,6 +70,7 @@ nefropatiasManagement.prototype = {
           complete: function()
           {
             $.fancybox.hideActivity();
+            $.fancybox.resize();
           }
       });
 
@@ -114,12 +116,13 @@ nefropatiasManagement.prototype = {
                 }
                 
               }
-              $.fancybox.resize();
+              
           }
           , 
           complete: function()
           {
             $.fancybox.hideActivity();
+            $.fancybox.resize();
           }
       });
       return false;      
@@ -141,12 +144,18 @@ nefropatiasManagement.prototype = {
                 $('#nefropatia_option_'+json.options.id).remove();
                 $("#pacientes_nefropatia_id option[value='"+json.options.id+"']").remove();                  
                 $("#nefropatia_container").empty();
-                $.fancybox.resize();
+                
+              }
+              else
+              {
+                $(".nefropatia_delete_error").show();
+                
               }
           }, 
           complete: function()
           {
             $.fancybox.hideActivity();
+            $.fancybox.resize();
           }
       });
 

@@ -12,4 +12,8 @@
  */
 class Donante extends BaseDonante
 {
+  public function __toString()
+  {
+    return $this->getIdentificador();
+  }
 }

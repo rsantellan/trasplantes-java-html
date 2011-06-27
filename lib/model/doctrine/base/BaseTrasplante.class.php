@@ -11,7 +11,7 @@
  * @property integer $numero_de_transplantes_realizados
  * @property integer $donante_id
  * @property integer $inestab_hemodial
- * @property string $rinhon
+ * @property enum $rinhon
  * @property integer $anomalia_vascular
  * @property integer $numero_arterias
  * @property integer $numero_venas
@@ -78,7 +78,7 @@
  * @method integer               getNumeroDeTransplantesRealizados()    Returns the current record's "numero_de_transplantes_realizados" value
  * @method integer               getDonanteId()                         Returns the current record's "donante_id" value
  * @method integer               getInestabHemodial()                   Returns the current record's "inestab_hemodial" value
- * @method string                getRinhon()                            Returns the current record's "rinhon" value
+ * @method enum                  getRinhon()                            Returns the current record's "rinhon" value
  * @method integer               getAnomaliaVascular()                  Returns the current record's "anomalia_vascular" value
  * @method integer               getNumeroArterias()                    Returns the current record's "numero_arterias" value
  * @method integer               getNumeroVenas()                       Returns the current record's "numero_venas" value
@@ -233,6 +233,7 @@ abstract class BaseTrasplante extends sfDoctrineRecord
              ));
         $this->hasColumn('numero_de_transplantes_realizados', 'integer', 4, array(
              'type' => 'integer',
+             'default' => 0,
              'length' => 4,
              ));
         $this->hasColumn('donante_id', 'integer', 4, array(
@@ -242,22 +243,32 @@ abstract class BaseTrasplante extends sfDoctrineRecord
              ));
         $this->hasColumn('inestab_hemodial', 'integer', 1, array(
              'type' => 'integer',
+             'default' => 0,
              'length' => 1,
              ));
-        $this->hasColumn('rinhon', 'string', 10, array(
-             'type' => 'string',
+        $this->hasColumn('rinhon', 'enum', 10, array(
+             'type' => 'enum',
              'length' => 10,
+             'values' => 
+             array(
+              0 => 'Derecho',
+              1 => 'Izquierdo',
+             ),
+             'notnull' => true,
              ));
         $this->hasColumn('anomalia_vascular', 'integer', 1, array(
              'type' => 'integer',
+             'default' => 0,
              'length' => 1,
              ));
         $this->hasColumn('numero_arterias', 'integer', 1, array(
              'type' => 'integer',
+             'default' => 0,
              'length' => 1,
              ));
         $this->hasColumn('numero_venas', 'integer', 1, array(
              'type' => 'integer',
+             'default' => 0,
              'length' => 1,
              ));
         $this->hasColumn('ureter', 'string', 5, array(

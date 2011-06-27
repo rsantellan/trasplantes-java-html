@@ -401,21 +401,36 @@ Trasplante:
       notnull: true
     numero_de_transplantes_realizados:
       type: integer(4)
+      default: 0
     donante_id:
       type: integer(4)
       notnull: true
     inestab_hemodial:
       type: integer(1)
+      default: 0
     rinhon:
-      type: string(10)
+      type: enum
+      length: 10
+      values: ['Derecho','Izquierdo']
+      notnull: true      
     anomalia_vascular:
       type: integer(1)
+      default: 0
     numero_arterias:
-      type: integer(1)
+      type: enum
+      length: 1
+      values: ['1','2','3']
+      notnull: true        
     numero_venas:
-      type: integer(1)
+      type: enum
+      length: 1
+      values: ['1','2','3']
+      notnull: true 
     ureter:
-      type: string(5)
+      type: enum
+      length: 5
+      values: ['Unico','Doble']
+      notnull: true       
     numero_compatibilidad_ab:
       type: integer(3)
     numero_compatibilidad_dr:
@@ -426,14 +441,17 @@ Trasplante:
       type: integer(3)
     autoac:
       type: integer(1)
+      default: 0
     pra_max:
       type: string(10)
     pra_tr:
       type: string(20)
     trans_previas:
       type: integer(1)
+      default: 0
     numero_transf:
       type: integer(1)
+      default: 0
     embarazo:
       type: enum
       length: 9
@@ -488,17 +506,22 @@ Trasplante:
       values: ['buena','regular','mala']
       notnull: true      
     sangrado_i_op:
-      type: integer(1)
+      type: boolean
+      default: 0
     lesion_arterial:
       type: integer(1)
+      default: 0
     lesion_venosa:
       type: integer(1)
+      default: 0
     necesidad_repefundir:
       type: integer(1)
+      default: 0
     otras_compl_quirur:
       type: string(250)
     diuresis_i_op:
       type: integer(1)
+      default: 0
     cr_inicial:
       type: float()
       default: 0
@@ -510,8 +533,10 @@ Trasplante:
       default: 0
     dialisis:
       type: integer(1)
+      default: 0
     num_de_hd:
       type: integer(2)
+      default: 0
     comentario:
       type: string(255)
     fecha_alta:

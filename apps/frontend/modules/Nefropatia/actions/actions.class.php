@@ -105,14 +105,22 @@ class NefropatiaActions extends sfActions
     //die('jaja');
     
     $this->forward404Unless($nefropatia = Doctrine_Core::getTable('Nefropatia')->find(array($request->getParameter('id'))), sprintf('Object nefropatia does not exist (%s).', $request->getParameter('id')));
-    if($nefropatia->delete())
-    {  
-      return $this->renderText(mdBasicFunction::basic_json_response(true, array('id'=>$request->getParameter('id'))));
-    }
-    else
+    try
     {
-      return $this->renderText(mdBasicFunction::basic_json_response(false, array()));
+      if($nefropatia->delete())
+      {  
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('id'=>$request->getParameter('id'))));
+      }
+      else
+      {
+        return $this->renderText(mdBasicFunction::basic_json_response(false, array()));
+      }      
+    }catch(Exception $e)
+    {
+      
+      return $this->renderText(mdBasicFunction::basic_json_response(false, array("error" => $e->getCode())));
     }
+
     
     //$this->redirect('Nefropatia/index');
   }

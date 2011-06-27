@@ -25,7 +25,13 @@ class TrasplanteActions extends sfActions
 
   public function executeNew(sfWebRequest $request)
   {
-    $this->form = new TrasplanteForm();
+    $paciente_id = $request->getParameter("paciente_id");
+    $this->forward404Unless($paciente_id);
+    $pre_trasplante_id = $request->getParameter("pre_trasplante_id");
+    $this->forward404Unless($pre_trasplante_id);
+    $trasplante = new Trasplante();
+    $trasplante->setPacientePreTrasplanteId($pre_trasplante_id);     
+    $this->form = new TrasplanteForm($trasplante);
   }
 
   public function executeCreate(sfWebRequest $request)

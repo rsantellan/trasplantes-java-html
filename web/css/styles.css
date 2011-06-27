@@ -338,3 +338,9 @@ Sidebar no lo puse por ahora
   margin-left: 20%;
   margin-right: 10%;
 }
+
+.nefropatia_delete_error
+{
+  color: red;
+  display: none;
+}

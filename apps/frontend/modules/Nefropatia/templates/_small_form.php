@@ -17,7 +17,11 @@
 		  echo $msg_error;  
 		endif; 
 		?>
-	</div>
+    <div class="nefropatia_delete_error">
+      <?php echo __("nefropatias_error no se puede borrar por que un paciente la esta usando");?>
+    </div>
+  </div>
+  
   </div>
   <div class="clear"></div>
   <input class="save_button" type="submit" value="<?php echo __("nefropatias_Guardar");?>" />

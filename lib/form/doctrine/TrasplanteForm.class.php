@@ -24,7 +24,12 @@ class TrasplanteForm extends BaseTrasplanteForm
     $this->widgetSchema['fecha'] = new sfWidgetFormDate(
                               array(
                                 'format' => '%year% %month% %day%',
-                                'years' => $years));    
+                                'years' => $years));
+                                
+                                    
+    $this->widgetSchema['otras_compl_quirur'] = new sfWidgetFormTextarea();
+    
+    $this->widgetSchema['comentario'] = new sfWidgetFormTextarea();
     
     
   }

@@ -406,7 +406,7 @@ Trasplante:
       type: integer(4)
       notnull: true
     inestab_hemodial:
-      type: integer(1)
+      type: boolean
       default: 0
     rinhon:
       type: enum
@@ -414,7 +414,7 @@ Trasplante:
       values: ['Derecho','Izquierdo']
       notnull: true      
     anomalia_vascular:
-      type: integer(1)
+      type: boolean
       default: 0
     numero_arterias:
       type: enum
@@ -440,14 +440,14 @@ Trasplante:
     numero_incompatibilidad_dr:
       type: integer(3)
     autoac:
-      type: integer(1)
+      type: boolean
       default: 0
     pra_max:
       type: string(10)
     pra_tr:
       type: string(20)
     trans_previas:
-      type: integer(1)
+      type: boolean
       default: 0
     numero_transf:
       type: integer(1)
@@ -467,7 +467,8 @@ Trasplante:
       values: ['Eurocollins','WC','Custodiol','Otro']
       notnull: true
     tq_de_banco:
-      type: integer(1)
+      type: boolean
+      default: 0
     lado_implante:
       type: enum
       length: 12
@@ -509,18 +510,18 @@ Trasplante:
       type: boolean
       default: 0
     lesion_arterial:
-      type: integer(1)
+      type: boolean
       default: 0
     lesion_venosa:
-      type: integer(1)
+      type: boolean
       default: 0
     necesidad_repefundir:
-      type: integer(1)
+      type: boolean
       default: 0
     otras_compl_quirur:
       type: string(250)
     diuresis_i_op:
-      type: integer(1)
+      type: boolean
       default: 0
     cr_inicial:
       type: float()

@@ -10,25 +10,25 @@
  * @property date $fecha
  * @property integer $numero_de_transplantes_realizados
  * @property integer $donante_id
- * @property integer $inestab_hemodial
+ * @property boolean $inestab_hemodial
  * @property enum $rinhon
- * @property integer $anomalia_vascular
- * @property integer $numero_arterias
- * @property integer $numero_venas
- * @property string $ureter
+ * @property boolean $anomalia_vascular
+ * @property enum $numero_arterias
+ * @property enum $numero_venas
+ * @property enum $ureter
  * @property integer $numero_compatibilidad_ab
  * @property integer $numero_compatibilidad_dr
  * @property integer $numero_incompatibilidad_ab
  * @property integer $numero_incompatibilidad_dr
- * @property integer $autoac
+ * @property boolean $autoac
  * @property string $pra_max
  * @property string $pra_tr
- * @property integer $trans_previas
+ * @property boolean $trans_previas
  * @property integer $numero_transf
  * @property enum $embarazo
  * @property integer $numero_embarazo
  * @property enum $liquido_perfusion
- * @property integer $tq_de_banco
+ * @property boolean $tq_de_banco
  * @property enum $lado_implante
  * @property enum $anast_venosa
  * @property enum $anast_arterial
@@ -38,12 +38,12 @@
  * @property integer $t_isq_fria_min
  * @property integer $t_isq_tibia_hs
  * @property enum $reperfusion
- * @property integer $sangrado_i_op
- * @property integer $lesion_arterial
- * @property integer $lesion_venosa
- * @property integer $necesidad_repefundir
+ * @property boolean $sangrado_i_op
+ * @property boolean $lesion_arterial
+ * @property boolean $lesion_venosa
+ * @property boolean $necesidad_repefundir
  * @property string $otras_compl_quirur
- * @property integer $diuresis_i_op
+ * @property boolean $diuresis_i_op
  * @property float $cr_inicial
  * @property integer $dia_rec_diuresis
  * @property integer $dia_rec_funcional
@@ -77,25 +77,25 @@
  * @method date                  getFecha()                             Returns the current record's "fecha" value
  * @method integer               getNumeroDeTransplantesRealizados()    Returns the current record's "numero_de_transplantes_realizados" value
  * @method integer               getDonanteId()                         Returns the current record's "donante_id" value
- * @method integer               getInestabHemodial()                   Returns the current record's "inestab_hemodial" value
+ * @method boolean               getInestabHemodial()                   Returns the current record's "inestab_hemodial" value
  * @method enum                  getRinhon()                            Returns the current record's "rinhon" value
- * @method integer               getAnomaliaVascular()                  Returns the current record's "anomalia_vascular" value
- * @method integer               getNumeroArterias()                    Returns the current record's "numero_arterias" value
- * @method integer               getNumeroVenas()                       Returns the current record's "numero_venas" value
- * @method string                getUreter()                            Returns the current record's "ureter" value
+ * @method boolean               getAnomaliaVascular()                  Returns the current record's "anomalia_vascular" value
+ * @method enum                  getNumeroArterias()                    Returns the current record's "numero_arterias" value
+ * @method enum                  getNumeroVenas()                       Returns the current record's "numero_venas" value
+ * @method enum                  getUreter()                            Returns the current record's "ureter" value
  * @method integer               getNumeroCompatibilidadAb()            Returns the current record's "numero_compatibilidad_ab" value
  * @method integer               getNumeroCompatibilidadDr()            Returns the current record's "numero_compatibilidad_dr" value
  * @method integer               getNumeroIncompatibilidadAb()          Returns the current record's "numero_incompatibilidad_ab" value
  * @method integer               getNumeroIncompatibilidadDr()          Returns the current record's "numero_incompatibilidad_dr" value
- * @method integer               getAutoac()                            Returns the current record's "autoac" value
+ * @method boolean               getAutoac()                            Returns the current record's "autoac" value
  * @method string                getPraMax()                            Returns the current record's "pra_max" value
  * @method string                getPraTr()                             Returns the current record's "pra_tr" value
- * @method integer               getTransPrevias()                      Returns the current record's "trans_previas" value
+ * @method boolean               getTransPrevias()                      Returns the current record's "trans_previas" value
  * @method integer               getNumeroTransf()                      Returns the current record's "numero_transf" value
  * @method enum                  getEmbarazo()                          Returns the current record's "embarazo" value
  * @method integer               getNumeroEmbarazo()                    Returns the current record's "numero_embarazo" value
  * @method enum                  getLiquidoPerfusion()                  Returns the current record's "liquido_perfusion" value
- * @method integer               getTqDeBanco()                         Returns the current record's "tq_de_banco" value
+ * @method boolean               getTqDeBanco()                         Returns the current record's "tq_de_banco" value
  * @method enum                  getLadoImplante()                      Returns the current record's "lado_implante" value
  * @method enum                  getAnastVenosa()                       Returns the current record's "anast_venosa" value
  * @method enum                  getAnastArterial()                     Returns the current record's "anast_arterial" value
@@ -105,12 +105,12 @@
  * @method integer               getTIsqFriaMin()                       Returns the current record's "t_isq_fria_min" value
  * @method integer               getTIsqTibiaHs()                       Returns the current record's "t_isq_tibia_hs" value
  * @method enum                  getReperfusion()                       Returns the current record's "reperfusion" value
- * @method integer               getSangradoIOp()                       Returns the current record's "sangrado_i_op" value
- * @method integer               getLesionArterial()                    Returns the current record's "lesion_arterial" value
- * @method integer               getLesionVenosa()                      Returns the current record's "lesion_venosa" value
- * @method integer               getNecesidadRepefundir()               Returns the current record's "necesidad_repefundir" value
+ * @method boolean               getSangradoIOp()                       Returns the current record's "sangrado_i_op" value
+ * @method boolean               getLesionArterial()                    Returns the current record's "lesion_arterial" value
+ * @method boolean               getLesionVenosa()                      Returns the current record's "lesion_venosa" value
+ * @method boolean               getNecesidadRepefundir()               Returns the current record's "necesidad_repefundir" value
  * @method string                getOtrasComplQuirur()                  Returns the current record's "otras_compl_quirur" value
- * @method integer               getDiuresisIOp()                       Returns the current record's "diuresis_i_op" value
+ * @method boolean               getDiuresisIOp()                       Returns the current record's "diuresis_i_op" value
  * @method float                 getCrInicial()                         Returns the current record's "cr_inicial" value
  * @method integer               getDiaRecDiuresis()                    Returns the current record's "dia_rec_diuresis" value
  * @method integer               getDiaRecFuncional()                   Returns the current record's "dia_rec_funcional" value
@@ -241,10 +241,9 @@ abstract class BaseTrasplante extends sfDoctrineRecord
              'notnull' => true,
              'length' => 4,
              ));
-        $this->hasColumn('inestab_hemodial', 'integer', 1, array(
-             'type' => 'integer',
+        $this->hasColumn('inestab_hemodial', 'boolean', null, array(
+             'type' => 'boolean',
              'default' => 0,
-             'length' => 1,
              ));
         $this->hasColumn('rinhon', 'enum', 10, array(
              'type' => 'enum',
@@ -256,24 +255,41 @@ abstract class BaseTrasplante extends sfDoctrineRecord
              ),
              'notnull' => true,
              ));
-        $this->hasColumn('anomalia_vascular', 'integer', 1, array(
-             'type' => 'integer',
+        $this->hasColumn('anomalia_vascular', 'boolean', null, array(
+             'type' => 'boolean',
              'default' => 0,
-             'length' => 1,
              ));
-        $this->hasColumn('numero_arterias', 'integer', 1, array(
-             'type' => 'integer',
-             'default' => 0,
+        $this->hasColumn('numero_arterias', 'enum', 1, array(
+             'type' => 'enum',
              'length' => 1,
+             'values' => 
+             array(
+              0 => '1',
+              1 => '2',
+              2 => '3',
+             ),
+             'notnull' => true,
              ));
-        $this->hasColumn('numero_venas', 'integer', 1, array(
-             'type' => 'integer',
-             'default' => 0,
+        $this->hasColumn('numero_venas', 'enum', 1, array(
+             'type' => 'enum',
              'length' => 1,
+             'values' => 
+             array(
+              0 => '1',
+              1 => '2',
+              2 => '3',
+             ),
+             'notnull' => true,
              ));
-        $this->hasColumn('ureter', 'string', 5, array(
-             'type' => 'string',
+        $this->hasColumn('ureter', 'enum', 5, array(
+             'type' => 'enum',
              'length' => 5,
+             'values' => 
+             array(
+              0 => 'Unico',
+              1 => 'Doble',
+             ),
+             'notnull' => true,
              ));
         $this->hasColumn('numero_compatibilidad_ab', 'integer', 3, array(
              'type' => 'integer',
@@ -291,9 +307,9 @@ abstract class BaseTrasplante extends sfDoctrineRecord
              'type' => 'integer',
              'length' => 3,
              ));
-        $this->hasColumn('autoac', 'integer', 1, array(
-             'type' => 'integer',
-             'length' => 1,
+        $this->hasColumn('autoac', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => 0,
              ));
         $this->hasColumn('pra_max', 'string', 10, array(
              'type' => 'string',
@@ -303,12 +319,13 @@ abstract class BaseTrasplante extends sfDoctrineRecord
              'type' => 'string',
              'length' => 20,
              ));
-        $this->hasColumn('trans_previas', 'integer', 1, array(
-             'type' => 'integer',
-             'length' => 1,
+        $this->hasColumn('trans_previas', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => 0,
              ));
         $this->hasColumn('numero_transf', 'integer', 1, array(
              'type' => 'integer',
+             'default' => 0,
              'length' => 1,
              ));
         $this->hasColumn('embarazo', 'enum', 9, array(
@@ -340,9 +357,9 @@ abstract class BaseTrasplante extends sfDoctrineRecord
              ),
              'notnull' => true,
              ));
-        $this->hasColumn('tq_de_banco', 'integer', 1, array(
-             'type' => 'integer',
-             'length' => 1,
+        $this->hasColumn('tq_de_banco', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => 0,
              ));
         $this->hasColumn('lado_implante', 'enum', 12, array(
              'type' => 'enum',
@@ -420,29 +437,29 @@ abstract class BaseTrasplante extends sfDoctrineRecord
              ),
              'notnull' => true,
              ));
-        $this->hasColumn('sangrado_i_op', 'integer', 1, array(
-             'type' => 'integer',
-             'length' => 1,
+        $this->hasColumn('sangrado_i_op', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => 0,
              ));
-        $this->hasColumn('lesion_arterial', 'integer', 1, array(
-             'type' => 'integer',
-             'length' => 1,
+        $this->hasColumn('lesion_arterial', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => 0,
              ));
-        $this->hasColumn('lesion_venosa', 'integer', 1, array(
-             'type' => 'integer',
-             'length' => 1,
+        $this->hasColumn('lesion_venosa', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => 0,
              ));
-        $this->hasColumn('necesidad_repefundir', 'integer', 1, array(
-             'type' => 'integer',
-             'length' => 1,
+        $this->hasColumn('necesidad_repefundir', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => 0,
              ));
         $this->hasColumn('otras_compl_quirur', 'string', 250, array(
              'type' => 'string',
              'length' => 250,
              ));
-        $this->hasColumn('diuresis_i_op', 'integer', 1, array(
-             'type' => 'integer',
-             'length' => 1,
+        $this->hasColumn('diuresis_i_op', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => 0,
              ));
         $this->hasColumn('cr_inicial', 'float', null, array(
              'type' => 'float',
@@ -461,10 +478,12 @@ abstract class BaseTrasplante extends sfDoctrineRecord
              ));
         $this->hasColumn('dialisis', 'integer', 1, array(
              'type' => 'integer',
+             'default' => 0,
              'length' => 1,
              ));
         $this->hasColumn('num_de_hd', 'integer', 2, array(
              'type' => 'integer',
+             'default' => 0,
              'length' => 2,
              ));
         $this->hasColumn('comentario', 'string', 255, array(

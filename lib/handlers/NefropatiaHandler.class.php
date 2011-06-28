@@ -30,5 +30,15 @@ class NefropatiaHandler {
   {
       return Doctrine::getTable("Nefropatia")->retriveByPacienteId($pacienteId, $hydrationMode);
   }
+  
+  /**
+   * Obtiene todas las nefropatias
+   * @param Doctrine_Core $hydrationMode
+   * @return Depende del tipo de hidratacion
+   */
+  public static function retrieveAll($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+	return Doctrine::getTable("Nefropatia")->retrieveAll($hydrationMode);
+  }
 }
 

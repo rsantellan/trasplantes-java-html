@@ -12,4 +12,8 @@
  */
 class AntecedentesDeDonante extends BaseAntecedentesDeDonante
 {
+  public function __toString()
+  {
+	return $this->getNombre();
+  }
 }

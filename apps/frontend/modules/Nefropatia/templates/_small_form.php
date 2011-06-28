@@ -1,6 +1,6 @@
 <form class="nefropatia_new_form" action="<?php echo url_for('@salvarNefropatia');?>" method="post" onsubmit="return nefropatiasManagement.getInstance().saveForm(this)">
 <?php echo $form->renderHiddenFields(false) ?>
-
+<?php echo $form->renderGlobalErrors(); ?>
   <div class="form_block">
 	<h4><?php echo __("nefropatias_nombre");?></h4>
 	<div class="form_block_field<?php if($form['nombre']->hasError()):?> error_msg<?php endif; ?>">

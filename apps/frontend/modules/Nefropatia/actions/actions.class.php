@@ -12,9 +12,7 @@ class NefropatiaActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->list = Doctrine_Core::getTable('Nefropatia')
-      ->createQuery('a')
-      ->execute();
+    $this->list = NefropatiaHandler::retrieveAll();
   }
 
   public function executeShow(sfWebRequest $request)

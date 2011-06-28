@@ -12,4 +12,8 @@
  */
 class Organos extends BaseOrganos
 {
+  public function __toString()
+  {
+	return $this->getNombre();
+  }
 }

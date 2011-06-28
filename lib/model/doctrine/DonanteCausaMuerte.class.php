@@ -12,4 +12,8 @@
  */
 class DonanteCausaMuerte extends BaseDonanteCausaMuerte
 {
+  public function __toString()
+  {
+	return $this->getNombre();
+  }
 }

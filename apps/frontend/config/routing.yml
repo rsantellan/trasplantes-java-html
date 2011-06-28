@@ -1,6 +1,22 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+eliminarDonante:
+  url:   /eliminar-donante
+  param: { module: donante, action: delete }
+  
+editarDonante:
+  url:   /editar-donante
+  param: { module: donante, action: edit }
+
+salvarDonante:
+  url:   /salvar-donante
+  param: { module: donante, action: save }
+
+crearDonante:
+  url:   /crear-donante
+  param: { module: donante, action: new }  
+
 eliminarNefropatia:
   url:   /eliminar-nefropatia
   param: { module: Nefropatia, action: delete }

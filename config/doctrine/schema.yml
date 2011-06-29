@@ -211,8 +211,9 @@ Donante:
       notnull: true
     relacion_filiar:
       type: enum
-      length: 11
-      values: ['padre/madre','hermano/a','Hijo/a','esposo/a','otro']
+      length: 13
+      values: ['sin relacion','padre/madre','hermano/a','Hijo/a','esposo/a','otro']
+      default: 'sin relacion'
     peso:
       type: integer(4)
     altura:

@@ -18,8 +18,7 @@ donantesManagement.prototype = {
     
     newDonante: function(url)
     {
-      //Cuando lo ponga en la fancy
-	  //$.fancybox.showActivity();
+      $.fancybox.showActivity();
       $.ajax({
           url: url,
           type: 'post',
@@ -28,8 +27,8 @@ donantesManagement.prototype = {
               if(json.response == "OK")
               {
                 $("#donante_container").html(json.options.body);
-                //$.fancybox.resize();
                 $(".save_button").button();
+                
               }
               else 
               {
@@ -38,7 +37,9 @@ donantesManagement.prototype = {
           }, 
           complete: function()
           {
-            //$.fancybox.hideActivity();
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+            donantesManagement.getInstance().reenableToolTips();
           }
       });
 
@@ -49,7 +50,7 @@ donantesManagement.prototype = {
     {
       var id = $("#donantes_selector").val();
       var url = $('#donante_show_url_input').val();
-      //$.fancybox.showActivity();
+      $.fancybox.showActivity();
       $.ajax({
           url: url,
           data: {'id': id},
@@ -68,8 +69,8 @@ donantesManagement.prototype = {
           }, 
           complete: function()
           {
-            //$.fancybox.hideActivity();
-			//$.fancybox.resize();
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
           }
       });
 
@@ -78,7 +79,7 @@ donantesManagement.prototype = {
     
     saveForm: function(form)
     {
-      //$.fancybox.showActivity();
+      $.fancybox.showActivity();
       $.ajax({
           url: $(form).attr('action'),
           data: $(form).serialize(),
@@ -120,8 +121,8 @@ donantesManagement.prototype = {
           , 
           complete: function()
           {
-            //$.fancybox.hideActivity();
-			//$.fancybox.resize();
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
           }
       });
       return false;      
@@ -131,7 +132,7 @@ donantesManagement.prototype = {
     {
       if(confirm(text))
       {
-      //$.fancybox.showActivity();
+      $.fancybox.showActivity();
       $.ajax({
           url: url,
           data: {'id': id},
@@ -148,8 +149,8 @@ donantesManagement.prototype = {
           }, 
           complete: function()
           {
-            //$.fancybox.hideActivity();
-			//$.fancybox.resize();
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
           }
       });
 
@@ -159,5 +160,95 @@ donantesManagement.prototype = {
 	  return false;
       
       
+    },
+    
+    showCausaMuerteManagement: function(url)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $("#auxiliary_fields").html(json.options.body);
+                $("#auxiliary_fields").show();
+                $("#donante_manage_container").fadeOut('slow', function() {
+                  $.fancybox.resize();
+                });
+                $("#donante_container").fadeOut('slow', function() {
+                  $.fancybox.resize();
+                });
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+        });
+      return false;
+    },
+    
+    verDonante: function()
+    {
+      $("#donante_container").fadeIn('slow', function() {
+        $.fancybox.resize();
+      });       
+      $("#auxiliary_fields").fadeOut('slow', function() {
+        $("#auxiliary_fields").empty();
+        $.fancybox.resize();
+      });
+      
+      $("#donante_manage_container").fadeIn('slow', function() {
+        $.fancybox.resize();
+      });
+      $.fancybox.resize();
+    },
+    
+    newDonanteCausaMuerte: function(url)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $("#donante_causa_muerte_container").html(json.options.body);
+                $(".save_button").button();
+                
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;      
+    },
+    
+    reenableToolTips: function()
+    {
+      return false;
+      $('#donante_container a.simple_tip_container').each(function() {
+        $(this).simpletip({
+          content : $(this).find("div.tooltip_text").text(),
+          fixed: false, 
+          position: ["-5", "-60"]
+        });
+      });
     }
 }

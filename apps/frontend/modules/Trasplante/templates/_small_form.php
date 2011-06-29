@@ -55,6 +55,10 @@
     <div class="form_block_field<?php if($form['donante_id']->hasError()):?> error_msg<?php endif; ?>">
       <?php echo $form['donante_id']->render() ?>
     </div>
+    <a id="manage_donantes_link" href="<?php echo url_for("@manejarDonante");?>" class="simple_tip_container">
+      <?php echo image_tag("add_block.png", array("width" => 24)); ?>
+      <div class="tooltip_text"><?php echo __("donante_manejar");?></div>		
+    </a>
     <div>
       <?php 
       

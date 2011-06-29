@@ -344,3 +344,18 @@ Sidebar no lo puse por ahora
   color: red;
   display: none;
 }
+
+.fancy_manage_container
+{
+  text-align: center;
+}
+
+.fancy_manage_container h1 
+{
+  border-bottom: 1px solid #EEEEEE;
+  color: #253183;
+  font-family: "Century Gothic","Trebuchet MS","Arial Narrow",Arial,sans-serif;
+  font-size: 25px;
+  font-weight: normal;
+  text-transform: uppercase;
+}

@@ -136,17 +136,19 @@ abstract class BaseDonante extends sfDoctrineRecord
              ),
              'notnull' => true,
              ));
-        $this->hasColumn('relacion_filiar', 'enum', 11, array(
+        $this->hasColumn('relacion_filiar', 'enum', 13, array(
              'type' => 'enum',
-             'length' => 11,
+             'length' => 13,
              'values' => 
              array(
-              0 => 'padre/madre',
-              1 => 'hermano/a',
-              2 => 'Hijo/a',
-              3 => 'esposo/a',
-              4 => 'otro',
+              0 => 'sin relacion',
+              1 => 'padre/madre',
+              2 => 'hermano/a',
+              3 => 'Hijo/a',
+              4 => 'esposo/a',
+              5 => 'otro',
              ),
+             'default' => 'sin relacion',
              ));
         $this->hasColumn('peso', 'integer', 4, array(
              'type' => 'integer',

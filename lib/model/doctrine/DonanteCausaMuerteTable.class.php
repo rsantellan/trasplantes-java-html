@@ -24,5 +24,13 @@ class DonanteCausaMuerteTable extends Doctrine_Table
 
       $query->setHydrationMode($hydrationMode);
       return $query->fetchOne();
-    }    
+    } 
+    
+    
+	public function retrieveAll($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+	{
+	  $query = $this->createQuery("dcm");
+	  $query->setHydrationMode($hydrationMode);
+	  return $query->execute();
+	}    
 }

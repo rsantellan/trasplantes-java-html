@@ -79,7 +79,7 @@
 	</div>
   </div>
   
-  <div class="clear"></div>
+  
   
   <div class="form_block">
 	<h4><?php echo __("donante_enastab hemod");?></h4>
@@ -100,11 +100,17 @@
 	</div>
   </div>
   
+  <div class="clear"></div>
+  
   <div class="form_block">
 	<h4><?php echo __("donante_causa de muerte");?></h4>
 	<div class="form_block_field<?php if($form['donante_causa_muerte_id']->hasError()):?> error_msg<?php endif; ?>">
 	  <?php echo $form['donante_causa_muerte_id']->render() ?>
 	</div>
+    <a id="manage_donantes_link" href="javascript:void(0)" class="simple_tip_container" onclick="return donantesManagement.getInstance().showCausaMuerteManagement('<?php echo url_for("@manejarDonanteCausaMuerte");?>');">
+      <?php echo image_tag("add_block.png", array("width" => 24)); ?>
+      <div class="tooltip_text"><?php echo __("donante_manejar causa muerte");?></div>		
+    </a>
 	<div>
 		<?php 
 		
@@ -119,7 +125,7 @@
 	</div>
   </div>
   
-  <div class="clear"></div>
+  
   
   <div class="form_block">
 	<h4><?php echo __("donante_cr p");?></h4>
@@ -140,6 +146,8 @@
 	</div>
   </div>
   
+  <div class="clear"></div>
+  
   <div class="form_block">
 	<h4><?php echo __("donante_grupo sanguineo");?></h4>
 	<div class="form_block_field<?php if($form['grupo_sanguineo']->hasError()):?> error_msg<?php endif; ?>">
@@ -158,8 +166,6 @@
 		?>
 	</div>
   </div>
-  
-  <div class="clear"></div>
   
   <div class="form_block">
 	<h4><?php echo __("donante_relacion filiar");?></h4>
@@ -180,6 +186,8 @@
 	</div>
   </div>
   
+  <div class="clear"></div>
+  
   <div class="form_block">
 	<h4><?php echo __("donante_peso");?></h4>
 	<div class="form_block_field<?php if($form['peso']->hasError()):?> error_msg<?php endif; ?>">
@@ -198,8 +206,6 @@
 		?>
 	</div>
   </div>
-  
-  <div class="clear"></div>
   
   <div class="form_block">
 	<h4><?php echo __("donante_altura");?></h4>
@@ -225,6 +231,10 @@
 	<div class="form_block_field<?php if($form['donante_organos_list']->hasError()):?> error_msg<?php endif; ?>">
 	  <?php echo $form['donante_organos_list']->render() ?>
 	</div>
+    <a id="manage_donantes_link" href="<?php echo url_for("@manejarDonante");?>" class="simple_tip_container">
+      <?php echo image_tag("add_block.png", array("width" => 24)); ?>
+      <div class="tooltip_text"><?php echo __("donante_manejar");?></div>		
+    </a>  
 	<div>
 		<?php 
 		
@@ -239,14 +249,17 @@
 	</div>
   </div>
   
-  <div class="clear"></div>
-  
   <div class="form_block">
 	<h4><?php echo __("donante_lista de antecedentes");?></h4>
 	<div class="form_block_field<?php if($form['donante_antecedentes_list']->hasError()):?> error_msg<?php endif; ?>">
 	  <?php echo $form['donante_antecedentes_list']->render() ?>
 	</div>
+    <a id="manage_donantes_link" href="<?php echo url_for("@manejarDonante");?>" class="simple_tip_container">
+      <?php echo image_tag("add_block.png", array("width" => 24)); ?>
+      <div class="tooltip_text"><?php echo __("donante_manejar");?></div>		
+    </a>
 	<div>
+    
 		<?php 
 		
 		if($form['donante_antecedentes_list']->hasError()): 

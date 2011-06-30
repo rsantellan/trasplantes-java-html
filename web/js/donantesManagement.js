@@ -240,6 +240,58 @@ donantesManagement.prototype = {
       return false;      
     },
     
+    saveDonanteCausaMuerteForm: function(form)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: $(form).attr('action'),
+          data: $(form).serialize(),
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              $("#donante_causa_muerte_container").html(json.options.body);
+              
+              $(".save_button").button();
+              
+              if(json.response == "OK")
+              {
+                $('#donante_causa_muerte_container input').effect("highlight", {}, 300);
+                
+                if(json.options.isnew)
+                {
+                  //alert("aca esto funca");
+                  $('#donante_donante_causa_muerte_id').
+                          append($("<option></option>").
+                          attr("value",json.options.id).
+                          text(json.options.nombre));
+                          
+                   $("#donantes_selector").
+                          append($("<option></option>").
+                          attr("value",json.options.id).
+                          attr("id",'donante_option_'+json.options.id).
+                          text(json.options.nombre));
+                }
+                else
+                {
+                  $('#donante_option_'+json.options.id).text(json.options.nombre);
+                
+                  $("#donante_donante_causa_muerte_id option[value='"+json.options.id+"']").text(json.options.nombre);                  
+                }
+                
+              }
+              
+          }
+          , 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+      return false;      
+    },
+	
+    
     reenableToolTips: function()
     {
       return false;

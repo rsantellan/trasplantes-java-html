@@ -107,7 +107,7 @@
 	<div class="form_block_field<?php if($form['donante_causa_muerte_id']->hasError()):?> error_msg<?php endif; ?>">
 	  <?php echo $form['donante_causa_muerte_id']->render() ?>
 	</div>
-    <a id="manage_donantes_link" href="javascript:void(0)" class="simple_tip_container" onclick="return donantesManagement.getInstance().showCausaMuerteManagement('<?php echo url_for("@manejarDonanteCausaMuerte");?>');">
+    <a href="javascript:void(0)" class="simple_tip_container" onclick="return donantesManagement.getInstance().showCausaMuerteManagement('<?php echo url_for("@manejarDonanteCausaMuerte");?>');">
       <?php echo image_tag("add_block.png", array("width" => 24)); ?>
       <div class="tooltip_text"><?php echo __("donante_manejar causa muerte");?></div>		
     </a>
@@ -231,7 +231,7 @@
 	<div class="form_block_field<?php if($form['donante_organos_list']->hasError()):?> error_msg<?php endif; ?>">
 	  <?php echo $form['donante_organos_list']->render() ?>
 	</div>
-    <a id="manage_donantes_link" href="<?php echo url_for("@manejarDonante");?>" class="simple_tip_container">
+    <a href="javascript:void(0)" class="simple_tip_container" onclick="return donantesManagement.getInstance().showOrganosManagement('<?php echo url_for("@manejarDonanteOrganos");?>');">
       <?php echo image_tag("add_block.png", array("width" => 24)); ?>
       <div class="tooltip_text"><?php echo __("donante_manejar");?></div>		
     </a>  
@@ -295,6 +295,10 @@
 	</div>
   </div>
   
+  <?php if(!$form->isNew()): ?>
+	
+	Aca van los seroles.
+  <?php endif;?>
   <div class="clear"></div>
   <input class="save_button" type="submit" value="<?php echo __("donante_Guardar");?>" />
   <?php if(!$form->isNew()): ?>

@@ -1,6 +1,34 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+eliminarDonanteOrgano:
+  url:   /eliminar-donante-organos
+  param: { module: donanteOrganos, action: delete }
+  
+editarDonanteOrgano:
+  url:   /editar-donante-organos
+  param: { module: donanteOrganos, action: edit }
+  
+salvarDonanteOrgano:
+  url:   /salvar-donante-organos
+  param: { module: donanteOrganos, action: save }
+
+crearDonanteOrgano:
+  url:   /crear-donante-organos
+  param: { module: donanteOrganos, action: new }  
+  
+manejarDonanteOrganos:
+  url:   /donantesOrganos
+  param: { module: donanteOrganos, action: index }
+  
+eliminarDonanteCausaMuerte:
+  url:   /eliminar-donante-causa-muerte
+  param: { module: donanteCausaMuerte, action: delete }
+  
+editarDonanteCausaMuerte:
+  url:   /editar-donante-causa-muerte
+  param: { module: donanteCausaMuerte, action: edit }
+  
 salvarDonanteCausaMuerte:
   url:   /salvar-donante-causa-muerte
   param: { module: donanteCausaMuerte, action: save }

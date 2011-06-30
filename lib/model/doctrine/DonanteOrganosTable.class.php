@@ -16,4 +16,11 @@ class DonanteOrganosTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('DonanteOrganos');
     }
+	
+	public function retrieveAll($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+	{
+	  $query = $this->createQuery("do");
+	  $query->setHydrationMode($hydrationMode);
+	  return $query->execute();
+	}	
 }

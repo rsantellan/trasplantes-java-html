@@ -16,4 +16,11 @@ class OrganosTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Organos');
     }
+	
+	public function retrieveAll($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+	{
+	  $query = $this->createQuery("o");
+	  $query->setHydrationMode($hydrationMode);
+	  return $query->execute();
+	}		
 }

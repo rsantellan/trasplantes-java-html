@@ -32,8 +32,8 @@ class Donantehandler {
 	return Doctrine::getTable("Donante")->retrieveAll($hydrationMode);
   }
   
-    /**
-   * Obtiene todos los donantes
+  /**
+   * Obtiene todas las causas de muertes de donantes
    * @param Doctrine_Core $hydrationMode
    * @return Depende del tipo de hidratacion
    */
@@ -41,6 +41,17 @@ class Donantehandler {
   {
 	return Doctrine::getTable("DonanteCausaMuerte")->retrieveAll($hydrationMode);
   }
+  
+  /**
+   * Obtiene todas las causas de muertes de donantes
+   * @param Doctrine_Core $hydrationMode
+   * @return Depende del tipo de hidratacion
+   */
+  public static function retrieveAllOrganos($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+	return Doctrine::getTable("Organos")->retrieveAll($hydrationMode);
+  }
+  
   
 }
 

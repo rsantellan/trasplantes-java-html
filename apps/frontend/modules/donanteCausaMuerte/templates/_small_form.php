@@ -1,4 +1,4 @@
-<form class="nefropatia_new_form" action="<?php echo url_for('@salvarNefropatia');?>" method="post" onsubmit="return nefropatiasManagement.getInstance().saveForm(this)">
+<form class="nefropatia_new_form" action="<?php echo url_for('@salvarDonanteCausaMuerte');?>" method="post" onsubmit="return donantesManagement.getInstance().saveDonanteCausaMuerteForm(this)">
 <?php echo $form->renderHiddenFields(false) ?>
 <?php echo $form->renderGlobalErrors(); ?>
   <div class="form_block">
@@ -17,7 +17,7 @@
 		  echo $msg_error;  
 		endif; 
 		?>
-    <div class="nefropatia_delete_error">
+    <div class="donante_causa_muerte_delete_error" style="display: none;">
       <?php echo __("donanteCausaMuerte_error no se puede borrar por que un donante la esta usando");?>
     </div>
   </div>
@@ -26,7 +26,7 @@
   <div class="clear"></div>
   <input class="save_button" type="submit" value="<?php echo __("donanteCausaMuerte_Guardar");?>" />
   <?php if(!$form->isNew()): ?>
-    <a href="javascript:void(0);" onclick="nefropatiasManagement.getInstance().deleteNefropatia(<?php echo $form->getObject()->getId();?>, '<?php echo __("nefropatias_esta seguro de querer eliminar?");?>','<?php echo url_for("@eliminarNefropatia");?>');">
+    <a href="javascript:void(0);" onclick="donantesManagement.getInstance().deleteDonanteCausaMuerte(<?php echo $form->getObject()->getId();?>, '<?php echo __("donanteCausaMuerte_esta seguro de querer eliminar?");?>','<?php echo url_for("@eliminarDonanteCausaMuerte");?>');">
       <?php echo image_tag("trash.png", array("width" => 24)); ?>
     </a>
   <?php endif;?>   

@@ -132,8 +132,8 @@ nefropatiasManagement.prototype = {
     {
       if(confirm(text))
       {
-      $.fancybox.showActivity();
-      $.ajax({
+		$.fancybox.showActivity();
+		$.ajax({
           url: url,
           data: {'id': id},
           type: 'post',
@@ -158,11 +158,8 @@ nefropatiasManagement.prototype = {
             $.fancybox.resize();
           }
       });
-
-      return false;        
-        
-      }
-      
+	}
+	return false;
       
     }
 }

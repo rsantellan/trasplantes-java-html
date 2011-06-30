@@ -29,7 +29,7 @@ class Donantehandler {
    */
   public static function retrieveAll($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
   {
-	return Doctrine::getTable("Donante")->retrieveAll($hydrationMode);
+    return Doctrine::getTable("Donante")->retrieveAll($hydrationMode);
   }
   
   /**
@@ -39,19 +39,28 @@ class Donantehandler {
    */
   public static function retrieveAllCausaMuerte($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
   {
-	return Doctrine::getTable("DonanteCausaMuerte")->retrieveAll($hydrationMode);
+    return Doctrine::getTable("DonanteCausaMuerte")->retrieveAll($hydrationMode);
   }
   
   /**
-   * Obtiene todas las causas de muertes de donantes
+   * Obtiene todos los organos disponibles para los donantes
    * @param Doctrine_Core $hydrationMode
    * @return Depende del tipo de hidratacion
    */
   public static function retrieveAllOrganos($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
   {
-	return Doctrine::getTable("Organos")->retrieveAll($hydrationMode);
+    return Doctrine::getTable("Organos")->retrieveAll($hydrationMode);
   }
   
-  
+  /**
+   * Obtiene todos los antecedentes disponibles para los donantes
+   * @param Doctrine_Core $hydrationMode
+   * @return Depende del tipo de hidratacion
+   */
+  public static function retrieveAllAntecedentes($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+    return Doctrine::getTable("AntecedentesDeDonante")->retrieveAll($hydrationMode);
+  }
+    
 }
 

@@ -1,6 +1,26 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+eliminarDonanteAntecedente:
+  url:   /eliminar-donante-antecedente
+  param: { module: donanteAntecedentes, action: delete }
+  
+editarDonanteAntecedentes:
+  url:   /editar-donante-antecedente
+  param: { module: donanteAntecedentes, action: edit }
+  
+salvarDonanteAntecedentes:
+  url:   /salvar-donante-antecedente
+  param: { module: donanteAntecedentes, action: save }
+
+crearDonanteAntecedentes:
+  url:   /crear-donante-antecedente
+  param: { module: donanteAntecedentes, action: new }
+  
+manejarDonanteAntecedentes:
+  url:   /donantesAntecedentes
+  param: { module: donanteAntecedentes, action: index }  
+# -- 
 eliminarDonanteOrgano:
   url:   /eliminar-donante-organos
   param: { module: donanteOrganos, action: delete }

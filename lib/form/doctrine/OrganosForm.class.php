@@ -12,5 +12,8 @@ class OrganosForm extends BaseOrganosForm
 {
   public function configure()
   {
+    unset($this['donantes_list']);
+    $this->widgetSchema['id'] = new sfWidgetFormInputHidden();
+    
   }
 }

@@ -16,4 +16,11 @@ class AntecedentesDeDonanteTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('AntecedentesDeDonante');
     }
+    
+	public function retrieveAll($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+	{
+	  $query = $this->createQuery("a");
+	  $query->setHydrationMode($hydrationMode);
+	  return $query->execute();
+	}		    
 }

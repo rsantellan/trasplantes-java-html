@@ -216,6 +216,7 @@ donantesManagement.prototype = {
           success: function(json){
               if(json.response == "OK")
               {
+                $("#donante_causa_muerte_container").show();
                 $("#donante_causa_muerte_container").html(json.options.body);
                 $(".save_button").button();
                 
@@ -254,7 +255,7 @@ donantesManagement.prototype = {
                 
                 if(json.options.isnew)
                 {
-				  $("#donantes_causa_muerte_selector").
+                  $("#donantes_causa_muerte_selector").
                           append($("<option></option>").
                           attr("value",json.options.id).
                           attr("id",'donante_causa_muerte_option_'+json.options.id).
@@ -299,10 +300,10 @@ donantesManagement.prototype = {
           success: function(json){
               if(json.response == "OK")
               {
-				$("#donante_causa_muerte_container").show();
-                $("#donante_causa_muerte_container").html(json.options.body);
-                
-                $(".save_button").button();
+                  $("#donante_causa_muerte_container").show();
+                  $("#donante_causa_muerte_container").html(json.options.body);
+                  
+                  $(".save_button").button();
               }
               else 
               {
@@ -528,6 +529,185 @@ donantesManagement.prototype = {
             $.fancybox.resize();
           }
 		});
+	  }
+	},
+
+    showAntecedentesManagement: function(url)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $("#auxiliary_fields").html(json.options.body);
+                $("#auxiliary_fields").show();
+                $("#donante_manage_container").fadeOut('slow', function() {
+                  $.fancybox.resize();
+                });
+                $("#donante_container").fadeOut('slow', function() {
+                  $.fancybox.resize();
+                });
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+        });
+      return false;
+    },
+	
+    newDonanteAntecedentes: function(url)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $("#donante_antecedentes_container").html(json.options.body);
+                $(".save_button").button();
+                $("#donante_antecedentes_container").show();
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;      
+    },
+    
+    saveDonanteAntecedenteForm: function(form)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: $(form).attr('action'),
+          data: $(form).serialize(),
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              $("#donante_antecedentes_container").html(json.options.body);
+              
+              $(".save_button").button();
+              
+              if(json.response == "OK")
+              {
+                $('#donante_antecedentes_container input').effect("highlight", {}, 300);
+                
+                if(json.options.isnew)
+                {
+                  $("#donantes_antecedentes_selector").
+                          append($("<option></option>").
+                          attr("value",json.options.id).
+                          attr("id",'donante_antecedentes_option_'+json.options.id).
+                          text(json.options.nombre));
+						
+                  $('#donante_donante_antecedentes_list').
+                          append($("<option></option>").
+                          attr("value",json.options.id).
+                          text(json.options.nombre));
+                   
+                }
+                else
+                {
+                  $('#donante_antecedentes_option_'+json.options.id).text(json.options.nombre);
+                
+                  $("#donante_donante_antecedentes_list option[value='"+json.options.id+"']").text(json.options.nombre);                  
+                }
+                
+              }
+              
+          }
+          , 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+      return false;      
+    },
+	
+    showDonanteAntecedente: function()
+    {
+      var id = $("#donantes_antecedentes_selector").val();
+      var url = $('#donante_antecedentes_show_url_input').val();
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          data: {'id': id},
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $("#donante_antecedentes_container").show();
+                $("#donante_antecedentes_container").html(json.options.body);
+                
+                $(".save_button").button();
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;      
+    },
+    
+    deleteDonanteAntecedente: function(id, text, url)
+    {
+      if(confirm(text))
+      {
+        $.fancybox.showActivity();
+        $.ajax({
+          url: url,
+          data: {'id': id},
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $('#donante_antecedentes_option_'+json.options.id).remove();
+                $("#donante_donante_antecedentes_list option[value='"+json.options.id+"']").remove();                  
+                $("#donante_antecedentes_container").empty();
+                
+              }
+              else
+              {
+                $(".donante_causa_muerte_delete_error").show();
+                
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+        });
 	  }
 	},
 

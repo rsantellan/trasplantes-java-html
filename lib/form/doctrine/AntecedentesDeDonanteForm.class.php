@@ -12,5 +12,6 @@ class AntecedentesDeDonanteForm extends BaseAntecedentesDeDonanteForm
 {
   public function configure()
   {
+    unset($this["donantes_list"]);
   }
 }

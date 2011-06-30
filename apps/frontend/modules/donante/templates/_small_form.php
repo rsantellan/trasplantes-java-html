@@ -254,7 +254,7 @@
 	<div class="form_block_field<?php if($form['donante_antecedentes_list']->hasError()):?> error_msg<?php endif; ?>">
 	  <?php echo $form['donante_antecedentes_list']->render() ?>
 	</div>
-    <a id="manage_donantes_link" href="<?php echo url_for("@manejarDonante");?>" class="simple_tip_container">
+    <a href="javascript:void(0)" class="simple_tip_container" onclick="return donantesManagement.getInstance().showAntecedentesManagement('<?php echo url_for("@manejarDonanteAntecedentes");?>');">
       <?php echo image_tag("add_block.png", array("width" => 24)); ?>
       <div class="tooltip_text"><?php echo __("donante_manejar");?></div>		
     </a>

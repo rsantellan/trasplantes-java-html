@@ -279,7 +279,7 @@
   <div class="form_block">
 	<h4><?php echo __("donante_otros");?></h4>
 	<div class="form_block_field<?php if($form['otros']->hasError()):?> error_msg<?php endif; ?>">
-	  <?php echo $form['otros']->render() ?>
+	  <?php echo $form['otros']->render(array('cols' => 62)) ?>
 	</div>
 	<div>
 		<?php 
@@ -295,11 +295,12 @@
 	</div>
   </div>
   
-  <?php if(!$form->isNew()): ?>
-	
-	Aca van los seroles.
-  <?php endif;?>
   <div class="clear"></div>
+	<?php include_component("donante", "retrieveSeroles", array("id" => $form->getObject()->getId()));?>
+	
+  <div class="clear"></div>
+  <br/>
+  <hr/>
   <input class="save_button" type="submit" value="<?php echo __("donante_Guardar");?>" />
   <?php if(!$form->isNew()): ?>
     <a href="javascript:void(0);" onclick="donantesManagement.getInstance().deleteDonante(<?php echo $form->getObject()->getId();?>, '<?php echo __("donante_esta seguro de querer eliminar?");?>','<?php echo url_for("@eliminarDonante");?>');">

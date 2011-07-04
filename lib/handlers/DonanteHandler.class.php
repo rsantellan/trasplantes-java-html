@@ -61,6 +61,32 @@ class Donantehandler {
   {
     return Doctrine::getTable("AntecedentesDeDonante")->retrieveAll($hydrationMode);
   }
+  
+  public static function saveSerolesOfDonante($donanteId, $seroles_valores_id_list)
+  {
+    //Borro todos los seroles que ya existian.
+    $antiguos = self::retrieveAllSerolesOfDonante($donanteId);
+    foreach($antiguos as $donante_serol)
+    {
+      $donante_serol->delete();
+    }
+    
+    // Ahora agrego los nuevos.
+    foreach($seroles_valores_id_list as $seroles_valores_id)
+    {
+      $serolValor = serolHandler::retrieveSerolValor($seroles_valores_id);
+      $DonanteSerol = new DonanteSerol();
+      $DonanteSerol->setDonanteId($donanteId);
+      $DonanteSerol->setSerolId($serolValor->getSerolId());
+      $DonanteSerol->setSerolValorId($serolValor->getId());
+      $DonanteSerol->save();
+    }
+  }
+  
+  public static function retrieveAllSerolesOfDonante($donanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+    return Doctrine::getTable("DonanteSerol")->retrieveAllSeroles($donanteId, $hydrationMode);
+  }
     
 }
 

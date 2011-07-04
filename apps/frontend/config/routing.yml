@@ -1,6 +1,45 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+# serol valor
+crearSerolValor:
+  url:   /crear-serol-valor
+  param: { module: serolValor, action: new }
+  
+eliminarSerolValor:
+  url:   /eliminar-serol-valor
+  param: { module: serolValor, action: delete }
+
+salvarSerolValor:
+  url:   /salvar-serol-valor
+  param: { module: serolValor, action: save }
+  
+editarSerolValor:
+  url:   /editar-serol-valor
+  param: { module: serolValor, action: edit }
+
+#seroles
+crearSerol:
+  url:   /crear-serol
+  param: { module: serol, action: new }
+  
+eliminarSerol:
+  url:   /eliminar-serol
+  param: { module: serol, action: delete }
+
+salvarSerol:
+  url:   /salvar-serol
+  param: { module: serol, action: save }
+  
+editarSerol:
+  url:   /editar-serol
+  param: { module: serol, action: edit }
+
+manejarSeroles:
+  url:   /seroles
+  param: { module: serol, action: index }
+
+#donante antecedente
 eliminarDonanteAntecedente:
   url:   /eliminar-donante-antecedente
   param: { module: donanteAntecedentes, action: delete }
@@ -20,7 +59,8 @@ crearDonanteAntecedentes:
 manejarDonanteAntecedentes:
   url:   /donantesAntecedentes
   param: { module: donanteAntecedentes, action: index }  
-# -- 
+
+# donante organo
 eliminarDonanteOrgano:
   url:   /eliminar-donante-organos
   param: { module: donanteOrganos, action: delete }
@@ -40,7 +80,8 @@ crearDonanteOrgano:
 manejarDonanteOrganos:
   url:   /donantesOrganos
   param: { module: donanteOrganos, action: index }
-  
+
+#donante causa de muerte  
 eliminarDonanteCausaMuerte:
   url:   /eliminar-donante-causa-muerte
   param: { module: donanteCausaMuerte, action: delete }
@@ -60,7 +101,8 @@ crearDonanteCausaMuerte:
 manejarDonanteCausaMuerte:
   url:   /donantesCausaMuerte
   param: { module: donanteCausaMuerte, action: index }
-  
+
+#donante  
 eliminarDonante:
   url:   /eliminar-donante
   param: { module: donante, action: delete }
@@ -80,6 +122,8 @@ crearDonante:
 manejarDonante:
   url:   /donantes
   param: { module: donante, action: index }
+
+#nefropatias
 
 eliminarNefropatia:
   url:   /eliminar-nefropatia

@@ -16,4 +16,21 @@ class SerolValorTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('SerolValor');
     }
+    
+    public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("sv")
+                ->addWhere("sv.id = ?", $id);
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }     
+    
+    public function retrieveByValorAndSerolId($valor, $serolId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("sv")
+                ->addWhere("sv.valor = ?", $valor)
+                ->addWhere("sv.serol_id = ?", $serolId);
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();      
+    }
 }

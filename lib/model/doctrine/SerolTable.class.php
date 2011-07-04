@@ -16,4 +16,11 @@ class SerolTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Serol');
     }
+    
+	public function retrieveAll($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+	{
+	  $query = $this->createQuery("s");
+	  $query->setHydrationMode($hydrationMode);
+	  return $query->execute();
+	}    
 }

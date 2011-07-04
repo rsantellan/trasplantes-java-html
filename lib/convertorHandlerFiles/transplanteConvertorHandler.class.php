@@ -28,7 +28,8 @@ class transplanteConvertorHandler
           $valor = mysql_result($result,$i,"valor");
 
           //var_dump($valor);
-          $SerolValor = Doctrine::getTable("SerolValor")->findOneBy("valor", $valor);
+          $SerolValor = Doctrine::getTable("SerolValor")->retrieveByValorAndSerolId($valor, $serolId);
+          //$SerolValor = Doctrine::getTable("SerolValor")->findOneBy("valor", $valor);
           if(!$SerolValor)
           {
             die("inconscitencia de datos en la tabla donante_serol!!");

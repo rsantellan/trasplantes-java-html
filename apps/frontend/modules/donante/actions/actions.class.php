@@ -32,6 +32,20 @@ class donanteActions extends sfActions
   
   public function executeSave(sfWebRequest $request)
   {
+      $parameters = $request->getPostParameters();
+      $seroles_info = $parameters["seroles"];
+      $seroles_valores =  $seroles_info["valor"];
+      $seroles_array = array();
+      foreach($seroles_valores as $tipo)
+      {
+        foreach($tipo as $valor)
+        {
+          array_push($seroles_array, $valor);
+        }
+      }
+      //var_dump($seroles_array);
+      //die;
+      
       $auxForm = new DonanteForm();
       $parameters = $request->getParameter($auxForm->getName());
       $id = $parameters["id"];
@@ -52,6 +66,7 @@ class donanteActions extends sfActions
       if ($form->isValid())
       {
         $donante = $form->save();
+        Donantehandler::saveSerolesOfDonante($donante->getId(), $seroles_array);
         $form = new DonanteForm($donante);
         $body = $this->getPartial('small_form', array('form'=>$form));
         

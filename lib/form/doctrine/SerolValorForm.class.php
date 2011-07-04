@@ -12,5 +12,6 @@ class SerolValorForm extends BaseSerolValorForm
 {
   public function configure()
   {
+    $this->widgetSchema['serol_id'] = new sfWidgetFormInputHidden();
   }
 }

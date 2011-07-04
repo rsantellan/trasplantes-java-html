@@ -359,3 +359,17 @@ Sidebar no lo puse por ahora
   font-weight: normal;
   text-transform: uppercase;
 }
+
+.serol_container
+{
+  float: left;
+  width: 30%;
+}
+
+.seroles_container label
+{
+  font-size: 2em;
+  font-weight: bold;
+  margin-left: 30%;
+  text-transform:uppercase;
+}

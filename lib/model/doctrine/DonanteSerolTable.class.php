@@ -16,4 +16,12 @@ class DonanteSerolTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('DonanteSerol');
     }
+    
+    public function retrieveAllSeroles($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("ds")
+                  ->addWhere("ds.donante_id = ?", $id);
+      $query->setHydrationMode($hydrationMode);
+      return $query->execute();      
+    }
 }

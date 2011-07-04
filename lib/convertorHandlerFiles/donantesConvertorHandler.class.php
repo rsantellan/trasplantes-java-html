@@ -5,22 +5,27 @@ class donantesConvertorHandler
 
   public static function proccessDonantes($username,$password, $database)
   {
+    echo "---------------------Salvando tablas auxiliares. -------------------------------------\n";
     self::saveAuxiliarTables($username, $password, $database);
-    echo "------------------------------------------------------------------\n";
+    echo "---------------------Salvando a los donantes.-----------------------------------------\n";
     self::saveAllDonantes($username, $password, $database);
-    echo "------------------------------------------------------------------\n";
+    echo "---------------------Salvando a los organos.------------------------------------------\n";
     self::saveDonanteOrganos($username, $password, $database);
-    echo "------------------------------------------------------------------\n";
+    echo "---------------------Salvando a los antecedentes de donantes.-------------------------\n";
     self::saveDonanteAntecedentes($username, $password, $database);
-    echo "------------------------------------------------------------------\n";
+    echo "---------------------Salvando a los seroles.------------------------------------------\n";
     self::saveDonanteSerol($username, $password, $database);
   }
 
   public static function saveAuxiliarTables($username,$password, $database)
   {
+    echo "---------------------Salvando los antecedentes.---------------------------------------\n";
     self::saveAllAntecedentes($username, $password, $database);
+    echo "---------------------Salvando las causas de muertes.----------------------------------\n";
     self::saveAllCausasDeMuerte($username, $password, $database);
+    echo "---------------------Salvando los seroles.--------------------------------------------\n";
     self::saveAllSeroles($username, $password, $database);
+    echo "---------------------Salvando los valores de los seroles.-----------------------------\n";
     self::saveAllSerolesValores($username, $password, $database);
   }
 
@@ -398,7 +403,7 @@ class donantesConvertorHandler
           $valor = mysql_result($result,$i,"valor");
 
           //var_dump($valor);
-          $SerolValor = Doctrine::getTable("SerolValor")->findOneBy("valor", $valor);
+          $SerolValor = Doctrine::getTable("SerolValor")->retrieveByValorAndSerolId($valor, $serolId);
           if(!$SerolValor)
           {
             die("inconscitencia de datos en la tabla donante_serol!!");

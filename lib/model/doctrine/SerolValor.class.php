@@ -12,4 +12,10 @@
  */
 class SerolValor extends BaseSerolValor
 {
+  
+  public function __toString()
+  {
+    return $this->getValor();
+  }
+  
 }

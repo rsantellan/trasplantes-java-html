@@ -721,5 +721,332 @@ donantesManagement.prototype = {
           position: ["-5", "-60"]
         });
       });
+    },
+
+//Seroles
+    showSerolesManagement: function(url)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $("#auxiliary_fields").html(json.options.body);
+                $("#auxiliary_fields").show();
+                $("#donante_manage_container").fadeOut('slow', function() {
+                  $.fancybox.resize();
+                });
+                $("#donante_container").fadeOut('slow', function() {
+                  $.fancybox.resize();
+                });
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+        });
+      return false;
+    },
+	
+    showSerol: function()
+    {
+      var id = $("#serol_selector").val();
+      var url = $('#serol_show_url_input').val();
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          data: {'id': id},
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                  $("#serol_container").show();
+                  $("#serol_container").html(json.options.body);
+                  
+                  $(".save_button").button();
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;      
+    },
+    
+    saveSerolForm: function(form)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: $(form).attr('action'),
+          data: $(form).serialize(),
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              $("#serol_container").html(json.options.body);
+              
+              $(".save_button").button();
+              
+              if(json.response == "OK")
+              {
+                $('#serol_container input').effect("highlight", {}, 300);
+                
+                if(json.options.isnew)
+                {
+                  $("#serol_selector").
+                          append($("<option></option>").
+                          attr("value",json.options.id).
+                          attr("id",'serol_option_'+json.options.id).
+                          text(json.options.nombre));
+                }
+                else
+                {
+                  $('#serol_option_'+json.options.id).text(json.options.nombre);
+                
+                  //$("#donante_donante_organos_list option[value='"+json.options.id+"']").text(json.options.nombre);                  
+                }
+                
+              }
+              
+          }
+          , 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+      return false;      
+    },
+	
+    newSerol: function(url)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $("#serol_container").html(json.options.body);
+                $(".save_button").button();
+                $("#serol_container").show();
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;      
+    },
+    
+    deleteSerol: function(id, text, url)
+    {
+      if(confirm(text))
+      {
+        $.fancybox.showActivity();
+        $.ajax({
+          url: url,
+          data: {'id': id},
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $('#serol_option_'+json.options.id).remove();
+                //$("#donante_donante_antecedentes_list option[value='"+json.options.id+"']").remove();                  
+                $("#serol_container").empty();
+                
+              }
+              else
+              {
+                $(".donante_causa_muerte_delete_error").show();
+                
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+        });
+      }
+    },
+	
+    showSerolValor: function()
+    {
+      var id = $("#serol_valor_selector").val();
+      var url = $('#serol_valor_show_url_input').val();
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          data: {'id': id},
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                  $("#serol_valor_container").show();
+                  $("#serol_valor_container").html(json.options.body);
+                  
+                  $(".save_button").button();
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;      
+    },
+	
+    newSerolValor: function(url, id)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          type: 'post',
+          data: {'id': id},
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $("#serol_valor_container").html(json.options.body);
+                $(".save_button").button();
+                $("#serol_valor_container").show();
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;      
+    },
+    
+    saveSerolValorForm: function(form)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: $(form).attr('action'),
+          data: $(form).serialize(),
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              $("#serol_valor_container").html(json.options.body);
+              
+              $(".save_button").button();
+              
+              if(json.response == "OK")
+              {
+                $('#serol_valor_container input').effect("highlight", {}, 300);
+                
+                if(json.options.isnew)
+                {
+                  $("#serol_valor_selector").
+                          append($("<option></option>").
+                          attr("value",json.options.id).
+                          attr("id",'serol_valor_option_'+json.options.id).
+                          text(json.options.nombre));
+                }
+                else
+                {
+                  $('#serol_valor_option_'+json.options.id).text(json.options.nombre);
+                
+                  //$("#donante_donante_organos_list option[value='"+json.options.id+"']").text(json.options.nombre);                  
+                }
+                
+              }
+              
+          }
+          , 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+      return false;      
+    },
+    
+    deleteSerolValor: function(id, text, url)
+    {
+      if(confirm(text))
+      {
+        $.fancybox.showActivity();
+        $.ajax({
+          url: url,
+          data: {'id': id},
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $('#serol_valor_option_'+json.options.id).remove();
+                //$("#donante_donante_antecedentes_list option[value='"+json.options.id+"']").remove();                  
+                $("#serol_valor_container").empty();
+                
+              }
+              else
+              {
+                $(".donante_causa_muerte_delete_error").show();
+                
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+        });
+      }
     }
 }
+
+
+/*
+  Seleccionar un radio button que esta checked
+* 
+  $("#serol_container_1 input:checked").val()
+* 
+  Para volver a seleccionar el valor
+*
+  $("#serol_container_1 input[value='3']").attr("checked", "checked");
+
+*/

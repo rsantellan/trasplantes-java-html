@@ -16,7 +16,7 @@ foreach($serolesDonante as $serol)
     </a>
   </div>
   <?php foreach($seroles as $serol): ?>
-    <?php include_partial("container_seroles", array('serol' => $serol)); ?>
+    <?php include_partial("container_seroles", array('serol' => $serol, 'serolesAsociados' => $serolesAsociados)); ?>
   <?php endforeach; ?>
 
 </div>

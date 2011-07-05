@@ -814,12 +814,14 @@ donantesManagement.prototype = {
                           attr("value",json.options.id).
                           attr("id",'serol_option_'+json.options.id).
                           text(json.options.nombre));
+                  $(".all_seroles_container").append(json.options.serol_div);
                 }
                 else
                 {
                   $('#serol_option_'+json.options.id).text(json.options.nombre);
-                
-                  //$("#donante_donante_organos_list option[value='"+json.options.id+"']").text(json.options.nombre);                  
+                  var selected_value = $("#serol_container_"+json.options.id+" input:checked").val();
+                  $('#serol_container_'+json.options.id).replaceWith(json.options.serol_div);
+                  $("#serol_container_"+json.options.id+" input[value='"+selected_value+"']").attr("checked", "checked");
                 }
                 
               }
@@ -878,6 +880,7 @@ donantesManagement.prototype = {
               if(json.response == "OK")
               {
                 $('#serol_option_'+json.options.id).remove();
+                $('#serol_container_'+json.options.id).remove();
                 //$("#donante_donante_antecedentes_list option[value='"+json.options.id+"']").remove();                  
                 $("#serol_container").empty();
                 
@@ -991,7 +994,9 @@ donantesManagement.prototype = {
                 
                   //$("#donante_donante_organos_list option[value='"+json.options.id+"']").text(json.options.nombre);                  
                 }
-                
+                var selected_value = $("#serol_container_"+json.options.serol_id+" input:checked").val();
+                $('#serol_container_'+json.options.serol_id).replaceWith(json.options.serol_div);
+                $("#serol_container_"+json.options.serol_id+" input[value='"+selected_value+"']").attr("checked", "checked");                
               }
               
           }
@@ -1021,6 +1026,9 @@ donantesManagement.prototype = {
                 $('#serol_valor_option_'+json.options.id).remove();
                 //$("#donante_donante_antecedentes_list option[value='"+json.options.id+"']").remove();                  
                 $("#serol_valor_container").empty();
+                var selected_value = $("#serol_container_"+json.options.serol_id+" input:checked").val();
+                $('#serol_container_'+json.options.serol_id).replaceWith(json.options.serol_div);
+                $("#serol_container_"+json.options.serol_id+" input[value='"+selected_value+"']").attr("checked", "checked");                                
                 
               }
               else
@@ -1038,6 +1046,7 @@ donantesManagement.prototype = {
       }
     }
 }
+
 
 
 /*

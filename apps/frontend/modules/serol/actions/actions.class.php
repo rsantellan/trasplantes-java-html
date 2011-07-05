@@ -58,8 +58,8 @@ class serolActions extends sfActions
         $serol = $form->save();
         $form = new SerolForm($serol);
         $body = $this->getPartial('small_form', array('form'=>$form));
-        
-        return $this->renderText(mdBasicFunction::basic_json_response(true, array('isnew'=>$isNew, 'id'=>$serol->getId(), 'nombre'=>$serol->getTipo(), 'body' => $body)));
+        $serol_div = $this->getPartial("donante/container_seroles", array('serol' => $serol, 'serolesAsociados' => array()));
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('isnew'=>$isNew, 'id'=>$serol->getId(), 'nombre'=>$serol->getTipo(), 'body' => $body, 'serol_div' => $serol_div)));
       }
       else
       {

@@ -51,8 +51,8 @@ class serolValorActions extends sfActions
         $serolValor = $form->save();
         $form = new SerolValorForm($serolValor);
         $body = $this->getPartial('small_form', array('form'=>$form));
-        
-        return $this->renderText(mdBasicFunction::basic_json_response(true, array('isnew'=>$isNew, 'id'=>$serolValor->getId(), 'nombre'=>$serolValor->getValor(), 'body' => $body)));
+        $serol_div = $this->getPartial("donante/container_seroles", array('serol' => $serolValor->getSerol(), 'serolesAsociados' => array()));
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('isnew'=>$isNew, 'id'=>$serolValor->getId(), 'nombre'=>$serolValor->getValor(), 'body' => $body, 'serol_div' => $serol_div, 'serol_id' => $serolValor->getSerolId())));
       }
       else
       {
@@ -68,9 +68,12 @@ class serolValorActions extends sfActions
     $this->forward404Unless($serolValor = Doctrine_Core::getTable('SerolValor')->find(array($request->getParameter('id'))), sprintf('Object donante_causa_muerte does not exist (%s).', $request->getParameter('id')));
     try
     {
+      $serol_id = $serolValor->getSerolId();
       if($serolValor->delete())
       {  
-        return $this->renderText(mdBasicFunction::basic_json_response(true, array('id'=>$request->getParameter('id'))));
+        $serol = Doctrine_Core::getTable('Serol')->find($serol_id);
+        $serol_div = $this->getPartial("donante/container_seroles", array('serol' => $serol, 'serolesAsociados' => array()));
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('id'=>$request->getParameter('id'), 'serol_div' => $serol_div, 'serol_id' => $serol_id)));
       }
       else
       {

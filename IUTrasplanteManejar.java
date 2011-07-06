@@ -1270,123 +1270,162 @@ public class IUTrasplanteManejar extends JFrame {
 	 * 
 	 * @return javax.swing.JDesktopPane
 	 */
+	/*
 	private JDesktopPane getJDesktopPaneDato7() {
 		if (jDesktopPaneDato7 == null) {
 			jDesktopPaneDato7 = new JDesktopPane();
 			jDesktopPaneDato7.setBounds(new Rectangle(614, 412, 238, 121));
 			jDesktopPaneDato7.add(getJTextFieldCrInicial(), null);
 			jDesktopPaneDato7.add(jLabelCrInicial, null);
+			
 			jDesktopPaneDato7.add(jLabelDiasRecDiuresis, null);
 			jDesktopPaneDato7.add(getJTextFieldDiaRecDiuresis(), null);
+			
 			jDesktopPaneDato7.add(jLabelDiasRecFuncional, null);
 			jDesktopPaneDato7.add(getJTextFieldDiaRecFuncional(), null);
 		}
 		return jDesktopPaneDato7;
 	}
-
+	*/
 	/**
+	 * 
 	 * This method initializes jDesktopPane
 	 * 
 	 * @return javax.swing.JDesktopPane
 	 */
+	/*
 	private JDesktopPane getJDesktopPane() {
 		if (jDesktopPane == null) {
 			jDesktopPane = new JDesktopPane();
 			jDesktopPane.setBounds(new Rectangle(614, 99, 342, 216));
 			jDesktopPane.add(getJCheckBoxSangradoIOP(), null);
+			
 			jDesktopPane.add(getJCheckBoxLesionArterial(), null);
+			
 			jDesktopPane.add(getJCheckBoxTQDeBanco(), null);
+			
 			jDesktopPane.add(getJCheckBoxAnomaliaVasc(), null);
+			
 			jDesktopPane.add(getJCheckBoxInestabHemo(), null);
+			
 			jDesktopPane.add(getJCheckBoxLesionVenosa(), null);
+			
 			jDesktopPane.add(getJCheckBoxNecesidadRepenfundir(), null);
+			
 			jDesktopPane.add(jLabelOtrasComplicacionesQ, null);
+			
 			jDesktopPane.add(getJScrollPaneOComplicacionesQuirurgicas(), null);
 		}
 		return jDesktopPane;
 	}
-
+	*/
+	
 	/**
+	 * TODO
+	 *
 	 * This method initializes jDesktopDato5
 	 * 
 	 * @return javax.swing.JDesktopPane
 	 */
+	/* 
 	private JDesktopPane getJDesktopDato5() {
 		if (jDesktopDato5 == null) {
 			jDesktopDato5 = new JDesktopPane();
 			jDesktopDato5.setBounds(new Rectangle(298, 412, 294, 218));
 			jDesktopDato5.add(jLabelTisqcalmin, null);
 			jDesktopDato5.add(getJTextFieldTisqCalMin(), null);
+			
 			jDesktopDato5.add(jLabelTisqFriqHs, null);
 			jDesktopDato5.add(getJTextFieldTisqFriqHs(), null);
+			
 			jDesktopDato5.add(jLabelTisqFriaMin, null);
 			jDesktopDato5.add(getJTextFieldTisqFriaMin(), null);
+			
 			jDesktopDato5.add(jLabelTisqTibiaHs, null);
 			jDesktopDato5.add(getJTextFieldTisqTibiaHs(), null);
+			
 			jDesktopDato5.add(jLabelRepercusion, null);
 			jDesktopDato5.add(getJComboBoxRepercusion(), null);
+			
 			jDesktopDato5.add(getJCheckBoxDiuresisIOP(), null);
 		}
 		return jDesktopDato5;
 	}
-
+	*/
 	/**
 	 * This method initializes jDesktopPaneDatos3
 	 * 
 	 * @return javax.swing.JDesktopPane
 	 */
+	/*
 	private JDesktopPane getJDesktopPaneDatos3() {
 		if (jDesktopPaneDatos3 == null) {
 			jDesktopPaneDatos3 = new JDesktopPane();
 			jDesktopPaneDatos3.setBounds(new Rectangle(298, 99, 292, 285));
 			jDesktopPaneDatos3.add(jLabelRinhon, null);
 			jDesktopPaneDatos3.add(getJComboBoxRinhon(), null);
+			
 			jDesktopPaneDatos3.add(jLabelNumArterias, null);
 			jDesktopPaneDatos3.add(getJComboBoxNumArterias(), null);
+			
 			jDesktopPaneDatos3.add(jLabelNumVenas, null);
 			jDesktopPaneDatos3.add(getJComboBoxNumVenas(), null);
+			
 			jDesktopPaneDatos3.add(jLabelUreter, null);
 			jDesktopPaneDatos3.add(getJComboBoxUreter(), null);
+			
 			jDesktopPaneDatos3.add(jLabelLiqPerfusion, null);
 			jDesktopPaneDatos3.add(getJComboBoxLiqPerfusion(), null);
+			
 			jDesktopPaneDatos3.add(jLabelLadoImplante, null);
 			jDesktopPaneDatos3.add(getJComboBoxLadoImplante(), null);
+			
 			jDesktopPaneDatos3.add(jLabelAnastVenosa, null);
 			jDesktopPaneDatos3.add(getJComboBoxAnastVenosa(), null);
+			
 			jDesktopPaneDatos3.add(jLabelAnastArterial, null);
 			jDesktopPaneDatos3.add(getJComboBoxAnastArterial(), null);
+
 			jDesktopPaneDatos3.add(jLabelAnastUterial, null);
 			jDesktopPaneDatos3.add(getJComboBoxAnastUterial(), null);
 		}
 		return jDesktopPaneDatos3;
 	}
-
+	*/
+	 //Completado 
 	/**
 	 * This method initializes jDesktopPaneDatos2
 	 * 
 	 * @return javax.swing.JDesktopPane
 	 */
+	/*
 	private JDesktopPane getJDesktopPaneDatos2() {
 		if (jDesktopPaneDatos2 == null) {
 			jDesktopPaneDatos2 = new JDesktopPane();
 			jDesktopPaneDatos2.setBounds(new Rectangle(18, 412, 255, 156));
 			jDesktopPaneDatos2.add(jLabelNumCompatibilidadAB, null);
 			jDesktopPaneDatos2.add(getJTextFieldNumCompatibilidadAB(), null);
+			
 			jDesktopPaneDatos2.add(jLabelNumCompatibilidadDR, null);
 			jDesktopPaneDatos2.add(getJTextFieldNumCompatibilidadDR(), null);
+			
 			jDesktopPaneDatos2.add(jLabelNumInCompatibilidadAB, null);
 			jDesktopPaneDatos2.add(getJTextFieldNumIncompatibilidadAB(), null);
+			
 			jDesktopPaneDatos2.add(jLabelNumIncompatibilidadDR, null);
 			jDesktopPaneDatos2.add(getJTextFieldNumIncompatibilidadDR(), null);
 		}
 		return jDesktopPaneDatos2;
 	}
-
+	*/
+	
+	//Este ya esta
 	/**
 	 * This method initializes jDesktopPaneDatos1
 	 * 
 	 * @return javax.swing.JDesktopPane
 	 */
+	/*
 	private JDesktopPane getJDesktopPaneDatos1() {
 		if (jDesktopPaneDatos1 == null) {
 			jDesktopPaneDatos1 = new JDesktopPane();
@@ -1398,15 +1437,18 @@ public class IUTrasplanteManejar extends JFrame {
 			jDesktopPaneDatos1.add(getJCheckBoxTransPrevia(), null);
 			jDesktopPaneDatos1.add(jLabelNumTrans, null);
 			jDesktopPaneDatos1.add(getJTextFieldNumTrans(), null);
+			
 			jDesktopPaneDatos1.add(jLabelEmbarazo, null);
 			jDesktopPaneDatos1.add(getJComboBoxEmbarazo(), null);
+			
 			jDesktopPaneDatos1.add(jLabelNumEmbarazo, null);
 			jDesktopPaneDatos1.add(getJTextFieldNumEmbarazo(), null);
+			
 			jDesktopPaneDatos1.add(getJCheckBoxAutoAc(), null);
 		}
 		return jDesktopPaneDatos1;
 	}
-
+	*/
 	private void mostrarPaciente() {
 		IUPacienteModificar iu = new IUPacienteModificar(this.p, true);
 		iu.setVisible(true);

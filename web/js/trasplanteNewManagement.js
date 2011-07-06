@@ -1,11 +1,5 @@
 $(document).ready(function(){
-  $('.simple_tip_container').each(function() {
-	  $(this).simpletip({
-		  content : $(this).find("div.tooltip_text").text(),
-		  fixed: true, 
-		  position: ["-5", "-60"]
-	  });
-  });  
+  
   $(".save_button").button();
   $(".cancel_link").button();
   
@@ -17,4 +11,14 @@ $(document).ready(function(){
         'width'               :   560
     
     });  
+    
+  $("#form_tabs").tabs();
+  
+  $('.simple_tip_container').each(function() {
+	  $(this).simpletip({
+		  content : $(this).find("div.tooltip_text").text(),
+		  fixed: true,
+      position: 'top'		  
+	  });
+  });  
 });

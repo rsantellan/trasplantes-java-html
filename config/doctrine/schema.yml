@@ -556,7 +556,19 @@ Trasplante:
       local: donante_id
       foreign: id
       type: one
-     
+    TrasplanteInducciones:
+      class: Induccion
+      local: trasplante_id
+      foreign: induccion_id
+      refClass: TrasplanteInduccion
+      foreignAlias: Trasplante     
+    TrasplanteInmunosupresores:
+      class: Inmunosupresores
+      local: trasplante_id
+      foreign: inmunosupresores_id
+      refClass: TrasplanteInmunosupresores
+      foreignAlias: Trasplante     
+
       
 Cmv:
   tableName: cmv
@@ -808,6 +820,10 @@ Induccion:
 
 TrasplanteInduccion:
   tableName: trasplante_induccion
+  options:
+    symfony:
+      form:   false
+      filter: false
   columns:
     trasplante_id:
       type: integer(4)
@@ -838,6 +854,10 @@ Inmunosupresores:
       
 TrasplanteInmunosupresores:
   tableName: trasplante_inmunosupresores
+  options:
+    symfony:
+      form:   false
+      filter: false
   columns:
     trasplante_id:
       type: integer(4)

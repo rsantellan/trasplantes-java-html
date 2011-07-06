@@ -373,3 +373,16 @@ Sidebar no lo puse por ahora
   margin-left: 30%;
   text-transform:uppercase;
 }
+
+.form_accordion_block
+{
+	float: left;
+/*    font-size: 12px;*/
+    margin: 10px 30px 25px 20px;
+}
+
+.form_accordion_block h4
+{
+	color: #253183;
+  margin-bottom: 5px;
+}

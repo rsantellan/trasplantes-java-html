@@ -7,13 +7,16 @@
  * 
  * @property integer $id
  * @property string $nombre
+ * @property Doctrine_Collection $Trasplante
  * @property Doctrine_Collection $TrasplanteInduccion
  * 
  * @method integer             getId()                  Returns the current record's "id" value
  * @method string              getNombre()              Returns the current record's "nombre" value
+ * @method Doctrine_Collection getTrasplante()          Returns the current record's "Trasplante" collection
  * @method Doctrine_Collection getTrasplanteInduccion() Returns the current record's "TrasplanteInduccion" collection
  * @method Induccion           setId()                  Sets the current record's "id" value
  * @method Induccion           setNombre()              Sets the current record's "nombre" value
+ * @method Induccion           setTrasplante()          Sets the current record's "Trasplante" collection
  * @method Induccion           setTrasplanteInduccion() Sets the current record's "TrasplanteInduccion" collection
  * 
  * @package    transplantes
@@ -42,6 +45,11 @@ abstract class BaseInduccion extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('Trasplante', array(
+             'refClass' => 'TrasplanteInduccion',
+             'local' => 'induccion_id',
+             'foreign' => 'trasplante_id'));
+
         $this->hasMany('TrasplanteInduccion', array(
              'local' => 'id',
              'foreign' => 'induccion_id'));

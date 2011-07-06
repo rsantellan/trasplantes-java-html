@@ -7,13 +7,16 @@
  * 
  * @property integer $id
  * @property string $nombre
+ * @property Doctrine_Collection $Trasplante
  * @property Doctrine_Collection $TrasplanteInmunosupresores
  * 
  * @method integer             getId()                         Returns the current record's "id" value
  * @method string              getNombre()                     Returns the current record's "nombre" value
+ * @method Doctrine_Collection getTrasplante()                 Returns the current record's "Trasplante" collection
  * @method Doctrine_Collection getTrasplanteInmunosupresores() Returns the current record's "TrasplanteInmunosupresores" collection
  * @method Inmunosupresores    setId()                         Sets the current record's "id" value
  * @method Inmunosupresores    setNombre()                     Sets the current record's "nombre" value
+ * @method Inmunosupresores    setTrasplante()                 Sets the current record's "Trasplante" collection
  * @method Inmunosupresores    setTrasplanteInmunosupresores() Sets the current record's "TrasplanteInmunosupresores" collection
  * 
  * @package    transplantes
@@ -42,6 +45,11 @@ abstract class BaseInmunosupresores extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('Trasplante', array(
+             'refClass' => 'TrasplanteInmunosupresores',
+             'local' => 'inmunosupresores_id',
+             'foreign' => 'trasplante_id'));
+
         $this->hasMany('TrasplanteInmunosupresores', array(
              'local' => 'id',
              'foreign' => 'inmunosupresores_id'));

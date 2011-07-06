@@ -516,14 +516,17 @@ public class IUTrasplanteManejar2 extends JFrame implements java.util.Observer{
 	 * 
 	 * @return javax.swing.JDesktopPane
 	 */
+   /*
 	private JDesktopPane getJDesktopPaneDato3() {
 		if (jDesktopPaneDato3 == null) {
 			jDesktopPaneDato3 = new JDesktopPane();
 			jDesktopPaneDato3.setBounds(new Rectangle(13, 20, 604, 227));
 			jDesktopPaneDato3.add(getJScrollPaneInducciones(), null);
 			jDesktopPaneDato3.add(jLabelElegirInduccion, null);
+      
 			jDesktopPaneDato3.add(jLabelElegirInmunosupresores, null);
 			jDesktopPaneDato3.add(getJScrollPaneInmunosupresores(), null);
+      
 			jDesktopPaneDato3.add(jLabelElegirSerol, null);
 			jDesktopPaneDato3.add(jLabelValorSerol, null);
 			jDesktopPaneDato3.add(jLabelSerolUsado, null);
@@ -536,7 +539,7 @@ public class IUTrasplanteManejar2 extends JFrame implements java.util.Observer{
 		}
 		return jDesktopPaneDato3;
 	}
-
+*/
 	/**
 	 * This method initializes jTextAreaComentario
 	 * 
@@ -556,6 +559,7 @@ public class IUTrasplanteManejar2 extends JFrame implements java.util.Observer{
 	 * 
 	 * @return javax.swing.JDesktopPane
 	 */
+   /*
 	private JDesktopPane getJDesktopPaneComentario() {
 		if (jDesktopPaneComentario == null) {
 			jDesktopPaneComentario = new JDesktopPane();
@@ -565,7 +569,7 @@ public class IUTrasplanteManejar2 extends JFrame implements java.util.Observer{
 		}
 		return jDesktopPaneComentario;
 	}
-
+*/
 	/**
 	 * This method initializes jScrollPaneComentario
 	 * 
@@ -590,8 +594,9 @@ public class IUTrasplanteManejar2 extends JFrame implements java.util.Observer{
 			jDesktopPaneDato4 = new JDesktopPane();
 			jDesktopPaneDato4.setBounds(new Rectangle(446, 265, 176, 139));
 			jDesktopPaneDato4.add(getJCheckBoxDialisis(), null);
+      
 			jDesktopPaneDato4.add(jLabelNumDeHd, null);
-			jDesktopPaneDato4.add(getJTextFieldNumDeHd(), null);
+      jDesktopPaneDato4.add(getJTextFieldNumDeHd(), null);
 		}
 		return jDesktopPaneDato4;
 	}

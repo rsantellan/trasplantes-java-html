@@ -61,6 +61,8 @@ abstract class BaseTrasplanteFormFilter extends BaseFormFilterDoctrine
       'edad_receptor'                     => new sfWidgetFormFilterInput(),
       'created_at'                        => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'updated_at'                        => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'trasplante_inducciones_list'       => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Induccion')),
+      'trasplante_inmunosupresores_list'  => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Inmunosupresores')),
     ));
 
     $this->setValidators(array(
@@ -112,6 +114,8 @@ abstract class BaseTrasplanteFormFilter extends BaseFormFilterDoctrine
       'edad_receptor'                     => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'created_at'                        => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'updated_at'                        => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
+      'trasplante_inducciones_list'       => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Induccion', 'required' => false)),
+      'trasplante_inmunosupresores_list'  => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Inmunosupresores', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('trasplante_filters[%s]');
@@ -121,6 +125,42 @@ abstract class BaseTrasplanteFormFilter extends BaseFormFilterDoctrine
     $this->setupInheritance();
 
     parent::setup();
+  }
+
+  public function addTrasplanteInduccionesListColumnQuery(Doctrine_Query $query, $field, $values)
+  {
+    if (!is_array($values))
+    {
+      $values = array($values);
+    }
+
+    if (!count($values))
+    {
+      return;
+    }
+
+    $query
+      ->leftJoin($query->getRootAlias().'.TrasplanteInduccion TrasplanteInduccion')
+      ->andWhereIn('TrasplanteInduccion.induccion_id', $values)
+    ;
+  }
+
+  public function addTrasplanteInmunosupresoresListColumnQuery(Doctrine_Query $query, $field, $values)
+  {
+    if (!is_array($values))
+    {
+      $values = array($values);
+    }
+
+    if (!count($values))
+    {
+      return;
+    }
+
+    $query
+      ->leftJoin($query->getRootAlias().'.TrasplanteInmunosupresores TrasplanteInmunosupresores')
+      ->andWhereIn('TrasplanteInmunosupresores.inmunosupresores_id', $values)
+    ;
   }
 
   public function getModelName()
@@ -180,6 +220,8 @@ abstract class BaseTrasplanteFormFilter extends BaseFormFilterDoctrine
       'edad_receptor'                     => 'Number',
       'created_at'                        => 'Date',
       'updated_at'                        => 'Date',
+      'trasplante_inducciones_list'       => 'ManyKey',
+      'trasplante_inmunosupresores_list'  => 'ManyKey',
     );
   }
 }

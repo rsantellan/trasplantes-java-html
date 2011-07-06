@@ -12,4 +12,10 @@
  */
 class Inmunosupresores extends BaseInmunosupresores
 {
+
+  public function __toString()
+  {
+    return $this->getNombre();
+  }
+    
 }

@@ -10,6 +10,7 @@
 	<?php 
 	  use_helper('mdAsset') ;
 	  use_plugin_javascript('mastodontePlugin', 'jquery-ui-1.8.4/js/jquery-ui-1.8.4.custom.min.js', 'first');
+    //use_stylesheet("redmond/jquery-ui-1.8.14.custom.css");
 	  use_plugin_stylesheet('mastodontePlugin', '../js/jquery-ui-1.8.4/css/smoothness/jquery-ui-1.8.4.custom.css');
 	  use_javascript("simpleTip/jquery.simpletip-1.3.1.js");
 	?>	

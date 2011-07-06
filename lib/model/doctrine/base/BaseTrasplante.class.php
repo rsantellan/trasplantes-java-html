@@ -54,11 +54,12 @@
  * @property integer $edad_receptor
  * @property Pacientepretrasplante $Pacientepretrasplante
  * @property Donante $Donante
+ * @property Doctrine_Collection $TrasplanteInducciones
+ * @property Doctrine_Collection $TrasplanteInmunosupresores
  * @property Doctrine_Collection $Cmv
  * @property Doctrine_Collection $TrasplanteSerol
  * @property Doctrine_Collection $TrasplanteComplicaciones
  * @property Doctrine_Collection $TrasplanteInduccion
- * @property Doctrine_Collection $TrasplanteInmunosupresores
  * @property Doctrine_Collection $EvolucionTrasplanteCmv
  * @property Doctrine_Collection $EvolucionTrasplanteEcg
  * @property Doctrine_Collection $EvolucionTrasplanteEcoCardio
@@ -121,11 +122,12 @@
  * @method integer               getEdadReceptor()                      Returns the current record's "edad_receptor" value
  * @method Pacientepretrasplante getPacientepretrasplante()             Returns the current record's "Pacientepretrasplante" value
  * @method Donante               getDonante()                           Returns the current record's "Donante" value
+ * @method Doctrine_Collection   getTrasplanteInducciones()             Returns the current record's "TrasplanteInducciones" collection
+ * @method Doctrine_Collection   getTrasplanteInmunosupresores()        Returns the current record's "TrasplanteInmunosupresores" collection
  * @method Doctrine_Collection   getCmv()                               Returns the current record's "Cmv" collection
  * @method Doctrine_Collection   getTrasplanteSerol()                   Returns the current record's "TrasplanteSerol" collection
  * @method Doctrine_Collection   getTrasplanteComplicaciones()          Returns the current record's "TrasplanteComplicaciones" collection
  * @method Doctrine_Collection   getTrasplanteInduccion()               Returns the current record's "TrasplanteInduccion" collection
- * @method Doctrine_Collection   getTrasplanteInmunosupresores()        Returns the current record's "TrasplanteInmunosupresores" collection
  * @method Doctrine_Collection   getEvolucionTrasplanteCmv()            Returns the current record's "EvolucionTrasplanteCmv" collection
  * @method Doctrine_Collection   getEvolucionTrasplanteEcg()            Returns the current record's "EvolucionTrasplanteEcg" collection
  * @method Doctrine_Collection   getEvolucionTrasplanteEcoCardio()      Returns the current record's "EvolucionTrasplanteEcoCardio" collection
@@ -187,11 +189,12 @@
  * @method Trasplante            setEdadReceptor()                      Sets the current record's "edad_receptor" value
  * @method Trasplante            setPacientepretrasplante()             Sets the current record's "Pacientepretrasplante" value
  * @method Trasplante            setDonante()                           Sets the current record's "Donante" value
+ * @method Trasplante            setTrasplanteInducciones()             Sets the current record's "TrasplanteInducciones" collection
+ * @method Trasplante            setTrasplanteInmunosupresores()        Sets the current record's "TrasplanteInmunosupresores" collection
  * @method Trasplante            setCmv()                               Sets the current record's "Cmv" collection
  * @method Trasplante            setTrasplanteSerol()                   Sets the current record's "TrasplanteSerol" collection
  * @method Trasplante            setTrasplanteComplicaciones()          Sets the current record's "TrasplanteComplicaciones" collection
  * @method Trasplante            setTrasplanteInduccion()               Sets the current record's "TrasplanteInduccion" collection
- * @method Trasplante            setTrasplanteInmunosupresores()        Sets the current record's "TrasplanteInmunosupresores" collection
  * @method Trasplante            setEvolucionTrasplanteCmv()            Sets the current record's "EvolucionTrasplanteCmv" collection
  * @method Trasplante            setEvolucionTrasplanteEcg()            Sets the current record's "EvolucionTrasplanteEcg" collection
  * @method Trasplante            setEvolucionTrasplanteEcoCardio()      Sets the current record's "EvolucionTrasplanteEcoCardio" collection
@@ -513,6 +516,16 @@ abstract class BaseTrasplante extends sfDoctrineRecord
              'local' => 'donante_id',
              'foreign' => 'id'));
 
+        $this->hasMany('Induccion as TrasplanteInducciones', array(
+             'refClass' => 'TrasplanteInduccion',
+             'local' => 'trasplante_id',
+             'foreign' => 'induccion_id'));
+
+        $this->hasMany('Inmunosupresores as TrasplanteInmunosupresores', array(
+             'refClass' => 'TrasplanteInmunosupresores',
+             'local' => 'trasplante_id',
+             'foreign' => 'inmunosupresores_id'));
+
         $this->hasMany('Cmv', array(
              'local' => 'id',
              'foreign' => 'trasplante_id'));
@@ -526,10 +539,6 @@ abstract class BaseTrasplante extends sfDoctrineRecord
              'foreign' => 'trasplante_id'));
 
         $this->hasMany('TrasplanteInduccion', array(
-             'local' => 'id',
-             'foreign' => 'trasplante_id'));
-
-        $this->hasMany('TrasplanteInmunosupresores', array(
              'local' => 'id',
              'foreign' => 'trasplante_id'));
 

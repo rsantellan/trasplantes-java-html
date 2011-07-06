@@ -64,6 +64,8 @@ abstract class BaseTrasplanteForm extends BaseFormDoctrine
       'edad_receptor'                     => new sfWidgetFormInputText(),
       'created_at'                        => new sfWidgetFormDateTime(),
       'updated_at'                        => new sfWidgetFormDateTime(),
+      'trasplante_inducciones_list'       => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Induccion')),
+      'trasplante_inmunosupresores_list'  => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Inmunosupresores')),
     ));
 
     $this->setValidators(array(
@@ -116,6 +118,8 @@ abstract class BaseTrasplanteForm extends BaseFormDoctrine
       'edad_receptor'                     => new sfValidatorInteger(array('required' => false)),
       'created_at'                        => new sfValidatorDateTime(),
       'updated_at'                        => new sfValidatorDateTime(),
+      'trasplante_inducciones_list'       => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Induccion', 'required' => false)),
+      'trasplante_inmunosupresores_list'  => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Inmunosupresores', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('trasplante[%s]');
@@ -130,6 +134,106 @@ abstract class BaseTrasplanteForm extends BaseFormDoctrine
   public function getModelName()
   {
     return 'Trasplante';
+  }
+
+  public function updateDefaultsFromObject()
+  {
+    parent::updateDefaultsFromObject();
+
+    if (isset($this->widgetSchema['trasplante_inducciones_list']))
+    {
+      $this->setDefault('trasplante_inducciones_list', $this->object->TrasplanteInducciones->getPrimaryKeys());
+    }
+
+    if (isset($this->widgetSchema['trasplante_inmunosupresores_list']))
+    {
+      $this->setDefault('trasplante_inmunosupresores_list', $this->object->TrasplanteInmunosupresores->getPrimaryKeys());
+    }
+
+  }
+
+  protected function doSave($con = null)
+  {
+    $this->saveTrasplanteInduccionesList($con);
+    $this->saveTrasplanteInmunosupresoresList($con);
+
+    parent::doSave($con);
+  }
+
+  public function saveTrasplanteInduccionesList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['trasplante_inducciones_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $existing = $this->object->TrasplanteInducciones->getPrimaryKeys();
+    $values = $this->getValue('trasplante_inducciones_list');
+    if (!is_array($values))
+    {
+      $values = array();
+    }
+
+    $unlink = array_diff($existing, $values);
+    if (count($unlink))
+    {
+      $this->object->unlink('TrasplanteInducciones', array_values($unlink));
+    }
+
+    $link = array_diff($values, $existing);
+    if (count($link))
+    {
+      $this->object->link('TrasplanteInducciones', array_values($link));
+    }
+  }
+
+  public function saveTrasplanteInmunosupresoresList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['trasplante_inmunosupresores_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $existing = $this->object->TrasplanteInmunosupresores->getPrimaryKeys();
+    $values = $this->getValue('trasplante_inmunosupresores_list');
+    if (!is_array($values))
+    {
+      $values = array();
+    }
+
+    $unlink = array_diff($existing, $values);
+    if (count($unlink))
+    {
+      $this->object->unlink('TrasplanteInmunosupresores', array_values($unlink));
+    }
+
+    $link = array_diff($values, $existing);
+    if (count($link))
+    {
+      $this->object->link('TrasplanteInmunosupresores', array_values($link));
+    }
   }
 
 }

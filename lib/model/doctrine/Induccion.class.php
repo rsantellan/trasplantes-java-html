@@ -12,4 +12,8 @@
  */
 class Induccion extends BaseInduccion
 {
+  public function __toString()
+  {
+    return $this->getNombre();
+  }
 }

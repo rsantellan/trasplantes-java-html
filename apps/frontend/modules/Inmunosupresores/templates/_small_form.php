@@ -1,8 +1,8 @@
-<form class="nefropatia_new_form" action="<?php echo url_for('@salvarDonanteOrgano');?>" method="post" onsubmit="return donantesManagement.getInstance().saveDonanteOrganoForm(this)">
+<form class="nefropatia_new_form" action="<?php echo url_for('@salvarInmunosupresores');?>" method="post" onsubmit="return trasplanteNewManagement.getInstance().saveInmunosupresorForm(this)">
 <?php echo $form->renderHiddenFields(false) ?>
 <?php echo $form->renderGlobalErrors(); ?>
   <div class="form_block">
-	<h4><?php echo __("donanteOrgano_nombre");?></h4>
+	<h4><?php echo __("inmunosupresores_nombre");?></h4>
 	<div class="form_block_field<?php if($form['nombre']->hasError()):?> error_msg<?php endif; ?>">
 	  <?php echo $form['nombre']->render() ?>
 	</div>
@@ -13,20 +13,20 @@
 		?>  
 	  <div class="clear"></div>
 		<?php
-		  $msg_error = __("donanteOrgano_nombre").': '.__("donanteOrgano_error ".$form['nombre']->getError());
+		  $msg_error = __("inmunosupresores_nombre").': '.__("inmunosupresores_error ".$form['nombre']->getError());
 		  echo $msg_error;  
 		endif; 
 		?>
     <div class="donante_causa_muerte_delete_error" style="display: none;">
-      <?php echo __("donanteOrgano_error no se puede borrar por que un donante la esta usando");?>
+      <?php echo __("inmunosupresores_error no se puede borrar por que un trasplante la esta usando");?>
     </div>
   </div>
   
   </div>
   <div class="clear"></div>
-  <input class="save_button" type="submit" value="<?php echo __("donanteOrgano_Guardar");?>" />
+  <input class="save_button" type="submit" value="<?php echo __("inmunosupresores_Guardar");?>" />
   <?php if(!$form->isNew()): ?>
-    <a href="javascript:void(0);" onclick="donantesManagement.getInstance().deleteDonanteOrgano(<?php echo $form->getObject()->getId();?>, '<?php echo __("donanteOrgano_esta seguro de querer eliminar?");?>','<?php echo url_for("@eliminarDonanteOrgano");?>');">
+    <a href="javascript:void(0);" onclick="trasplanteNewManagement.getInstance().deleteInmunosupresor(<?php echo $form->getObject()->getId();?>, '<?php echo __("inmunosupresores_esta seguro de querer eliminar?");?>','<?php echo url_for("@eliminarInmunosupresores");?>');">
       <?php echo image_tag("trash.png", array("width" => 24)); ?>
     </a>
   <?php endif;?>   

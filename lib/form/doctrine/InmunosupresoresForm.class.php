@@ -12,5 +12,6 @@ class InmunosupresoresForm extends BaseInmunosupresoresForm
 {
   public function configure()
   {
+	unset($this["trasplante_list"]);
   }
 }

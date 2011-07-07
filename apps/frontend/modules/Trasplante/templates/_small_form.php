@@ -67,6 +67,8 @@
   
   <div id="form_tabs" class="tabs-left">
     <ul>
+	  
+	  
       <li>
           <a href="#contenedor-1">
             <?php echo __("Trasplante_contenedor 1");?>
@@ -980,6 +982,10 @@
       <h2><?php echo __("Trasplante_contenedor 8");?></h2>
       <div class="form_accordion_block">
         <h4><?php echo __("Trasplante_Inducciones");?></h4>
+        <a id="manage_inducciones_link" href="<?php echo url_for("@manejarInduccion");?>" class="simple_tip_container">
+          <?php echo image_tag("add_block.png", array("width" => 24)); ?>
+          <div class="tooltip_text tooltip_text_top"><?php echo __("induccion_manejar");?></div>		
+        </a>
         <div class="form_block_field<?php if($form['trasplante_inducciones_list']->hasError()):?> error_msg<?php endif; ?>">
           <?php echo $form['trasplante_inducciones_list']->render() ?>
         </div>
@@ -998,9 +1004,14 @@
       </div>
       <div class="form_accordion_block">
         <h4><?php echo __("Trasplante_Inmunosupresores");?></h4>
-        <div class="form_block_field<?php if($form['trasplante_inmunosupresores_list']->hasError()):?> error_msg<?php endif; ?>">
+        <a id="manage_inmunosupresores_link" href="<?php echo url_for("@manejarInmunosupresores");?>" class="simple_tip_container">
+          <?php echo image_tag("add_block.png", array("width" => 24)); ?>
+          <div class="tooltip_text tooltip_text_top"><?php echo __("inmunosupresores_manejar");?></div>		
+        </a>
+		<div class="form_block_field<?php if($form['trasplante_inmunosupresores_list']->hasError()):?> error_msg<?php endif; ?>">
           <?php echo $form['trasplante_inmunosupresores_list']->render() ?>
         </div>
+		
         <div>
           <?php 
           

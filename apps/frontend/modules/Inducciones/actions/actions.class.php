@@ -8,17 +8,17 @@
  * @author     Rodrigo Santellan
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class InmunosupresoresActions extends sfActions
+class InduccionesActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->list = InmunoSupresoresHandler::retrieveAll();
-	//Inmunosupresores
+    $this->list = InduccionesHandler::retrieveAll();
+	//Induccion
   }
 
   public function executeNew(sfWebRequest $request)
   {
-    $this->form = new InmunosupresoresForm();
+    $this->form = new InduccionForm();
     
     $body = $this->getPartial('small_form', array('form'=>$this->form));
     
@@ -28,30 +28,30 @@ class InmunosupresoresActions extends sfActions
   
   public function executeSave(sfWebRequest $request)
   {
-      $auxForm = new InmunosupresoresForm();
+      $auxForm = new InduccionForm();
       $parameters = $request->getParameter($auxForm->getName());
       $id = $parameters["id"];
       $isNew = true;
       if($id)
       {
-		$inmunosupresor = Doctrine_Core::getTable('Inmunosupresores')->find($id);
-		$this->forward404Unless($inmunosupresor);
-		$form = new InmunosupresoresForm($inmunosupresor);		
+		$induccion = Doctrine_Core::getTable('Induccion')->find($id);
+		$this->forward404Unless($induccion);
+		$form = new InduccionForm($induccion);		
         $isNew = false;
       }
       else
       {
         
-        $form = new InmunosupresoresForm(); 
+        $form = new InduccionForm(); 
       }
       $form->bind($parameters);
       if ($form->isValid())
       {
-        $inmunosupresor = $form->save();
-        $form = new InmunosupresoresForm($inmunosupresor);
+        $induccion = $form->save();
+        $form = new InduccionForm($induccion);
         $body = $this->getPartial('small_form', array('form'=>$form));
         
-        return $this->renderText(mdBasicFunction::basic_json_response(true, array('isnew'=>$isNew, 'id'=>$inmunosupresor->getId(), 'nombre'=>$inmunosupresor->getNombre(), 'body' => $body)));
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('isnew'=>$isNew, 'id'=>$induccion->getId(), 'nombre'=>$induccion->getNombre(), 'body' => $body)));
       }
       else
       {
@@ -64,10 +64,10 @@ class InmunosupresoresActions extends sfActions
   {
     //$request->checkCSRFProtection();
 
-    $this->forward404Unless($inmunosupresor = Doctrine_Core::getTable('Inmunosupresores')->find(array($request->getParameter('id'))), sprintf('Object Inmunosupresores does not exist (%s).', $request->getParameter('id')));
+    $this->forward404Unless($induccion = Doctrine_Core::getTable('Induccion')->find(array($request->getParameter('id'))), sprintf('Object Induccion does not exist (%s).', $request->getParameter('id')));
     try
     {
-      if($inmunosupresor->delete())
+      if($induccion->delete())
       {  
         return $this->renderText(mdBasicFunction::basic_json_response(true, array('id'=>$request->getParameter('id'))));
       }
@@ -86,10 +86,10 @@ class InmunosupresoresActions extends sfActions
 
   public function executeEdit(sfWebRequest $request)
   {
-    $inmunosupresor = Doctrine_Core::getTable('Inmunosupresores')->find($request->getParameter('id'));
-    $this->forward404Unless($inmunosupresor);
+    $induccion = Doctrine_Core::getTable('Induccion')->find($request->getParameter('id'));
+    $this->forward404Unless($induccion);
     
-    $this->form = new InmunosupresoresForm($inmunosupresor);
+    $this->form = new InduccionForm($induccion);
     
     $body = $this->getPartial('small_form', array('form'=>$this->form));
     

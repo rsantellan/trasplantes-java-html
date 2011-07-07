@@ -16,4 +16,11 @@ class InmunosupresoresTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Inmunosupresores');
     }
+	
+	public function retrieveAll($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+	{
+	  $query = $this->createQuery("in");
+	  $query->setHydrationMode($hydrationMode);
+	  return $query->execute();
+	}		
 }

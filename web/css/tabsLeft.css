@@ -29,8 +29,8 @@
 	text-align: right;
 }
 .tabs-left > div {
-	height: 35em;
-  margin-left: 11em;
+	height: 45em;
+	margin-left: 11em;
 }
 
 
@@ -45,4 +45,17 @@
 {
 	color: #253183;
   margin-bottom: 5px;
+}
+
+/* Este es el "tooltip" para usar con tabs */
+
+.tooltip_text
+{
+  position: absolute;
+  background-color: #FFFFCC;
+}
+
+.tooltip_text_top
+{
+  top: 70px;
 }

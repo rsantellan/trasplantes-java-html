@@ -12,5 +12,6 @@ class InduccionForm extends BaseInduccionForm
 {
   public function configure()
   {
+	unset($this["trasplante_list"]);
   }
 }

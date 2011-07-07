@@ -17,24 +17,3 @@
 <div id="nefropatia_container" style="block: none">
   
 </div>
-
-<!--
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Nombre</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach ($list as $nefropatia): ?>
-    <tr>
-      <td><a href="<?php echo url_for('Nefropatia/show?id='.$nefropatia->getId()) ?>"><?php echo $nefropatia->getId() ?></a></td>
-      <td><?php echo $nefropatia->getNombre() ?></td>
-    </tr>
-    <?php endforeach; ?>
-  </tbody>
-</table>
-
-  <a href="<?php echo url_for('Nefropatia/new') ?>">New</a>
--->

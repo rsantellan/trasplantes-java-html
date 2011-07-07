@@ -28,4 +28,11 @@ class InduccionTable extends Doctrine_Table
       $query->setHydrationMode($hydrationMode);
       return $query->execute();
     }    
+	
+	public function retrieveAll($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+	{
+	  $query = $this->createQuery("ind");
+	  $query->setHydrationMode($hydrationMode);
+	  return $query->execute();
+	}		
 }

@@ -1,6 +1,50 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+#Inducciones
+
+eliminarInduccion:
+  url:   /eliminar-induccion
+  param: { module: Inducciones, action: delete }
+
+crearInduccion:
+  url:   /crear-induccion
+  param: { module: Inducciones, action: new }
+
+salvarInduccion:
+  url:   /salvar-induccion
+  param: { module: Inducciones, action: save }
+
+editarInduccion:
+  url:   /editar-induccion
+  param: { module: Inducciones, action: edit }
+
+manejarInduccion:
+  url:   /Inducciones
+  param: { module: Inducciones, action: index }
+
+#Inmunosupresores
+
+eliminarInmunosupresores:
+  url:   /eliminar-inmunosupresores
+  param: { module: Inmunosupresores, action: delete }
+
+crearInmunosupresores:
+  url:   /crear-inmunosupresores
+  param: { module: Inmunosupresores, action: new }
+
+salvarInmunosupresores:
+  url:   /salvar-inmunosupresores
+  param: { module: Inmunosupresores, action: save }
+
+editarInmunosupresores:
+  url:   /editar-inmunosupresores
+  param: { module: Inmunosupresores, action: edit }
+
+manejarInmunosupresores:
+  url:   /Inmunosupresores
+  param: { module: Inmunosupresores, action: index }
+
 # serol valor
 crearSerolValor:
   url:   /crear-serol-valor

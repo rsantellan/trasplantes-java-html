@@ -15,5 +15,6 @@ class ProjectConfiguration extends sfProjectConfiguration
     $this->enablePlugins('mdMediaManagerPlugin');
     $this->enablePlugins('mdUserDoctrinePlugin');
     $this->enablePlugins('mdBulkImportExportPlugin');
+	$this->enablePlugins('mdTranslatorPlugin');
   }
 }

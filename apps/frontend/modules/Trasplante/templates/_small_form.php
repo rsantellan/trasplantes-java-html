@@ -263,7 +263,6 @@
         </div>    
       </div>
 
-      <div class="clear"></div>	
       <div class="form_accordion_block">
         <h4><?php echo __("Trasplante_numero de transf");?></h4>
         <div class="form_block_field<?php if($form['numero_transf']->hasError()):?> error_msg<?php endif; ?>">
@@ -282,7 +281,9 @@
           ?>
         </div>    
       </div>    
-      
+   
+	  <div class="clear"></div>
+	  
       <div class="form_accordion_block">
         <h4><?php echo __("Trasplante_trans previas");?></h4>
         <div class="form_block_field<?php if($form['trans_previas']->hasError()):?> error_msg<?php endif; ?>">
@@ -302,8 +303,6 @@
         ?>
         </div>    
       </div>
-      
-      <div class="clear"></div>
       
       <div class="form_accordion_block">
         <h4><?php echo __("Trasplante_embarazo");?></h4>
@@ -342,8 +341,6 @@
         ?>
         </div>    
       </div>
-
-      <div class="clear"></div>
 
       <div class="form_accordion_block">
         <h4><?php echo __("Trasplante_autoac");?></h4>
@@ -485,8 +482,7 @@
         ?>
         </div>    
       </div>  
-      <div class="clear"></div>
-
+      
       <div class="form_accordion_block">
         <h4><?php echo __("Trasplante_Numero de venas");?></h4>
         <div class="form_block_field<?php if($form['numero_venas']->hasError()):?> error_msg<?php endif; ?>">
@@ -506,6 +502,8 @@
         </div>    
       </div>  
 
+	  <div class="clear"></div>
+	  
       <div class="form_accordion_block">
         <h4><?php echo __("Trasplante_Ureter");?></h4>
         <div class="form_block_field<?php if($form['ureter']->hasError()):?> error_msg<?php endif; ?>">
@@ -525,9 +523,7 @@
         </div>    
       </div>
       
-      <div class="clear"></div>
-
-        <div class="form_accordion_block">
+      <div class="form_accordion_block">
         <h4><?php echo __("Trasplante_liquido de perfusion");?></h4>
         <div class="form_block_field<?php if($form['liquido_perfusion']->hasError()):?> error_msg<?php endif; ?>">
         <?php echo $form['liquido_perfusion']->render() ?>
@@ -606,8 +602,6 @@
         </div>    
       </div>	
       
-      <div class="clear"></div>
-
       <div class="form_accordion_block">
         <h4><?php echo __("Trasplante_anast ureteral");?></h4>
         <div class="form_block_field<?php if($form['anast_ureteral']->hasError()):?> error_msg<?php endif; ?>">
@@ -734,7 +728,6 @@
         </div>    
       </div>	
 
-      <div class="clear"></div>	
       <div class="form_accordion_block">
         <h4><?php echo __("Trasplante_tq de banco");?></h4>
         <div class="form_block_field<?php if($form['tq_de_banco']->hasError()):?> error_msg<?php endif; ?>">
@@ -811,8 +804,6 @@
         ?>
         </div>    
       </div>
-
-      <div class="clear"></div>
 
       <div class="form_accordion_block">
         <h4><?php echo __("Trasplante_necesidad de repefundir");?></h4>
@@ -895,9 +886,6 @@
         </div>    
       </div>
       
-      <div class="clear"></div>
-      
-      
       <div class="form_accordion_block">
         <h4><?php echo __("Trasplante_t isq fria min");?></h4>
         <div class="form_block_field<?php if($form['t_isq_fria_min']->hasError()):?> error_msg<?php endif; ?>">
@@ -917,6 +905,8 @@
         </div>    
       </div>
 
+	  <div class="clear"></div>
+	  
       <div class="form_accordion_block">
         <h4><?php echo __("Trasplante_t isq tibia hs");?></h4>
         <div class="form_block_field<?php if($form['t_isq_tibia_hs']->hasError()):?> error_msg<?php endif; ?>">
@@ -935,9 +925,6 @@
         ?>
         </div>    
       </div>
-
-      <div class="clear"></div>
-
 
       <div class="form_accordion_block">
         <h4><?php echo __("Trasplante_reperfusion");?></h4>
@@ -1095,6 +1082,10 @@
       
   </div>
 <div class="clear"></div>
+<div class="inputs_container">
+  
+  <input type="submit" value="<?php echo __("Trasplante_Guardar")?>"/>
+</div>
 </form>
 
 <div class="clear"></div>

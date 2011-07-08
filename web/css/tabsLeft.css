@@ -26,10 +26,10 @@
 .tabs-left .ui-tabs-nav li a {
 	float: right;
 	width: 100%;
-	text-align: right;
+	text-align: left;
 }
 .tabs-left > div {
-	height: 45em;
+	height: 30em;
 	margin-left: 11em;
 }
 

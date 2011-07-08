@@ -1,0 +1,999 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file source-language="EN" target-language="es" datatype="plaintext" original="messages" date="2011-07-08T13:18:21Z" product-name="messages">
+    <header/>
+    <body>
+      <trans-unit id="1">
+        <source>paciente_Titulo global</source>
+        <target>Pacientes</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>menu_inicio</source>
+        <target>Inicio</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>menu_manejar</source>
+        <target>Manejar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>menu_consultas</source>
+        <target>Consultas</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>donante_manejar</source>
+        <target>Manejar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="6">
+        <source>serol_seroles</source>
+        <target>Seroles</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="7">
+        <source>donante_manejar causa muerte</source>
+        <target>Manejar causa de muerte</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="8">
+        <source>donante_identificador</source>
+        <target>Identificador</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="9">
+        <source>donante_error </source>
+        <target>Error</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="10">
+        <source>donante_tipo de donante</source>
+        <target>Tipo de donante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="11">
+        <source>donante_sexo</source>
+        <target>Sexo</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="12">
+        <source>donante_edad</source>
+        <target>Edad</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="13">
+        <source>donante_enastab hemod</source>
+        <target>Enastabilidad hemodial</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="14">
+        <source>donante_causa de muerte</source>
+        <target>Causa de muerte</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="15">
+        <source>donante_cr p</source>
+        <target>Cr/p</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="16">
+        <source>donante_grupo sanguineo</source>
+        <target>Grupo sanguíneo</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="17">
+        <source>donante_relacion filiar</source>
+        <target>Relación filiar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="18">
+        <source>donante_peso</source>
+        <target>Peso</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="19">
+        <source>donante_altura</source>
+        <target>Altura</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="20">
+        <source>donante_lista de organos</source>
+        <target>Lista de organos</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="21">
+        <source>donante_lista de antecedentes</source>
+        <target>Lista de antecedentes</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="22">
+        <source>donante_otros</source>
+        <target>Otros</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="23">
+        <source>donante_Guardar</source>
+        <target>Guardar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="24">
+        <source>donante_esta seguro de querer eliminar?</source>
+        <target>¿Esta seguro de querer eliminar el donante?</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="25">
+        <source>donanteAntecedentes_manejar</source>
+        <target>Manejar antecedentes</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="26">
+        <source>donante_ver donante</source>
+        <target>Ver donante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="27">
+        <source>donanteAntecedentes_nombre</source>
+        <target>Nombre</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="28">
+        <source>donanteAntecedentes_error </source>
+        <target>Error</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="29">
+        <source>donanteAntecedentes_error no se puede borrar por que un donante la esta usando</source>
+        <target>Error: no se puede eliminar por que un donante lo esta utilizando</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="30">
+        <source>donanteAntecedentes_Guardar</source>
+        <target>Guardar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="31">
+        <source>donanteAntecedentes_esta seguro de querer eliminar?</source>
+        <target>¿Esta seguro de querer eliminar el antecedente?</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="32">
+        <source>donanteCausaMuerte_manejar</source>
+        <target>Manejar causa de muerte</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="33">
+        <source>donanteCausaMuerte_nombre</source>
+        <target>Nombre</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="34">
+        <source>donanteCausaMuerte_error </source>
+        <target>Errro</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="35">
+        <source>donanteCausaMuerte_error no se puede borrar por que un donante la esta usando</source>
+        <target>Error: no se puede borrar por que un donante lo esta utilizando</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="36">
+        <source>donanteCausaMuerte_Guardar</source>
+        <target>Guardar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="37">
+        <source>donanteCausaMuerte_esta seguro de querer eliminar?</source>
+        <target>¿Esta seguro de querer eliminar la causa de muerte?</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="38">
+        <source>donanteOrganos_manejar</source>
+        <target>Manejar organos</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="39">
+        <source>donanteOrgano_nombre</source>
+        <target>Nombre</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="40">
+        <source>donanteOrgano_error </source>
+        <target>Error</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="41">
+        <source>donanteOrgano_error no se puede borrar por que un donante la esta usando</source>
+        <target>Error: no se puede borrar por que un donante la esta utilizando </target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="42">
+        <source>donanteOrgano_Guardar</source>
+        <target>Guardar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="43">
+        <source>donanteOrgano_esta seguro de querer eliminar?</source>
+        <target>¿Esta seguro de querer eliminar el órgano?</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="44">
+        <source>paciente_Estado del paciente :</source>
+        <target>Estado del paciente:</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="45">
+        <source>paciente_El paciente fallecio con trasplante funcionando.</source>
+        <target>El paciente falleció con trasplante funcionando.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="46">
+        <source>paciente_El paciente fallecio sin el trasplante funcionando.</source>
+        <target>El paciente falleció sin el trasplante funcionando</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="47">
+        <source>muertePaciente_ver la informacion de la muerte del paciente titulo</source>
+        <target>Ver la información de la muerte del paciente.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="48">
+        <source>muertePaciente_ver informacion de la muerte del paciente</source>
+        <target>Ver información de la muerte del paciente</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="49">
+        <source>pacienteMuerte_Causa</source>
+        <target>Causa</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="50">
+        <source>pacienteMuerte_Fecha de muerte</source>
+        <target>Fecha de muerte</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="51">
+        <source>pacienteMuerte_Trasplante funcionando</source>
+        <target>Trasplante funcionando</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="52">
+        <source>paciente_El paciente no se a realizado ningun trasplante.</source>
+        <target>El paciente no se a realizado ningún trasplante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="53">
+        <source>paciente_El paciente se hizo un trasplante que resulto en perdida.</source>
+        <target>El paciente se realizo un trasplante que resulto en perdida.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="54">
+        <source>paciente_El paciente esta vivo con el trasplante funcionando.</source>
+        <target>El paciente esta vivo con el trasplante funcionando.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="55">
+        <source>induccion_manejar</source>
+        <target>Manejar inducción</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="56">
+        <source>induccion_nombre</source>
+        <target>Nombre</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="57">
+        <source>induccion_error </source>
+        <target>Error</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="58">
+        <source>induccion_error no se puede borrar por que un trasplante la esta usando</source>
+        <target>Error: no se puede borrar por que un trasplante la esta utilizando</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="59">
+        <source>induccion_Guardar</source>
+        <target>Guardar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="60">
+        <source>induccion_esta seguro de querer eliminar?</source>
+        <target>¿Esta seguro de querer eliminar la inducción?</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="61">
+        <source>inmunosupresores_manejar</source>
+        <target>Manejar inmunosupresores</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="62">
+        <source>inmunosupresores_nombre</source>
+        <target>Nombre</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="63">
+        <source>inmunosupresores_error </source>
+        <target>Error</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="64">
+        <source>inmunosupresores_error no se puede borrar por que un trasplante la esta usando</source>
+        <target>Error: no se puede eliminar por que un trasplante lo esta utilizando.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="65">
+        <source>inmunosupresores_Guardar</source>
+        <target>Guardar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="66">
+        <source>inmunosupresores_esta seguro de querer eliminar?</source>
+        <target>¿Esta seguro de querer eliminar el inmunosupresor?</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="67">
+        <source>nefropatias_manejar</source>
+        <target>Manejar nefropatias</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="68">
+        <source>nefropatias_nombre</source>
+        <target>Nombre</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="69">
+        <source>nefropatias_error </source>
+        <target>Error</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="70">
+        <source>nefropatias_error no se puede borrar por que un paciente la esta usando</source>
+        <target>Error: no se puede eliminar por que un paciente la esta utilizando</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="71">
+        <source>nefropatias_Guardar</source>
+        <target>Guardar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="72">
+        <source>nefropatias_esta seguro de querer eliminar?</source>
+        <target>¿Esta seguro de querer eliminar la nefropatia?</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="73">
+        <source>muertePaciente_editar informacion a la muerte del paciente.</source>
+        <target>Editar la información de la muerte del paciente</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="74">
+        <source>muertePaciente_agregar informacion a la nueva muerte del paciente.</source>
+        <target>Agregar información a la muerte del paciente.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="75">
+        <source>pacienteMuerte_error </source>
+        <target>Error</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="76">
+        <source>ayuda_formato de las fechas yy - mm - dd</source>
+        <target>El formato de las fechas es año -mes - día</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="77">
+        <source>pacienteMuerte_Cancelar</source>
+        <target>Cancelar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="78">
+        <source>pacienteMuerte_Eliminar</source>
+        <target>Eliminar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="79">
+        <source>pacienteMuerte_Esta seguro de querer eliminar?</source>
+        <target>¿Esta seguro de querer eliminar el registro de muerte?</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="80">
+        <source>pacienteMuerte_Guardar</source>
+        <target>Guardar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="81">
+        <source>pacientePreTrasplante_Titulo de uno nuevo</source>
+        <target>Nuevo pre trasplante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="82">
+        <source>pacientePreTrasplante_the</source>
+        <target>THE</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="83">
+        <source>pacientePreTrasplante_error </source>
+        <target>Error</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="84">
+        <source>pacientePreTrasplante_fecha de ingreso a la lista</source>
+        <target>Fecha de ingreso a la lista</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="85">
+        <source>pacientePreTrasplante_modalidad de dialisis</source>
+        <target>Modalidad de dialisis</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="86">
+        <source>pacientePreTrasplante_diabetes</source>
+        <target>Diabetes</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="87">
+        <source>pacientePreTrasplante_imc</source>
+        <target>Imc</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="88">
+        <source>pacientePreTrasplante_origen</source>
+        <target>Origen</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="89">
+        <source>pacientePreTrasplante_pbr</source>
+        <target>Pbr</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="90">
+        <source>pacientePreTrasplante_hta</source>
+        <target>Hta</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="91">
+        <source>pacientePreTrasplante_obesidad</source>
+        <target>Obesidad</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="92">
+        <source>pacientePreTrasplante_dislipemia</source>
+        <target>Dislipemia</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="93">
+        <source>pacientePreTrasplante_tabaquismo</source>
+        <target>Tabaquismo</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="94">
+        <source>pacientePreTrasplante_iam</source>
+        <target>Iam</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="95">
+        <source>pacientePreTrasplante_ave</source>
+        <target>Ave</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="96">
+        <source>pacientePreTrasplante_revasc cardio</source>
+        <target>Revasculación cardiovascular</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="97">
+        <source>pacientePreTrasplante_revasc cardio </source>
+        <target>Revasculación cardiovascular</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="98">
+        <source>pacientePreTrasplante_cancelar</source>
+        <target>Cancelar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="99">
+        <source>pacientePreTrasplante_guardar</source>
+        <target>Guardar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="100">
+        <source>buscar_escriba el nombre de la persona a buscar</source>
+        <target>Escriba el nombre del paciente a buscar.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="101">
+        <source>buscar_ayuda sobre buscar persona</source>
+        <target>Escriba el nombre o apellido del paciente y selecciónelo de la lista. Después presione buscar.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="102">
+        <source>buscar_agregar nueva persona</source>
+        <target>Agregar nuevo paciente.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="103">
+        <source>buscar_buscar persona</source>
+        <target>Buscar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="104">
+        <source>paciente_Editar Paciente</source>
+        <target>Editar paciente.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="105">
+        <source>paciente_ver la informacion del paciente titulo</source>
+        <target>Ver la información del paciente.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="106">
+        <source>paciente_ver la informacion del paciente</source>
+        <target>Ver la información del paciente.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="107">
+        <source>preTrasplante_iniciar proceso de pretrasplante</source>
+        <target>Iniciar proceso de pre trasplante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="108">
+        <source>pacientePreTrasplante_Informacion del pretrasplante</source>
+        <target>Información del pre trasplante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="109">
+        <source>pacientePreTrasplante_fecha de egreso de la lista (fecha del trasplante)</source>
+        <target>Fecha de egreso de la lista (fecha del trasplante)</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="110">
+        <source>pacientePreTrasplante_Hubo perdida del trasplante.</source>
+        <target>Hubo perdida del trasplante.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="111">
+        <source>pacientePreTrasplante_No se a realizado el trasplante de este pretrasplante</source>
+        <target>No se a realizado el trasplante de este pre trasplante.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="112">
+        <source>paciente_Agregar Paciente</source>
+        <target>Agregar paciente.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="113">
+        <source>paciente_editar el estado del paciente</source>
+        <target>Editar el estado del paciente.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="114">
+        <source>paciente_Nombre</source>
+        <target>Nombre</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="115">
+        <source>paciente_Apellido</source>
+        <target>Apellido</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="116">
+        <source>paciente_Cedula de identida</source>
+        <target>Cédula de identidad</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="117">
+        <source>paciente_Numero del fondo nacional de recursos</source>
+        <target>Número del fondo nacional de recursos.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="118">
+        <source>paciente_Raza</source>
+        <target>Raza</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="119">
+        <source>paciente_Sexo</source>
+        <target>Sexo</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="120">
+        <source>paciente_Fecha de nacimiento</source>
+        <target>Fecha de nacimiento.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="121">
+        <source>paciente_Fecha de dialisis</source>
+        <target>Fecha de diálisis.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="122">
+        <source>paciente_Nefropatia</source>
+        <target>Nefropatia</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="123">
+        <source>paciente_Grupo sanguineo</source>
+        <target>Grupo sanguíneo</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="124">
+        <source>paciente_error </source>
+        <target>error</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="125">
+        <source>Nefropatia_agregar una nueva</source>
+        <target>Agregar nueva nefropatia.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="126">
+        <source>paciente_Cancelar</source>
+        <target>Cancelar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="127">
+        <source>paciente_Guardar</source>
+        <target>Guardar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="128">
+        <source>serol_manejar</source>
+        <target>Manejar seroles</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="129">
+        <source>serol_ver donante</source>
+        <target>Ver donante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="130">
+        <source>serol_nombre</source>
+        <target>Nombre</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="131">
+        <source>serol_error </source>
+        <target>Error</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="132">
+        <source>serol_error no se puede borrar por que un donante la esta usando</source>
+        <target>Error no se puede borrar por que un donante o un trasplante lo esta usando.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="133">
+        <source>serol_Guardar</source>
+        <target>Guardar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="134">
+        <source>serol_esta seguro de querer eliminar?</source>
+        <target>¿Esta seguro de querer eliminar el serol?</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="135">
+        <source>serol_manejar valor</source>
+        <target>Manejar valor</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="136">
+        <source>serolValor_nombre</source>
+        <target>Nombre</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="137">
+        <source>serolValor_error </source>
+        <target>Error</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="138">
+        <source>serolValor_error no se puede borrar por que un donante la esta usando</source>
+        <target>Error: no se puede borrar por que un donante lo esta utilizando</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="139">
+        <source>serolValor_Guardar</source>
+        <target>Guardar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="140">
+        <source>serolValor_esta seguro de querer eliminar?</source>
+        <target>¿Esta seguro de querer eliminar este valor de un serol?</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="141">
+        <source>Trasplante_Titulo de uno nuevo</source>
+        <target>Nuevo trasplante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="142">
+        <source>Trasplante_contenedor 1</source>
+        <target>Contenedor 1</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="143">
+        <source>Trasplante_error en acordion</source>
+        <target>(Error*)</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="144">
+        <source>Trasplante_contenedor 2</source>
+        <target>Contenedor 2</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="145">
+        <source>Trasplante_contenedor 3</source>
+        <target>Contenedor 3</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="146">
+        <source>Trasplante_contenedor 4</source>
+        <target>Contenedor 4</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="147">
+        <source>Trasplante_contenedor 5</source>
+        <target>Contenedor 5</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="148">
+        <source>Trasplante_contenedor 6</source>
+        <target>Contenedor 6</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="149">
+        <source>Trasplante_contenedor 7</source>
+        <target>Contenedor 7</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="150">
+        <source>Trasplante_contenedor 8</source>
+        <target>Contenedor 8</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="151">
+        <source>Trasplante_contenedor 9</source>
+        <target>Contenedor 9</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="152">
+        <source>Trasplante_contenedor 10</source>
+        <target>Contenedor 10</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="153">
+        <source>Trasplante_Fecha del trasplante</source>
+        <target>Fecha del trasplante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="154">
+        <source>Trasplante_error </source>
+        <target>Error</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="155">
+        <source>Trasplante_Donante</source>
+        <target>Donante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="156">
+        <source>Trasplante_Numero de trasplantes realizados</source>
+        <target>Número de trasplante realizados.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="157">
+        <source>Trasplante_pra max</source>
+        <target>Pra max</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="158">
+        <source>Trasplante_pra tr</source>
+        <target>Pra tr</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="159">
+        <source>Trasplante_numero de transf</source>
+        <target>Número de transfusiones</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="160">
+        <source>Trasplante_trans previas</source>
+        <target>Transfusiones previas</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="161">
+        <source>Trasplante_embarazo</source>
+        <target>Embarazo</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="162">
+        <source>Trasplante_Numero de embarazo</source>
+        <target>Número de embarazo</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="163">
+        <source>Trasplante_autoac</source>
+        <target>Autoac</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="164">
+        <source>Trasplante_Numero de compatibilidad AB</source>
+        <target>Número de compatibilidad AB</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="165">
+        <source>Trasplante_Numero de compatibilidad DR</source>
+        <target>Número de compatibilidad DR</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="166">
+        <source>Trasplante_Numero de incompatibilidad AB</source>
+        <target>Número de incompatibilidad AB</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="167">
+        <source>Trasplante_Numero de incompatibilidad DR</source>
+        <target>Número de incompatibilidad DR</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="168">
+        <source>Trasplante_Riñon</source>
+        <target>Riñón</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="169">
+        <source>Trasplante_Numero de arterias</source>
+        <target>Número de arterias</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="170">
+        <source>Trasplante_Numero de venas</source>
+        <target>Número de venas</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="171">
+        <source>Trasplante_Ureter</source>
+        <target>Ureter</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="172">
+        <source>Trasplante_liquido de perfusion</source>
+        <target>Liquido de perfusion</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="173">
+        <source>Trasplante_lado del implante</source>
+        <target>lado del implante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="174">
+        <source>Trasplante_anast venosa</source>
+        <target>Anast venosa</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="175">
+        <source>Trasplante_anast arterial</source>
+        <target>Anast arterial</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="176">
+        <source>Trasplante_anast ureteral</source>
+        <target>Anast ureteral</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="177">
+        <source>Trasplante_cr inicial</source>
+        <target>Cr inicial</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="178">
+        <source>Trasplante_dias rec diuresis</source>
+        <target>Días de recuperación diuresis</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="179">
+        <source>Trasplante_dias rec funcional</source>
+        <target>Días de recuperación funcional</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="180">
+        <source>Trasplante_sangrado i op</source>
+        <target>Sangrado I Op</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="181">
+        <source>Trasplante_lesion arterial</source>
+        <target>Lesión arterial</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="182">
+        <source>Trasplante_tq de banco</source>
+        <target>TQ de banco</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="183">
+        <source>Trasplante_Anomalia vascular</source>
+        <target>Anomalía vascular</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="184">
+        <source>Trasplante_Inestabilidad hemodial</source>
+        <target>Inestabilidad hemodial</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="185">
+        <source>Trasplante_lesion venosa</source>
+        <target>Lesión venosa</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="186">
+        <source>Trasplante_necesidad de repefundir</source>
+        <target>Necesidad de repefundir</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="187">
+        <source>Trasplante_otras complicaciones quirurgicas</source>
+        <target>Otras complicaciones quirúrgicas</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="188">
+        <source>Trasplante_t isq cal min</source>
+        <target>T isq cal min</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="189">
+        <source>Trasplante_t isq fria hs</source>
+        <target>T isq fria hs</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="190">
+        <source>Trasplante_t isq fria min</source>
+        <target>T isq fria min</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="191">
+        <source>Trasplante_t isq tibia hs</source>
+        <target>T isq tibia hs</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="192">
+        <source>Trasplante_reperfusion</source>
+        <target>Reperfusion</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="193">
+        <source>Trasplante_diuresis i op</source>
+        <target>Diuresis I Op</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="194">
+        <source>Trasplante_Inducciones</source>
+        <target>Inducciones</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="195">
+        <source>Trasplante_Inmunosupresores</source>
+        <target>Inmunosupresores</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="196">
+        <source>Trasplante_comentario</source>
+        <target>Comentario</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="197">
+        <source>Trasplante_dialisis</source>
+        <target>Dialisis</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="198">
+        <source>Trasplante_numero de hd</source>
+        <target>Número de hemodialisis</target>
+        <note>es</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -38,12 +38,12 @@ class PacientepretrasplanteActions extends sfActions
     $this->form = new PacientepretrasplanteForm();
 
     $return = $this->processForm($request, $this->form);
-	if(count($return) != 0)
-	{
-	  sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url'));
-	  $this->redirect(url_for("@mostrarPaciente?id=".$return["paciente_id"]));
-	}
-	$this->setTemplate('new');
+    if(count($return) != 0)
+    {
+      sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url'));
+      $this->redirect(url_for("@mostrarPaciente?id=".$return["paciente_id"]));
+    }
+    $this->setTemplate('new');
   }
 
   public function executeEdit(sfWebRequest $request)
@@ -58,8 +58,12 @@ class PacientepretrasplanteActions extends sfActions
     $this->forward404Unless($pacientepretrasplante = Doctrine_Core::getTable('Pacientepretrasplante')->find(array($request->getParameter('id'))), sprintf('Object pacientepretrasplante does not exist (%s).', $request->getParameter('id')));
     $this->form = new PacientepretrasplanteForm($pacientepretrasplante);
 
-    $this->processForm($request, $this->form);
-
+    $return = $this->processForm($request, $this->form);
+    if(count($return) != 0)
+    {
+      sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url'));
+      $this->redirect(url_for("@mostrarPaciente?id=".$return["paciente_id"]));
+    }
     $this->setTemplate('edit');
   }
 

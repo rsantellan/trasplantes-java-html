@@ -191,6 +191,10 @@ manejarNefropatias:
 
 # Trasplante
 
+mostrarTrasplante:
+  url:   /trasplante/:id
+  param: { module: Trasplante, action: show }
+  
 salvarTrasplante:
   url:   /guardar-trasplante/:pre_trasplante_id
   param: { module: Trasplante, action: save }
@@ -199,9 +203,17 @@ iniciarTrasplante:
   url:   /agregar-trasplante/:paciente_id/:pre_trasplante_id
   param: { module: Trasplante, action: new }
 
+# Pre Trasplante
+
+editarPreTrasplante:
+  url:   /editar-pre-trasplante/:id
+  param: { module: Pacientepretrasplante, action: edit }
+
 iniciarPreTrasplante:
   url:   /agregar-pre-trasplante/:paciente_id
   param: { module: Pacientepretrasplante, action: new }
+  
+# Paciente
   
 crearMuertePaciente:
   url:   /muerte-paciente/:id

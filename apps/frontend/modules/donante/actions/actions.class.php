@@ -33,15 +33,18 @@ class donanteActions extends sfActions
   public function executeSave(sfWebRequest $request)
   {
       $parameters = $request->getPostParameters();
-      $seroles_info = $parameters["seroles"];
-      $seroles_valores =  $seroles_info["valor"];
       $seroles_array = array();
-      foreach($seroles_valores as $tipo)
+      if(isset($parameters["seroles"]))
       {
-        foreach($tipo as $valor)
+        $seroles_info = $parameters["seroles"];
+        $seroles_valores =  $seroles_info["valor"];        
+        foreach($seroles_valores as $tipo)
         {
-          array_push($seroles_array, $valor);
-        }
+          foreach($tipo as $valor)
+          {
+            array_push($seroles_array, $valor);
+          }
+        }        
       }
       //var_dump($seroles_array);
       //die;

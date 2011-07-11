@@ -5,7 +5,7 @@
 ?>
 
 <form action="<?php echo url_for('@salvarTrasplante?pre_trasplante_id='.$form->getObject()->getPacientePreTrasplanteId()) ?>" method="post">
-  <?php echo $form->renderHiddenFields(false) ?>
+  <?php echo $form->renderHiddenFields() ?>
   <?php echo $form->renderGlobalErrors() ?>
   
   <?php

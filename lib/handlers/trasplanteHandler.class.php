@@ -28,5 +28,26 @@ class trasplanteHandler
   {
     return Doctrine::getTable("TrasplanteSerol")->retrieveAllSeroles($trasplanteId, $hydrationMode);
   }
-  
+
+  public static function saveSerolesOfTrasplante($trasplanteId, $seroles_valores_id_list)
+  {
+    //Borro todos los seroles que ya existian.
+    $antiguos = self::retrieveAllSerolesOfTrasplante($trasplanteId);
+    foreach($antiguos as $trasplante_serol)
+    {
+      $trasplante_serol->delete();
+    }
+    
+    // Ahora agrego los nuevos.
+    foreach($seroles_valores_id_list as $seroles_valores_id)
+    {
+      $serolValor = serolHandler::retrieveSerolValor($seroles_valores_id);
+      $TrasplanteSerol = new TrasplanteSerol();
+      $TrasplanteSerol->setTrasplanteId($trasplanteId);
+      $TrasplanteSerol->setSerolId($serolValor->getSerolId());
+      $TrasplanteSerol->setSerolValorId($serolValor->getId());
+      $TrasplanteSerol->save();
+    }
+  }
+    
 }

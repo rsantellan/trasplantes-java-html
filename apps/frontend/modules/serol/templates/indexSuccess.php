@@ -1,1 +1,1 @@
-<?php include_partial("indexTemplate", array("list" =>$list)); ?>
+<?php include_partial("indexTemplate", array("list" =>$list, 'trasplante' => $trasplante)); ?>

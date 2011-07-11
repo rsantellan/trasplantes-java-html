@@ -346,7 +346,15 @@ $(document).ready(function(){
         'width'               :   560
     
     });  
-	
+
+  $("#manage_seroles_link").fancybox({
+        'transitionIn'        :   'fade',
+        'transitionOut'       :   'fade',
+        'hideOnOverlayClick'  :   false,
+        'autoDimensions'      :   false,
+        'width'               :   560
+    
+    });
 	
 	
   $("#form_tabs").tabs();

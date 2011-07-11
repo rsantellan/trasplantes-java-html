@@ -13,9 +13,13 @@ class serolActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
     $this->list = serolHandler::retrieveAllSeroles();
-    
-    $body = $this->getPartial('indexTemplate', array('list'=>$this->list));
-    return $this->renderText(mdBasicFunction::basic_json_response(true, array('body' => $body)));
+    $this->trasplante = $request->getParameter('trasplante', 0);
+    if($this->trasplante == 0)
+	{
+	  $body = $this->getPartial('indexTemplate', array('list'=>$this->list, 'trasplante' => $this->trasplante));
+	  return $this->renderText(mdBasicFunction::basic_json_response(true, array('body' => $body)));	  
+	}
+	
   }
 /*
   public function executeShow(sfWebRequest $request)

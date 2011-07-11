@@ -34,6 +34,12 @@ class TrasplanteActions extends sfActions
     $this->form = new TrasplanteForm($trasplante);
   }
 
+  public function executeSave(sfWebRequest $request)
+  {
+	
+	
+  } 
+  
   public function executeCreate(sfWebRequest $request)
   {
     $this->forward404Unless($request->isMethod(sfRequest::POST));

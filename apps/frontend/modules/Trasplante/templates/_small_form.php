@@ -4,7 +4,7 @@
   use_plugin_javascript('mastodontePlugin','fancybox/jquery.fancybox-1.3.1.pack.js','last');
 ?>
 
-<form action="<?php echo url_for('Trasplante/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+<form action="<?php echo url_for('@salvarTrasplante?pre_trasplante_id='.$form->getObject()->getPacientePreTrasplanteId()) ?>" method="post">
   <?php echo $form->renderHiddenFields(false) ?>
   <?php echo $form->renderGlobalErrors() ?>
   
@@ -1014,7 +1014,8 @@
       </div>
       <div class="clear"></div>
             
-      <h4>Seroles</h4>
+      
+	  <?php include_component("Trasplante", "retrieveSeroles", array("id" => $form->getObject()->getId()));?>
     </div>
 
     <div id="contenedor-9">

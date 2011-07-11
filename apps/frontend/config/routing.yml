@@ -189,6 +189,12 @@ manejarNefropatias:
   url:   /nefropatias
   param: { module: Nefropatia, action: index }
 
+# Trasplante
+
+salvarTrasplante:
+  url:   /guardar-trasplante/:pre_trasplante_id
+  param: { module: Trasplante, action: save }
+  
 iniciarTrasplante:
   url:   /agregar-trasplante/:paciente_id/:pre_trasplante_id
   param: { module: Trasplante, action: new }

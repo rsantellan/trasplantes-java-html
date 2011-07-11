@@ -16,4 +16,12 @@ class TrasplanteSerolTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('TrasplanteSerol');
     }
+	
+    public function retrieveAllSeroles($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("ts")
+                  ->addWhere("ts.trasplante_id = ?", $id);
+      $query->setHydrationMode($hydrationMode);
+      return $query->execute();      
+    }	
 }

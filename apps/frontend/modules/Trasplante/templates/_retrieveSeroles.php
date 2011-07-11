@@ -1,7 +1,7 @@
-<div class="seroles_container all_seroles_container">
+<div id="trasplante_serol_container" class="seroles_container all_seroles_container">
 <?php
 $serolesAsociados = array();
-foreach($serolesDonante as $serol)
+foreach($serolesTrasplante as $serol)
 {
   $serolesAsociados[$serol['serol_valor_id']] = $serol['serol_valor_id'];
 }
@@ -10,7 +10,7 @@ foreach($serolesDonante as $serol)
 
   <div class="seroles_container_title">
     <label><?php echo __("serol_seroles");?></label>
-    <a href="javascript:void(0)" class="simple_tip_container" onclick="return donantesManagement.getInstance().showSerolesManagement('<?php echo url_for("@manejarSeroles");?>');">
+    <a href="<?php echo url_for("@manejarSeroles?trasplante=1");?>" class="simple_tip_container" id="manage_seroles_link">
       <?php echo image_tag("add_block.png", array("width" => 24)); ?>
       <div class="tooltip_text"><?php echo __("serol_manejar seroles");?></div>		
     </a>

@@ -13,7 +13,9 @@
 <input type="hidden" id="serol_show_url_input" value="<?php echo url_for("@editarSerol");?>"/>
 
   <div class="clear"></div>
-  <a href="javascript:void(0)" onclick="donantesManagement.getInstance().verDonante();"><?php echo __("serol_ver donante");?></a>
+  <?php if($trasplante == 0): ?>
+	<a href="javascript:void(0)" onclick="donantesManagement.getInstance().verDonante();"><?php echo __("serol_ver donante");?></a>
+  <?php endif; ?>
 </div>  
 
 <div class="clear"></div>

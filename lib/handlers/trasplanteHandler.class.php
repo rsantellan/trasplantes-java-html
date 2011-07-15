@@ -18,6 +18,10 @@ class trasplanteHandler
     return Doctrine::getTable("Trasplante")->retriveByPacientePreTrasplanteId($PreTrasplanteId, $hydrationMode);
   }
 
+  public static function retriveById($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+    return Doctrine::getTable("Trasplante")->retriveById($trasplanteId, $hydrationMode);
+  }
 
   public static function retriveAllInduccionesByTrasplanteId($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
   {

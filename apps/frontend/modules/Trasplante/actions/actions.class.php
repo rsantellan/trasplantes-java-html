@@ -19,7 +19,7 @@ class TrasplanteActions extends sfActions
 
   public function executeShow(sfWebRequest $request)
   {
-    $this->trasplante = Doctrine_Core::getTable('Trasplante')->find(array($request->getParameter('id')));
+    $this->trasplante = trasplanteHandler::retriveById($request->getParameter('id'), Doctrine_Core::HYDRATE_ARRAY );
     $this->forward404Unless($this->trasplante);
   }
 

@@ -1,8 +1,13 @@
+
+<ul>
+  <li></li>
+</ul>
+
 <table>
   <tbody>
     <tr>
       <th>Id:</th>
-      <td><?php echo $trasplante->getId() ?></td>
+      <td><?php echo $trasplante["id"]?></td>
     </tr>
     <tr>
       <th>Paciente pre trasplante:</th>

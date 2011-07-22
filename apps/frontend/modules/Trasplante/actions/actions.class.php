@@ -19,6 +19,7 @@ class TrasplanteActions extends sfActions
 
   public function executeShow(sfWebRequest $request)
   {
+	$this->id = $request->getParameter('id');
     $this->trasplante = trasplanteHandler::retriveById($request->getParameter('id'), Doctrine_Core::HYDRATE_ARRAY );
     $this->forward404Unless($this->trasplante);
   }
@@ -101,6 +102,7 @@ class TrasplanteActions extends sfActions
   {
     $this->forward404Unless($trasplante = Doctrine_Core::getTable('Trasplante')->find(array($request->getParameter('id'))), sprintf('Object trasplante does not exist (%s).', $request->getParameter('id')));
     $this->form = new TrasplanteForm($trasplante);
+	$this->setTemplate('new');
   }
 
   public function executeUpdate(sfWebRequest $request)

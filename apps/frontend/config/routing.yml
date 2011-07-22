@@ -147,6 +147,10 @@ manejarDonanteCausaMuerte:
   param: { module: donanteCausaMuerte, action: index }
 
 #donante  
+mostrarDonante:
+  url:   /mostrar-donante/:id
+  param: { module: donante, action: show }
+  
 eliminarDonante:
   url:   /eliminar-donante
   param: { module: donante, action: delete }

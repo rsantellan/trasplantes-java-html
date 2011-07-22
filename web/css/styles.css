@@ -386,3 +386,58 @@ Sidebar no lo puse por ahora
 	color: #253183;
   margin-bottom: 5px;
 }
+
+/*
+ Estilos del show de trasplante.
+*/
+
+.trasplante_min_info_basica
+{
+  border-style: dotted;
+  border-width: 1px;
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.trasplante_min_info_basica .slide
+{
+	background: url("/images/btn-slide.gif") no-repeat scroll center top transparent;
+    margin: 0;
+    padding: 0;
+}
+.trasplante_min_info_basica_link
+{
+	background: url("/images/white-arrow.gif") no-repeat scroll right -50px transparent;
+	color: #FFFFFF;
+    display: block;
+    font: bold 120%/100% Arial,Helvetica,sans-serif;
+    height: 31px;
+    margin: 0 auto;
+    padding: 10px 10px 0 0;
+    text-align: center;
+    text-decoration: none;
+    width: 144px;
+}
+
+.trasplante_min_info_basica_link_active {
+    background-position: right 12px;
+}
+.trasplante_info_basica
+{
+  display: none;
+}
+
+.trasplante_info_basica ul.trasplante_info_ul
+{
+  background-color: #D8F0F8;
+  float: left;
+  list-style-type: none !important;
+  border-style: dotted;
+  border-width: 1px;
+  margin-left: 10px;
+}
+
+.trasplante_info_basica ul.trasplante_info_ul li
+{
+  list-style-image: none !important;
+}

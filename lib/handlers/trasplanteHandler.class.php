@@ -27,7 +27,12 @@ class trasplanteHandler
   {
     return Doctrine::getTable("Induccion")->retriveAllInduccionesByTrasplanteId($trasplanteId, $hydrationMode);
   }
-    
+
+  public static function retriveAllInmunosupresoresByTrasplanteId($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+    return Doctrine::getTable("Inmunosupresores")->retriveAllInmunosupresoresByTrasplanteId($trasplanteId, $hydrationMode);
+  }
+  
   public static function retrieveAllSerolesOfTrasplante($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
   {
     return Doctrine::getTable("TrasplanteSerol")->retrieveAllSeroles($trasplanteId, $hydrationMode);

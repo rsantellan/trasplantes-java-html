@@ -194,7 +194,14 @@ manejarNefropatias:
   param: { module: Nefropatia, action: index }
 
 # Trasplante
+guardarFechaAlta:
+  url:   /trasplante/guardarFechaAlta
+  param: { module: Trasplante, action: guardarFechaAlta }
 
+cambiarFechaAlta:
+  url:   /trasplante/cambiarFecha/:id
+  param: { module: Trasplante, action: cambiarFechaAlta }
+  
 mostrarTrasplante:
   url:   /trasplante/:id
   param: { module: Trasplante, action: show }

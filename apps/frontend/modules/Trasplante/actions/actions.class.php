@@ -87,6 +87,34 @@ class TrasplanteActions extends sfActions
       $this->setTemplate('new');
   } 
   
+  public function executeCambiarFechaAlta(sfWebRequest $request)
+  {
+    $id = $request->getParameter("id");
+    $defaults = array();
+    $defaults["id"] = $id;
+    $this->form = new cambiarFechaAltaTrasplanteForm($defaults);
+  }
+
+  public function executeGuardarFechaAlta(sfWebRequest $request)
+  {
+    $parameters = $request->getPostParameters();
+    $id = $parameters["cambiarFechaAltaTrasplante"]["id"];
+    $defaults = array();
+    $defaults["id"] = $id;
+    $this->form = new cambiarFechaAltaTrasplanteForm($defaults);
+    $this->form->bind($request->getParameter($this->form->getName()));
+    if($this->form->isValid())
+    {
+      $this->form->save();
+      die('valido');
+    }
+    else
+    {
+      die('no valido');
+    }
+    die;
+  }  
+  
   public function executeCreate(sfWebRequest $request)
   {
     $this->forward404Unless($request->isMethod(sfRequest::POST));
@@ -102,7 +130,7 @@ class TrasplanteActions extends sfActions
   {
     $this->forward404Unless($trasplante = Doctrine_Core::getTable('Trasplante')->find(array($request->getParameter('id'))), sprintf('Object trasplante does not exist (%s).', $request->getParameter('id')));
     $this->form = new TrasplanteForm($trasplante);
-	$this->setTemplate('new');
+    $this->setTemplate('new');
   }
 
   public function executeUpdate(sfWebRequest $request)

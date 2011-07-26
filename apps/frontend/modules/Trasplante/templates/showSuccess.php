@@ -1,5 +1,5 @@
 <?php 
-  use_helper("date");
+  use_helper("Date");
   use_helper('mdAsset');
   use_plugin_stylesheet('mastodontePlugin', '../js/fancybox/jquery.fancybox-1.3.1.css');
   use_plugin_javascript('mastodontePlugin','fancybox/jquery.fancybox-1.3.1.pack.js','last');
@@ -17,6 +17,22 @@
   <?php include_partial("showTrasplante", array("id" => $id)); ?>
 </div>
 <div class="clear"></div>
+<div class="trasplante_fecha_alta_reoperaciones_container">
+  <div class="trasplante_fecha_alta_container">
+    <?php echo __("Trasplante_Fecha de alta del trasplante");?> :
+    <label class="bold_text">
+      <?php if(!is_null($trasplante["fecha_alta"])): ?>
+        <?php echo format_date($trasplante['fecha_alta'], 'D'); ?>
+      <?php else: ?>
+        <?php echo __("Trasplante_No tiene Fecha de alta del trasplante");?>
+      <?php endif; ?>
+    </label> 
+    <a href="<?php echo url_for("@cambiarFechaAlta?id=".$id);?>"><?php echo __("Trasplante_Cambiar Fecha de alta del trasplante");?></a>
+  </div>
+  <div class="trasplante_reoperaciones_container">
+    
+  </div>
+</div>
 <a href="<?php echo url_for('Trasplante/edit?id='.$id) ?>">Edit</a>
 &nbsp;
 <a href="<?php echo url_for('Trasplante/index') ?>">List</a>

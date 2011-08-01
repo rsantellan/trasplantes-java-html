@@ -377,6 +377,7 @@ class transplanteConvertorHandler
   
   public static function saveAllTrasplanteReoperacion($username,$password, $database, $starting = 0, $quantity =0)
   {
+      //return true;
       mysql_connect("localhost",$username,$password);
 
       @mysql_select_db($database) or die( "Unable to select database");
@@ -400,8 +401,8 @@ class transplanteConvertorHandler
         $id_trasplante = mysql_result($result,$i,"id_trasplante");
         $fecha = mysql_result($result,$i,"fecha");
         $descripcion = mysql_result($result,$i,"descripcion");
-        $complicacion = mysql_result($result,$i,"complicacion");
-        
+        $complicacionId = mysql_result($result,$i,"complicacion");
+        //echo "El trasplante con id: ".$fecha."\n";
         $idPretrasplante = transplanteConvertorHandler::retrievePreTrasplanteId($username,$password, $database, $id_trasplante);
         $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $idPretrasplante);
 
@@ -412,13 +413,20 @@ class transplanteConvertorHandler
 
           $save = false;
         }
-
-        $complicacion = Doctrine::getTable("TrasplanteComplicaciones")->find($complicacion);
+        $infecciosa = false;
+        $complicacion = Doctrine::getTable("TrasplanteComplicacionesNoInfecciosas")->find($complicacionId);
         if(!$complicacion)
         {
-          echo "El TrasplanteComplicaciones con id: ".$complicacion." no existe en la base trasplante_reoperacion incompleto para guardar\n";
-
-          $save = false;
+          $complicacion = Doctrine::getTable("TrasplanteComplicacionesInfecciosas")->find($complicacionId);
+          if(!$complicacion)
+          {
+            echo "El TrasplanteComplicaciones con id: ".$complicacionId." no existe en la base trasplante_reoperacion incompleto para guardar\n";
+            $save = false;
+          }
+          else
+          {
+            $infecciosa = true;
+          }
         }
 
         if($save)
@@ -427,7 +435,15 @@ class transplanteConvertorHandler
           $object->setTrasplanteId($trasplante->getId());
           $object->setFecha($fecha);
           $object->setDescripcion($descripcion);
-          $object->setTrasplanteComplicacionId($complicacion);
+          if($infecciosa)
+          {
+            $object->setTrasplanteComplicacionInfeccionId($complicacion->getId());
+          }
+          else
+          {
+            $object->setTrasplanteComplicacionNoInfeccionId($complicacion->getId());
+          }
+          $object->setEsInfecciosa($infecciosa);
           $object->save();
           $object->free(true);
         }

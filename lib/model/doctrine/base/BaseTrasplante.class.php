@@ -58,7 +58,8 @@
  * @property Doctrine_Collection $TrasplanteInmunosupresores
  * @property Doctrine_Collection $Cmv
  * @property Doctrine_Collection $TrasplanteSerol
- * @property Doctrine_Collection $TrasplanteComplicaciones
+ * @property Doctrine_Collection $TrasplanteComplicacionesInfecciosas
+ * @property Doctrine_Collection $TrasplanteComplicacionesNoInfecciosas
  * @property Doctrine_Collection $TrasplanteInduccion
  * @property Doctrine_Collection $EvolucionTrasplanteCmv
  * @property Doctrine_Collection $EvolucionTrasplanteEcg
@@ -73,140 +74,142 @@
  * @property Doctrine_Collection $TrasplanteReoperacion
  * @property Doctrine_Collection $InjertoEvolucion
  * 
- * @method integer               getId()                                Returns the current record's "id" value
- * @method integer               getPacientePreTrasplanteId()           Returns the current record's "paciente_pre_trasplante_id" value
- * @method date                  getFecha()                             Returns the current record's "fecha" value
- * @method integer               getNumeroDeTransplantesRealizados()    Returns the current record's "numero_de_transplantes_realizados" value
- * @method integer               getDonanteId()                         Returns the current record's "donante_id" value
- * @method boolean               getInestabHemodial()                   Returns the current record's "inestab_hemodial" value
- * @method enum                  getRinhon()                            Returns the current record's "rinhon" value
- * @method boolean               getAnomaliaVascular()                  Returns the current record's "anomalia_vascular" value
- * @method enum                  getNumeroArterias()                    Returns the current record's "numero_arterias" value
- * @method enum                  getNumeroVenas()                       Returns the current record's "numero_venas" value
- * @method enum                  getUreter()                            Returns the current record's "ureter" value
- * @method integer               getNumeroCompatibilidadAb()            Returns the current record's "numero_compatibilidad_ab" value
- * @method integer               getNumeroCompatibilidadDr()            Returns the current record's "numero_compatibilidad_dr" value
- * @method integer               getNumeroIncompatibilidadAb()          Returns the current record's "numero_incompatibilidad_ab" value
- * @method integer               getNumeroIncompatibilidadDr()          Returns the current record's "numero_incompatibilidad_dr" value
- * @method boolean               getAutoac()                            Returns the current record's "autoac" value
- * @method string                getPraMax()                            Returns the current record's "pra_max" value
- * @method string                getPraTr()                             Returns the current record's "pra_tr" value
- * @method boolean               getTransPrevias()                      Returns the current record's "trans_previas" value
- * @method integer               getNumeroTransf()                      Returns the current record's "numero_transf" value
- * @method enum                  getEmbarazo()                          Returns the current record's "embarazo" value
- * @method integer               getNumeroEmbarazo()                    Returns the current record's "numero_embarazo" value
- * @method enum                  getLiquidoPerfusion()                  Returns the current record's "liquido_perfusion" value
- * @method boolean               getTqDeBanco()                         Returns the current record's "tq_de_banco" value
- * @method enum                  getLadoImplante()                      Returns the current record's "lado_implante" value
- * @method enum                  getAnastVenosa()                       Returns the current record's "anast_venosa" value
- * @method enum                  getAnastArterial()                     Returns the current record's "anast_arterial" value
- * @method enum                  getAnastUreteral()                     Returns the current record's "anast_ureteral" value
- * @method integer               getTIsqCalMin()                        Returns the current record's "t_isq_cal_min" value
- * @method integer               getTIsqFriaHs()                        Returns the current record's "t_isq_fria_hs" value
- * @method integer               getTIsqFriaMin()                       Returns the current record's "t_isq_fria_min" value
- * @method integer               getTIsqTibiaHs()                       Returns the current record's "t_isq_tibia_hs" value
- * @method enum                  getReperfusion()                       Returns the current record's "reperfusion" value
- * @method boolean               getSangradoIOp()                       Returns the current record's "sangrado_i_op" value
- * @method boolean               getLesionArterial()                    Returns the current record's "lesion_arterial" value
- * @method boolean               getLesionVenosa()                      Returns the current record's "lesion_venosa" value
- * @method boolean               getNecesidadRepefundir()               Returns the current record's "necesidad_repefundir" value
- * @method string                getOtrasComplQuirur()                  Returns the current record's "otras_compl_quirur" value
- * @method boolean               getDiuresisIOp()                       Returns the current record's "diuresis_i_op" value
- * @method float                 getCrInicial()                         Returns the current record's "cr_inicial" value
- * @method integer               getDiaRecDiuresis()                    Returns the current record's "dia_rec_diuresis" value
- * @method integer               getDiaRecFuncional()                   Returns the current record's "dia_rec_funcional" value
- * @method integer               getDialisis()                          Returns the current record's "dialisis" value
- * @method integer               getNumDeHd()                           Returns the current record's "num_de_hd" value
- * @method string                getComentario()                        Returns the current record's "comentario" value
- * @method date                  getFechaAlta()                         Returns the current record's "fecha_alta" value
- * @method integer               getEdadReceptor()                      Returns the current record's "edad_receptor" value
- * @method Pacientepretrasplante getPacientepretrasplante()             Returns the current record's "Pacientepretrasplante" value
- * @method Donante               getDonante()                           Returns the current record's "Donante" value
- * @method Doctrine_Collection   getTrasplanteInducciones()             Returns the current record's "TrasplanteInducciones" collection
- * @method Doctrine_Collection   getTrasplanteInmunosupresores()        Returns the current record's "TrasplanteInmunosupresores" collection
- * @method Doctrine_Collection   getCmv()                               Returns the current record's "Cmv" collection
- * @method Doctrine_Collection   getTrasplanteSerol()                   Returns the current record's "TrasplanteSerol" collection
- * @method Doctrine_Collection   getTrasplanteComplicaciones()          Returns the current record's "TrasplanteComplicaciones" collection
- * @method Doctrine_Collection   getTrasplanteInduccion()               Returns the current record's "TrasplanteInduccion" collection
- * @method Doctrine_Collection   getEvolucionTrasplanteCmv()            Returns the current record's "EvolucionTrasplanteCmv" collection
- * @method Doctrine_Collection   getEvolucionTrasplanteEcg()            Returns the current record's "EvolucionTrasplanteEcg" collection
- * @method Doctrine_Collection   getEvolucionTrasplanteEcoCardio()      Returns the current record's "EvolucionTrasplanteEcoCardio" collection
- * @method Doctrine_Collection   getEvolucionTrasplanteNutricion()      Returns the current record's "EvolucionTrasplanteNutricion" collection
- * @method Doctrine_Collection   getEvolucionTrasplanteParaclinica()    Returns the current record's "EvolucionTrasplanteParaclinica" collection
- * @method Doctrine_Collection   getEvolucionTrasplanteEcodopler()      Returns the current record's "EvolucionTrasplanteEcodopler" collection
- * @method Doctrine_Collection   getEvolucionTrasplanteEcografia()      Returns the current record's "EvolucionTrasplanteEcografia" collection
- * @method Doctrine_Collection   getEvolucionTrasplanteMarvirales()     Returns the current record's "EvolucionTrasplanteMarvirales" collection
- * @method Doctrine_Collection   getEvolucionTrasplanteTxtorax()        Returns the current record's "EvolucionTrasplanteTxtorax" collection
- * @method Doctrine_Collection   getEvolucionTrasplanteExamenes()       Returns the current record's "EvolucionTrasplanteExamenes" collection
- * @method Doctrine_Collection   getTrasplanteReoperacion()             Returns the current record's "TrasplanteReoperacion" collection
- * @method Doctrine_Collection   getInjertoEvolucion()                  Returns the current record's "InjertoEvolucion" collection
- * @method Trasplante            setId()                                Sets the current record's "id" value
- * @method Trasplante            setPacientePreTrasplanteId()           Sets the current record's "paciente_pre_trasplante_id" value
- * @method Trasplante            setFecha()                             Sets the current record's "fecha" value
- * @method Trasplante            setNumeroDeTransplantesRealizados()    Sets the current record's "numero_de_transplantes_realizados" value
- * @method Trasplante            setDonanteId()                         Sets the current record's "donante_id" value
- * @method Trasplante            setInestabHemodial()                   Sets the current record's "inestab_hemodial" value
- * @method Trasplante            setRinhon()                            Sets the current record's "rinhon" value
- * @method Trasplante            setAnomaliaVascular()                  Sets the current record's "anomalia_vascular" value
- * @method Trasplante            setNumeroArterias()                    Sets the current record's "numero_arterias" value
- * @method Trasplante            setNumeroVenas()                       Sets the current record's "numero_venas" value
- * @method Trasplante            setUreter()                            Sets the current record's "ureter" value
- * @method Trasplante            setNumeroCompatibilidadAb()            Sets the current record's "numero_compatibilidad_ab" value
- * @method Trasplante            setNumeroCompatibilidadDr()            Sets the current record's "numero_compatibilidad_dr" value
- * @method Trasplante            setNumeroIncompatibilidadAb()          Sets the current record's "numero_incompatibilidad_ab" value
- * @method Trasplante            setNumeroIncompatibilidadDr()          Sets the current record's "numero_incompatibilidad_dr" value
- * @method Trasplante            setAutoac()                            Sets the current record's "autoac" value
- * @method Trasplante            setPraMax()                            Sets the current record's "pra_max" value
- * @method Trasplante            setPraTr()                             Sets the current record's "pra_tr" value
- * @method Trasplante            setTransPrevias()                      Sets the current record's "trans_previas" value
- * @method Trasplante            setNumeroTransf()                      Sets the current record's "numero_transf" value
- * @method Trasplante            setEmbarazo()                          Sets the current record's "embarazo" value
- * @method Trasplante            setNumeroEmbarazo()                    Sets the current record's "numero_embarazo" value
- * @method Trasplante            setLiquidoPerfusion()                  Sets the current record's "liquido_perfusion" value
- * @method Trasplante            setTqDeBanco()                         Sets the current record's "tq_de_banco" value
- * @method Trasplante            setLadoImplante()                      Sets the current record's "lado_implante" value
- * @method Trasplante            setAnastVenosa()                       Sets the current record's "anast_venosa" value
- * @method Trasplante            setAnastArterial()                     Sets the current record's "anast_arterial" value
- * @method Trasplante            setAnastUreteral()                     Sets the current record's "anast_ureteral" value
- * @method Trasplante            setTIsqCalMin()                        Sets the current record's "t_isq_cal_min" value
- * @method Trasplante            setTIsqFriaHs()                        Sets the current record's "t_isq_fria_hs" value
- * @method Trasplante            setTIsqFriaMin()                       Sets the current record's "t_isq_fria_min" value
- * @method Trasplante            setTIsqTibiaHs()                       Sets the current record's "t_isq_tibia_hs" value
- * @method Trasplante            setReperfusion()                       Sets the current record's "reperfusion" value
- * @method Trasplante            setSangradoIOp()                       Sets the current record's "sangrado_i_op" value
- * @method Trasplante            setLesionArterial()                    Sets the current record's "lesion_arterial" value
- * @method Trasplante            setLesionVenosa()                      Sets the current record's "lesion_venosa" value
- * @method Trasplante            setNecesidadRepefundir()               Sets the current record's "necesidad_repefundir" value
- * @method Trasplante            setOtrasComplQuirur()                  Sets the current record's "otras_compl_quirur" value
- * @method Trasplante            setDiuresisIOp()                       Sets the current record's "diuresis_i_op" value
- * @method Trasplante            setCrInicial()                         Sets the current record's "cr_inicial" value
- * @method Trasplante            setDiaRecDiuresis()                    Sets the current record's "dia_rec_diuresis" value
- * @method Trasplante            setDiaRecFuncional()                   Sets the current record's "dia_rec_funcional" value
- * @method Trasplante            setDialisis()                          Sets the current record's "dialisis" value
- * @method Trasplante            setNumDeHd()                           Sets the current record's "num_de_hd" value
- * @method Trasplante            setComentario()                        Sets the current record's "comentario" value
- * @method Trasplante            setFechaAlta()                         Sets the current record's "fecha_alta" value
- * @method Trasplante            setEdadReceptor()                      Sets the current record's "edad_receptor" value
- * @method Trasplante            setPacientepretrasplante()             Sets the current record's "Pacientepretrasplante" value
- * @method Trasplante            setDonante()                           Sets the current record's "Donante" value
- * @method Trasplante            setTrasplanteInducciones()             Sets the current record's "TrasplanteInducciones" collection
- * @method Trasplante            setTrasplanteInmunosupresores()        Sets the current record's "TrasplanteInmunosupresores" collection
- * @method Trasplante            setCmv()                               Sets the current record's "Cmv" collection
- * @method Trasplante            setTrasplanteSerol()                   Sets the current record's "TrasplanteSerol" collection
- * @method Trasplante            setTrasplanteComplicaciones()          Sets the current record's "TrasplanteComplicaciones" collection
- * @method Trasplante            setTrasplanteInduccion()               Sets the current record's "TrasplanteInduccion" collection
- * @method Trasplante            setEvolucionTrasplanteCmv()            Sets the current record's "EvolucionTrasplanteCmv" collection
- * @method Trasplante            setEvolucionTrasplanteEcg()            Sets the current record's "EvolucionTrasplanteEcg" collection
- * @method Trasplante            setEvolucionTrasplanteEcoCardio()      Sets the current record's "EvolucionTrasplanteEcoCardio" collection
- * @method Trasplante            setEvolucionTrasplanteNutricion()      Sets the current record's "EvolucionTrasplanteNutricion" collection
- * @method Trasplante            setEvolucionTrasplanteParaclinica()    Sets the current record's "EvolucionTrasplanteParaclinica" collection
- * @method Trasplante            setEvolucionTrasplanteEcodopler()      Sets the current record's "EvolucionTrasplanteEcodopler" collection
- * @method Trasplante            setEvolucionTrasplanteEcografia()      Sets the current record's "EvolucionTrasplanteEcografia" collection
- * @method Trasplante            setEvolucionTrasplanteMarvirales()     Sets the current record's "EvolucionTrasplanteMarvirales" collection
- * @method Trasplante            setEvolucionTrasplanteTxtorax()        Sets the current record's "EvolucionTrasplanteTxtorax" collection
- * @method Trasplante            setEvolucionTrasplanteExamenes()       Sets the current record's "EvolucionTrasplanteExamenes" collection
- * @method Trasplante            setTrasplanteReoperacion()             Sets the current record's "TrasplanteReoperacion" collection
- * @method Trasplante            setInjertoEvolucion()                  Sets the current record's "InjertoEvolucion" collection
+ * @method integer               getId()                                    Returns the current record's "id" value
+ * @method integer               getPacientePreTrasplanteId()               Returns the current record's "paciente_pre_trasplante_id" value
+ * @method date                  getFecha()                                 Returns the current record's "fecha" value
+ * @method integer               getNumeroDeTransplantesRealizados()        Returns the current record's "numero_de_transplantes_realizados" value
+ * @method integer               getDonanteId()                             Returns the current record's "donante_id" value
+ * @method boolean               getInestabHemodial()                       Returns the current record's "inestab_hemodial" value
+ * @method enum                  getRinhon()                                Returns the current record's "rinhon" value
+ * @method boolean               getAnomaliaVascular()                      Returns the current record's "anomalia_vascular" value
+ * @method enum                  getNumeroArterias()                        Returns the current record's "numero_arterias" value
+ * @method enum                  getNumeroVenas()                           Returns the current record's "numero_venas" value
+ * @method enum                  getUreter()                                Returns the current record's "ureter" value
+ * @method integer               getNumeroCompatibilidadAb()                Returns the current record's "numero_compatibilidad_ab" value
+ * @method integer               getNumeroCompatibilidadDr()                Returns the current record's "numero_compatibilidad_dr" value
+ * @method integer               getNumeroIncompatibilidadAb()              Returns the current record's "numero_incompatibilidad_ab" value
+ * @method integer               getNumeroIncompatibilidadDr()              Returns the current record's "numero_incompatibilidad_dr" value
+ * @method boolean               getAutoac()                                Returns the current record's "autoac" value
+ * @method string                getPraMax()                                Returns the current record's "pra_max" value
+ * @method string                getPraTr()                                 Returns the current record's "pra_tr" value
+ * @method boolean               getTransPrevias()                          Returns the current record's "trans_previas" value
+ * @method integer               getNumeroTransf()                          Returns the current record's "numero_transf" value
+ * @method enum                  getEmbarazo()                              Returns the current record's "embarazo" value
+ * @method integer               getNumeroEmbarazo()                        Returns the current record's "numero_embarazo" value
+ * @method enum                  getLiquidoPerfusion()                      Returns the current record's "liquido_perfusion" value
+ * @method boolean               getTqDeBanco()                             Returns the current record's "tq_de_banco" value
+ * @method enum                  getLadoImplante()                          Returns the current record's "lado_implante" value
+ * @method enum                  getAnastVenosa()                           Returns the current record's "anast_venosa" value
+ * @method enum                  getAnastArterial()                         Returns the current record's "anast_arterial" value
+ * @method enum                  getAnastUreteral()                         Returns the current record's "anast_ureteral" value
+ * @method integer               getTIsqCalMin()                            Returns the current record's "t_isq_cal_min" value
+ * @method integer               getTIsqFriaHs()                            Returns the current record's "t_isq_fria_hs" value
+ * @method integer               getTIsqFriaMin()                           Returns the current record's "t_isq_fria_min" value
+ * @method integer               getTIsqTibiaHs()                           Returns the current record's "t_isq_tibia_hs" value
+ * @method enum                  getReperfusion()                           Returns the current record's "reperfusion" value
+ * @method boolean               getSangradoIOp()                           Returns the current record's "sangrado_i_op" value
+ * @method boolean               getLesionArterial()                        Returns the current record's "lesion_arterial" value
+ * @method boolean               getLesionVenosa()                          Returns the current record's "lesion_venosa" value
+ * @method boolean               getNecesidadRepefundir()                   Returns the current record's "necesidad_repefundir" value
+ * @method string                getOtrasComplQuirur()                      Returns the current record's "otras_compl_quirur" value
+ * @method boolean               getDiuresisIOp()                           Returns the current record's "diuresis_i_op" value
+ * @method float                 getCrInicial()                             Returns the current record's "cr_inicial" value
+ * @method integer               getDiaRecDiuresis()                        Returns the current record's "dia_rec_diuresis" value
+ * @method integer               getDiaRecFuncional()                       Returns the current record's "dia_rec_funcional" value
+ * @method integer               getDialisis()                              Returns the current record's "dialisis" value
+ * @method integer               getNumDeHd()                               Returns the current record's "num_de_hd" value
+ * @method string                getComentario()                            Returns the current record's "comentario" value
+ * @method date                  getFechaAlta()                             Returns the current record's "fecha_alta" value
+ * @method integer               getEdadReceptor()                          Returns the current record's "edad_receptor" value
+ * @method Pacientepretrasplante getPacientepretrasplante()                 Returns the current record's "Pacientepretrasplante" value
+ * @method Donante               getDonante()                               Returns the current record's "Donante" value
+ * @method Doctrine_Collection   getTrasplanteInducciones()                 Returns the current record's "TrasplanteInducciones" collection
+ * @method Doctrine_Collection   getTrasplanteInmunosupresores()            Returns the current record's "TrasplanteInmunosupresores" collection
+ * @method Doctrine_Collection   getCmv()                                   Returns the current record's "Cmv" collection
+ * @method Doctrine_Collection   getTrasplanteSerol()                       Returns the current record's "TrasplanteSerol" collection
+ * @method Doctrine_Collection   getTrasplanteComplicacionesInfecciosas()   Returns the current record's "TrasplanteComplicacionesInfecciosas" collection
+ * @method Doctrine_Collection   getTrasplanteComplicacionesNoInfecciosas() Returns the current record's "TrasplanteComplicacionesNoInfecciosas" collection
+ * @method Doctrine_Collection   getTrasplanteInduccion()                   Returns the current record's "TrasplanteInduccion" collection
+ * @method Doctrine_Collection   getEvolucionTrasplanteCmv()                Returns the current record's "EvolucionTrasplanteCmv" collection
+ * @method Doctrine_Collection   getEvolucionTrasplanteEcg()                Returns the current record's "EvolucionTrasplanteEcg" collection
+ * @method Doctrine_Collection   getEvolucionTrasplanteEcoCardio()          Returns the current record's "EvolucionTrasplanteEcoCardio" collection
+ * @method Doctrine_Collection   getEvolucionTrasplanteNutricion()          Returns the current record's "EvolucionTrasplanteNutricion" collection
+ * @method Doctrine_Collection   getEvolucionTrasplanteParaclinica()        Returns the current record's "EvolucionTrasplanteParaclinica" collection
+ * @method Doctrine_Collection   getEvolucionTrasplanteEcodopler()          Returns the current record's "EvolucionTrasplanteEcodopler" collection
+ * @method Doctrine_Collection   getEvolucionTrasplanteEcografia()          Returns the current record's "EvolucionTrasplanteEcografia" collection
+ * @method Doctrine_Collection   getEvolucionTrasplanteMarvirales()         Returns the current record's "EvolucionTrasplanteMarvirales" collection
+ * @method Doctrine_Collection   getEvolucionTrasplanteTxtorax()            Returns the current record's "EvolucionTrasplanteTxtorax" collection
+ * @method Doctrine_Collection   getEvolucionTrasplanteExamenes()           Returns the current record's "EvolucionTrasplanteExamenes" collection
+ * @method Doctrine_Collection   getTrasplanteReoperacion()                 Returns the current record's "TrasplanteReoperacion" collection
+ * @method Doctrine_Collection   getInjertoEvolucion()                      Returns the current record's "InjertoEvolucion" collection
+ * @method Trasplante            setId()                                    Sets the current record's "id" value
+ * @method Trasplante            setPacientePreTrasplanteId()               Sets the current record's "paciente_pre_trasplante_id" value
+ * @method Trasplante            setFecha()                                 Sets the current record's "fecha" value
+ * @method Trasplante            setNumeroDeTransplantesRealizados()        Sets the current record's "numero_de_transplantes_realizados" value
+ * @method Trasplante            setDonanteId()                             Sets the current record's "donante_id" value
+ * @method Trasplante            setInestabHemodial()                       Sets the current record's "inestab_hemodial" value
+ * @method Trasplante            setRinhon()                                Sets the current record's "rinhon" value
+ * @method Trasplante            setAnomaliaVascular()                      Sets the current record's "anomalia_vascular" value
+ * @method Trasplante            setNumeroArterias()                        Sets the current record's "numero_arterias" value
+ * @method Trasplante            setNumeroVenas()                           Sets the current record's "numero_venas" value
+ * @method Trasplante            setUreter()                                Sets the current record's "ureter" value
+ * @method Trasplante            setNumeroCompatibilidadAb()                Sets the current record's "numero_compatibilidad_ab" value
+ * @method Trasplante            setNumeroCompatibilidadDr()                Sets the current record's "numero_compatibilidad_dr" value
+ * @method Trasplante            setNumeroIncompatibilidadAb()              Sets the current record's "numero_incompatibilidad_ab" value
+ * @method Trasplante            setNumeroIncompatibilidadDr()              Sets the current record's "numero_incompatibilidad_dr" value
+ * @method Trasplante            setAutoac()                                Sets the current record's "autoac" value
+ * @method Trasplante            setPraMax()                                Sets the current record's "pra_max" value
+ * @method Trasplante            setPraTr()                                 Sets the current record's "pra_tr" value
+ * @method Trasplante            setTransPrevias()                          Sets the current record's "trans_previas" value
+ * @method Trasplante            setNumeroTransf()                          Sets the current record's "numero_transf" value
+ * @method Trasplante            setEmbarazo()                              Sets the current record's "embarazo" value
+ * @method Trasplante            setNumeroEmbarazo()                        Sets the current record's "numero_embarazo" value
+ * @method Trasplante            setLiquidoPerfusion()                      Sets the current record's "liquido_perfusion" value
+ * @method Trasplante            setTqDeBanco()                             Sets the current record's "tq_de_banco" value
+ * @method Trasplante            setLadoImplante()                          Sets the current record's "lado_implante" value
+ * @method Trasplante            setAnastVenosa()                           Sets the current record's "anast_venosa" value
+ * @method Trasplante            setAnastArterial()                         Sets the current record's "anast_arterial" value
+ * @method Trasplante            setAnastUreteral()                         Sets the current record's "anast_ureteral" value
+ * @method Trasplante            setTIsqCalMin()                            Sets the current record's "t_isq_cal_min" value
+ * @method Trasplante            setTIsqFriaHs()                            Sets the current record's "t_isq_fria_hs" value
+ * @method Trasplante            setTIsqFriaMin()                           Sets the current record's "t_isq_fria_min" value
+ * @method Trasplante            setTIsqTibiaHs()                           Sets the current record's "t_isq_tibia_hs" value
+ * @method Trasplante            setReperfusion()                           Sets the current record's "reperfusion" value
+ * @method Trasplante            setSangradoIOp()                           Sets the current record's "sangrado_i_op" value
+ * @method Trasplante            setLesionArterial()                        Sets the current record's "lesion_arterial" value
+ * @method Trasplante            setLesionVenosa()                          Sets the current record's "lesion_venosa" value
+ * @method Trasplante            setNecesidadRepefundir()                   Sets the current record's "necesidad_repefundir" value
+ * @method Trasplante            setOtrasComplQuirur()                      Sets the current record's "otras_compl_quirur" value
+ * @method Trasplante            setDiuresisIOp()                           Sets the current record's "diuresis_i_op" value
+ * @method Trasplante            setCrInicial()                             Sets the current record's "cr_inicial" value
+ * @method Trasplante            setDiaRecDiuresis()                        Sets the current record's "dia_rec_diuresis" value
+ * @method Trasplante            setDiaRecFuncional()                       Sets the current record's "dia_rec_funcional" value
+ * @method Trasplante            setDialisis()                              Sets the current record's "dialisis" value
+ * @method Trasplante            setNumDeHd()                               Sets the current record's "num_de_hd" value
+ * @method Trasplante            setComentario()                            Sets the current record's "comentario" value
+ * @method Trasplante            setFechaAlta()                             Sets the current record's "fecha_alta" value
+ * @method Trasplante            setEdadReceptor()                          Sets the current record's "edad_receptor" value
+ * @method Trasplante            setPacientepretrasplante()                 Sets the current record's "Pacientepretrasplante" value
+ * @method Trasplante            setDonante()                               Sets the current record's "Donante" value
+ * @method Trasplante            setTrasplanteInducciones()                 Sets the current record's "TrasplanteInducciones" collection
+ * @method Trasplante            setTrasplanteInmunosupresores()            Sets the current record's "TrasplanteInmunosupresores" collection
+ * @method Trasplante            setCmv()                                   Sets the current record's "Cmv" collection
+ * @method Trasplante            setTrasplanteSerol()                       Sets the current record's "TrasplanteSerol" collection
+ * @method Trasplante            setTrasplanteComplicacionesInfecciosas()   Sets the current record's "TrasplanteComplicacionesInfecciosas" collection
+ * @method Trasplante            setTrasplanteComplicacionesNoInfecciosas() Sets the current record's "TrasplanteComplicacionesNoInfecciosas" collection
+ * @method Trasplante            setTrasplanteInduccion()                   Sets the current record's "TrasplanteInduccion" collection
+ * @method Trasplante            setEvolucionTrasplanteCmv()                Sets the current record's "EvolucionTrasplanteCmv" collection
+ * @method Trasplante            setEvolucionTrasplanteEcg()                Sets the current record's "EvolucionTrasplanteEcg" collection
+ * @method Trasplante            setEvolucionTrasplanteEcoCardio()          Sets the current record's "EvolucionTrasplanteEcoCardio" collection
+ * @method Trasplante            setEvolucionTrasplanteNutricion()          Sets the current record's "EvolucionTrasplanteNutricion" collection
+ * @method Trasplante            setEvolucionTrasplanteParaclinica()        Sets the current record's "EvolucionTrasplanteParaclinica" collection
+ * @method Trasplante            setEvolucionTrasplanteEcodopler()          Sets the current record's "EvolucionTrasplanteEcodopler" collection
+ * @method Trasplante            setEvolucionTrasplanteEcografia()          Sets the current record's "EvolucionTrasplanteEcografia" collection
+ * @method Trasplante            setEvolucionTrasplanteMarvirales()         Sets the current record's "EvolucionTrasplanteMarvirales" collection
+ * @method Trasplante            setEvolucionTrasplanteTxtorax()            Sets the current record's "EvolucionTrasplanteTxtorax" collection
+ * @method Trasplante            setEvolucionTrasplanteExamenes()           Sets the current record's "EvolucionTrasplanteExamenes" collection
+ * @method Trasplante            setTrasplanteReoperacion()                 Sets the current record's "TrasplanteReoperacion" collection
+ * @method Trasplante            setInjertoEvolucion()                      Sets the current record's "InjertoEvolucion" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -534,7 +537,11 @@ abstract class BaseTrasplante extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'trasplante_id'));
 
-        $this->hasMany('TrasplanteComplicaciones', array(
+        $this->hasMany('TrasplanteComplicacionesInfecciosas', array(
+             'local' => 'id',
+             'foreign' => 'trasplante_id'));
+
+        $this->hasMany('TrasplanteComplicacionesNoInfecciosas', array(
              'local' => 'id',
              'foreign' => 'trasplante_id'));
 

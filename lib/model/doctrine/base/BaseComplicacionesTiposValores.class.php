@@ -9,18 +9,18 @@
  * @property string $nombre
  * @property integer $complicacion_tipo_id
  * @property ComplicacionesTipos $ComplicacionesTipos
- * @property Doctrine_Collection $ComplicacionesNoInfecciosas
+ * @property Doctrine_Collection $TrasplanteComplicacionesNoInfecciosas
  * 
- * @method integer                    getId()                          Returns the current record's "id" value
- * @method string                     getNombre()                      Returns the current record's "nombre" value
- * @method integer                    getComplicacionTipoId()          Returns the current record's "complicacion_tipo_id" value
- * @method ComplicacionesTipos        getComplicacionesTipos()         Returns the current record's "ComplicacionesTipos" value
- * @method Doctrine_Collection        getComplicacionesNoInfecciosas() Returns the current record's "ComplicacionesNoInfecciosas" collection
- * @method ComplicacionesTiposValores setId()                          Sets the current record's "id" value
- * @method ComplicacionesTiposValores setNombre()                      Sets the current record's "nombre" value
- * @method ComplicacionesTiposValores setComplicacionTipoId()          Sets the current record's "complicacion_tipo_id" value
- * @method ComplicacionesTiposValores setComplicacionesTipos()         Sets the current record's "ComplicacionesTipos" value
- * @method ComplicacionesTiposValores setComplicacionesNoInfecciosas() Sets the current record's "ComplicacionesNoInfecciosas" collection
+ * @method integer                    getId()                                    Returns the current record's "id" value
+ * @method string                     getNombre()                                Returns the current record's "nombre" value
+ * @method integer                    getComplicacionTipoId()                    Returns the current record's "complicacion_tipo_id" value
+ * @method ComplicacionesTipos        getComplicacionesTipos()                   Returns the current record's "ComplicacionesTipos" value
+ * @method Doctrine_Collection        getTrasplanteComplicacionesNoInfecciosas() Returns the current record's "TrasplanteComplicacionesNoInfecciosas" collection
+ * @method ComplicacionesTiposValores setId()                                    Sets the current record's "id" value
+ * @method ComplicacionesTiposValores setNombre()                                Sets the current record's "nombre" value
+ * @method ComplicacionesTiposValores setComplicacionTipoId()                    Sets the current record's "complicacion_tipo_id" value
+ * @method ComplicacionesTiposValores setComplicacionesTipos()                   Sets the current record's "ComplicacionesTipos" value
+ * @method ComplicacionesTiposValores setTrasplanteComplicacionesNoInfecciosas() Sets the current record's "TrasplanteComplicacionesNoInfecciosas" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -57,7 +57,7 @@ abstract class BaseComplicacionesTiposValores extends sfDoctrineRecord
              'local' => 'complicacion_tipo_id',
              'foreign' => 'id'));
 
-        $this->hasMany('ComplicacionesNoInfecciosas', array(
+        $this->hasMany('TrasplanteComplicacionesNoInfecciosas', array(
              'local' => 'id',
              'foreign' => 'complicacion_valor_id'));
     }

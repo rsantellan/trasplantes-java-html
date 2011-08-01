@@ -747,8 +747,30 @@ Medicaciones:
       type: string(50)
       notnull: true
 
-TrasplanteComplicaciones:
-  tableName: trasplante_complicaciones
+Infeccion:
+  tableName: infeccion
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(50)
+      notnull: true
+      
+Germenes:
+  tableName: germenes
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(50)
+      notnull: true  
+
+TrasplanteComplicacionesInfecciosas:
+  tableName: trasplante_complicaciones_infecciosas
   columns:
     id:
       type: integer(4)
@@ -763,6 +785,12 @@ TrasplanteComplicaciones:
     medicacion_id:
       type: integer(4)
       notnull: true
+    infeccion_id:
+      type: integer(4)
+      notnull: true
+    germen_id:
+      type: integer(4)    
+      notnull: true      
     internado:
       type: integer(1)
       notnull: true
@@ -774,10 +802,6 @@ TrasplanteComplicaciones:
       notnull: true
     comentario:
       type: string(1000)
-    infecciosa:
-      type: integer(1)
-      notnull: true     
-      default: 0 
   relations:      
     Medicaciones:
       local: medicacion_id
@@ -787,25 +811,59 @@ TrasplanteComplicaciones:
       local: trasplante_id
       foreign: id
       type: one
-
-ComplicacionesNoInfecciosas:
-  tableName: complicaciones_no_infecciosas
+    Infeccion:
+      local: infeccion_id
+      foreign: id
+      type: one
+    Germenes:
+      local: germen_id
+      foreign: id
+      type: one  
+      
+TrasplanteComplicacionesNoInfecciosas:
+  tableName: trasplante_complicaciones_no_infecciosas
   columns:
-    tr_complicacion_id:
+    id:
       type: integer(4)
       primary: true
-    complicacion_valor_id:
+      autoincrement: true
+    trasplante_id:
       type: integer(4)
       notnull: true
-  relations:  
-    TrasplanteComplicaciones:
-      local: tr_complicacion_id
+    fecha:
+      type: date(25)
+      notnull: true
+    medicacion_id:
+      type: integer(4)
+      notnull: true
+    complicacion_valor_id:
+      type: integer(4)
+      notnull: true      
+    internado:
+      type: integer(1)
+      notnull: true
+    dias_de_internacion:
+      type: integer(2)
+      default: 0
+    evolucion:
+      type: integer(1)
+      notnull: true
+    comentario:
+      type: string(1000)
+  relations:      
+    Medicaciones:
+      local: medicacion_id
+      foreign: id
+      type: one
+    Trasplante:
+      local: trasplante_id
       foreign: id
       type: one
     ComplicacionesTiposValores:
       local: complicacion_valor_id
       foreign: id
-      type: one  
+      type: one 
+ 
 # ----------------
 Induccion:
   tableName: induccion
@@ -963,54 +1021,6 @@ EvolucionTrasplanteEcg:
       local: trasplante_id
       foreign: id
       type: one
-
-Infeccion:
-  tableName: infeccion
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    nombre:
-      type: string(50)
-      notnull: true
-      
-Germenes:
-  tableName: germenes
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    nombre:
-      type: string(50)
-      notnull: true     
-
-ComplicacionesInfecciosas:
-  tableName: complicaciones_infecciosas
-  columns:
-    tr_complicacion_id:
-      type: integer(4)
-      primary: true
-    infeccion_id:
-      type: integer(4)
-      notnull: true
-    germen_id:
-      type: integer(4)    
-      notnull: true
-  relations:      
-    TrasplanteComplicaciones:
-      local: tr_complicacion_id
-      foreign: id
-      type: one
-    Infeccion:
-      local: infeccion_id
-      foreign: id
-      type: one
-    Germenes:
-      local: germen_id
-      foreign: id
-      type: one      
 
 EvolucionTrasplanteEcoCardio:
   tableName: evolucion_trasplante_eco_cardio
@@ -1665,19 +1675,29 @@ TrasplanteReoperacion:
       notnull: true
     descripcion:
       type: string(64)
-    trasplante_complicacion_id:
+    trasplante_complicacion_infeccion_id:
       type: integer(4)
-      notnull: true
+      default: null
+    trasplante_complicacion_no_infeccion_id:
+      type: integer(4)
+      default: null
+    es_infecciosa:
+      type: integer(1)
+      default: 0      
   relations:      
     Trasplante:
       local: trasplante_id
       foreign: id
       type: one
-    TrasplanteComplicaciones:
-      local: trasplante_complicacion_id
+    TrasplanteComplicacionesInfecciosas:
+      local: trasplante_complicacion_infeccion_id
       foreign: id
       type: one    
-
+    TrasplanteComplicacionesNoInfecciosas:
+      local: trasplante_complicacion_no_infeccion_id
+      foreign: id
+      type: one
+      
 InjertoEvolucion:
   tableName: injerto_evolucion
   columns:

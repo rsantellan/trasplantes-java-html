@@ -7,14 +7,14 @@
  * 
  * @property integer $id
  * @property string $nombre
- * @property Doctrine_Collection $ComplicacionesInfecciosas
+ * @property Doctrine_Collection $TrasplanteComplicacionesInfecciosas
  * 
- * @method integer             getId()                        Returns the current record's "id" value
- * @method string              getNombre()                    Returns the current record's "nombre" value
- * @method Doctrine_Collection getComplicacionesInfecciosas() Returns the current record's "ComplicacionesInfecciosas" collection
- * @method Infeccion           setId()                        Sets the current record's "id" value
- * @method Infeccion           setNombre()                    Sets the current record's "nombre" value
- * @method Infeccion           setComplicacionesInfecciosas() Sets the current record's "ComplicacionesInfecciosas" collection
+ * @method integer             getId()                                  Returns the current record's "id" value
+ * @method string              getNombre()                              Returns the current record's "nombre" value
+ * @method Doctrine_Collection getTrasplanteComplicacionesInfecciosas() Returns the current record's "TrasplanteComplicacionesInfecciosas" collection
+ * @method Infeccion           setId()                                  Sets the current record's "id" value
+ * @method Infeccion           setNombre()                              Sets the current record's "nombre" value
+ * @method Infeccion           setTrasplanteComplicacionesInfecciosas() Sets the current record's "TrasplanteComplicacionesInfecciosas" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -42,7 +42,7 @@ abstract class BaseInfeccion extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('ComplicacionesInfecciosas', array(
+        $this->hasMany('TrasplanteComplicacionesInfecciosas', array(
              'local' => 'id',
              'foreign' => 'infeccion_id'));
     }

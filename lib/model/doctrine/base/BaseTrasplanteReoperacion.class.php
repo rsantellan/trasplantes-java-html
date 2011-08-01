@@ -9,24 +9,33 @@
  * @property integer $trasplante_id
  * @property date $fecha
  * @property string $descripcion
- * @property integer $trasplante_complicacion_id
+ * @property integer $trasplante_complicacion_infeccion_id
+ * @property integer $trasplante_complicacion_no_infeccion_id
+ * @property integer $es_infecciosa
  * @property Trasplante $Trasplante
- * @property TrasplanteComplicaciones $TrasplanteComplicaciones
+ * @property TrasplanteComplicacionesInfecciosas $TrasplanteComplicacionesInfecciosas
+ * @property TrasplanteComplicacionesNoInfecciosas $TrasplanteComplicacionesNoInfecciosas
  * 
- * @method integer                  getId()                         Returns the current record's "id" value
- * @method integer                  getTrasplanteId()               Returns the current record's "trasplante_id" value
- * @method date                     getFecha()                      Returns the current record's "fecha" value
- * @method string                   getDescripcion()                Returns the current record's "descripcion" value
- * @method integer                  getTrasplanteComplicacionId()   Returns the current record's "trasplante_complicacion_id" value
- * @method Trasplante               getTrasplante()                 Returns the current record's "Trasplante" value
- * @method TrasplanteComplicaciones getTrasplanteComplicaciones()   Returns the current record's "TrasplanteComplicaciones" value
- * @method TrasplanteReoperacion    setId()                         Sets the current record's "id" value
- * @method TrasplanteReoperacion    setTrasplanteId()               Sets the current record's "trasplante_id" value
- * @method TrasplanteReoperacion    setFecha()                      Sets the current record's "fecha" value
- * @method TrasplanteReoperacion    setDescripcion()                Sets the current record's "descripcion" value
- * @method TrasplanteReoperacion    setTrasplanteComplicacionId()   Sets the current record's "trasplante_complicacion_id" value
- * @method TrasplanteReoperacion    setTrasplante()                 Sets the current record's "Trasplante" value
- * @method TrasplanteReoperacion    setTrasplanteComplicaciones()   Sets the current record's "TrasplanteComplicaciones" value
+ * @method integer                               getId()                                      Returns the current record's "id" value
+ * @method integer                               getTrasplanteId()                            Returns the current record's "trasplante_id" value
+ * @method date                                  getFecha()                                   Returns the current record's "fecha" value
+ * @method string                                getDescripcion()                             Returns the current record's "descripcion" value
+ * @method integer                               getTrasplanteComplicacionInfeccionId()       Returns the current record's "trasplante_complicacion_infeccion_id" value
+ * @method integer                               getTrasplanteComplicacionNoInfeccionId()     Returns the current record's "trasplante_complicacion_no_infeccion_id" value
+ * @method integer                               getEsInfecciosa()                            Returns the current record's "es_infecciosa" value
+ * @method Trasplante                            getTrasplante()                              Returns the current record's "Trasplante" value
+ * @method TrasplanteComplicacionesInfecciosas   getTrasplanteComplicacionesInfecciosas()     Returns the current record's "TrasplanteComplicacionesInfecciosas" value
+ * @method TrasplanteComplicacionesNoInfecciosas getTrasplanteComplicacionesNoInfecciosas()   Returns the current record's "TrasplanteComplicacionesNoInfecciosas" value
+ * @method TrasplanteReoperacion                 setId()                                      Sets the current record's "id" value
+ * @method TrasplanteReoperacion                 setTrasplanteId()                            Sets the current record's "trasplante_id" value
+ * @method TrasplanteReoperacion                 setFecha()                                   Sets the current record's "fecha" value
+ * @method TrasplanteReoperacion                 setDescripcion()                             Sets the current record's "descripcion" value
+ * @method TrasplanteReoperacion                 setTrasplanteComplicacionInfeccionId()       Sets the current record's "trasplante_complicacion_infeccion_id" value
+ * @method TrasplanteReoperacion                 setTrasplanteComplicacionNoInfeccionId()     Sets the current record's "trasplante_complicacion_no_infeccion_id" value
+ * @method TrasplanteReoperacion                 setEsInfecciosa()                            Sets the current record's "es_infecciosa" value
+ * @method TrasplanteReoperacion                 setTrasplante()                              Sets the current record's "Trasplante" value
+ * @method TrasplanteReoperacion                 setTrasplanteComplicacionesInfecciosas()     Sets the current record's "TrasplanteComplicacionesInfecciosas" value
+ * @method TrasplanteReoperacion                 setTrasplanteComplicacionesNoInfecciosas()   Sets the current record's "TrasplanteComplicacionesNoInfecciosas" value
  * 
  * @package    transplantes
  * @subpackage model
@@ -58,10 +67,18 @@ abstract class BaseTrasplanteReoperacion extends sfDoctrineRecord
              'type' => 'string',
              'length' => 64,
              ));
-        $this->hasColumn('trasplante_complicacion_id', 'integer', 4, array(
+        $this->hasColumn('trasplante_complicacion_infeccion_id', 'integer', 4, array(
              'type' => 'integer',
-             'notnull' => true,
              'length' => 4,
+             ));
+        $this->hasColumn('trasplante_complicacion_no_infeccion_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => 4,
+             ));
+        $this->hasColumn('es_infecciosa', 'integer', 1, array(
+             'type' => 'integer',
+             'default' => 0,
+             'length' => 1,
              ));
     }
 
@@ -72,8 +89,12 @@ abstract class BaseTrasplanteReoperacion extends sfDoctrineRecord
              'local' => 'trasplante_id',
              'foreign' => 'id'));
 
-        $this->hasOne('TrasplanteComplicaciones', array(
-             'local' => 'trasplante_complicacion_id',
+        $this->hasOne('TrasplanteComplicacionesInfecciosas', array(
+             'local' => 'trasplante_complicacion_infeccion_id',
+             'foreign' => 'id'));
+
+        $this->hasOne('TrasplanteComplicacionesNoInfecciosas', array(
+             'local' => 'trasplante_complicacion_no_infeccion_id',
              'foreign' => 'id'));
     }
 }

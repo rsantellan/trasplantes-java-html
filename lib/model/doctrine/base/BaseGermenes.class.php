@@ -7,14 +7,14 @@
  * 
  * @property integer $id
  * @property string $nombre
- * @property Doctrine_Collection $ComplicacionesInfecciosas
+ * @property Doctrine_Collection $TrasplanteComplicacionesInfecciosas
  * 
- * @method integer             getId()                        Returns the current record's "id" value
- * @method string              getNombre()                    Returns the current record's "nombre" value
- * @method Doctrine_Collection getComplicacionesInfecciosas() Returns the current record's "ComplicacionesInfecciosas" collection
- * @method Germenes            setId()                        Sets the current record's "id" value
- * @method Germenes            setNombre()                    Sets the current record's "nombre" value
- * @method Germenes            setComplicacionesInfecciosas() Sets the current record's "ComplicacionesInfecciosas" collection
+ * @method integer             getId()                                  Returns the current record's "id" value
+ * @method string              getNombre()                              Returns the current record's "nombre" value
+ * @method Doctrine_Collection getTrasplanteComplicacionesInfecciosas() Returns the current record's "TrasplanteComplicacionesInfecciosas" collection
+ * @method Germenes            setId()                                  Sets the current record's "id" value
+ * @method Germenes            setNombre()                              Sets the current record's "nombre" value
+ * @method Germenes            setTrasplanteComplicacionesInfecciosas() Sets the current record's "TrasplanteComplicacionesInfecciosas" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -42,7 +42,7 @@ abstract class BaseGermenes extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('ComplicacionesInfecciosas', array(
+        $this->hasMany('TrasplanteComplicacionesInfecciosas', array(
              'local' => 'id',
              'foreign' => 'germen_id'));
     }

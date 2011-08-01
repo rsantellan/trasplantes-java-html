@@ -122,6 +122,7 @@ class complicacionHandler
 
   public static function saveAllTrasplantesComplicaciones($username,$password, $database, $starting = 0, $quantity =0)
   {
+        return true;
         mysql_connect("localhost",$username,$password);
         
         @mysql_select_db($database) or die( "Unable to select database");
@@ -210,17 +211,65 @@ class complicacionHandler
         mysql_query("set names 'utf8'");
         if($starting == 0 && $quantity == 0)
         {
-          $query="SELECT * FROM complicaciones_no_inf";
+          $query="SELECT t.*, cni.ID_COMPLICACION FROM trasplante_complicaciones t, complicaciones_no_inf cni where t.id = cni.ID_TR_COMPLICACION";
         }
         else
         {
-          $query="SELECT * FROM complicaciones_no_inf LIMIT ".$starting.", ".$quantity;
+          $query="SELECT t.*, cni.ID_COMPLICACION FROM trasplante_complicaciones t, complicaciones_no_inf cni where t.id = cni.ID_TR_COMPLICACION LIMIT ".$starting.", ".$quantity;
         }
         $result=mysql_query($query);
         $num=mysql_numrows($result);
         mysql_close();
         $i=0;
         while ($i < $num) {
+          
+          $id = mysql_result($result,$i,"ID");
+          $IdPreTrasplante = mysql_result($result,$i,"IdPreTrasplante");
+          $FECHA = mysql_result($result,$i,"FECHA");
+          $MEDICACION = mysql_result($result,$i,"MEDICACION");
+          $INTERNADO = mysql_result($result,$i,"INTERNADO");
+          $DIAS_DE_INTERNACION = mysql_result($result,$i,"DIAS_DE_INTERNACION");
+          $EVOLUCION = mysql_result($result,$i,"EVOLUCION");
+          $COMENTARIO = mysql_result($result,$i,"COMENTARIO");
+          $complicacion = mysql_result($result,$i,"ID_COMPLICACION");
+                    
+          $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $IdPreTrasplante);
+          $complicacionValor = self::retrieveNewComplicacionTipoValorOfOldId($username,$password, $database,$complicacion);
+          if($trasplante && $complicacionValor)
+          {
+            $TrasplanteComplicacionesNoInfecciosas = new TrasplanteComplicacionesNoInfecciosas();
+            $TrasplanteComplicacionesNoInfecciosas->setId($id);
+            $TrasplanteComplicacionesNoInfecciosas->setTrasplanteId($trasplante->getId());
+            $TrasplanteComplicacionesNoInfecciosas->setFecha($FECHA);
+            $TrasplanteComplicacionesNoInfecciosas->setMedicacionId($MEDICACION);
+            $TrasplanteComplicacionesNoInfecciosas->setInternado($INTERNADO);
+            $TrasplanteComplicacionesNoInfecciosas->setDiasDeInternacion($DIAS_DE_INTERNACION);
+            $TrasplanteComplicacionesNoInfecciosas->setEvolucion($EVOLUCION);
+            $TrasplanteComplicacionesNoInfecciosas->setComentario($COMENTARIO);
+            $TrasplanteComplicacionesNoInfecciosas->setComplicacionValorId($complicacionValor->getId());
+            $TrasplanteComplicacionesNoInfecciosas->save();
+            $TrasplanteComplicacionesNoInfecciosas->free(true);
+            $complicacionValor->free(true);    
+            $trasplante->free(true);            
+          }
+          else
+          {
+        
+            if(!$trasplante)
+            {
+              echo "Existe un complicaciones_no_inf sin TrasplanteComplicaciones asociado";
+              echo "No se encontro ningun trasplante con id: ".$IdPreTrasplante."\n";
+              echo "\n";               
+            }
+            if(!$complicacionValor)
+            {
+              echo "Existe un complicaciones_no_inf sin complicacionValor asociado";
+              echo " complicacionValor supuesto id: ".$complicacion." ";
+              echo "\n";              
+            }            
+            
+          }
+          /*
           $id = mysql_result($result,$i,"ID_TR_COMPLICACION");
           $complicacion = mysql_result($result,$i,"ID_COMPLICACION");
           $TrasplanteComplicaciones = Doctrine::getTable("TrasplanteComplicaciones")->find($id);
@@ -252,7 +301,7 @@ class complicacionHandler
               echo "\n";              
             }
           }
-          
+          */
           $i++;
         }         
         if($num == 0 || $num == "0")
@@ -342,44 +391,59 @@ class complicacionHandler
         mysql_query("set names 'utf8'");
         if($starting == 0 && $quantity == 0)
         {
-          $query="SELECT * FROM complicaciones_inf";
+          $query="SELECT t.*, ci.INFECCION, ci.GERMEN FROM trasplante_complicaciones t, complicaciones_inf ci where t.id = ci.ID_TR_COMPLICACION";
         }
         else
         {
-          $query="SELECT * FROM complicaciones_inf LIMIT ".$starting.", ".$quantity;
+          $query="SELECT t.*, ci.INFECCION, ci.GERMEN FROM trasplante_complicaciones t, complicaciones_inf ci where t.id = ci.ID_TR_COMPLICACION LIMIT ".$starting.", ".$quantity;
         }
         $result=mysql_query($query);
         $num=mysql_numrows($result);
         mysql_close();
         $i=0;
         while ($i < $num) {
-          $id = mysql_result($result,$i,"ID_TR_COMPLICACION");
+          $id = mysql_result($result,$i,"ID");
+          $IdPreTrasplante = mysql_result($result,$i,"IdPreTrasplante");
+          $FECHA = mysql_result($result,$i,"FECHA");
+          $MEDICACION = mysql_result($result,$i,"MEDICACION");
+          $INTERNADO = mysql_result($result,$i,"INTERNADO");
+          $DIAS_DE_INTERNACION = mysql_result($result,$i,"DIAS_DE_INTERNACION");
+          $EVOLUCION = mysql_result($result,$i,"EVOLUCION");
+          $COMENTARIO = mysql_result($result,$i,"COMENTARIO");
           $INFECCIONID = mysql_result($result,$i,"INFECCION");
           $GERMENID = mysql_result($result,$i,"GERMEN");
-          $TrasplanteComplicaciones = Doctrine::getTable("TrasplanteComplicaciones")->find($id);
+          
+          $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $IdPreTrasplante);
           $infeccion = Doctrine::getTable("Infeccion")->find($INFECCIONID);
           $germen = Doctrine::getTable("Germenes")->find($GERMENID);
 
-          if($TrasplanteComplicaciones && $infeccion && $germen)
+          if($trasplante && $infeccion && $germen)
           {
-              $ComplicacionesInfecciosas = new ComplicacionesInfecciosas();
-              $ComplicacionesInfecciosas->setTrComplicacionId($TrasplanteComplicaciones->getId());
-              $ComplicacionesInfecciosas->setInfeccionId($infeccion->getId());
-              $ComplicacionesInfecciosas->setGermenId($germen->getId());
-              $ComplicacionesInfecciosas->save();
-              $ComplicacionesInfecciosas->free(true);
-              $TrasplanteComplicaciones->free(true);
-              $infeccion->free(true);
-              $germen->free(true);
+            $TrasplanteComplicacionesInfecciosas = new TrasplanteComplicacionesInfecciosas();
+            $TrasplanteComplicacionesInfecciosas->setId($id);
+            $TrasplanteComplicacionesInfecciosas->setTrasplanteId($trasplante->getId());
+            $TrasplanteComplicacionesInfecciosas->setFecha($FECHA);
+            $TrasplanteComplicacionesInfecciosas->setMedicacionId($MEDICACION);
+            $TrasplanteComplicacionesInfecciosas->setInternado($INTERNADO);
+            $TrasplanteComplicacionesInfecciosas->setDiasDeInternacion($DIAS_DE_INTERNACION);
+            $TrasplanteComplicacionesInfecciosas->setEvolucion($EVOLUCION);
+            $TrasplanteComplicacionesInfecciosas->setComentario($COMENTARIO);
+            $TrasplanteComplicacionesInfecciosas->setInfeccionId($infeccion->getId());
+            $TrasplanteComplicacionesInfecciosas->setGermenId($germen->getId());
+            $TrasplanteComplicacionesInfecciosas->save();
+            $TrasplanteComplicacionesInfecciosas->free(true);
+            $trasplante->free(true);
+            $infeccion->free(true);
+            $germen->free(true);
           }
           else
           {
             echo $id;
             echo "\n";            
-            if(!$TrasplanteComplicaciones)
+            if(!$trasplante)
             {
-              echo "Existe un complicaciones_inf sin TrasplanteComplicaciones asociado";
-              echo " TrasplanteComplicaciones supuesto id: ".$id." ";
+              echo "Existe un complicaciones_inf sin Trasplante asociado";
+              echo " TrasplanteComplicaciones supuesto id: ".$IdPreTrasplante." ";
               echo "\n";               
             }
             if(!$infeccion)

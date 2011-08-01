@@ -16,4 +16,20 @@ class TrasplanteComplicacionesTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('TrasplanteComplicaciones');
     }
+	
+	public function retrieveAllComplicacionesNoInfecciosas($trasplanteId, $enEvolucion, $isQuery = false, $hydrationMode = Doctrine_Core::HYDRATE_RECORD )
+	{
+	  $query = $this->createQuery("tc")
+				->select("tc.*")
+				->addFrom("ComplicacionesNoInfecciosas cni")
+			    ->addWhere("tc.id = cni.tr_complicacion_id")
+			    ->addWhere("tc.trasplante_id = ?", $trasplanteId)
+			    ->addWhere("tc.evolucion = ?", $enEvolucion);
+	  $query->setHydrationMode($hydrationMode);
+	  if($isQuery)
+	  {
+		return $query;
+	  }
+      return $query->execute();
+	}
 }

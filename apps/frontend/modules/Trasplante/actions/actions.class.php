@@ -106,11 +106,17 @@ class TrasplanteActions extends sfActions
     if($this->form->isValid())
     {
       $this->form->save();
-      die('valido');
+      $trasplante = trasplanteHandler::retriveById($id, Doctrine_Core::HYDRATE_ARRAY);
+      sfContext::getInstance()->getConfiguration()->loadHelpers(array('Date'));
+      $label = format_date($trasplante["fecha_alta"], 'D');
+      return $this->renderText(mdBasicFunction::basic_json_response(true, array('label' => $label)));
     }
     else
     {
-      die('no valido');
+      $body = $this->getPartial("Trasplante/fechaAltaForm", array('form' => $this->form));
+      
+      return $this->renderText(mdBasicFunction::basic_json_response(false, array('body' => $body)));
+      
     }
     die;
   }  

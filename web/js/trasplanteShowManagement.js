@@ -18,13 +18,45 @@ trasplanteShowManagement.prototype = {
         
     },
 	
-	showTrasplanteMoreInfo: function(element)
-	{
-	  
-	  $(".trasplante_info_basica").slideToggle(1800);
-	  $(element).toggleClass("trasplante_min_info_basica_link_active");
-	},
+    showTrasplanteMoreInfo: function(element)
+    {
+      
+      $(".trasplante_info_basica").slideToggle(1800);
+      $(element).toggleClass("trasplante_min_info_basica_link_active");
+    },
 	
+    saveFechaAltaForm: function()
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: $("#cambiar_fecha_alta_form").attr('action'),
+          data: $("#cambiar_fecha_alta_form").serialize(),
+          type: 'post',
+          dataType: 'json',
+          success: function(json)
+          {
+            if(json.response == "OK")
+            {
+              $("#fecha_alta_label").html(json.options.label);
+              $('#fecha_alta_label').effect("highlight", {}, 900);
+              $.fancybox.close();
+            }
+            else
+            {
+              $("#fecha_alta_form_container").html(json.options.body);
+            }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;
+      
+    },
+  
 	// De aca para abajo no va lo dejo como ejemplo por el momento
     //Inmunosupresores
     newInmunosupresor: function(url)
@@ -324,12 +356,10 @@ trasplanteShowManagement.prototype = {
 }
 
 $(document).ready(function(){
-  $("#fancy_donante_link").fancybox({
+  $(".fancy_small_link").fancybox({
         'transitionIn'        :   'fade',
         'transitionOut'       :   'fade',
-        'hideOnOverlayClick'  :   false,
-        'autoDimensions'      :   false,
-        'width'               :   560
+        'hideOnOverlayClick'  :   false
     
     });
 });

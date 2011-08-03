@@ -49,13 +49,12 @@ class cambiarFechaAltaTrasplanteForm extends sfForm
   public function save($con = null) 
   {
     $tainted = $this->getTaintedValues();
-    var_dump($tainted);
     $fecha = $tainted["fecha"];
     $date = date("Y-m-d", mktime(0, 0, 0, $fecha["month"], $fecha["day"], $fecha["year"]));
     $trasplante = trasplanteHandler::retriveById($tainted["id"]);
     $trasplante->setFechaAlta($date);
     $trasplante->save();
-    die;
+    return true;
     
   }
   

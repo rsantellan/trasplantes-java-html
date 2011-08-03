@@ -8,7 +8,6 @@
 	</div>
 	<div>
 		<?php 
-		
 		if($form['nombre']->hasError()): 
 		?>  
 	  <div class="clear"></div>

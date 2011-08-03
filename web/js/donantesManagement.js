@@ -97,7 +97,7 @@ donantesManagement.prototype = {
                 if(json.options.isnew)
                 {
                   //alert("aca esto funca");
-                  $('#pacientes_nefropatia_id').
+                  $('#trasplante_donante_id').
                           append($("<option></option>").
                           attr("value",json.options.id).
                           text(json.options.identificador));
@@ -105,14 +105,14 @@ donantesManagement.prototype = {
                    $("#donantes_selector").
                           append($("<option></option>").
                           attr("value",json.options.id).
-                          attr("id",'nefropatia_option_'+json.options.id).
+                          attr("id",'donante_option_'+json.options.id).
                           text(json.options.identificador));
                 }
                 else
                 {
-                  $('#nefropatia_option_'+json.options.id).text(json.options.nombre);
+                  $('#donante_option_'+json.options.id).text(json.options.identificador);
                 
-                  $("#pacientes_nefropatia_id option[value='"+json.options.id+"']").text(json.options.nombre);                  
+                  $("#trasplante_donante_id option[value='"+json.options.id+"']").text(json.options.identificador);                  
                 }
                 
               }

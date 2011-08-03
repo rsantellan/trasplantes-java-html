@@ -20,14 +20,14 @@
 <div class="trasplante_fecha_alta_reoperaciones_container">
   <div class="trasplante_fecha_alta_container">
     <?php echo __("Trasplante_Fecha de alta del trasplante");?> :
-    <label class="bold_text">
+    <label class="bold_text" id="fecha_alta_label">
       <?php if(!is_null($trasplante["fecha_alta"])): ?>
         <?php echo format_date($trasplante['fecha_alta'], 'D'); ?>
       <?php else: ?>
         <?php echo __("Trasplante_No tiene Fecha de alta del trasplante");?>
       <?php endif; ?>
     </label> 
-    <a href="<?php echo url_for("@cambiarFechaAlta?id=".$id);?>"><?php echo __("Trasplante_Cambiar Fecha de alta del trasplante");?></a>
+    <a class="fancy_small_link" href="<?php echo url_for("@cambiarFechaAlta?id=".$id);?>"><?php echo __("Trasplante_Cambiar Fecha de alta del trasplante");?></a>
   </div>
   <div class="trasplante_reoperaciones_container">
     

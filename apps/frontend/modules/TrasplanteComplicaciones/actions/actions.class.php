@@ -16,6 +16,30 @@ class TrasplanteComplicacionesActions extends sfActions
 	$this->trasplanteId = $request->getParameter('trasplanteId');
 	$this->forward404Unless($this->trasplanteId);
   }
+
+  public function executeMostrarNoInfecciosa(sfWebRequest $request)
+  {
+	$this->id = $request->getParameter('id');
+	$this->complicacion = complicacionesHandler::retrieveComplicacionNoInfecciosa($this->id);
+	
+	$this->forward404Unless($this->complicacion);
+  }
+
+  public function executeAgregarComplicacionNoInfecciosaTrasplante(sfWebRequest $request)
+  {
+	$trasplanteId = $request->getParameter('trasplanteId');
+	$this->forward404Unless($trasplanteId);
+	$complicacion = new TrasplanteComplicacionesNoInfecciosas();
+	$complicacion->setTrasplanteId($trasplanteId);
+	$complicacion->setEvolucion(false);
+	
+	$this->form = new TrasplanteComplicacionesNoInfecciosasForm($complicacion);  
+  }  
+
+  /*
+   * 
+   * De aca para abajo no sirve nada
+   */
   
   public function executeIndex(sfWebRequest $request)
   {

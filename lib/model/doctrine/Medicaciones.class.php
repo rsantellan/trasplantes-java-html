@@ -12,4 +12,8 @@
  */
 class Medicaciones extends BaseMedicaciones
 {
+  public function __toString()
+  {
+	return $this->getNombre();
+  }
 }

@@ -3,6 +3,14 @@
 
 #Complicaciones
 
+agregarComplicacionesNoInfecciosaTrasplante:
+  url:   /agregar-complicaciones-no-infecciosa/:trasplanteId
+  param: { module: TrasplanteComplicaciones, action: agregarComplicacionNoInfecciosaTrasplante }
+  
+mostrarComplicacionNoInfecciosa:
+  url:   /complicacion-no-infecciosa/:id
+  param: { module: TrasplanteComplicaciones, action: mostrarNoInfecciosa }
+
 mostrarComplicaciones:
   url:   /mostrar-complicaciones/:trasplanteId
   param: { module: TrasplanteComplicaciones, action: mostrar }

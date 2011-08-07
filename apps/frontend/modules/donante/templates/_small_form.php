@@ -135,7 +135,7 @@
 	<div>
 		<?php 
 		
-		if($form['enastab_hemod']->hasError()): 
+		if($form['cr_p']->hasError()): 
 		?>  
 	  <div class="clear"></div>
 		<?php

@@ -12,4 +12,9 @@
  */
 class ComplicacionesTiposValores extends BaseComplicacionesTiposValores
 {
+  
+  public function __toString()
+  {
+	return $this->getComplicacionesTipos()->getNombre()." - ".$this->getNombre();
+  }
 }

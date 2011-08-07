@@ -2,9 +2,20 @@
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 #Complicaciones
+editarComplicacionesNoInfecciosa:
+  url:   /editar-complicacion-no-infecciosa/:id
+  param: { module: TrasplanteComplicaciones, action: editarComplicacionNoInfecciosa }
+
+eliminarComplicacionNoInfecciosa:
+  url:   /eliminar-complicacion-no-infecciosa/:id
+  param: { module: TrasplanteComplicaciones, action: eliminarComplicacionNoInfecciosa }
+
+salvarComplicacionesNoInfecciosa:
+  url:   /salvar-complicacion-no-infecciosa
+  param: { module: TrasplanteComplicaciones, action: saveFormComplicacionNoInfecciosa }
 
 agregarComplicacionesNoInfecciosaTrasplante:
-  url:   /agregar-complicaciones-no-infecciosa/:trasplanteId
+  url:   /agregar-complicacion-no-infecciosa-trasplante/:trasplanteId
   param: { module: TrasplanteComplicaciones, action: agregarComplicacionNoInfecciosaTrasplante }
   
 mostrarComplicacionNoInfecciosa:

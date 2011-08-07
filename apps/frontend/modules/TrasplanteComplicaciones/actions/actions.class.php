@@ -31,11 +31,51 @@ class TrasplanteComplicacionesActions extends sfActions
 	$this->forward404Unless($trasplanteId);
 	$complicacion = new TrasplanteComplicacionesNoInfecciosas();
 	$complicacion->setTrasplanteId($trasplanteId);
-	$complicacion->setEvolucion(false);
-	
+	$complicacion->setEvolucion(0);
+	$complicacion->setInternado(true);
+	$complicacion->setDiasDeInternacion(0);
 	$this->form = new TrasplanteComplicacionesNoInfecciosasForm($complicacion);  
   }  
 
+  public function executeEditarComplicacionNoInfecciosa(sfWebRequest $request)
+  {
+	$this->id = $request->getParameter('id');
+	$complicacion = complicacionesHandler::retrieveComplicacionNoInfecciosa($this->id);
+	$this->form = new TrasplanteComplicacionesNoInfecciosasForm($complicacion);
+  }
+  
+  public function executeSaveFormComplicacionNoInfecciosa(sfWebRequest $request)
+  {
+      $auxForm = new TrasplanteComplicacionesNoInfecciosasForm();
+      $parameters = $request->getParameter($auxForm->getName());
+      $id = $parameters["id"];
+      $isNew = true;
+      if($id)
+      {
+        $donante = Doctrine::getTable('Donante')->find($id);
+        $this->forward404Unless($donante);
+        $form = new TrasplanteComplicacionesNoInfecciosasForm($donante); 
+        $isNew = false;
+      }
+      else
+      {
+        
+        $form = new TrasplanteComplicacionesNoInfecciosasForm(); 
+      }
+      $form->bind($parameters);
+      if ($form->isValid())
+      {
+        $complicacion = $form->save();
+        $body = $this->getPartial("li_complicacion_no_infecciosa", array("id" => $complicacion->getId(), "fecha" => $complicacion->getFecha()));
+        //$body = "";
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('isnew'=>$isNew, 'id'=>$complicacion->getId(), 'body' => $body)));
+      }
+      else
+      {
+        $body = $this->getPartial('small_form', array('form'=>$form));
+        return $this->renderText(mdBasicFunction::basic_json_response(false, array('body' => $body)));
+      }	
+  }
   /*
    * 
    * De aca para abajo no sirve nada

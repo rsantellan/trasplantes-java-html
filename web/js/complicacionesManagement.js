@@ -67,12 +67,14 @@ complicacionesManagement.prototype = {
               {
                 $("#auxiliary_fields").html(json.options.body);
                 $("#auxiliary_fields").show();
-                $("#donante_manage_container").fadeOut('slow', function() {
-                  $.fancybox.resize();
-                });
-                $("#donante_container").fadeOut('slow', function() {
-                  $.fancybox.resize();
-                });
+				if($("#trasplante_complicacion_no_infecciosa_form").length != 0)
+				{
+				  $("#trasplante_complicacion_no_infecciosa_form").fadeOut('slow', function() {
+					$.fancybox.resize();
+				  });
+				}
+                
+                
               }
               else 
               {
@@ -88,6 +90,198 @@ complicacionesManagement.prototype = {
       return false;
     },
 	
+    showMedicacion: function()
+    {
+      var id = $("#complicacion_medicacion_selector").val();
+      var url = $('#complicacion_medicacion_show_url_input').val();
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          data: {'id': id},
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                  $("#complicacion_medicacion_container").show();
+                  $("#complicacion_medicacion_container").html(json.options.body);
+                  
+                  $(".save_button").button();
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;      
+    },
+    
+    saveMedicacionForm: function(form)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: $(form).attr('action'),
+          data: $(form).serialize(),
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              $("#complicacion_medicacion_container").html(json.options.body);
+              
+              $(".save_button").button();
+              
+              if(json.response == "OK")
+              {
+				var isInfecciosa = false;
+				if($('#trasplante_complicaciones_no_infecciosas_medicacion_id').length == 0)
+				{
+				  isInfecciosa = true;
+				}
+                $('#complicacion_medicacion_container input').effect("highlight", {}, 300);
+                
+                if(json.options.isnew)
+                {
+                  $("#complicacion_medicacion_selector").
+                          append($("<option></option>").
+                          attr("value",json.options.id).
+                          attr("id",'complicacion_medicacion_option_'+json.options.id).
+                          text(json.options.nombre));
+				  	
+				  if(!isInfecciosa)
+				  {
+					$('#trasplante_complicaciones_no_infecciosas_medicacion_id').
+							  append($("<option></option>").
+							  attr("value",json.options.id).
+							  text(json.options.nombre));	
+				  }
+                  
+                   
+                }
+                else
+                {
+                  $('#complicacion_medicacion_option_'+json.options.id).text(json.options.nombre);
+				  if(!isInfecciosa)
+				  {
+					$("#trasplante_complicaciones_no_infecciosas_medicacion_id option[value='"+json.options.id+"']").text(json.options.nombre);                  
+				  }
+				  else
+				  {
+					
+				  }
+                  
+                }
+                
+              }
+              
+          }
+          , 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+      return false;      
+    },
+	
+    newMedicacion: function(url)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $("#complicacion_medicacion_container").show();
+                $("#complicacion_medicacion_container").html(json.options.body);
+                $(".save_button").button();
+                
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;      
+    },
+    
+    deleteMedicacion: function(id, text, url)
+    {
+      if(confirm(text))
+      {
+		$.fancybox.showActivity();
+		$.ajax({
+          url: url,
+          data: {'id': id},
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+				var isInfecciosa = false;
+				if($('#trasplante_complicaciones_no_infecciosas_medicacion_id').length == 0)
+				{
+				  isInfecciosa = true;
+				}
+                $('#complicacion_medicacion_option_'+json.options.id).remove();
+				if(!isInfecciosa)
+				{
+				  $("#trasplante_complicaciones_no_infecciosas_medicacion_id option[value='"+json.options.id+"']").remove();
+				}
+                                  
+                $("#complicacion_medicacion_container").empty();
+                
+              }
+              else
+              {
+                $(".donante_causa_muerte_delete_error").show();
+                
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+		});
+	  }
+	},
+    
+    verComplicacion: function()
+    {
+	  if($("#trasplante_complicacion_no_infecciosa_form").length != 0)
+	  {
+		$("#trasplante_complicacion_no_infecciosa_form").fadeIn('slow', function() {
+		  $.fancybox.resize();
+		});
+	  }
+	  
+             
+      $("#auxiliary_fields").fadeOut('slow', function() {
+        $("#auxiliary_fields").empty();
+        $.fancybox.resize();
+      });
+      
+      $.fancybox.resize();
+    },
+	
+	
+	// De aca para abajo no sirve
     newDonante: function(url)
     {
       $.fancybox.showActivity();
@@ -178,22 +372,6 @@ complicacionesManagement.prototype = {
       }
 	  return false;
     },
-    
-    verDonante: function()
-    {
-      $("#donante_container").fadeIn('slow', function() {
-        $.fancybox.resize();
-      });       
-      $("#auxiliary_fields").fadeOut('slow', function() {
-        $("#auxiliary_fields").empty();
-        $.fancybox.resize();
-      });
-      
-      $("#donante_manage_container").fadeIn('slow', function() {
-        $.fancybox.resize();
-      });
-      $.fancybox.resize();
-    },
 
     showCausaMuerteManagement: function(url)
     {
@@ -227,153 +405,6 @@ complicacionesManagement.prototype = {
         });
       return false;
     },
-	
-    newDonanteCausaMuerte: function(url)
-    {
-      $.fancybox.showActivity();
-      $.ajax({
-          url: url,
-          type: 'post',
-          dataType: 'json',
-          success: function(json){
-              if(json.response == "OK")
-              {
-                $("#donante_causa_muerte_container").show();
-                $("#donante_causa_muerte_container").html(json.options.body);
-                $(".save_button").button();
-                
-              }
-              else 
-              {
-
-              }
-          }, 
-          complete: function()
-          {
-            $.fancybox.hideActivity();
-            $.fancybox.resize();
-          }
-      });
-
-      return false;      
-    },
-    
-    saveDonanteCausaMuerteForm: function(form)
-    {
-      $.fancybox.showActivity();
-      $.ajax({
-          url: $(form).attr('action'),
-          data: $(form).serialize(),
-          type: 'post',
-          dataType: 'json',
-          success: function(json){
-              $("#donante_causa_muerte_container").html(json.options.body);
-              
-              $(".save_button").button();
-              
-              if(json.response == "OK")
-              {
-                $('#donante_causa_muerte_container input').effect("highlight", {}, 300);
-                
-                if(json.options.isnew)
-                {
-                  $("#donantes_causa_muerte_selector").
-                          append($("<option></option>").
-                          attr("value",json.options.id).
-                          attr("id",'donante_causa_muerte_option_'+json.options.id).
-                          text(json.options.nombre));
-						
-                  $('#donante_donante_causa_muerte_id').
-                          append($("<option></option>").
-                          attr("value",json.options.id).
-                          text(json.options.nombre));
-                   
-                }
-                else
-                {
-                  $('#donante_option_'+json.options.id).text(json.options.nombre);
-                
-                  $("#donante_donante_causa_muerte_id option[value='"+json.options.id+"']").text(json.options.nombre);                  
-                }
-                
-              }
-              
-          }
-          , 
-          complete: function()
-          {
-            $.fancybox.hideActivity();
-            $.fancybox.resize();
-          }
-      });
-      return false;      
-    },
-	
-    showDonanteCausaMuerte: function()
-    {
-      var id = $("#donantes_causa_muerte_selector").val();
-      var url = $('#donante_causa_muerte_show_url_input').val();
-      $.fancybox.showActivity();
-      $.ajax({
-          url: url,
-          data: {'id': id},
-          type: 'post',
-          dataType: 'json',
-          success: function(json){
-              if(json.response == "OK")
-              {
-                  $("#donante_causa_muerte_container").show();
-                  $("#donante_causa_muerte_container").html(json.options.body);
-                  
-                  $(".save_button").button();
-              }
-              else 
-              {
-
-              }
-          }, 
-          complete: function()
-          {
-            $.fancybox.hideActivity();
-            $.fancybox.resize();
-          }
-      });
-
-      return false;      
-    },
-    
-    deleteDonanteCausaMuerte: function(id, text, url)
-    {
-      if(confirm(text))
-      {
-		$.fancybox.showActivity();
-		$.ajax({
-          url: url,
-          data: {'id': id},
-          type: 'post',
-          dataType: 'json',
-          success: function(json){
-              if(json.response == "OK")
-              {
-                $('#donante_causa_muerte_option_'+json.options.id).remove();
-                $("#donante_donante_causa_muerte_id option[value='"+json.options.id+"']").remove();                  
-                $("#donante_causa_muerte_container").empty();
-                
-              }
-              else
-              {
-                $(".donante_causa_muerte_delete_error").show();
-                
-              }
-          }, 
-          complete: function()
-          {
-            $.fancybox.hideActivity();
-            $.fancybox.resize();
-          }
-		});
-	  }
-	},
 
     showOrganosManagement: function(url)
     {

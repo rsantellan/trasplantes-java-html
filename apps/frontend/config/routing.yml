@@ -1,6 +1,27 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+#Medicaciones
+eliminarMedicacion:
+  url:   /eliminar-medicacion
+  param: { module: Medicaciones, action: delete }
+
+crearMedicacion:
+  url:   /crear-medicacion
+  param: { module: Medicaciones, action: new } 
+
+salvarMedicacion:
+  url:   /salvar-medicacion
+  param: { module: Medicaciones, action: save }
+
+editarMedicacion:
+  url:   /editar-medicacion
+  param: { module: Medicaciones, action: edit }
+
+manejarComplicacionMedicacion:
+  url:   /complicacionMedicacion
+  param: { module: Medicaciones, action: index }
+
 #Complicaciones
 editarComplicacionesNoInfecciosa:
   url:   /editar-complicacion-no-infecciosa/:id

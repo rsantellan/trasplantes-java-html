@@ -93,6 +93,15 @@ class donanteCausaMuerteActions extends sfActions
   }  
   
   
+  public function executeEdit(sfWebRequest $request)
+  {
+    $this->forward404Unless($donante_causa_muerte = Doctrine_Core::getTable('DonanteCausaMuerte')->find(array($request->getParameter('id'))), sprintf('Object donante_causa_muerte does not exist (%s).', $request->getParameter('id')));
+    $this->form = new DonanteCausaMuerteForm($donante_causa_muerte);
+	
+	$body = $this->getPartial('small_form', array('form'=>$this->form));
+    
+    return $this->renderText(mdBasicFunction::basic_json_response(true, array('body' => $body)));
+  }
   
   /**
    *
@@ -104,15 +113,7 @@ class donanteCausaMuerteActions extends sfActions
   
   
   
-  public function executeEdit(sfWebRequest $request)
-  {
-    $this->forward404Unless($donante_causa_muerte = Doctrine_Core::getTable('DonanteCausaMuerte')->find(array($request->getParameter('id'))), sprintf('Object donante_causa_muerte does not exist (%s).', $request->getParameter('id')));
-    $this->form = new DonanteCausaMuerteForm($donante_causa_muerte);
-	
-	$body = $this->getPartial('small_form', array('form'=>$this->form));
-    
-    return $this->renderText(mdBasicFunction::basic_json_response(true, array('body' => $body)));
-  }
+  
 
   public function executeCreate(sfWebRequest $request)
   {

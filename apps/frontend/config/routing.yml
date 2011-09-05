@@ -1,6 +1,44 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+#Complicaciones tipo valor
+eliminarComplicacionTipoValor:
+  url:   /eliminar-complicacion-tipo-valor
+  param: { module: ComplicacionesTipos, action: deleteValor }
+
+crearComplicacionTipoValor:
+  url:   /crear-complicacion-tipo-valor
+  param: { module: ComplicacionesTipos, action: newValor } 
+
+salvarComplicacionTipoValor:
+  url:   /salvar-complicacion-tipo-valor
+  param: { module: ComplicacionesTipos, action: saveValor }
+
+editarComplicacionTipoValor:
+  url:   /editar-complicacion-tipo-valor
+  param: { module: ComplicacionesTipos, action: editValor }
+  
+#Complicaciones tipo
+eliminarComplicacionTipo:
+  url:   /eliminar-complicacion-tipo
+  param: { module: ComplicacionesTipos, action: delete }
+
+crearComplicacionTipo:
+  url:   /crear-complicacion-tipo
+  param: { module: ComplicacionesTipos, action: new } 
+
+salvarComplicacionTipo:
+  url:   /salvar-complicacion-tipo
+  param: { module: ComplicacionesTipos, action: save }
+
+editarComplicacionTipo:
+  url:   /editar-complicacion-tipo
+  param: { module: ComplicacionesTipos, action: edit }
+
+manejarComplicacionTipos:
+  url:   /complicacionTipo
+  param: { module: ComplicacionesTipos, action: index }
+
 #Medicaciones
 eliminarMedicacion:
   url:   /eliminar-medicacion

@@ -26,5 +26,25 @@ class complicacionesHandler {
   {
 	return Doctrine::getTable("TrasplanteComplicacionesNoInfecciosas")->retrieveComplicacionNoInfecciosa($id, $hydrationMode);
   }
+  
+  public static function retrieveAllComplicacionesTipo($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+	return Doctrine::getTable("ComplicacionesTipos")->retrieveAll($hydrationMode);
+  }
+  
+  public static function retrieveComplicacionesTipoById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+	return Doctrine::getTable("ComplicacionesTipos")->retriveById($id, $hydrationMode);
+  }
+  
+  public static function retrieveAllComplicacionesTipoValor($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+	return Doctrine::getTable("ComplicacionesTiposValores")->retrieveAll($hydrationMode);
+  }
+  
+  public static function retrieveComplicacionesValorTipoById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+	return Doctrine::getTable("ComplicacionesTiposValores")->retriveById($id, $hydrationMode);
+  }  
 }
 

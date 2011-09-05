@@ -261,8 +261,301 @@ complicacionesManagement.prototype = {
 		});
 	  }
 	},
-    
-    verComplicacion: function()
+
+
+    showComplicacionesTipoManagement: function(url)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $("#auxiliary_fields").html(json.options.body);
+                $("#auxiliary_fields").show();
+				if($("#trasplante_complicacion_no_infecciosa_form").length != 0)
+				{
+				  $("#trasplante_complicacion_no_infecciosa_form").fadeOut('slow', function() {
+					$.fancybox.resize();
+				  });
+				}
+                
+                
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+        });
+      return false;
+    },
+ 
+    showComplicacionTipo: function()
+    {
+      var id = $("#complicacion_tipo_selector").val();
+      var url = $('#complicacion_tipo_show_url_input').val();
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          data: {'id': id},
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                  $("#complicacion_tipo_container").show();
+                  $("#complicacion_tipo_container").html(json.options.body);
+                  
+                  $(".save_button").button();
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;      
+    },
+	
+    newComplicacionTipo: function(url)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $("#complicacion_tipo_container").show();
+                $("#complicacion_tipo_container").html(json.options.body);
+                $(".save_button").button();
+                
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;      
+    },	
+	
+	saveComplicacionTipoForm: function(form)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: $(form).attr('action'),
+          data: $(form).serialize(),
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              $("#complicacion_tipo_container").html(json.options.body);
+              
+              $(".save_button").button();
+              
+              if(json.response == "OK")
+              {
+				$('#complicacion_tipo_container input').effect("highlight", {}, 300);
+                
+                if(json.options.isnew)
+                {
+                  $("#complicacion_tipo_selector").
+                          append($("<option></option>").
+                          attr("value",json.options.id).
+                          attr("id",'complicacion_tipo_option_'+json.options.id).
+                          text(json.options.nombre));
+				  alert("TENGO QUE ACTUALIZAR TODO EL SELECT.");
+                }
+                else
+                {
+                  $('#complicacion_tipo_option_'+json.options.id).text(json.options.nombre);
+				  alert("TENGO QUE ACTUALIZAR TODO EL SELECT.");
+                }
+                
+              }
+			  else
+			  {
+				$("#complicacion_valor_container").html(json.options.body);
+			  }
+              
+          }
+          , 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+      return false;      
+    },
+	
+	deleteComplicacionTipo: function(id, text, url)
+    {
+      if(confirm(text))
+      {
+		$.fancybox.showActivity();
+		$.ajax({
+          url: url,
+          data: {'id': id},
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+				$('#complicacion_tipo_option_'+json.options.id).remove();
+				alert("TENGO QUE ACTUALIZAR TODO EL SELECT.");
+                $("#complicacion_tipo_container").empty();
+              }
+              else
+              {
+                $(".donante_causa_muerte_delete_error").show();
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+		});
+	  }
+	},
+	
+    showComplicacionTipoValor: function()
+    {
+      var id = $("#complicacion_tipo_valor_selector").val();
+      var url = $('#complicacion_tipo_valor_show_url_input').val();
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          data: {'id': id},
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                  $("#complicacion_tipo_valor_container").show();
+                  $("#complicacion_tipo_valor_container").html(json.options.body);
+                  
+                  $(".save_button").button();
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;      
+    },	
+
+    newComplicacionTipoValor: function(url, id)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          type: 'post',
+		  data: {'id': id},
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $("#complicacion_tipo_valor_container").show();
+                $("#complicacion_tipo_valor_container").html(json.options.body);
+                $(".save_button").button();
+                
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;      
+    },
+	
+	saveComplicacionTipoValorForm: function(form)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: $(form).attr('action'),
+          data: $(form).serialize(),
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              $("#complicacion_tipo_valor_container").html(json.options.body);
+              
+              $(".save_button").button();
+              
+              if(json.response == "OK")
+              {
+				$('#complicacion_tipo_valor_container input').effect("highlight", {}, 300);
+                
+                if(json.options.isnew)
+                {
+                  $("#complicacion_tipo_valor_selector").
+                          append($("<option></option>").
+                          attr("value",json.options.id).
+                          attr("id",'complicacion_tipo_valor_option_'+json.options.id).
+                          text(json.options.nombre));
+				  alert("TENGO QUE ACTUALIZAR TODO EL SELECT.");
+                }
+                else
+                {
+                  $('#complicacion_tipo_valor_option_'+json.options.id).text(json.options.nombre);
+				  alert("TENGO QUE ACTUALIZAR TODO EL SELECT.");
+                }
+                
+              }
+              else
+			  {
+				$("#complicacion_tipo_valor_container").html(json.options.body);
+			  }
+				
+          }
+          , 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+      return false;      
+    },
+	
+	
+	verComplicacion: function()
     {
 	  if($("#trasplante_complicacion_no_infecciosa_form").length != 0)
 	  {

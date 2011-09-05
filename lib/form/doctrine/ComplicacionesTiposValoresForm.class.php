@@ -12,5 +12,6 @@ class ComplicacionesTiposValoresForm extends BaseComplicacionesTiposValoresForm
 {
   public function configure()
   {
+	$this->widgetSchema['complicacion_tipo_id'] = new sfWidgetFormInputHidden();
   }
 }

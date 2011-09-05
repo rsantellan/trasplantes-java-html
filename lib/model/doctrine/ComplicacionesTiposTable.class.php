@@ -16,4 +16,20 @@ class ComplicacionesTiposTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('ComplicacionesTipos');
     }
+	
+	public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("ct")
+                ->addWhere("ct.id = ?", $id);
+
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    } 
+	
+	public function retrieveAll($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+	{
+	  $query = $this->createQuery("ct");
+	  $query->setHydrationMode($hydrationMode);
+	  return $query->execute();
+	} 	
 }

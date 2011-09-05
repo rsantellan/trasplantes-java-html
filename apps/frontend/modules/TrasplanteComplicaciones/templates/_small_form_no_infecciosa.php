@@ -50,7 +50,7 @@
 	<div class="form_block_field<?php if($form['complicacion_valor_id']->hasError()):?> error_msg<?php endif; ?>">
 	  <?php echo $form['complicacion_valor_id']->render() ?>
 	</div>
-	<a href="javascript:void(0)" class="simple_tip_container" onclick="return complicacionesManagement.getInstance().showMedicacionesManagement('<?php echo url_for("@manejarComplicacionMedicacion");?>');">
+	<a href="javascript:void(0)" class="simple_tip_container" onclick="return complicacionesManagement.getInstance().showComplicacionesTipoManagement('<?php echo url_for("@manejarComplicacionTipos");?>');">
       <?php echo image_tag("add_block.png", array("width" => 24)); ?>
       <div class="tooltip_text"><?php echo __("donante_manejar causa muerte");?></div>		
     </a>

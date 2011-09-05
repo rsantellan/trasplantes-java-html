@@ -24,4 +24,20 @@ class ComplicacionesTiposValoresTable extends Doctrine_Table
                 ->addWhere("ctv.nombre = ?", $nombre);
       return $query->fetchOne();
     }
+	
+	public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("ctv")
+                ->addWhere("ctv.id = ?", $id);
+
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    } 
+	
+	public function retrieveAll($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+	{
+	  $query = $this->createQuery("ctv");
+	  $query->setHydrationMode($hydrationMode);
+	  return $query->execute();
+	}
 }

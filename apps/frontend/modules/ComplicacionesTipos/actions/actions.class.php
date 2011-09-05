@@ -12,62 +12,172 @@ class ComplicacionesTiposActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->complicaciones_tiposs = Doctrine_Core::getTable('ComplicacionesTipos')
-      ->createQuery('a')
-      ->execute();
+	$this->list = complicacionesHandler::retrieveAllComplicacionesTipo();
+    
+    $body = $this->getPartial('indexTemplate', array('list'=>$this->list));
+    return $this->renderText(mdBasicFunction::basic_json_response(true, array('body' => $body)));
   }
 
+  
+  public function executeEdit(sfWebRequest $request)
+  {
+    $this->forward404Unless($complicacionTipo = complicacionesHandler::retrieveComplicacionesTipoById(array($request->getParameter('id'))), sprintf('Object complicaciones tipo does not exist (%s).', $request->getParameter('id')));
+    $this->form = new ComplicacionesTiposForm($complicacionTipo);
+	
+	$body = $this->getPartial('small_form', array('form'=>$this->form));
+    
+    return $this->renderText(mdBasicFunction::basic_json_response(true, array('body' => $body)));
+  }
+  
+  
+  public function executeSave(sfWebRequest $request)
+  {
+      $auxForm = new ComplicacionesTiposForm();
+      $parameters = $request->getParameter($auxForm->getName());
+      $id = $parameters["id"];
+      $isNew = true;
+      if($id)
+      {
+        $complicacionTipo = complicacionesHandler::retrieveComplicacionesTipoById($id);
+        $this->forward404Unless($complicacionTipo);
+        $form = new ComplicacionesTiposForm($complicacionTipo); 
+        $isNew = false;
+      }
+      else
+      {
+        
+        $form = new ComplicacionesTiposForm(); 
+      }
+      $form->bind($parameters);
+      if ($form->isValid())
+      {
+        $complicacionTipo = $form->save();
+        $form = new ComplicacionesTiposForm($complicacionTipo);
+        $body = $this->getPartial('small_form', array('form'=>$form));
+        
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('isnew'=>$isNew, 'id'=>$complicacionTipo->getId(), 'nombre'=>$complicacionTipo->getNombre(), 'body' => $body)));
+      }
+      else
+      {
+        $body = $this->getPartial('small_form', array('form'=>$form));
+        return $this->renderText(mdBasicFunction::basic_json_response(false, array('body' => $body)));
+      }
+  }
+  
+  
   public function executeNew(sfWebRequest $request)
   {
     $this->form = new ComplicacionesTiposForm();
+  
+	$body = $this->getPartial('small_form', array('form'=>$this->form));
+    
+    return $this->renderText(mdBasicFunction::basic_json_response(true, array('body' => $body))); 
+	
   }
-
-  public function executeCreate(sfWebRequest $request)
-  {
-    $this->forward404Unless($request->isMethod(sfRequest::POST));
-
-    $this->form = new ComplicacionesTiposForm();
-
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('new');
-  }
-
-  public function executeEdit(sfWebRequest $request)
-  {
-    $this->forward404Unless($complicaciones_tipos = Doctrine_Core::getTable('ComplicacionesTipos')->find(array($request->getParameter('id'))), sprintf('Object complicaciones_tipos does not exist (%s).', $request->getParameter('id')));
-    $this->form = new ComplicacionesTiposForm($complicaciones_tipos);
-  }
-
-  public function executeUpdate(sfWebRequest $request)
-  {
-    $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-    $this->forward404Unless($complicaciones_tipos = Doctrine_Core::getTable('ComplicacionesTipos')->find(array($request->getParameter('id'))), sprintf('Object complicaciones_tipos does not exist (%s).', $request->getParameter('id')));
-    $this->form = new ComplicacionesTiposForm($complicaciones_tipos);
-
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('edit');
-  }
-
+  
   public function executeDelete(sfWebRequest $request)
   {
-    $request->checkCSRFProtection();
+    //$request->checkCSRFProtection();
 
-    $this->forward404Unless($complicaciones_tipos = Doctrine_Core::getTable('ComplicacionesTipos')->find(array($request->getParameter('id'))), sprintf('Object complicaciones_tipos does not exist (%s).', $request->getParameter('id')));
-    $complicaciones_tipos->delete();
-
-    $this->redirect('ComplicacionesTipos/index');
-  }
-
-  protected function processForm(sfWebRequest $request, sfForm $form)
-  {
-    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
-    if ($form->isValid())
+    $this->forward404Unless($complicacionTipo = complicacionesHandler::retrieveComplicacionesTipoById(array($request->getParameter('id'))), sprintf('Object complicaciones tipo does not exist (%s).', $request->getParameter('id')));
+    try
     {
-      $complicaciones_tipos = $form->save();
-
-      $this->redirect('ComplicacionesTipos/edit?id='.$complicaciones_tipos->getId());
+      if($complicacionTipo->delete())
+      {  
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('id'=>$request->getParameter('id'))));
+      }
+      else
+      {
+        return $this->renderText(mdBasicFunction::basic_json_response(false, array()));
+      }      
+    }catch(Exception $e)
+    {
+      
+      return $this->renderText(mdBasicFunction::basic_json_response(false, array("error" => $e->getCode())));
     }
+	
+    //$this->redirect('donanteCausaMuerte/index');
+  } 
+
+  public function executeEditValor(sfWebRequest $request)
+  {
+    $this->forward404Unless($complicacionTipoValor = complicacionesHandler::retrieveComplicacionesValorTipoById(array($request->getParameter('id'))), sprintf('Object complicaciones tipo does not exist (%s).', $request->getParameter('id')));
+    $this->form = new ComplicacionesTiposValoresForm($complicacionTipoValor);
+	
+	$body = $this->getPartial('small_form_valor', array('form'=>$this->form));
+    
+    return $this->renderText(mdBasicFunction::basic_json_response(true, array('body' => $body)));
   }
+  
+  
+  public function executeSaveValor(sfWebRequest $request)
+  {
+      $auxForm = new ComplicacionesTiposValoresForm();
+      $parameters = $request->getParameter($auxForm->getName());
+      $id = $parameters["id"];
+      $isNew = true;
+      if($id)
+      {
+        $complicacionTipoValor = complicacionesHandler::retrieveComplicacionesValorTipoById($id);
+        $this->forward404Unless($complicacionTipoValor);
+        $form = new ComplicacionesTiposValoresForm($complicacionTipoValor); 
+        $isNew = false;
+      }
+      else
+      {
+        
+        $form = new ComplicacionesTiposValoresForm(); 
+      }
+      $form->bind($parameters);
+      if ($form->isValid())
+      {
+        $complicacionTipoValor = $form->save();
+        $form = new ComplicacionesTiposValoresForm($complicacionTipoValor);
+        $body = $this->getPartial('small_form_valor', array('form'=>$form));
+        
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('isnew'=>$isNew, 'id'=>$complicacionTipoValor->getId(), 'nombre'=>$complicacionTipoValor->getNombre(), 'body' => $body)));
+      }
+      else
+      {
+        $body = $this->getPartial('small_form_valor', array('form'=>$form));
+        return $this->renderText(mdBasicFunction::basic_json_response(false, array('body' => $body)));
+      }
+  }
+  
+  
+  public function executeNewValor(sfWebRequest $request)
+  {
+	$request->getParameter('id');
+    $this->form = new ComplicacionesTiposValoresForm();
+  
+	$body = $this->getPartial('small_form_valor', array('form'=>$this->form));
+    
+    return $this->renderText(mdBasicFunction::basic_json_response(true, array('body' => $body))); 
+	
+  }
+  
+  public function executeDeleteValor(sfWebRequest $request)
+  {
+    //$request->checkCSRFProtection();
+
+    $this->forward404Unless($complicacionTipoValor = complicacionesHandler::retrieveComplicacionesValorTipoById(array($request->getParameter('id'))), sprintf('Object complicaciones tipo does not exist (%s).', $request->getParameter('id')));
+    try
+    {
+      if($complicacionTipoValor->delete())
+      {  
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('id'=>$request->getParameter('id'))));
+      }
+      else
+      {
+        return $this->renderText(mdBasicFunction::basic_json_response(false, array()));
+      }      
+    }catch(Exception $e)
+    {
+      
+      return $this->renderText(mdBasicFunction::basic_json_response(false, array("error" => $e->getCode())));
+    }
+	
+    //$this->redirect('donanteCausaMuerte/index');
+  } 
+  
 }

@@ -31,7 +31,7 @@
     </a>
   <?php endif;?>   
 </form>
-
+<input type="hidden" id="complicacion_valor_refrescar_datos" value="<?php echo url_for("@traerComplicacionTipoValorAjax");?>"/>
 <?php if(!$form->isNew()): ?>
 
   <div class="fancy_manage_container">

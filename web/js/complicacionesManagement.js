@@ -385,12 +385,12 @@ complicacionesManagement.prototype = {
                           attr("value",json.options.id).
                           attr("id",'complicacion_tipo_option_'+json.options.id).
                           text(json.options.nombre));
-				  alert("TENGO QUE ACTUALIZAR TODO EL SELECT.");
+                        complicacionesManagement.getInstance().refrescarComplicacionTipoSelect();
                 }
                 else
                 {
                   $('#complicacion_tipo_option_'+json.options.id).text(json.options.nombre);
-				  alert("TENGO QUE ACTUALIZAR TODO EL SELECT.");
+                  complicacionesManagement.getInstance().refrescarComplicacionTipoSelect();
                 }
                 
               }
@@ -410,6 +410,36 @@ complicacionesManagement.prototype = {
       return false;      
     },
 	
+  refrescarComplicacionTipoSelect: function()
+  {
+    var url = $("#complicacion_valor_refrescar_datos").val();
+		$.ajax({
+          url: url,
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $("#trasplante_complicaciones_no_infecciosas_complicacion_valor_id").find('option').remove().end();
+                for(index in json.options.list)
+                {
+                  var aux = json.options.list[index];
+                  $('#trasplante_complicaciones_no_infecciosas_complicacion_valor_id').
+                    append($("<option></option>").
+                    attr("value",aux.id).
+                    text(aux.name));	
+                }
+                
+                
+              }
+              else
+              {
+                
+              }
+          }
+		});    
+  },
+  
 	deleteComplicacionTipo: function(id, text, url)
     {
       if(confirm(text))
@@ -424,7 +454,7 @@ complicacionesManagement.prototype = {
               if(json.response == "OK")
               {
 				$('#complicacion_tipo_option_'+json.options.id).remove();
-				alert("TENGO QUE ACTUALIZAR TODO EL SELECT.");
+				complicacionesManagement.getInstance().refrescarComplicacionTipoSelect();
                 $("#complicacion_tipo_container").empty();
               }
               else
@@ -529,12 +559,12 @@ complicacionesManagement.prototype = {
                           attr("value",json.options.id).
                           attr("id",'complicacion_tipo_valor_option_'+json.options.id).
                           text(json.options.nombre));
-				  alert("TENGO QUE ACTUALIZAR TODO EL SELECT.");
+				  complicacionesManagement.getInstance().refrescarComplicacionTipoSelect();
                 }
                 else
                 {
                   $('#complicacion_tipo_valor_option_'+json.options.id).text(json.options.nombre);
-				  alert("TENGO QUE ACTUALIZAR TODO EL SELECT.");
+				  complicacionesManagement.getInstance().refrescarComplicacionTipoSelect();
                 }
                 
               }

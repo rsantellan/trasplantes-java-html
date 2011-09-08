@@ -2,6 +2,10 @@
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 #Complicaciones tipo valor
+traerComplicacionTipoValorAjax:
+  url:   /refrescar-complicacion-tipo-valor
+  param: { module: ComplicacionesTipos, action: retrieveAllComplicacionesTipoValores }
+  
 eliminarComplicacionTipoValor:
   url:   /eliminar-complicacion-tipo-valor
   param: { module: ComplicacionesTipos, action: deleteValor }

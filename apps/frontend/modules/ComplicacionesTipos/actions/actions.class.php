@@ -181,6 +181,20 @@ class ComplicacionesTiposActions extends sfActions
     }
 	
     //$this->redirect('donanteCausaMuerte/index');
-  } 
+  }
+  
+  public function executeRetrieveAllComplicacionesTipoValores(sfWebRequest $request)
+  {
+    $list = complicacionesHandler::retrieveAllComplicacionesTipoValor();
+    $return = array();
+    foreach($list as $valor)
+    {
+      $aux = array();
+      $aux['id'] = $valor->getId();
+      $aux['name'] = $valor->__toString();
+      array_push($return, $aux);
+    }
+    return $this->renderText(mdBasicFunction::basic_json_response(true, array('list' => $return)));
+  }
   
 }

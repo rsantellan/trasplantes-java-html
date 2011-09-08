@@ -735,6 +735,7 @@ ComplicacionesTiposValores:
       local: complicacion_tipo_id
       foreign: id
       type: one
+      onDelete: CASCADE
 
 Medicaciones:
   tableName: medicaciones

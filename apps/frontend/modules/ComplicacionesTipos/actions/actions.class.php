@@ -147,8 +147,11 @@ class ComplicacionesTiposActions extends sfActions
   
   public function executeNewValor(sfWebRequest $request)
   {
-	$request->getParameter('id');
-    $this->form = new ComplicacionesTiposValoresForm();
+	$tipoId = $request->getParameter('id');
+	$complicacionTiposValores = new ComplicacionesTiposValores();
+	$complicacionTiposValores->setComplicacionTipoId($tipoId);
+	
+    $this->form = new ComplicacionesTiposValoresForm($complicacionTiposValores);
   
 	$body = $this->getPartial('small_form_valor', array('form'=>$this->form));
     

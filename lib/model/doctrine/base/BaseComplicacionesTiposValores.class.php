@@ -55,7 +55,8 @@ abstract class BaseComplicacionesTiposValores extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('ComplicacionesTipos', array(
              'local' => 'complicacion_tipo_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasMany('TrasplanteComplicacionesNoInfecciosas', array(
              'local' => 'id',

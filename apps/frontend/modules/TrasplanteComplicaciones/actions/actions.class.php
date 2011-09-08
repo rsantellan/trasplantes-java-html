@@ -27,16 +27,28 @@ class TrasplanteComplicacionesActions extends sfActions
 
   public function executeAgregarComplicacionNoInfecciosaTrasplante(sfWebRequest $request)
   {
-	$trasplanteId = $request->getParameter('trasplanteId');
-	$this->forward404Unless($trasplanteId);
-	$complicacion = new TrasplanteComplicacionesNoInfecciosas();
-	$complicacion->setTrasplanteId($trasplanteId);
-	$complicacion->setEvolucion(0);
-	$complicacion->setInternado(true);
-	$complicacion->setDiasDeInternacion(0);
-	$this->form = new TrasplanteComplicacionesNoInfecciosasForm($complicacion);  
+    $trasplanteId = $request->getParameter('trasplanteId');
+    $this->forward404Unless($trasplanteId);
+    $complicacion = new TrasplanteComplicacionesNoInfecciosas();
+    $complicacion->setTrasplanteId($trasplanteId);
+    $complicacion->setEvolucion(0);
+    $complicacion->setInternado(true);
+    $complicacion->setDiasDeInternacion(0);
+    $this->form = new TrasplanteComplicacionesNoInfecciosasForm($complicacion);  
   }  
 
+  public function executeAgregarComplicacionNoInfecciosaEvolucion(sfWebRequest $request)
+  {
+    $trasplanteId = $request->getParameter('trasplanteId');
+    $this->forward404Unless($trasplanteId);
+    $complicacion = new TrasplanteComplicacionesNoInfecciosas();
+    $complicacion->setTrasplanteId($trasplanteId);
+    $complicacion->setEvolucion(1);
+    //$complicacion->setInternado(true);
+    //$complicacion->setDiasDeInternacion(0);
+    $this->form = new TrasplanteComplicacionesNoInfecciosasForm($complicacion);  
+  }
+  
   public function executeEditarComplicacionNoInfecciosa(sfWebRequest $request)
   {
 	$this->id = $request->getParameter('id');
@@ -52,9 +64,9 @@ class TrasplanteComplicacionesActions extends sfActions
       $isNew = true;
       if($id)
       {
-        $donante = Doctrine::getTable('Donante')->find($id);
-        $this->forward404Unless($donante);
-        $form = new TrasplanteComplicacionesNoInfecciosasForm($donante); 
+        $TrasplanteComplicacionesNoInfecciosas = Doctrine::getTable('TrasplanteComplicacionesNoInfecciosas')->find($id);
+        $this->forward404Unless($TrasplanteComplicacionesNoInfecciosas);
+        $form = new TrasplanteComplicacionesNoInfecciosasForm($TrasplanteComplicacionesNoInfecciosas); 
         $isNew = false;
       }
       else
@@ -68,7 +80,7 @@ class TrasplanteComplicacionesActions extends sfActions
         $complicacion = $form->save();
         $body = $this->getPartial("li_complicacion_no_infecciosa", array("id" => $complicacion->getId(), "fecha" => $complicacion->getFecha()));
         //$body = "";
-        return $this->renderText(mdBasicFunction::basic_json_response(true, array('isnew'=>$isNew, 'id'=>$complicacion->getId(), 'body' => $body)));
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('isnew'=>$isNew, 'id'=>$complicacion->getId(), 'body' => $body, 'is_evolucion' => $complicacion->getEvolucion())));
       }
       else
       {

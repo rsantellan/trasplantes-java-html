@@ -31,15 +31,23 @@ complicacionesManagement.prototype = {
                 
                 if(json.options.isnew)
                 {
-                  $("#complicaciones_no_infecciosas_trasplante_list").append(json.options.body);
+                  if(!json.options.is_evolucion)
+                  {
+                    $("#complicaciones_no_infecciosas_trasplante_list").append(json.options.body);
+                  }
+                  else
+                  {
+                    $("#complicaciones_no_infecciosas_evolucion_list").append(json.options.body);
+                  }
+                  
 				  
                 }
                 else
                 {
-                  
+                  $("#complicacion_"+json.options.id).replaceWith(json.options.body);
                 }
-				$("#complicaciones_no_infecciosas_trasplante_list").effect("highlight", {}, 2000);
-				$.fancybox.close();
+                $("#complicaciones_no_infecciosas_trasplante_list").effect("highlight", {}, 2000);
+                $.fancybox.close();
                 
               }
               

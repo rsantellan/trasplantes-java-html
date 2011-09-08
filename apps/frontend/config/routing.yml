@@ -77,6 +77,10 @@ salvarComplicacionesNoInfecciosa:
   url:   /salvar-complicacion-no-infecciosa
   param: { module: TrasplanteComplicaciones, action: saveFormComplicacionNoInfecciosa }
 
+agregarComplicacionesNoInfecciosaEvolucion:
+  url:   /agregar-complicacion-no-infecciosa-evolucion/:trasplanteId
+  param: { module: TrasplanteComplicaciones, action: agregarComplicacionNoInfecciosaEvolucion }
+  
 agregarComplicacionesNoInfecciosaTrasplante:
   url:   /agregar-complicacion-no-infecciosa-trasplante/:trasplanteId
   param: { module: TrasplanteComplicaciones, action: agregarComplicacionNoInfecciosaTrasplante }

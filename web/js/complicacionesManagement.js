@@ -168,6 +168,13 @@ complicacionesManagement.prototype = {
 							  attr("value",json.options.id).
 							  text(json.options.nombre));	
 				  }
+				  else
+				  {
+					$('#trasplante_complicaciones_infecciosas_medicacion_id').
+							  append($("<option></option>").
+							  attr("value",json.options.id).
+							  text(json.options.nombre));
+				  }
                   
                    
                 }
@@ -180,7 +187,7 @@ complicacionesManagement.prototype = {
 				  }
 				  else
 				  {
-					
+					$("#trasplante_complicaciones_infecciosas_medicacion_id option[value='"+json.options.id+"']").text(json.options.nombre);                  
 				  }
                   
                 }
@@ -251,6 +258,10 @@ complicacionesManagement.prototype = {
 				{
 				  $("#trasplante_complicaciones_no_infecciosas_medicacion_id option[value='"+json.options.id+"']").remove();
 				}
+				else
+				{
+				  $("#trasplante_complicaciones_infecciosas_medicacion_id option[value='"+json.options.id+"']").remove();
+				}
                                   
                 $("#complicacion_medicacion_container").empty();
                 
@@ -270,7 +281,355 @@ complicacionesManagement.prototype = {
 	  }
 	},
 
+//Infeccion
 
+    showInfeccionManagement: function(url)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $("#auxiliary_fields").html(json.options.body);
+                $("#auxiliary_fields").show();
+				$("#trasplante_complicacion_no_infecciosa_form").fadeOut('slow', function() {
+				  $.fancybox.resize();
+				});
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+        });
+      return false;
+    },
+	
+    showInfeccion: function()
+    {
+      var id = $("#complicacion_Infeccion_selector").val();
+      var url = $('#complicacion_Infeccion_show_url_input').val();
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          data: {'id': id},
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                  $("#complicacion_Infeccion_container").show();
+                  $("#complicacion_Infeccion_container").html(json.options.body);
+                  
+                  $(".save_button").button();
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;      
+    },
+    
+    saveInfeccionForm: function(form)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: $(form).attr('action'),
+          data: $(form).serialize(),
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              $("#complicacion_Infeccion_container").html(json.options.body);
+              
+              $(".save_button").button();
+              
+              if(json.response == "OK")
+              {
+                $('#complicacion_Infeccion_container input').effect("highlight", {}, 300);
+                
+                if(json.options.isnew)
+                {
+                  $("#complicacion_Infeccion_selector").
+                          append($("<option></option>").
+                          attr("value",json.options.id).
+                          attr("id",'complicacion_Infeccion_option_'+json.options.id).
+                          text(json.options.nombre));
+				  	
+				  $('#trasplante_complicaciones_infecciosas_infeccion_id').
+							  append($("<option></option>").
+							  attr("value",json.options.id).
+							  text(json.options.nombre));	
+                }
+                else
+                {
+                  $('#complicacion_Infeccion_option_'+json.options.id).text(json.options.nombre);
+				  $("#trasplante_complicaciones_infecciosas_infeccion_id option[value='"+json.options.id+"']").text(json.options.nombre);                  
+				}
+                  
+			  }
+                
+		  }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+      return false;      
+    },
+	
+    newInfeccion: function(url)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $("#complicacion_Infeccion_container").show();
+                $("#complicacion_Infeccion_container").html(json.options.body);
+                $(".save_button").button();
+                
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;      
+    },
+    
+    deleteInfeccion: function(id, text, url)
+    {
+      if(confirm(text))
+      {
+		$.fancybox.showActivity();
+		$.ajax({
+          url: url,
+          data: {'id': id},
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $('#complicacion_Infeccion_option_'+json.options.id).remove();
+				$("#trasplante_complicaciones_infecciosas_infeccion_id option[value='"+json.options.id+"']").remove();
+				$("#complicacion_Infeccion_container").empty();
+                
+              }
+              else
+              {
+                $(".donante_causa_muerte_delete_error").show();
+                
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+		});
+	  }
+	},
+
+
+//Termina infeccion
+
+//Germen
+
+    showGermenManagement: function(url)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $("#auxiliary_fields").html(json.options.body);
+                $("#auxiliary_fields").show();
+				$("#trasplante_complicacion_no_infecciosa_form").fadeOut('slow', function() {
+				  $.fancybox.resize();
+				});
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+        });
+      return false;
+    },
+	
+    showGermen: function()
+    {
+      var id = $("#complicacion_Germen_selector").val();
+      var url = $('#complicacion_Germen_show_url_input').val();
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          data: {'id': id},
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                  $("#complicacion_Germen_container").show();
+                  $("#complicacion_Germen_container").html(json.options.body);
+                  
+                  $(".save_button").button();
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;      
+    },
+    
+    saveGermenForm: function(form)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: $(form).attr('action'),
+          data: $(form).serialize(),
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              $("#complicacion_Germen_container").html(json.options.body);
+              
+              $(".save_button").button();
+              
+              if(json.response == "OK")
+              {
+                $('#complicacion_Germen_container input').effect("highlight", {}, 300);
+                
+                if(json.options.isnew)
+                {
+                  $("#complicacion_Germen_selector").
+                          append($("<option></option>").
+                          attr("value",json.options.id).
+                          attr("id",'complicacion_Germen_option_'+json.options.id).
+                          text(json.options.nombre));
+				  	
+				  $('#trasplante_complicaciones_infecciosas_germen_id').
+							  append($("<option></option>").
+							  attr("value",json.options.id).
+							  text(json.options.nombre));	
+                }
+                else
+                {
+                  $('#complicacion_Germen_option_'+json.options.id).text(json.options.nombre);
+				  $("#trasplante_complicaciones_infecciosas_germen_id option[value='"+json.options.id+"']").text(json.options.nombre);                  
+				}
+                  
+			  }
+                
+		  }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+      return false;      
+    },
+	
+    newGermen: function(url)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: url,
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $("#complicacion_Germen_container").show();
+                $("#complicacion_Germen_container").html(json.options.body);
+                $(".save_button").button();
+                
+              }
+              else 
+              {
+
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+
+      return false;      
+    },
+    
+    deleteGermen: function(id, text, url)
+    {
+      if(confirm(text))
+      {
+		$.fancybox.showActivity();
+		$.ajax({
+          url: url,
+          data: {'id': id},
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $('#complicacion_Germen_option_'+json.options.id).remove();
+				$("#trasplante_complicaciones_infecciosas_germen_id option[value='"+json.options.id+"']").remove();
+				$("#complicacion_Germen_container").empty();
+                
+              }
+              else
+              {
+                $(".donante_causa_muerte_delete_error").show();
+                
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+		});
+	  }
+	},
+
+
+//Termina Germen
     showComplicacionesTipoManagement: function(url)
     {
       $.fancybox.showActivity();

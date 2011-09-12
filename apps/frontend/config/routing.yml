@@ -1,6 +1,48 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+#Germen
+eliminarGermen:
+  url:   /eliminar-Germen
+  param: { module: Germen, action: delete }
+
+crearGermen:
+  url:   /crear-Germen
+  param: { module: Germen, action: new } 
+
+salvarGermen:
+  url:   /salvar-Germen
+  param: { module: Germen, action: save }
+
+editarGermen:
+  url:   /editar-Germen
+  param: { module: Germen, action: edit }
+
+manejarComplicacionGermen:
+  url:   /complicacionGermen
+  param: { module: Germen, action: index }
+
+#Infeccion
+eliminarInfeccion:
+  url:   /eliminar-Infeccion
+  param: { module: Infeccion, action: delete }
+
+crearInfeccion:
+  url:   /crear-Infeccion
+  param: { module: Infeccion, action: new } 
+
+salvarInfeccion:
+  url:   /salvar-Infeccion
+  param: { module: Infeccion, action: save }
+
+editarInfeccion:
+  url:   /editar-Infeccion
+  param: { module: Infeccion, action: edit }
+
+manejarComplicacionInfeccion:
+  url:   /complicacionInfeccion
+  param: { module: Infeccion, action: index }
+
 #Complicaciones tipo valor
 traerComplicacionTipoValorAjax:
   url:   /refrescar-complicacion-tipo-valor
@@ -76,6 +118,10 @@ eliminarComplicacionNoInfecciosa:
 salvarComplicacionesNoInfecciosa:
   url:   /salvar-complicacion-no-infecciosa
   param: { module: TrasplanteComplicaciones, action: saveFormComplicacionNoInfecciosa }
+
+agregarComplicacionesInfecciosaTrasplante:
+  url:   /agregar-complicacion-infecciosa-trasplante/:trasplanteId
+  param: { module: TrasplanteComplicaciones, action: agregarComplicacionInfecciosaTrasplante }
 
 agregarComplicacionesNoInfecciosaEvolucion:
   url:   /agregar-complicacion-no-infecciosa-evolucion/:trasplanteId

@@ -12,4 +12,8 @@
  */
 class Germenes extends BaseGermenes
 {
+  public function __toString()
+  {
+	return $this->getNombre();
+  }
 }

@@ -27,7 +27,8 @@
 	<?php foreach($complicaciones_infecciosas_trasplante as $complicacion): ?>
 	  <?php include_partial("li_complicacion_no_infecciosa", array("id" => $complicacion["id"], "fecha" => $complicacion["fecha"])); ?>
 	<?php endforeach; ?>
-  </ul>  
+  </ul>
+  <a href="<?php echo url_for("@agregarComplicacionesInfecciosaTrasplante?trasplanteId=".$trasplanteId); ?>" class="fancy_link"><?php echo __("trasplanteComplicacion_agregar");?></a>
 </div>
 
 <div class="complicaciones_no_infecciosas_trasplante_container">

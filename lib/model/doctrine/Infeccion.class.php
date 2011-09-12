@@ -12,4 +12,8 @@
  */
 class Infeccion extends BaseInfeccion
 {
+  public function __toString()
+  {
+    return $this->getNombre();
+  }
 }

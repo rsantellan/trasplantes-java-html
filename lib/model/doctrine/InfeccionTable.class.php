@@ -16,4 +16,20 @@ class InfeccionTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Infeccion');
     }
+	
+	public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("ii")
+                ->addWhere("ii.id = ?", $id);
+
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    } 
+	
+	public function retrieveAll($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+	{
+	  $query = $this->createQuery("ii");
+	  $query->setHydrationMode($hydrationMode);
+	  return $query->execute();
+	}	
 }

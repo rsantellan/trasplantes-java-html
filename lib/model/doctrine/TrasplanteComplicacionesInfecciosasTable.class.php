@@ -27,4 +27,13 @@ class TrasplanteComplicacionesInfecciosasTable extends Doctrine_Table
       $query->setHydrationMode($hydrationMode);
       return $query->execute();  
 	}	
+  
+	public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("tci")
+                ->addWhere("tci.id = ?", $id);
+
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }  
 }

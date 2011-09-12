@@ -25,6 +25,14 @@ class TrasplanteComplicacionesActions extends sfActions
 	$this->forward404Unless($this->complicacion);
   }
 
+  public function executeMostrarInfecciosa(sfWebRequest $request)
+  {
+	$this->id = $request->getParameter('id');
+	$this->complicacion = complicacionesHandler::retrieveComplicacionInfecciosa($this->id);
+	
+	$this->forward404Unless($this->complicacion);
+  }
+  
   public function executeAgregarComplicacionInfecciosaTrasplante(sfWebRequest $request)
   {
     $trasplanteId = $request->getParameter('trasplanteId');
@@ -36,7 +44,17 @@ class TrasplanteComplicacionesActions extends sfActions
     $complicacion->setDiasDeInternacion(0);
     $this->form = new TrasplanteComplicacionesInfecciosasForm($complicacion);  
   }  
-  
+
+  public function executeAgregarComplicacionInfecciosaEvolucion(sfWebRequest $request)
+  {
+    $trasplanteId = $request->getParameter('trasplanteId');
+    $this->forward404Unless($trasplanteId);
+    $complicacion = new TrasplanteComplicacionesInfecciosas();
+    $complicacion->setTrasplanteId($trasplanteId);
+    $complicacion->setEvolucion(1);
+    $this->form = new TrasplanteComplicacionesInfecciosasForm($complicacion);  
+  } 
+    
   public function executeAgregarComplicacionNoInfecciosaTrasplante(sfWebRequest $request)
   {
     $trasplanteId = $request->getParameter('trasplanteId');
@@ -65,6 +83,13 @@ class TrasplanteComplicacionesActions extends sfActions
   {
 	$this->id = $request->getParameter('id');
 	$complicacion = complicacionesHandler::retrieveComplicacionNoInfecciosa($this->id);
+	$this->form = new TrasplanteComplicacionesNoInfecciosasForm($complicacion);
+  }
+
+  public function executeEditarComplicacionInfecciosa(sfWebRequest $request)
+  {
+	$this->id = $request->getParameter('id');
+	$complicacion = complicacionesHandler::retrieveComplicacionInfecciosa($this->id);
 	$this->form = new TrasplanteComplicacionesNoInfecciosasForm($complicacion);
   }
   
@@ -100,6 +125,40 @@ class TrasplanteComplicacionesActions extends sfActions
         return $this->renderText(mdBasicFunction::basic_json_response(false, array('body' => $body)));
       }	
   }
+  
+  public function executeSaveFormComplicacionInfecciosa(sfWebRequest $request)
+  {
+      $auxForm = new TrasplanteComplicacionesInfecciosasForm();
+      $parameters = $request->getParameter($auxForm->getName());
+      $id = $parameters["id"];
+      $isNew = true;
+      if($id)
+      {
+        $TrasplanteComplicacionesInfecciosas = Doctrine::getTable('TrasplanteComplicacionesInfecciosas')->find($id);
+        $this->forward404Unless($TrasplanteComplicacionesInfecciosas);
+        $form = new TrasplanteComplicacionesInfecciosasForm($TrasplanteComplicacionesInfecciosas); 
+        $isNew = false;
+      }
+      else
+      {
+        
+        $form = new TrasplanteComplicacionesInfecciosasForm(); 
+      }
+      $form->bind($parameters);
+      if ($form->isValid())
+      {
+        $complicacion = $form->save();
+        $body = $this->getPartial("li_complicacion_no_infecciosa", array("id" => $complicacion->getId(), "fecha" => $complicacion->getFecha()));
+        //$body = "";
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('isnew'=>$isNew, 'id'=>$complicacion->getId(), 'body' => $body, 'is_evolucion' => $complicacion->getEvolucion())));
+      }
+      else
+      {
+        $body = $this->getPartial('small_form', array('form'=>$form));
+        return $this->renderText(mdBasicFunction::basic_json_response(false, array('body' => $body)));
+      }	
+  }
+    
   /*
    * 
    * De aca para abajo no sirve nada

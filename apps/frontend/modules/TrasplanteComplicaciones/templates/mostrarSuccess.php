@@ -23,9 +23,9 @@
 
 <div class="complicaciones_infecciosas_trasplante_container">
   <h3><?php echo __("trasplanteComplicacion_complicacion infecciosas en trasplante");?></h3>
-  <ul>
+  <ul id="complicaciones_infecciosas_trasplante_list">
 	<?php foreach($complicaciones_infecciosas_trasplante as $complicacion): ?>
-	  <?php include_partial("li_complicacion_no_infecciosa", array("id" => $complicacion["id"], "fecha" => $complicacion["fecha"])); ?>
+	  <?php include_partial("li_complicacion_infecciosa", array("id" => $complicacion["id"], "fecha" => $complicacion["fecha"])); ?>
 	<?php endforeach; ?>
   </ul>
   <a href="<?php echo url_for("@agregarComplicacionesInfecciosaTrasplante?trasplanteId=".$trasplanteId); ?>" class="fancy_link"><?php echo __("trasplanteComplicacion_agregar");?></a>
@@ -43,9 +43,10 @@
 
 <div class="complicaciones_infecciosas_trasplante_container">
   <h3><?php echo __("trasplanteComplicacion_complicacion infecciosas en evolucion");?></h3>
-  <ul>
+  <ul id="complicaciones_infecciosas_evolucion_list">
 	<?php foreach($complicaciones_infecciosas_evolucion as $complicacion): ?>
-	  <?php include_partial("li_complicacion_no_infecciosa", array("id" => $complicacion["id"], "fecha" => $complicacion["fecha"])); ?>
+	  <?php include_partial("li_complicacion_infecciosa", array("id" => $complicacion["id"], "fecha" => $complicacion["fecha"])); ?>
 	<?php endforeach; ?>
   </ul>  
+  <a href="<?php echo url_for("@agregarComplicacionesInfecciosaEvolucion?trasplanteId=".$trasplanteId); ?>" class="fancy_link"><?php echo __("trasplanteComplicacion_agregar");?></a>
 </div>

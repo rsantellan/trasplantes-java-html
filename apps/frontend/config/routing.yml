@@ -107,6 +107,10 @@ manejarComplicacionMedicacion:
   param: { module: Medicaciones, action: index }
 
 #Complicaciones
+editarComplicacionesInfecciosa:
+  url:   /editar-complicacion-infecciosa/:id
+  param: { module: TrasplanteComplicaciones, action: editarComplicacionInfecciosa }
+  
 editarComplicacionesNoInfecciosa:
   url:   /editar-complicacion-no-infecciosa/:id
   param: { module: TrasplanteComplicaciones, action: editarComplicacionNoInfecciosa }
@@ -115,9 +119,17 @@ eliminarComplicacionNoInfecciosa:
   url:   /eliminar-complicacion-no-infecciosa/:id
   param: { module: TrasplanteComplicaciones, action: eliminarComplicacionNoInfecciosa }
 
+salvarComplicacionesInfecciosa:
+  url:   /salvar-complicacion-infecciosa
+  param: { module: TrasplanteComplicaciones, action: saveFormComplicacionInfecciosa }
+  
 salvarComplicacionesNoInfecciosa:
   url:   /salvar-complicacion-no-infecciosa
   param: { module: TrasplanteComplicaciones, action: saveFormComplicacionNoInfecciosa }
+
+agregarComplicacionesInfecciosaEvolucion:
+  url:   /agregar-complicacion-infecciosa-evolucion/:trasplanteId
+  param: { module: TrasplanteComplicaciones, action: agregarComplicacionInfecciosaEvolucion }
 
 agregarComplicacionesInfecciosaTrasplante:
   url:   /agregar-complicacion-infecciosa-trasplante/:trasplanteId
@@ -130,7 +142,11 @@ agregarComplicacionesNoInfecciosaEvolucion:
 agregarComplicacionesNoInfecciosaTrasplante:
   url:   /agregar-complicacion-no-infecciosa-trasplante/:trasplanteId
   param: { module: TrasplanteComplicaciones, action: agregarComplicacionNoInfecciosaTrasplante }
-  
+
+mostrarComplicacionInfecciosa:
+  url:   /complicacion-infecciosa/:id
+  param: { module: TrasplanteComplicaciones, action: mostrarInfecciosa }
+    
 mostrarComplicacionNoInfecciosa:
   url:   /complicacion-no-infecciosa/:id
   param: { module: TrasplanteComplicaciones, action: mostrarNoInfecciosa }

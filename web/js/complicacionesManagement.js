@@ -62,6 +62,59 @@ complicacionesManagement.prototype = {
       return false;      
     },
 
+    saveFormInfecciosa: function(form)
+    {
+      $.fancybox.showActivity();
+      $.ajax({
+          url: $(form).attr('action'),
+          data: $(form).serialize(),
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                //$('#donante_container').effect("highlight", {}, 300);
+                
+                if(json.options.isnew)
+                {
+                  if(!json.options.is_evolucion)
+                  {
+                    $("#complicaciones_infecciosas_trasplante_list").append(json.options.body);
+                  }
+                  else
+                  {
+                    $("#complicaciones_infecciosas_evolucion_list").append(json.options.body);
+                  }
+                  
+				  
+                }
+                else
+                {
+                  $("#complicacion_"+json.options.id).replaceWith(json.options.body);
+                }
+                if(!json.options.is_evolucion)
+                {
+                  $("#complicaciones_infecciosas_trasplante_list").effect("highlight", {}, 2000);
+                }
+                else
+                {
+                  $("#complicaciones_infecciosas_evolucion_list").effect("highlight", {}, 2000);
+                }
+                
+                $.fancybox.close();
+                
+              }
+              
+          }
+          , 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            $.fancybox.resize();
+          }
+      });
+      return false;      
+    },
 
     showMedicacionesManagement: function(url)
     {

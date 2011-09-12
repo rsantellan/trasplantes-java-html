@@ -1,4 +1,4 @@
-<form action="<?php echo url_for('@salvarComplicacionesNoInfecciosa');?>" id="trasplante_complicacion_no_infecciosa_form" method="post" onsubmit="return complicacionesManagement.getInstance().saveFormNoInfecciosa(this)">
+<form action="<?php echo url_for('@salvarComplicacionesInfecciosa');?>" id="trasplante_complicacion_no_infecciosa_form" method="post" onsubmit="return complicacionesManagement.getInstance().saveFormInfecciosa(this)">
 <?php echo $form->renderHiddenFields(false) ?>
 <?php echo $form->renderGlobalErrors(); ?>
   <div class="form_block">

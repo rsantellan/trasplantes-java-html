@@ -26,7 +26,12 @@ class complicacionesHandler {
   {
 	return Doctrine::getTable("TrasplanteComplicacionesNoInfecciosas")->retrieveComplicacionNoInfecciosa($id, $hydrationMode);
   }
-  
+
+  public static function retrieveComplicacionInfecciosa($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+	return Doctrine::getTable("TrasplanteComplicacionesInfecciosas")->retriveById($id, $hydrationMode);
+  }
+    
   public static function retrieveAllComplicacionesTipo($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
   {
 	return Doctrine::getTable("ComplicacionesTipos")->retrieveAll($hydrationMode);

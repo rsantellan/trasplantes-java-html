@@ -11,6 +11,9 @@
   $complicaciones_no_infecciosas_evolucion = complicacionesHandler::retrieveAllComplicacionesNoInfecciosas($trasplanteId, true, false, Doctrine_Core::HYDRATE_ARRAY);
   $complicaciones_infecciosas_evolucion = complicacionesHandler::retrieveAllComplicacionesInfecciosas($trasplanteId, true, false, Doctrine_Core::HYDRATE_ARRAY);
 ?>
+<div>
+  <a href="<?php echo url_for("@mostrarTrasplante?id=".$trasplanteId); ?>"><h2><?php echo __("trasplante_volver al trasplante");?></h2></a>
+</div>
 <div class="complicaciones_no_infecciosas_trasplante_container">
   <h3><?php echo __("trasplanteComplicacion_complicacion no infecciosas en trasplante");?></h3>
   <ul id="complicaciones_no_infecciosas_trasplante_list">

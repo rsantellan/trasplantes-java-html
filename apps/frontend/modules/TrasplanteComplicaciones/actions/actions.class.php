@@ -90,7 +90,7 @@ class TrasplanteComplicacionesActions extends sfActions
   {
 	$this->id = $request->getParameter('id');
 	$complicacion = complicacionesHandler::retrieveComplicacionInfecciosa($this->id);
-	$this->form = new TrasplanteComplicacionesNoInfecciosasForm($complicacion);
+	$this->form = new TrasplanteComplicacionesInfecciosasForm($complicacion);
   }
   
   public function executeSaveFormComplicacionNoInfecciosa(sfWebRequest $request)
@@ -158,7 +158,49 @@ class TrasplanteComplicacionesActions extends sfActions
         return $this->renderText(mdBasicFunction::basic_json_response(false, array('body' => $body)));
       }	
   }
-    
+
+  
+  public function executeEliminarComplicacionNoInfecciosa(sfWebRequest $request)
+  {
+    //$request->checkCSRFProtection();
+    $this->forward404Unless($complicacion = complicacionesHandler::retrieveComplicacionNoInfecciosa(array($request->getPostParameter('id'))), sprintf('Object complicacion no infecciosa does not exist (%s).', $request->getParameter('id')));
+    try
+    {
+      if($complicacion->delete())
+      {  
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('id'=>$request->getParameter('id'))));
+      }
+      else
+      {
+        return $this->renderText(mdBasicFunction::basic_json_response(false, array()));
+      }      
+    }catch(Exception $e)
+    {
+      
+      return $this->renderText(mdBasicFunction::basic_json_response(false, array("error" => $e->getCode())));
+    }
+  }
+  
+  public function executeEliminarComplicacionInfecciosa(sfWebRequest $request)
+  {
+    //$request->checkCSRFProtection();
+    $this->forward404Unless($complicacion = complicacionesHandler::retrieveComplicacionInfecciosa(array($request->getPostParameter('id'))), sprintf('Object complicacion no infecciosa does not exist (%s).', $request->getParameter('id')));
+    try
+    {
+      if($complicacion->delete())
+      {  
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('id'=>$request->getParameter('id'))));
+      }
+      else
+      {
+        return $this->renderText(mdBasicFunction::basic_json_response(false, array()));
+      }      
+    }catch(Exception $e)
+    {
+      
+      return $this->renderText(mdBasicFunction::basic_json_response(false, array("error" => $e->getCode())));
+    }
+  }  
   /*
    * 
    * De aca para abajo no sirve nada

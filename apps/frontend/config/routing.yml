@@ -107,6 +107,10 @@ manejarComplicacionMedicacion:
   param: { module: Medicaciones, action: index }
 
 #Complicaciones
+eliminarComplicacionInfecciosa:
+  url:   /eliminar-complicacion-infecciosa/:id
+  param: { module: TrasplanteComplicaciones, action: eliminarComplicacionInfecciosa }
+
 editarComplicacionesInfecciosa:
   url:   /editar-complicacion-infecciosa/:id
   param: { module: TrasplanteComplicaciones, action: editarComplicacionInfecciosa }

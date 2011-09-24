@@ -103,8 +103,6 @@ class GermenActions extends sfActions
       
       return $this->renderText(mdBasicFunction::basic_json_response(false, array("error" => $e->getCode())));
     }
-	
-    //$this->redirect('donanteCausaMuerte/index');
   } 
   
 }

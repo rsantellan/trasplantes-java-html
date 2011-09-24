@@ -176,7 +176,7 @@
   <hr/>
   <input class="save_button" type="submit" value="<?php echo __("trasplanteComplicacion_Guardar");?>" />
   <?php if(!$form->isNew()): ?>
-    <a href="javascript:void(0);" onclick="complicacionesManagement.getInstance().deleteTrasplanteComplicacion(<?php echo $form->getObject()->getId();?>, '<?php echo __("trasplanteComplicacion_esta seguro de querer eliminar?");?>','<?php echo url_for("@eliminarComplicacionNoInfecciosa?id=".$form->getObject()->getId());?>');">
+    <a href="javascript:void(0);" onclick="complicacionesManagement.getInstance().deleteTrasplanteComplicacion(<?php echo $form->getObject()->getId();?>, '<?php echo __("trasplanteComplicacion_esta seguro de querer eliminar?");?>','<?php echo url_for("@eliminarComplicacionInfecciosa?id=".$form->getObject()->getId());?>');">
       <?php echo image_tag("trash.png", array("width" => 24)); ?>
     </a>
   <?php endif;?>   

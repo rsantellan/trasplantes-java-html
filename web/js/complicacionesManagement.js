@@ -115,6 +115,36 @@ complicacionesManagement.prototype = {
       });
       return false;      
     },
+    
+    deleteTrasplanteComplicacion: function(id, text, url)
+    {
+      if(confirm(text))
+      {
+		$.fancybox.showActivity();
+		$.ajax({
+          url: url,
+          data: {'id': id},
+          type: 'post',
+          dataType: 'json',
+          success: function(json){
+              if(json.response == "OK")
+              {
+                $('#complicacion_'+json.options.id).fadeOut("slow", function(){$(this).remove();});
+				$.fancybox.close();
+              }
+              else
+              {
+                $.fancybox.resize();                
+              }
+          }, 
+          complete: function()
+          {
+            $.fancybox.hideActivity();
+            
+          }
+		});
+	  }
+	},
 
     showMedicacionesManagement: function(url)
     {

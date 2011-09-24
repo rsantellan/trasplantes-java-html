@@ -36,7 +36,7 @@
 
 <div class="trasplante_complicaciones_container">
   <a href="<?php echo url_for("@mostrarComplicaciones?trasplanteId=".$id); ?>"><?php echo __("Trasplante_Complicaciones");?></a>
-  
+  <?php include_component("TrasplanteComplicaciones", "complicacionesBox", array("id" => $id)); ?>
 </div>
 <a href="<?php echo url_for('Trasplante/edit?id='.$id) ?>">Edit</a>
 &nbsp;

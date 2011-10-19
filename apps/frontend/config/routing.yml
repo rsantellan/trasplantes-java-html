@@ -1,6 +1,35 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+#Tratamientos
+eliminarTratamiento:
+  url:   /tratamientos/eliminar
+  param: { module: Tratamiento, action: delete }
+  
+guardarFechaAltaTratamiento:
+  url:   /tratamientos/guardarFechaAlta
+  param: { module: Tratamiento, action: guardarFechaAlta }
+
+cambiarFechaAltaTratamiento:
+  url:   /tratamientos/cambiarFecha/:id
+  param: { module: Tratamiento, action: cambiarFechaAlta }
+
+editarTratamiento:
+  url:   /tratamientos/editar/:id
+  param: { module: Tratamiento, action: edit }
+
+salvarTratamiento:
+  url:   /tratamientos/salvar
+  param: { module: Tratamiento, action: save }
+
+agregarTratamientos:
+  url:   /tratamientos/agregar/:id
+  param: { module: Tratamiento, action: new }
+
+mostrarTratamientos:
+  url:   /tratamientos/:id
+  param: { module: Tratamiento, action: index }
+
 #Germen
 eliminarGermen:
   url:   /eliminar-Germen

@@ -16,4 +16,21 @@ class TratamientoTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Tratamiento');
     }
+    
+    public function retriveAllTratamientosOfPaciente($pacienteId , $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("Trat")
+                ->addWhere("Trat.paciente_id = ?", $pacienteId);
+      $query->setHydrationMode($hydrationMode);
+      return $query->execute();
+    }      
+    
+    public function retriveById($tratamientoId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("Trat")
+                ->addWhere("Trat.id = ?", $tratamientoId);
+
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }
 }

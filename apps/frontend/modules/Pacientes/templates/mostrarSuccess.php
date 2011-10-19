@@ -97,4 +97,7 @@
   endforeach;
 ?>
 
+<div class="paciente_tratamiento_container">
+    <a href="<?php echo url_for("@mostrarTratamientos?id=".$paciente["id"]); ?>"><?php echo __("tratamientos_mostrar");?></a>
+</div>
 

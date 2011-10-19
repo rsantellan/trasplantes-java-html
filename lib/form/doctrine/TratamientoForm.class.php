@@ -12,5 +12,17 @@ class TratamientoForm extends BaseTratamientoForm
 {
   public function configure()
   {
+    unset($this["fecha_fin"]);
+    $paciente_id = $this->getObject()->getPacienteId();
+    $paciente = PacienteHandler::retriveById($paciente_id, Doctrine_Core::HYDRATE_ARRAY);
+    $this->widgetSchema['paciente_id'] = new sfWidgetFormInputHidden();
+    $age = mdBasicFunction::calculateAge($paciente["fecha_dialisis"], true);
+    $years = range(date('Y') - $age,date('Y'));
+    $years = array_combine($years, $years);
+
+    $this->widgetSchema['fecha'] = new sfWidgetFormDate(
+                  array(
+                    'format' => '%year% %month% %day%',
+                    'years' => $years));
   }
 }

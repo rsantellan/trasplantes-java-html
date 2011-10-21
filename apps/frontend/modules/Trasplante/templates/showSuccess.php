@@ -38,6 +38,17 @@
   <a href="<?php echo url_for("@mostrarComplicaciones?trasplanteId=".$id); ?>"><?php echo __("Trasplante_Complicaciones");?></a>
   <?php include_component("TrasplanteComplicaciones", "complicacionesBox", array("id" => $id)); ?>
 </div>
+
+
+<div class="trasplante_evolucion_container">
+    
+    <a href="<?php echo url_for("@manejarEvoluciones?id=".$id); ?>"> 
+        <?php echo __("Trasplante_Evoluciones");?>
+    </a>
+    
+</div>
+<!-- 
 <a href="<?php echo url_for('Trasplante/edit?id='.$id) ?>">Edit</a>
 &nbsp;
 <a href="<?php echo url_for('Trasplante/index') ?>">List</a>
+-->

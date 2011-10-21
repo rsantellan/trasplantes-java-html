@@ -1,6 +1,12 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+#Evolucion Manejador
+manejarEvoluciones:
+  url:   /traplante/evolucion/:id
+  param: { module: manejadorEvoluciones, action: index }
+
+
 #Tratamientos
 eliminarTratamiento:
   url:   /tratamientos/eliminar

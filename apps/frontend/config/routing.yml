@@ -1,6 +1,17 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+#Evolucion cmv
+
+evolucionSalvarCmv:
+  url:   /traplante/evolucion/cmv/salvar
+  param: { module: EvolucionTrasplanteCmv, action: save }
+
+evolucionAgregarCmv:
+  url:   /traplante/evolucion/cmv/agregar/:id
+  param: { module: EvolucionTrasplanteCmv, action: new }  
+
+
 #Evolucion Manejador
 manejarEvoluciones:
   url:   /traplante/evolucion/:id

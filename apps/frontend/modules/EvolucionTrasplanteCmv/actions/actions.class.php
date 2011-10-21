@@ -25,7 +25,11 @@ class EvolucionTrasplanteCmvActions extends sfActions
 
   public function executeNew(sfWebRequest $request)
   {
-    $this->form = new EvolucionTrasplanteCmvForm();
+    $trasplanteId = $request->getParameter('id');
+    $this->forward404Unless($trasplanteId);
+    $evolucion = new EvolucionTrasplanteCmv();
+    $evolucion->setTrasplanteId($trasplanteId);
+    $this->form = new EvolucionTrasplanteCmvForm($evolucion);
   }
 
   public function executeCreate(sfWebRequest $request)

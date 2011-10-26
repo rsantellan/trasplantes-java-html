@@ -32,6 +32,51 @@ class EvolucionTrasplanteCmvActions extends sfActions
     $this->form = new EvolucionTrasplanteCmvForm($evolucion);
   }
 
+  public function executeSave(sfWebRequest $request)
+  {
+      $parameters = $request->getPostParameters();
+      
+      $auxForm = new EvolucionTrasplanteCmvForm();
+      $parameters = $request->getParameter($auxForm->getName());
+      $id = $parameters["id"];
+      $isNew = true;
+      if($id)
+      {
+        $EvolucionTrasplanteCmv = Doctrine::getTable('EvolucionTrasplanteCmv')->find($id);
+        $this->forward404Unless($EvolucionTrasplanteCmv);
+        $form = new EvolucionTrasplanteCmvForm($EvolucionTrasplanteCmv); 
+        $isNew = false;
+      }
+      else
+      {
+        $evolucion = new EvolucionTrasplanteCmv();
+        $evolucion->setTrasplanteId($parameters["trasplante_id"]);
+        $form = new EvolucionTrasplanteCmvForm($evolucion); 
+      }
+      $form->bind($parameters);
+      if ($form->isValid())
+      {
+        $EvolucionTrasplanteCmvAux = $form->save();
+        $form = new EvolucionTrasplanteCmvForm($EvolucionTrasplanteCmvAux);
+        $body = $this->getPartial("listadoEvolucion", array( "evolucion" => $EvolucionTrasplanteCmvAux));
+        
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('isnew'=>$isNew, 'id'=>$EvolucionTrasplanteCmvAux->getId(), 'body' => $body)));
+      }
+      else
+      {
+        $body = $this->getPartial('small_form', array('form'=>$form));
+        return $this->renderText(mdBasicFunction::basic_json_response(false, array('body' => $body)));
+      }
+  }
+  
+  public function executeMostrar(sfWebRequest $request)
+  {
+	$this->id = $request->getParameter('id');
+	$this->evolucion = trasplanteEvolucionHandler::retriveEvolucionTrasplanteCmv($this->id);
+	
+	$this->forward404Unless($this->evolucion);
+  }
+  
   public function executeCreate(sfWebRequest $request)
   {
     $this->forward404Unless($request->isMethod(sfRequest::POST));
@@ -49,35 +94,28 @@ class EvolucionTrasplanteCmvActions extends sfActions
     $this->form = new EvolucionTrasplanteCmvForm($evolucion_trasplante_cmv);
   }
 
-  public function executeUpdate(sfWebRequest $request)
-  {
-    $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-    $this->forward404Unless($evolucion_trasplante_cmv = Doctrine_Core::getTable('EvolucionTrasplanteCmv')->find(array($request->getParameter('id'))), sprintf('Object evolucion_trasplante_cmv does not exist (%s).', $request->getParameter('id')));
-    $this->form = new EvolucionTrasplanteCmvForm($evolucion_trasplante_cmv);
-
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('edit');
-  }
-
+  
   public function executeDelete(sfWebRequest $request)
   {
-    $request->checkCSRFProtection();
+    //$request->checkCSRFProtection();
 
     $this->forward404Unless($evolucion_trasplante_cmv = Doctrine_Core::getTable('EvolucionTrasplanteCmv')->find(array($request->getParameter('id'))), sprintf('Object evolucion_trasplante_cmv does not exist (%s).', $request->getParameter('id')));
     $evolucion_trasplante_cmv->delete();
-
-    $this->redirect('EvolucionTrasplanteCmv/index');
-  }
-
-  protected function processForm(sfWebRequest $request, sfForm $form)
-  {
-    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
-    if ($form->isValid())
+    try
     {
-      $evolucion_trasplante_cmv = $form->save();
-
-      $this->redirect('EvolucionTrasplanteCmv/edit?id='.$evolucion_trasplante_cmv->getId());
-    }
+      if($evolucion_trasplante_cmv->delete())
+      {  
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('id'=>$request->getParameter('id'))));
+      }
+      else
+      {
+        return $this->renderText(mdBasicFunction::basic_json_response(false, array()));
+      }      
+    }catch(Exception $e)
+    {
+      
+      return $this->renderText(mdBasicFunction::basic_json_response(false, array("error" => $e->getCode())));
+    }    
   }
+  
 }

@@ -29,6 +29,11 @@ class EvolucionTrasplanteCmvForm extends BaseEvolucionTrasplanteCmvForm {
                     'expanded' => true,
                     'choices' => datosBasicosHandler::yesOrNoChoicesOptions(),
                 ));
+        $this->setDefault('igg_cmv', 0);
+        $this->setDefault('igm_cmv', 0);
+        $this->setDefault('pcr_cmv', 0);
+        $this->setDefault('ag_pp65', 0);
+        
         $trasplante_id = $this->getObject()->getTrasplanteId();
         $trasplante = trasplanteHandler::retriveById($trasplante_id, Doctrine_Core::HYDRATE_ARRAY);
         $age = mdBasicFunction::calculateAge($trasplante["fecha"], true);

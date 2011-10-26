@@ -15,7 +15,7 @@ class manejadorEvolucionesActions extends sfActions
     $this->trasplanteId = $request->getParameter('id');
     $this->forward404Unless($this->trasplanteId);
     
-    $this->listEvolucionesCmv = trasplanteEvolucionHandler::retriveEvolucionTrasplanteCmv($this->trasplanteId);
+    $this->listEvolucionesCmv = trasplanteEvolucionHandler::retriveAllEvolucionTrasplanteCmv($this->trasplanteId);
     
   }
 }

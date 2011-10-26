@@ -2,6 +2,17 @@
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 #Evolucion cmv
+eliminarEvolucionCmv:
+  url:   /traplante/evolucion/cmv/eliminar
+  param: { module: EvolucionTrasplanteCmv, action: delete }
+  
+editarEvolucionCmv:
+  url:   /traplante/evolucion/cmv/editar/:id
+  param: { module: EvolucionTrasplanteCmv, action: edit }
+
+mostrarEvolucionCmv:
+  url:   /traplante/evolucion/cmv/mostrar/:id
+  param: { module: EvolucionTrasplanteCmv, action: mostrar }
 
 evolucionSalvarCmv:
   url:   /traplante/evolucion/cmv/salvar

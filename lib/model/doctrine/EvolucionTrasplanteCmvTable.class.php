@@ -24,4 +24,12 @@ class EvolucionTrasplanteCmvTable extends Doctrine_Table
       $query->setHydrationMode($hydrationMode);
       return $query->execute();
     }
+    
+    public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("etCmv")
+                ->addWhere("etCmv.id = ?", $id);
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }     
 }

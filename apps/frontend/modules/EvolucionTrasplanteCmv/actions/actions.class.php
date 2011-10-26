@@ -17,12 +17,6 @@ class EvolucionTrasplanteCmvActions extends sfActions
       ->execute();
   }
 
-  public function executeShow(sfWebRequest $request)
-  {
-    $this->evolucion_trasplante_cmv = Doctrine_Core::getTable('EvolucionTrasplanteCmv')->find(array($request->getParameter('id')));
-    $this->forward404Unless($this->evolucion_trasplante_cmv);
-  }
-
   public function executeNew(sfWebRequest $request)
   {
     $trasplanteId = $request->getParameter('id');
@@ -100,7 +94,6 @@ class EvolucionTrasplanteCmvActions extends sfActions
     //$request->checkCSRFProtection();
 
     $this->forward404Unless($evolucion_trasplante_cmv = Doctrine_Core::getTable('EvolucionTrasplanteCmv')->find(array($request->getParameter('id'))), sprintf('Object evolucion_trasplante_cmv does not exist (%s).', $request->getParameter('id')));
-    $evolucion_trasplante_cmv->delete();
     try
     {
       if($evolucion_trasplante_cmv->delete())

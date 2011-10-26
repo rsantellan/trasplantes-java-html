@@ -1,6 +1,27 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+#Evolucion Ecg
+eliminarEvolucionEcg:
+  url:   /traplante/evolucion/ecg/eliminar
+  param: { module: EvolucionTrasplanteEcg, action: delete }
+  
+editarEvolucionEcg:
+  url:   /traplante/evolucion/ecg/editar/:id
+  param: { module: EvolucionTrasplanteEcg, action: edit }
+
+mostrarEvolucionEcg:
+  url:   /traplante/evolucion/ecg/mostrar/:id
+  param: { module: EvolucionTrasplanteEcg, action: mostrar }
+
+evolucionSalvarEcg:
+  url:   /traplante/evolucion/ecg/salvar
+  param: { module: EvolucionTrasplanteEcg, action: save }
+
+evolucionAgregarEcg:
+  url:   /traplante/evolucion/ecg/agregar/:id
+  param: { module: EvolucionTrasplanteEcg, action: new } 
+
 #Evolucion cmv
 eliminarEvolucionCmv:
   url:   /traplante/evolucion/cmv/eliminar

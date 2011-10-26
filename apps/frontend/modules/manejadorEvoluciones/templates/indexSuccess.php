@@ -15,3 +15,16 @@
         <?php echo __("Evoluciones_Cmv Agregar");?>
     </a>
 </div>
+
+
+<div class="evoluciones_ecg_container">
+    <h2><?php echo __("Evoluciones_Ecg titulo");?></h2>
+    <ul id="evolucion_ecg_ul">
+        <?php foreach($listEvolucionesEcg as $evolucion): ?>
+            <?php include_partial("EvolucionTrasplanteEcg/listadoEvolucion", array("evolucion" => $evolucion)); ?>
+        <?php endforeach; ?>
+    </ul>
+    <a class="fancy_link" href="<?php echo url_for("@evolucionAgregarEcg?id=".$trasplanteId); ?>"> 
+        <?php echo __("Evoluciones_Ecg Agregar");?>
+    </a>
+</div>

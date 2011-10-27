@@ -16,4 +16,13 @@ class TrasplanteReoperacionTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('TrasplanteReoperacion');
     }
+	
+	public function retrieveReoperacionesFromTrasplante($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("tr")
+                ->addWhere("tr.trasplante_id = ?", $trasplanteId);
+
+      $query->setHydrationMode($hydrationMode);
+      return $query->execute();
+    }    
 }

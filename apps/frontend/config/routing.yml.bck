@@ -1,0 +1,441 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+#Reoperaciones
+manejarReoperaciones:
+  url:   /trasplante/:id/reoperaciones
+  param: { module: Reoperaciones, action: mostrar }
+
+
+#Germen
+eliminarGermen:
+  url:   /eliminar-Germen
+  param: { module: Germen, action: delete }
+
+crearGermen:
+  url:   /crear-Germen
+  param: { module: Germen, action: new } 
+
+salvarGermen:
+  url:   /salvar-Germen
+  param: { module: Germen, action: save }
+
+editarGermen:
+  url:   /editar-Germen
+  param: { module: Germen, action: edit }
+
+manejarComplicacionGermen:
+  url:   /complicacionGermen
+  param: { module: Germen, action: index }
+
+#Infeccion
+eliminarInfeccion:
+  url:   /eliminar-Infeccion
+  param: { module: Infeccion, action: delete }
+
+crearInfeccion:
+  url:   /crear-Infeccion
+  param: { module: Infeccion, action: new } 
+
+salvarInfeccion:
+  url:   /salvar-Infeccion
+  param: { module: Infeccion, action: save }
+
+editarInfeccion:
+  url:   /editar-Infeccion
+  param: { module: Infeccion, action: edit }
+
+manejarComplicacionInfeccion:
+  url:   /complicacionInfeccion
+  param: { module: Infeccion, action: index }
+
+#Complicaciones tipo valor
+traerComplicacionTipoValorAjax:
+  url:   /refrescar-complicacion-tipo-valor
+  param: { module: ComplicacionesTipos, action: retrieveAllComplicacionesTipoValores }
+  
+eliminarComplicacionTipoValor:
+  url:   /eliminar-complicacion-tipo-valor
+  param: { module: ComplicacionesTipos, action: deleteValor }
+
+crearComplicacionTipoValor:
+  url:   /crear-complicacion-tipo-valor
+  param: { module: ComplicacionesTipos, action: newValor } 
+
+salvarComplicacionTipoValor:
+  url:   /salvar-complicacion-tipo-valor
+  param: { module: ComplicacionesTipos, action: saveValor }
+
+editarComplicacionTipoValor:
+  url:   /editar-complicacion-tipo-valor
+  param: { module: ComplicacionesTipos, action: editValor }
+  
+#Complicaciones tipo
+eliminarComplicacionTipo:
+  url:   /eliminar-complicacion-tipo
+  param: { module: ComplicacionesTipos, action: delete }
+
+crearComplicacionTipo:
+  url:   /crear-complicacion-tipo
+  param: { module: ComplicacionesTipos, action: new } 
+
+salvarComplicacionTipo:
+  url:   /salvar-complicacion-tipo
+  param: { module: ComplicacionesTipos, action: save }
+
+editarComplicacionTipo:
+  url:   /editar-complicacion-tipo
+  param: { module: ComplicacionesTipos, action: edit }
+
+manejarComplicacionTipos:
+  url:   /complicacionTipo
+  param: { module: ComplicacionesTipos, action: index }
+
+#Medicaciones
+eliminarMedicacion:
+  url:   /eliminar-medicacion
+  param: { module: Medicaciones, action: delete }
+
+crearMedicacion:
+  url:   /crear-medicacion
+  param: { module: Medicaciones, action: new } 
+
+salvarMedicacion:
+  url:   /salvar-medicacion
+  param: { module: Medicaciones, action: save }
+
+editarMedicacion:
+  url:   /editar-medicacion
+  param: { module: Medicaciones, action: edit }
+
+manejarComplicacionMedicacion:
+  url:   /complicacionMedicacion
+  param: { module: Medicaciones, action: index }
+
+#Complicaciones
+eliminarComplicacionInfecciosa:
+  url:   /eliminar-complicacion-infecciosa/:id
+  param: { module: TrasplanteComplicaciones, action: eliminarComplicacionInfecciosa }
+
+editarComplicacionesInfecciosa:
+  url:   /editar-complicacion-infecciosa/:id
+  param: { module: TrasplanteComplicaciones, action: editarComplicacionInfecciosa }
+  
+editarComplicacionesNoInfecciosa:
+  url:   /editar-complicacion-no-infecciosa/:id
+  param: { module: TrasplanteComplicaciones, action: editarComplicacionNoInfecciosa }
+
+eliminarComplicacionNoInfecciosa:
+  url:   /eliminar-complicacion-no-infecciosa/:id
+  param: { module: TrasplanteComplicaciones, action: eliminarComplicacionNoInfecciosa }
+
+salvarComplicacionesInfecciosa:
+  url:   /salvar-complicacion-infecciosa
+  param: { module: TrasplanteComplicaciones, action: saveFormComplicacionInfecciosa }
+  
+salvarComplicacionesNoInfecciosa:
+  url:   /salvar-complicacion-no-infecciosa
+  param: { module: TrasplanteComplicaciones, action: saveFormComplicacionNoInfecciosa }
+
+agregarComplicacionesInfecciosaEvolucion:
+  url:   /agregar-complicacion-infecciosa-evolucion/:trasplanteId
+  param: { module: TrasplanteComplicaciones, action: agregarComplicacionInfecciosaEvolucion }
+
+agregarComplicacionesInfecciosaTrasplante:
+  url:   /agregar-complicacion-infecciosa-trasplante/:trasplanteId
+  param: { module: TrasplanteComplicaciones, action: agregarComplicacionInfecciosaTrasplante }
+
+agregarComplicacionesNoInfecciosaEvolucion:
+  url:   /agregar-complicacion-no-infecciosa-evolucion/:trasplanteId
+  param: { module: TrasplanteComplicaciones, action: agregarComplicacionNoInfecciosaEvolucion }
+  
+agregarComplicacionesNoInfecciosaTrasplante:
+  url:   /agregar-complicacion-no-infecciosa-trasplante/:trasplanteId
+  param: { module: TrasplanteComplicaciones, action: agregarComplicacionNoInfecciosaTrasplante }
+
+mostrarComplicacionInfecciosa:
+  url:   /complicacion-infecciosa/:id
+  param: { module: TrasplanteComplicaciones, action: mostrarInfecciosa }
+    
+mostrarComplicacionNoInfecciosa:
+  url:   /complicacion-no-infecciosa/:id
+  param: { module: TrasplanteComplicaciones, action: mostrarNoInfecciosa }
+
+mostrarComplicaciones:
+  url:   /mostrar-complicaciones/:trasplanteId
+  param: { module: TrasplanteComplicaciones, action: mostrar }
+
+#Inducciones
+
+eliminarInduccion:
+  url:   /eliminar-induccion
+  param: { module: Inducciones, action: delete }
+
+crearInduccion:
+  url:   /crear-induccion
+  param: { module: Inducciones, action: new }
+
+salvarInduccion:
+  url:   /salvar-induccion
+  param: { module: Inducciones, action: save }
+
+editarInduccion:
+  url:   /editar-induccion
+  param: { module: Inducciones, action: edit }
+
+manejarInduccion:
+  url:   /Inducciones
+  param: { module: Inducciones, action: index }
+
+#Inmunosupresores
+
+eliminarInmunosupresores:
+  url:   /eliminar-inmunosupresores
+  param: { module: Inmunosupresores, action: delete }
+
+crearInmunosupresores:
+  url:   /crear-inmunosupresores
+  param: { module: Inmunosupresores, action: new }
+
+salvarInmunosupresores:
+  url:   /salvar-inmunosupresores
+  param: { module: Inmunosupresores, action: save }
+
+editarInmunosupresores:
+  url:   /editar-inmunosupresores
+  param: { module: Inmunosupresores, action: edit }
+
+manejarInmunosupresores:
+  url:   /Inmunosupresores
+  param: { module: Inmunosupresores, action: index }
+
+# serol valor
+crearSerolValor:
+  url:   /crear-serol-valor
+  param: { module: serolValor, action: new }
+  
+eliminarSerolValor:
+  url:   /eliminar-serol-valor
+  param: { module: serolValor, action: delete }
+
+salvarSerolValor:
+  url:   /salvar-serol-valor
+  param: { module: serolValor, action: save }
+  
+editarSerolValor:
+  url:   /editar-serol-valor
+  param: { module: serolValor, action: edit }
+
+#seroles
+crearSerol:
+  url:   /crear-serol
+  param: { module: serol, action: new }
+  
+eliminarSerol:
+  url:   /eliminar-serol
+  param: { module: serol, action: delete }
+
+salvarSerol:
+  url:   /salvar-serol
+  param: { module: serol, action: save }
+  
+editarSerol:
+  url:   /editar-serol
+  param: { module: serol, action: edit }
+
+manejarSeroles:
+  url:   /seroles
+  param: { module: serol, action: index }
+
+#donante antecedente
+eliminarDonanteAntecedente:
+  url:   /eliminar-donante-antecedente
+  param: { module: donanteAntecedentes, action: delete }
+  
+editarDonanteAntecedentes:
+  url:   /editar-donante-antecedente
+  param: { module: donanteAntecedentes, action: edit }
+  
+salvarDonanteAntecedentes:
+  url:   /salvar-donante-antecedente
+  param: { module: donanteAntecedentes, action: save }
+
+crearDonanteAntecedentes:
+  url:   /crear-donante-antecedente
+  param: { module: donanteAntecedentes, action: new }
+  
+manejarDonanteAntecedentes:
+  url:   /donantesAntecedentes
+  param: { module: donanteAntecedentes, action: index }  
+
+# donante organo
+eliminarDonanteOrgano:
+  url:   /eliminar-donante-organos
+  param: { module: donanteOrganos, action: delete }
+  
+editarDonanteOrgano:
+  url:   /editar-donante-organos
+  param: { module: donanteOrganos, action: edit }
+  
+salvarDonanteOrgano:
+  url:   /salvar-donante-organos
+  param: { module: donanteOrganos, action: save }
+
+crearDonanteOrgano:
+  url:   /crear-donante-organos
+  param: { module: donanteOrganos, action: new }  
+  
+manejarDonanteOrganos:
+  url:   /donantesOrganos
+  param: { module: donanteOrganos, action: index }
+
+#donante causa de muerte  
+eliminarDonanteCausaMuerte:
+  url:   /eliminar-donante-causa-muerte
+  param: { module: donanteCausaMuerte, action: delete }
+  
+editarDonanteCausaMuerte:
+  url:   /editar-donante-causa-muerte
+  param: { module: donanteCausaMuerte, action: edit }
+  
+salvarDonanteCausaMuerte:
+  url:   /salvar-donante-causa-muerte
+  param: { module: donanteCausaMuerte, action: save }
+
+crearDonanteCausaMuerte:
+  url:   /crear-donante-causa-muerte
+  param: { module: donanteCausaMuerte, action: new }  
+  
+manejarDonanteCausaMuerte:
+  url:   /donantesCausaMuerte
+  param: { module: donanteCausaMuerte, action: index }
+
+#donante  
+mostrarDonante:
+  url:   /mostrar-donante/:id
+  param: { module: donante, action: show }
+  
+eliminarDonante:
+  url:   /eliminar-donante
+  param: { module: donante, action: delete }
+  
+editarDonante:
+  url:   /editar-donante
+  param: { module: donante, action: edit }
+
+salvarDonante:
+  url:   /salvar-donante
+  param: { module: donante, action: save }
+
+crearDonante:
+  url:   /crear-donante
+  param: { module: donante, action: new }  
+
+manejarDonante:
+  url:   /donantes
+  param: { module: donante, action: index }
+
+#nefropatias
+
+eliminarNefropatia:
+  url:   /eliminar-nefropatia
+  param: { module: Nefropatia, action: delete }
+
+crearNefropatia:
+  url:   /crear-nefropatia
+  param: { module: Nefropatia, action: new }
+
+salvarNefropatia:
+  url:   /salvar-nefropatia
+  param: { module: Nefropatia, action: save }
+
+editarNefropatia:
+  url:   /editar-nefropatia
+  param: { module: Nefropatia, action: edit }
+
+manejarNefropatias:
+  url:   /nefropatias
+  param: { module: Nefropatia, action: index }
+
+# Trasplante
+guardarFechaAlta:
+  url:   /trasplante/guardarFechaAlta
+  param: { module: Trasplante, action: guardarFechaAlta }
+
+cambiarFechaAlta:
+  url:   /trasplante/cambiarFecha/:id
+  param: { module: Trasplante, action: cambiarFechaAlta }
+  
+mostrarTrasplante:
+  url:   /trasplante/:id
+  param: { module: Trasplante, action: show }
+  
+salvarTrasplante:
+  url:   /guardar-trasplante/:pre_trasplante_id
+  param: { module: Trasplante, action: save }
+  
+iniciarTrasplante:
+  url:   /agregar-trasplante/:paciente_id/:pre_trasplante_id
+  param: { module: Trasplante, action: new }
+
+# Pre Trasplante
+
+editarPreTrasplante:
+  url:   /editar-pre-trasplante/:id
+  param: { module: Pacientepretrasplante, action: edit }
+
+iniciarPreTrasplante:
+  url:   /agregar-pre-trasplante/:paciente_id
+  param: { module: Pacientepretrasplante, action: new }
+  
+# Paciente
+  
+crearMuertePaciente:
+  url:   /muerte-paciente/:id
+  param: { module: PacienteMuerte, action: new }
+
+editarMuertePaciente:
+  url:   /editar-muerte-paciente/:id
+  param: { module: PacienteMuerte, action: edit }
+  
+editarEstadoPaciente:
+  url:   /editar-estado-paciente/:id
+  param: { module: estadoPaciente, action: edit }
+
+editarPaciente:
+  url:   /editar-paciente/:id
+  param: { module: Pacientes, action: edit }
+  
+agregarPaciente:
+  url:   /agregar-paciente.html
+  param: { module: Pacientes, action: new }
+  
+consultas:
+  url:   /consultas.html
+  param: { module: consulta, action: index }
+
+mostrarPaciente:
+  url:   /paciente/:id
+  param: { module: Pacientes, action: mostrar }
+
+buscarPaciente:
+  url:   /paciente
+  param: { module: Pacientes, action: buscarAccion }
+  
+buscar:
+  url:   /pacientes.html
+  param: { module: Pacientes, action: buscar }
+  
+# default rules
+homepage:
+  url:   /
+  param: { module: default, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

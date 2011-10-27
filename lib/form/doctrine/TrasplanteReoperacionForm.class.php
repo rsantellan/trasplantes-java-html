@@ -12,5 +12,14 @@ class TrasplanteReoperacionForm extends BaseTrasplanteReoperacionForm
 {
   public function configure()
   {
+	$this->widgetSchema['trasplante_id'] = new sfWidgetFormInputHidden();
+	
+	
+	$this->widgetSchema['fecha'] = new sfWidgetFormDate(
+                              array(
+                                'format' => '%year% %month% %day%',
+                                'years' => $years));
+
+	
   }
 }

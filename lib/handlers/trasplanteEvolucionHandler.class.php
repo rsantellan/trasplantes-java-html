@@ -27,10 +27,19 @@ class trasplanteEvolucionHandler {
     return Doctrine::getTable("EvolucionTrasplanteEcg")->retrieveAll($trasplanteId, $hydrationMode);
   }
   
-  public static function retriveEvolucionTrasplanteEcg($evolucionCmvId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  public static function retriveEvolucionTrasplanteEcg($evolucionEcgId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
   {
-    return Doctrine::getTable("EvolucionTrasplanteEcg")->retriveById($evolucionCmvId, $hydrationMode);
+    return Doctrine::getTable("EvolucionTrasplanteEcg")->retriveById($evolucionEcgId, $hydrationMode);
   }
   
+  public static function retriveAllEvolucionTrasplanteEcocardio($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+    return Doctrine::getTable("EvolucionTrasplanteEcoCardio")->retrieveAll($trasplanteId, $hydrationMode);
+  }
+  
+  public static function retriveEvolucionTrasplanteEcocardio($evolucionEcoCardioId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+    return Doctrine::getTable("EvolucionTrasplanteEcoCardio")->retriveById($evolucionEcoCardioId, $hydrationMode);
+  }  
 }
 

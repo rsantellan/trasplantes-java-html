@@ -1,6 +1,32 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+#Reoperaciones
+manejarReoperaciones:
+  url:   /trasplante/:id/reoperaciones
+  param: { module: Reoperaciones, action: mostrar }
+
+#Evolucion Ecocardio
+eliminarEvolucionEcocardio:
+  url:   /traplante/evolucion/ecocardio/eliminar
+  param: { module: EvolucionTrasplanteEcoCardio, action: delete }
+  
+editarEvolucionEcocardio:
+  url:   /traplante/evolucion/ecocardio/editar/:id
+  param: { module: EvolucionTrasplanteEcoCardio, action: edit }
+  
+mostrarEvolucionEcocardio:
+  url:   /traplante/evolucion/ecocardio/mostrar/:id
+  param: { module: EvolucionTrasplanteEcoCardio, action: mostrar }
+
+evolucionSalvarEcocardio:
+  url:   /traplante/evolucion/ecocardio/salvar
+  param: { module: EvolucionTrasplanteEcoCardio, action: save }
+
+evolucionAgregarEcocardio:
+  url:   /traplante/evolucion/ecocardio/agregar/:id
+  param: { module: EvolucionTrasplanteEcoCardio, action: new } 
+
 #Evolucion Ecg
 eliminarEvolucionEcg:
   url:   /traplante/evolucion/ecg/eliminar
@@ -9,7 +35,7 @@ eliminarEvolucionEcg:
 editarEvolucionEcg:
   url:   /traplante/evolucion/ecg/editar/:id
   param: { module: EvolucionTrasplanteEcg, action: edit }
-
+  
 mostrarEvolucionEcg:
   url:   /traplante/evolucion/ecg/mostrar/:id
   param: { module: EvolucionTrasplanteEcg, action: mostrar }

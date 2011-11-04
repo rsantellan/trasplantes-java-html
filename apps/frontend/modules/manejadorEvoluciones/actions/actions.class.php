@@ -20,5 +20,7 @@ class manejadorEvolucionesActions extends sfActions
     $this->listEvolucionesEcg = trasplanteEvolucionHandler::retriveAllEvolucionTrasplanteEcg($this->trasplanteId);
     
     $this->listEvolucionesEcocardio = trasplanteEvolucionHandler::retriveAllEvolucionTrasplanteEcocardio($this->trasplanteId);
+    
+    $this->listEvolucionesNutriciones = trasplanteEvolucionHandler::retriveAllEvolucionTrasplanteNutricion($this->trasplanteId);
   }
 }

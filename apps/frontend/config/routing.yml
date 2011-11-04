@@ -6,6 +6,27 @@ manejarReoperaciones:
   url:   /trasplante/:id/reoperaciones
   param: { module: Reoperaciones, action: mostrar }
 
+#Evolucion Nutricion
+eliminarEvolucionNutricion:
+  url:   /traplante/evolucion/nutricion/eliminar
+  param: { module: EvolucionTrasplanteNutricion, action: delete }
+  
+editarEvolucionNutricion:
+  url:   /traplante/evolucion/nutricion/editar/:id
+  param: { module: EvolucionTrasplanteNutricion, action: edit }
+  
+mostrarEvolucionNutricion:
+  url:   /traplante/evolucion/nutricion/mostrar/:id
+  param: { module: EvolucionTrasplanteNutricion, action: mostrar }
+
+evolucionSalvarNutricion:
+  url:   /traplante/evolucion/nutricion/salvar
+  param: { module: EvolucionTrasplanteNutricion, action: save }
+
+evolucionAgregarNutricion:
+  url:   /traplante/evolucion/nutricion/agregar/:id
+  param: { module: EvolucionTrasplanteNutricion, action: new } 
+
 #Evolucion Ecocardio
 eliminarEvolucionEcocardio:
   url:   /traplante/evolucion/ecocardio/eliminar

@@ -164,7 +164,7 @@
   <div class="form_block">
 	<h4><?php echo __("Evoluciones_Ecocardio ep");?></h4>
 	<div class="form_block_field<?php if($form['ep']->hasError()):?> error_msg<?php endif; ?>">
-	  <?php echo $form['em']->render() ?>
+	  <?php echo $form['ep']->render() ?>
 	</div>
 	<div>
 		<?php 

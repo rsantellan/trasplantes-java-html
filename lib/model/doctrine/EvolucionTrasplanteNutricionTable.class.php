@@ -16,4 +16,20 @@ class EvolucionTrasplanteNutricionTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('EvolucionTrasplanteNutricion');
     }
+    
+    public function retrieveAll($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("etNutricion");
+      $query->addWhere("etNutricion.trasplante_id = ?", $trasplanteId );
+      $query->setHydrationMode($hydrationMode);
+      return $query->execute();
+    }
+    
+    public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("etNutricion")
+                ->addWhere("etNutricion.id = ?", $id);
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }        
 }

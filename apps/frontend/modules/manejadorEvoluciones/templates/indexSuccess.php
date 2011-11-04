@@ -40,3 +40,15 @@
         <?php echo __("Evoluciones_Ecocardio Agregar");?>
     </a>
 </div>
+
+<div class="evoluciones_nutricion_container">
+    <h2><?php echo __("Evoluciones_Nutricion titulo");?></h2>
+    <ul id="evolucion_nutricion_ul">
+        <?php foreach($listEvolucionesNutriciones as $evolucion): ?>
+            <?php include_partial("EvolucionTrasplanteNutricion/listadoEvolucion", array("evolucion" => $evolucion)); ?>
+        <?php endforeach; ?>
+    </ul>
+    <a class="fancy_link" href="<?php echo url_for("@evolucionAgregarNutricion?id=".$trasplanteId); ?>"> 
+        <?php echo __("Evoluciones_Nutricion Agregar");?>
+    </a>
+</div>

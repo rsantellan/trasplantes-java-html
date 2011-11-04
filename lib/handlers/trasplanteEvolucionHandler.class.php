@@ -50,6 +50,16 @@ class trasplanteEvolucionHandler {
   public static function retriveEvolucionTrasplanteNutricion($evolucionNutricionId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
   {
     return Doctrine::getTable("EvolucionTrasplanteNutricion")->retriveById($evolucionNutricionId, $hydrationMode);
-  }    
+  } 
+  
+  public static function retriveAllEvolucionTrasplanteParaclinicas($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+    return Doctrine::getTable("EvolucionTrasplanteParaclinica")->retrieveAll($trasplanteId, $hydrationMode);
+  }
+  
+  public static function retriveEvolucionTrasplanteParaclinicas($evolucionParaclinicaId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+    return Doctrine::getTable("EvolucionTrasplanteParaclinica")->retriveById($evolucionParaclinicaId, $hydrationMode);
+  }
 }
 

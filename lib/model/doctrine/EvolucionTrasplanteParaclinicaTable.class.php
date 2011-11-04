@@ -16,4 +16,20 @@ class EvolucionTrasplanteParaclinicaTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('EvolucionTrasplanteParaclinica');
     }
+    
+    public function retrieveAll($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("etParaclinicas");
+      $query->addWhere("etParaclinicas.trasplante_id = ?", $trasplanteId );
+      $query->setHydrationMode($hydrationMode);
+      return $query->execute();
+    }
+    
+    public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("etParaclinicas")
+                ->addWhere("etParaclinicas.id = ?", $id);
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }
 }

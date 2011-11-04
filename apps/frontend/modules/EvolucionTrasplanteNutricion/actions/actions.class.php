@@ -87,7 +87,7 @@ class EvolucionTrasplanteNutricionActions extends sfActions
   }
   
 // De aca para abajo... mmmm no deberia ir  
-  
+/*  
   public function executeCreate(sfWebRequest $request)
   {
     $this->forward404Unless($request->isMethod(sfRequest::POST));
@@ -128,4 +128,6 @@ class EvolucionTrasplanteNutricionActions extends sfActions
       $this->redirect('EvolucionTrasplanteNutricion/edit?id='.$evolucion_trasplante_nutricion->getId());
     }
   }
+ */
 }
+

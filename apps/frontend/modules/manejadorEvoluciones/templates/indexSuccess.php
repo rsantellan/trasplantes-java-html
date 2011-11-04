@@ -52,3 +52,15 @@
         <?php echo __("Evoluciones_Nutricion Agregar");?>
     </a>
 </div>
+
+<div class="evoluciones_paraclinicas_container">
+    <h2><?php echo __("Evoluciones_Paraclinica titulo");?></h2>
+    <ul id="evolucion_paraclinica_ul">
+        <?php foreach($listEvolucionesParaclinicas as $evolucion): ?>
+            <?php include_partial("EvolucionTrasplanteParaclinica/listadoEvolucion", array("evolucion" => $evolucion)); ?>
+        <?php endforeach; ?>
+    </ul>
+    <a class="fancy_link" href="<?php echo url_for("@evolucionAgregarParaclinica?id=".$trasplanteId); ?>"> 
+        <?php echo __("Evoluciones_Paraclinica Agregar");?>
+    </a>
+</div>

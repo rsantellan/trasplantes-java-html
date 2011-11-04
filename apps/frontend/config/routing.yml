@@ -6,6 +6,27 @@ manejarReoperaciones:
   url:   /trasplante/:id/reoperaciones
   param: { module: Reoperaciones, action: mostrar }
 
+#Evolucion Paraclinica
+eliminarEvolucionParaclinica:
+  url:   /traplante/evolucion/paraclinica/eliminar
+  param: { module: EvolucionTrasplanteParaclinica, action: delete }
+  
+editarEvolucionParaclinica:
+  url:   /traplante/evolucion/paraclinica/editar/:id
+  param: { module: EvolucionTrasplanteParaclinica, action: edit }
+  
+mostrarEvolucionParaclinica:
+  url:   /traplante/evolucion/paraclinica/mostrar/:id
+  param: { module: EvolucionTrasplanteParaclinica, action: mostrar }
+
+evolucionSalvarParaclinica:
+  url:   /traplante/evolucion/paraclinica/salvar
+  param: { module: EvolucionTrasplanteParaclinica, action: save }
+
+evolucionAgregarParaclinica:
+  url:   /traplante/evolucion/paraclinica/agregar/:id
+  param: { module: EvolucionTrasplanteParaclinica, action: new } 
+
 #Evolucion Nutricion
 eliminarEvolucionNutricion:
   url:   /traplante/evolucion/nutricion/eliminar

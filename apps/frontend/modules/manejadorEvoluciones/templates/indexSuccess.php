@@ -64,3 +64,15 @@
         <?php echo __("Evoluciones_Paraclinica Agregar");?>
     </a>
 </div>
+
+<div class="evoluciones_ecodopler_container">
+    <h2><?php echo __("Evoluciones_Ecodopler titulo");?></h2>
+    <ul id="evolucion_ecodopler_ul">
+        <?php foreach($listEvolucionesEcodopler as $evolucion): ?>
+            <?php include_partial("EvolucionTrasplanteEcodopler/listadoEvolucion", array("evolucion" => $evolucion)); ?>
+        <?php endforeach; ?>
+    </ul>
+    <a class="fancy_link" href="<?php echo url_for("@evolucionAgregarEcodopler?id=".$trasplanteId); ?>"> 
+        <?php echo __("Evoluciones_Ecodopler Agregar");?>
+    </a>
+</div>

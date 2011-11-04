@@ -86,48 +86,5 @@ class EvolucionTrasplanteNutricionActions extends sfActions
     }  
   }
   
-// De aca para abajo... mmmm no deberia ir  
-/*  
-  public function executeCreate(sfWebRequest $request)
-  {
-    $this->forward404Unless($request->isMethod(sfRequest::POST));
-
-    $this->form = new EvolucionTrasplanteNutricionForm();
-
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('new');
-  }
-
-  public function executeEdit(sfWebRequest $request)
-  {
-    $this->forward404Unless($evolucion_trasplante_nutricion = Doctrine_Core::getTable('EvolucionTrasplanteNutricion')->find(array($request->getParameter('id'))), sprintf('Object evolucion_trasplante_nutricion does not exist (%s).', $request->getParameter('id')));
-    $this->form = new EvolucionTrasplanteNutricionForm($evolucion_trasplante_nutricion);
-  }
-
-  public function executeUpdate(sfWebRequest $request)
-  {
-    $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-    $this->forward404Unless($evolucion_trasplante_nutricion = Doctrine_Core::getTable('EvolucionTrasplanteNutricion')->find(array($request->getParameter('id'))), sprintf('Object evolucion_trasplante_nutricion does not exist (%s).', $request->getParameter('id')));
-    $this->form = new EvolucionTrasplanteNutricionForm($evolucion_trasplante_nutricion);
-
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('edit');
-  }
-
-
-
-  protected function processForm(sfWebRequest $request, sfForm $form)
-  {
-    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
-    if ($form->isValid())
-    {
-      $evolucion_trasplante_nutricion = $form->save();
-
-      $this->redirect('EvolucionTrasplanteNutricion/edit?id='.$evolucion_trasplante_nutricion->getId());
-    }
-  }
- */
 }
 

@@ -6,6 +6,28 @@ manejarReoperaciones:
   url:   /trasplante/:id/reoperaciones
   param: { module: Reoperaciones, action: mostrar }
 
+#Evolucion Ecodopler
+eliminarEvolucionEcodopler:
+  url:   /traplante/evolucion/ecodopler/eliminar
+  param: { module: EvolucionTrasplanteEcodopler, action: delete }
+  
+editarEvolucionEcodopler:
+  url:   /traplante/evolucion/ecodopler/editar/:id
+  param: { module: EvolucionTrasplanteEcodopler, action: edit }
+  
+mostrarEvolucionEcodopler:
+  url:   /traplante/evolucion/ecodopler/mostrar/:id
+  param: { module: EvolucionTrasplanteEcodopler, action: mostrar }
+
+evolucionSalvarEcodopler:
+  url:   /traplante/evolucion/ecodopler/salvar
+  param: { module: EvolucionTrasplanteEcodopler, action: save }
+
+evolucionAgregarEcodopler:
+  url:   /traplante/evolucion/ecodopler/agregar/:id
+  param: { module: EvolucionTrasplanteEcodopler, action: new } 
+
+
 #Evolucion Paraclinica
 eliminarEvolucionParaclinica:
   url:   /traplante/evolucion/paraclinica/eliminar

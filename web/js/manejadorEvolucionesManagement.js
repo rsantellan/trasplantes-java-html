@@ -400,6 +400,81 @@ manejadorEvolucionesManagement.prototype = {
                 }
             });
         }
+    },
+    
+    /***
+     * 
+     * Evolucion Ecodopler
+     * 
+     */
+    saveEcodoplerForm: function(form){
+        $.fancybox.showActivity();
+        $.ajax({
+            url: $(form).attr('action'),
+            data: $(form).serialize(),
+            type: 'post',
+            dataType: 'json',
+            success: function(json){
+                if(json.response == "OK")
+                {
+                    if(json.options.isnew == true)
+                    {
+                        $("#evolucion_ecodopler_ul").append(json.options.body);
+                      
+                    }
+                    else
+                    {
+                        $('#ecodopler_li_'+json.options.id).replaceWith(json.options.body);
+                    }
+                    manejadorEvolucionesManagement.getInstance().refreshFancyLinks();
+                    $.fancybox.close();
+                }
+                else
+                {
+                    $("#evolucion_ecodopler_new_container").replaceWith(json.options.body);
+                }
+                  
+            }
+            , 
+            complete: function()
+            {
+                $.fancybox.hideActivity();
+                $.fancybox.resize();
+            }
+        });
+        return false;        
+    },
+    
+    deleteEcodopler: function(id, text, url)
+    {
+        if(confirm(text))
+        {
+            $.fancybox.showActivity();
+            $.ajax({
+                url: url,
+                data: {
+                    'id': id
+                },
+                type: 'post',
+                dataType: 'json',
+                success: function(json){
+                    if(json.response == "OK")
+                    {
+                        $('#ecodopler_li_'+json.options.id).remove();
+                        $.fancybox.close();
+                    }
+                    else
+                    {
+                        //$(".donante_causa_muerte_delete_error").show();
+                    }
+                }, 
+                complete: function()
+                {
+                    $.fancybox.hideActivity();
+                    $.fancybox.resize();
+                }
+            });
+        }
     }
     
 }

@@ -1,7 +1,7 @@
 <?php
   use_helper("Date");
 ?>
-<h2><?php echo __("Evoluciones_Nutricion Titulo");?></h2>
+<h2><?php echo __("Evoluciones_Paraclinica Titulo");?></h2>
 <ul class="evolucion_Ecg">
   <li><?php echo __("Evoluciones_Paraclinica fecha");?> : <label class="bold_text"><?php echo format_date($evolucion->getFecha(), 'D');?></label></li>
   <li><?php echo __("Evoluciones_Paraclinica pas");?> : <label class="bold_text"><?php echo $evolucion->getPas();?></label></li>

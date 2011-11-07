@@ -26,5 +26,10 @@ class manejadorEvolucionesActions extends sfActions
     $this->listEvolucionesParaclinicas = trasplanteEvolucionHandler::retriveAllEvolucionTrasplanteParaclinicas($this->trasplanteId);
     
     $this->listEvolucionesEcodopler = trasplanteEvolucionHandler::retriveAllEvolucionTrasplanteEcodopler($this->trasplanteId);
+    
+    $this->listEvolucionesEcografia = trasplanteEvolucionHandler::retriveAllEvolucionTrasplanteEcografia($this->trasplanteId);
+    
+    $this->listEvolucionesMarvirales = trasplanteEvolucionHandler::retriveAllEvolucionTrasplanteMarvirales($this->trasplanteId);
+    
   }
 }

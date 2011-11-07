@@ -71,5 +71,25 @@ class trasplanteEvolucionHandler {
   {
     return Doctrine::getTable("EvolucionTrasplanteEcodopler")->retriveById($evolucionEcodoplerId, $hydrationMode);
   }
+  
+  public static function retriveAllEvolucionTrasplanteEcografia($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+    return Doctrine::getTable("EvolucionTrasplanteEcografia")->retrieveAll($trasplanteId, $hydrationMode);
+  }
+  
+  public static function retriveEvolucionTrasplanteEcografia($evolucionEcografiaId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+    return Doctrine::getTable("EvolucionTrasplanteEcografia")->retriveById($evolucionEcografiaId, $hydrationMode);
+  }
+  
+  public static function retriveAllEvolucionTrasplanteMarvirales($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+    return Doctrine::getTable("EvolucionTrasplanteMarvirales")->retrieveAll($trasplanteId, $hydrationMode);
+  }
+  
+  public static function retriveEvolucionTrasplanteMarvirales($evolucionMarviralId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+    return Doctrine::getTable("EvolucionTrasplanteMarvirales")->retriveById($evolucionMarviralId, $hydrationMode);
+  }  
 }
 

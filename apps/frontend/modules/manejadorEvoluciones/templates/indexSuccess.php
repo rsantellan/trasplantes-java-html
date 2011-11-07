@@ -76,3 +76,27 @@
         <?php echo __("Evoluciones_Ecodopler Agregar");?>
     </a>
 </div>
+
+<div class="evoluciones_ecografia_container">
+    <h2><?php echo __("Evoluciones_Ecografia titulo");?></h2>
+    <ul id="evolucion_ecografia_ul">
+        <?php foreach($listEvolucionesEcografia as $evolucion): ?>
+            <?php include_partial("EvolucionTrasplanteEcografia/listadoEvolucion", array("evolucion" => $evolucion)); ?>
+        <?php endforeach; ?>
+    </ul>
+    <a class="fancy_link" href="<?php echo url_for("@evolucionAgregarEcografia?id=".$trasplanteId); ?>"> 
+        <?php echo __("Evoluciones_Ecografia Agregar");?>
+    </a>
+</div>
+
+<div class="evoluciones_marvirales_container">
+    <h2><?php echo __("Evoluciones_Marvirales titulo");?></h2>
+    <ul id="evolucion_marvirales_ul">
+        <?php foreach($listEvolucionesMarvirales as $evolucion): ?>
+            <?php include_partial("EvolucionTrasplanteMarvirales/listadoEvolucion", array("evolucion" => $evolucion)); ?>
+        <?php endforeach; ?>
+    </ul>
+    <a class="fancy_link" href="<?php echo url_for("@evolucionAgregarMarvirales?id=".$trasplanteId); ?>"> 
+        <?php echo __("Evoluciones_Marvirales Agregar");?>
+    </a>
+</div>

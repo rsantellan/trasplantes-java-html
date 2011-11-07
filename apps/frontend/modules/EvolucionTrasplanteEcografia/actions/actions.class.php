@@ -10,54 +10,88 @@
  */
 class EvolucionTrasplanteEcografiaActions extends sfActions
 {
-  public function executeIndex(sfWebRequest $request)
-  {
-    $this->evolucion_trasplante_ecografias = Doctrine_Core::getTable('EvolucionTrasplanteEcografia')
-      ->createQuery('a')
-      ->execute();
-  }
 
   public function executeNew(sfWebRequest $request)
   {
-    $this->form = new EvolucionTrasplanteEcografiaForm();
+    $trasplanteId = $request->getParameter('id');
+    $this->forward404Unless($trasplanteId);
+    $evolucion = new EvolucionTrasplanteEcografia();
+    $evolucion->setTrasplanteId($trasplanteId);    
+    $this->form = new EvolucionTrasplanteEcografiaForm($evolucion);
   }
 
-  public function executeCreate(sfWebRequest $request)
+  public function executeSave(sfWebRequest $request)
   {
-    $this->forward404Unless($request->isMethod(sfRequest::POST));
-
-    $this->form = new EvolucionTrasplanteEcografiaForm();
-
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('new');
+      $parameters = $request->getPostParameters();
+      
+      $auxForm = new EvolucionTrasplanteEcografiaForm();
+      $parameters = $request->getParameter($auxForm->getName());
+      $id = $parameters["id"];
+      $isNew = true;
+      if($id)
+      {
+        $EvolucionTrasplanteEcografia = Doctrine::getTable('EvolucionTrasplanteEcografia')->find($id);
+        $this->forward404Unless($EvolucionTrasplanteEcografia);
+        $form = new EvolucionTrasplanteEcografiaForm($EvolucionTrasplanteEcografia); 
+        $isNew = false;
+      }
+      else
+      {
+        $evolucion = new EvolucionTrasplanteEcografia();
+        $evolucion->setTrasplanteId($parameters["trasplante_id"]);
+        $form = new EvolucionTrasplanteEcografiaForm($evolucion); 
+      }
+      $form->bind($parameters);
+      if ($form->isValid())
+      {
+        $EvolucionTrasplanteEcografiaAux = $form->save();
+        $form = new EvolucionTrasplanteEcografiaForm($EvolucionTrasplanteEcografiaAux);
+        $body = $this->getPartial("listadoEvolucion", array( "evolucion" => $EvolucionTrasplanteEcografiaAux));
+        
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('isnew'=>$isNew, 'id'=>$EvolucionTrasplanteEcografiaAux->getId(), 'body' => $body)));
+      }
+      else
+      {
+        $body = $this->getPartial('small_form', array('form'=>$form));
+        return $this->renderText(mdBasicFunction::basic_json_response(false, array('body' => $body)));
+      }
   }
-
+  
+  
+  public function executeMostrar(sfWebRequest $request)
+  {
+	$this->id = $request->getParameter('id');
+	$this->evolucion = trasplanteEvolucionHandler::retriveEvolucionTrasplanteEcografia($this->id);
+	
+	$this->forward404Unless($this->evolucion);
+  }
+  
   public function executeEdit(sfWebRequest $request)
   {
     $this->forward404Unless($evolucion_trasplante_ecografia = Doctrine_Core::getTable('EvolucionTrasplanteEcografia')->find(array($request->getParameter('id'))), sprintf('Object evolucion_trasplante_ecografia does not exist (%s).', $request->getParameter('id')));
     $this->form = new EvolucionTrasplanteEcografiaForm($evolucion_trasplante_ecografia);
   }
 
-  public function executeUpdate(sfWebRequest $request)
-  {
-    $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-    $this->forward404Unless($evolucion_trasplante_ecografia = Doctrine_Core::getTable('EvolucionTrasplanteEcografia')->find(array($request->getParameter('id'))), sprintf('Object evolucion_trasplante_ecografia does not exist (%s).', $request->getParameter('id')));
-    $this->form = new EvolucionTrasplanteEcografiaForm($evolucion_trasplante_ecografia);
-
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('edit');
-  }
-
   public function executeDelete(sfWebRequest $request)
   {
-    $request->checkCSRFProtection();
 
     $this->forward404Unless($evolucion_trasplante_ecografia = Doctrine_Core::getTable('EvolucionTrasplanteEcografia')->find(array($request->getParameter('id'))), sprintf('Object evolucion_trasplante_ecografia does not exist (%s).', $request->getParameter('id')));
-    $evolucion_trasplante_ecografia->delete();
 
-    $this->redirect('EvolucionTrasplanteEcografia/index');
+    try
+    {
+      if($evolucion_trasplante_ecografia->delete())
+      {  
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('id'=>$request->getParameter('id'))));
+      }
+      else
+      {
+        return $this->renderText(mdBasicFunction::basic_json_response(false, array()));
+      }      
+    }catch(Exception $e)
+    {
+      
+      return $this->renderText(mdBasicFunction::basic_json_response(false, array("error" => $e->getCode())));
+    }
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)

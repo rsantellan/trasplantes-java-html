@@ -475,6 +475,156 @@ manejadorEvolucionesManagement.prototype = {
                 }
             });
         }
+    },
+    
+    /***
+     * 
+     * Evolucion Ecografia
+     * 
+     */
+    saveEcografiaForm: function(form){
+        $.fancybox.showActivity();
+        $.ajax({
+            url: $(form).attr('action'),
+            data: $(form).serialize(),
+            type: 'post',
+            dataType: 'json',
+            success: function(json){
+                if(json.response == "OK")
+                {
+                    if(json.options.isnew == true)
+                    {
+                        $("#evolucion_ecografia_ul").append(json.options.body);
+                      
+                    }
+                    else
+                    {
+                        $('#ecografia_li_'+json.options.id).replaceWith(json.options.body);
+                    }
+                    manejadorEvolucionesManagement.getInstance().refreshFancyLinks();
+                    $.fancybox.close();
+                }
+                else
+                {
+                    $("#evolucion_ecografia_new_container").replaceWith(json.options.body);
+                }
+                  
+            }
+            , 
+            complete: function()
+            {
+                $.fancybox.hideActivity();
+                $.fancybox.resize();
+            }
+        });
+        return false;        
+    },
+    
+    deleteEcografia: function(id, text, url)
+    {
+        if(confirm(text))
+        {
+            $.fancybox.showActivity();
+            $.ajax({
+                url: url,
+                data: {
+                    'id': id
+                },
+                type: 'post',
+                dataType: 'json',
+                success: function(json){
+                    if(json.response == "OK")
+                    {
+                        $('#ecografia_li_'+json.options.id).remove();
+                        $.fancybox.close();
+                    }
+                    else
+                    {
+                        //$(".donante_causa_muerte_delete_error").show();
+                    }
+                }, 
+                complete: function()
+                {
+                    $.fancybox.hideActivity();
+                    $.fancybox.resize();
+                }
+            });
+        }
+    },
+    
+    /***
+     * 
+     * Evolucion Marvirales
+     * 
+     */
+    saveMarviralesForm: function(form){
+        $.fancybox.showActivity();
+        $.ajax({
+            url: $(form).attr('action'),
+            data: $(form).serialize(),
+            type: 'post',
+            dataType: 'json',
+            success: function(json){
+                if(json.response == "OK")
+                {
+                    if(json.options.isnew == true)
+                    {
+                        $("#evolucion_marvirales_ul").append(json.options.body);
+                      
+                    }
+                    else
+                    {
+                        $('#marviral_li_'+json.options.id).replaceWith(json.options.body);
+                    }
+                    manejadorEvolucionesManagement.getInstance().refreshFancyLinks();
+                    $.fancybox.close();
+                }
+                else
+                {
+                    $("#evolucion_marvirales_new_container").replaceWith(json.options.body);
+                }
+                  
+            }
+            , 
+            complete: function()
+            {
+                $.fancybox.hideActivity();
+                $.fancybox.resize();
+            }
+        });
+        return false;        
+    },
+    
+    deleteMarvirales: function(id, text, url)
+    {
+        if(confirm(text))
+        {
+            $.fancybox.showActivity();
+            $.ajax({
+                url: url,
+                data: {
+                    'id': id
+                },
+                type: 'post',
+                dataType: 'json',
+                success: function(json){
+                    if(json.response == "OK")
+                    {
+                        $('#marviral_li_'+json.options.id).remove();
+                        $.fancybox.close();
+                    }
+                    else
+                    {
+                        //$(".donante_causa_muerte_delete_error").show();
+                    }
+                }, 
+                complete: function()
+                {
+                    $.fancybox.hideActivity();
+                    $.fancybox.resize();
+                }
+            });
+        }
     }
     
 }

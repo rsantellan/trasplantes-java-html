@@ -6,6 +6,48 @@ manejarReoperaciones:
   url:   /trasplante/:id/reoperaciones
   param: { module: Reoperaciones, action: mostrar }
 
+#Evolucion Marvirales
+eliminarEvolucionMarvirales:
+  url:   /traplante/evolucion/marvirales/eliminar
+  param: { module: EvolucionTrasplanteMarvirales, action: delete }
+  
+editarEvolucionMarvirales:
+  url:   /traplante/evolucion/marvirales/editar/:id
+  param: { module: EvolucionTrasplanteMarvirales, action: edit }
+  
+mostrarEvolucionMarvirales:
+  url:   /traplante/evolucion/marvirales/mostrar/:id
+  param: { module: EvolucionTrasplanteMarvirales, action: mostrar }
+
+evolucionSalvarMarvirales:
+  url:   /traplante/evolucion/marvirales/salvar
+  param: { module: EvolucionTrasplanteMarvirales, action: save }
+
+evolucionAgregarMarvirales:
+  url:   /traplante/evolucion/marvirales/agregar/:id
+  param: { module: EvolucionTrasplanteMarvirales, action: new } 
+
+#Evolucion Ecografia
+eliminarEvolucionEcografia:
+  url:   /traplante/evolucion/ecografia/eliminar
+  param: { module: EvolucionTrasplanteEcografia, action: delete }
+  
+editarEvolucionEcografia:
+  url:   /traplante/evolucion/ecografia/editar/:id
+  param: { module: EvolucionTrasplanteEcografia, action: edit }
+  
+mostrarEvolucionEcografia:
+  url:   /traplante/evolucion/ecografia/mostrar/:id
+  param: { module: EvolucionTrasplanteEcografia, action: mostrar }
+
+evolucionSalvarEcografia:
+  url:   /traplante/evolucion/ecografia/salvar
+  param: { module: EvolucionTrasplanteEcografia, action: save }
+
+evolucionAgregarEcografia:
+  url:   /traplante/evolucion/ecografia/agregar/:id
+  param: { module: EvolucionTrasplanteEcografia, action: new } 
+
 #Evolucion Ecodopler
 eliminarEvolucionEcodopler:
   url:   /traplante/evolucion/ecodopler/eliminar

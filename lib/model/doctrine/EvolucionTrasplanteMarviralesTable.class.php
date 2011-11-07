@@ -16,4 +16,20 @@ class EvolucionTrasplanteMarviralesTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('EvolucionTrasplanteMarvirales');
     }
+    
+    public function retrieveAll($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("etMarvirales");
+      $query->addWhere("etMarvirales.trasplante_id = ?", $trasplanteId );
+      $query->setHydrationMode($hydrationMode);
+      return $query->execute();
+    }
+    
+    public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("etMarvirales")
+                ->addWhere("etMarvirales.id = ?", $id);
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }
 }

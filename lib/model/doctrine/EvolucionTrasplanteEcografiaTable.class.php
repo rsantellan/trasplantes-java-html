@@ -16,4 +16,20 @@ class EvolucionTrasplanteEcografiaTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('EvolucionTrasplanteEcografia');
     }
+    
+    public function retrieveAll($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("etEcografia");
+      $query->addWhere("etEcografia.trasplante_id = ?", $trasplanteId );
+      $query->setHydrationMode($hydrationMode);
+      return $query->execute();
+    }
+    
+    public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("etEcografia")
+                ->addWhere("etEcografia.id = ?", $id);
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }
 }

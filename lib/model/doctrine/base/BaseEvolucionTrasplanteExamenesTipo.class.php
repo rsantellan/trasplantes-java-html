@@ -7,11 +7,14 @@
  * 
  * @property integer $id
  * @property string $nombre
+ * @property Doctrine_Collection $EvolucionTrasplanteExamenes
  * 
- * @method integer                         getId()     Returns the current record's "id" value
- * @method string                          getNombre() Returns the current record's "nombre" value
- * @method EvolucionTrasplanteExamenesTipo setId()     Sets the current record's "id" value
- * @method EvolucionTrasplanteExamenesTipo setNombre() Sets the current record's "nombre" value
+ * @method integer                         getId()                          Returns the current record's "id" value
+ * @method string                          getNombre()                      Returns the current record's "nombre" value
+ * @method Doctrine_Collection             getEvolucionTrasplanteExamenes() Returns the current record's "EvolucionTrasplanteExamenes" collection
+ * @method EvolucionTrasplanteExamenesTipo setId()                          Sets the current record's "id" value
+ * @method EvolucionTrasplanteExamenesTipo setNombre()                      Sets the current record's "nombre" value
+ * @method EvolucionTrasplanteExamenesTipo setEvolucionTrasplanteExamenes() Sets the current record's "EvolucionTrasplanteExamenes" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -39,6 +42,8 @@ abstract class BaseEvolucionTrasplanteExamenesTipo extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasMany('EvolucionTrasplanteExamenes', array(
+             'local' => 'id',
+             'foreign' => 'evolucion_trasplante_examenes_tipo_id'));
     }
 }

@@ -15,7 +15,7 @@ abstract class BaseEvolucionTrasplanteExamenesFormFilter extends BaseFormFilterD
     $this->setWidgets(array(
       'trasplante_id'                         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Trasplante'), 'add_empty' => true)),
       'fecha'                                 => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
-      'evolucion_trasplante_examenes_tipo_id' => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'evolucion_trasplante_examenes_tipo_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('EvolucionTrasplanteExamenesTipo'), 'add_empty' => true)),
       'tipo'                                  => new sfWidgetFormChoice(array('choices' => array('' => '', 'Normal' => 'Normal', 'Patologico' => 'Patologico'))),
       'comentario'                            => new sfWidgetFormFilterInput(),
     ));
@@ -23,7 +23,7 @@ abstract class BaseEvolucionTrasplanteExamenesFormFilter extends BaseFormFilterD
     $this->setValidators(array(
       'trasplante_id'                         => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Trasplante'), 'column' => 'id')),
       'fecha'                                 => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDateTime(array('required' => false)))),
-      'evolucion_trasplante_examenes_tipo_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'evolucion_trasplante_examenes_tipo_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('EvolucionTrasplanteExamenesTipo'), 'column' => 'id')),
       'tipo'                                  => new sfValidatorChoice(array('required' => false, 'choices' => array('Normal' => 'Normal', 'Patologico' => 'Patologico'))),
       'comentario'                            => new sfValidatorPass(array('required' => false)),
     ));
@@ -48,7 +48,7 @@ abstract class BaseEvolucionTrasplanteExamenesFormFilter extends BaseFormFilterD
       'id'                                    => 'Number',
       'trasplante_id'                         => 'ForeignKey',
       'fecha'                                 => 'Date',
-      'evolucion_trasplante_examenes_tipo_id' => 'Number',
+      'evolucion_trasplante_examenes_tipo_id' => 'ForeignKey',
       'tipo'                                  => 'Enum',
       'comentario'                            => 'Text',
     );

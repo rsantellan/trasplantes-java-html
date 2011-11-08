@@ -12,4 +12,8 @@
  */
 class EvolucionTrasplanteEcografia extends BaseEvolucionTrasplanteEcografia
 {
+    public function getClassName()
+    {
+        return get_class($this);
+    }    
 }

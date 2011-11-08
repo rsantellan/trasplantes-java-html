@@ -12,4 +12,8 @@
  */
 class EvolucionTrasplanteMarvirales extends BaseEvolucionTrasplanteMarvirales
 {
+    public function getClassName()
+    {
+        return get_class($this);
+    }      
 }

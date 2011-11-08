@@ -100,3 +100,27 @@
         <?php echo __("Evoluciones_Marvirales Agregar");?>
     </a>
 </div>
+
+<div class="evoluciones_tx_torax_container">
+    <h2><?php echo __("Evoluciones_TxTorax titulo");?></h2>
+    <ul id="evolucion_txtorax_ul">
+        <?php foreach($listEvolucionesTxTorax as $evolucion): ?>
+            <?php include_partial("EvolucionTrasplanteTxtorax/listadoEvolucion", array("evolucion" => $evolucion)); ?>
+        <?php endforeach; ?>
+    </ul>
+    <a class="fancy_link" href="<?php echo url_for("@evolucionAgregarTxTorax?id=".$trasplanteId); ?>"> 
+        <?php echo __("Evoluciones_TxTorax Agregar");?>
+    </a>
+</div>
+
+<div class="evoluciones_examenes_container">
+    <h2><?php echo __("Evoluciones_Examenes titulo");?></h2>
+    <ul id="evolucion_examen_ul">
+        <?php foreach($listEvolucionesTxTorax as $evolucion): ?>
+            <?php include_partial("EvolucionTrasplanteExamenes/listadoEvolucion", array("evolucion" => $evolucion)); ?>
+        <?php endforeach; ?>
+    </ul>
+    <a class="fancy_link" href="<?php echo url_for("@evolucionAgregarExamenes?id=".$trasplanteId); ?>"> 
+        <?php echo __("Evoluciones_Examenes Agregar");?>
+    </a>
+</div>

@@ -18,7 +18,7 @@ abstract class BaseEvolucionTrasplanteExamenesForm extends BaseFormDoctrine
       'id'                                    => new sfWidgetFormInputHidden(),
       'trasplante_id'                         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Trasplante'), 'add_empty' => false)),
       'fecha'                                 => new sfWidgetFormDate(),
-      'evolucion_trasplante_examenes_tipo_id' => new sfWidgetFormInputText(),
+      'evolucion_trasplante_examenes_tipo_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('EvolucionTrasplanteExamenesTipo'), 'add_empty' => false)),
       'tipo'                                  => new sfWidgetFormChoice(array('choices' => array('Normal' => 'Normal', 'Patologico' => 'Patologico'))),
       'comentario'                            => new sfWidgetFormInputText(),
     ));
@@ -27,7 +27,7 @@ abstract class BaseEvolucionTrasplanteExamenesForm extends BaseFormDoctrine
       'id'                                    => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'trasplante_id'                         => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Trasplante'))),
       'fecha'                                 => new sfValidatorDate(),
-      'evolucion_trasplante_examenes_tipo_id' => new sfValidatorInteger(),
+      'evolucion_trasplante_examenes_tipo_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('EvolucionTrasplanteExamenesTipo'))),
       'tipo'                                  => new sfValidatorChoice(array('choices' => array(0 => 'Normal', 1 => 'Patologico'))),
       'comentario'                            => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));

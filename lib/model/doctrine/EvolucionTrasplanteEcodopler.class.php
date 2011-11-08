@@ -12,4 +12,8 @@
  */
 class EvolucionTrasplanteEcodopler extends BaseEvolucionTrasplanteEcodopler
 {
+    public function getClassName()
+    {
+        return get_class($this);
+    }    
 }

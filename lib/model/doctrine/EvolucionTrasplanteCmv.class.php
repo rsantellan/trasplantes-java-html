@@ -12,4 +12,8 @@
  */
 class EvolucionTrasplanteCmv extends BaseEvolucionTrasplanteCmv
 {
+    public function getClassName()
+    {
+        return get_class($this);
+    }
 }

@@ -625,6 +625,81 @@ manejadorEvolucionesManagement.prototype = {
                 }
             });
         }
+    },
+    
+    /***
+     * 
+     * Evolucion Tx Torax
+     * 
+     */
+    saveTxToraxForm: function(form){
+        $.fancybox.showActivity();
+        $.ajax({
+            url: $(form).attr('action'),
+            data: $(form).serialize(),
+            type: 'post',
+            dataType: 'json',
+            success: function(json){
+                if(json.response == "OK")
+                {
+                    if(json.options.isnew == true)
+                    {
+                        $("#evolucion_txtorax_ul").append(json.options.body);
+                      
+                    }
+                    else
+                    {
+                        $('#txtorax_li_'+json.options.id).replaceWith(json.options.body);
+                    }
+                    manejadorEvolucionesManagement.getInstance().refreshFancyLinks();
+                    $.fancybox.close();
+                }
+                else
+                {
+                    $("#evolucion_txtorax_new_container").replaceWith(json.options.body);
+                }
+                  
+            }
+            , 
+            complete: function()
+            {
+                $.fancybox.hideActivity();
+                $.fancybox.resize();
+            }
+        });
+        return false;        
+    },
+    
+    deleteTxTorax: function(id, text, url)
+    {
+        if(confirm(text))
+        {
+            $.fancybox.showActivity();
+            $.ajax({
+                url: url,
+                data: {
+                    'id': id
+                },
+                type: 'post',
+                dataType: 'json',
+                success: function(json){
+                    if(json.response == "OK")
+                    {
+                        $('#txtorax_li_'+json.options.id).remove();
+                        $.fancybox.close();
+                    }
+                    else
+                    {
+                        //$(".donante_causa_muerte_delete_error").show();
+                    }
+                }, 
+                complete: function()
+                {
+                    $.fancybox.hideActivity();
+                    $.fancybox.resize();
+                }
+            });
+        }
     }
     
 }

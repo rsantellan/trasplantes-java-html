@@ -6,6 +6,48 @@ manejarReoperaciones:
   url:   /trasplante/:id/reoperaciones
   param: { module: Reoperaciones, action: mostrar }
 
+#Evolucion Examenes
+eliminarEvolucionExamenes:
+  url:   /traplante/evolucion/examenes/eliminar
+  param: { module: EvolucionTrasplanteExamenes, action: delete }
+  
+editarEvolucionExamenes:
+  url:   /traplante/evolucion/examenes/editar/:id
+  param: { module: EvolucionTrasplanteExamenes, action: edit }
+  
+mostrarEvolucionExamenes:
+  url:   /traplante/evolucion/examenes/mostrar/:id
+  param: { module: EvolucionTrasplanteExamenes, action: mostrar }
+
+evolucionSalvarExamenes:
+  url:   /traplante/evolucion/examenes/salvar
+  param: { module: EvolucionTrasplanteExamenes, action: save }
+
+evolucionAgregarExamenes:
+  url:   /traplante/evolucion/examenes/agregar/:id
+  param: { module: EvolucionTrasplanteExamenes, action: new }
+
+#Evolucion Tx Torax
+eliminarEvolucionTxTorax:
+  url:   /traplante/evolucion/txtorax/eliminar
+  param: { module: EvolucionTrasplanteTxtorax, action: delete }
+  
+editarEvolucionTxTorax:
+  url:   /traplante/evolucion/txtorax/editar/:id
+  param: { module: EvolucionTrasplanteTxtorax, action: edit }
+  
+mostrarEvolucionTxTorax:
+  url:   /traplante/evolucion/txtorax/mostrar/:id
+  param: { module: EvolucionTrasplanteTxtorax, action: mostrar }
+
+evolucionSalvarTxTorax:
+  url:   /traplante/evolucion/txtorax/salvar
+  param: { module: EvolucionTrasplanteTxtorax, action: save }
+
+evolucionAgregarTxTorax:
+  url:   /traplante/evolucion/txtorax/agregar/:id
+  param: { module: EvolucionTrasplanteTxtorax, action: new }
+  
 #Evolucion Marvirales
 eliminarEvolucionMarvirales:
   url:   /traplante/evolucion/marvirales/eliminar

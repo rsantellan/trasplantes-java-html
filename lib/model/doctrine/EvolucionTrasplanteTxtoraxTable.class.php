@@ -16,4 +16,20 @@ class EvolucionTrasplanteTxtoraxTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('EvolucionTrasplanteTxtorax');
     }
+    
+    public function retrieveAll($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("etTxTorax");
+      $query->addWhere("etTxTorax.trasplante_id = ?", $trasplanteId );
+      $query->setHydrationMode($hydrationMode);
+      return $query->execute();
+    }
+    
+    public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("etTxTorax")
+                ->addWhere("etTxTorax.id = ?", $id);
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }
 }

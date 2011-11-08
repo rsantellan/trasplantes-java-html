@@ -12,4 +12,8 @@
  */
 class EvolucionTrasplanteParaclinica extends BaseEvolucionTrasplanteParaclinica
 {
+    public function getClassName()
+    {
+        return get_class($this);
+    }     
 }

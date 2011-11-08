@@ -175,5 +175,8 @@ abstract class BaseEvolucionTrasplanteEcodopler extends sfDoctrineRecord
         $this->hasOne('Trasplante', array(
              'local' => 'trasplante_id',
              'foreign' => 'id'));
+
+        $evoluciontrasplantecounterbehavior0 = new EvolucionTrasplanteCounterBehavior();
+        $this->actAs($evoluciontrasplantecounterbehavior0);
     }
 }

@@ -12,4 +12,8 @@
  */
 class EvolucionTrasplanteEcoCardio extends BaseEvolucionTrasplanteEcoCardio
 {
+    public function getClassName()
+    {
+        return get_class($this);
+    }     
 }

@@ -16,4 +16,20 @@ class EvolucionTrasplanteExamenesTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('EvolucionTrasplanteExamenes');
     }
+    
+    public function retrieveAll($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("etExamenes");
+      $query->addWhere("etExamenes.trasplante_id = ?", $trasplanteId );
+      $query->setHydrationMode($hydrationMode);
+      return $query->execute();
+    }
+    
+    public function retriveById($id, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("etExamenes")
+                ->addWhere("etExamenes.id = ?", $id);
+      $query->setHydrationMode($hydrationMode);
+      return $query->fetchOne();
+    }
 }

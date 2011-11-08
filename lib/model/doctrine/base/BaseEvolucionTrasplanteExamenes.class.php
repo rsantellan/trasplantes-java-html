@@ -12,21 +12,24 @@
  * @property enum $tipo
  * @property string $comentario
  * @property Trasplante $Trasplante
+ * @property EvolucionTrasplanteExamenesTipo $EvolucionTrasplanteExamenesTipo
  * 
- * @method integer                     getId()                                    Returns the current record's "id" value
- * @method integer                     getTrasplanteId()                          Returns the current record's "trasplante_id" value
- * @method date                        getFecha()                                 Returns the current record's "fecha" value
- * @method integer                     getEvolucionTrasplanteExamenesTipoId()     Returns the current record's "evolucion_trasplante_examenes_tipo_id" value
- * @method enum                        getTipo()                                  Returns the current record's "tipo" value
- * @method string                      getComentario()                            Returns the current record's "comentario" value
- * @method Trasplante                  getTrasplante()                            Returns the current record's "Trasplante" value
- * @method EvolucionTrasplanteExamenes setId()                                    Sets the current record's "id" value
- * @method EvolucionTrasplanteExamenes setTrasplanteId()                          Sets the current record's "trasplante_id" value
- * @method EvolucionTrasplanteExamenes setFecha()                                 Sets the current record's "fecha" value
- * @method EvolucionTrasplanteExamenes setEvolucionTrasplanteExamenesTipoId()     Sets the current record's "evolucion_trasplante_examenes_tipo_id" value
- * @method EvolucionTrasplanteExamenes setTipo()                                  Sets the current record's "tipo" value
- * @method EvolucionTrasplanteExamenes setComentario()                            Sets the current record's "comentario" value
- * @method EvolucionTrasplanteExamenes setTrasplante()                            Sets the current record's "Trasplante" value
+ * @method integer                         getId()                                    Returns the current record's "id" value
+ * @method integer                         getTrasplanteId()                          Returns the current record's "trasplante_id" value
+ * @method date                            getFecha()                                 Returns the current record's "fecha" value
+ * @method integer                         getEvolucionTrasplanteExamenesTipoId()     Returns the current record's "evolucion_trasplante_examenes_tipo_id" value
+ * @method enum                            getTipo()                                  Returns the current record's "tipo" value
+ * @method string                          getComentario()                            Returns the current record's "comentario" value
+ * @method Trasplante                      getTrasplante()                            Returns the current record's "Trasplante" value
+ * @method EvolucionTrasplanteExamenesTipo getEvolucionTrasplanteExamenesTipo()       Returns the current record's "EvolucionTrasplanteExamenesTipo" value
+ * @method EvolucionTrasplanteExamenes     setId()                                    Sets the current record's "id" value
+ * @method EvolucionTrasplanteExamenes     setTrasplanteId()                          Sets the current record's "trasplante_id" value
+ * @method EvolucionTrasplanteExamenes     setFecha()                                 Sets the current record's "fecha" value
+ * @method EvolucionTrasplanteExamenes     setEvolucionTrasplanteExamenesTipoId()     Sets the current record's "evolucion_trasplante_examenes_tipo_id" value
+ * @method EvolucionTrasplanteExamenes     setTipo()                                  Sets the current record's "tipo" value
+ * @method EvolucionTrasplanteExamenes     setComentario()                            Sets the current record's "comentario" value
+ * @method EvolucionTrasplanteExamenes     setTrasplante()                            Sets the current record's "Trasplante" value
+ * @method EvolucionTrasplanteExamenes     setEvolucionTrasplanteExamenesTipo()       Sets the current record's "EvolucionTrasplanteExamenesTipo" value
  * 
  * @package    transplantes
  * @subpackage model
@@ -81,5 +84,12 @@ abstract class BaseEvolucionTrasplanteExamenes extends sfDoctrineRecord
         $this->hasOne('Trasplante', array(
              'local' => 'trasplante_id',
              'foreign' => 'id'));
+
+        $this->hasOne('EvolucionTrasplanteExamenesTipo', array(
+             'local' => 'evolucion_trasplante_examenes_tipo_id',
+             'foreign' => 'id'));
+
+        $evoluciontrasplantecounterbehavior0 = new EvolucionTrasplanteCounterBehavior();
+        $this->actAs($evoluciontrasplantecounterbehavior0);
     }
 }

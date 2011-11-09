@@ -12,4 +12,8 @@
  */
 class EvolucionTrasplanteExamenesTipo extends BaseEvolucionTrasplanteExamenesTipo
 {
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
 }

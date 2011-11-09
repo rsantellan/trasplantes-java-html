@@ -94,14 +94,4 @@ class EvolucionTrasplanteEcografiaActions extends sfActions
     }
   }
 
-  protected function processForm(sfWebRequest $request, sfForm $form)
-  {
-    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
-    if ($form->isValid())
-    {
-      $evolucion_trasplante_ecografia = $form->save();
-
-      $this->redirect('EvolucionTrasplanteEcografia/edit?id='.$evolucion_trasplante_ecografia->getId());
-    }
-  }
 }

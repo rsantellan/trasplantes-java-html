@@ -5,6 +5,7 @@
   use_plugin_javascript('mastodontePlugin','fancybox/jquery.fancybox-1.3.1.pack.js','last');
   use_javascript("trasplanteShowManagement.js",'last');
 ?>
+
 <div class="trasplante_min_info_basica">
   <h2><?php echo __("Trasplante_Informacion basica")?></h2>
   <?php echo __("Trasplante_Fecha del trasplante");?> : <label class="bold_text"><?php echo format_date($trasplante['fecha'], 'D'); ?></label>
@@ -30,7 +31,7 @@
     <a class="fancy_small_link" href="<?php echo url_for("@cambiarFechaAlta?id=".$id);?>"><?php echo __("Trasplante_Cambiar Fecha de alta del trasplante");?></a>
   </div>
   <div class="trasplante_reoperaciones_container">
-    
+      <a href="<?php echo url_for("@manejarReoperaciones?id=".$id);?>">reoperaciones</a>
   </div>
 </div>
 

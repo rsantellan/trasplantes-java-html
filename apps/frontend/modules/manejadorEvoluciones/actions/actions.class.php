@@ -33,6 +33,6 @@ class manejadorEvolucionesActions extends sfActions
     
     $this->listEvolucionesTxTorax = trasplanteEvolucionHandler::retriveAllEvolucionTrasplanteTxTorax($this->trasplanteId);
     
-    $this->listEvolucionesExamenes = trasplanteEvolucionHandler::retriveAllEvolucionTrasplanteTxTorax($this->trasplanteId);
+    $this->listEvolucionesExamenes = trasplanteEvolucionHandler::retriveAllEvolucionTrasplanteExamenes($this->trasplanteId);
   }
 }

@@ -4,6 +4,10 @@
   use_plugin_javascript('mastodontePlugin','fancybox/jquery.fancybox-1.3.1.pack.js','last');
   use_javascript("manejadorEvolucionesManagement.js", "last"); 
 ?>
+
+<div class="volver">
+    <a href="<?php echo url_for("@mostrarTrasplante?id=".$trasplanteId);?>"><?php echo __("Trasplante_volver a ver trasplante");?></a>
+</div>
 <div class="evoluciones_cmv_container">
     <h2><?php echo __("Evoluciones_Cmv titulo");?></h2>
     <ul id="evolucion_cmv_ul">
@@ -116,7 +120,7 @@
 <div class="evoluciones_examenes_container">
     <h2><?php echo __("Evoluciones_Examenes titulo");?></h2>
     <ul id="evolucion_examen_ul">
-        <?php foreach($listEvolucionesTxTorax as $evolucion): ?>
+        <?php foreach($listEvolucionesExamenes as $evolucion): ?>
             <?php include_partial("EvolucionTrasplanteExamenes/listadoEvolucion", array("evolucion" => $evolucion)); ?>
         <?php endforeach; ?>
     </ul>

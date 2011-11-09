@@ -12,4 +12,8 @@
  */
 class EvolucionTrasplanteExamenes extends BaseEvolucionTrasplanteExamenes
 {
+    public function getClassName()
+    {
+        return get_class($this);
+    } 
 }

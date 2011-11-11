@@ -1,5 +1,10 @@
 <ul class="cmv_list" id="cmv_list_<?php echo $cmv->getId();?>">
-      <li><?php echo __("CMV_campo fecha");?> : <label class="bold_text"><?php echo format_date($cmv->getFecha(), 'D');?></label></li>
+      <li>
+        <?php echo __("CMV_campo fecha");?> : <label class="bold_text"><?php echo format_date($cmv->getFecha(), 'D');?></label>
+        <a href="<?php echo url_for("@editarCmv?id=".$cmv->getId());?>" class="fancy_link">
+            <?php echo image_tag("edit-icon.png", array("width" => 24)); ?>
+        </a>
+      </li>
       <li><?php echo __("CMV_campo diagnostico");?> : <label class="bold_text"><?php echo $cmv->getCmvDiagnosticoId() ?></label></li>
       <li><?php echo __("CMV_campo tipo");?> : <label class="bold_text"><?php echo $cmv->getTipo() ?></label></li>
       <li><?php echo __("CMV_campo droga");?> : <label class="bold_text"><?php echo $cmv->getCmvDrogaId() ?></label></li>

@@ -604,11 +604,11 @@ Cmv:
       foreign: id
       type: one
       onDelete: CASCADE
-    Cmvdiagnostico:
+    CmvDiagnostico:
       local: cmv_diagnostico_id
       foreign: id
       type: one
-    Cmvdrogas:
+    CmvDrogas:
       local: cmv_droga_id
       foreign: id
       type: one

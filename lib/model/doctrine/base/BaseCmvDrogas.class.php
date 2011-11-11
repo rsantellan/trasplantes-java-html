@@ -7,11 +7,14 @@
  * 
  * @property integer $id
  * @property string $nombre
+ * @property Doctrine_Collection $Cmv
  * 
- * @method integer   getId()     Returns the current record's "id" value
- * @method string    getNombre() Returns the current record's "nombre" value
- * @method CmvDrogas setId()     Sets the current record's "id" value
- * @method CmvDrogas setNombre() Sets the current record's "nombre" value
+ * @method integer             getId()     Returns the current record's "id" value
+ * @method string              getNombre() Returns the current record's "nombre" value
+ * @method Doctrine_Collection getCmv()    Returns the current record's "Cmv" collection
+ * @method CmvDrogas           setId()     Sets the current record's "id" value
+ * @method CmvDrogas           setNombre() Sets the current record's "nombre" value
+ * @method CmvDrogas           setCmv()    Sets the current record's "Cmv" collection
  * 
  * @package    transplantes
  * @subpackage model
@@ -39,6 +42,8 @@ abstract class BaseCmvDrogas extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasMany('Cmv', array(
+             'local' => 'id',
+             'foreign' => 'cmv_droga_id'));
     }
 }

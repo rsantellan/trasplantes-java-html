@@ -59,63 +59,45 @@ class CmvActions extends sfActions
       {
         $CmvAux = $form->save();
         $form = new CmvForm($CmvAux);
-        $body = $this->getPartial("cmvList", array( "evolucion" => $CmvAux));
+        $body = $this->getPartial("cmvList", array( "cmv" => $CmvAux));
         
         return $this->renderText(mdBasicFunction::basic_json_response(true, array('isnew'=>$isNew, 'id'=>$CmvAux->getId(), 'body' => $body)));
       }
       else
       {
         $body = $this->getPartial('small_form', array('form'=>$form));
-        return $this->renderText(mdBasicFunction::basic_json_response(false, array('body' => $body)));
+        $errores = $form->getFormattedErrors();
+        return $this->renderText(mdBasicFunction::basic_json_response(false, array('errores' => $errores, 'body' => $body)));
       }
   }  
   
-  public function executeCreate(sfWebRequest $request)
-  {
-    $this->forward404Unless($request->isMethod(sfRequest::POST));
-
-    $this->form = new CmvForm();
-
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('new');
-  }
-
   public function executeEdit(sfWebRequest $request)
   {
     $this->forward404Unless($cmv = Doctrine_Core::getTable('Cmv')->find(array($request->getParameter('id'))), sprintf('Object cmv does not exist (%s).', $request->getParameter('id')));
     $this->form = new CmvForm($cmv);
   }
 
-  public function executeUpdate(sfWebRequest $request)
-  {
-    $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-    $this->forward404Unless($cmv = Doctrine_Core::getTable('Cmv')->find(array($request->getParameter('id'))), sprintf('Object cmv does not exist (%s).', $request->getParameter('id')));
-    $this->form = new CmvForm($cmv);
-
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('edit');
-  }
 
   public function executeDelete(sfWebRequest $request)
   {
-    $request->checkCSRFProtection();
+    //$request->checkCSRFProtection();
 
     $this->forward404Unless($cmv = Doctrine_Core::getTable('Cmv')->find(array($request->getParameter('id'))), sprintf('Object cmv does not exist (%s).', $request->getParameter('id')));
-    $cmv->delete();
-
-    $this->redirect('Cmv/index');
-  }
-
-  protected function processForm(sfWebRequest $request, sfForm $form)
-  {
-    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
-    if ($form->isValid())
+    try
     {
-      $cmv = $form->save();
-
-      $this->redirect('Cmv/edit?id='.$cmv->getId());
+      if($cmv->delete())
+      {  
+        return $this->renderText(mdBasicFunction::basic_json_response(true, array('id'=>$request->getParameter('id'))));
+      }
+      else
+      {
+        return $this->renderText(mdBasicFunction::basic_json_response(false, array()));
+      }      
+    }catch(Exception $e)
+    {
+      
+      return $this->renderText(mdBasicFunction::basic_json_response(false, array("error" => $e->getCode())));
     }
   }
+
 }

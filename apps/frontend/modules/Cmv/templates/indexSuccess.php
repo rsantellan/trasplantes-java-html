@@ -19,34 +19,3 @@
 <div class="volver">
     <a href="<?php echo url_for("@mostrarTrasplante?id=".$id);?>"><?php echo __("Trasplante_volver a ver trasplante");?></a>
 </div>
-
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Trasplante</th>
-      <th>Fecha</th>
-      <th>Cmv diagnostico</th>
-      <th>Tipo</th>
-      <th>Cmv droga</th>
-      <th>Dias tratamiento</th>
-      <th>Efecto secundario</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach ($cmvs as $cmv): ?>
-    <tr>
-      <td><a href="<?php echo url_for('Cmv/show?id='.$cmv->getId()) ?>"><?php echo $cmv->getId() ?></a></td>
-      <td><?php echo $cmv->getTrasplanteId() ?></td>
-      <td><?php echo $cmv->getFecha() ?></td>
-      <td><?php echo $cmv->getCmvDiagnosticoId() ?></td>
-      <td><?php echo $cmv->getTipo() ?></td>
-      <td><?php echo $cmv->getCmvDrogaId() ?></td>
-      <td><?php echo $cmv->getDiasTratamiento() ?></td>
-      <td><?php echo $cmv->getEfectoSecundario() ?></td>
-    </tr>
-    <?php endforeach; ?>
-  </tbody>
-</table>
-
-  <a href="<?php echo url_for('Cmv/new') ?>">New</a>

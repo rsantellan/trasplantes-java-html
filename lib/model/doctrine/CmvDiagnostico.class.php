@@ -12,4 +12,8 @@
  */
 class CmvDiagnostico extends BaseCmvDiagnostico
 {
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
 }

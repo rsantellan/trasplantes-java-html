@@ -12,4 +12,8 @@
  */
 class CmvDrogas extends BaseCmvDrogas
 {
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
 }

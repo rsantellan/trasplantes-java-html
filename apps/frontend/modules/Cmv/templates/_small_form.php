@@ -1,3 +1,4 @@
+<?php //echo $form; ?>
 <form action="<?php echo url_for('@salvarCmv');?>" method="post" onsubmit="return cmvManagement.getInstance().saveCmvForm(this)">
 <?php echo $form->renderHiddenFields(false) ?>
 <?php echo $form->renderGlobalErrors(); ?>
@@ -149,7 +150,7 @@
   <hr/>
   <input class="save_button" type="submit" value="<?php echo __("CMV_campo Guardar");?>" />
   <?php if(!$form->isNew()): ?>
-    <a href="javascript:void(0);" onclick="cmvManagement.getInstance().deleteCmv(<?php echo $form->getObject()->getId();?>, '<?php echo __("CMV_campo esta seguro de querer eliminar?");?>','<?php echo url_for("@eliminarEvolucionCmv");?>');">
+    <a href="javascript:void(0);" onclick="cmvManagement.getInstance().deleteCmv(<?php echo $form->getObject()->getId();?>, '<?php echo __("CMV_campo esta seguro de querer eliminar?");?>','<?php echo url_for("@eliminarCmv");?>');">
       <?php echo image_tag("trash.png", array("width" => 24)); ?>
     </a>
   <?php endif;?> 

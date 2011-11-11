@@ -3,6 +3,14 @@
 
 #Cmv
 
+eliminarCmv:
+  url:   /trasplante/cmv/eliminar
+  param: { module: Cmv, action: delete }
+
+editarCmv:
+  url:   /trasplante/cmv/editar/:id
+  param: { module: Cmv, action: edit }
+
 salvarCmv:
   url:   /trasplante/cmv/salvar
   param: { module: Cmv, action: save }

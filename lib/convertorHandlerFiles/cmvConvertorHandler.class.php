@@ -165,7 +165,7 @@ class cmvConvertorHandler
           $tipo = 0;
           if($TM == 1)
           {
-            $tipo = 2;
+            $tipo = 1;
           }
           if($SindromeViral == 1)
           {

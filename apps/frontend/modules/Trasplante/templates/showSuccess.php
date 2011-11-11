@@ -49,6 +49,16 @@
     </a>
     
 </div>
+
+<div class="trasplante_evolucion_container">
+    
+    <a href="<?php echo url_for("@manejarCmv?id=".$id); ?>"> 
+        <?php echo __("Trasplante_Cmv");?>
+    </a>
+    
+</div>
+
+
 <!-- 
 <a href="<?php echo url_for('Trasplante/edit?id='.$id) ?>">Edit</a>
 &nbsp;

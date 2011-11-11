@@ -21,6 +21,17 @@ class datosBasicosHandler {
 	return array('0' => "No", '1' => "Si");
   }
   
+  public static function cmvChoicesOptions()
+  {
+      sfContext::getInstance()->getConfiguration()->loadHelpers(array('I18N'));
+      return array(
+          0 => __("cmv_emfermedad"),
+          1 => __("cmv_tratamiento anticipado"),
+          2 => __("cmv_sindrome viral"),
+          3 => __("cmv_profilaxis")
+      );
+  }
+  
 }
 
 

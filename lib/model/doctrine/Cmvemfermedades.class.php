@@ -12,4 +12,8 @@
  */
 class Cmvemfermedades extends BaseCmvemfermedades
 {
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
 }

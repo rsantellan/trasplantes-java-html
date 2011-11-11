@@ -1,6 +1,20 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+#Cmv
+
+salvarCmv:
+  url:   /trasplante/cmv/salvar
+  param: { module: Cmv, action: save }
+
+agregarCmv:
+  url:   /trasplante/:id/cmv/agregar
+  param: { module: Cmv, action: new }
+  
+manejarCmv:
+  url:   /trasplante/:id/cmv
+  param: { module: Cmv, action: index }
+  
 #Reoperaciones
 manejarReoperaciones:
   url:   /trasplante/:id/reoperaciones

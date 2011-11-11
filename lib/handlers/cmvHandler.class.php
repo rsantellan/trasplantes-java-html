@@ -15,6 +15,11 @@ class cmvHandler {
   {
     return Doctrine::getTable("cmv")->retrieveByTrasplanteIdAndDate($trasplanteId, $fecha);
   }
+  
+  public static function retrieveByTrasplanteId($trasplanteId)
+  {
+    return Doctrine::getTable("cmv")->retrieveByTrasplanteId($trasplanteId);
+  }
 
 }
 

@@ -31,5 +31,25 @@ class InjertoEvolucionTable extends Doctrine_Table
               ->addWhere("ie.trasplante_id = ?", $trasplanteId);
       $query->setHydrationMode($hydrationMode);
       return $query->execute();
-    }        
+    }
+    
+    public function retrieveInjertoEvolucionOfTrasplanteEnTrasplante($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+        $query = $this->retrieveByTrasplanteQuery($trasplanteId, true, $hydrationMode);
+        return $query->fetchOne();
+    }
+    
+    public function retrieveInjertoEvolucionOfTrasplanteEnEvolucion($trasplanteId, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+        $query = $this->retrieveByTrasplanteQuery($trasplanteId, false, $hydrationMode);
+        return $query->execute();
+    }
+    private function retrieveByTrasplanteQuery($trasplanteId, $enTrasplante = false, $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("ie")
+              ->addWhere("ie.trasplante_id = ?", $trasplanteId)
+              ->addWhere("ie.en_trasplante = ?", $enTrasplante);
+      $query->setHydrationMode($hydrationMode);
+      return $query;
+    }
 }

@@ -13,13 +13,15 @@ abstract class BaseResultadoPbrFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'grado'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'criterio' => new sfWidgetFormFilterInput(),
+      'grado'                    => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'criterio'                 => new sfWidgetFormFilterInput(),
+      'injerto_evoluciones_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'InjertoEvolucion')),
     ));
 
     $this->setValidators(array(
-      'grado'    => new sfValidatorPass(array('required' => false)),
-      'criterio' => new sfValidatorPass(array('required' => false)),
+      'grado'                    => new sfValidatorPass(array('required' => false)),
+      'criterio'                 => new sfValidatorPass(array('required' => false)),
+      'injerto_evoluciones_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'InjertoEvolucion', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('resultado_pbr_filters[%s]');
@@ -31,6 +33,24 @@ abstract class BaseResultadoPbrFormFilter extends BaseFormFilterDoctrine
     parent::setup();
   }
 
+  public function addInjertoEvolucionesListColumnQuery(Doctrine_Query $query, $field, $values)
+  {
+    if (!is_array($values))
+    {
+      $values = array($values);
+    }
+
+    if (!count($values))
+    {
+      return;
+    }
+
+    $query
+      ->leftJoin($query->getRootAlias().'.InjertoEvolucionPbr InjertoEvolucionPbr')
+      ->andWhereIn('InjertoEvolucionPbr.cmv_id', $values)
+    ;
+  }
+
   public function getModelName()
   {
     return 'ResultadoPbr';
@@ -39,9 +59,10 @@ abstract class BaseResultadoPbrFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id'       => 'Number',
-      'grado'    => 'Text',
-      'criterio' => 'Text',
+      'id'                       => 'Number',
+      'grado'                    => 'Text',
+      'criterio'                 => 'Text',
+      'injerto_evoluciones_list' => 'ManyKey',
     );
   }
 }

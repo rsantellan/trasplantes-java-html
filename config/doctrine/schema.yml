@@ -1789,6 +1789,12 @@ InjertoEvolucion:
       local: ra_tratamiento_id
       foreign: id
       type: one
+    InjertoEvolucionPbrs:
+      class: ResultadoPbr
+      local: injerto_evolucion_id
+      foreign: resultado_pbr_id
+      refClass: InjertoEvolucionPbr
+      foreignAlias: InjertoEvoluciones 
       
 InjertoEvolucionPbr:
   tableName: injerto_evolucion_pbr

@@ -12,4 +12,7 @@
  */
 class Ratratamiento extends BaseRatratamiento
 {
+    public function __toString(){
+        return $this->getNombre();
+    }
 }

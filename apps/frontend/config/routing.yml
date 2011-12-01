@@ -1,8 +1,17 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
-#Cmv
+#Evolucion del injerto
 
+agregarEvolucionInjertoTrasplante:
+  url:   /trasplante/:id/evolucion-injerto/agregar-trasplante
+  param: { module: InjertoEvolucion, action: newTrasplante }
+  
+manejarEvolucionInjerto:
+  url:   /trasplante/:id/evolucion-injerto
+  param: { module: InjertoEvolucion, action: index }
+
+#Cmv
 eliminarCmv:
   url:   /trasplante/cmv/eliminar
   param: { module: Cmv, action: delete }

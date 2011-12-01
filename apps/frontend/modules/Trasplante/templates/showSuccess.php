@@ -5,6 +5,9 @@
   use_plugin_javascript('mastodontePlugin','fancybox/jquery.fancybox-1.3.1.pack.js','last');
   use_javascript("trasplanteShowManagement.js",'last');
 ?>
+<div class="volver">
+    <a href="<?php echo url_for("@mostrarPaciente?id=".$pacienteId);?>"><?php echo __("Trasplante_volver al paciente");?></a>
+</div>
 
 <div class="trasplante_min_info_basica">
   <h2><?php echo __("Trasplante_Informacion basica")?></h2>
@@ -58,6 +61,14 @@
     
 </div>
 
+
+<div class="trasplante_evolucion_container">
+    
+    <a href="<?php echo url_for("@manejarEvolucionInjerto?id=".$id); ?>"> 
+        <?php echo __("Trasplante_Evolucion del injerto");?>
+    </a>
+    
+</div>
 
 <!-- 
 <a href="<?php echo url_for('Trasplante/edit?id='.$id) ?>">Edit</a>

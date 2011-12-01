@@ -12,4 +12,8 @@
  */
 class ResultadoPbr extends BaseResultadoPbr
 {
+    public function __toString()
+    {
+        return $this->getGrado()." - ".$this->getCriterio();
+    }
 }

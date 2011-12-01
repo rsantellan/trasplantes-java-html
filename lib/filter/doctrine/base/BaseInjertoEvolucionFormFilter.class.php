@@ -13,29 +13,31 @@ abstract class BaseInjertoEvolucionFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'trasplante_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Trasplante'), 'add_empty' => true)),
-      'fecha'               => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
-      'tm'                  => new sfWidgetFormFilterInput(),
-      'tm_cual'             => new sfWidgetFormFilterInput(),
-      'gp_de_novo'          => new sfWidgetFormFilterInput(),
-      'recidiva_gp_de_novo' => new sfWidgetFormFilterInput(),
-      'ra'                  => new sfWidgetFormFilterInput(),
-      'rc'                  => new sfWidgetFormFilterInput(),
-      'ra_tratamiento_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Ratratamiento'), 'add_empty' => true)),
-      'en_trasplante'       => new sfWidgetFormFilterInput(),
+      'trasplante_id'               => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Trasplante'), 'add_empty' => true)),
+      'fecha'                       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'tm'                          => new sfWidgetFormFilterInput(),
+      'tm_cual'                     => new sfWidgetFormFilterInput(),
+      'gp_de_novo'                  => new sfWidgetFormFilterInput(),
+      'recidiva_gp_de_novo'         => new sfWidgetFormFilterInput(),
+      'ra'                          => new sfWidgetFormFilterInput(),
+      'rc'                          => new sfWidgetFormFilterInput(),
+      'ra_tratamiento_id'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Ratratamiento'), 'add_empty' => true)),
+      'en_trasplante'               => new sfWidgetFormFilterInput(),
+      'injerto_evolucion_pbrs_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'ResultadoPbr')),
     ));
 
     $this->setValidators(array(
-      'trasplante_id'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Trasplante'), 'column' => 'id')),
-      'fecha'               => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDateTime(array('required' => false)))),
-      'tm'                  => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'tm_cual'             => new sfValidatorPass(array('required' => false)),
-      'gp_de_novo'          => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'recidiva_gp_de_novo' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'ra'                  => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'rc'                  => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'ra_tratamiento_id'   => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Ratratamiento'), 'column' => 'id')),
-      'en_trasplante'       => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'trasplante_id'               => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Trasplante'), 'column' => 'id')),
+      'fecha'                       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDateTime(array('required' => false)))),
+      'tm'                          => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'tm_cual'                     => new sfValidatorPass(array('required' => false)),
+      'gp_de_novo'                  => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'recidiva_gp_de_novo'         => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'ra'                          => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'rc'                          => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'ra_tratamiento_id'           => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Ratratamiento'), 'column' => 'id')),
+      'en_trasplante'               => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'injerto_evolucion_pbrs_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'ResultadoPbr', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('injerto_evolucion_filters[%s]');
@@ -47,6 +49,24 @@ abstract class BaseInjertoEvolucionFormFilter extends BaseFormFilterDoctrine
     parent::setup();
   }
 
+  public function addInjertoEvolucionPbrsListColumnQuery(Doctrine_Query $query, $field, $values)
+  {
+    if (!is_array($values))
+    {
+      $values = array($values);
+    }
+
+    if (!count($values))
+    {
+      return;
+    }
+
+    $query
+      ->leftJoin($query->getRootAlias().'.InjertoEvolucionPbr InjertoEvolucionPbr')
+      ->andWhereIn('InjertoEvolucionPbr.resultado_pbr_id', $values)
+    ;
+  }
+
   public function getModelName()
   {
     return 'InjertoEvolucion';
@@ -55,17 +75,18 @@ abstract class BaseInjertoEvolucionFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id'                  => 'Number',
-      'trasplante_id'       => 'ForeignKey',
-      'fecha'               => 'Date',
-      'tm'                  => 'Number',
-      'tm_cual'             => 'Text',
-      'gp_de_novo'          => 'Number',
-      'recidiva_gp_de_novo' => 'Number',
-      'ra'                  => 'Number',
-      'rc'                  => 'Number',
-      'ra_tratamiento_id'   => 'ForeignKey',
-      'en_trasplante'       => 'Number',
+      'id'                          => 'Number',
+      'trasplante_id'               => 'ForeignKey',
+      'fecha'                       => 'Date',
+      'tm'                          => 'Number',
+      'tm_cual'                     => 'Text',
+      'gp_de_novo'                  => 'Number',
+      'recidiva_gp_de_novo'         => 'Number',
+      'ra'                          => 'Number',
+      'rc'                          => 'Number',
+      'ra_tratamiento_id'           => 'ForeignKey',
+      'en_trasplante'               => 'Number',
+      'injerto_evolucion_pbrs_list' => 'ManyKey',
     );
   }
 }

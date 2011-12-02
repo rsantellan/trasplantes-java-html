@@ -2,6 +2,25 @@
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 #Evolucion del injerto
+eliminarEvolucionInjerto:
+  url:   /trasplante/evolucion-injerto/eliminar
+  param: { module: InjertoEvolucion, action: delete }
+  
+editarEvolucionInjerto:
+  url:   /trasplante/evolucion-injerto/:id/editar
+  param: { module: InjertoEvolucion, action: edit }
+  
+mostrarEvolucionInjerto:
+  url:   /trasplante/evolucion-injerto/:id/mostrar
+  param: { module: InjertoEvolucion, action: show }
+
+salvarEvolucionInjerto:
+  url:   /trasplante/evolucion-injerto/salvar
+  param: { module: InjertoEvolucion, action: save }
+
+agregarEvolucionInjertoEvolucion:
+  url:   /trasplante/:id/evolucion-injerto/agregar-evolucion
+  param: { module: InjertoEvolucion, action: newEvolucion }
 
 agregarEvolucionInjertoTrasplante:
   url:   /trasplante/:id/evolucion-injerto/agregar-trasplante

@@ -46,7 +46,8 @@ abstract class BaseInjertoEvolucionPbr extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('InjertoEvolucion', array(
              'local' => 'injerto_evolucion_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('ResultadoPbr', array(
              'local' => 'resultado_pbr_id',

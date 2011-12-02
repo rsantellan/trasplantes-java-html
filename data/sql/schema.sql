@@ -1,5 +1,5 @@
 CREATE TABLE antecedentes_de_donante (id INT AUTO_INCREMENT, nombre VARCHAR(255) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE cmv (id INT AUTO_INCREMENT, trasplante_id INT NOT NULL, fecha DATE NOT NULL, cmv_diagnostico_id INT NOT NULL, tipo TINYINT NOT NULL, cmv_droga_id INT NOT NULL, dias_tratamiento SMALLINT DEFAULT 0 NOT NULL, efecto_secundario VARCHAR(255), INDEX trasplante_id_idx (trasplante_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE cmv (id INT AUTO_INCREMENT, trasplante_id INT NOT NULL, fecha DATE NOT NULL, cmv_diagnostico_id INT NOT NULL, tipo TINYINT NOT NULL, cmv_droga_id INT NOT NULL, dias_tratamiento SMALLINT DEFAULT 0 NOT NULL, efecto_secundario VARCHAR(255), INDEX trasplante_id_idx (trasplante_id), INDEX cmv_diagnostico_id_idx (cmv_diagnostico_id), INDEX cmv_droga_id_idx (cmv_droga_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE cmv_diagnostico (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE cmv_drogas (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE cmv_uso_enfermedades (cmv_id INT, cmv_emfermedades_id INT, PRIMARY KEY(cmv_id, cmv_emfermedades_id)) ENGINE = INNODB;
@@ -67,6 +67,8 @@ CREATE TABLE md_passport_remember_key (id INT AUTO_INCREMENT, md_passport_id INT
 CREATE TABLE md_user (id INT AUTO_INCREMENT, email VARCHAR(128) NOT NULL UNIQUE, super_admin TINYINT DEFAULT '0' NOT NULL, deleted_at DATETIME, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE md_user_profile (id INT AUTO_INCREMENT, name VARCHAR(128), last_name VARCHAR(128), city VARCHAR(128), country_code VARCHAR(2) DEFAULT 'UY', PRIMARY KEY(id)) ENGINE = INNODB;
 ALTER TABLE cmv ADD CONSTRAINT cmv_trasplante_id_trasplante_id FOREIGN KEY (trasplante_id) REFERENCES trasplante(id) ON DELETE CASCADE;
+ALTER TABLE cmv ADD CONSTRAINT cmv_cmv_droga_id_cmv_drogas_id FOREIGN KEY (cmv_droga_id) REFERENCES cmv_drogas(id);
+ALTER TABLE cmv ADD CONSTRAINT cmv_cmv_diagnostico_id_cmv_diagnostico_id FOREIGN KEY (cmv_diagnostico_id) REFERENCES cmv_diagnostico(id);
 ALTER TABLE cmv_uso_enfermedades ADD CONSTRAINT cmv_uso_enfermedades_cmv_id_cmv_id FOREIGN KEY (cmv_id) REFERENCES cmv(id) ON DELETE CASCADE;
 ALTER TABLE cmv_uso_enfermedades ADD CONSTRAINT cmv_uso_enfermedades_cmv_emfermedades_id_cmv_emfermedades_id FOREIGN KEY (cmv_emfermedades_id) REFERENCES cmv_emfermedades(id) ON DELETE CASCADE;
 ALTER TABLE complicaciones_tipos_valores ADD CONSTRAINT ccci FOREIGN KEY (complicacion_tipo_id) REFERENCES complicaciones_tipos(id) ON DELETE CASCADE;
@@ -94,7 +96,7 @@ ALTER TABLE evolucion_trasplante_txtorax ADD CONSTRAINT evolucion_trasplante_txt
 ALTER TABLE injerto_evolucion ADD CONSTRAINT injerto_evolucion_trasplante_id_trasplante_id FOREIGN KEY (trasplante_id) REFERENCES trasplante(id);
 ALTER TABLE injerto_evolucion ADD CONSTRAINT injerto_evolucion_ra_tratamiento_id_ratratamiento_id FOREIGN KEY (ra_tratamiento_id) REFERENCES ratratamiento(id);
 ALTER TABLE injerto_evolucion_pbr ADD CONSTRAINT injerto_evolucion_pbr_resultado_pbr_id_resultado_pbr_id FOREIGN KEY (resultado_pbr_id) REFERENCES resultado_pbr(id);
-ALTER TABLE injerto_evolucion_pbr ADD CONSTRAINT injerto_evolucion_pbr_injerto_evolucion_id_injerto_evolucion_id FOREIGN KEY (injerto_evolucion_id) REFERENCES injerto_evolucion(id);
+ALTER TABLE injerto_evolucion_pbr ADD CONSTRAINT injerto_evolucion_pbr_injerto_evolucion_id_injerto_evolucion_id FOREIGN KEY (injerto_evolucion_id) REFERENCES injerto_evolucion(id) ON DELETE CASCADE;
 ALTER TABLE paciente_muerte ADD CONSTRAINT paciente_muerte_causa_muerte_id_paciente_causa_muerte_id FOREIGN KEY (causa_muerte_id) REFERENCES paciente_causa_muerte(id);
 ALTER TABLE paciente_perdida_injerto ADD CONSTRAINT pppi_1 FOREIGN KEY (paciente_causa_perdida_injerto_id) REFERENCES paciente_causa_perdida_injerto(id);
 ALTER TABLE paciente_perdida_injerto ADD CONSTRAINT pppi FOREIGN KEY (paciente_pre_trasplante_id) REFERENCES paciente_pre_trasplante(id) ON DELETE CASCADE;

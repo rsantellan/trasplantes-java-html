@@ -19,8 +19,7 @@ class InjertoEvolucionForm extends BaseInjertoEvolucionForm
     $age = mdBasicFunction::calculateAge($trasplante["fecha"], true);
     $years = range(date('Y') - $age, date('Y'));
     $years = array_combine($years, $years);
-
-    $this->widgetSchema['fecha'] = new sfWidgetFormDate(
+	$this->widgetSchema['fecha'] = new sfWidgetFormDate(
         array(
             'format' => '%year% %month% %day%',
             'years' => $years));

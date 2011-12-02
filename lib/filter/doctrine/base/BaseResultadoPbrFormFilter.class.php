@@ -47,7 +47,7 @@ abstract class BaseResultadoPbrFormFilter extends BaseFormFilterDoctrine
 
     $query
       ->leftJoin($query->getRootAlias().'.InjertoEvolucionPbr InjertoEvolucionPbr')
-      ->andWhereIn('InjertoEvolucionPbr.cmv_id', $values)
+      ->andWhereIn('InjertoEvolucionPbr.injerto_evolucion_id', $values)
     ;
   }
 

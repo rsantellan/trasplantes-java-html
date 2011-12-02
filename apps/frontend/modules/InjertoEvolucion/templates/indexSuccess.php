@@ -1,51 +1,36 @@
+<?php 
+  use_helper('mdAsset');
+  use_plugin_stylesheet('mastodontePlugin', '../js/fancybox/jquery.fancybox-1.3.1.css');
+  use_plugin_javascript('mastodontePlugin','fancybox/jquery.fancybox-1.3.1.pack.js','last');
+  use_javascript("manejadorInjertoEvolucion.js", "last"); 
+?>
+
 <div class="volver">
     <a href="<?php echo url_for("@mostrarTrasplante?id=".$trasplanteId);?>"><?php echo __("Trasplante_volver a ver trasplante");?></a>
 </div>
 
 <h1><?php echo __("InjertoEvolucions_Titulo");?></h1>
 
+<h3><?php echo __("InjertoEvolucions_Titulo listado injerto evolucion en trasplante");?></h3>
+<ul id="injerto_evolucion_trasplante_list_container">
 <?php if($evolucionTrasplante): ?>
+  <?php include_partial("injertoEvolucionLista", array("injerto" => $evolucionTrasplante));?>
+<?php endif;?>
+</ul>
+<?php if(!$evolucionTrasplante): ?>
+<a id="injerto_evolucion_trasplante_new_link" class="fancy_link" href="<?php echo url_for("@agregarEvolucionInjertoTrasplante?id=".$trasplanteId);?>">
+  <?php echo __("InjertoEvolucions_agregar nuevo evolucion");?>
+</a>
+<?php endif;?>
 
-<?php else: ?>
-    <a class="fancy_link" href="<?php echo url_for("@agregarEvolucionInjertoTrasplante?id=".$trasplanteId);?>">
-        <?php echo __("InjertoEvolucions_agregar nuevo evolucion");?>
-    </a>
-<?php endif; ?>
+<h3><?php echo __("InjertoEvolucions_Titulo listado injerto evolucion en evolucion");?></h3>
+<ul id="injerto_evolucion_list_container">
+<?php foreach($evolucionEvolucion as $injerto): ?>
+  <?php include_partial("injertoEvolucionLista", array("injerto" => $injerto));?>
+<?php endforeach;?>
+</ul>
 
+<a id="injerto_evolucion_trasplante_new_link" class="fancy_link" href="<?php echo url_for("@agregarEvolucionInjertoEvolucion?id=".$trasplanteId);?>">
+  <?php echo __("InjertoEvolucions_agregar nuevo evolucion");?>
+</a>
 
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Trasplante</th>
-      <th>Fecha</th>
-      <th>Tm</th>
-      <th>Tm cual</th>
-      <th>Gp de novo</th>
-      <th>Recidiva gp de novo</th>
-      <th>Ra</th>
-      <th>Rc</th>
-      <th>Ra tratamiento</th>
-      <th>En trasplante</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach ($injerto_evolucions as $injerto_evolucion): ?>
-    <tr>
-      <td><a href="<?php echo url_for('InjertoEvolucion/show?id='.$injerto_evolucion->getId()) ?>"><?php echo $injerto_evolucion->getId() ?></a></td>
-      <td><?php echo $injerto_evolucion->getTrasplanteId() ?></td>
-      <td><?php echo $injerto_evolucion->getFecha() ?></td>
-      <td><?php echo $injerto_evolucion->getTm() ?></td>
-      <td><?php echo $injerto_evolucion->getTmCual() ?></td>
-      <td><?php echo $injerto_evolucion->getGpDeNovo() ?></td>
-      <td><?php echo $injerto_evolucion->getRecidivaGpDeNovo() ?></td>
-      <td><?php echo $injerto_evolucion->getRa() ?></td>
-      <td><?php echo $injerto_evolucion->getRc() ?></td>
-      <td><?php echo $injerto_evolucion->getRaTratamientoId() ?></td>
-      <td><?php echo $injerto_evolucion->getEnTrasplante() ?></td>
-    </tr>
-    <?php endforeach; ?>
-  </tbody>
-</table>
-
-  <a href="<?php echo url_for('InjertoEvolucion/new') ?>">New</a>

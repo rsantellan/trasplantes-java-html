@@ -133,7 +133,7 @@ class InjertoEvolucionActions extends sfActions
       }      
     }catch(Exception $e)
     {
-      throw $e;
+      //throw $e;
       return $this->renderText(mdBasicFunction::basic_json_response(false, array("error" => $e->getCode())));
     }
     /*

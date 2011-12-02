@@ -21,8 +21,8 @@ class consultaActions extends sfActions
   {
     $this->consulta = Doctrine_Core::getTable('consulta')->find(array($request->getParameter('id')));
     $this->forward404Unless($this->consulta);
-	$q = Doctrine_Manager::getInstance()->getCurrentConnection();
-	$this->result = $q->fetchAssoc($this->consulta->getSentencia());	
+    $q = Doctrine_Manager::getInstance()->getCurrentConnection();
+    $this->result = $q->fetchAssoc($this->consulta->getSentencia());	
   }
 
   public function executeNew(sfWebRequest $request)

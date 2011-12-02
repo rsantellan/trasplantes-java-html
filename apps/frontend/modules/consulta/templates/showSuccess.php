@@ -29,14 +29,42 @@
 <hr/>
 <div style="text-align: 'center' ">
   
-  <div id="pie1" style="margin-top:20px; margin-left:20px; width:400px; height:400px;"></div>
+  <div id="pie1" style="margin-top:20px; margin-left:20px; width:100%; height:600px;"></div>
 </div>
+
+<?php 
+$head_list = array();
+$head = false;
+foreach($result as $row)
+{
+  foreach($row as $key => $data)
+  {
+    if(!$head)
+    {
+      array_push($head_list, $key);
+    }
+  }
+  $head = true;  
+}
+
+$counter = 0;
+?>
+<select id="change_plot_selector">
+  <?php foreach($head_list as $title): ?>
+  <option value="<?php echo $counter; ?>">
+    <?php echo $title; ?>
+  </option>
+  <?php $counter++; ?>
+  <?php endforeach; ?>
+</select>
+
+<input type="button" id="changePlot" onclick="consultasManagement.getInstance().changePlot()" value="<?php echo __("consulta_cambiar grafica");?>" />
   <hr/>
   <table id="hor-minimalist-b">
 	<tbody>
   <?php
-	  $head = false;
-	  $head_list = array();
+	  
+	  
     $index = 0;
 	?>
   <?php 
@@ -54,7 +82,7 @@
 
       <?php $index++;?>
 	  <?php endforeach; ?>
-	  <?php $head = true; ?>
+	  <?php  ?>
 	  </tr>
   <?php endforeach; ?>
 	</tbody>
@@ -69,5 +97,5 @@
   
 <script class="code" type="text/javascript">
   $(document).ready(function(){
-	consultasManagement.getInstance().renderPiePlot('pie1', 3);
+	consultasManagement.getInstance().renderPiePlot('pie1', <?php echo $counter - 1; ?>);
 });</script>

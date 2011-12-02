@@ -79,6 +79,10 @@ consultasManagement.prototype = {
     
 	},
   
+  changePlot: function()
+  {
+    consultasManagement.getInstance().renderPiePlot('pie1', $('#change_plot_selector').val());
+  },
   
   renderBarPlot: function(container_id, position)
 	{

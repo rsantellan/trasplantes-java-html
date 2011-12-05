@@ -1,0 +1,8 @@
+ConsultaCampoTipo:
+  texto:
+    nombre: Texto
+    tipo: texto
+  booleano:
+    nombre: "Si/No"
+    tipo: booleano
+  

@@ -7,17 +7,26 @@
  * 
  * @property integer $id
  * @property string $nombre
+ * @property string $nombre_visible
  * @property integer $consulta_id
+ * @property integer $tipo_id
  * @property Consulta $Consulta
+ * @property ConsultaCampoTipo $ConsultaCampoTipo
  * 
- * @method integer       getId()          Returns the current record's "id" value
- * @method string        getNombre()      Returns the current record's "nombre" value
- * @method integer       getConsultaId()  Returns the current record's "consulta_id" value
- * @method Consulta      getConsulta()    Returns the current record's "Consulta" value
- * @method ConsultaCampo setId()          Sets the current record's "id" value
- * @method ConsultaCampo setNombre()      Sets the current record's "nombre" value
- * @method ConsultaCampo setConsultaId()  Sets the current record's "consulta_id" value
- * @method ConsultaCampo setConsulta()    Sets the current record's "Consulta" value
+ * @method integer           getId()                Returns the current record's "id" value
+ * @method string            getNombre()            Returns the current record's "nombre" value
+ * @method string            getNombreVisible()     Returns the current record's "nombre_visible" value
+ * @method integer           getConsultaId()        Returns the current record's "consulta_id" value
+ * @method integer           getTipoId()            Returns the current record's "tipo_id" value
+ * @method Consulta          getConsulta()          Returns the current record's "Consulta" value
+ * @method ConsultaCampoTipo getConsultaCampoTipo() Returns the current record's "ConsultaCampoTipo" value
+ * @method ConsultaCampo     setId()                Sets the current record's "id" value
+ * @method ConsultaCampo     setNombre()            Sets the current record's "nombre" value
+ * @method ConsultaCampo     setNombreVisible()     Sets the current record's "nombre_visible" value
+ * @method ConsultaCampo     setConsultaId()        Sets the current record's "consulta_id" value
+ * @method ConsultaCampo     setTipoId()            Sets the current record's "tipo_id" value
+ * @method ConsultaCampo     setConsulta()          Sets the current record's "Consulta" value
+ * @method ConsultaCampo     setConsultaCampoTipo() Sets the current record's "ConsultaCampoTipo" value
  * 
  * @package    transplantes
  * @subpackage model
@@ -40,9 +49,19 @@ abstract class BaseConsultaCampo extends sfDoctrineRecord
              'notnull' => true,
              'length' => 45,
              ));
+        $this->hasColumn('nombre_visible', 'string', 45, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => 45,
+             ));
         $this->hasColumn('consulta_id', 'integer', 4, array(
              'type' => 'integer',
              'notnull' => true,
+             'length' => 4,
+             ));
+        $this->hasColumn('tipo_id', 'integer', 4, array(
+             'type' => 'integer',
+             'notnull' => false,
              'length' => 4,
              ));
     }
@@ -52,6 +71,11 @@ abstract class BaseConsultaCampo extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Consulta', array(
              'local' => 'consulta_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
+        $this->hasOne('ConsultaCampoTipo', array(
+             'local' => 'tipo_id',
              'foreign' => 'id'));
     }
 }

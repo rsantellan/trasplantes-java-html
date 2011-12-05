@@ -1841,11 +1841,36 @@ ConsultaCampo:
     nombre:
       type: string(45)
       notnull: true
+    nombre_visible:
+      type: string(45)
+      notnull: true
     consulta_id:
       type: integer(4)
       notnull: true
+    tipo_id:
+      type: integer(4)
+      notnull: false
   relations:      
     Consulta:
       local: consulta_id
       foreign: id
-      type: one      
+      type: one
+      onDelete: CASCADE
+    ConsultaCampoTipo:
+      local: tipo_id
+      foreign: id
+      type: one    
+
+ConsultaCampoTipo:
+  tableName: consulta_campo_tipo
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(45)
+      notnull: true
+    tipo:
+      type: string(45)
+      notnull: true      

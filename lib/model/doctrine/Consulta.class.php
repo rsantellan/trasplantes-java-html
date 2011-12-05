@@ -12,5 +12,52 @@
  */
 class Consulta extends BaseConsulta
 {
+  
+  public function retrieveFieldsList()
+  {
+    $salida = array();
+    $sql = $this->getSentencia();
+    $primer_explode = explode(" FROM ", $sql);
+    try
+    {
+      $segundo_explode = explode("SELECT", $primer_explode[0]);
+      $tercer_explode = explode(",", $segundo_explode[1]);
+      foreach($tercer_explode as $field)
+      {
+        array_push($salida, trim($field));
+      }
+    }catch(Exception $e)
+    {
+      
+    }
+    return $salida;
+  }
+  
+  
+  public function postSave($event)
+  {
+    if($this->isNew())
+    {
+      $lista = $this->getConsultaCampo();
+      foreach($lista as $campo)
+      {
+      $campo->delete();
+      }
+      $nueva_lista = $this->retrieveFieldsList();
+
+      foreach($nueva_lista as $key => $campo)
+      {
+      $consultaCampo = new ConsultaCampo();
+      $consultaCampo->setNombre($campo);
+      $consultaCampo->setNombreVisible($campo);
+      $consultaCampo->setConsultaId($this->getId());
+      $consultaCampo->setTipoId(1);
+      $consultaCampo->save();
+
+      }
+    }
+    sfContext::getInstance ()->getLogger()->err('<<<!!!!! Termino el post save de Consulta');
+    
+  }
 
 }

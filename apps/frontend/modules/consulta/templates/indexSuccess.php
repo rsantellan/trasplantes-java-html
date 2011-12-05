@@ -5,7 +5,7 @@
     <tr>
       <th>Id</th>
       <th>Nombre</th>
-      <th>Sentencia</th>
+<!--      <th>Sentencia</th>  -->
     </tr>
   </thead>
   <tbody>
@@ -13,7 +13,7 @@
     <tr>
       <td><a href="<?php echo url_for('consulta/show?id='.$consulta->getId()) ?>"><?php echo $consulta->getId() ?></a></td>
       <td><?php echo $consulta->getNombre() ?></td>
-      <td><?php echo $consulta->getSentencia() ?></td>
+<!--      <td><?php echo $consulta->getSentencia() ?></td> -->
     </tr>
     <?php endforeach; ?>
   </tbody>

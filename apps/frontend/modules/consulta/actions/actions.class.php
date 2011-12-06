@@ -22,8 +22,8 @@ class consultaActions extends sfActions
     $this->consulta = Doctrine_Core::getTable('consulta')->find(array($request->getParameter('id')));
     $this->forward404Unless($this->consulta);
     //var_dump($this->consulta->retrieveFieldsList());die;
-    $lista = $this->consulta->getConsultaCampo();
-    var_dump(count($lista));
+    //$lista = $this->consulta->getConsultaCampo();
+    //var_dump(count($lista));
     $q = Doctrine_Manager::getInstance()->getCurrentConnection();
     $this->result = $q->fetchAssoc($this->consulta->getSentencia());	
   }

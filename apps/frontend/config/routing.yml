@@ -1,6 +1,19 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+#Consultas
+editarConsulta:
+  url:   /consulta/editar/:id
+  param: { module: consulta, action: edit }  
+  
+verConsulta:
+  url:   /consulta/ver/:id/:name.html
+  param: { module: consulta, action: show }  
+
+consultas:
+  url:   /consultas.html
+  param: { module: consulta, action: index }
+  
 #Evolucion del injerto
 eliminarEvolucionInjerto:
   url:   /trasplante/evolucion-injerto/eliminar
@@ -706,10 +719,6 @@ agregarPaciente:
   url:   /agregar-paciente.html
   param: { module: Pacientes, action: new }
   
-consultas:
-  url:   /consultas.html
-  param: { module: consulta, action: index }
-
 mostrarPaciente:
   url:   /paciente/:id
   param: { module: Pacientes, action: mostrar }

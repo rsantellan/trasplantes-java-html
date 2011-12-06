@@ -1,22 +1,19 @@
-<h1>Consultas List</h1>
+<h1><?php echo __("Consultas_titulo");?></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Nombre</th>
-<!--      <th>Sentencia</th>  -->
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach ($consultas as $consulta): ?>
-    <tr>
-      <td><a href="<?php echo url_for('consulta/show?id='.$consulta->getId()) ?>"><?php echo $consulta->getId() ?></a></td>
-      <td><?php echo $consulta->getNombre() ?></td>
-<!--      <td><?php echo $consulta->getSentencia() ?></td> -->
-    </tr>
-    <?php endforeach; ?>
-  </tbody>
-</table>
+<a href="<?php echo url_for('consulta/new') ?>"><?php echo __("Consultas_agregar nuevo");?></a>
 
-  <a href="<?php echo url_for('consulta/new') ?>">New</a>
+<ul class="consulta_list_ul">
+  <?php foreach ($consultas as $consulta): ?>
+  <li>
+    <label class="consulta_list_ul_label"><?php echo $consulta->getNombre() ?></label>
+    <a href="<?php echo url_for('consulta/show?id='.$consulta->getId().'&name='.mdBasicFunction::slugify($consulta->getNombre())) ?>">
+      <?php echo image_tag("search-icon.png", array("width" => 24)); ?>
+    </a>
+    <a href="<?php echo url_for('consulta/edit?id='.$consulta->getId()) ?>">
+      <?php echo image_tag("edit-icon.png", array("width" => 24)); ?>
+    </a>
+  </li>
+  <?php endforeach; ?>
+</ul>
+
+<div class="clear margenes_separadores"></div>

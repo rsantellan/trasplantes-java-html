@@ -12,4 +12,9 @@
  */
 class TrasplanteComplicacionesInfecciosas extends BaseTrasplanteComplicacionesInfecciosas
 {
+  public function showDate()
+  {
+	sfContext::getInstance()->getConfiguration()->loadHelpers(array('Date'));
+	return format_date($this->getFecha(), 'D');
+  }
 }

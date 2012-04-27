@@ -65,9 +65,21 @@ manejarCmv:
   param: { module: Cmv, action: index }
   
 #Reoperaciones
+eliminarReoperacion:
+  url:   /trasplante/reoperaciones/eliminar.html
+  param: { module: reoperaciones, action: delete }
+
+editarReoperacion:
+  url:   /trasplante/reoperaciones/editar/:id
+  param: { module: reoperaciones, action: edit }
+  
+agregarReoperacion:
+  url:   /trasplante/reoperaciones/agregar/:id
+  param: { module: reoperaciones, action: new }
+  
 manejarReoperaciones:
   url:   /trasplante/:id/reoperaciones
-  param: { module: Reoperaciones, action: mostrar }
+  param: { module: reoperaciones, action: mostrar }
 
 #Evolucion Examenes
 eliminarEvolucionExamenes:

@@ -470,3 +470,7 @@ Sidebar no lo puse por ahora
   
   text-align: center;
 }
+
+.hide{
+  display: none;
+}

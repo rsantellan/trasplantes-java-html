@@ -1,5 +1,10 @@
 <h1><?php echo __("pacientePreTrasplante_Titulo de editar");?></h1>
 
+<span>
+  <a href="<?php echo url_for("@mostrarPaciente?id=".$form->getObject()->getPacienteId());?>">
+	<?php echo __("pacientePreTrasplante_Volver");?>
+  </a>
+</span>
 <?php include_partial('small_form', array('form' => $form)) ?>
 
 <script type="text/javascript">

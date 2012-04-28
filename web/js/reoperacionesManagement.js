@@ -18,7 +18,7 @@ reoperacionesManagement.prototype = {
 	
 	showHideComplicationType: function(element)
 	{
-	  if($(element).val() == 0)
+	  if($(element).val() == 1)
 	  {
 		$("#complicacion_no_infecciosa select").val(0);
 		$("#complicacion_infecciosa").removeClass("hide");
@@ -35,14 +35,14 @@ reoperacionesManagement.prototype = {
 	basicFormValidation: function()
 	{
 	  var radio = $('input[name=trasplante_reoperacion[es_infecciosa]]:checked', '#reoperacion_form').val();
-	  if(radio == 0 && $("#complicacion_infecciosa select").val() == 0)
+	  if(radio == 1 && $("#complicacion_infecciosa select").val() == 0)
 	  {
 		alert($("#reoperacion_sin_infeccion_error").val());
 		return false;
 	  }
 	  else
 	  {
-		if(radio == 1 && $("#complicacion_no_infecciosa select").val() == 0)
+		if(radio == 0 && $("#complicacion_no_infecciosa select").val() == 0)
 		{
 		  alert($("#reoperacion_sin_infeccion_error").val());
 		  return false;
@@ -82,3 +82,4 @@ reoperacionesManagement.prototype = {
       
     }
 }
+

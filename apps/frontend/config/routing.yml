@@ -65,6 +65,11 @@ manejarCmv:
   param: { module: Cmv, action: index }
   
 #Reoperaciones
+
+mostrarReoperacion:
+  url:   /trasplante/reoperaciones/mostrar/:id
+  param: { module: reoperaciones, action: show }
+
 eliminarReoperacion:
   url:   /trasplante/reoperaciones/eliminar.html
   param: { module: reoperaciones, action: delete }

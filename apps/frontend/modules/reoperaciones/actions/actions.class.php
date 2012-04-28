@@ -51,6 +51,13 @@ class reoperacionesActions extends sfActions
     $this->setTemplate('new');
   }
 
+  public function executeShow(sfWebRequest $request)
+  {
+	$this->reoperacion = Doctrine_Core::getTable('TrasplanteReoperacion')->find(array($request->getParameter('id')));
+    $this->forward404Unless($this->reoperacion, sprintf('Object trasplante_reoperacion does not exist (%s).', $request->getParameter('id')));
+    
+  }
+  
   public function executeEdit(sfWebRequest $request)
   {
     $this->forward404Unless($trasplante_reoperacion = Doctrine_Core::getTable('TrasplanteReoperacion')->find(array($request->getParameter('id'))), sprintf('Object trasplante_reoperacion does not exist (%s).', $request->getParameter('id')));

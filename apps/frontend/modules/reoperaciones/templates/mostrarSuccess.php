@@ -5,6 +5,7 @@ use_plugin_stylesheet('mastodontePlugin', '../js/fancybox/jquery.fancybox-1.3.1.
 use_plugin_javascript('mastodontePlugin','fancybox/jquery.fancybox-1.3.1.pack.js','last');
 
 use_javascript("reoperacionesManagement.js");
+
 ?>
 
 <h3><?php echo __("Reoperaciones_Lista de reoperaciones realizadas"); ?></h3>
@@ -14,7 +15,9 @@ foreach($reoperaciones as $reoperacion):
 ?>
   <li id="reoperacion_<?php echo $reoperacion["id"]?>">
 	<label class="bold_text"><?php echo format_date($reoperacion['fecha'], 'D'); ?></label>
-	<a href=""><?php echo image_tag("search-icon.png", array("width" => 24)); ?></a>
+	<a class="fancy_link" href="<?php echo url_for("@mostrarReoperacion?id=".$reoperacion["id"]);?>">
+	  <?php echo image_tag("search-icon.png", array("width" => 24)); ?>
+	</a>
 	<a href="<?php echo url_for("@editarReoperacion?id=".$reoperacion["id"]);?>">
 	  <?php echo image_tag("edit-icon.png", array("width" => 24)); ?>
 	</a>
@@ -31,6 +34,12 @@ foreach($reoperaciones as $reoperacion):
 
 
 <div class="clear"></div>
-<a href="">
-  <span>Volver al trasplante.</span>
+<a href="<?php echo url_for("@mostrarTrasplante?id=".$id);?>">
+  <span><?php echo __("reoperacion_Volver al trasplante.");?></span>
 </a>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("a.fancy_link").fancybox();
+});
+</script>

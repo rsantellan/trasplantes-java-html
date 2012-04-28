@@ -72,7 +72,7 @@ use_javascript("reoperacionesManagement.js");
   <?php 
 	$infecciosa = ($form->getObject()->getEsInfecciosa());
   ?>
-  <div id="complicacion_infecciosa" class="form_block <?php echo ($infecciosa == 0)? '' : 'hide'; ?>">
+  <div id="complicacion_infecciosa" class="form_block <?php echo ($infecciosa == 1)? '' : 'hide'; ?>">
 	<h4><?php echo __("reoperacion_complicacion infecciosa");?></h4>
 	<div class="form_block_field<?php if($form['trasplante_complicacion_infeccion_id']->hasError()):?> error_msg<?php endif; ?>">
 	  <?php echo $form['trasplante_complicacion_infeccion_id']->render() ?>
@@ -93,7 +93,7 @@ use_javascript("reoperacionesManagement.js");
 	</div>	
   </div>
   
-  <div id="complicacion_no_infecciosa" class="form_block <?php echo ($infecciosa == 1)? '' : 'hide'; ?>">
+  <div id="complicacion_no_infecciosa" class="form_block <?php echo ($infecciosa == 0)? '' : 'hide'; ?>">
 	<h4><?php echo __("reoperacion_complicacion no infecciosa");?></h4>
 	<div class="form_block_field<?php if($form['trasplante_complicacion_no_infeccion_id']->hasError()):?> error_msg<?php endif; ?>">
 	  <?php echo $form['trasplante_complicacion_no_infeccion_id']->render() ?>

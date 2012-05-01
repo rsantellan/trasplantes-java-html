@@ -13,8 +13,8 @@ class PacienteMuerteForm extends BasePacienteMuerteForm
   public function configure()
   {
     $paciente_id = $this->getObject()->getPacienteId();
-	$paciente = PacienteHandler::retriveById($paciente_id, Doctrine_Core::HYDRATE_ARRAY);
-	$age = mdBasicFunction::calculateAge($paciente["fecha_nacimiento"], true);
+    $paciente = PacienteHandler::retriveById($paciente_id, Doctrine_Core::HYDRATE_ARRAY);
+    $age = mdBasicFunction::calculateAge($paciente["fecha_nacimiento"], true);
     $years = range(date('Y') - $age,date('Y'));
     $years = array_combine($years, $years);
     $this->widgetSchema['fecha_muerte'] = new sfWidgetFormDate(
@@ -27,7 +27,9 @@ class PacienteMuerteForm extends BasePacienteMuerteForm
                                                               'choices'  => array('0' => "No funcionando", '1' => "Funcionando"),
                                                             ));  
     $this->validatorSchema['paciente_id'] = new sfValidatorString(array('required' => true));
-
+    $this->validatorSchema['fecha_muerte'] = new sfValidatorDate(array(
+                                            'min' => $paciente["fecha_nacimiento"],
+                                            'date_format_range_error' => 'Y/m/d'));
   }
   
 }

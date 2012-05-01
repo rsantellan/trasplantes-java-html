@@ -474,3 +474,9 @@ Sidebar no lo puse por ahora
 .hide{
   display: none;
 }
+
+.error_list{
+    color: red;
+    font-weight: bolder;
+    font-size: 15px;
+}

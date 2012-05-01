@@ -17,3 +17,14 @@ $('.simple_tip_container').each(function() {
 });
 
 
+function deletePaciente(texto, texto2)
+{
+  if(confirm(texto))
+  {
+      if(confirm(texto2))
+      {
+          return true;
+      }
+  }
+  return false;
+}

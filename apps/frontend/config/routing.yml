@@ -1,6 +1,28 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+#Causas de muerte
+
+eliminarCausaMuerte:
+  url:   /eliminar-causa-muerte
+  param: { module: PacienteCausaMuerte, action: delete }
+
+crearCausaMuerte:
+  url:   /crear-causa-muerte
+  param: { module: PacienteCausaMuerte, action: new }
+
+salvarCausaMuerte:
+  url:   /salvar-causa-muerte
+  param: { module: PacienteCausaMuerte, action: save }
+
+editarCausaMuerte:
+  url:   /editar-causa-muerte
+  param: { module: PacienteCausaMuerte, action: edit }
+
+manejarCausaMuerte:
+  url:   /causa-muerte
+  param: { module: PacienteCausaMuerte, action: index }
+
 #Consultas
 editarConsulta:
   url:   /consulta/editar/:id
@@ -727,6 +749,10 @@ editarMuertePaciente:
 editarEstadoPaciente:
   url:   /editar-estado-paciente/:id
   param: { module: estadoPaciente, action: edit }
+
+eliminarPaciente:
+  url:   /eliminar-paciente.html
+  param: { module: Pacientes, action: delete }
 
 editarPaciente:
   url:   /editar-paciente/:id

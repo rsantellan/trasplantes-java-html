@@ -73,12 +73,12 @@ class PacientesActions extends sfActions
 
   public function executeDelete(sfWebRequest $request)
   {
-    $request->checkCSRFProtection();
+    //$request->checkCSRFProtection();
 
-    $this->forward404Unless($pacientes = Doctrine_Core::getTable('Pacientes')->find(array($request->getParameter('id'))), sprintf('Object pacientes does not exist (%s).', $request->getParameter('id')));
+    $this->forward404Unless($pacientes = Doctrine_Core::getTable('Pacientes')->find(array($request->getPostParameter('id'))), sprintf('Object pacientes does not exist (%s).', $request->getPostParameter('id')));
     $pacientes->delete();
 
-    $this->redirect('Pacientes/index');
+    $this->redirect('@buscar');
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)

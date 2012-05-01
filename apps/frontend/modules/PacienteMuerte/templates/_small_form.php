@@ -1,3 +1,12 @@
+<?php 
+
+  use_javascript("causaMuerteManagement.js");
+  use_javascript("muertePaciente.js");
+  use_helper('mdAsset');
+  use_plugin_stylesheet('mastodontePlugin', '../js/fancybox/jquery.fancybox-1.3.1.css');
+  use_plugin_javascript('mastodontePlugin','fancybox/jquery.fancybox-1.3.1.pack.js','last');
+?>
+
 <form action="<?php echo url_for('PacienteMuerte/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?paciente_id='.$form->getObject()->getPacienteId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
   <?php echo $form->renderHiddenFields(false) ?>
   <?php echo $form->renderGlobalErrors() ?>
@@ -5,6 +14,10 @@
     <h4><?php echo __("pacienteMuerte_Causa");?></h4>
     <div class="form_block_field<?php if($form['causa_muerte_id']->hasError()):?> error_msg<?php endif; ?>">
       <?php echo $form['causa_muerte_id']->render() ?>
+      <a id="manage_causas_link" href="<?php echo url_for("@manejarCausaMuerte");?>" class="simple_tip_container">
+		<?php echo image_tag("add_block.png", array("width" => 24)); ?>
+		<div class="tooltip_text"><?php echo __("CausaMuerte_manejar");?></div>		
+	</a>
     </div>
     <div>
       <?php 

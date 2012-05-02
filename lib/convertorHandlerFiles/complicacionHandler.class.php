@@ -139,6 +139,7 @@ class complicacionHandler
         $num=mysql_numrows($result);
         mysql_close();
         $i=0;
+        echo 'estoy en saveAllTrasplantesComplicaciones \n';
         while ($i < $num) {
           $id = mysql_result($result,$i,"ID");
           $IdPreTrasplante = mysql_result($result,$i,"IdPreTrasplante");
@@ -149,21 +150,28 @@ class complicacionHandler
           $EVOLUCION = mysql_result($result,$i,"EVOLUCION");
           $COMENTARIO = mysql_result($result,$i,"COMENTARIO");
 
-                    
+          echo 'estoy en saveAllTrasplantesComplicaciones \n';          
           $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $IdPreTrasplante);
           if($trasplante)
           {
-            $TrasplanteComplicaciones = new TrasplanteComplicaciones();
-            $TrasplanteComplicaciones->setId($id);
-            $TrasplanteComplicaciones->setTrasplanteId($trasplante->getId());
-            $TrasplanteComplicaciones->setFecha($FECHA);
-            $TrasplanteComplicaciones->setMedicacionId($MEDICACION);
-            $TrasplanteComplicaciones->setInternado($INTERNADO);
-            $TrasplanteComplicaciones->setDiasDeInternacion($DIAS_DE_INTERNACION);
-            $TrasplanteComplicaciones->setEvolucion($EVOLUCION);
-            $TrasplanteComplicaciones->setComentario($COMENTARIO);
-            $TrasplanteComplicaciones->save();
-            $TrasplanteComplicaciones->free(true);            
+            try
+            {
+              $TrasplanteComplicaciones = new TrasplanteComplicaciones();
+              $TrasplanteComplicaciones->setId($id);
+              $TrasplanteComplicaciones->setTrasplanteId($trasplante->getId());
+              $TrasplanteComplicaciones->setFecha($FECHA);
+              $TrasplanteComplicaciones->setMedicacionId($MEDICACION);
+              $TrasplanteComplicaciones->setInternado($INTERNADO);
+              $TrasplanteComplicaciones->setDiasDeInternacion($DIAS_DE_INTERNACION);
+              $TrasplanteComplicaciones->setEvolucion($EVOLUCION);
+              $TrasplanteComplicaciones->setComentario($COMENTARIO);
+              $TrasplanteComplicaciones->save();
+              $TrasplanteComplicaciones->free(true);    
+            }catch(Exception $e)
+            {
+              echo 'la excepcion es: '.$e->getMessage()."\n";
+            }
+                    
           }
           else
           {
@@ -269,39 +277,6 @@ class complicacionHandler
             }            
             
           }
-          /*
-          $id = mysql_result($result,$i,"ID_TR_COMPLICACION");
-          $complicacion = mysql_result($result,$i,"ID_COMPLICACION");
-          $TrasplanteComplicaciones = Doctrine::getTable("TrasplanteComplicaciones")->find($id);
-          $complicacionValor = self::retrieveNewComplicacionTipoValorOfOldId($username,$password, $database,$complicacion);//Doctrine::getTable("ComplicacionesTiposValores")->find($complicacion);
-          if($TrasplanteComplicaciones && $complicacionValor)
-          {
-              $ComplicacionesNoInfecciosas = new ComplicacionesNoInfecciosas();
-              $ComplicacionesNoInfecciosas->setTrComplicacionId($TrasplanteComplicaciones->getId());
-              $ComplicacionesNoInfecciosas->setComplicacionValorId($complicacionValor->getId());
-              $ComplicacionesNoInfecciosas->save();
-              $ComplicacionesNoInfecciosas->free(true);
-              $TrasplanteComplicaciones->free(true);
-              $complicacionValor->free(true);
-          }
-          else
-          {
-            echo $id;
-            echo "\n";            
-            if(!$TrasplanteComplicaciones)
-            {
-              echo "Existe un complicaciones_no_inf sin TrasplanteComplicaciones asociado";
-              echo " TrasplanteComplicaciones supuesto id: ".$id." ";
-              echo "\n";               
-            }
-            if(!$complicacionValor)
-            {
-              echo "Existe un complicaciones_no_inf sin complicacionValor asociado";
-              echo " complicacionValor supuesto id: ".$complicacion." ";
-              echo "\n";              
-            }
-          }
-          */
           $i++;
         }         
         if($num == 0 || $num == "0")

@@ -12,5 +12,6 @@ class PacientePerdidaInjertoForm extends BasePacientePerdidaInjertoForm
 {
   public function configure()
   {
+    unset($this['']);
   }
 }

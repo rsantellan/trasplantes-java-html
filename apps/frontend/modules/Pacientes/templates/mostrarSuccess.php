@@ -59,11 +59,12 @@
 	<li><?php echo __("pacientePreTrasplante_fecha de ingreso a la lista");?> : <label class="bold_text"><?php echo format_date($preTrasplante['fecha_ingreso_lista'], 'D');?></label></li>
 	<?php if($preTrasplante["fecha_egreso"]): ?>
 	  <li><?php echo __("pacientePreTrasplante_fecha de egreso de la lista (fecha del trasplante)");?> : <label class="bold_text"><?php echo format_date($preTrasplante['fecha_egreso'], 'D');?></label></li>
-  <?php if(array_key_exists($preTrasplante["id"], $auxPerdidas)): ?>
+    <?php if(array_key_exists($preTrasplante["id"], $auxPerdidas)): ?>
 		<li><label class="bold_text"><?php echo __("pacientePreTrasplante_Hubo perdida del trasplante.");?></label></li>
 	  <?php endif;?>
-	<?php else: ?>
-	  <?php $trasplante = trasplanteHandler::retriveByPacientePreTrasplanteId($preTrasplante["id"], Doctrine_Core::HYDRATE_ARRAY ) ?>
+	<?php //else: ?>
+    <?php $trasplante = trasplanteHandler::retriveByPacientePreTrasplanteId($preTrasplante["id"], Doctrine_Core::HYDRATE_ARRAY ) ?>
+    <?php //var_dump($trasplante);?>
     <?php if(!$trasplante):?>
     <li>
       <label class="bold_text">
@@ -82,13 +83,17 @@
         <?php echo image_tag("search-icon.png", array("width" => 24)); ?>
       </a>
     </li>    
-    
     <?php endif;?>
     
 	<?php endif; ?>
   </ul>
-  <div style="margin-left: 95%; width: 25px;">
-	<a href="<?php echo url_for("@editarPreTrasplante?id=".$preTrasplante['id']); ?>"><?php echo image_tag("edit-icon.png")?></a>
+  <div class="conteiner_pre_trasplante_opciones">
+    <div class="perdida_pre_trasplante">
+      <a href="<?php echo url_for("@agregarPerdidaInjerto?id=".$preTrasplante['id']); ?>"><?php echo image_tag("cross.png")?></a>
+    </div>
+    <div class="editar_pre_trasplante">
+      <a href="<?php echo url_for("@editarPreTrasplante?id=".$preTrasplante['id']); ?>"><?php echo image_tag("edit-icon.png")?></a>
+    </div>
   </div>
 </div>
 <div class="clear"></div>

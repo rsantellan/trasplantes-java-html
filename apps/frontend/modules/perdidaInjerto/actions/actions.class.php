@@ -10,6 +10,7 @@
  */
 class perdidaInjertoActions extends sfActions
 {
+  
   public function executeIndex(sfWebRequest $request)
   {
     $this->paciente_perdida_injertos = Doctrine_Core::getTable('PacientePerdidaInjerto')
@@ -23,9 +24,13 @@ class perdidaInjertoActions extends sfActions
     $this->forward404Unless($this->paciente_perdida_injerto);
   }
 
+
   public function executeNew(sfWebRequest $request)
   {
-    $this->form = new PacientePerdidaInjertoForm();
+    $id = $request->getParameter('id');
+    $aux = new PacientePerdidaInjerto();
+    $aux->setPacienteId($id);
+    $this->form = new PacientePerdidaInjertoForm($aux);
   }
 
   public function executeCreate(sfWebRequest $request)

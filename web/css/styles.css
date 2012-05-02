@@ -480,3 +480,23 @@ Sidebar no lo puse por ahora
     font-weight: bolder;
     font-size: 15px;
 }
+
+/*** Paciente mostrar ***/
+
+div.conteiner_pre_trasplante_opciones
+{
+  min-height: 25px;
+}
+
+div.editar_pre_trasplante
+{
+  float: right;
+  width: 25px;
+  
+}
+
+div.perdida_pre_trasplante
+{
+  float: left;
+  width: 25px;
+}

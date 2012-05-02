@@ -28,11 +28,15 @@ class PacienteHandler
     return Doctrine::getTable("Pacientes")->retriveById($pacienteId, $hydrationMode);
   }
   
-  public static function retrieveAllPacientesNamesArray()
+  public static function retrieveAllPacientesNamesArray($with_empty = true)
   {
 	$pacientes = Doctrine::getTable('Pacientes')->findAll();
 	$list = array();
-	$list[''] = '';
+	if($with_empty)
+	{
+	  $list[''] = '';
+	}
+	
 	foreach($pacientes as $paciente)
 	{
 		$list[$paciente->getId()] = $paciente->getNombre()." ".$paciente->getApellido();

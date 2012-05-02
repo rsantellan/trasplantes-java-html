@@ -3,9 +3,7 @@
 class reportesHandler 
 {
 
-
-
-  public static function CrearReporteDeFondo($year = null)
+  private static function createPHPEXCELSheet()
   {
     $objPHPExcel = new PHPExcel();
     $objPHPExcel->getProperties()
@@ -14,6 +12,200 @@ class reportesHandler
             ->setTitle("Office 2007 XLSX Document")
             ->setSubject("Office 2007 XLSX Document")
             ->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.");
+    return $objPHPExcel;
+  }
+
+  public static function createReportePaciente($paciente_id, $objPHPExcel = null, $index = 0, $position = 1, $save = true)
+  {
+    if(is_null($objPHPExcel))
+    {
+      $objPHPExcel = self::createPHPEXCELSheet();
+    }
+    $objPHPExcel->setActiveSheetIndex(0);
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "NOMBRE");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "APELLIDO");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "CI");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "N° FNR");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "RAZA");                        
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "SEXO");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "FECHA NACIMIENTO");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "FECHA DIALISIS");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "NEFROPATIA");                                    
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "GRUPO SANGUINEO"); 
+
+    $paciente = PacienteHandler::retriveById($paciente_id);
+	
+    $position++;
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, $paciente->getNombre());    
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, $paciente->getApellido()); 
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, $paciente->getCi()); 
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, $paciente->getNumFnr()); 
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, $paciente->getRaza());            
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, $paciente->getSexo());  
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, $paciente->getFechaNacimiento());              
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, $paciente->getFechaDialisis());
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, $paciente->getNefropatia()->getNombre());
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, $paciente->getGrupoSanguineo()); 
+    if(!$save)
+    {
+      $salida = array();
+      $salida['sheet'] = $objPHPExcel;
+      $salida['index'] = $index;
+      $salida['position'] = $position;
+      return $salida;
+    }
+    $fileName = 'reporte.xls';
+    $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+    $realPath = sfConfig::get('sf_cache_dir')."/reportes/paciente/";
+    $fileFolder = $paciente_id."/";
+    //MdFileHandler::checkPathFormat($realPath);
+    MdFileHandler::checkPathFormat($realPath.$fileFolder);
+    $objWriter->save($realPath.$fileFolder.$fileName);
+                           
+  }
+
+  public static function createReportePreTrasplante($preTrasplanteId, $objPHPExcel = null, $index = 0, $position = 1, $save = true)
+  {
+    if(is_null($objPHPExcel))
+    {
+      $objPHPExcel = self::createPHPEXCELSheet();
+    }
+    if($position != 1)
+    {
+      $position++;
+    }
+    $objPHPExcel->setActiveSheetIndex(0);
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "FECHA INGRESO LISTA");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "FECHA EGRESO");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "MODALIDAD DIALISIS");                        
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "DIABETES");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "IMC");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "ORIGEN");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "PBR");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "HTA");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "OBESIDAD");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "DISLIPEMIA");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "TABAQUISMO");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "IAM");                        
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "AVE");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "REVASC CARDIO");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "MESES EN LISTA");
+    
+    $preTrasplante = preTrasplanteHandler::retriveByPacienteId($paciente_id);
+    
+    $position++;     
+                                                                                    
+  }
+
+
+  public static function CrearReporteDeFondo($year = null)
+  {
+    $objPHPExcel = self::createPHPEXCELSheet();
 
     $objPHPExcel->setActiveSheetIndex(0);
     $index = 0;
@@ -416,13 +608,7 @@ class reportesHandler
   {
   
 	
-    $objPHPExcel = new PHPExcel();
-    $objPHPExcel->getProperties()
-            ->setCreator("Rodrigo Santellan")
-            ->setLastModifiedBy("Rodrigo Santellan")
-            ->setTitle("Office 2007 XLSX Document")
-            ->setSubject("Office 2007 XLSX Document")
-            ->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.");
+    $objPHPExcel = self::createPHPEXCELSheet();
 
     $objPHPExcel->setActiveSheetIndex(0);
     $index = 0;
@@ -573,12 +759,12 @@ class reportesHandler
                                              
     if(is_null($year))
     {
-      $fileFolder = 'completo/';
+      $fileFolder = 'completo/'.$situationYear.'/';
       $pacientePreTrasplantesIds = preTrasplanteHandler::retrieveAllPacientepreTrasplantesIds();
     }
     else
     {
-      $fileFolder = $year.'/';
+      $fileFolder = $year.'/'.$situationYear.'/';
       $pacientePreTrasplantesIds = preTrasplanteHandler::retrieveAllPacientepreTrasplantesIdsByYear($year);
     }
 

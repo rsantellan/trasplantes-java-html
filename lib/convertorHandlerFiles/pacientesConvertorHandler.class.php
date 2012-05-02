@@ -23,6 +23,7 @@ class pacientesConvertorHandler
         mysql_close();
         $i=0;
         while ($i < $num) {
+          
           $THE = mysql_result($result,$i,"THE");
           $CI = mysql_result($result,$i,"CI");
           $NOMBRE = mysql_result($result,$i,"NOMBRE");
@@ -35,6 +36,8 @@ class pacientesConvertorHandler
           $NEFROPATIA = mysql_result($result,$i,"NEFROPATIA");
           $GRUPO_SANG = mysql_result($result,$i,"GRUPO_SANG");
 
+          echo 'Salvando el paciente : '.$THE. '---';
+          echo '\n';
           $paciente = new Pacientes();
           $paciente->setThe($THE);
           $paciente->setCi($CI);
@@ -134,6 +137,8 @@ class pacientesConvertorHandler
             $IMC = "entre 20 y 25";            
           }          
           
+          echo 'Salvando el pre trasplante del paciente : '.$ID. ' siendo el THE : '. $THE.'---\n';
+          echo '\n';
           $preTransplante = new Pacientepretrasplante();
           $preTransplante->setId($ID);
           $preTransplante->setThe($ID);
@@ -201,7 +206,7 @@ class pacientesConvertorHandler
           if(!$paciente)
           {
             echo "El Pacientes con id: ".$THE." no existe en la base tratamiento incompleto para guardar\n";
-
+            echo '\n';
             $save = false;
           }
 

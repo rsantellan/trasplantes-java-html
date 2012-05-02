@@ -1,6 +1,36 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+#Reportes
+
+reporteDinamico:
+  url: /reportes/crear/dinamico.html
+  param: { module: reportes, action: crearReporteDinamico } 
+
+reportedDeFondoRACMVCrear:
+  url: /reportes/crear/fondoRACMV.html
+  param: { module: reportes, action: processFondoRACMV }
+
+reportesDeFondoRACMV:
+  url:  /reportes/fondoRACMV.html
+  param: { module: reportes, action: fondoPreTrasplanteRACMV }
+  
+reportedDeFondoCrear:
+  url: /reportes/crear/fondo.html
+  param: { module: reportes, action: processFondo }
+
+reportesDeFondo:
+  url:  /reportes/fondo.html
+  param: { module: reportes, action: fondo }
+
+reporteDownloadFile:
+  url:  /reportes/descargar
+  param: { module: reportes, action: downloadFile }
+
+reportes:
+  url:  /reportes.html
+  param: { module: reportes, action: index }
+
 #Causas de muerte
 
 eliminarCausaMuerte:

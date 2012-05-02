@@ -34,7 +34,7 @@ EOF;
     $connection = $databaseManager->getDatabase($options['connection'])->getConnection();
 
     // add your code here
-    
+    echo "---------------------------Guarda todas las evoluciones para poder actualizar los contadores.---------------------------------------\n";
     $listado_cmv = Doctrine::getTable("EvolucionTrasplanteCmv")->findAll();
     foreach($listado_cmv as $evolucion)
     {

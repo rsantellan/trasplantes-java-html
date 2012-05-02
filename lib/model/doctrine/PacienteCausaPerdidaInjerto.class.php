@@ -12,4 +12,8 @@
  */
 class PacienteCausaPerdidaInjerto extends BasePacienteCausaPerdidaInjerto
 {
+  public function __toString()
+  {
+    return $this->getNombre();
+  }
 }

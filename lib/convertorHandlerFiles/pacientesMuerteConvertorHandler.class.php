@@ -26,9 +26,10 @@ class pacientesMuerteConvertorHandler
         while ($i < $num) {
           $id = mysql_result($result,$i,"ID");
           $DETALLES = mysql_result($result,$i,"DETALLES");
-          
+          /*
           echo 'Salvando la causa de muerte del paciente : '.$id. '---\n';
           echo '\n';
+          */
           $PacienteCausaMuerte = new PacienteCausaMuerte();
           $PacienteCausaMuerte->setId($id);
           $PacienteCausaMuerte->setNombre($DETALLES);
@@ -74,9 +75,10 @@ class pacientesMuerteConvertorHandler
           {
             die("inconscitencia de datos!!");
           }
-
+/*
           echo 'Salvando la causa de muerte del paciente : '.$THE. '---\n';
           echo '\n';
+*/          
           $pacienteMuerte = new PacienteMuerte();
           $pacienteMuerte->setPacienteId($paciente->getId());
           $pacienteMuerte->setCausaMuerteId($CAUSA);

@@ -31,6 +31,43 @@ reportes:
   url:  /reportes.html
   param: { module: reportes, action: index }
 
+#Causas de perdida de injerto
+
+eliminarCausaPerdidaInjerto:
+  url:   /eliminar-causa-perdida-injerto
+  param: { module: causaPerdidaInjerto, action: delete }
+
+crearCausaPerdidaInjerto:
+  url:   /crear-causa-perdida-injerto
+  param: { module: causaPerdidaInjerto, action: new }
+
+salvarCausaPerdidaInjerto:
+  url:   /salvar-causa-perdida-injerto
+  param: { module: causaPerdidaInjerto, action: save }
+
+editarCausaPerdidaInjerto:
+  url:   /editar-causa-perdida-injerto
+  param: { module: causaPerdidaInjerto, action: edit }
+
+manejarCausaPerdidaInjerto:
+  url:   /causa-perdida-injerto
+  param: { module: causaPerdidaInjerto, action: index }
+
+
+#Paciente perdida de injerto.
+
+eliminarPerdidaInjerto:
+  url:   /paciente/perdida-injerto/:id/eliminar.html
+  param: { module: perdidaInjerto, action: delete }
+
+editarPerdidaInjerto:
+  url:   /paciente/perdida-injerto/:id/editar.html
+  param: { module: perdidaInjerto, action: edit }
+
+agregarPerdidaInjerto:
+  url:   /paciente/perdida-injerto/:id/:preTrasplanteId
+  param: { module: perdidaInjerto, action: new }
+
 #Causas de muerte
 
 eliminarCausaMuerte:

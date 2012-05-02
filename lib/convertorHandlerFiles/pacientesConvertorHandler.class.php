@@ -35,9 +35,10 @@ class pacientesConvertorHandler
           $FECHA_DIALISIS = mysql_result($result,$i,"FECHA_DIALISIS");
           $NEFROPATIA = mysql_result($result,$i,"NEFROPATIA");
           $GRUPO_SANG = mysql_result($result,$i,"GRUPO_SANG");
-
+/*
           echo 'Salvando el paciente : '.$THE. '---';
           echo '\n';
+*/
           $paciente = new Pacientes();
           $paciente->setThe($THE);
           $paciente->setCi($CI);
@@ -136,9 +137,10 @@ class pacientesConvertorHandler
 
             $IMC = "entre 20 y 25";            
           }          
-          
+          /*
           echo 'Salvando el pre trasplante del paciente : '.$ID. ' siendo el THE : '. $THE.'---\n';
           echo '\n';
+          */
           $preTransplante = new Pacientepretrasplante();
           $preTransplante->setId($ID);
           $preTransplante->setThe($ID);

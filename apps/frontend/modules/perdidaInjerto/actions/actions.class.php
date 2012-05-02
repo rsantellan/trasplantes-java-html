@@ -28,8 +28,10 @@ class perdidaInjertoActions extends sfActions
   public function executeNew(sfWebRequest $request)
   {
     $id = $request->getParameter('id');
+    $preTrasplanteId = $request->getParameter('preTrasplanteId');
     $aux = new PacientePerdidaInjerto();
     $aux->setPacienteId($id);
+    $aux->setPacientePreTrasplanteId($preTrasplanteId);
     $this->form = new PacientePerdidaInjertoForm($aux);
   }
 
@@ -37,7 +39,13 @@ class perdidaInjertoActions extends sfActions
   {
     $this->forward404Unless($request->isMethod(sfRequest::POST));
 
-    $this->form = new PacientePerdidaInjertoForm();
+    $aux = new PacientePerdidaInjertoForm();
+    $parameters = $request->getParameter($aux->getName());
+    
+    $obj = new PacientePerdidaInjerto();
+    $obj->setPacienteId($parameters["paciente_id"]);
+    $obj->setPacientePreTrasplanteId($parameters["paciente_pre_trasplante_id"]);
+    $this->form = new PacientePerdidaInjertoForm($obj);
 
     $this->processForm($request, $this->form);
 
@@ -66,8 +74,15 @@ class perdidaInjertoActions extends sfActions
     $request->checkCSRFProtection();
 
     $this->forward404Unless($paciente_perdida_injerto = Doctrine_Core::getTable('PacientePerdidaInjerto')->find(array($request->getParameter('id'))), sprintf('Object paciente_perdida_injerto does not exist (%s).', $request->getParameter('id')));
-    $paciente_perdida_injerto->delete();
-
+    
+    try
+    {
+      $paciente_perdida_injerto->delete();
+    }catch(Exception $e)
+    {
+      $this->redirect("@editarPerdidaInjerto?id=".$request->getParameter('id')."&error=delete");
+    }
+    $this->redirect(("@mostrarPaciente?id=".$paciente_perdida_injerto->getPacienteId()));
     $this->redirect('perdidaInjerto/index');
   }
 

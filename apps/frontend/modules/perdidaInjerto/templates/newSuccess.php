@@ -1,3 +1,3 @@
-<h1>New Paciente perdida injerto</h1>
+<h1><?php echo __("pacientePerdidaInjerto_agregar titulo");?></h1>
 
-<?php include_partial('form', array('form' => $form)) ?>
+<?php include_partial('small_form', array('form' => $form)) ?>

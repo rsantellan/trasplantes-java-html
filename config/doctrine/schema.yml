@@ -697,6 +697,7 @@ TrasplanteSerol:
       local: trasplante_id
       foreign: id
       type: one
+      onDelete: CASCADE
     Serol:
       local: serol_id
       foreign: id
@@ -812,6 +813,7 @@ TrasplanteComplicacionesInfecciosas:
       local: trasplante_id
       foreign: id
       type: one
+      onDelete: CASCADE
     Infeccion:
       local: infeccion_id
       foreign: id
@@ -860,6 +862,7 @@ TrasplanteComplicacionesNoInfecciosas:
       local: trasplante_id
       foreign: id
       type: one
+      onDelete: CASCADE
     ComplicacionesTiposValores:
       local: complicacion_valor_id
       foreign: id
@@ -895,6 +898,7 @@ TrasplanteInduccion:
       local: trasplante_id
       foreign: id
       type: one
+      onDelete: CASCADE
     Induccion:
       local: induccion_id
       foreign: id
@@ -929,6 +933,7 @@ TrasplanteInmunosupresores:
       local: trasplante_id
       foreign: id
       type: one
+      onDelete: CASCADE
     Inmunosupresores:
       local: inmunosupresores_id
       foreign: id
@@ -1735,14 +1740,17 @@ TrasplanteReoperacion:
       local: trasplante_id
       foreign: id
       type: one
+      onDelete: CASCADE
     TrasplanteComplicacionesInfecciosas:
       local: trasplante_complicacion_infeccion_id
       foreign: id
       type: one    
+      onDelete: CASCADE
     TrasplanteComplicacionesNoInfecciosas:
       local: trasplante_complicacion_no_infeccion_id
       foreign: id
       type: one
+      onDelete: CASCADE
       
 InjertoEvolucion:
   tableName: injerto_evolucion
@@ -1785,6 +1793,7 @@ InjertoEvolucion:
       local: trasplante_id
       foreign: id
       type: one
+      onDelete: CASCADE
     Ratratamiento:
       local: ra_tratamiento_id
       foreign: id

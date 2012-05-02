@@ -63,4 +63,9 @@ class trasplanteHandler
   {
     return Doctrine::getTable("Trasplante")->retriveByPacientePreTrasplanteIdAndDate($PreTrasplanteId, $date, $hydrationMode);
   }
+  
+  public static function retriveAll($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+    return Doctrine::getTable("Trasplante")->retriveAll($hydrationMode);
+  }
 }

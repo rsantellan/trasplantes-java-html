@@ -51,9 +51,10 @@ class donantesConvertorHandler
         while ($i < $num) {
           $id = mysql_result($result,$i,"id");
           $tipo = mysql_result($result,$i,"tipo");
-
+/*
           echo 'Salvando los seroles : '.$id. ' ---\n';
           echo '\n';
+  */        
           $serol = new Serol();
           $serol->setId($id);
           $serol->setTipo($tipo);
@@ -90,9 +91,10 @@ class donantesConvertorHandler
         while ($i < $num) {
           $id = mysql_result($result,$i,"id");
           $tipo = mysql_result($result,$i,"valor");
-
+/*
           echo 'Salvando los valores de los seroles : '.$id. ' ---\n';
           echo '\n';
+  */        
           $serolValor = new SerolValor();
           $serolValor->setSerolId($id);
           $serolValor->setValor($tipo);
@@ -129,9 +131,10 @@ class donantesConvertorHandler
         while ($i < $num) {
           $id = mysql_result($result,$i,"ID");
           $name = mysql_result($result,$i,"DETALLES");
-          
+          /*
           echo 'Salvando el antecedente de donante : '.$id. ' ---\n';
           echo '\n';
+          */
           $donanteAntecedente = new AntecedentesDeDonante();
           $donanteAntecedente->setId($id);
           $donanteAntecedente->setNombre($name);
@@ -167,9 +170,10 @@ class donantesConvertorHandler
         while ($i < $num) {
           $id = mysql_result($result,$i,"ID");
           $name = mysql_result($result,$i,"DETALLES");
-
+/*
           echo 'Salvando las causas de muerte del donante : '.$id. ' ---\n';
           echo '\n';
+  */        
           $donanteCausaMuerte = new DonanteCausaMuerte();
           $donanteCausaMuerte->setId($id);
           $donanteCausaMuerte->setNombre($name);
@@ -229,9 +233,10 @@ class donantesConvertorHandler
           {
             $ALTURA = 0;
           }
-
+/*
           echo 'Salvando los donantes : '.$id. ' ---\n';
           echo '\n';
+  */        
           $donante = new Donante();
           $donante->setIdentificador($id);
           $donante->setTipoDonante($TIPO_DONANTE);

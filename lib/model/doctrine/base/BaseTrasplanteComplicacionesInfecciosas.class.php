@@ -123,7 +123,8 @@ abstract class BaseTrasplanteComplicacionesInfecciosas extends sfDoctrineRecord
 
         $this->hasOne('Trasplante', array(
              'local' => 'trasplante_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Infeccion', array(
              'local' => 'infeccion_id',

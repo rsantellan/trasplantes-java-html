@@ -16,4 +16,11 @@ class PacientePerdidahandler
   {
     return Doctrine::getTable("PacienteCausaPerdidaInjerto")->retriveById($pacienteId, $hydrationMode);
   }
+  
+  public static function retrieveAllCausas($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+  {
+    return Doctrine_Core::getTable('PacienteCausaPerdidaInjerto')
+      ->createQuery('a')
+      ->execute();
+  }
 }

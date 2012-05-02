@@ -63,4 +63,11 @@ class TrasplanteTable extends Doctrine_Table
       //var_dump($query);
       return $query->fetchOne();
     }
+    
+    public function retriveAll($hydrationMode = Doctrine_Core::HYDRATE_RECORD)
+    {
+      $query = $this->createQuery("T");
+      $query->setHydrationMode($hydrationMode);
+      return $query->execute();
+    } 
 }

@@ -62,7 +62,8 @@ abstract class BaseTrasplanteSerol extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Trasplante', array(
              'local' => 'trasplante_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Serol', array(
              'local' => 'serol_id',

@@ -63,5 +63,17 @@ class preTrasplanteHandler
   public static function retriveByPacienteIdOrdered($id, $order = "DESC",  $hydrationMode = Doctrine_Core::HYDRATE_RECORD)
   {
       return Doctrine::getTable("Pacientepretrasplante")->retriveByPacienteId($id, $hydrationMode);
+  }
+  
+  /**
+   * 
+   * @param int $preTrasplanteId id del pre trasplante
+   * @param String $fecha fecha de alta
+   * @return boolean
+   * @author Rodrigo Santellan
+   **/ 
+  public static function updatePreTrasplanteFechaAlta($preTrasplanteId, $fecha)
+  {
+    return Doctrine::getTable("Pacientepretrasplante")->updatePreTrasplanteFechaAlta($preTrasplanteId, $fecha);
   }  
 }

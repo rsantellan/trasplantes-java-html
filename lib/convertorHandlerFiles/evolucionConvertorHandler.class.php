@@ -821,9 +821,9 @@ class evolucionConvertorHandler {
           {
             $Normal = "Patologico";
           }
-          echo ' el transplante id viejo es : '.$IdTrasplante."\n";
+          //echo ' el transplante id viejo es : '.$IdTrasplante."\n";
           $idPretrasplante = transplanteConvertorHandler::retrievePreTrasplanteId($username,$password, $database, $IdTrasplante);
-          echo ' el id de pre trasplante es : '.$idPretrasplante."\n";
+          //echo ' el id de pre trasplante es : '.$idPretrasplante."\n";
           $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $idPretrasplante);          
 
           $EvolucionTrasplanteExamenesTipo = Doctrine::getTable("EvolucionTrasplanteExamenesTipo")->findOneBy("nombre", $Tipo);

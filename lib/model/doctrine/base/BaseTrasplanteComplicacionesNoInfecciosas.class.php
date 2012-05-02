@@ -112,7 +112,8 @@ abstract class BaseTrasplanteComplicacionesNoInfecciosas extends sfDoctrineRecor
 
         $this->hasOne('Trasplante', array(
              'local' => 'trasplante_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('ComplicacionesTiposValores', array(
              'local' => 'complicacion_valor_id',

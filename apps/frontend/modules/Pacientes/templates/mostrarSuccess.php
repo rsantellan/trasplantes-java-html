@@ -43,7 +43,7 @@
   $auxPerdidas = array();
   foreach($perdidas as $perdida)
   {
-	$auxPerdidas[$perdida["paciente_pre_trasplante_id"]] = $perdida["paciente_pre_trasplante_id"];
+    $auxPerdidas[$perdida["paciente_pre_trasplante_id"]] = $perdida;
   }
 ?>
 
@@ -79,8 +79,9 @@
       <label class="bold_text">
         <?php echo __("pacientePreTrasplante_Se a realizado el trasplante de este pretrasplante");?>
       </label>
-      <a href="<?php echo url_for("@mostrarTrasplante?id=".$trasplante["id"]);?>">
+      <a href="<?php echo url_for("@mostrarTrasplante?id=".$trasplante["id"]);?>" class="simple_tip_container" title="<?php echo __("pacientePreTrasplante_Ver Trasplante");?>">
         <?php echo image_tag("search-icon.png", array("width" => 24)); ?>
+        <div class="tooltip_text"><?php echo __("pacientePreTrasplante_Ver Trasplante");?></div>
       </a>
     </li>    
     <?php endif;?>
@@ -89,10 +90,27 @@
   </ul>
   <div class="conteiner_pre_trasplante_opciones">
     <div class="perdida_pre_trasplante">
-      <a href="<?php echo url_for("@agregarPerdidaInjerto?id=".$preTrasplante['id']); ?>"><?php echo image_tag("cross.png")?></a>
+      <?php if(array_key_exists($preTrasplante["id"], $auxPerdidas)): ?>
+        <?php
+          $perdida = $auxPerdidas[$preTrasplante["id"]];
+        ?>
+        <a href="<?php echo url_for("@editarPerdidaInjerto?id=".$perdida["id"]); ?>" class="simple_tip_container" title="<?php echo __("paciente_ver la informacion de la perdida del injerto");?>">
+          <?php echo image_tag("edit-icon.png")?>
+          <div class="tooltip_text"><?php echo __("paciente_ver la informacion de la perdida del injerto");?></div>
+        </a>
+      <?php else: ?>
+        <a href="<?php echo url_for("@agregarPerdidaInjerto?id=".$paciente["id"]."&preTrasplanteId=".$preTrasplante['id']); ?>" class="simple_tip_container" title="<?php echo __("paciente_ingresar perdida del injerto");?>">
+          <?php echo image_tag("cross.png")?>
+          <div class="tooltip_text"><?php echo __("paciente_ingresar perdida del injerto");?></div>
+        </a>
+        
+      <?php endif;?>
     </div>
     <div class="editar_pre_trasplante">
-      <a href="<?php echo url_for("@editarPreTrasplante?id=".$preTrasplante['id']); ?>"><?php echo image_tag("edit-icon.png")?></a>
+      <a href="<?php echo url_for("@editarPreTrasplante?id=".$preTrasplante['id']); ?>" class="simple_tip_container" title="<?php echo __("pacientePreTrasplante_Editar pre trasplante");?>">
+        <?php echo image_tag("edit-icon.png")?>
+        <div class="tooltip_text"><?php echo __("pacientePreTrasplante_Editar pre trasplante");?></div>
+      </a>
     </div>
   </div>
 </div>

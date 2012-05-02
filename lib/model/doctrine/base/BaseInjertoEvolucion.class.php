@@ -155,7 +155,8 @@ abstract class BaseInjertoEvolucion extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Trasplante', array(
              'local' => 'trasplante_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Ratratamiento', array(
              'local' => 'ra_tratamiento_id',

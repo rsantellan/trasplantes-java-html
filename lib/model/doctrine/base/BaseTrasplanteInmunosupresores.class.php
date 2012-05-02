@@ -51,7 +51,8 @@ abstract class BaseTrasplanteInmunosupresores extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Trasplante', array(
              'local' => 'trasplante_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Inmunosupresores', array(
              'local' => 'inmunosupresores_id',

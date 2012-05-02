@@ -87,14 +87,17 @@ abstract class BaseTrasplanteReoperacion extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Trasplante', array(
              'local' => 'trasplante_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('TrasplanteComplicacionesInfecciosas', array(
              'local' => 'trasplante_complicacion_infeccion_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('TrasplanteComplicacionesNoInfecciosas', array(
              'local' => 'trasplante_complicacion_no_infeccion_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
     }
 }

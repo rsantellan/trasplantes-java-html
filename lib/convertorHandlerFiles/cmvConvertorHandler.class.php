@@ -180,7 +180,8 @@ class cmvConvertorHandler
           {
             $tipo = 3;
           }
-          echo 'el id del transplante en lo viejo es : '.$Trasplante."--\n";
+          //echo 'el id del transplante en lo viejo es : '.$Trasplante."--\n";
+          
           mysql_connect("localhost",$username,$password);
 
           @mysql_select_db($database) or die( "Unable to select database");
@@ -254,7 +255,9 @@ class cmvConvertorHandler
           $Trasplante = mysql_result($result,$i,"Trasplante");
           $FECHA = mysql_result($result,$i,"FECHA");
           $cmvenfermedades = mysql_result($result,$i,"cmvenfermedades");
-          echo 'Cmv emfermedad Trasplante: '.$Trasplante. ' Fecha: '.$FECHA. ' emfermedad : '.$cmvenfermedades. ' ----\n';
+          
+          //echo 'Cmv emfermedad Trasplante: '.$Trasplante. ' Fecha: '.$FECHA. ' emfermedad : '.$cmvenfermedades. ' ----\n';
+          
           mysql_connect("localhost",$username,$password);
 
           @mysql_select_db($database) or die( "Unable to select database");
@@ -271,12 +274,12 @@ class cmvConvertorHandler
           mysql_close();
           if($num_tras >0)
           {
-            echo 'CMV emfermedad : encontro un trasplante para esta emfermedad \n';
+//            echo 'CMV emfermedad : encontro un trasplante para esta emfermedad \n';
             $transplante_aux = trasplanteHandler::retriveByPacientePreTrasplanteId($pretrasplante_id, Doctrine_Core::HYDRATE_ARRAY);
             $cmv = cmvHandler::retrieveByTrasplanteIdAndDate($transplante_aux["id"], $FECHA);
             if($cmv)
             {
-              echo 'Encontro un cmv \n';
+//              echo 'Encontro un cmv \n';
               $cmvEmfermedades = new CmvUsoEnfermedades();
               $cmvEmfermedades->setCmvId($cmv->getId());
               $cmvEmfermedades->setCmvEmfermedadesId($cmvenfermedades);

@@ -74,4 +74,13 @@ class PacientepretrasplanteTable extends Doctrine_Table
         $query->setHydrationMode(Doctrine_Core::HYDRATE_NONE);
         return $query->execute();
     }         
+    
+    public function updatePreTrasplanteFechaAlta($preTrasplanteId, $fecha)
+    {
+      return Doctrine_Query::create()
+        ->update('Pacientepretrasplante pp')
+        ->set('pp.fecha_egreso', '?', $fecha)
+        ->where('pp.id = ?', $preTrasplanteId)
+        ->execute();
+    }
 }

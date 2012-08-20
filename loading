@@ -1,0 +1,79 @@
+Wed May  2 13:30:04 UYT 2012
+Empezando la carga de datos
+---------------------------- Cargando las nefropatias --------------------------------------
+----------------------------Cargando los pacientes --------------------------------------
+---------------------------------Cargando las causas de muere---------------------------------
+--------------------------Cargando las muertes de los pacientes---------------------------------------
+--------------------------------Cargando los pre trasplantes----------------------------------
+-----------------------------Cargando los donantes-------------------------------------
+---------------------Salvando tablas auxiliares. -------------------------------------
+---------------------Salvando los antecedentes.---------------------------------------
+---------------------Salvando las causas de muertes.----------------------------------
+---------------------Salvando los seroles.--------------------------------------------
+---------------------Salvando los valores de los seroles.-----------------------------
+---------------------Salvando a los donantes.-----------------------------------------
+---------------------Salvando a los organos.------------------------------------------
+Existe un registro sin DONANTE asociado DONANTE supuesto id: TR 153 
+---------------------Salvando a los antecedentes de donantes.-------------------------
+---------------------Salvando a los seroles.------------------------------------------
+Existe un registro sin DONANTE asociado DONANTE supuesto id: TR 153 
+Existe un registro sin DONANTE asociado DONANTE supuesto id: TR 153 
+Existe un registro sin DONANTE asociado DONANTE supuesto id: TR 153 
+Empezando la carga de datos de cmv
+---------------------------Guarda los cmv---------------------------------------
+---------------------------Guarda los cmv diagnosticos---------------------------------------
+---------------------------Guarda los cmv drogas---------------------------------------
+---------------------------Guarda los cmv---------------------------------------
+---------------------------Guarda las cmv emfermedades---------------------------------------
+---------------------------Guarda los usos de cmv emfermedades---------------------------------------
+-------------------------Guarda los seroles de los trasplantes-----------------------------------------
+El trasplante con id: 0 no existe en la base serol incompleto para guardar
+El trasplante con id: 0 no existe en la base serol incompleto para guardar
+El trasplante con id: 0 no existe en la base serol incompleto para guardar
+-----------------------Guarda los tipos de complicaciones-------------------------------------------
+--------------------------Guarda las medicaciones----------------------------------------
+---------------------------Guarda los trasplantes complicaciones no infecciosas---------------------------------------
+---------------------------Guarda las infeciones---------------------------------------
+---------------------------Guarda los Germenes---------------------------------------
+---------------------------Guarda las complicaciones infecciosas---------------------------------------
+---------------------------Guarda las inducciones---------------------------------------
+---------------------------Guarda las inducciones de trasplantes---------------------------------------
+El trasplante con id: 0 no existe en la base Inducciones incompleto para guardar
+El trasplante con id: 0 no existe en la base Inducciones incompleto para guardar
+El trasplante con id: 0 no existe en la base Inducciones incompleto para guardar
+---------------------------Guarda las inmunosupresores---------------------------------------
+---------------------------Guarda las inmunosupresores de trasplantes---------------------------------------
+El trasplante con id: 0 no existe en la base trasplante_inmunosupresores incompleto para guardar
+El trasplante con id: 0 no existe en la base trasplante_inmunosupresores incompleto para guardar
+El trasplante con id: 0 no existe en la base trasplante_inmunosupresores incompleto para guardar
+---------------------------Guarda los resultados pbr ---------------------------------------
+---------------------------Guarda los ra tratamientos---------------------------------------
+---------------------------Guarda los Evolucion trasplante Cmv---------------------------------------
+---------------------------Guarda los Evolucion trasplante Ecg---------------------------------------
+---------------------------Guarda los Evolucion trasplante Eco cardio---------------------------------------
+---------------------------Guarda los Evolucion trasplante Nutricionales---------------------------------------
+---------------------------Guarda los Tratamientos---------------------------------------
+---------------------------Guarda los Evolucion trasplante Paraclinicas---------------------------------------
+---------------------------Guarda los Evolucion trasplante Ecodopler---------------------------------------
+---------------------------Guarda los Evolucion trasplante Ecografias---------------------------------------
+---------------------------Guarda los Evolucion trasplante Marvirales---------------------------------------
+---------------------------Guarda los Evolucion trasplante Tx Torax---------------------------------------
+---------------------------Guarda los Evolucion trasplante Examenes---------------------------------------
+El EvolucionTrasplanteExamenesTipo con nombre:  e id: 113 no existe en la base evolucion_trasplanteexamenes incompleto para guardar
+---------------------------Guarda las Causas de perdidas de Injerto---------------------------------------
+---------------------------Guarda las perdidas de Injerto---------------------------------------
+---------------------------Guarda las reoperaciones de trasplantes---------------------------------------
+---------------------------Guarda las evoluciones de los injertos de los trasplantes---------------------------------------
+---------------------------Guarda las evoluciones de los injertos pbr de los trasplantes---------------------------------------
+---------------------------Pone todas las edades del receptor en los trasplantes---------------------------------------
+---------------------------Pone los meses en lista del receptor ---------------------
+Fecha ingreso a la lista: 2011-11-27
+Fecha del trasplante: 2011-11-15
+Id del pretrasplantes: 180
+Wed May  2 13:35:23 UYT 2012
+Actualiza los contadores de las evoluciones.
+---------------------------Guarda todas las evoluciones para poder actualizar los contadores.---------------------------------------
+Wed May  2 13:35:26 UYT 2012
+Verifica las fechas de alta de los pre trasplantes.
+---------------------------Verifica que la fecha de alta del pre trasplante sea correcta. ---------------------------------------
+Wed May  2 13:35:32 UYT 2012

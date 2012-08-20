@@ -1,0 +1,12 @@
+<?php if (sfConfig::get('sf_plugins_user_groups_permissions', false)): ?>
+
+mdGroup:
+  mdAdminGroup:
+    name: 'admin'
+    description: 'For use of the admin'
+
+mdPermission:
+  admin:
+    name: 'admin'
+    description: 'For use in the backend'
+<?php endif; ?>

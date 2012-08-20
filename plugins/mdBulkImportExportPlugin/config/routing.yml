@@ -1,0 +1,3 @@
+bulkImport:
+  url: /bulkImport.html
+  param: { module: bulkImport, action: index }

@@ -1,0 +1,28 @@
+signin:
+ url: /signin
+ param: { module: mdAuth, action: signin }
+
+signinAjax:
+ url: /signinAjax
+ param: { module: mdAuth, action: signinAjax }
+
+procesSigninAjax:
+ url: /processSigninAjax
+ param: { module: mdAuth, action: procesSigninAjax }
+ 
+logout:
+  url:   /logout
+  param: { module: mdAuth, action: logout }
+
+sendActivationEmail:
+  url:   /sendActivationEmail.html
+  param: { module: mdAuth, action: processActiveAccountEmail }
+
+resetPassword:
+  url:   /resetPass.html
+  param: { module: mdAuth, action: resetPassword }
+
+resetPasswordViewAjax:
+  url:   /viewResetPassword.html
+  param: { module: mdAuth, action: getResetUserPasswordAjax }
+

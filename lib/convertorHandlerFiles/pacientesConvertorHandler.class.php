@@ -106,7 +106,7 @@ class pacientesConvertorHandler
           $IAM = mysql_result($result,$i,"IAM");
           $AVE = mysql_result($result,$i,"AVE");
           $REVASC_CARDIO = mysql_result($result,$i,"REVASC_CARDIO");
-
+          $PBR = mysql_result($result,$i,"PBR");
           $paciente = Doctrine::getTable("Pacientes")->findOneBy("the", $THE);
           if(!$paciente)
           {
@@ -158,6 +158,7 @@ class pacientesConvertorHandler
           $preTransplante->setIam($IAM);
           $preTransplante->setAve($AVE);
           $preTransplante->setRevascCardio($REVASC_CARDIO);
+          $preTransplante->setPbr($PBR);
 
           $preTransplante->save();
           $preTransplante->free(true);

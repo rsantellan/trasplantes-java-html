@@ -1,0 +1,24 @@
+Consulta:
+  consultaPacientesNefropatiasPBR:
+    nombre: consultaPacientesNefropatiasPBR
+    sentencia: 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, n.nombre as NEFROPATIA, pp.pbr as PBR FROM pacientes p, paciente_pre_trasplante pp, nefropatia n, trasplante t where p.id = pp.paciente_id AND p.nefropatia_id = n.id AND pp.id = t.paciente_pre_trasplante_id  ORDER BY pp.pbr'
+  
+  consultaPacientesTabaquismo:
+    nombre: consultaPacientesTabaquismo
+    sentencia: 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, pp.tabaquismo as TABAQUISMO FROM pacientes p, paciente_pre_trasplante pp, trasplante t where p.id = pp.paciente_id AND pp.id = t.paciente_pre_trasplante_id and pp.tabaquismo = true'
+    
+  consultaPacientesDislipemia:
+    nombre: consultaPacientesDislipemia
+    sentencia: 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, pp.dislipemia as DISLIPEMIA FROM pacientes p, paciente_pre_trasplante pp, trasplante t where p.id = pp.paciente_id AND pp.id = t.paciente_pre_trasplante_id and pp.dislipemia = true'
+    
+  consultaIMCPacientesConObesidad:
+    nombre: consultaIMCPacientesConObesidad
+    sentencia: 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, pp.obesidad as OBESIDAD FROM pacientes p, paciente_pre_trasplante pp, trasplante t where p.id = pp.paciente_id AND pp.id = t.paciente_pre_trasplante_id and pp.obesidad = true'
+
+  consultaIMCPacientesSinObesidad:
+    nombre: consultaIMCPacientesSinObesidad
+    sentencia: 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, pp.obesidad as OBESIDAD FROM pacientes p, paciente_pre_trasplante pp, trasplante t where p.id = pp.paciente_id AND pp.id = t.paciente_pre_trasplante_id and pp.obesidad = false'  
+    
+  consultaPacientesConHta:
+    nombre: consultaPacientesConHta
+    sentencia: 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, pp.hta as HTA FROM pacientes p, paciente_pre_trasplante pp, trasplante t where p.id = pp.paciente_id AND pp.id = t.paciente_pre_trasplante_id and pp.hta = true'      

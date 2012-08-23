@@ -138,9 +138,13 @@ Pacientepretrasplante:
 PacienteMuerte:
   tableName: paciente_muerte
   columns:
-    paciente_id:
+    id:
       type: integer(4)
       primary: true
+      autoincrement: true  
+    paciente_id:
+      type: integer(4)
+      unique: true
     causa_muerte_id:
       type: integer(4)
       notnull: true
@@ -1883,3 +1887,14 @@ ConsultaCampoTipo:
     tipo:
       type: string(45)
       notnull: true      
+
+Version:
+  tableName: version
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(45)
+      notnull: true

@@ -15,18 +15,24 @@ abstract class BasePacienteMuerteForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'paciente_id'             => new sfWidgetFormInputHidden(),
+      'id'                      => new sfWidgetFormInputHidden(),
+      'paciente_id'             => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Pacientes'), 'add_empty' => true)),
       'causa_muerte_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('PacienteCausaMuerte'), 'add_empty' => false)),
       'fecha_muerte'            => new sfWidgetFormDate(),
       'transplante_funcionando' => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
-      'paciente_id'             => new sfValidatorChoice(array('choices' => array($this->getObject()->get('paciente_id')), 'empty_value' => $this->getObject()->get('paciente_id'), 'required' => false)),
+      'id'                      => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'paciente_id'             => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Pacientes'), 'required' => false)),
       'causa_muerte_id'         => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('PacienteCausaMuerte'))),
       'fecha_muerte'            => new sfValidatorDate(),
       'transplante_funcionando' => new sfValidatorInteger(array('required' => false)),
     ));
+
+    $this->validatorSchema->setPostValidator(
+      new sfValidatorDoctrineUnique(array('model' => 'PacienteMuerte', 'column' => array('paciente_id')))
+    );
 
     $this->widgetSchema->setNameFormat('paciente_muerte[%s]');
 

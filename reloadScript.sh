@@ -20,3 +20,6 @@ date
 echo "Verifica las fechas de alta de los pre trasplantes."
 php symfony loading:correctPreTrasplanteDates
 date
+echo "Carga las consultas estaticas"
+php symfony loading:loadConsultas
+date

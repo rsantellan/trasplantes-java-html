@@ -1,0 +1,68 @@
+Organos:
+  Organos_1:
+    nombre: Corazon
+  Organos_2:
+    nombre: Pancreas
+  Organos_3:
+    nombre: Pulmon
+  Organos_4:
+    nombre: Riñon
+  Organos_5:
+    nombre: Intestino
+  Organos_6:
+    nombre: Otros
+Consulta:
+  Consulta_1:
+    nombre: consultaPacientesNefropatiasPBR
+    sentencia: 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, n.nombre as NEFROPATIA, pp.pbr as PBR FROM pacientes p, paciente_pre_trasplante pp, nefropatia n, trasplante t where p.id = pp.paciente_id AND p.nefropatia_id = n.id AND pp.id = t.paciente_pre_trasplante_id  ORDER BY pp.pbr'
+mdUser:
+  mdUser_1:
+    email: admin@admin.com
+    super_admin: '1'
+    deleted_at: null
+    created_at: '2012-08-22 19:21:08'
+    updated_at: '2012-08-22 19:21:08'
+mdUserProfile:
+  mdUserProfile_1:
+    name: Admin
+    last_name: Admin
+    city: null
+    country_code: UY
+mdContent:
+  mdContent_1:
+    mdUser: mdUser_1
+    object_class: mdUserProfile
+    object_id: '1'
+    created_at: '2012-08-22 19:21:08'
+    updated_at: '2012-08-22 19:21:08'
+mdPassport:
+  mdPassport_1:
+    mdUser: mdUser_1
+    username: admin
+    password: 202cb962ac59075b964b07152d234b70
+    account_active: '1'
+    last_login: null
+    created_at: '2012-08-22 19:21:08'
+    updated_at: '2012-08-22 19:21:08'
+EvolucionTrasplanteExamenesTipo:
+  EvolucionTrasplanteExamenesTipo_1:
+    nombre: GINECOLOGO
+  EvolucionTrasplanteExamenesTipo_2:
+    nombre: UROLOGO
+  EvolucionTrasplanteExamenesTipo_3:
+    nombre: OFTALMOLOGO
+  EvolucionTrasplanteExamenesTipo_4:
+    nombre: 'RX OSEAS'
+  EvolucionTrasplanteExamenesTipo_5:
+    nombre: TAC
+  EvolucionTrasplanteExamenesTipo_6:
+    nombre: RNM
+  EvolucionTrasplanteExamenesTipo_7:
+    nombre: 'CENTELLO GRAMA'
+ConsultaCampoTipo:
+  ConsultaCampoTipo_1:
+    nombre: Texto
+    tipo: texto
+  ConsultaCampoTipo_2:
+    nombre: Si/No
+    tipo: booleano

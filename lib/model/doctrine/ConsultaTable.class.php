@@ -17,6 +17,35 @@ class ConsultaTable extends Doctrine_Table
         return Doctrine_Core::getTable('Consulta');
     }
     
+    public function retrieveGermenesInfeccionesData($germen = null, $infeccion = null)
+    {
+      $sql = "SELECT  
+                paciente_pre_trasplante.the AS THE,
+                  pacientes.nombre AS NOMBRE,
+                  pacientes.apellido AS APELLIDO,
+                  trasplante.fecha AS FECHA,
+                  trasplante_complicaciones_infecciosas.fecha AS FECHA_COMPLICACION,
+                  medicaciones.nombre AS MEDICACION,
+                  trasplante_complicaciones_infecciosas.internado AS INTERNADO,
+                  trasplante_complicaciones_infecciosas.dias_de_internacion AS DIAS_INTERNADO,
+                  trasplante_complicaciones_infecciosas.evolucion AS EN_EVOLUCION,
+                  infeccion.nombre AS INFECCION,
+                  germenes.nombre AS GERMEN
+                FROM
+                  pacientes
+                  INNER JOIN paciente_pre_trasplante ON (paciente_pre_trasplante.paciente_id = pacientes.id)
+                  INNER JOIN trasplante ON (trasplante.paciente_pre_trasplante_id = paciente_pre_trasplante.id)
+                  INNER JOIN trasplante_complicaciones_infecciosas ON (trasplante.id = trasplante_complicaciones_infecciosas.trasplante_id)
+                  INNER JOIN medicaciones ON (trasplante_complicaciones_infecciosas.medicacion_id = medicaciones.id)
+                  INNER JOIN germenes ON (trasplante_complicaciones_infecciosas.germen_id = germenes.id)
+                  INNER JOIN infeccion ON (trasplante_complicaciones_infecciosas.infeccion_id = infeccion.id)
+                ORDER BY
+                  trasplante.fecha";
+      $params = array();  
+      $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
+      return $conn->fetchArray($sql, $params);
+    }
+    
     public function loadConsultas()
     {
       $sql = "INSERT INTO `consulta` (`id`, `nombre`, `sentencia`) VALUES
@@ -263,10 +292,25 @@ class ConsultaTable extends Doctrine_Table
         INNER JOIN trasplante ON (paciente_pre_trasplante.id = trasplante.paciente_pre_trasplante_id)
       WHERE
         (trasplante.sangrado_i_op = true OR trasplante.lesion_arterial = true OR trasplante.lesion_venosa = true OR trasplante.necesidad_repefundir = true) '),
+        
+      (null, 'consultaDonanteCausaMuerte', 'SELECT 
+          paciente_pre_trasplante.the AS THE,
+          pacientes.nombre AS NOMBRE,
+          pacientes.apellido AS APELLIDO,
+          donante.identificador AS IDENTIFICADOR,
+          donante_causa_muerte.nombre AS CAUSA
+        FROM
+          pacientes
+          INNER JOIN paciente_pre_trasplante ON (paciente_pre_trasplante.paciente_id = pacientes.id)
+          INNER JOIN trasplante ON (trasplante.paciente_pre_trasplante_id = paciente_pre_trasplante.id)
+          INNER JOIN donante ON (trasplante.donante_id = donante.id)
+          INNER JOIN donante_causa_muerte ON (donante.donante_causa_muerte_id = donante_causa_muerte.id)'),  
 
       (null, 'consultaPacientesDislipemia', 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, pp.dislipemia as DISLIPEMIA FROM pacientes p, paciente_pre_trasplante pp, trasplante t where p.id = pp.paciente_id AND pp.id = t.paciente_pre_trasplante_id and pp.dislipemia = true');
       ";
       $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
       $conn->execute($sql);
     }
+    
+    
 }

@@ -81,4 +81,10 @@ class consultaActions extends sfActions
       $this->redirect('consulta/edit?id='.$consulta->getId());
     }
   }
+  
+  public function executeConsultaGermenesInfecciones(sfWebRequest $request)
+  {
+     
+  }
+  
 }

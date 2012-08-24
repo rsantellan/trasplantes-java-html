@@ -17,4 +17,9 @@ class TrasplanteComplicacionesNoInfecciosas extends BaseTrasplanteComplicaciones
 	sfContext::getInstance()->getConfiguration()->loadHelpers(array('Date'));
 	return format_date($this->getFecha(), 'D');
   }
+
+  public function getObjectClass()
+  {
+    return get_class($this);
+  }  
 }

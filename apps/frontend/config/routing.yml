@@ -91,6 +91,11 @@ manejarCausaMuerte:
   param: { module: PacienteCausaMuerte, action: index }
 
 #Consultas
+
+consultaGermenInfeccion:
+  url:   /consulta/germenInfeccion.html
+  param: { module: consulta, action: consultaGermenesInfecciones }  
+  
 editarConsulta:
   url:   /consulta/editar/:id
   param: { module: consulta, action: edit }  
@@ -784,7 +789,11 @@ cambiarFechaAlta:
 mostrarTrasplante:
   url:   /trasplante/:id
   param: { module: Trasplante, action: show }
-  
+
+editarTrasplante:
+  url:   /trasplante/editar/:id
+  param: { module: Trasplante, action: edit }
+    
 salvarTrasplante:
   url:   /guardar-trasplante/:pre_trasplante_id
   param: { module: Trasplante, action: save }

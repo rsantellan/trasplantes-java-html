@@ -99,3 +99,5 @@
 	<li><?php echo __("Trasplante_comentario");?> : <label class="bold_text"><?php echo $trasplante['comentario']?></label></li>
   </ul>
 </div>
+<div class="clear"></div>
+<h4><a href="<?php echo url_for("@editarTrasplante?id=".$id);?>"><?php echo __("Trasplante_editar");?></a></h4>

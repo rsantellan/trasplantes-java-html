@@ -871,7 +871,33 @@ TrasplanteComplicacionesNoInfecciosas:
       local: complicacion_valor_id
       foreign: id
       type: one 
- 
+
+TrasplanteComplicacionesConsulta:
+  tableName: trasplante_complicaciones_consulta
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    trasplante_id:
+      type: integer(4)
+      notnull: true
+    complicacion_id:
+      type: integer(4)
+      notnull: true
+    complicacion_class:
+      type: string(50)
+      notnull: true
+    dias_desde_trasplante:
+      type: integer(4)
+      notnull: true    
+    meses_desde_trasplante:
+      type: integer(4)
+      notnull: true 
+    years_desde_trasplante:
+      type: integer(4)
+      notnull: true
+      
 # ----------------
 Induccion:
   tableName: induccion

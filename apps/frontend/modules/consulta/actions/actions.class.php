@@ -84,6 +84,17 @@ class consultaActions extends sfActions
   
   public function executeConsultaGermenesInfecciones(sfWebRequest $request)
   {
+     $this->germenes = Doctrine_Core::getTable('germenes')
+      ->createQuery('a')
+      ->execute();
+     
+     $this->infecciones = Doctrine_Core::getTable('infeccion')
+      ->createQuery('a')
+      ->execute();
+     
+     $this->germen_id = $request->getParameter("g", 0);
+     $this->infeccion_id = $request->getParameter("i", 0);
+     $this->result =  Doctrine::getTable('consulta')->retrieveGermenesInfeccionesData($this->germen_id, $this->infeccion_id);
      
   }
   

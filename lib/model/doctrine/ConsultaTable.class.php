@@ -38,12 +38,34 @@ class ConsultaTable extends Doctrine_Table
                   INNER JOIN trasplante_complicaciones_infecciosas ON (trasplante.id = trasplante_complicaciones_infecciosas.trasplante_id)
                   INNER JOIN medicaciones ON (trasplante_complicaciones_infecciosas.medicacion_id = medicaciones.id)
                   INNER JOIN germenes ON (trasplante_complicaciones_infecciosas.germen_id = germenes.id)
-                  INNER JOIN infeccion ON (trasplante_complicaciones_infecciosas.infeccion_id = infeccion.id)
-                ORDER BY
+                  INNER JOIN infeccion ON (trasplante_complicaciones_infecciosas.infeccion_id = infeccion.id)";
+      $have_where = false;
+      $params = array();
+      if(!is_null($germen) && (int) $germen > 0)
+      {
+        $sql .= " WHERE germenes.id = :germen_id";
+        $params["germen_id"] = $germen;
+        $have_where = true;
+      }
+      if(!is_null($infeccion) && (int) $infeccion > 0)
+      {
+        if($have_where)
+        {
+          $sql .= " AND ";
+        }
+        else
+        {
+          $sql .= " WHERE ";
+        }
+        $sql .= " infeccion.id = :infeccion_id";
+        $params["infeccion_id"] = $infeccion;
+      }
+      
+      $sql .= " ORDER BY
                   trasplante.fecha";
-      $params = array();  
+      
       $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
-      return $conn->fetchArray($sql, $params);
+      return $conn->fetchAssoc($sql, $params);
     }
     
     public function loadConsultas()
@@ -305,6 +327,23 @@ class ConsultaTable extends Doctrine_Table
           INNER JOIN trasplante ON (trasplante.paciente_pre_trasplante_id = paciente_pre_trasplante.id)
           INNER JOIN donante ON (trasplante.donante_id = donante.id)
           INNER JOIN donante_causa_muerte ON (donante.donante_causa_muerte_id = donante_causa_muerte.id)'),  
+
+      (null, 'consultaTrasplantesIsquemiaDiuresis', 'SELECT 
+          paciente_pre_trasplante.the AS THE,
+          pacientes.nombre AS NOMBRE,
+          pacientes.apellido AS APELLIDO,
+          trasplante.t_isq_cal_min AS T_ISQ_CAL_MIN,
+          trasplante.t_isq_fria_hs AS T_ISQ_FRIA_HS,
+          trasplante.t_isq_fria_min AS T_ISQ_FRIA_MIN,
+          trasplante.t_isq_tibia_hs AS T_ISQ_TIBIA_HS,
+          trasplante.reperfusion AS REPERFUSION,
+          trasplante.diuresis_i_op AS DIURESIS
+        FROM
+          paciente_pre_trasplante
+          INNER JOIN pacientes ON (paciente_pre_trasplante.paciente_id = pacientes.id)
+          INNER JOIN trasplante ON (paciente_pre_trasplante.id = trasplante.paciente_pre_trasplante_id)
+        ORDER BY trasplante.diuresis_i_op ASC'),
+      
 
       (null, 'consultaPacientesDislipemia', 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, pp.dislipemia as DISLIPEMIA FROM pacientes p, paciente_pre_trasplante pp, trasplante t where p.id = pp.paciente_id AND pp.id = t.paciente_pre_trasplante_id and pp.dislipemia = true');
       ";

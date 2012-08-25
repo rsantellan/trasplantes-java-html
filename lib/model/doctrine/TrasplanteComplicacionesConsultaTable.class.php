@@ -16,4 +16,12 @@ class TrasplanteComplicacionesConsultaTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('TrasplanteComplicacionesConsulta');
     }
+    
+    public function getByObjectClassAndId($objectId, $objectClass)
+    {
+        return $this->createQuery('tcc')
+                ->addWhere('tcc.complicacion_id = ?', $objectId)
+                ->addWhere('tcc.complicacion_class = ?', $objectClass)
+                ->fetchOne();
+    }
 }

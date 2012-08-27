@@ -74,6 +74,11 @@ abstract class BaseTrasplanteComplicacionesConsulta extends sfDoctrineRecord
              'notnull' => true,
              'length' => 4,
              ));
+
+        $this->option('symfony', array(
+             'form' => false,
+             'filter' => false,
+             ));
     }
 
     public function setUp()

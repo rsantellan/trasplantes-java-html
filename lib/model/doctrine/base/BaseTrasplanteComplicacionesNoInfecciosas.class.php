@@ -122,5 +122,8 @@ abstract class BaseTrasplanteComplicacionesNoInfecciosas extends sfDoctrineRecor
         $this->hasMany('TrasplanteReoperacion', array(
              'local' => 'id',
              'foreign' => 'trasplante_complicacion_no_infeccion_id'));
+
+        $trasplantecomplicacionesconsultabehavior0 = new trasplanteComplicacionesConsultaBehavior();
+        $this->actAs($trasplantecomplicacionesconsultabehavior0);
     }
 }

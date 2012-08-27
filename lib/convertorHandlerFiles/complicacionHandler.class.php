@@ -166,7 +166,7 @@ class complicacionHandler
               $TrasplanteComplicaciones->setEvolucion($EVOLUCION);
               $TrasplanteComplicaciones->setComentario($COMENTARIO);
               $TrasplanteComplicaciones->save();
-              $TrasplanteComplicaciones->free(true);    
+              $TrasplanteComplicaciones->free(true);
             }catch(Exception $e)
             {
               echo 'la excepcion es: '.$e->getMessage()."\n";

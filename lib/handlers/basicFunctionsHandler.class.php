@@ -10,6 +10,11 @@ class basicFunction
      */
     public static function calculateDifferenceInYears($startDate, $endDate)
     {
+      $startDate = new DateTime($startDate);
+      $endDate = new DateTime($endDate);
+      $interval = $startDate->diff($endDate);
+      return $interval->y;
+      
       $anno_inicio =substr($startDate, 0, 4);
       $mes_inicio =substr($startDate, 5, 2);
       $dia_inicio = substr($startDate, 8, 2);      
@@ -30,8 +35,24 @@ class basicFunction
       return $calc_edad;      
     }
   
+    public static function calculateDifferenceInDays($startDate, $endDate)
+    {
+      $startDate = new DateTime($startDate);
+      $endDate = new DateTime($endDate);
+      $interval = $startDate->diff($endDate);
+      return $interval->days;
+    }
+    
     public static function calculateDifferenceInMonth($startDate, $endDate)
     {
+      
+      $years = self::calculateDifferenceInYears($startDate, $endDate);
+      $startDate = new DateTime($startDate);
+      $endDate = new DateTime($endDate);
+      $interval = $startDate->diff($endDate);
+      return $interval->m + ((int)$years * 12);
+      
+      
       $anno_inicio =substr($startDate, 0, 4);
       $mes_inicio =substr($startDate, 5, 2);
       $dia_inicio = substr($startDate, 8, 2);      

@@ -777,6 +777,8 @@ Germenes:
 
 TrasplanteComplicacionesInfecciosas:
   tableName: trasplante_complicaciones_infecciosas
+  actAs:
+    trasplanteComplicacionesConsultaBehavior: ~  
   columns:
     id:
       type: integer(4)
@@ -829,6 +831,8 @@ TrasplanteComplicacionesInfecciosas:
       
 TrasplanteComplicacionesNoInfecciosas:
   tableName: trasplante_complicaciones_no_infecciosas
+  actAs:
+    trasplanteComplicacionesConsultaBehavior: ~  
   columns:
     id:
       type: integer(4)
@@ -873,6 +877,10 @@ TrasplanteComplicacionesNoInfecciosas:
       type: one 
 
 TrasplanteComplicacionesConsulta:
+  options:
+    symfony:
+      form:   false
+      filter: false
   tableName: trasplante_complicaciones_consulta
   columns:
     id:

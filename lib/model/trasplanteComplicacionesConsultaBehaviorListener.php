@@ -4,25 +4,41 @@ class trasplanteComplicacionesConsultaBehaviorListener extends Doctrine_Record_L
 {  
 	public function postSave(Doctrine_Event $event) 
 	{
-      /*
       $object = $event->getInvoker();
-      if(!Doctrine::getTable('mdContent')->retrieveByObject($object)){
-          $mdContent = new MdContent();
-          $mdContent->setObjectClass(get_class($object));
-          $mdContent->setObjectId($object->getId());
-          $mdContent->setMdUserId($object->getMdUserIdTmp());
-          $mdContent->save();
+      $tcObject = Doctrine::getTable('TrasplanteComplicacionesConsulta')->getByObjectClassAndId($object->getId(), $object->getObjectClass());
+      
+      
+      $trasplante = trasplanteHandler::retriveById($object->getTrasplanteId(), Doctrine_Core::HYDRATE_ARRAY );
+      var_dump($trasplante);
+      var_dump($object->getFecha());
+      $years = basicFunction::calculateDifferenceInYears($trasplante["fecha"], $object->getFecha());
+      $months = basicFunction::calculateDifferenceInMonth($trasplante["fecha"], $object->getFecha());
+      $days = basicFunction::calculateDifferenceInDays($trasplante["fecha"], $object->getFecha());
+      if(!$tcObject)
+      {
+        $tcObject = new TrasplanteComplicacionesConsulta();
+        $tcObject->setComplicacionClass($object->getObjectClass());
+        $tcObject->setComplicacionId($object->getId());
+        $tcObject->setDiasDesdeTrasplante($days);
+        $tcObject->setMesesDesdeTrasplante($months);
+        $tcObject->setYearsDesdeTrasplante($years);
+        $tcObject->save(); 
       }
-      */
+      else
+      {
+        $tcObject->setDiasDesdeTrasplante($days);
+        $tcObject->setMesesDesdeTrasplante($months);
+        $tcObject->setYearsDesdeTrasplante($years);
+        $tcObject->save(); 
+      }
 	}
 	
-	public function preDelete(Doctrine_Event $event)
+	public function postDelete(Doctrine_Event $event)
     {
-      /*    
       $object = $event->getInvoker();
-      $mdContent = Doctrine::getTable('mdContent')->retrieveByObject($object);
-      Doctrine::getTable('mdContentRelation')->deleteRelatedOfId($mdContent->getId());
-      */
+      $tcObject = Doctrine::getTable('TrasplanteComplicacionesConsulta')->getByObjectClassAndId($object->getId(), $object->getObjectClass());
+      if($tcObject)
+        $tcObject->delete();
 	}	
 }
 

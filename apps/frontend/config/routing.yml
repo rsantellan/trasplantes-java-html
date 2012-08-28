@@ -92,6 +92,10 @@ manejarCausaMuerte:
 
 #Consultas
 
+consultaTrasplanteComplicaciones:
+  url:   /consulta/transplate-complicaciones.html
+  param: { module: consulta, action: consultaTrasplanteComplicaciones } 
+
 consultaGermenInfeccion:
   url:   /consulta/germenInfeccion.html
   param: { module: consulta, action: consultaGermenesInfecciones }  

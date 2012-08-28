@@ -24,4 +24,70 @@ class TrasplanteComplicacionesConsultaTable extends Doctrine_Table
                 ->addWhere('tcc.complicacion_class = ?', $objectClass)
                 ->fetchOne();
     }
+    
+    public function getMaximunNumbers()
+    {
+      $sql = "SELECT max(dias_desde_trasplante) as d, max(meses_desde_trasplante) as m, max(years_desde_trasplante) as y FROM trasplante_complicaciones_consulta";
+      $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
+      $r = $conn->fetchAssoc($sql);
+      return $r[0];
+    }
+    
+    public function getByDays($day, $clase = null)
+    {
+      $parametros = array();
+      $sql = "SELECT count(id) as c, dias_desde_trasplante as u FROM trasplante_complicaciones_consulta where dias_desde_trasplante <= ? ";
+      if(!is_null($clase))
+      {
+        $sql .= "AND complicacion_class = ? ";
+        $parametros = array($day, $clase);
+      }
+      else
+      {
+        $parametros = array($day);
+      }
+      $sql .= "group by dias_desde_trasplante order by dias_desde_trasplante asc";
+      $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
+      $r = $conn->fetchAssoc($sql, $parametros);
+      return TrasplanteComplicacionesConsulta::formatReturnData($day, $r);
+    }
+    
+    public function getByMonth($month, $clase = null)
+    {
+      $parametros = array();
+      $sql = "SELECT count(id) as c, meses_desde_trasplante as u FROM trasplante_complicaciones_consulta where meses_desde_trasplante <= ? ";
+      if(!is_null($clase))
+      {
+        $sql .= "AND complicacion_class = ? ";
+        $parametros = array($month, $clase);
+      }
+      else
+      {
+        $parametros = array($month);
+      }
+      $sql .= "group by meses_desde_trasplante order by meses_desde_trasplante asc";
+      $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
+      $r = $conn->fetchAssoc($sql, $parametros);
+      return TrasplanteComplicacionesConsulta::formatReturnData($month, $r);
+      
+    }
+    
+    public function getByYear($year, $clase = null)
+    {
+      $parametros = array();
+      $sql = "SELECT count(id) as c, years_desde_trasplante as u FROM trasplante_complicaciones_consulta where years_desde_trasplante <= ? ";
+      if(!is_null($clase))
+      {
+        $sql .= "AND complicacion_class = ? ";
+        $parametros = array($year, $clase);
+      }
+      else
+      {
+        $parametros = array($year);
+      }
+      $sql .= "group by years_desde_trasplante order by years_desde_trasplante asc";
+      $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
+      $r = $conn->fetchAssoc($sql, $parametros);
+      return TrasplanteComplicacionesConsulta::formatReturnData($year, $r);
+    }
 }

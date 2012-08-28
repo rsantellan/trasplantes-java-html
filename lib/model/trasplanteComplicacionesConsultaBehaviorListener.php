@@ -9,8 +9,8 @@ class trasplanteComplicacionesConsultaBehaviorListener extends Doctrine_Record_L
       
       
       $trasplante = trasplanteHandler::retriveById($object->getTrasplanteId(), Doctrine_Core::HYDRATE_ARRAY );
-      var_dump($trasplante);
-      var_dump($object->getFecha());
+      //var_dump($trasplante);
+      //var_dump($object->getFecha());
       $years = basicFunction::calculateDifferenceInYears($trasplante["fecha"], $object->getFecha());
       $months = basicFunction::calculateDifferenceInMonth($trasplante["fecha"], $object->getFecha());
       $days = basicFunction::calculateDifferenceInDays($trasplante["fecha"], $object->getFecha());
@@ -18,6 +18,7 @@ class trasplanteComplicacionesConsultaBehaviorListener extends Doctrine_Record_L
       {
         $tcObject = new TrasplanteComplicacionesConsulta();
         $tcObject->setComplicacionClass($object->getObjectClass());
+        $tcObject->setTrasplanteId($object->getTrasplanteId());
         $tcObject->setComplicacionId($object->getId());
         $tcObject->setDiasDesdeTrasplante($days);
         $tcObject->setMesesDesdeTrasplante($months);

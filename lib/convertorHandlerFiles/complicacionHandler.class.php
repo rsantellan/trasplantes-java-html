@@ -243,6 +243,18 @@ class complicacionHandler
                     
           $trasplante = Doctrine::getTable("Trasplante")->findOneBy("paciente_pre_trasplante_id", $IdPreTrasplante);
           $complicacionValor = self::retrieveNewComplicacionTipoValorOfOldId($username,$password, $database,$complicacion);
+          
+          //Tengo que verificar que la fecha sea correcta, dado que se guardaron un par con 0005 y 0007 como año.
+          $fecha_list = explode("-", $FECHA);
+          if((int) $fecha_list[0] < 2000)
+          {
+            echo "Existe un complicaciones_no_inf que tiene la fecha incorrecta";
+            echo " complicacionValor supuesto id: ".$complicacion." ";
+            echo " supuesta fecha: ".$FECHA." ";
+            echo "\n"; 
+            $fecha_list[0] = (string) ((int)$fecha_list[0] + 2000);
+            $FECHA = implode("-", $fecha_list);
+          }
           if($trasplante && $complicacionValor)
           {
             $TrasplanteComplicacionesNoInfecciosas = new TrasplanteComplicacionesNoInfecciosas();

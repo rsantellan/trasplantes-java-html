@@ -98,4 +98,46 @@ class consultaActions extends sfActions
      
   }
   
+  public function executeConsultaTrasplanteComplicaciones(sfWebRequest $request)
+  {
+    $maximos = Doctrine::getTable('TrasplanteComplicacionesConsulta')->getMaximunNumbers();
+    $this->days = range(0, (int) $maximos['d']);
+    $this->months = range(0, (int) $maximos['m']);
+    $this->years = range(0, (int) $maximos['y']);
+    
+    $this->dia = $request->getParameter("d", 0);
+    $this->mes = $request->getParameter("m", 0);
+    $this->mYear = $request->getParameter("y", 0);
+    $this->datos = array();
+    $this->datosInfecciosas = array();
+    $this->datosNoInfecciosas = array();
+    $this->plotEnable = false;
+    if($this->dia > 0)
+    {
+      $this->datos = Doctrine::getTable('TrasplanteComplicacionesConsulta')->getByDays($this->dia);
+      $this->datosInfecciosas = Doctrine::getTable('TrasplanteComplicacionesConsulta')->getByDays($this->dia, TrasplanteComplicacionesConsulta::INFECCIOSAS);
+      $this->datosNoInfecciosas = Doctrine::getTable('TrasplanteComplicacionesConsulta')->getByDays($this->dia, TrasplanteComplicacionesConsulta::NOINFECCIOSAS);
+      $this->plotEnable = true;
+    }  
+    else 
+    {
+      if($this->mes > 0)
+      {
+        $this->datos = Doctrine::getTable('TrasplanteComplicacionesConsulta')->getByMonth($this->mes);
+        $this->datosInfecciosas = Doctrine::getTable('TrasplanteComplicacionesConsulta')->getByMonth($this->mes, TrasplanteComplicacionesConsulta::INFECCIOSAS);
+        $this->datosNoInfecciosas = Doctrine::getTable('TrasplanteComplicacionesConsulta')->getByMonth($this->mes, TrasplanteComplicacionesConsulta::NOINFECCIOSAS);
+        $this->plotEnable = true;
+      }
+      else
+      {
+        if($this->mYear > 0)
+        {
+          $this->datos = Doctrine::getTable('TrasplanteComplicacionesConsulta')->getByYear($this->mYear);
+          $this->datosInfecciosas = Doctrine::getTable('TrasplanteComplicacionesConsulta')->getByYear($this->mYear, TrasplanteComplicacionesConsulta::INFECCIOSAS);
+          $this->datosNoInfecciosas = Doctrine::getTable('TrasplanteComplicacionesConsulta')->getByYear($this->mYear, TrasplanteComplicacionesConsulta::NOINFECCIOSAS);
+          $this->plotEnable = true;
+        }
+      }
+    }
+  }
 }

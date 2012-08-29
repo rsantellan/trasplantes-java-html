@@ -46,6 +46,7 @@ class reportesActions extends sfActions
   
   public function executeProcessFondoRACMV(sfWebRequest $request)
   {
+    set_time_limit ( 0 );
     $year = (int)$request->getParameter('year');
     $yearFinish = (int)$request->getParameter('yearFinish');
     if($year != 0)
@@ -56,11 +57,17 @@ class reportesActions extends sfActions
     switch($year)
     {
       case -1:
-          reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV($yearFinish);
+          $yearFinish = date("Y");
           $myYear = date("Y");
+          reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV($yearFinish);
           while($myYear >= $this->start_year)
           {
-            $this->generateFondoRACMV($yearFinish, $myYear);
+            $yearFinish = date("Y");
+            while($yearFinish >= $this->start_year)
+            {
+              $this->generateFondoRACMV($yearFinish, $myYear);
+              $yearFinish--;
+            }
             //reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV($yearFinish, $myYear);
             $myYear--;
           }
@@ -74,6 +81,7 @@ class reportesActions extends sfActions
           //reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV($yearFinish, $year);
         break;
     }
+    //$this->redirect("@reportesDeFondoRACMV");
     $listado = basicFunction::retrieveFilesArrayOfDirectory($this->realPathFondoRACMV);
     $body = $this->getPartial('listadoDirectorio', array("listado" => $listado));
     return $this->renderText(mdBasicFunction::basic_json_response(true, array('body' => $body)));
@@ -81,23 +89,20 @@ class reportesActions extends sfActions
   
   private function generateFondoRACMV($yearFinish, $year = null)
   {
-    if($yearFinish == -1)
+    if(!is_null($year))
     {
-      $myYear = date("Y");
-      while($myYear >= $this->start_year)
+      if($year < $yearFinish)
       {
-        reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV($myYear, $year);
-        $myYear--;
+        return false;
       }
     }
-    else
-    {
-      reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV($yearFinish, $year);
-    }
+    reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV($yearFinish, $year);
+    sleep(5);
   }
   
   public function executeProcessFondo(sfWebRequest $request)
   {
+    set_time_limit ( 0 );
     $year = (int)$request->getParameter('year');
     if($year != 0)
     {
@@ -121,6 +126,7 @@ class reportesActions extends sfActions
           reportesHandler::CrearReporteDeFondo($year);
         break;
     }
+    $this->redirect("@reportesDeFondo");
     $listado = basicFunction::retrieveFilesArrayOfDirectory($this->realPathFondo);
     $body = $this->getPartial('listadoDirectorio', array("listado" => $listado));
     return $this->renderText(mdBasicFunction::basic_json_response(true, array('body' => $body)));

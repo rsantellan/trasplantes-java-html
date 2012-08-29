@@ -1111,6 +1111,8 @@ class reportesHandler
     $realPath = sfConfig::get('sf_cache_dir')."/reportes/reporteFondoPreTrasplante/";
     MdFileHandler::checkPathFormat($realPath.$fileFolder);
     $objWriter->save($realPath.$fileFolder.$fileName);
+    unset($objWriter);
+    unset($objPHPExcel);
   }
 
 

@@ -12,7 +12,8 @@
 <h1><?php echo __("reportes_Titulo reporte de fondo por anio");?></h1>
 
 <p><?php echo __("reportes_Descripcion reporte de fondo por anio");?></p>
-<select id="reporte_fondo_selector">
+<form action="<?php echo url_for("@reportedDeFondoCrear")?>" method="post">
+<select id="reporte_fondo_selector" name="year">
     <option value="-1"><?php echo __("reportes_generar todo");?></option>
     <option value="0"><?php echo __("reportes_generar completo");?></option>
   <?php while($year >= $start_year): ?>
@@ -20,7 +21,9 @@
     <?php $year--; ?>
   <?php endwhile; ?>
 </select>
-
+  <input type="submit" value="<?php echo __("reporte_generar reporte");?>" />
+</form>
+<hr/>
 <input id="reporte_fondo_button" type="button" value="<?php echo __("reporte_generar reporte");?>" onclick="sendFondoData('<?php echo url_for("@reportedDeFondoCrear")?>')"/>
 <div id="reporte_fondo_image_container" style="display:none">
   <?php echo image_tag("ajax-loader.gif");?>

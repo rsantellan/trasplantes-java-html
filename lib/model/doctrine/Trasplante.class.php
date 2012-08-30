@@ -12,4 +12,25 @@
  */
 class Trasplante extends BaseTrasplante
 {
+  public function preSave($event) {
+    parent::preSave($event);
+    //Obtengo a la persona
+    $paciente = $this->getPacientepretrasplante()->getPacientes();
+    $edad = basicFunction::calculateDifferenceInYears($paciente->getFechaNacimiento(), $this->getFecha());
+    $this->setEdadReceptor($edad);
+    
+  }
+
+  
+  public function postSave($event) 
+  {
+    parent::postSave($event);
+    //Obtengo la fecha.
+    $fecha = $this->getFecha();
+    //Obtengo el pretrasplante
+    $pretrasplante = $this->getPacientepretrasplante();
+    $pretrasplante->setFechaEgreso($fecha);
+    $pretrasplante->save();
+  }
+
 }

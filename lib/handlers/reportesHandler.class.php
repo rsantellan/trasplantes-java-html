@@ -116,8 +116,9 @@ class reportesHandler
     }
     $fileName = 'reporte.xls';
     $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-    $realPath = sfConfig::get('sf_cache_dir')."/reportes/paciente/";
-    $fileFolder = $paciente_id."/";
+    
+    $realPath = sfConfig::get('sf_cache_dir').DIRECTORY_SEPARATOR."reportes".DIRECTORY_SEPARATOR."paciente".DIRECTORY_SEPARATOR;
+    $fileFolder = $paciente_id.DIRECTORY_SEPARATOR;
     //MdFileHandler::checkPathFormat($realPath);
     MdFileHandler::checkPathFormat($realPath.$fileFolder);
     $objWriter->save($realPath.$fileFolder.$fileName);
@@ -304,12 +305,12 @@ class reportesHandler
 
     if(is_null($year))
     {
-      $fileFolder = 'completo/';
+      $fileFolder = 'completo'.DIRECTORY_SEPARATOR;
       $pacientePreTrasplantesIds = preTrasplanteHandler::retrieveAllPacientepreTrasplantesIds();
     }
     else
     {
-      $fileFolder = $year.'/';
+      $fileFolder = $year.DIRECTORY_SEPARATOR;
       $pacientePreTrasplantesIds = preTrasplanteHandler::retrieveAllPacientepreTrasplantesIdsByYear($year);
     }
     $position = 2;
@@ -598,7 +599,7 @@ class reportesHandler
          
     $fileName = 'reporte.xls';
     $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-    $realPath = sfConfig::get('sf_cache_dir')."/reportes/reporteFondo/";
+    $realPath = sfConfig::get('sf_cache_dir').DIRECTORY_SEPARATOR."reportes".DIRECTORY_SEPARATOR."reporteFondo".DIRECTORY_SEPARATOR;
     //MdFileHandler::checkPathFormat($realPath);
     MdFileHandler::checkPathFormat($realPath.$fileFolder);
     $objWriter->save($realPath.$fileFolder.$fileName);

@@ -10,7 +10,7 @@ class reporteFondoRACMVTask extends sfBaseTask
     // ));
 
     $this->addOptions(array(
-      new sfCommandOption('application', null, sfCommandOption::PARAMETER_REQUIRED, 'The application name'),
+      new sfCommandOption('application', null, sfCommandOption::PARAMETER_REQUIRED, 'backend'),
       new sfCommandOption('env', null, sfCommandOption::PARAMETER_REQUIRED, 'The environment', 'dev'),
       new sfCommandOption('connection', null, sfCommandOption::PARAMETER_REQUIRED, 'The connection name', 'doctrine'),
       // add your own options here
@@ -46,20 +46,23 @@ EOF;
     $yearFrom = (int) $options['yearFrom'];
     $year = (int) $options['year'];
     $completo = (boolean) $options['completo'];
+    
+    var_dump($completo);
+    //return false;
+    
     if($completo)
     {
       reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV($yearFrom);
       return;
     }
     
-    while($yearFrom <= $year)
+    while($year <= $yearFrom )
     {
+      var_dump($yearFrom. " from");
+      var_dump($year. " year");
+    
       reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV($yearFrom, $year);
-      $yearFrom++;
+      $year++;
     }
-    
-    
-    
-    
   }
 }

@@ -99,6 +99,12 @@ class reportesActions extends sfActions
     reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV($yearFinish, $year);
     sleep(5);
   }
+
+  public function executeDummy(sfWebRequest $request)
+  {
+    reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV(2011, 2011);
+    exit('termino');
+  }
   
   public function executeProcessFondo(sfWebRequest $request)
   {

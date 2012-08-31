@@ -10,7 +10,7 @@
 </label>
 
 <h1><?php echo __("reportes_Titulo reporte de fondo RACMV por anio");?></h1>
-
+<!--
 <p><?php echo __("reportes_Descripcion reporte de fondo RACMV por anio");?></p>
 <select id="reporte_fondo_selector" name="year">
     <option value="-1"><?php echo __("reportes_generar todo");?></option>
@@ -39,6 +39,7 @@
 </div>
 <hr/>
 
+-->
 <?php
 //$realPath = sfConfig::get('sf_cache_dir')."/reportes/reporteFondo/";
 

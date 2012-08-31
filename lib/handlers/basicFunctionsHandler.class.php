@@ -152,31 +152,29 @@ class basicFunction
       $path = MdFileHandler::checkPathFormat($path);
       if (is_dir($path)) 
       {
-        if ($dh = opendir($path)) 
+        $list = scandir($path);
+        foreach($list as $file)
         {
-          while (($file = readdir($dh)) !== false) 
+          if (is_dir($path . $file) AND $file != '.' AND $file != '..' AND $file != '.svn')
           {
-            if (is_dir($path . $file) AND $file != '.' AND $file != '..' AND $file != '.svn')
+            $aux = array();
+            $aux["name"] = $file;
+            $aux["path"] = $path . $file;
+            $aux["isDir"] = true;
+            $aux["contents"] = self::retrieveFilesArrayOfDirectory($path . $file);
+            array_push($salida, $aux);
+          }
+          else
+          {
+            if($file != '.' AND $file != '..' AND $file != '.svn')
             {
               $aux = array();
               $aux["name"] = $file;
               $aux["path"] = $path . $file;
-              $aux["isDir"] = true;
-              $aux["contents"] = self::retrieveFilesArrayOfDirectory($path . $file);
+              $aux["time"] = filemtime ($path . $file);
+              $aux["isDir"] = false;
+              $aux["contents"] = null;
               array_push($salida, $aux);
-            }
-            else
-            {
-              if($file != '.' AND $file != '..' AND $file != '.svn')
-              {
-                $aux = array();
-                $aux["name"] = $file;
-                $aux["path"] = $path . $file;
-                $aux["time"] = filemtime ($path . $file);
-                $aux["isDir"] = false;
-                $aux["contents"] = null;
-                array_push($salida, $aux);
-              }
             }
           }
         }

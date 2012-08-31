@@ -110,7 +110,7 @@ public class Fachada extends Observable{
 	}
 	
 	private Fachada(){
-		ManejadorBD.getInstancia().conectar("jdbc:mysql://localhost:3306/trasplante","medico","medico");
+		ManejadorBD.getInstancia().conectar("jdbc:mysql://localhost:3306/trasplante","root","root");
 		personas = new ControlPersonas();
 		trasplantes = new ControlTrasplantes();
 		evolucion = new ControlEvolucionTrasplantes();

@@ -1,0 +1,14 @@
+Poniendo a solo.pl como link simbolico en la carpeta:
+/usr/local/bin/
+El mismo seria: 
+ln -s /home/solo.pl solo.pl
+
+Hay que hacer un comando parecido al siguiente.
+solo.pl -port=3802 /home/testing/testScript.sh 
+
+Lo que se esta diciendo es que mientras que se corra el script testScript.sh
+escuche en el puerto 3802 para que se informe si hay alguien mas corriendo.
+
+Si ese puero ya se encuentra utilizado nunca se va a poder correr el programa.
+Por lo tanto hay que verificar que este abierto, con el commando nmap.
+

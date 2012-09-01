@@ -12,4 +12,24 @@
  */
 class Version extends BaseVersion
 {
+    
+    public function doProgramUpdate()
+    {
+        if(updatesHandler::versionExists($this->getNombre()))
+        {
+            if($this->getNombre() == updatesHandler::PRIMERA)
+            {
+                return $this->doFirstUpdate();
+            }
+        }
+        return false;
+    }
+    
+    private function doFirstUpdate()
+    {
+        //Como no hay que actualizar nada lo que tiene que pasar es
+        //que devuelva true
+        
+        return true;
+    }
 }

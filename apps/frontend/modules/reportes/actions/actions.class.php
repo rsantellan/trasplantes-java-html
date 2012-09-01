@@ -102,7 +102,7 @@ class reportesActions extends sfActions
 
   public function executeDummy(sfWebRequest $request)
   {
-    reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV(2011, 2011);
+    reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV(2011);
     exit('termino');
   }
   

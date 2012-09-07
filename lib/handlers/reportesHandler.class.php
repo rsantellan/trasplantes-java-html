@@ -11,7 +11,7 @@ class reportesHandler
             ->setLastModifiedBy("Rodrigo Santellan")
             ->setTitle("Office 2007 XLSX Document")
             ->setSubject("Office 2007 XLSX Document")
-            ->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.");
+            ->setDescription("Reporte");
     return $objPHPExcel;
   }
 
@@ -207,7 +207,6 @@ class reportesHandler
   public static function CrearReporteDeFondo($year = null)
   {
     $objPHPExcel = self::createPHPEXCELSheet();
-
     $objPHPExcel->setActiveSheetIndex(0);
     $index = 0;
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");

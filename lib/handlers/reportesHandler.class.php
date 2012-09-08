@@ -206,6 +206,7 @@ class reportesHandler
 
   public static function CrearReporteDeFondo($year = null)
   {
+    throw new Exception("Reporte obsoleto utilizar el de reportes2Handler que esta optimizado", 2001);
     $objPHPExcel = self::createPHPEXCELSheet();
     $objPHPExcel->setActiveSheetIndex(0);
     $index = 0;

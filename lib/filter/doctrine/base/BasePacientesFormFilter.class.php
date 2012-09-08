@@ -22,6 +22,7 @@ abstract class BasePacientesFormFilter extends BaseFormFilterDoctrine
       'sexo'             => new sfWidgetFormChoice(array('choices' => array('' => '', 'M' => 'M', 'F' => 'F'))),
       'fecha_nacimiento' => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'fecha_dialisis'   => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'sin_dialisis'     => new sfWidgetFormChoice(array('choices' => array('' => '', 'NO' => 'NO', 'SI' => 'SI'))),
       'nefropatia_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Nefropatia'), 'add_empty' => true)),
       'grupo_sanguineo'  => new sfWidgetFormChoice(array('choices' => array('' => '', 'A' => 'A', 'B' => 'B', 'AB' => 'AB', 'O' => 'O'))),
     ));
@@ -36,6 +37,7 @@ abstract class BasePacientesFormFilter extends BaseFormFilterDoctrine
       'sexo'             => new sfValidatorChoice(array('required' => false, 'choices' => array('M' => 'M', 'F' => 'F'))),
       'fecha_nacimiento' => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDateTime(array('required' => false)))),
       'fecha_dialisis'   => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDateTime(array('required' => false)))),
+      'sin_dialisis'     => new sfValidatorChoice(array('required' => false, 'choices' => array('NO' => 'NO', 'SI' => 'SI'))),
       'nefropatia_id'    => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Nefropatia'), 'column' => 'id')),
       'grupo_sanguineo'  => new sfValidatorChoice(array('required' => false, 'choices' => array('A' => 'A', 'B' => 'B', 'AB' => 'AB', 'O' => 'O'))),
     ));
@@ -67,6 +69,7 @@ abstract class BasePacientesFormFilter extends BaseFormFilterDoctrine
       'sexo'             => 'Enum',
       'fecha_nacimiento' => 'Date',
       'fecha_dialisis'   => 'Date',
+      'sin_dialisis'     => 'Enum',
       'nefropatia_id'    => 'ForeignKey',
       'grupo_sanguineo'  => 'Enum',
     );

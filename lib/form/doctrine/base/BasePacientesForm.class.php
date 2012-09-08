@@ -25,6 +25,7 @@ abstract class BasePacientesForm extends BaseFormDoctrine
       'sexo'             => new sfWidgetFormChoice(array('choices' => array('M' => 'M', 'F' => 'F'))),
       'fecha_nacimiento' => new sfWidgetFormDate(),
       'fecha_dialisis'   => new sfWidgetFormDate(),
+      'sin_dialisis'     => new sfWidgetFormChoice(array('choices' => array('NO' => 'NO', 'SI' => 'SI'))),
       'nefropatia_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Nefropatia'), 'add_empty' => false)),
       'grupo_sanguineo'  => new sfWidgetFormChoice(array('choices' => array('A' => 'A', 'B' => 'B', 'AB' => 'AB', 'O' => 'O'))),
     ));
@@ -40,6 +41,7 @@ abstract class BasePacientesForm extends BaseFormDoctrine
       'sexo'             => new sfValidatorChoice(array('choices' => array(0 => 'M', 1 => 'F'))),
       'fecha_nacimiento' => new sfValidatorDate(),
       'fecha_dialisis'   => new sfValidatorDate(),
+      'sin_dialisis'     => new sfValidatorChoice(array('choices' => array(0 => 'NO', 1 => 'SI'), 'required' => false)),
       'nefropatia_id'    => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Nefropatia'))),
       'grupo_sanguineo'  => new sfValidatorChoice(array('choices' => array(0 => 'A', 1 => 'B', 2 => 'AB', 3 => 'O'))),
     ));

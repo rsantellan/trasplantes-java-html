@@ -15,6 +15,7 @@
  * @property enum $sexo
  * @property date $fecha_nacimiento
  * @property date $fecha_dialisis
+ * @property enum $sin_dialisis
  * @property integer $nefropatia_id
  * @property enum $grupo_sanguineo
  * @property Nefropatia $Nefropatia
@@ -33,6 +34,7 @@
  * @method enum                getSexo()                   Returns the current record's "sexo" value
  * @method date                getFechaNacimiento()        Returns the current record's "fecha_nacimiento" value
  * @method date                getFechaDialisis()          Returns the current record's "fecha_dialisis" value
+ * @method enum                getSinDialisis()            Returns the current record's "sin_dialisis" value
  * @method integer             getNefropatiaId()           Returns the current record's "nefropatia_id" value
  * @method enum                getGrupoSanguineo()         Returns the current record's "grupo_sanguineo" value
  * @method Nefropatia          getNefropatia()             Returns the current record's "Nefropatia" value
@@ -50,6 +52,7 @@
  * @method Pacientes           setSexo()                   Sets the current record's "sexo" value
  * @method Pacientes           setFechaNacimiento()        Sets the current record's "fecha_nacimiento" value
  * @method Pacientes           setFechaDialisis()          Sets the current record's "fecha_dialisis" value
+ * @method Pacientes           setSinDialisis()            Sets the current record's "sin_dialisis" value
  * @method Pacientes           setNefropatiaId()           Sets the current record's "nefropatia_id" value
  * @method Pacientes           setGrupoSanguineo()         Sets the current record's "grupo_sanguineo" value
  * @method Pacientes           setNefropatia()             Sets the current record's "Nefropatia" value
@@ -130,6 +133,17 @@ abstract class BasePacientes extends sfDoctrineRecord
              'type' => 'date',
              'notnull' => true,
              'length' => 25,
+             ));
+        $this->hasColumn('sin_dialisis', 'enum', 2, array(
+             'type' => 'enum',
+             'length' => 2,
+             'values' => 
+             array(
+              0 => 'NO',
+              1 => 'SI',
+             ),
+             'notnull' => true,
+             'default' => 'NO',
              ));
         $this->hasColumn('nefropatia_id', 'integer', 4, array(
              'type' => 'integer',

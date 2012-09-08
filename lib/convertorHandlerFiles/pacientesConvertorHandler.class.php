@@ -47,6 +47,10 @@ class pacientesConvertorHandler
           $paciente->setNumFnr($NUM_FNR);
           $paciente->setRaza($RAZA);
           $paciente->setFechaNacimiento($FECHA_NACIMIENTO);
+		  if($FECHA_DIALISIS == "1800-01-01")
+		  {
+			$paciente->setSinDialisis("SI");
+		  }
           $paciente->setFechaDialisis($FECHA_DIALISIS);
           $paciente->setNefropatiaId($NEFROPATIA);
           $paciente->setGrupoSanguineo($GRUPO_SANG);

@@ -36,6 +36,12 @@ Pacientes:
     fecha_dialisis:
       type: date(25)
       notnull: true
+    sin_dialisis:
+      type: enum
+      length: 2
+      values: ['NO','SI']
+      notnull: true
+      default: 'NO'
     nefropatia_id:
       type: integer(4)
       notnull: true

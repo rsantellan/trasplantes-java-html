@@ -17,6 +17,79 @@ class ConsultaTable extends Doctrine_Table
         return Doctrine_Core::getTable('Consulta');
     }
     
+	public function retrieveConsultaTotalReporteDeFondo($year = NULL)
+	{
+	  $sql = "select 
+				p.id AS P_ID, 
+				ppt.id AS PPT_ID, 
+				t.id AS T_ID, 
+				p.fecha_dialisis AS FECHA_DIALISIS, 
+				t.fecha AS T_FECHA, 
+				'THE' AS CENTRO, 
+				ppt.the AS THE, 
+				ppt.diabetes AS DIABETES, 
+				n.nombre AS NEFROPATIA, 
+				MONTH(t.fecha) AS MES_TRASPLANTE, 
+				YEAR(t.fecha) AS FECHA_TRASPLANTE, 
+				t.edad_receptor AS EDAD_RECEPTOR, 
+				p.sexo AS SEXO, 
+				ppt.meses_en_lista AS MESES_EN_LISTA, 
+				d.edad_donante AS EDAD_DONANTE, 
+				d.tipo_donante AS TIPO_DONANTE, 
+				dcm.nombre AS CAUSA_MUERTE_DONANTE, 
+				t.numero_compatibilidad_ab AS NUMERO_COMPATIBILIDAD_AB, 
+				t.numero_compatibilidad_dr AS NUMERO_COMPATIBILIDAD_DR, 
+				t.t_isq_fria_hs AS T_ISQ_FRIA_HS 
+			  from 
+				trasplante t, 
+				paciente_pre_trasplante ppt, 
+				pacientes p, 
+				nefropatia n, 
+				donante d, 
+				donante_causa_muerte dcm 
+			  where 
+				t.paciente_pre_trasplante_id = ppt.id 
+			  and 
+				ppt.paciente_id = p.id 
+			  and 
+				n.id = p.nefropatia_id 
+			  and 
+				t.donante_id = d.id 
+			  and 
+				dcm.id = d.donante_causa_muerte_id ";
+		$params = array();
+		if(!is_null($year))
+		{
+		  $sql .= "and YEAR(t.fecha) = ?";
+		  $params[] = $year;
+		}
+	
+		$sql .= " order by t.fecha asc";
+	  $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
+      return $conn->fetchAssoc($sql, $params);
+	}
+	
+	public function retrievePacienteCausaDeMuerte($paciente_id)
+	{
+	  $sql = "select pm.fecha_muerte AS FECHA_MUERTE, pm.transplante_funcionando AS TRASPLANTE_FUNCIONANDO, pcm.nombre AS CAUSA_MUERTE from pacientes p, paciente_muerte pm, paciente_causa_muerte pcm where p.id = pm.paciente_id and pm.causa_muerte_id = pcm.id and p.id = ? order by p.id";
+	  $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
+      return $conn->fetchAssoc($sql, array($paciente_id));
+	}
+	
+	public function retrievePreTrasplantePerdidaInjerto($pre_trasplante_id)
+	{
+	  $sql = "select ppi.fecha_perdida, pcpi.nombre from paciente_pre_trasplante ppt, paciente_perdida_injerto ppi,  paciente_causa_perdida_injerto pcpi where ppt.id = ppi.paciente_pre_trasplante_id and pcpi.id = ppi.paciente_causa_perdida_injerto_id and ppt.id = ?";
+	  $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
+      return $conn->fetchAssoc($sql, array($pre_trasplante_id));
+	}
+	
+	public function retrieveTrasplanteInducciones($trasplante_id)
+	{
+	  $sql = "select i.nombre AS NOMBRE from  induccion i, trasplante t, trasplante_induccion ti where ti.trasplante_id = t.id and i.id = ti.induccion_id and t.id = ?";
+	  $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
+      return $conn->fetchAssoc($sql, array($trasplante_id));
+	}
+	
     public function retrieveGermenesInfeccionesData($germen = null, $infeccion = null)
     {
       $sql = "SELECT  

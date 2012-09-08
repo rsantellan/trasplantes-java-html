@@ -131,7 +131,6 @@ abstract class BasePacientes extends sfDoctrineRecord
              ));
         $this->hasColumn('fecha_dialisis', 'date', 25, array(
              'type' => 'date',
-             'notnull' => true,
              'length' => 25,
              ));
         $this->hasColumn('sin_dialisis', 'enum', 2, array(

@@ -35,7 +35,6 @@ Pacientes:
       notnull: true
     fecha_dialisis:
       type: date(25)
-      notnull: true
     sin_dialisis:
       type: enum
       length: 2

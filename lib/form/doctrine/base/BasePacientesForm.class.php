@@ -40,7 +40,7 @@ abstract class BasePacientesForm extends BaseFormDoctrine
       'raza'             => new sfValidatorChoice(array('choices' => array(0 => 'Blanca', 1 => 'Negra', 2 => 'Asiática', 3 => 'Indio americana'))),
       'sexo'             => new sfValidatorChoice(array('choices' => array(0 => 'M', 1 => 'F'))),
       'fecha_nacimiento' => new sfValidatorDate(),
-      'fecha_dialisis'   => new sfValidatorDate(),
+      'fecha_dialisis'   => new sfValidatorDate(array('required' => false)),
       'sin_dialisis'     => new sfValidatorChoice(array('choices' => array(0 => 'NO', 1 => 'SI'), 'required' => false)),
       'nefropatia_id'    => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Nefropatia'))),
       'grupo_sanguineo'  => new sfValidatorChoice(array('choices' => array(0 => 'A', 1 => 'B', 2 => 'AB', 3 => 'O'))),

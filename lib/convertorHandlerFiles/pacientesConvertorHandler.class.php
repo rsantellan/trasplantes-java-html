@@ -50,6 +50,7 @@ class pacientesConvertorHandler
 		  if($FECHA_DIALISIS == "1800-01-01")
 		  {
 			$paciente->setSinDialisis("SI");
+			$FECHA_DIALISIS = null;
 		  }
           $paciente->setFechaDialisis($FECHA_DIALISIS);
           $paciente->setNefropatiaId($NEFROPATIA);

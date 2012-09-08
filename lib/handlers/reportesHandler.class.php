@@ -3,7 +3,7 @@
 class reportesHandler 
 {
 
-  private static function createPHPEXCELSheet()
+  public static function createPHPEXCELSheet()
   {
     $objPHPExcel = new PHPExcel();
     $objPHPExcel->getProperties()

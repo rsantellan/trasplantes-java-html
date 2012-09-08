@@ -153,6 +153,26 @@
 	</div>		
   </div>
   <div class="form_block">
+	<h4><?php echo __("paciente_Se omitio dialisis");?></h4>
+	<div class="form_block_field<?php if($form['sin_dialisis']->hasError()):?> error_msg<?php endif; ?>">
+	  <?php echo $form['sin_dialisis']->render() ?>
+	</div>
+	<div>
+		<?php 
+		if($form['sin_dialisis']->hasError()): 
+		?>  
+	  <div class="clear"></div>
+	  <label>
+		<?php
+		  $msg_error = __("paciente_sin dialisis").': '.__("paciente_error ".$form['sin_dialisis']->getError());
+		  echo $msg_error;  
+		endif; 
+		?>
+	  </label>
+	</div>	
+  </div>
+  
+  <div class="form_block">
 	<h4><?php echo __("paciente_Fecha de dialisis");?></h4>
 	<a href="javascript:void(0)" class="simple_tip_container">
 		<?php echo image_tag("help-icon2.png", array("width" => 24)); ?>

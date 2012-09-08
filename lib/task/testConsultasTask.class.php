@@ -34,21 +34,50 @@ EOF;
     $connection = $databaseManager->getDatabase($options['connection'])->getConnection();
 
     // add your code here
+    
+    var_dump(time());
+    var_dump(memory_get_peak_usage());
+    reportesHandler::CrearReporteDeFondo();
+    var_dump(time());
+    var_dump(memory_get_peak_usage());
+    return true;
+    
     $datos = Doctrine::getTable('Consulta')->retrieveConsultaTotalReporteDeFondo();
     foreach($datos as $row)
     {
       $pacienteMuerte = Doctrine::getTable('Consulta')->retrievePacienteCausaDeMuerte($row["P_ID"]);
       $preTrasplantePerdida = Doctrine::getTable('Consulta')->retrievePreTrasplantePerdidaInjerto($row["PPT_ID"]);
       $trasplanteInducciones = Doctrine::getTable('Consulta')->retrieveTrasplanteInducciones($row["T_ID"]);
-      
-      $meses_en_dialisis = basicFunction::calculateDifferenceInMonth($row["FECHA_DIALISIS"], $row["T_FECHA"]);
-      
-      var_dump($meses_en_dialisis);
+      $meses_en_dialisis = "N/A";
+      if($row["SIN_DIALISIS"] == "NO")
+      {
+        $meses_en_dialisis = basicFunction::calculateDifferenceInMonth($row["FECHA_DIALISIS"], $row["T_FECHA"]);
+      }
+      //var_dump($meses_en_dialisis);
       //var_dump($row);
       //var_dump($pacienteMuerte);
       //var_dump($preTrasplantePerdida);
-      //var_dump($trasplanteInducciones);
+      var_dump($trasplanteInducciones);
+      
+      $estado = "3. VIVO EN TR";
+      if(count($pacienteMuerte) > 0)
+      {
+        $estado = "2: FALLECIO EN TR";
+      }
+      else
+      {
+        if(count($preTrasplantePerdida) > 0)
+        {
+          $estado = "1: EN DIALISIS";
+        }
+      }
+      //var_dump($estado);
+      unset($pacienteMuerte);
+      unset($preTrasplantePerdida);
+      unset($trasplanteInducciones);
       
     }
+    
+    //reportes2Handler::CrearReporteDeFondo(2002);
   }
 }

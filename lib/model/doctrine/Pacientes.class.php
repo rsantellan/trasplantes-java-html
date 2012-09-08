@@ -12,4 +12,12 @@
  */
 class Pacientes extends BasePacientes
 {
+  public function preSave($event) {
+	parent::preSave($event);
+	if(is_null($this->getFechaDialisis()))
+	{
+	  $this->setSinDialisis("SI");
+	}
+  }
+
 }

@@ -12,7 +12,7 @@ class PacientesForm extends BasePacientesForm {
 
     public function configure() {
         unset($this["the"]);
-        $years = range(1920, date('Y'));
+        //$years = range(1920, date('Y'));
         $years = range(1920, date('Y'));
         $years = (array_combine($years, $years));
 
@@ -28,15 +28,17 @@ class PacientesForm extends BasePacientesForm {
 
 
         //post validator check to make sure end date > start date
-        $this->validatorSchema->setPostValidator(
+        /*
+		$this->validatorSchema->setPostValidator(
                 new sfValidatorAnd(array(
                     new sfValidatorSchemaCompare('fecha_nacimiento', '<', 'fecha_dialisis',
                             array('throw_global_error' => true),
-                            array('invalid' => 'La fecha de nacimiento ("%left_field%") no puede ser mayor que la de dialisis ("%right_field%")<br />')
+                            array('invalid' => 'La fecha de nacimiento ("%fecha_nacimiento%") no puede ser mayor que la de dialisis ("%fecha_dialisis%")<br />')
                         )
                     )
                 )
         );
+		*/
     }
 
 }

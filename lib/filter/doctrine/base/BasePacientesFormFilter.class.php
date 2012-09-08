@@ -21,7 +21,7 @@ abstract class BasePacientesFormFilter extends BaseFormFilterDoctrine
       'raza'             => new sfWidgetFormChoice(array('choices' => array('' => '', 'Blanca' => 'Blanca', 'Negra' => 'Negra', 'Asiática' => 'Asiática', 'Indio americana' => 'Indio americana'))),
       'sexo'             => new sfWidgetFormChoice(array('choices' => array('' => '', 'M' => 'M', 'F' => 'F'))),
       'fecha_nacimiento' => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
-      'fecha_dialisis'   => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'fecha_dialisis'   => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
       'sin_dialisis'     => new sfWidgetFormChoice(array('choices' => array('' => '', 'NO' => 'NO', 'SI' => 'SI'))),
       'nefropatia_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Nefropatia'), 'add_empty' => true)),
       'grupo_sanguineo'  => new sfWidgetFormChoice(array('choices' => array('' => '', 'A' => 'A', 'B' => 'B', 'AB' => 'AB', 'O' => 'O'))),

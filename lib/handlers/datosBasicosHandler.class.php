@@ -25,10 +25,10 @@ class datosBasicosHandler {
   {
       sfContext::getInstance()->getConfiguration()->loadHelpers(array('I18N'));
       return array(
-          0 => __("cmv_emfermedad"),
-          1 => __("cmv_tratamiento anticipado"),
-          2 => __("cmv_sindrome viral"),
-          3 => __("cmv_profilaxis")
+          cmv::EMFERMEDAD => __("cmv_emfermedad"),
+          cmv::TRATAMIENTOANTICIPADO => __("cmv_tratamiento anticipado"),
+          cmv::SINDROMEVIRAL => __("cmv_sindrome viral"),
+          cmv::PROFILAXIS => __("cmv_profilaxis")
       );
   }
   

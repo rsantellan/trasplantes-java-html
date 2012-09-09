@@ -167,18 +167,18 @@ class cmvConvertorHandler
           $Droga = mysql_result($result,$i,"Droga");
           $diasTm = mysql_result($result,$i,"diasTm");          
           $EfectoSecundario = mysql_result($result,$i,"EfectoSecundario");
-          $tipo = 0;
+          $tipo = cmv::EMFERMEDAD;
           if($TM == 1)
           {
-            $tipo = 1;
+            $tipo = cmv::TRATAMIENTOANTICIPADO;
           }
           if($SindromeViral == 1)
           {
-            $tipo = 2;
+            $tipo = cmv::SINDROMEVIRAL;
           }
           if($Profilaxis == 1)
           {
-            $tipo = 3;
+            $tipo = cmv::PROFILAXIS;
           }
           //echo 'el id del transplante en lo viejo es : '.$Trasplante."--\n";
           

@@ -12,4 +12,12 @@
  */
 class Cmv extends BaseCmv
 {
+  //Tipo emfermedad
+  const EMFERMEDAD = 0;
+  //tratamiento anticipado
+  const TRATAMIENTOANTICIPADO = 1;
+  // sindrome viral
+  const SINDROMEVIRAL = 2;
+  //profilaxis
+  const PROFILAXIS = 3;
 }

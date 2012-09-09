@@ -95,6 +95,82 @@ class ConsultaTable extends Doctrine_Table
       return $conn->fetchAssoc($sql, array($trasplante_id));
 	}
 	
+	public function retrieveConsultaPreTrasplanteRACMV($year = NULL)
+	{
+	  $sql = "select 
+				p.id AS P_ID, 
+				ppt.id AS PPT_ID, 
+				t.id AS T_ID, 
+				p.fecha_dialisis AS FECHA_DIALISIS,
+				p.sin_dialisis AS SIN_DIALISIS, 
+				t.fecha AS T_FECHA, 
+				'THE' AS CENTRO, 
+				ppt.the AS THE, 
+				ppt.diabetes AS DIABETES, 
+				n.nombre AS NEFROPATIA, 
+				MONTH(t.fecha) AS MES_TRASPLANTE, 
+				YEAR(t.fecha) AS FECHA_TRASPLANTE,
+				MONTH(t.fecha_alta) AS MES_ALTA, 
+				YEAR(t.fecha_alta) AS FECHA_ALTA,
+				t.edad_receptor AS EDAD_RECEPTOR, 
+				p.sexo AS SEXO, 
+				ppt.meses_en_lista AS MESES_EN_LISTA, 
+				d.edad_donante AS EDAD_DONANTE, 
+				d.sexo_donante AS SEXO_DONANTE, 
+				d.tipo_donante AS TIPO_DONANTE, 
+				dcm.nombre AS CAUSA_MUERTE_DONANTE, 
+				t.numero_incompatibilidad_ab AS NUMERO_INCOMPATIBILIDAD_AB, 
+				t.numero_incompatibilidad_dr AS NUMERO_INCOMPATIBILIDAD_DR,  
+				t.t_isq_fria_hs AS T_ISQ_FRIA_HS,
+				t.t_isq_fria_min AS T_ISQ_FRIA_MIN,
+				ppt.hta AS HTA,
+				ppt.obesidad AS OBESIDAD,
+				ppt.imc AS IMC,
+				ppt.dislipemia AS DISLIPEMIA,
+				ppt.tabaquismo AS TABAQUISMO 
+			  from 
+				trasplante t, 
+				paciente_pre_trasplante ppt, 
+				pacientes p, 
+				nefropatia n, 
+				donante d, 
+				donante_causa_muerte dcm 
+			  where 
+				t.paciente_pre_trasplante_id = ppt.id 
+			  and 
+				ppt.paciente_id = p.id 
+			  and 
+				n.id = p.nefropatia_id 
+			  and 
+				t.donante_id = d.id 
+			  and 
+				dcm.id = d.donante_causa_muerte_id ";
+		$params = array();
+		if(!is_null($year))
+		{
+		  $sql .= "and YEAR(t.fecha) = ?";
+		  $params[] = $year;
+		}
+	
+		$sql .= " order by t.fecha asc";
+	  $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
+      return $conn->fetchAssoc($sql, $params);
+	}
+	
+	public function retrieveTrasplanteInjertoEvolucionConRA($trasplante_id)
+	{
+	  $sql = "SELECT fecha AS FECHA, en_trasplante AS EN_TRASPLANTE FROM injerto_evolucion WHERE ra =1 AND trasplante_id = ?";
+	  $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
+      return $conn->fetchAssoc($sql, array($trasplante_id));
+	}
+	
+	public function retrieveTrasplanteCmvConEmfermedadSindromeViral($trasplante_id)
+	{
+	  $sql = "SELECT id, fecha, trasplante_id, cmv_diagnostico_id, tipo, cmv_droga_id, dias_tratamiento, efecto_secundario FROM cmv WHERE tipo =0 OR tipo =2 AND trasplante_id = ?";
+	  $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
+      return $conn->fetchAssoc($sql, array($trasplante_id));
+	}
+	
     public function retrieveGermenesInfeccionesData($germen = null, $infeccion = null)
     {
       $sql = "SELECT  

@@ -37,12 +37,12 @@ EOF;
     
     var_dump(time());
     var_dump(memory_get_peak_usage());
-    reportesHandler::CrearReporteDeFondo();
+    reportes2Handler::CrearReporteDeFondoPreTrasplanteRACMV(2012);
     var_dump(time());
     var_dump(memory_get_peak_usage());
     return true;
     
-    $datos = Doctrine::getTable('Consulta')->retrieveConsultaTotalReporteDeFondo();
+    $datos = Doctrine::getTable('Consulta')->retrieveConsultaPreTrasplanteRACMV();
     foreach($datos as $row)
     {
       $pacienteMuerte = Doctrine::getTable('Consulta')->retrievePacienteCausaDeMuerte($row["P_ID"]);
@@ -54,10 +54,10 @@ EOF;
         $meses_en_dialisis = basicFunction::calculateDifferenceInMonth($row["FECHA_DIALISIS"], $row["T_FECHA"]);
       }
       //var_dump($meses_en_dialisis);
-      //var_dump($row);
+      var_dump($row);
       //var_dump($pacienteMuerte);
       //var_dump($preTrasplantePerdida);
-      var_dump($trasplanteInducciones);
+      //var_dump($trasplanteInducciones);
       
       $estado = "3. VIVO EN TR";
       if(count($pacienteMuerte) > 0)

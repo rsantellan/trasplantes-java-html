@@ -37,7 +37,7 @@ EOF;
     
     var_dump(time());
     var_dump(memory_get_peak_usage());
-    reportes2Handler::CrearReporteDeFondoPreTrasplanteRACMV(2012);
+    reportes2Handler::CrearReporteDeFondoPreTrasplanteRACMV(2008);
     var_dump(time());
     var_dump(memory_get_peak_usage());
     return true;

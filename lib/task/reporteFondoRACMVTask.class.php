@@ -47,21 +47,18 @@ EOF;
     $year = (int) $options['year'];
     $completo = (boolean) $options['completo'];
     
-    var_dump($completo);
+    //var_dump($completo);
     //return false;
     
     if($completo)
     {
-      reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV($yearFrom);
+      reportes2Handler::CrearReporteDeFondoPreTrasplanteRACMV($yearFrom);
       return;
     }
     
     while($year <= $yearFrom )
     {
-      var_dump($yearFrom. " from");
-      var_dump($year. " year");
-    
-      reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV($yearFrom, $year);
+      reportes2Handler::CrearReporteDeFondoPreTrasplanteRACMV($yearFrom, $year);
       $year++;
     }
   }

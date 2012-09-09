@@ -607,7 +607,7 @@ class reportesHandler
 
   public static function CrearReporteDeFondoPreTrasplanteRACMV($situationYear = 2008, $year = null)
   {
-  
+    throw new Exception("Reporte obsoleto utilizar el de reportes2Handler que esta optimizado", 2001);
 	
     $objPHPExcel = self::createPHPEXCELSheet();
 

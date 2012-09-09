@@ -522,6 +522,9 @@ class reportes2Handler
       $pacienteMuerte = Doctrine::getTable('Consulta')->retrievePacienteCausaDeMuerte($row["P_ID"]);
       $preTrasplantePerdida = Doctrine::getTable('Consulta')->retrievePreTrasplantePerdidaInjerto($row["PPT_ID"]);
       $trasplanteInducciones = Doctrine::getTable('Consulta')->retrieveTrasplanteInducciones($row["T_ID"]);
+      $trasplanteInjertoEvolucionRa = Doctrine::getTable('Consulta')->retrieveTrasplanteInjertoEvolucionConRA($row["T_ID"]);
+      $trasplanteCmv = Doctrine::getTable('Consulta')->retrieveTrasplanteCmvConEmfermedadSindromeViral($row["T_ID"]);
+      
       $meses_en_dialisis = "N/A";
       if($row["SIN_DIALISIS"] == "NO")
       {
@@ -529,15 +532,28 @@ class reportes2Handler
       }
       
       $estado = "3. VIVO EN TR";
+      $finish_date_string = $year."-12-31";
+      $finish_date = new DateTime($finish_date_string);
+      $is_death = false;
       if(count($pacienteMuerte) > 0)
       {
-        $estado = "2: FALLECIO EN TR";
+        $death_date = new DateTime($pacienteMuerte[0]["FECHA_MUERTE"]);
+        if($death_date < $finish_date)
+        {
+          $is_death = true;
+          $estado = "2: FALLECIO EN TR";
+        }
+        unset($death_date);
       }
-      else
+      if(!$is_death)
       {
         if(count($preTrasplantePerdida) > 0)
         {
-          $estado = "1: EN DIALISIS";
+          $lost_date = new DateTime($preTrasplantePerdida[0]["fecha_perdida"]);
+          if($lost_date < $finish_date)
+          {
+            $estado = "1: EN DIALISIS";
+          }
         }
       }
       
@@ -767,10 +783,71 @@ class reportes2Handler
       $objPHPExcel->getActiveSheet()
               ->setCellValue($letter, $row["DIABETES"]);                                  
 
+      $ra_rechazo = "FALSO";
+      $ra_fecha = " - ";
+      if(count($trasplanteInjertoEvolucionRa) > 0)
+      {
+        $aux = array_pop($trasplanteInjertoEvolucionRa);
+        $ra_rechazo = "VERDADERO";
+        $ra_fecha = $aux["FECHA"];
+      }
+      // RA Rechazo Agudo
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $ra_rechazo);
+
+      // RA Fecha Rechazo Agudo
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $ra_fecha);
+
+      $cmvIndex = 1;
+      $cmvCounter = 0;
+      $textoCmv = "";
+      $textoCmvFecha = "";
+      
+      foreach($trasplanteCmv as $mCmv)
+      {
+        $textoCmv .= $cmvIndex.": ";
+        if($mCmv["TIPO"] == "0")
+        {
+          $textoCmv .= "Enfermedad ";
+        }
+        if($mCmv["TIPO"] == "2")
+        {
+          $textoCmv .= "Sindrome Viral";
+        }
+        $textoCmvFecha .= $cmvIndex.": ".$mCmv["FECHA"];
+        
+        if($cmvCounter < count($trasplanteCmv) -1)
+        {
+          $textoCmv .= "\n";
+          $textoCmvFecha .= "\n";
+        }
+        
+        $cmvCounter ++;
+        $cmvIndex ++;
+      }
+      // CMV
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $textoCmv);
+
+      // CMV Fecha
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $textoCmvFecha);
+                            
       $position++;         
       unset($pacienteMuerte);
       unset($preTrasplantePerdida);
-      unset($trasplanteInducciones);          
+      unset($trasplanteInducciones);
+      unset($trasplanteCmv);
+      unset($trasplanteInjertoEvolucionRa);          
     }
     
     $fileName = 'reporte.xls';

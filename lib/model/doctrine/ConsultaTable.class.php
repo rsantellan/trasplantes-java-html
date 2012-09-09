@@ -166,9 +166,9 @@ class ConsultaTable extends Doctrine_Table
 	
 	public function retrieveTrasplanteCmvConEmfermedadSindromeViral($trasplante_id)
 	{
-	  $sql = "SELECT id, fecha, trasplante_id, cmv_diagnostico_id, tipo, cmv_droga_id, dias_tratamiento, efecto_secundario FROM cmv WHERE tipo =0 OR tipo =2 AND trasplante_id = ?";
+	  $sql = "SELECT fecha AS FECHA, cmv_diagnostico_id AS CMV_DIAGNOSTICO_ID, tipo AS TIPO, cmv_droga_id AS CMV_DROGA_ID, dias_tratamiento AS DIAS_TRATAMIENTO, efecto_secundario AS EFECTO_SECUNDARIO FROM cmv WHERE trasplante_id = ? AND tipo =0 UNION SELECT fecha AS FECHA, cmv_diagnostico_id AS CMV_DIAGNOSTICO_ID, tipo AS TIPO, cmv_droga_id AS CMV_DROGA_ID, dias_tratamiento AS DIAS_TRATAMIENTO, efecto_secundario AS EFECTO_SECUNDARIO FROM cmv WHERE trasplante_id = ? AND tipo =2";
 	  $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
-      return $conn->fetchAssoc($sql, array($trasplante_id));
+      return $conn->fetchAssoc($sql, array($trasplante_id,$trasplante_id));
 	}
 	
     public function retrieveGermenesInfeccionesData($germen = null, $infeccion = null)

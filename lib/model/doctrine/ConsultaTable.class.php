@@ -180,9 +180,9 @@ class ConsultaTable extends Doctrine_Table
                   trasplante.fecha AS FECHA,
                   trasplante_complicaciones_infecciosas.fecha AS FECHA_COMPLICACION,
                   medicaciones.nombre AS MEDICACION,
-                  trasplante_complicaciones_infecciosas.internado AS INTERNADO,
+                  IF( trasplante_complicaciones_infecciosas.internado =1,  \"Si\",  \"No\" ) AS INTERNADO,
                   trasplante_complicaciones_infecciosas.dias_de_internacion AS DIAS_INTERNADO,
-                  trasplante_complicaciones_infecciosas.evolucion AS EN_EVOLUCION,
+                  IF( trasplante_complicaciones_infecciosas.evolucion =1,  \"Si\",  \"No\" ) AS EN_EVOLUCION,
                   infeccion.nombre AS INFECCION,
                   germenes.nombre AS GERMEN
                 FROM
@@ -228,27 +228,50 @@ class ConsultaTable extends Doctrine_Table
 
       (null, 'consultaPacientesNefropatiasPBR', 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, n.nombre as NEFROPATIA, pp.pbr as PBR FROM pacientes p, paciente_pre_trasplante pp, nefropatia n, trasplante t where p.id = pp.paciente_id AND p.nefropatia_id = n.id AND pp.id = t.paciente_pre_trasplante_id  ORDER BY pp.pbr'),
 
-      (null, 'consultaPacientesTabaquismo', 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, pp.tabaquismo as TABAQUISMO FROM pacientes p, paciente_pre_trasplante pp, trasplante t where p.id = pp.paciente_id AND pp.id = t.paciente_pre_trasplante_id and pp.tabaquismo = true'),
+      (null, 'consultaPacientesTabaquismo', 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, IF( pp.tabaquismo =1,  \"Si\",  \"No\" ) AS TABAQUISMO FROM pacientes p, paciente_pre_trasplante pp, trasplante t where p.id = pp.paciente_id AND pp.id = t.paciente_pre_trasplante_id and pp.tabaquismo = true'),
 
-      (null, 'consultaIMCPacientesConObesidad', 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, pp.obesidad as OBESIDAD FROM pacientes p, paciente_pre_trasplante pp, trasplante t where p.id = pp.paciente_id AND pp.id = t.paciente_pre_trasplante_id and pp.obesidad = true'),
+      (null, 'consultaIMCPacientesConObesidad', 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, IF( pp.obesidad =1,  \"Si\",  \"No\" ) AS OBESIDAD FROM pacientes p, paciente_pre_trasplante pp, trasplante t where p.id = pp.paciente_id AND pp.id = t.paciente_pre_trasplante_id and pp.obesidad = true'),
 
-      (null, 'consultaIMCPacientesSinObesidad', 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, pp.obesidad as OBESIDAD FROM pacientes p, paciente_pre_trasplante pp, trasplante t where p.id = pp.paciente_id AND pp.id = t.paciente_pre_trasplante_id and pp.obesidad = false'),
+      (null, 'consultaIMCPacientesSinObesidad', 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, IF( pp.obesidad =1,  \"Si\",  \"No\" ) AS OBESIDAD FROM pacientes p, paciente_pre_trasplante pp, trasplante t where p.id = pp.paciente_id AND pp.id = t.paciente_pre_trasplante_id and pp.obesidad = false'),
 
-      (null, 'consultaPacientesConHta', 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, pp.hta as HTA FROM pacientes p, paciente_pre_trasplante pp, trasplante t where p.id = pp.paciente_id AND pp.id = t.paciente_pre_trasplante_id and pp.hta = true'),
+      (null, 'consultaPacientesConHta', 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, IF( pp.hta =1,  \"Si\",  \"No\" ) AS HTA FROM pacientes p, paciente_pre_trasplante pp, trasplante t where p.id = pp.paciente_id AND pp.id = t.paciente_pre_trasplante_id and pp.hta = true'),
 
-      (null, 'consultaPacientesPorSexo', 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, p.sexo as SEXO FROM pacientes p, paciente_pre_trasplante pp where p.id = pp.paciente_id order by p.sexo'),
+      (null, 'consultaPacientesPorSexo', 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, IF( p.sexo =\"F\",  \"Femenino\",  \"Masculino\" ) AS SEXO FROM pacientes p, paciente_pre_trasplante pp where p.id = pp.paciente_id order by p.sexo'),
 
-      (null, 'consultaPacientesPorEdad', 'SELECT P.THE, T.pretrasplante, P.NOMBRE, P.APELLIDO, P.FECHA_NACIMIENTO, T.fecha ,(YEAR(fecha) - YEAR(FECHA_NACIMIENTO))- IF(RIGHT(fecha,5) < RIGHT(FECHA_NACIMIENTO,5),1,0) AS age FROM pacientes P, pacientepretrasplante PP, trasplante T WHERE P.the = PP.the AND PP.id = T.pretrasplante ORDER BY AGE'),
+      (null, 'consultaPacientesPorEdad', 'SELECT 
+          paciente_pre_trasplante.the AS THE,
+          pacientes.nombre AS NOMBRE,
+          pacientes.apellido AS APELLIDO,
+          pacientes.fecha_nacimiento AS NACIMIENTO,
+          trasplante.fecha AS TRASPLANTE,
+          trasplante.edad_receptor AS EDAD
+        FROM
+          pacientes
+          INNER JOIN paciente_pre_trasplante ON (paciente_pre_trasplante.paciente_id = pacientes.id)
+          INNER JOIN trasplante ON (paciente_pre_trasplante.id = trasplante.paciente_pre_trasplante_id)
+        ORDER BY
+          trasplante.edad_receptor'),
 
-      (null, 'consultaPacientesTiempoEnLista', 'SELECT P.THE, T.pretrasplante, P.NOMBRE, P.APELLIDO, PP.FECHA_INGRESO_LISTA ,T.fecha, (Month(T.fecha) - Month(PP.FECHA_INGRESO_LISTA)) + ((Year(T.fecha) - Year(PP.FECHA_INGRESO_LISTA)) * 12) - If( Day(T.fecha) - Day(PP.FECHA_INGRESO_LISTA) < 0 , 1 , 0 )  AS meses FROM pacientes P, pacientepretrasplante PP, trasplante T WHERE P.the = PP.the AND PP.id = T.pretrasplante ORDER BY meses'),
+      (null, 'consultaPacientesTiempoEnLista', 'SELECT 
+          paciente_pre_trasplante.the AS THE,
+          pacientes.nombre AS NOMBRE,
+          pacientes.apellido AS APELLIDO,
+          paciente_pre_trasplante.fecha_ingreso_lista AS INGRESO,
+          paciente_pre_trasplante.fecha_egreso AS EGRESO,
+          paciente_pre_trasplante.meses_en_lista AS MESES
+        FROM
+          pacientes
+          INNER JOIN paciente_pre_trasplante ON (paciente_pre_trasplante.paciente_id = pacientes.id)
+        ORDER BY
+          paciente_pre_trasplante.meses_en_lista'),
 
-      (null, 'consultaPacientesMuerte', 'SELECT pacientes.nombre AS NOMBRE, pacientes.apellido AS APELLIDO, paciente_pre_trasplante.the AS THE, trasplante.fecha AS FECHA, paciente_muerte.fecha_muerte AS FECHA_MUERTE, paciente_muerte.transplante_funcionando AS FUNCIONANDO, paciente_causa_muerte.nombre AS CAUSA FROM paciente_muerte INNER JOIN paciente_causa_muerte ON (paciente_muerte.causa_muerte_id = paciente_causa_muerte.id) INNER JOIN pacientes ON (pacientes.id = paciente_muerte.paciente_id) INNER JOIN paciente_pre_trasplante ON (paciente_pre_trasplante.paciente_id = pacientes.id) INNER JOIN trasplante ON (paciente_pre_trasplante.id = trasplante.paciente_pre_trasplante_id)'),
+      (null, 'consultaPacientesMuerte', 'SELECT pacientes.nombre AS NOMBRE, pacientes.apellido AS APELLIDO, paciente_pre_trasplante.the AS THE, trasplante.fecha AS FECHA, paciente_muerte.fecha_muerte AS FECHA_MUERTE, IF( paciente_muerte.transplante_funcionando =1,  \"Si\",  \"No\" ) AS FUNCIONANDO, paciente_causa_muerte.nombre AS CAUSA FROM paciente_muerte INNER JOIN paciente_causa_muerte ON (paciente_muerte.causa_muerte_id = paciente_causa_muerte.id) INNER JOIN pacientes ON (pacientes.id = paciente_muerte.paciente_id) INNER JOIN paciente_pre_trasplante ON (paciente_pre_trasplante.paciente_id = pacientes.id) INNER JOIN trasplante ON (paciente_pre_trasplante.id = trasplante.paciente_pre_trasplante_id)'),
 
       (null, 'consultaPacientesNefropatiasPBR', 'SELECT
         paciente_pre_trasplante.the AS THE,  
         pacientes.nombre AS NOMBRE,
         pacientes.apellido AS APELLIDO,
-        paciente_pre_trasplante.pbr AS PBR,
+        IF( paciente_pre_trasplante.pbr =1,  \"Si\",  \"No\" ) AS PBR,
         nefropatia.nombre AS NEFROPATIA
       FROM
         pacientes
@@ -261,7 +284,7 @@ class ConsultaTable extends Doctrine_Table
         paciente_pre_trasplante.the AS THE,
         pacientes.nombre AS NOMBRE,
         pacientes.apellido AS APELLIDO,
-        trasplante.trans_previas AS TRANSFUSIONES_PREVIAS,
+        IF( trasplante.trans_previas =1,  \"Si\",  \"No\" ) AS TRANSFUSIONES_PREVIAS,
         trasplante.numero_transf AS NUMERO_TRANSFUSIONES,
         trasplante.embarazo AS EMBARAZO,
         trasplante.numero_embarazo AS NUMERO_EMBARAZO
@@ -302,7 +325,7 @@ class ConsultaTable extends Doctrine_Table
         pacientes.nombre AS NOMBRE,
         pacientes.apellido AS APELLIDO,
         trasplante.rinhon AS RIÑON,
-        trasplante.anomalia_vascular AS ANOMALIA
+        IF( trasplante.anomalia_vascular =1,  \"Si\",  \"No\" ) AS ANOMALIA
       FROM
         pacientes
         INNER JOIN paciente_pre_trasplante ON (paciente_pre_trasplante.paciente_id = pacientes.id)
@@ -312,7 +335,7 @@ class ConsultaTable extends Doctrine_Table
         paciente_pre_trasplante.the AS THE,
         pacientes.nombre AS NOMBRE,
         pacientes.apellido AS APELLIDO,
-        trasplante.inestab_hemodial AS INESTABILIDAD
+        IF( trasplante.inestab_hemodial =1,  \"Si\",  \"No\" ) AS INESTABILIDAD
       FROM
         pacientes
         INNER JOIN paciente_pre_trasplante ON (paciente_pre_trasplante.paciente_id = pacientes.id)
@@ -336,8 +359,8 @@ class ConsultaTable extends Doctrine_Table
         paciente_pre_trasplante.the AS THE,
         pacientes.nombre AS NOMBRE,
         pacientes.apellido AS APELLIDO,
-        pacientes.sexo AS SEXO_RECEPTOR,
-        donante.sexo_donante AS SEXO_DONANTE
+        IF( pacientes.sexo =\"F\",  \"Femenino\",  \"Masculino\" ) AS SEXO_RECEPTOR,
+        IF( donante.sexo_donante =\"F\",  \"Femenino\",  \"Masculino\" ) AS SEXO_DONANTE
       FROM
         pacientes
         INNER JOIN paciente_pre_trasplante ON (paciente_pre_trasplante.paciente_id = pacientes.id)
@@ -391,7 +414,7 @@ class ConsultaTable extends Doctrine_Table
         trasplante.numero_compatibilidad_dr AS COMPATIBILIDAD_DR,
         trasplante.numero_incompatibilidad_ab AS INCOMPATIBILIDAD_AB,
         trasplante.numero_incompatibilidad_dr AS INCOMPATIBILIDAD_DR,
-        trasplante.autoac AS AUTOAC,
+        IF( trasplante.autoac =1,  \"Si\",  \"No\" ) AS AUTOAC,
         trasplante.pra_max AS PRA_MAX,
         trasplante.pra_tr AS PRA_TR
       FROM
@@ -410,12 +433,12 @@ class ConsultaTable extends Doctrine_Table
         trasplante.anast_arterial AS ANAST_ARTERIAL,
         trasplante.anast_ureteral As ANAST_URETERAL,
         trasplante.reperfusion AS REPERFUSION,
-        trasplante.sangrado_i_op AS SANGRADO_I_OP,
-        trasplante.lesion_arterial AS LESION_ARTERIAL,
-        trasplante.lesion_venosa AS LESION_VENOSA,
-        trasplante.necesidad_repefundir AS NECESIDAD_REPEFUNDIR,
+        IF( trasplante.sangrado_i_op =1,  \"Si\",  \"No\" ) AS SANGRADO_I_OP,
+        IF( trasplante.lesion_arterial =1,  \"Si\",  \"No\" ) AS LESION_ARTERIAL,
+        IF( trasplante.lesion_venosa =1,  \"Si\",  \"No\" ) AS LESION_VENOSA,
+        IF( trasplante.necesidad_repefundir =1,  \"Si\",  \"No\" ) AS NECESIDAD_REPEFUNDIR,
         trasplante.otras_compl_quirur AS OTRAS_COMPLICACIONES,
-        trasplante.diuresis_i_op AS DIURESIS_I_OP
+        IF( trasplante.diuresis_i_op =1,  \"Si\",  \"No\" ) AS DIURESIS_I_OP
       FROM
         paciente_pre_trasplante
         INNER JOIN pacientes ON (paciente_pre_trasplante.paciente_id = pacientes.id)
@@ -425,11 +448,11 @@ class ConsultaTable extends Doctrine_Table
         paciente_pre_trasplante.the AS THE,
         pacientes.nombre AS NOMBRE,
         pacientes.apellido AS APELLIDO,
-        trasplante.cr_inicial,
-        trasplante.dia_rec_diuresis,
-        trasplante.dia_rec_funcional,
-        trasplante.dialisis,
-        trasplante.num_de_hd
+        trasplante.cr_inicial AS CR_INICIAL,
+        trasplante.dia_rec_diuresis AS DIAS_REC_DIURESIS,
+        trasplante.dia_rec_funcional AS DIAS_REC_FUNCIONAL,
+        IF( trasplante.dialisis =1,  \"Si\",  \"No\" ) AS DIALISIS,
+        trasplante.num_de_hd AS NUM_DIALISIS
       FROM
         paciente_pre_trasplante
         INNER JOIN pacientes ON (paciente_pre_trasplante.paciente_id = pacientes.id)
@@ -458,10 +481,10 @@ class ConsultaTable extends Doctrine_Table
         paciente_pre_trasplante.the AS THE,
         pacientes.nombre AS NOMBRE,
         pacientes.apellido AS APELLIDO,
-        trasplante.sangrado_i_op,
-        trasplante.lesion_arterial,
-        trasplante.lesion_venosa,
-        trasplante.necesidad_repefundir
+        IF( trasplante.sangrado_i_op =1,  \"Si\",  \"No\" ) AS SANGRADO_I_OP,
+        IF( trasplante.lesion_arterial =1,  \"Si\",  \"No\" ) AS LESION_ARTERIAL,
+        IF( trasplante.lesion_venosa =1,  \"Si\",  \"No\" ) AS LESION_VENOSA,
+        IF( trasplante.necesidad_repefundir =1,  \"Si\",  \"No\" ) AS NECESIDAD_REPEFUNDIR
       FROM
         paciente_pre_trasplante
         INNER JOIN pacientes ON (paciente_pre_trasplante.paciente_id = pacientes.id)
@@ -491,7 +514,7 @@ class ConsultaTable extends Doctrine_Table
           trasplante.t_isq_fria_min AS T_ISQ_FRIA_MIN,
           trasplante.t_isq_tibia_hs AS T_ISQ_TIBIA_HS,
           trasplante.reperfusion AS REPERFUSION,
-          trasplante.diuresis_i_op AS DIURESIS
+          IF( trasplante.diuresis_i_op =1,  \"Si\",  \"No\" ) AS DIURESIS
         FROM
           paciente_pre_trasplante
           INNER JOIN pacientes ON (paciente_pre_trasplante.paciente_id = pacientes.id)
@@ -499,7 +522,12 @@ class ConsultaTable extends Doctrine_Table
         ORDER BY trasplante.diuresis_i_op ASC'),
       
 
-      (null, 'consultaPacientesDislipemia', 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, pp.dislipemia as DISLIPEMIA FROM pacientes p, paciente_pre_trasplante pp, trasplante t where p.id = pp.paciente_id AND pp.id = t.paciente_pre_trasplante_id and pp.dislipemia = true');
+      (null, 'consultaPacientesDislipemia', 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, IF( pp.dislipemia =1,  \"Si\",  \"No\" ) AS DISLIPEMIA FROM pacientes p, paciente_pre_trasplante pp, trasplante t where p.id = pp.paciente_id AND pp.id = t.paciente_pre_trasplante_id and pp.dislipemia = true'),
+      
+      (null, 'consultaPacientesConDiabetes', 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, pp.diabetes as DIABETES FROM pacientes p, paciente_pre_trasplante pp where p.id = pp.paciente_id  and pp.diabetes <> \'No\' '),
+      
+      (null, 'consultaPacientesPorOrigen', 'SELECT pp.the as THE, p.nombre as NOMBRE, p.apellido as APELLIDO, pp.origen as ORIGEN FROM pacientes p, paciente_pre_trasplante pp where p.id = pp.paciente_id order by pp.origen')
+      
       ";
       $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
       $conn->execute($sql);

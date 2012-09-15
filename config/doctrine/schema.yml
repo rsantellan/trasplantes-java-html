@@ -1877,7 +1877,7 @@ Consulta:
       primary: true
       autoincrement: true
     nombre:
-      type: string(45)
+      type: string(100)
       notnull: true
     sentencia:
       type: string(10000)

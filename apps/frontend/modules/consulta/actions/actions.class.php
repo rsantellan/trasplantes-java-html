@@ -140,4 +140,70 @@ class consultaActions extends sfActions
       }
     }
   }
+  
+  public function executeConsultaInducciones(sfWebRequest $request)
+  {
+    $auxInducciones = Doctrine::getTable('Induccion')->findAll(Doctrine_Core::HYDRATE_ARRAY);
+    $inducciones = array();
+    foreach($auxInducciones as $induccion)
+    {
+      $inducciones[$induccion["id"]] = $induccion["nombre"];
+    }
+    
+    $pacientes = Doctrine::getTable("Consulta")->retrievePacientesInducciones();
+    
+    $listado = array();
+    foreach($pacientes as $paciente)
+    {
+      if(!isset($listado[$paciente["ID"]]))
+      {
+        $row = array();
+        $row["ID"] = $paciente["ID"];
+        $row["THE"] = $paciente["THE"];
+        $row["NOMBRE"] = $paciente["NOMBRE"];
+        $row["APELLIDO"] = $paciente["APELLIDO"];
+        foreach($inducciones as $induccion)
+        {
+          $row[$induccion] = "NO";
+        }
+        $listado[$paciente["ID"]] = $row;
+      }
+      $listado[$paciente["ID"]][$inducciones[$paciente["INDUCCION"]]] = "SI";
+    }
+    $this->result = $listado;
+    
+  }
+  
+  public function executeConsultaInmunosupresores(sfWebRequest $request)
+  {
+    $auxInmunosupresores = Doctrine::getTable('Inmunosupresores')->findAll(Doctrine_Core::HYDRATE_ARRAY);
+    $inmunosupresores = array();
+    foreach($auxInmunosupresores as $inmunosupresor)
+    {
+      $inmunosupresores[$inmunosupresor["id"]] = $inmunosupresor["nombre"];
+    }
+    
+    $pacientes = Doctrine::getTable("Consulta")->retrievePacientesInmunosupresores();
+    
+    $listado = array();
+    foreach($pacientes as $paciente)
+    {
+      if(!isset($listado[$paciente["ID"]]))
+      {
+        $row = array();
+        $row["ID"] = $paciente["ID"];
+        $row["THE"] = $paciente["THE"];
+        $row["NOMBRE"] = $paciente["NOMBRE"];
+        $row["APELLIDO"] = $paciente["APELLIDO"];
+        foreach($inmunosupresores as $inmunosupresor)
+        {
+          $row[$inmunosupresor] = "NO";
+        }
+        $listado[$paciente["ID"]] = $row;
+      }
+      $listado[$paciente["ID"]][$inmunosupresores[$paciente["INMUNOSUPRESOR"]]] = "SI";
+    }
+    $this->result = $listado;
+    
+  }
 }

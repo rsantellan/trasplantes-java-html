@@ -19,6 +19,14 @@ class reportes2Handler
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
     $index++;
     $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "NOMBRE");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "APELLIDO");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
+    $index++;
+    $objPHPExcel->getActiveSheet()
             ->setCellValue($letter, "DIABÉTICO PRE TR");
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
     $index++;
@@ -157,6 +165,16 @@ class reportes2Handler
       $index++;
       $objPHPExcel->getActiveSheet()
               ->setCellValue($letter, $row["THE"]);
+      // NOMBRE
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $row["NOMBRE"]);
+      // APELLIDO
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $row["APELLIDO"]);
       // DIABETES
       $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
       $index++;
@@ -196,7 +214,7 @@ class reportes2Handler
       $objPHPExcel->getActiveSheet()
               ->setCellValue($letter, $row["FECHA_ALTA"]);
       // CAUSA MUERTE
-      $texto = "NO APLICA";
+      $texto = "-";
       if(count($pacienteMuerte) > 0)
       {
         $muerte = array_pop($pacienteMuerte);
@@ -368,6 +386,14 @@ class reportes2Handler
     $index++;
     $objPHPExcel->getActiveSheet()
             ->setCellValue($letter, "NUM REG ASIGNADO POR EL CENTRO");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "NOMBRE");
+    $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
+    $index++;
+    $objPHPExcel->getActiveSheet()
+            ->setCellValue($letter, "APELLIDO");
     $letter = (string)(mdBasicFunction::retrieveLeters($index)."1");
     $index++;
     $objPHPExcel->getActiveSheet()
@@ -568,6 +594,16 @@ class reportes2Handler
       $index++;
       $objPHPExcel->getActiveSheet()
               ->setCellValue($letter, $row["THE"]);
+      // NOMBRE
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $row["NOMBRE"]);
+      // APELLIDO
+      $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+      $index++;
+      $objPHPExcel->getActiveSheet()
+              ->setCellValue($letter, $row["APELLIDO"]);      
       // DIABETES
       $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
       $index++;
@@ -607,7 +643,7 @@ class reportes2Handler
       $objPHPExcel->getActiveSheet()
               ->setCellValue($letter, $row["FECHA_ALTA"]);
       // CAUSA MUERTE
-      $texto = "NO APLICA";
+      $texto = " - ";
       if(count($pacienteMuerte) > 0)
       {
         $muerte = array_pop($pacienteMuerte);

@@ -27,7 +27,9 @@ class ConsultaTable extends Doctrine_Table
 				p.sin_dialisis AS SIN_DIALISIS, 
 				t.fecha AS T_FECHA, 
 				'THE' AS CENTRO, 
-				ppt.the AS THE, 
+				ppt.the AS THE,
+                                p.nombre AS NOMBRE,
+                                p.apellido AS APELLIDO,
 				ppt.diabetes AS DIABETES, 
 				n.nombre AS NEFROPATIA, 
 				MONTH(t.fecha) AS MES_TRASPLANTE, 
@@ -76,7 +78,7 @@ class ConsultaTable extends Doctrine_Table
 	
 	public function retrievePacienteCausaDeMuerte($paciente_id)
 	{
-	  $sql = "select pm.fecha_muerte AS FECHA_MUERTE, pm.transplante_funcionando AS TRASPLANTE_FUNCIONANDO, pcm.nombre AS CAUSA_MUERTE from pacientes p, paciente_muerte pm, paciente_causa_muerte pcm where p.id = pm.paciente_id and pm.causa_muerte_id = pcm.id and p.id = ? order by p.id";
+	  $sql = "select pm.fecha_muerte AS FECHA_MUERTE, IF( pm.transplante_funcionando =0,  'NO',  'SI' ) AS TRASPLANTE_FUNCIONANDO, pcm.nombre AS CAUSA_MUERTE from pacientes p, paciente_muerte pm, paciente_causa_muerte pcm where p.id = pm.paciente_id and pm.causa_muerte_id = pcm.id and p.id = ? order by p.id";
 	  $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
       return $conn->fetchAssoc($sql, array($paciente_id));
 	}
@@ -106,6 +108,8 @@ class ConsultaTable extends Doctrine_Table
 				t.fecha AS T_FECHA, 
 				'THE' AS CENTRO, 
 				ppt.the AS THE, 
+                                p.nombre AS NOMBRE,
+                                p.apellido AS APELLIDO,                
 				ppt.diabetes AS DIABETES, 
 				n.nombre AS NEFROPATIA, 
 				MONTH(t.fecha) AS MES_TRASPLANTE, 
@@ -123,11 +127,11 @@ class ConsultaTable extends Doctrine_Table
 				t.numero_incompatibilidad_dr AS NUMERO_INCOMPATIBILIDAD_DR,  
 				t.t_isq_fria_hs AS T_ISQ_FRIA_HS,
 				t.t_isq_fria_min AS T_ISQ_FRIA_MIN,
-				ppt.hta AS HTA,
-				ppt.obesidad AS OBESIDAD,
+				IF( ppt.hta =0,  'NO',  'SI' ) AS HTA,
+				IF( ppt.obesidad =0,  'NO',  'SI' ) AS OBESIDAD,
 				ppt.imc AS IMC,
-				ppt.dislipemia AS DISLIPEMIA,
-				ppt.tabaquismo AS TABAQUISMO 
+				IF( ppt.dislipemia =0,  'NO',  'SI' ) AS DISLIPEMIA,
+                IF( ppt.tabaquismo =0,  'NO',  'SI' ) AS TABAQUISMO
 			  from 
 				trasplante t, 
 				paciente_pre_trasplante ppt, 
@@ -170,7 +174,45 @@ class ConsultaTable extends Doctrine_Table
 	  $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
       return $conn->fetchAssoc($sql, array($trasplante_id,$trasplante_id));
 	}
-	
+    
+    public function retrievePacientesInducciones()
+    {
+      $sql = "
+      select
+        paciente_pre_trasplante.id AS ID,
+        paciente_pre_trasplante.the AS THE,
+        pacientes.nombre AS NOMBRE,
+        pacientes.apellido AS APELLIDO,
+        trasplante_induccion.induccion_id AS INDUCCION
+      from
+        paciente_pre_trasplante
+        INNER JOIN pacientes ON (paciente_pre_trasplante.paciente_id = pacientes.id)
+        INNER JOIN trasplante ON (trasplante.paciente_pre_trasplante_id = paciente_pre_trasplante.id)
+        INNER JOIN trasplante_induccion ON (trasplante_induccion.trasplante_id = trasplante.id)  
+      ";
+      $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
+      return $conn->fetchAssoc($sql);
+    }
+    
+    public function retrievePacientesInmunosupresores()
+    {
+      $sql = "
+      select
+        paciente_pre_trasplante.id AS ID,
+        paciente_pre_trasplante.the AS THE,
+        pacientes.nombre AS NOMBRE,
+        pacientes.apellido AS APELLIDO,
+        trasplante_inmunosupresores.inmunosupresores_id AS INMUNOSUPRESOR
+      from
+        paciente_pre_trasplante
+        INNER JOIN pacientes ON (paciente_pre_trasplante.paciente_id = pacientes.id)
+        INNER JOIN trasplante ON (trasplante.paciente_pre_trasplante_id = paciente_pre_trasplante.id)
+        INNER JOIN trasplante_inmunosupresores ON (trasplante_inmunosupresores.trasplante_id = trasplante.id) 
+      ";
+      $conn = Doctrine_Manager::getInstance()->getCurrentConnection(); 
+      return $conn->fetchAssoc($sql);
+    }
+    
     public function retrieveGermenesInfeccionesData($germen = null, $infeccion = null)
     {
       $sql = "SELECT  

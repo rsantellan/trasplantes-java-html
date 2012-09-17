@@ -13,8 +13,8 @@ class reportesActions extends sfActions
   
   public function preExecute()
   {
-    $this->realPathFondo = sfConfig::get('sf_cache_dir')."/reportes/reporteFondo/";
-    $this->realPathFondoRACMV = sfConfig::get('sf_cache_dir')."/reportes/reporteFondoPreTrasplante/";
+    $this->realPathFondo = sfConfig::get('sf_cache_dir')."/reportes/reporteFondo2/";
+    $this->realPathFondoRACMV = sfConfig::get('sf_cache_dir')."/reportes/reporteFondoPreTrasplante2/";
     $this->start_year = 2000;
   }
   
@@ -59,7 +59,7 @@ class reportesActions extends sfActions
       case -1:
           $yearFinish = date("Y");
           $myYear = date("Y");
-          reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV($yearFinish);
+          reportes2Handler::CrearReporteDeFondoPreTrasplanteRACMV($yearFinish);
           while($myYear >= $this->start_year)
           {
             $yearFinish = date("Y");
@@ -96,7 +96,7 @@ class reportesActions extends sfActions
         return false;
       }
     }
-    reportesHandler::CrearReporteDeFondoPreTrasplanteRACMV($yearFinish, $year);
+    reportes2Handler::CrearReporteDeFondoPreTrasplanteRACMV($yearFinish, $year);
     sleep(5);
   }
 
@@ -117,19 +117,19 @@ class reportesActions extends sfActions
     switch($year)
     {
       case -1:
-          reportesHandler::CrearReporteDeFondo();
+          reportes2Handler::CrearReporteDeFondo();
           $myYear = date("Y");
           while($myYear >= $this->start_year)
           {
-            reportesHandler::CrearReporteDeFondo($myYear);
+            reportes2Handler::CrearReporteDeFondo($myYear);
             $myYear--;
           }
         break;
       case 0;
-          reportesHandler::CrearReporteDeFondo();
+          reportes2Handler::CrearReporteDeFondo();
         break;
       default:
-          reportesHandler::CrearReporteDeFondo($year);
+          reportes2Handler::CrearReporteDeFondo($year);
         break;
     }
     $this->redirect("@reportesDeFondo");

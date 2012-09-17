@@ -92,6 +92,14 @@ manejarCausaMuerte:
 
 #Consultas
 
+consultaTrasplanteInmunosupresores:
+  url:   /consulta/transplate-inmunosupresores.html
+  param: { module: consulta, action: consultaInmunosupresores }
+  
+consultaTrasplanteInducciones:
+  url:   /consulta/transplate-inducciones.html
+  param: { module: consulta, action: consultaInducciones }
+
 consultaTrasplanteComplicaciones:
   url:   /consulta/transplate-complicaciones.html
   param: { module: consulta, action: consultaTrasplanteComplicaciones } 

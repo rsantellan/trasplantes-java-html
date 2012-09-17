@@ -33,6 +33,12 @@
       <?php echo image_tag("search-icon.png", array("width" => 24)); ?>
     </a>
   </li>
+  <li>
+    <label class="consulta_list_ul_label"><?php echo __("Consultas_titulo trasplante inducciones");?></label>
+    <a href="<?php echo url_for('@consultaTrasplanteInducciones') ?>">
+      <?php echo image_tag("search-icon.png", array("width" => 24)); ?>
+    </a>
+  </li>
 </ul>
 
 <div class="clear margenes_separadores"></div>

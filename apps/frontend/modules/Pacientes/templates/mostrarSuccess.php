@@ -29,7 +29,7 @@
   $preTrasplantes = preTrasplanteHandler::retriveByPacienteIdOrdered($paciente["id"]);
 ?>
 <?php 
-  if((count($perdidas) == count($preTrasplantes)) || (count($preTrasplantes) == 1 && count($perdidas) == 0)):
+  if(count($perdidas) == count($preTrasplantes)):
 ?>
 <div class="iniciar_pre_trasplante">
   <label><?php echo __("preTrasplante_iniciar proceso de pretrasplante");?></label>
@@ -57,14 +57,15 @@
 	<li><?php echo __("pacientePreTrasplante_Informacion del pretrasplante");?></li>
 	<li><?php echo __("pacientePreTrasplante_the");?> : <label class="bold_text"><?php echo $preTrasplante['the']?></label></li>
 	<li><?php echo __("pacientePreTrasplante_fecha de ingreso a la lista");?> : <label class="bold_text"><?php echo format_date($preTrasplante['fecha_ingreso_lista'], 'D');?></label></li>
-	<?php if($preTrasplante["fecha_egreso"]): ?>
+	
+    <?php if($preTrasplante["fecha_egreso"]): ?>
 	  <li><?php echo __("pacientePreTrasplante_fecha de egreso de la lista (fecha del trasplante)");?> : <label class="bold_text"><?php echo format_date($preTrasplante['fecha_egreso'], 'D');?></label></li>
     <?php if(array_key_exists($preTrasplante["id"], $auxPerdidas)): ?>
 		<li><label class="bold_text"><?php echo __("pacientePreTrasplante_Hubo perdida del trasplante.");?></label></li>
 	  <?php endif;?>
-	<?php //else: ?>
+	<?php else: ?>
+    
     <?php $trasplante = trasplanteHandler::retriveByPacientePreTrasplanteId($preTrasplante["id"], Doctrine_Core::HYDRATE_ARRAY ) ?>
-    <?php //var_dump($trasplante);?>
     <?php if(!$trasplante):?>
     <li>
       <label class="bold_text">

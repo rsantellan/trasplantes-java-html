@@ -29,7 +29,7 @@
   $preTrasplantes = preTrasplanteHandler::retriveByPacienteIdOrdered($paciente["id"]);
 ?>
 <?php 
-  if(count($perdidas) == count($preTrasplantes)):
+  if((count($perdidas) == count($preTrasplantes)) || (count($preTrasplantes) == 1 && count($perdidas) == 0)):
 ?>
 <div class="iniciar_pre_trasplante">
   <label><?php echo __("preTrasplante_iniciar proceso de pretrasplante");?></label>

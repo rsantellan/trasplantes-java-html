@@ -6,7 +6,7 @@ CREATE TABLE cmv_uso_enfermedades (cmv_id INT, cmv_emfermedades_id INT, PRIMARY 
 CREATE TABLE cmv_emfermedades (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE complicaciones_tipos (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE complicaciones_tipos_valores (id INT AUTO_INCREMENT, nombre VARCHAR(50) NOT NULL, complicacion_tipo_id INT NOT NULL, INDEX complicacion_tipo_id_idx (complicacion_tipo_id), PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE consulta (id INT AUTO_INCREMENT, nombre VARCHAR(45) NOT NULL, sentencia TEXT NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE consulta (id INT AUTO_INCREMENT, nombre VARCHAR(100) NOT NULL, sentencia TEXT NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE consulta_campo (id INT AUTO_INCREMENT, nombre VARCHAR(45) NOT NULL, nombre_visible VARCHAR(45) NOT NULL, consulta_id INT NOT NULL, tipo_id INT, INDEX consulta_id_idx (consulta_id), INDEX tipo_id_idx (tipo_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE consulta_campo_tipo (id INT AUTO_INCREMENT, nombre VARCHAR(45) NOT NULL, tipo VARCHAR(45) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE donante (id INT AUTO_INCREMENT, identificador VARCHAR(20) UNIQUE, tipo_donante VARCHAR(10) NOT NULL, sexo_donante VARCHAR(1) NOT NULL, edad_donante TINYINT, enastab_hemod TINYINT, donante_causa_muerte_id INT NOT NULL, cr_p FLOAT(18, 2) DEFAULT 0, otros VARCHAR(255), grupo_sanguineo VARCHAR(2) NOT NULL, relacion_filiar VARCHAR(13) DEFAULT 'sin relacion', peso INT, altura FLOAT(18, 2), INDEX donante_causa_muerte_id_idx (donante_causa_muerte_id), PRIMARY KEY(id)) ENGINE = INNODB;

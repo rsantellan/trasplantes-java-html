@@ -22,7 +22,7 @@ abstract class BaseConsultaForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'        => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'nombre'    => new sfValidatorString(array('max_length' => 45)),
+      'nombre'    => new sfValidatorString(array('max_length' => 100)),
       'sentencia' => new sfValidatorString(array('max_length' => 10000)),
     ));
 

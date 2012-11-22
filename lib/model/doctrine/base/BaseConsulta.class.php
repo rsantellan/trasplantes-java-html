@@ -35,10 +35,10 @@ abstract class BaseConsulta extends sfDoctrineRecord
              'autoincrement' => true,
              'length' => 4,
              ));
-        $this->hasColumn('nombre', 'string', 45, array(
+        $this->hasColumn('nombre', 'string', 100, array(
              'type' => 'string',
              'notnull' => true,
-             'length' => 45,
+             'length' => 100,
              ));
         $this->hasColumn('sentencia', 'string', 10000, array(
              'type' => 'string',

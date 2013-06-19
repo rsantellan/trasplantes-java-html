@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
 <xliff version="1.0">
-  <file source-language="EN" target-language="es" datatype="plaintext" original="messages" date="2011-12-09T13:01:35Z" product-name="messages">
+  <file source-language="EN" target-language="es" datatype="plaintext" original="messages" date="2013-06-19T16:12:33Z" product-name="messages">
     <header/>
     <body>
       <trans-unit id="1">
@@ -2071,7 +2071,7 @@
       </trans-unit>
       <trans-unit id="414">
         <source>Trasplante_Evolucion del injerto</source>
-        <target>Evolución del Injerto</target>
+        <target>PBR</target>
         <note>es</note>
       </trans-unit>
       <trans-unit id="415">
@@ -2951,7 +2951,7 @@
       </trans-unit>
       <trans-unit id="590">
         <source>InjertoEvolucions_Titulo listado injerto evolucion en trasplante</source>
-        <target>Listado injerto evolución en transplante</target>
+        <target>Listado PBR en transplante</target>
         <note>es</note>
       </trans-unit>
       <trans-unit id="591">
@@ -2961,7 +2961,7 @@
       </trans-unit>
       <trans-unit id="592">
         <source>InjertoEvolucions_Titulo listado injerto evolucion en evolucion</source>
-        <target>Listado injerto evolución en evolución</target>
+        <target>Listado PBR en evolución</target>
         <note>es</note>
       </trans-unit>
       <trans-unit id="593">

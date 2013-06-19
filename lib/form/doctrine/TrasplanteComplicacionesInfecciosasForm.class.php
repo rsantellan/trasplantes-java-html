@@ -17,6 +17,9 @@ $this->widgetSchema['evolucion'] = new sfWidgetFormInputHidden();
 	$this->widgetSchema['trasplante_id'] = new sfWidgetFormInputHidden();
 	$trasplanteId = $this->getObject()->getTrasplanteId();
 	$trasplante = trasplanteHandler::retriveById($trasplanteId, Doctrine_Core::HYDRATE_ARRAY );
+    $this->widgetSchema['medicacion_id']->addOption('order_by',array('nombre','asc'));
+    $this->widgetSchema['infeccion_id']->addOption('order_by',array('nombre','asc'));
+    $this->widgetSchema['germen_id']->addOption('order_by',array('nombre','asc'));
 	if($trasplante)
 	{
 	  $age = mdBasicFunction::calculateAge($trasplante["fecha"], true);

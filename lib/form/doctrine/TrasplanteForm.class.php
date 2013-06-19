@@ -30,7 +30,10 @@ class TrasplanteForm extends BaseTrasplanteForm
     $this->widgetSchema['otras_compl_quirur'] = new sfWidgetFormTextarea();
     
     $this->widgetSchema['comentario'] = new sfWidgetFormTextarea();
-    
+    $this->widgetSchema['dialisis'] =  new sfWidgetFormChoice(array(
+                    'expanded' => true,
+                    'choices'  => datosBasicosHandler::yesOrNoChoicesOptions(),
+                  ));
     
   }
 }

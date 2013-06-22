@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
 <xliff version="1.0">
-  <file source-language="EN" target-language="es" datatype="plaintext" original="messages" date="2013-06-19T16:12:33Z" product-name="messages">
+  <file source-language="EN" target-language="es" datatype="plaintext" original="messages" date="2013-06-22T18:02:48Z" product-name="messages">
     <header/>
     <body>
       <trans-unit id="1">
@@ -711,7 +711,7 @@
       </trans-unit>
       <trans-unit id="142">
         <source>Trasplante_contenedor 1</source>
-        <target>Contenedor 1</target>
+        <target>Datos 1</target>
         <note>es</note>
       </trans-unit>
       <trans-unit id="143">
@@ -721,47 +721,47 @@
       </trans-unit>
       <trans-unit id="144">
         <source>Trasplante_contenedor 2</source>
-        <target>Contenedor 2</target>
+        <target>Datos 2</target>
         <note>es</note>
       </trans-unit>
       <trans-unit id="145">
         <source>Trasplante_contenedor 3</source>
-        <target>Contenedor 3</target>
+        <target>Datos 3</target>
         <note>es</note>
       </trans-unit>
       <trans-unit id="146">
         <source>Trasplante_contenedor 4</source>
-        <target>Contenedor 4</target>
+        <target>Datos 4</target>
         <note>es</note>
       </trans-unit>
       <trans-unit id="147">
         <source>Trasplante_contenedor 5</source>
-        <target>Contenedor 5</target>
+        <target>Datos 5</target>
         <note>es</note>
       </trans-unit>
       <trans-unit id="148">
         <source>Trasplante_contenedor 6</source>
-        <target>Contenedor 6</target>
+        <target>Datos 6</target>
         <note>es</note>
       </trans-unit>
       <trans-unit id="149">
         <source>Trasplante_contenedor 7</source>
-        <target>Contenedor 7</target>
+        <target>Datos 7</target>
         <note>es</note>
       </trans-unit>
       <trans-unit id="150">
         <source>Trasplante_contenedor 8</source>
-        <target>Contenedor 8</target>
+        <target>Datos 8</target>
         <note>es</note>
       </trans-unit>
       <trans-unit id="151">
         <source>Trasplante_contenedor 9</source>
-        <target>Contenedor 9</target>
+        <target>Datos 9</target>
         <note>es</note>
       </trans-unit>
       <trans-unit id="152">
         <source>Trasplante_contenedor 10</source>
-        <target>Contenedor 10</target>
+        <target>Datos 10</target>
         <note>es</note>
       </trans-unit>
       <trans-unit id="153">
@@ -2081,7 +2081,7 @@
       </trans-unit>
       <trans-unit id="416">
         <source>tratamientos_mostrar</source>
-        <target>Mostrar</target>
+        <target>Mostrar tratamientos</target>
         <note>es</note>
       </trans-unit>
       <trans-unit id="417">
@@ -3057,6 +3057,391 @@
       <trans-unit id="611">
         <source>CMV_Editar</source>
         <target>Editar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="612">
+        <source>header_titulo</source>
+        <target>Manejador de transplantes</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="613">
+        <source>header_sub titulo</source>
+        <target>Sistema para manejar los datos de los transplantes de riñon del Hospital Evangelico.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="614">
+        <source>pacientePerdidaInjerto_agregar titulo</source>
+        <target>Agregar perdido de injerto</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="615">
+        <source>pacientePerdidaInjerto_Causa</source>
+        <target>Causa</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="616">
+        <source>pacientePerdidaInjerto_manejar</source>
+        <target>Manejar perdida</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="617">
+        <source>pacientePerdidaInjerto_error </source>
+        <target>Error:</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="618">
+        <source>pacientePerdidaInjerto_Fecha de muerte</source>
+        <target>Fecha de muerte</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="619">
+        <source>pacientePerdidaInjerto_Cancelar</source>
+        <target>Cancelar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="620">
+        <source>pacientePerdidaInjerto_Eliminar</source>
+        <target>Eliminar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="621">
+        <source>pacientePerdidaInjerto_Esta seguro de querer eliminar?</source>
+        <target>¿Esta seguro de querer eliminar?</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="622">
+        <source>pacientePerdidaInjerto_Guardar</source>
+        <target>Guardar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="623">
+        <source>pacientePerdidaInjerto_editar titulo</source>
+        <target>Editar perdida de injerto</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="624">
+        <source>paciente_Se omitio dialisis</source>
+        <target>Se omitio dialisis</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="625">
+        <source>paciente_sin dialisis</source>
+        <target>Sin dialisis</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="626">
+        <source>pacientePreTrasplante_Ver Trasplante</source>
+        <target>Ver transplante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="627">
+        <source>paciente_ver la informacion de la perdida del injerto</source>
+        <target>Ver información de la perdida del injerto</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="628">
+        <source>paciente_ingresar perdida del injerto</source>
+        <target>Ingresar perdida del injerto</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="629">
+        <source>pacientePreTrasplante_Editar pre trasplante</source>
+        <target>Editar pre transplante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="630">
+        <source>paciente_Eliminar Paciente confirmacion 1</source>
+        <target>¿Esta seguro de querer eliminar el paciente?</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="631">
+        <source>paciente_Eliminar Paciente confirmacion 2</source>
+        <target>¿En caso de continuar se borrara toda la información de este paciente, esta seguro?</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="632">
+        <source>paciente_Eliminar Paciente</source>
+        <target>Eliminar paciente</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="633">
+        <source>pacientePreTrasplante_Volver</source>
+        <target>Volver</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="634">
+        <source>Trasplante_editar</source>
+        <target>Editar transplante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="635">
+        <source>Trasplante_Titulo edicion</source>
+        <target>Editar Transplante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="636">
+        <source>trasplante_Volver al trasplante.</source>
+        <target>Volver al transplante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="637">
+        <source>Trasplante_Titulo de edicion nuevo</source>
+        <target>Ingresar Transplante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="638">
+        <source>reoperacion_Volver al trasplante.</source>
+        <target>Volver al transplante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="639">
+        <source>causaPerdidaInjerto_nombre</source>
+        <target>Nombre</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="640">
+        <source>causaPerdidaInjerto_error </source>
+        <target>Error</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="641">
+        <source>causaPerdidaInjerto_error no se puede borrar por que un paciente la esta usando</source>
+        <target>No se puede eliminar dado que un paciente esta asociada a la misma.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="642">
+        <source>causaPerdidaInjerto_Guardar</source>
+        <target>Guardar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="643">
+        <source>causaPerdidaInjerto_esta seguro de querer eliminar?</source>
+        <target>¿Esta seguro de querer eliminar?</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="644">
+        <source>causaPerdidaInjerto_manejar</source>
+        <target>Manejar perdida de injerto</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="645">
+        <source>causaMuerte_nombre</source>
+        <target>Nombre</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="646">
+        <source>causaMuerte_error </source>
+        <target>Error</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="647">
+        <source>causaMuerte_error no se puede borrar por que un paciente la esta usando</source>
+        <target>No se puede eliminar por que un paciente la esta utilizando.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="648">
+        <source>causaMuerte_Guardar</source>
+        <target>Guardar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="649">
+        <source>causaMuerte_esta seguro de querer eliminar?</source>
+        <target>¿Esta seguro de querer eliminar?</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="650">
+        <source>causaMuerte_manejar</source>
+        <target>Manejar causa de muerte</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="651">
+        <source>Consultas_titulo complicaciones trasplante</source>
+        <target>Consulta de complicaciones del transplante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="652">
+        <source>Consultas_subtitulo complicaciones trasplante</source>
+        <target>En la misma se muestran todas las complicaciones infecciosas y no infecciosas en el transplante</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="653">
+        <source>Consultas_complicaciones trasplante dias</source>
+        <target>Días</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="654">
+        <source>Consultas_consultar</source>
+        <target>Consultar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="655">
+        <source>Consultas_complicaciones trasplante meses</source>
+        <target>Meses</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="656">
+        <source>Consultas_complicaciones trasplante años</source>
+        <target>Años</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="657">
+        <source>Consultas_titulo grafica trasplante complicacion</source>
+        <target>Grafíca de complicaciones</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="658">
+        <source>Consultas_grafica todas</source>
+        <target>Todas</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="659">
+        <source>Consultas_titulo grafica trasplante complicacion separadas</source>
+        <target>Grafíca de complicaciones separadas</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="660">
+        <source>Consultas_grafica infecciosas</source>
+        <target>Infecciosas</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="661">
+        <source>Consultas_grafica no infecciosas</source>
+        <target>No infecciosas</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="662">
+        <source>Consultas_titulo fijas</source>
+        <target>Consultas fijas</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="663">
+        <source>Consultas_titulo dinamicas</source>
+        <target>Consultas dinamicas</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="664">
+        <source>Consultas_titulo germenes e infecciones</source>
+        <target>Germenes e infecciones</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="665">
+        <source>Consultas_titulo trasplante inducciones</source>
+        <target>Inducciones en Transplantes</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="666">
+        <source>Consultas_germenes</source>
+        <target>Germenes</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="667">
+        <source>Consultas_ninguno</source>
+        <target>Ninguno</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="668">
+        <source>Consultas_infeccion</source>
+        <target>Infección</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="669">
+        <source>CausaMuerte_manejar</source>
+        <target>Manejar causa de muerte</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="670">
+        <source>reoperacion_fecha</source>
+        <target>Fecha</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="671">
+        <source>reoperacion_descripcion</source>
+        <target>Descripción</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="672">
+        <source>reoperacion_es infecciosa</source>
+        <target>Es infecciosa</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="673">
+        <source>reoperacion_no es infecciosa</source>
+        <target>No infecciosa</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="674">
+        <source>reoperacion_agregar reoperacion</source>
+        <target>Agregar reoperación</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="675">
+        <source>reoperacion_Fecha</source>
+        <target>Fecha</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="676">
+        <source>reoperacion_error </source>
+        <target>Erro</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="677">
+        <source>reoperacion_Descripcion</source>
+        <target>Descripción</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="678">
+        <source>reoperacion_complicacion es infecciosa</source>
+        <target>Complicación es infecciosa</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="679">
+        <source>reoperacion_complicacion infecciosa</source>
+        <target>Complicación infecciosa</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="680">
+        <source>reoperacion_complicacion no infecciosa</source>
+        <target>Complicación no infecciosa</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="681">
+        <source>reoperacion_Cancelar</source>
+        <target>Cancelar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="682">
+        <source>reoperacion_Guardar</source>
+        <target>Guardar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="683">
+        <source>reoperacion_tiene que elejir una complicacion</source>
+        <target>Tiene que elegir una complicación.</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="684">
+        <source>reoperacion_esta seguro de querer eliminar?</source>
+        <target>¿Esta seguro de querer eliminar?</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="685">
+        <source>reoperacion_agregar</source>
+        <target>Agregar</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="686">
+        <source>reoperacion_editar reoperacion</source>
+        <target>Editar Reoperación</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="687">
+        <source>footer_texto</source>
+        <target>Por cualquier problema contactarse a &lt;bold&gt; rsantellan@gmail.com&lt;/bold&gt;</target>
+        <note>es</note>
+      </trans-unit>
+      <trans-unit id="688">
+        <source>Trasplante_Siendo la cantidad de dias internado: </source>
+        <target>Siendo la cantidad de días internado:</target>
         <note>es</note>
       </trans-unit>
     </body>

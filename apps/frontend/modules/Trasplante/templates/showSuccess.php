@@ -27,12 +27,19 @@
     <label class="bold_text" id="fecha_alta_label">
       <?php if(!is_null($trasplante["fecha_alta"])): ?>
         <?php echo format_date($trasplante['fecha_alta'], 'D'); ?>
+        <br/>
+        <?php echo __("Trasplante_Siendo la cantidad de dias internado: ");?>
+        <?php echo basicFunction::calculateDifferenceInDays($trasplante['fecha'], $trasplante['fecha_alta']); ?>
+        <?php //echo $trasplante['fecha'] . " ".$trasplante['fecha_alta']; ?>
       <?php else: ?>
         <?php echo __("Trasplante_No tiene Fecha de alta del trasplante");?>
       <?php endif; ?>
     </label> 
+    <br/>
     <a class="fancy_small_link" href="<?php echo url_for("@cambiarFechaAlta?id=".$id);?>"><?php echo __("Trasplante_Cambiar Fecha de alta del trasplante");?></a>
   </div>
+  <div class="clear"></div>
+  <br/>
   <div class="trasplante_reoperaciones_container">
       <a href="<?php echo url_for("@manejarReoperaciones?id=".$id);?>">reoperaciones</a>
   </div>

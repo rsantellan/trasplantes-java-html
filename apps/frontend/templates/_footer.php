@@ -1,1 +1,1 @@
-Footer
+<?php echo __('footer_texto');?>

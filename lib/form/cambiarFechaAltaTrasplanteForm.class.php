@@ -17,8 +17,10 @@ class cambiarFechaAltaTrasplanteForm extends sfForm
     $defaults = $this->getDefaults();
     $id = $defaults["id"];
     $trasplante = trasplanteHandler::retriveById($id, Doctrine_Core::HYDRATE_ARRAY );
+    //var_dump($trasplante["fecha"]);
     $age = mdBasicFunction::calculateAge($trasplante["fecha"], true);
-    $years = range(date('Y') - $age,date('Y'));
+    //var_dump($age);
+    $years = range(date('Y') - $age, date('Y'));
     $years = array_combine($years, $years);
     $pacientes = array();
     $this->setWidgets(array(

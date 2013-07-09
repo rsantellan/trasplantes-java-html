@@ -412,6 +412,7 @@ class mdBasicFunction {
                 $calc_edad= $anno-$anno_nac;
             }
         }
+        if($calc_edad == 0) return 1;
         return $calc_edad;
 
     }

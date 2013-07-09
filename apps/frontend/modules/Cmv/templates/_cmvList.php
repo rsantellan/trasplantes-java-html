@@ -5,9 +5,9 @@
             <?php echo image_tag("edit-icon.png", array("width" => 24)); ?>
         </a>
       </li>
-      <li><?php echo __("CMV_campo diagnostico");?> : <label class="bold_text"><?php echo $cmv->getCmvDiagnosticoId() ?></label></li>
+      <li><?php echo __("CMV_campo diagnostico");?> : <label class="bold_text"><?php echo $cmv->getCmvDiagnostico()->getNombre() ?></label></li>
       <li><?php echo __("CMV_campo tipo");?> : <label class="bold_text"><?php echo $cmv->getTipo() ?></label></li>
-      <li><?php echo __("CMV_campo droga");?> : <label class="bold_text"><?php echo $cmv->getCmvDrogaId() ?></label></li>
+      <li><?php echo __("CMV_campo droga");?> : <label class="bold_text"><?php echo $cmv->getCmvDrogas()->getNombre() ?></label></li>
       <li><?php echo __("CMV_campo tratamiento");?> : <label class="bold_text"><?php echo $cmv->getDiasTratamiento() ?></label></li>
       <li><?php echo __("CMV_campo efecto secundario");?> : <label class="bold_text"><?php echo $cmv->getEfectoSecundario() ?></label></li>
       <?php if($cmv->getCmvEmfermedades()->count() > 0) : ?>

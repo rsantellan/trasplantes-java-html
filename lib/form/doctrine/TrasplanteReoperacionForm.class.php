@@ -55,12 +55,12 @@ class TrasplanteReoperacionForm extends BaseTrasplanteReoperacionForm
 	//$result = array_merge($complicacion_infecciosas, $complicacion_infecciosas_ev);
 	$c_no_infecciosas = array();
 	$c_no_infecciosas[null] = " ";
-	foreach($complicacion_infecciosas as $com)
+	foreach($complicacion_no_infecciosas as $com)
 	{
 	  $c_no_infecciosas[$com->getId()] = $com->showDate();
 	}
 	
-	foreach($complicacion_infecciosas_ev as $com)
+	foreach($complicacion_no_infecciosas_ev as $com)
 	{
 	  $c_no_infecciosas[$com->getId()] = $com->showDate();
 	}

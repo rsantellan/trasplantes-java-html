@@ -6,7 +6,8 @@
         </a>
       </li>
       <li><?php echo __("CMV_campo diagnostico");?> : <label class="bold_text"><?php echo $cmv->getCmvDiagnostico()->getNombre() ?></label></li>
-      <li><?php echo __("CMV_campo tipo");?> : <label class="bold_text"><?php echo $cmv->getTipo() ?></label></li>
+      <?php $choices = datosBasicosHandler::cmvChoicesOptions(); ?>
+      <li><?php echo __("CMV_campo tipo");?> : <label class="bold_text"><?php echo $choices[$cmv->getTipo()] ?></label></li>
       <li><?php echo __("CMV_campo droga");?> : <label class="bold_text"><?php echo $cmv->getCmvDrogas()->getNombre() ?></label></li>
       <li><?php echo __("CMV_campo tratamiento");?> : <label class="bold_text"><?php echo $cmv->getDiasTratamiento() ?></label></li>
       <li><?php echo __("CMV_campo efecto secundario");?> : <label class="bold_text"><?php echo $cmv->getEfectoSecundario() ?></label></li>

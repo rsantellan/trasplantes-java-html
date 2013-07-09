@@ -58,12 +58,22 @@
 	<li><?php echo __("pacientePreTrasplante_the");?> : <label class="bold_text"><?php echo $preTrasplante['the']?></label></li>
 	<li><?php echo __("pacientePreTrasplante_fecha de ingreso a la lista");?> : <label class="bold_text"><?php echo format_date($preTrasplante['fecha_ingreso_lista'], 'D');?></label></li>
 	
-	  <li><?php echo __("pacientePreTrasplante_fecha de egreso de la lista (fecha del trasplante)");?> : <label class="bold_text"><?php echo format_date($preTrasplante['fecha_egreso'], 'D');?></label></li>
-    <?php if(array_key_exists($preTrasplante["id"], $auxPerdidas)): ?>
+  <li><?php echo __("pacientePreTrasplante_fecha de egreso de la lista (fecha del trasplante)");?> : <label class="bold_text"><?php echo format_date($preTrasplante['fecha_egreso'], 'D');?></label></li>
+  <?php $trasplante = trasplanteHandler::retriveByPacientePreTrasplanteId($preTrasplante["id"], Doctrine_Core::HYDRATE_ARRAY );  ?>
+  <li>
+      <label class="bold_text">
+        <?php echo __("pacientePreTrasplante_Se a realizado el trasplante de este pretrasplante");?>
+      </label>
+      <a href="<?php echo url_for("@mostrarTrasplante?id=".$trasplante["id"]);?>" class="simple_tip_container" title="<?php echo __("pacientePreTrasplante_Ver Trasplante");?>">
+        <?php echo image_tag("search-icon.png", array("width" => 24)); ?>
+        <div class="tooltip_text"><?php echo __("pacientePreTrasplante_Ver Trasplante");?></div>
+      </a>
+    </li>   
+  <?php if(array_key_exists($preTrasplante["id"], $auxPerdidas)): ?>
 		<li><label class="bold_text"><?php echo __("pacientePreTrasplante_Hubo perdida del trasplante.");?></label></li>
 	<?php else: ?>
     
-    <?php $trasplante = trasplanteHandler::retriveByPacientePreTrasplanteId($preTrasplante["id"], Doctrine_Core::HYDRATE_ARRAY );  ?>
+    
     <?php if(!$trasplante):?>
     <li>
       <label class="bold_text">
@@ -74,15 +84,7 @@
       </a>
     </li>
     <?php else: ?>
-    <li>
-      <label class="bold_text">
-        <?php echo __("pacientePreTrasplante_Se a realizado el trasplante de este pretrasplante");?>
-      </label>
-      <a href="<?php echo url_for("@mostrarTrasplante?id=".$trasplante["id"]);?>" class="simple_tip_container" title="<?php echo __("pacientePreTrasplante_Ver Trasplante");?>">
-        <?php echo image_tag("search-icon.png", array("width" => 24)); ?>
-        <div class="tooltip_text"><?php echo __("pacientePreTrasplante_Ver Trasplante");?></div>
-      </a>
-    </li>    
+     
     <?php endif;?>
     
 	<?php endif; ?>

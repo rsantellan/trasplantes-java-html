@@ -21,7 +21,8 @@ class PacienteMuerteActions extends sfActions
   {
     $paciente_muerte = new PacienteMuerte();
     $paciente_muerte->setPacienteId($request->getParameter('id'));
-	$this->form = new PacienteMuerteForm($paciente_muerte);
+    $this->form = new PacienteMuerteForm($paciente_muerte);
+    //var_dump($paciente_muerte->toArray());
   }
 
   public function executeCreate(sfWebRequest $request)
@@ -30,7 +31,7 @@ class PacienteMuerteActions extends sfActions
 
     $this->form = new PacienteMuerteForm();
 
-    $this->processForm($request, $this->form);
+    //$this->processForm($request, $this->form);
     $return = $this->processForm($request, $this->form);
     
     if($return != 0)

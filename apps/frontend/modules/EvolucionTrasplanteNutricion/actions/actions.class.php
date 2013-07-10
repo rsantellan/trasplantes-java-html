@@ -20,6 +20,12 @@ class EvolucionTrasplanteNutricionActions extends sfActions
     $this->form = new EvolucionTrasplanteNutricionForm($evolucion);
   }
 
+  public function executeEdit(sfWebRequest $request)
+  {
+    $this->forward404Unless($evolucion_trasplante_nutricion = Doctrine_Core::getTable('EvolucionTrasplanteNutricion')->find(array($request->getParameter('id'))), sprintf('Object evolucion_trasplante_nutricion does not exist (%s).', $request->getParameter('id')));
+    $this->form = new EvolucionTrasplanteNutricionForm($evolucion_trasplante_nutricion);
+  }
+  
   public function executeSave(sfWebRequest $request)
   {
       $parameters = $request->getPostParameters();

@@ -31,7 +31,7 @@ class consultaActions extends sfActions
   public function executeRetrieveComplications(sfWebRequest $request)
   {
       $sql_basica_pacientes = 'select 
-        paciente_pre_trasplante.id, pacientes.nombre, pacientes.apellido, pacientes.num_fnr, pacientes.sexo, YEAR(CURRENT_TIMESTAMP) - YEAR(pacientes.fecha_nacimiento) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(pacientes.fecha_nacimiento, 5)) as edad, pacientes.fecha_nacimiento, nefropatia.nombre as nefropatia, paciente_pre_trasplante.origen,
+        paciente_pre_trasplante.id as ppid, paciente_pre_trasplante.the, pacientes.id as pid, pacientes.nombre, pacientes.apellido, pacientes.num_fnr, pacientes.sexo, YEAR(CURRENT_TIMESTAMP) - YEAR(pacientes.fecha_nacimiento) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(pacientes.fecha_nacimiento, 5)) as edad, pacientes.fecha_nacimiento, nefropatia.nombre as nefropatia, paciente_pre_trasplante.origen,
         IF( paciente_pre_trasplante.tabaquismo=1,  "Si",  "No" ) AS tabaquismo,
         IF( paciente_pre_trasplante.dislipemia=1,  "Si",  "No" ) AS dislipemia,
         paciente_pre_trasplante.diabetes,
@@ -47,10 +47,9 @@ class consultaActions extends sfActions
         where
         pacientes.nefropatia_id = nefropatia.id
         and
-        pacientes.id = paciente_pre_trasplante.paciente_id';
-     $q = Doctrine_Manager::getInstance()->getCurrentConnection();
-     $basic_result = $q->fetchAssoc($sql_basica_pacientes);
-     var_dump($basic_result);
+        pacientes.id = paciente_pre_trasplante.paciente_id
+        order by paciente_pre_trasplante.id';
+     
      
      $sql_infecciosa = 'select trasplante_complicaciones_infecciosas.fecha, medicaciones.nombre as medicacion, infeccion.nombre as infeccion, germenes.nombre as germen,
         IF( trasplante_complicaciones_infecciosas.internado=1,  "Si",  "No" ) AS Internado, trasplante_complicaciones_infecciosas.dias_de_internacion,
@@ -95,7 +94,7 @@ class consultaActions extends sfActions
             ';
             
      $sql_cmv_basico = '
-            select cmv.fecha, cmv.tipo, cmv_diagnostico.nombre as diagnostico, cmv_drogas.nombre as droga, cmv.dias_tratamiento
+            select cmv.id, cmv.fecha, cmv.tipo, cmv_diagnostico.nombre as diagnostico, cmv_drogas.nombre as droga, cmv.dias_tratamiento
             from cmv, cmv_diagnostico, cmv_drogas, trasplante, paciente_pre_trasplante
             where 
             cmv.cmv_diagnostico_id = cmv_diagnostico.id
@@ -122,7 +121,212 @@ where
 tratamiento.medicacion_id = medicaciones.id
 and tratamiento.paciente_id = ?
      ';
-     die;
+     
+     $sql_injerto_evolucion = '
+     select 
+    injerto_evolucion.id,
+    injerto_evolucion.fecha,
+    injerto_evolucion.tm,
+    injerto_evolucion.gp_de_novo,
+    injerto_evolucion.recidiva_gp_de_novo,
+    injerto_evolucion.ra,
+    injerto_evolucion.rc,
+    ratratamiento.nombre as ratratamiento
+    from 
+    injerto_evolucion, ratratamiento, trasplante, paciente_pre_trasplante 
+    where 
+    injerto_evolucion.ra_tratamiento_id = ratratamiento.id
+    and 
+    trasplante.id = injerto_evolucion.trasplante_id
+    and 
+    paciente_pre_trasplante.id = trasplante.paciente_pre_trasplante_id
+    and
+    paciente_pre_trasplante.id = ?
+     ';
+     
+     $sql_injerto_evolucion_pbr = '
+     select resultado_pbr.grado, resultado_pbr.criterio
+from resultado_pbr, injerto_evolucion_pbr
+where injerto_evolucion_pbr.resultado_pbr_id = resultado_pbr.id
+and injerto_evolucion_pbr.injerto_evolucion_id = ?
+     ';
+     
+     $q = Doctrine_Manager::getInstance()->getCurrentConnection();
+     $pacientes_basic_result = $q->fetchAssoc($sql_basica_pacientes);
+     $filename = "reporte";
+     $csv_filename = $filename."_".date("Y-m-d_H-i",time()).".csv";
+     $fd = fopen ("/tmp/".$csv_filename, "w");
+     $is_first = true;
+     foreach($pacientes_basic_result as $paciente)
+     {
+         $salida = array();
+         $salida["the"] = $paciente["the"];
+         $salida["nombre"] = $paciente["nombre"];
+         $salida["apellido"] = $paciente["apellido"];
+         $salida["num_fnr"] = $paciente["num_fnr"];
+         $salida["sexo"] = $paciente["sexo"];
+         $salida["edad"] = $paciente["edad"];
+         $salida["fecha_nacimiento"] = $paciente["fecha_nacimiento"];
+         $salida["nefropatia"] = $paciente["nefropatia"];
+         $salida["origen"] = $paciente["origen"];
+         $salida["tabaquismo"] = $paciente["tabaquismo"];
+         $salida["dislipemia"] = $paciente["dislipemia"];
+         $salida["diabetes"] = $paciente["diabetes"];
+         $salida["HTA"] = $paciente["HTA"];
+         $salida["IMC"] = $paciente["IMC"];
+         $salida["Obesidad"] = $paciente["Obesidad"];
+         $salida["Iam"] = $paciente["Iam"];
+         $salida["Ave"] = $paciente["Ave"];
+         $salida["Tiempo en dialisis"] = $paciente["Tiempo en dialisis"];
+         $salida["Fecha TR"] = $paciente["Fecha TR"];
+         //var_dump($paciente);
+         //echo '<hr/>';
+         $infecciosas = $q->fetchAssoc($sql_infecciosa,array($paciente["ppid"]));
+         $salidaInfecciosa = "";
+         $auxInfecciosa = array();
+         foreach($infecciosas as $infeccion)
+         {
+             /*
+             $auxInfecciosa["fecha"] = $infeccion["fecha"];
+             $auxInfecciosa["medicacion"] = $infeccion["medicacion"];
+             $auxInfecciosa["infeccion"] = $infeccion["infeccion"];
+             $auxInfecciosa["germen"] = $infeccion["germen"];
+             $auxInfecciosa["Internado"] = $infeccion["Internado"];
+             $auxInfecciosa["dias_de_internacion"] = $infeccion["dias_de_internacion"];
+             */
+             $salidaInfecciosa .= implode("->", $infeccion)."|";
+             //var_dump($infeccion);
+             //echo '<hr/>';
+         }
+         $salida["Infecciones(Fecha| medicacion| infeccion| germen| internado| dias de internacion| en evolucion)"] = $salidaInfecciosa;
+         $noinfecciosas = $q->fetchAssoc($sql_no_infecciosa,array($paciente["ppid"]));
+         $salidaNoInfecciosa = "";
+         foreach($noinfecciosas as $noinfeccion)
+         {
+             $salidaNoInfecciosa .= implode("->", $noinfeccion)."|";
+             //var_dump($noinfeccion);
+             //echo '<hr/>';
+         }
+         $salida["No Infecciones(Fecha| Medicacion| Tipo| Valor| Internado| Dias de internacion| en evolucion)"] = $salidaNoInfecciosa;
+         $cmvs = $q->fetchAssoc($sql_cmv_basico, array($paciente["ppid"]));
+         $salidaCmv = "";
+         
+         foreach($cmvs as $cmv)
+         {
+             $auxCmv = array();
+             $auxCmv["fecha"] = $cmv["fecha"];
+             $auxCmv["tipo"] = $cmv["tipo"];
+             $auxCmv["diagnostico"] = $cmv["diagnostico"];
+             $auxCmv["droga"] = $cmv["droga"];
+             $auxCmv["dias_tratamiento"] = $cmv["dias_tratamiento"];
+             
+             //var_dump($cmv);
+             $auxEmfermedad = "";
+             $cmvemfermedades = $q->fetchAssoc($sql_cmv_emfermedades, array($cmv['id']));
+             foreach($cmvemfermedades as $emfermedad)
+             {
+                 $auxEmfermedad .= $emfermedad["nombre"]." - ";
+                 //echo '<br/>';
+                 //var_dump($emfermedad);
+             }
+             $auxCmv["emfermedadades"] = $auxEmfermedad;
+             $salidaCmv .= implode("->", $auxCmv)."|";
+             //echo '<hr/>';
+         }
+         $salida["Cmv(fecha| tipo| diagnostico| droga| dias tratamiento| listado emfermedades)"] = $salidaCmv;
+         $injertos_evoluciones = $q->fetchAssoc($sql_injerto_evolucion, array($paciente["ppid"]));
+         $salidaInjerto = "";
+         
+         foreach($injertos_evoluciones as $injevo)
+         {
+             $auxInjevo = array();
+             $auxInjevo["fecha"] = $injevo["fecha"];
+             $auxInjevo["tm"] = $injevo["tm"];
+             $auxInjevo["gp_de_novo"] = $injevo["gp_de_novo"];
+             $auxInjevo["recidiva_gp_de_novo"] = $injevo["recidiva_gp_de_novo"];
+             $auxInjevo["ra"] = $injevo["ra"];
+             $auxInjevo["rc"] = $injevo["rc"];
+             $auxInjevo["ratratamiento"] = $injevo["ratratamiento"];
+             //var_dump($injevo);
+             $injertos_evoluciones_pbr = $q->fetchAssoc($sql_injerto_evolucion_pbr, array($injevo['id']));
+             $aux_pbr = "";
+             foreach($injertos_evoluciones_pbr as $injevopbr)
+             {
+                 $aux_pbr .= "G:".$injevopbr["grado"]."::C:".$injevopbr["criterio"];
+                 //echo '<br/>';
+                 //var_dump($injevopbr);
+             }
+             $auxInjevo["pbrs"] = $aux_pbr;
+             //echo '<hr/>';
+             $salidaInjerto .= implode("->", $auxInjevo);
+         }
+         $salida["Injerto Evolucion (Fecha| tm| gp de novo| recidiva gp de novo | ra | rc | tratamiento | pbr)"] = $salidaInjerto;
+         $tratamientos = $q->fetchAssoc($sql_tratamientos, array($paciente["pid"]));
+         $salidaTratamientos = "";
+         foreach($tratamientos as $tratamiento)
+         {
+             $salidaTratamientos .= implode("->", $tratamiento);
+             //var_dump($tratamiento);
+             //echo '<hr/>';
+         }
+         $salida["Tratamiento (Dosis | Fecha Inicio| Fecha Fin| Medicacion)"] = $salidaTratamientos;
+         if($is_first)
+         {
+             $keys = array_keys($salida);
+             fputcsv($fd, $keys);   
+             $is_first = false;
+         }
+         fputcsv($fd, $salida);
+         
+         //echo '<hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/>';
+     }
+     fclose($fd);
+    // disable caching
+    
+    $aFile = "/tmp/".$csv_filename;
+    if (!is_readable($aFile))
+            die('File not found or inaccessible!');
+
+    $size = filesize($aFile);
+    $name = rawurldecode($csv_filename);
+    
+    $now = gmdate("D, d M Y H:i:s");
+    header("Expires: Tue, 03 Jul 2001 06:00:00 GMT");
+    header("Cache-Control: max-age=0, no-cache, must-revalidate, proxy-revalidate");
+    header("Last-Modified: {$now} GMT");
+
+    // force download  
+    header("Content-Type: application/force-download");
+    header("Content-Type: application/octet-stream");
+    header("Content-Type: application/download");
+
+    // disposition / encoding on response body
+    header("Content-Disposition: attachment;filename='".$csv_filename."'");
+    header("Content-Transfer-Encoding: binary");
+    
+    $new_length = $size;
+    header("Content-Length: " . $size);
+    //echo file_get_contents($csv_filename);
+    
+    $chunksize = 1 * (1024 * 1024); //you may want to change this
+    $bytes_send = 0;
+    if ($file = fopen($aFile, 'r')) {
+        if (isset($_SERVER['HTTP_RANGE']))
+            fseek($aFile, $range);
+
+        while (!feof($aFile) &&
+        (!connection_aborted()) &&
+        ($bytes_send < $new_length)
+        ) {
+            $buffer = fread($aFile, $chunksize);
+            print($buffer); //echo($buffer); // is also possible
+            flush();
+            $bytes_send += strlen($buffer);
+        }
+        fclose($aFile);
+    } else
+        die('Error - can not open file.');
+     die();
   }
 
   public function executeNew(sfWebRequest $request)

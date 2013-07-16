@@ -3,6 +3,10 @@
 
 #Reportes
 
+reportePacientesGeneral:
+  url: /reportes/general/16072013/reporte.html
+  param: { module: consulta, action: retrieveComplications }
+
 reporteDinamico:
   url: /reportes/crear/dinamico.html
   param: { module: reportes, action: crearReporteDinamico } 

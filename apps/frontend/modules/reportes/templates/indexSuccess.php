@@ -13,6 +13,11 @@
       <?php echo __("reportes_reporte de fondo RACMV por anio");?>
     </a>
   </li>
+  <li>
+    <a href="<?php echo url_for("@reportePacientesGeneral");?>">
+      <?php echo __("reportes_reporte de general");?>
+    </a>
+  </li>
 </ul>
 
 <h4><?php echo __("reportes_titulo reportes dinamicos");?></h4>

@@ -284,16 +284,21 @@ and injerto_evolucion_pbr.injerto_evolucion_id = ?
     // disable caching
     
     $aFile = "/tmp/".$csv_filename;
-    if (!is_readable($aFile))
+    $new_file_name = str_replace('.csv', '.xlsx', $csv_filename);
+    $xlsFile = "/tmp/".$new_file_name;//, "/tmp/".$csv_filename.".xls";
+    //var_dump($xlsFile);die;
+    $this->convertCsvToXls($aFile, $xlsFile);
+    
+    if (!is_readable($xlsFile))
             die('File not found or inaccessible!');
 
-    $size = filesize($aFile);
-    $name = rawurldecode($csv_filename);
+    $size = filesize($xlsFile);
+    $name = rawurldecode($new_file_name);
     
     $now = gmdate("D, d M Y H:i:s");
     header("Expires: Tue, 03 Jul 2001 06:00:00 GMT");
     header("Cache-Control: max-age=0, no-cache, must-revalidate, proxy-revalidate");
-    header("Last-Modified: {$now} GMT");
+    header("Last-Modified: ".$now."GMT");
 
     // force download  
     header("Content-Type: application/force-download");
@@ -301,7 +306,7 @@ and injerto_evolucion_pbr.injerto_evolucion_id = ?
     header("Content-Type: application/download");
 
     // disposition / encoding on response body
-    header("Content-Disposition: attachment;filename='".$csv_filename."'");
+    header("Content-Disposition: attachment;filename=".$name."");
     header("Content-Transfer-Encoding: binary");
     
     $new_length = $size;
@@ -310,24 +315,69 @@ and injerto_evolucion_pbr.injerto_evolucion_id = ?
     
     $chunksize = 1 * (1024 * 1024); //you may want to change this
     $bytes_send = 0;
-    if ($file = fopen($aFile, 'r')) {
+    if ($file = fopen($xlsFile, 'r')) {
         if (isset($_SERVER['HTTP_RANGE']))
-            fseek($aFile, $range);
+            fseek($file, $range);
 
-        while (!feof($aFile) &&
+        while (!feof($file) &&
         (!connection_aborted()) &&
         ($bytes_send < $new_length)
         ) {
-            $buffer = fread($aFile, $chunksize);
+            $buffer = fread($file, $chunksize);
             print($buffer); //echo($buffer); // is also possible
             flush();
             $bytes_send += strlen($buffer);
         }
-        fclose($aFile);
+        fclose($file);
     } else
         die('Error - can not open file.');
      die();
   }
+  
+   /**
+     * Read given csv file and write all rows to given xls file
+     * 
+     * @param string $csv_file Resource path of the csv file
+     * @param string $xls_file Resource path of the excel file
+     * @param string $csv_enc Encoding of the csv file, use utf8 if null
+     * @throws Exception
+     */
+    private function convertCsvToXls($csv_file, $xls_file, $csv_enc=null) 
+    {
+        //set cache
+        $cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_phpTemp;
+        PHPExcel_Settings::setCacheStorageMethod($cacheMethod);
+        
+        //open csv file
+        $objReader = new PHPExcel_Reader_CSV();
+        if ($csv_enc != null)
+            $objReader->setInputEncoding($csv_enc);
+        $objPHPExcel = $objReader->load($csv_file);
+        $in_sheet = $objPHPExcel->getActiveSheet();
+
+        //open excel file
+        $objPHPExcel = new PHPExcel();
+        $out_sheet = $objPHPExcel->getActiveSheet();
+        
+        //row index start from 1
+        $row_index = 0;
+        foreach ($in_sheet->getRowIterator() as $row) {
+            $row_index++;
+            $cellIterator = $row->getCellIterator();
+            $cellIterator->setIterateOnlyExistingCells(false);
+            
+            //column index start from 0
+            $column_index = -1;
+            foreach ($cellIterator as $cell) {
+                $column_index++;
+                $out_sheet->setCellValueByColumnAndRow($column_index, $row_index, $cell->getValue());
+            }
+        }
+        
+        //write excel file
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save($xls_file);
+    } 
 
   public function executeNew(sfWebRequest $request)
   {

@@ -157,6 +157,7 @@ and injerto_evolucion_pbr.injerto_evolucion_id = ?
      $csv_filename = $filename."_".date("Y-m-d_H-i",time()).".csv";
      $fd = fopen ("/tmp/".$csv_filename, "w");
      $is_first = true;
+     $tipos_cmv = datosBasicosHandler::cmvChoicesOptions();
      foreach($pacientes_basic_result as $paciente)
      {
          $salida = array();
@@ -215,7 +216,7 @@ and injerto_evolucion_pbr.injerto_evolucion_id = ?
          {
              $auxCmv = array();
              $auxCmv["fecha"] = $cmv["fecha"];
-             $auxCmv["tipo"] = $cmv["tipo"];
+             $auxCmv["tipo"] = $tipos_cmv[$cmv["tipo"]];
              $auxCmv["diagnostico"] = $cmv["diagnostico"];
              $auxCmv["droga"] = $cmv["droga"];
              $auxCmv["dias_tratamiento"] = $cmv["dias_tratamiento"];

@@ -30,6 +30,10 @@ class consultaActions extends sfActions
   
   public function executeRetrieveComplications(sfWebRequest $request)
   {
+      var_dump(memory_get_usage(true));
+      var_dump(memory_get_usage());
+      var_dump(memory_get_peak_usage(true));   
+      var_dump(memory_get_peak_usage());
       $sql_basica_pacientes = 'select 
         paciente_pre_trasplante.id as ppid, paciente_pre_trasplante.the, pacientes.id as pid, pacientes.nombre, pacientes.apellido, pacientes.num_fnr, pacientes.sexo, YEAR(CURRENT_TIMESTAMP) - YEAR(pacientes.fecha_nacimiento) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(pacientes.fecha_nacimiento, 5)) as edad, pacientes.fecha_nacimiento, nefropatia.nombre as nefropatia, paciente_pre_trasplante.origen,
         IF( paciente_pre_trasplante.tabaquismo=1,  "Si",  "No" ) AS tabaquismo,
@@ -357,7 +361,12 @@ and injerto_evolucion_pbr.injerto_evolucion_id = ?
     
     if (!is_readable($xlsFile))
             die('File not found or inaccessible!');
-
+      var_dump(memory_get_usage(true));
+      var_dump(memory_get_usage());
+      var_dump(memory_get_peak_usage(true));   
+      var_dump(memory_get_peak_usage());   
+      
+     die();
     $size = filesize($xlsFile);
     $name = rawurldecode($new_file_name);
     
@@ -397,6 +406,12 @@ and injerto_evolucion_pbr.injerto_evolucion_id = ?
         fclose($file);
     } else
         die('Error - can not open file.');
+        
+      var_dump(memory_get_usage(true));
+      var_dump(memory_get_usage());
+      var_dump(memory_get_peak_usage(true));   
+      var_dump(memory_get_peak_usage());   
+      
      die();
   }
   
@@ -448,6 +463,7 @@ and injerto_evolucion_pbr.injerto_evolucion_id = ?
                     foreach($data as $cell_data)
                     {
                         $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+                        
                         $index++;
                         $objPHPExcel->getActiveSheet()->setCellValue($letter, $cell_data);
                         //echo $letter.'<br/>';

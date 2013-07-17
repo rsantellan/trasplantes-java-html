@@ -339,6 +339,8 @@ class mdBasicFunction {
 
     public static function retrieveLeters($index)
     {
+        return PHPExcel_Cell::stringFromColumnIndex($index);
+        
         $abc = array();
         $abc[0] = "A";
         $abc[1] = "B";

@@ -51,7 +51,7 @@ class consultaActions extends sfActions
         order by paciente_pre_trasplante.id';
      
      
-     $sql_infecciosa = 'select trasplante_complicaciones_infecciosas.fecha, medicaciones.nombre as medicacion, infeccion.nombre as infeccion, germenes.nombre as germen,
+     $sql_infecciosa = 'select paciente_pre_trasplante.the, trasplante_complicaciones_infecciosas.fecha, medicaciones.nombre as medicacion, infeccion.nombre as infeccion, germenes.nombre as germen,
         IF( trasplante_complicaciones_infecciosas.internado=1,  "Si",  "No" ) AS Internado, trasplante_complicaciones_infecciosas.dias_de_internacion,
         IF( trasplante_complicaciones_infecciosas.evolucion=1,  "Si",  "No" ) AS "En evolucion"
         from 
@@ -72,7 +72,7 @@ class consultaActions extends sfActions
      
      $sql_no_infecciosa = '
                  select
-            trasplante_complicaciones_no_infecciosas.fecha, medicaciones.nombre as medicacion, 
+            paciente_pre_trasplante.the, trasplante_complicaciones_no_infecciosas.fecha, medicaciones.nombre as medicacion, 
             complicaciones_tipos.nombre as "Tipo", complicaciones_tipos_valores.nombre as Valor,
             IF( trasplante_complicaciones_no_infecciosas.internado=1,  "Si",  "No" ) AS Internado, 
             trasplante_complicaciones_no_infecciosas.dias_de_internacion,
@@ -94,7 +94,8 @@ class consultaActions extends sfActions
             ';
             
      $sql_cmv_basico = '
-            select cmv.id, cmv.fecha, cmv.tipo, cmv_diagnostico.nombre as diagnostico, cmv_drogas.nombre as droga, cmv.dias_tratamiento
+            select 
+            paciente_pre_trasplante.the, cmv.id, cmv.fecha, cmv.tipo, cmv_diagnostico.nombre as diagnostico, cmv_drogas.nombre as droga, cmv.dias_tratamiento
             from cmv, cmv_diagnostico, cmv_drogas, trasplante, paciente_pre_trasplante
             where 
             cmv.cmv_diagnostico_id = cmv_diagnostico.id
@@ -115,15 +116,20 @@ class consultaActions extends sfActions
      ';
      
      $sql_tratamientos = '
-select tratamiento.dosis, tratamiento.fecha_inicio, tratamiento.fecha_fin, medicaciones.nombre as medicacion
-from tratamiento, medicaciones
+select paciente_pre_trasplante.the, tratamiento.dosis, tratamiento.fecha_inicio, tratamiento.fecha_fin, medicaciones.nombre as medicacion
+from tratamiento, medicaciones, pacientes, paciente_pre_trasplante
 where 
 tratamiento.medicacion_id = medicaciones.id
+and
+pacientes.id = tratamiento.paciente_id
+and
+pacientes.id = paciente_pre_trasplante.paciente_id
 and tratamiento.paciente_id = ?
      ';
      
      $sql_injerto_evolucion = '
      select 
+    paciente_pre_trasplante.the, 
     injerto_evolucion.id,
     injerto_evolucion.fecha,
     injerto_evolucion.tm,
@@ -153,9 +159,30 @@ and injerto_evolucion_pbr.injerto_evolucion_id = ?
      
      $q = Doctrine_Manager::getInstance()->getCurrentConnection();
      $pacientes_basic_result = $q->fetchAssoc($sql_basica_pacientes);
-     $filename = "reporte";
-     $csv_filename = $filename."_".date("Y-m-d_H-i",time()).".csv";
+     $filename = "reporte"."_".date("Y-m-d_H-i",time());
+     $csv_filename = $filename.".csv";
+     $csv_filename_complicaciones_inf = "ci_".$filename.".csv";
+     $csv_filename_complicaciones_no_inf = "cni_".$filename.".csv";
+     $csv_filename_cmv = "cmv_".$filename.".csv";
+     $csv_filename_tratamientos = "tratamientos_".$filename.".csv";
+     $csv_filename_injerto_evolucion = "injertos_".$filename.".csv";
+     
      $fd = fopen ("/tmp/".$csv_filename, "w");
+     $fdci = fopen ("/tmp/".$csv_filename_complicaciones_inf, "w");
+     $fdcni = fopen ("/tmp/".$csv_filename_complicaciones_no_inf, "w");
+     $fdcmv = fopen ("/tmp/".$csv_filename_cmv, "w");
+     $fdtratamientos = fopen ("/tmp/".$csv_filename_tratamientos, "w");
+     $fdinjertoevolucion = fopen ("/tmp/".$csv_filename_injerto_evolucion, "w");
+     $title_infeccion = array('THE','Fecha', 'medicacion', 'infeccion', 'germen', 'internado', 'dias de internacion', 'en evolucion');
+     fputcsv($fdci, $title_infeccion);
+     $title_no_infeccion = array("THE", "Fecha", "Medicacion", "Tipo", "Valor", "Internado", "Dias de internacion", "En evolucion");
+     fputcsv($fdcni, $title_no_infeccion);
+     $title_cmv = array('THE', 'fecha', 'tipo', 'diagnostico', 'droga', 'dias de tratamiento', 'listado de emfermedades');
+     fputcsv($fdcmv, $title_cmv);
+     $title_injerto_evolucion = array('THE', 'Fecha', 'tm', 'gp de novo', 'recidiva gp de novo', 'ra' ,'rc', 'tratamiento', 'pbr');
+     fputcsv($fdinjertoevolucion, $title_injerto_evolucion);
+     $title_tratamiento = array('THE', 'Dosis', 'Fecha Inicio', 'Fecha Fin', 'Medicacion');
+     fputcsv($fdtratamientos, $title_tratamiento);
      $is_first = true;
      $tipos_cmv = datosBasicosHandler::cmvChoicesOptions();
      foreach($pacientes_basic_result as $paciente)
@@ -195,31 +222,40 @@ and injerto_evolucion_pbr.injerto_evolucion_id = ?
              $auxInfecciosa["Internado"] = $infeccion["Internado"];
              $auxInfecciosa["dias_de_internacion"] = $infeccion["dias_de_internacion"];
              */
+             fputcsv($fdci, $infeccion);
+             unset($infeccion['the']);
              $salidaInfecciosa .= implode("->", $infeccion)."|";
+             
              //var_dump($infeccion);
              //echo '<hr/>';
          }
-         $salida["Infecciones(Fecha| medicacion| infeccion| germen| internado| dias de internacion| en evolucion)"] = $salidaInfecciosa;
+         //$salida["Infecciones(Fecha| medicacion| infeccion| germen| internado| dias de internacion| en evolucion)"] = $salidaInfecciosa;
          $noinfecciosas = $q->fetchAssoc($sql_no_infecciosa,array($paciente["ppid"]));
          $salidaNoInfecciosa = "";
          foreach($noinfecciosas as $noinfeccion)
          {
+             
+             fputcsv($fdcni, $noinfeccion);
+             unset($noinfeccion['the']);
              $salidaNoInfecciosa .= implode("->", $noinfeccion)."|";
+             
              //var_dump($noinfeccion);
              //echo '<hr/>';
          }
-         $salida["No Infecciones(Fecha| Medicacion| Tipo| Valor| Internado| Dias de internacion| en evolucion)"] = $salidaNoInfecciosa;
+         //$salida["No Infecciones(Fecha| Medicacion| Tipo| Valor| Internado| Dias de internacion| en evolucion)"] = $salidaNoInfecciosa;
          $cmvs = $q->fetchAssoc($sql_cmv_basico, array($paciente["ppid"]));
          $salidaCmv = "";
          
          foreach($cmvs as $cmv)
          {
              $auxCmv = array();
+             $auxCmv["the"] = $cmv["the"];
              $auxCmv["fecha"] = $cmv["fecha"];
              $auxCmv["tipo"] = $tipos_cmv[$cmv["tipo"]];
              $auxCmv["diagnostico"] = $cmv["diagnostico"];
              $auxCmv["droga"] = $cmv["droga"];
              $auxCmv["dias_tratamiento"] = $cmv["dias_tratamiento"];
+             
              
              //var_dump($cmv);
              $auxEmfermedad = "";
@@ -231,16 +267,21 @@ and injerto_evolucion_pbr.injerto_evolucion_id = ?
                  //var_dump($emfermedad);
              }
              $auxCmv["emfermedadades"] = $auxEmfermedad;
+             
+             fputcsv($fdcmv, $auxCmv);
+             unset($auxCmv["the"]);
              $salidaCmv .= implode("->", $auxCmv)."|";
              //echo '<hr/>';
          }
-         $salida["Cmv(fecha| tipo| diagnostico| droga| dias tratamiento| listado emfermedades)"] = $salidaCmv;
+         
+         //$salida["Cmv(fecha| tipo| diagnostico| droga| dias tratamiento| listado emfermedades)"] = $salidaCmv;
          $injertos_evoluciones = $q->fetchAssoc($sql_injerto_evolucion, array($paciente["ppid"]));
          $salidaInjerto = "";
          
          foreach($injertos_evoluciones as $injevo)
          {
              $auxInjevo = array();
+             $auxInjevo["the"] = $injevo["the"];
              $auxInjevo["fecha"] = $injevo["fecha"];
              $auxInjevo["tm"] = $injevo["tm"];
              $auxInjevo["gp_de_novo"] = $injevo["gp_de_novo"];
@@ -259,18 +300,23 @@ and injerto_evolucion_pbr.injerto_evolucion_id = ?
              }
              $auxInjevo["pbrs"] = $aux_pbr;
              //echo '<hr/>';
-             $salidaInjerto .= implode("->", $auxInjevo);
+             fputcsv($fdinjertoevolucion, $auxInjevo);
+             //$salidaInjerto .= implode("->", $auxInjevo);
          }
-         $salida["Injerto Evolucion (Fecha| tm| gp de novo| recidiva gp de novo | ra | rc | tratamiento | pbr)"] = $salidaInjerto;
+         
+         //$salida["Injerto Evolucion (Fecha| tm| gp de novo| recidiva gp de novo | ra | rc | tratamiento | pbr)"] = $salidaInjerto;
          $tratamientos = $q->fetchAssoc($sql_tratamientos, array($paciente["pid"]));
          $salidaTratamientos = "";
          foreach($tratamientos as $tratamiento)
          {
+             fputcsv($fdtratamientos, $tratamiento);
              $salidaTratamientos .= implode("->", $tratamiento);
+             
              //var_dump($tratamiento);
              //echo '<hr/>';
          }
-         $salida["Tratamiento (Dosis | Fecha Inicio| Fecha Fin| Medicacion)"] = $salidaTratamientos;
+         
+         //$salida["Tratamiento (Dosis | Fecha Inicio| Fecha Fin| Medicacion)"] = $salidaTratamientos;
          if($is_first)
          {
              $keys = array_keys($salida);
@@ -281,6 +327,11 @@ and injerto_evolucion_pbr.injerto_evolucion_id = ?
          
          //echo '<hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/>';
      }
+     fclose($fdinjertoevolucion);
+     fclose($fdtratamientos);
+     fclose($fdcmv);
+     fclose($fdci);
+     fclose($fdcni);
      fclose($fd);
     // disable caching
     
@@ -288,7 +339,21 @@ and injerto_evolucion_pbr.injerto_evolucion_id = ?
     $new_file_name = str_replace('.csv', '.xlsx', $csv_filename);
     $xlsFile = "/tmp/".$new_file_name;//, "/tmp/".$csv_filename.".xls";
     //var_dump($xlsFile);die;
-    $this->convertCsvToXls($aFile, $xlsFile);
+    $list_files = array(
+        'basico' => $aFile,
+        'infecciosas' => "/tmp/".$csv_filename_complicaciones_inf,
+        'noinfecciosas' => "/tmp/".$csv_filename_complicaciones_no_inf,
+        'cmv' => "/tmp/".$csv_filename_cmv,
+        'tratamientos' => "/tmp/".$csv_filename_tratamientos,
+        'injertos' => "/tmp/".$csv_filename_injerto_evolucion,
+        );
+    $this->simpleConverting($list_files, $xlsFile);
+    foreach($list_files as $lfile)
+    {
+        unlink($lfile);
+    }    
+    //die;
+    //$this->convertCsvToXls($aFile, $xlsFile);
     
     if (!is_readable($xlsFile))
             die('File not found or inaccessible!');
@@ -333,6 +398,78 @@ and injerto_evolucion_pbr.injerto_evolucion_id = ?
     } else
         die('Error - can not open file.');
      die();
+  }
+  
+  private function simpleConverting($csv_files, $xls_file)
+  {
+      if(is_array($csv_files))
+      {
+          $sheet = 0;
+          
+          
+          $objPHPExcel = reportesHandler::createPHPEXCELSheet();
+          $objPHPExcel->setActiveSheetIndex($sheet);
+          
+          
+          foreach($csv_files as $name => $csv_file)
+          {
+              /*
+              $file_handle = fopen($csv_file, "r");
+              while (!feof($file_handle)) {
+                 $line = fgets($file_handle);
+                 //var_dump(explode("," $line));
+                 var_dump(count(explode(",", $line)));
+                 echo '<br/>';
+                 //echo $line."<hr/>";
+                 
+              }
+              fclose($file_handle);
+              */
+              if($sheet >= 1)
+              {
+                // Create a new worksheet
+                $objPHPExcel->createSheet();
+                // Add some data to the second sheet, resembling some different data types
+                $objPHPExcel->setActiveSheetIndex($sheet);
+              }
+              // Rename sheet
+              $objPHPExcel->getActiveSheet()->setTitle($name);
+              $row = 0;
+              $position = 1;
+              $sheet++;
+              
+              if (($handle = fopen($csv_file, "r")) !== FALSE) {
+                while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                    $num = count($data);
+                    //echo "<p> $num fields in line $row: <br /></p>\n";
+                    //$row++;
+                    $index = 0;
+                    //var_dump($data);
+                    foreach($data as $cell_data)
+                    {
+                        $letter = (string)(mdBasicFunction::retrieveLeters($index).$position);
+                        $index++;
+                        $objPHPExcel->getActiveSheet()->setCellValue($letter, $cell_data);
+                        //echo $letter.'<br/>';
+                        //if($index > 24)
+                        //    echo $index . '<br/>';
+                    }
+                    /*
+                    for ($c=0; $c < $num; $c++) {
+                        //echo $data[$c] . "<br />\n";
+                    }
+                    */
+                    $position++;
+                }
+                
+                fclose($handle);
+            }
+          }
+        //write excel file
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save($xls_file);
+        //die;
+      }
   }
   
    /**

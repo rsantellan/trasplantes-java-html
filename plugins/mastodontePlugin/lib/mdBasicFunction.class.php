@@ -363,12 +363,17 @@ class mdBasicFunction {
         $abc[20] = "U";
         $abc[21] = "V";
         $abc[22] = "W";
-        $abc[23] = "Y";
-        $abc[24] = "X";
+        $abc[23] = "X";
+        $abc[24] = "Y";
         $abc[25] = "Z";
 		$divider = count($abc) - 1;
 		$division = $index / $divider;
 		$modulus = $index % $divider;
+        /*
+        echo "index: ".$index;
+        echo " divider: ".$divider;
+        echo " modulus: ".$modulus." - ";
+        */
 		if($index > $divider)
 		{
 		  $aux = self::retrieveLeters(floor($division) -1).$abc[(int)$modulus-1];

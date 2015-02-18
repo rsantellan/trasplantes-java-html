@@ -18,7 +18,7 @@ class TrasplanteForm extends BaseTrasplanteForm
     $preTrasplante = preTrasplanteHandler::retriveById($paciente_pre_trasplante_id, Doctrine_Core::HYDRATE_ARRAY);
     $this->widgetSchema['paciente_pre_trasplante_id'] = new sfWidgetFormInputHidden();
     $age = mdBasicFunction::calculateAge($preTrasplante["fecha_ingreso_lista"], true);
-    $years = range(date('Y') - $age,date('Y'));
+    $years = range(date('Y') - $age,date('Y')+ 1);
     $years = array_combine($years, $years);
     
     $this->widgetSchema['fecha'] = new sfWidgetFormDate(

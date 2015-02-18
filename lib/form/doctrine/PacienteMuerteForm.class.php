@@ -16,8 +16,8 @@ class PacienteMuerteForm extends BasePacienteMuerteForm
     //var_dump($paciente_id);
     $paciente = PacienteHandler::retriveById($paciente_id, Doctrine_Core::HYDRATE_ARRAY);
     $age = mdBasicFunction::calculateAge($paciente["fecha_nacimiento"], true);
-    //var_dump($age);
-    $years = range(date('Y') - $age,date('Y'));
+    
+    $years = range(date('Y') - $age,date('Y')+ 1);
     $years = array_combine($years, $years);
     $this->widgetSchema['fecha_muerte'] = new sfWidgetFormDate(
                               array(

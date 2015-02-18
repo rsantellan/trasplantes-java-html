@@ -17,6 +17,8 @@ class TratamientoForm extends BaseTratamientoForm
     $paciente = PacienteHandler::retriveById($paciente_id, Doctrine_Core::HYDRATE_ARRAY);
     $this->widgetSchema['paciente_id'] = new sfWidgetFormInputHidden();
     $age = mdBasicFunction::calculateAge($paciente["fecha_dialisis"], true);
+    $fechaData = explode('-', $paciente["fecha_dialisis"]);
+    $years = range((int) $fechaData[0] - $age, date('Y') + 1);
     $years = range(date('Y') - $age,date('Y'));
     $years = array_combine($years, $years);
 

@@ -37,7 +37,8 @@ class EvolucionTrasplanteCmvForm extends BaseEvolucionTrasplanteCmvForm {
         $trasplante_id = $this->getObject()->getTrasplanteId();
         $trasplante = trasplanteHandler::retriveById($trasplante_id, Doctrine_Core::HYDRATE_ARRAY);
         $age = mdBasicFunction::calculateAge($trasplante["fecha"], true);
-        $years = range(date('Y') - $age,date('Y'));
+        $fechaData = explode('-', $trasplante["fecha"]);
+        $years = range((int) $fechaData[0] - $age, date('Y')+ 1);
         $years = array_combine($years, $years);
 
         $this->widgetSchema['fecha'] = new sfWidgetFormDate(
